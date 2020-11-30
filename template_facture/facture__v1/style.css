@@ -1,0 +1,65 @@
+table {
+	width: 100%;
+	margin-bottom: 48px;
+	color: #CCC !important;
+}
+
+table span {
+	float: left;
+	width: 100%;
+}
+
+td, th {
+	vertical-align: top;
+	padding: 5px 0 20px 0;
+}
+
+tr:not(:last-child) {
+	border-bottom: 1px solid #CCC;
+}
+
+input, textarea {
+	padding: 0;
+	border: none;
+	resize: none;
+	font-family: 'Roboto', sans-serif;
+	color: #CCC;
+	background: white;
+	transition: background 0.5s;
+}
+
+input:focus, textarea:focus {
+	color: black;
+	outline: none;
+	transition: background 0.5s;
+}
+
+input:disabled {
+	opacity: 1 !important;
+}
+
+input {
+	width: 85%;
+	border-bottom: none !important;
+}
+
+input[type="number"],
+th:not(:first-child) {
+	text-align: right;
+}
+
+input::placeholder {
+	color: #CCC;
+}
+
+.form__total {
+	border-left: 1px solid #CCC;
+}
+
+.subheading {
+	color: black !important;
+}
+
+.caption {
+	line-height: 10px;
+}

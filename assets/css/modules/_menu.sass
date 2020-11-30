@@ -1,0 +1,31 @@
+// main: ../../../style.sass
+
+
+
+.menu
+  display: none
+  float: left
+  min-width: 250px
+  border-radius: 4px
+  box-shadow: 0 8px 10px 1px rgba(204,204,204,0.14), 0 3px 14px 2px rgba(204,204,204,0.12), 0 5px 5px -3px rgba(204,204,204,0.2)
+  background: white
+
+.menu li
+  display: list-item
+// 
+// .menu li:nth-child(n+2)
+//   border-top: 1px solid #ececec
+
+.menu li.separator
+  border-top: 1px solid #ececec
+
+.menu a
+    &:link, &:visited
+      display: block
+      font-size: 14px
+      line-height: 24px
+      padding: 16px 24px
+
+    &:hover
+      background: #fbfbfb
+      text-decoration: none

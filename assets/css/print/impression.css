@@ -1,0 +1,30 @@
+footer,
+.l-header,
+input[type="submit"],
+.btn{
+  display: none;
+}
+.paper,
+.row,
+.l12{
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  box-shadow: none;
+}
+.paper{ padding: 0 }
+.paper__content{
+  position: relative;
+  padding: 0;
+}
+.paper table{
+  width: 100%;
+  display: table !important;
+}
+.paper tr{
+  display: table-row !important;
+}
+.paper th,
+.paper td{
+  display: table-cell !important;
+}

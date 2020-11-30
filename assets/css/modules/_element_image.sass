@@ -1,0 +1,42 @@
+// main: ../../../style.sass
+
+.element_image
+  background-repeat: no-repeat
+  background-size: cover
+  background-position: center center
+
+.image-full
+  position: relative
+  width: 100%
+
+  .image-full__content
+    position: relative
+
+.image-full__ratio-1-1
+  position: relative
+  width: 100%
+  padding-top: 100%
+
+.image-full__ratio-1-2
+  position: relative
+  width: 100%
+  padding-top: 50%
+
+.image-full__ratio-5-4
+  position: relative
+  width: 100%
+  padding-top: 80%
+
+.image-full__content
+  position: absolute
+  top: 0
+  bottom: 0
+  left: 0
+  right: 0
+  overflow: hidden
+  border-radius: 3px
+
+  img
+    width: 100%
+    height: 100%
+    object-fit: cover

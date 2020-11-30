@@ -1,0 +1,49 @@
+// main: ../../../style.sass
+
+
+.form
+  float: left
+  width: 100%
+
+  label
+    float: left
+    width: 100%
+    margin: 24px 0 12px 0
+
+.form__input-container
+  float: left
+  width: 100%
+  border: 1px solid #CCC
+  border-bottom: none
+  margin: 12px 0
+
+  input, textarea
+    float: left
+    padding: 24px
+    border: none
+    border-bottom: 1px solid #CCC
+    resize: none
+    font-family: 'Roboto', sans-serif
+    color: #777
+    background: white
+    transition: background 0.5s
+
+  input:focus, textarea:focus
+    background: #f5f5f5
+    outline: none
+    transition: background 0.5s
+
+  .form__input-full
+    width: 100%
+
+  .form__input-half
+    width: 50%
+
+  .form__input-seperator
+    border-right: 1px solid #CCC
+
+  input:disabled
+    opacity: 0.4
+
+  input::placeholder
+    color: #e8e8e8
