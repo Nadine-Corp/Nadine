@@ -19,13 +19,16 @@
 
   $conn->close();
 
-  $sql = "SELECT MAX(id) FROM Projets;";
+  $sql = "SELECT * FROM Projets ORDER BY projet__id DESC LIMIT 1;";
   include 'query.php'; $result = $conn->query($sql) or die($conn->error);
 
   if (!$result) {
       die('Could not query:' . mysql_error());
   }
-  $last_id = mysql_result($result, 0, 'projet__id');
+  $row = $result->fetch_assoc();
+  if($row){
+    $last_id = $row['projet__id'];
+  }
 
   $conn->close();
 

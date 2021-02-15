@@ -12,6 +12,11 @@
         <th>#Description</th>
       </tr>
       <tr>
+        <td width="10%">0.1.038</td>
+        <td width="10%">15.12.2021</td>
+        <td>Nadine vient de comprendre la nature des accents dans les dates. Fini les symbôles exotiques pour écrire Février, Août ou Décembre ! Un vilain bug a aussi été chassé : lorsque vous créez un nouveau projet, vous êtes désormais invité à créer un devis ou une facture de suite ! Pas besoin de retourner sur le menu de sélection des projets. Dernière trouvaille de Nadine, lorsque vous déménagé et que vous mettez votre profil à jour, Nadine pense à modifier le nom de la ville à côté de <i>Fait à : </i> sur les devis et factures.</td>
+      </tr>
+      <tr>
         <td width="10%">0.1.037</td>
         <td width="10%">30.11.2020</td>
         <td>Une drôle de page d'options est apparue dans le menu. Pour l'instant, on ne comprends pas trop pourquoi elle est là. En attendant de comprendre, nous avons modifier manuellement le générateur de message accompagnant les devis.</td>
