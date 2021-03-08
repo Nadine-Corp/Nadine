@@ -2,20 +2,20 @@
 
 
 <?php
-  date_default_timezone_set('UTC');
-  $today = date("Y-m-d");
-  setlocale(LC_TIME, "fr_FR","French");
-  $date = strftime("%d %B %Y", strtotime($today));
- ?>
+date_default_timezone_set('UTC');
+$today = date("Y-m-d");
+setlocale(LC_TIME, "fr_FR","French");
+$date = strftime("%d %B %Y", strtotime($today));
+?>
 
 
-  <?php $facture__id = $_GET['facture__id']; ?>
-  <?php $sql = "SELECT * FROM Factures, Profil WHERE Factures.facture__id='".$facture__id."' AND Factures.profil__id = Profil.profil__id "; ?>
-  <?php include './core/query.php'; $result = $conn->query($sql) or die($conn->error); ?>
-  <?php if ($result->num_rows > 0): ?>
-    <?php while($row = $result->fetch_assoc()):?>
+<?php $facture__id = $_GET['facture__id']; ?>
+<?php $sql = "SELECT * FROM Factures, Profil WHERE Factures.facture__id='".$facture__id."' AND Factures.profil__id = Profil.profil__id "; ?>
+<?php include './core/query.php'; $result = $conn->query($sql) or die($conn->error); ?>
+<?php if ($result->num_rows > 0): ?>
+  <?php while($row = $result->fetch_assoc()):?>
 
-     <form class="form" action="./core/modifier__facture.php" method="post">
+    <form class="form" action="./core/modifier__facture.php" method="post">
 
       <?php $facture__numero = $row["facture__numero"]; ?>
       <?php $facture__tache_1 = $row["facture__tache_1"]; $facture__prix_1 = $row["facture__prix_1"]; ?>
@@ -46,25 +46,27 @@
       <section class="row l_facture">
         <div class="col l12">
           <?php include './template_facture/facture__v3/facture.php'; ?>
-          <a href="./projet__single?projet__id=<?php echo $row["projet__id"] ?>" class="btn btn--outline">Annuler</a>
-          <a href="./core/supprimer?base=Factures&cible=facture__id&id=<?php echo $facture__id ?>" class="btn btn--outline">Supprimer</a>
-          <a href="./facture__mail?facture__id=<?php echo $facture__id ?>" class="btn btn--outline" target="_blank">Générer email</a>
-          <input list="statut" class="btn btn--outline" name="facture__statut" value="<?php echo $row["facture__statut"] ?>">
-          <datalist id="statut">
-            <option value="Brouillon">
-            <option value="Envoyée">
-            <option value="Payée">
-            <option value="Annulée">
-          </datalist>
-          <a href="javascript:window.print()" class="btn btn--plain">Imprimer en PDF</a>
-          <input type="submit" name="Enregistrer" value="Enregistrer" class="btn btn--plain">
+          <div class="toolbar">
+            <button href="./projet__single?projet__id=<?php echo $row["projet__id"] ?>" class="btn btn--outline">Annuler</button>
+            <button href="./core/supprimer?base=Factures&cible=facture__id&id=<?php echo $facture__id ?>" class="btn btn--outline">Supprimer</button>
+            <button href="./facture__mail?facture__id=<?php echo $facture__id ?>" class="btn btn--outline" class="btn btn--plain">Générer email</button>
+            <input list="statut" class="btn btn--outline" name="facture__statut" value="<?php echo $row["facture__statut"] ?>">
+            <datalist id="statut">
+              <option value="Brouillon">
+              <option value="Envoyée">
+              <option value="Payée">
+              <option value="Annulée">
+            </datalist>
+            <button href="javascript:window.print()" class="btn btn--plain">Imprimer en PDF</button>
+            <input type="submit" name="Enregistrer" value="Enregistrer" class="btn btn--plain">
+          </div>
         </div>
       </section>
-    </form>
+      </form>
 
-    <?php endwhile; ?>
-  <?php else: ?>
-  <p>Chef, on a rien trouvé ici...</p>
-  <?php endif; $conn->close(); ?>
+          <?php endwhile; ?>
+        <?php else: ?>
+          <p>Chef, on a rien trouvé ici...</p>
+        <?php endif; $conn->close(); ?>
 
-<?php include 'footer.php'; ?>
+        <?php include 'footer.php'; ?>

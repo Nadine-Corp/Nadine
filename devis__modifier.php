@@ -2,20 +2,20 @@
 
 
 <?php
-  date_default_timezone_set('UTC');
-  $today = date("Y-m-d");
-  setlocale(LC_TIME, "fr_FR","French");
-  $date = strftime("%d %B %Y", strtotime($today));
- ?>
+date_default_timezone_set('UTC');
+$today = date("Y-m-d");
+setlocale(LC_TIME, "fr_FR","French");
+$date = strftime("%d %B %Y", strtotime($today));
+?>
 
 
-  <?php $devis__id = $_GET['devis__id']; ?>
-  <?php $sql = "SELECT * FROM Devis, Profil WHERE Devis.devis__id='".$devis__id."' AND Devis.profil__id = Profil.profil__id "; ?>
-  <?php include './core/query.php'; $result = $conn->query($sql) or die($conn->error); ?>
-  <?php if ($result->num_rows > 0): ?>
-    <?php while($row = $result->fetch_assoc()):?>
+<?php $devis__id = $_GET['devis__id']; ?>
+<?php $sql = "SELECT * FROM Devis, Profil WHERE Devis.devis__id='".$devis__id."' AND Devis.profil__id = Profil.profil__id "; ?>
+<?php include './core/query.php'; $result = $conn->query($sql) or die($conn->error); ?>
+<?php if ($result->num_rows > 0): ?>
+  <?php while($row = $result->fetch_assoc()):?>
 
-     <form class="form" action="./core/modifier__devis.php" method="post">
+    <form class="form" action="./core/modifier__devis.php" method="post">
 
       <?php $facture__numero = $row["devis__numero"]; ?>
       <?php $facture__tache_1 = $row["devis__tache_1"]; $facture__prix_1 = $row["devis__prix_1"]; ?>
@@ -46,27 +46,30 @@
       <section class="row l_facture">
         <div class="col l12">
           <?php include './template_facture/facture__v3/devis.php'; ?>
-          <a href="./projet__single?projet__id=<?php echo $row["projet__id"] ?>" class="btn btn--outline">Annuler</a>
-          <a href="./devis__mail?devis__id=<?php echo $devis__id ?>" class="btn btn--outline" target="_blank">Générer email</a>
-          <a href="./devis__convertir?devis__id=<?php echo $devis__id ?>" class="btn btn--outline">Convertir en facture</a>
-          <a href="./core/add__devis.php" class="btn btn--outline">Dupliquer ce devis</a>
-          <a href="./core/supprimer?base=Devis&cible=devis__id&id=<?php echo $devis__id ?>" class="btn btn--outline">Supprimer</a>
-          <input list="statut" name="devis__statut" class="btn btn--outline" value="<?php echo $row["devis__statut"] ?>">
-          <datalist id="statut">
-            <option value="Brouillon">
-            <option value="Envoyé">
-            <option value="Validé">
-            <option value="Annulé">
-          </datalist>
-          <a href="javascript:window.print()" class="btn btn--plain">Imprimer en PDF</a>
-          <input type="submit" name="Enregistrer" value="Enregistrer" class="btn btn--plain">
+
+          <div class="toolbar">
+            <button href="./projet__single?projet__id=<?php echo $row["projet__id"] ?>" class="btn btn--outline">Annuler</button>
+            <button href="./devis__mail?devis__id=<?php echo $devis__id ?>" class="btn btn--outline" target="_blank">Générer email</button>
+            <button href="./devis__convertir?devis__id=<?php echo $devis__id ?>" class="btn btn--outline">Convertir en facture</button>
+            <button href="./core/add__devis.php" class="btn btn--outline">Dupliquer ce devis</button>
+            <button href="./core/supprimer?base=Devis&cible=devis__id&id=<?php echo $devis__id ?>" class="btn btn--outline">Supprimer</button>
+            <input list="statut" name="devis__statut" class="btn btn--outline" value="<?php echo $row["devis__statut"] ?>">
+            <datalist id="statut">
+              <option value="Brouillon">
+              <option value="Envoyé">
+              <option value="Validé">
+              <option value="Annulé">
+            </datalist>
+            <button href="javascript:window.print()" class="btn btn--plain">Imprimer en PDF</button>
+            <input type="submit" name="Enregistrer" value="Enregistrer" class="btn btn--plain">
+          </div>
         </div>
       </section>
     </form>
 
     <?php endwhile; ?>
   <?php else: ?>
-  <p>Chef, on a rien trouvé ici...</p>
+    <p>Chef, on a rien trouvé ici...</p>
   <?php endif; $conn->close(); ?>
 
-<?php include 'footer.php'; ?>
+  <?php include 'footer.php'; ?>

@@ -12,6 +12,11 @@
         <th>#Description</th>
       </tr>
       <tr>
+        <td width="10%">0.1.042</td>
+        <td width="10%">07.03.2021</td>
+        <td>Nadine n'aimait pas ses boutons. Maintenant, elle se sent plus radieuse que jamais. Alors elle c'est remis au travail et quelques fautes de frappe un peu idiote.</td>
+      </tr>
+      <tr>
         <td width="10%">0.1.041</td>
         <td width="10%">07.03.2021</td>
         <td>Un soir, Nadine ne voulait pas aller se coucher. Alors elle a fini d'étudier comment classer des <i>Artites</i> dans sa base de données. Il lui reste maintenant à comprendre ce qu'elle peut bien faire. En attendant, elle encore modifier quelques marges. En faites : elle a refondu toute la gestion typographique (mais elle est un peu timide pour l'avouer).</td>
@@ -39,7 +44,7 @@
       <tr>
         <td width="10%">0.1.036</td>
         <td width="10%">17.11.2020</td>
-        <td>Les projets (parce que parfois, cela arrive...) apparaissent désormais en grisé dans la liste des projets</td>
+        <td>Les projets annulés (parce que parfois, cela arrive...) apparaissent désormais en grisé dans la liste des projets</td>
       </tr>
       <tr>
         <td width="10%">0.1.035</td>
@@ -54,7 +59,7 @@
       <tr>
         <td width="10%">0.1.033</td>
         <td width="10%">16.09.2020</td>
-        <td>On a demandé à Nadine s'investir (un peu moins) dans son travail : elle avait tendance à dupliquer les nouveaux projets.</td>
+        <td>On a demandé à Nadine de s'investir (un peu moins) dans son travail : elle avait tendance à dupliquer les nouveaux projets.</td>
       </tr>
       <tr>
         <td width="10%">0.1.032</td>
@@ -189,7 +194,7 @@
       <tr>
         <td width="10%">0.1.007</td>
         <td width="10%">25.06.2020</td>
-        <td>Nadine se prépare pour la version 0.2. Ojectif : simplifier la déclaration annuelle à l'URSSAF. Mais on commence avec un détail : Nadine ouvre désormais votre gestionnaire de mail lorsque vous cliquez sur le mail d'un client. Idem sur l'interface de gestion de projet. Mais nous avons fait mieux : Nadine se souvient normalement* des SIRET des clients dans tout le système (*normalement parcequ'on a pas tout testé (❁´◡`❁) ) </td>
+        <td>Nadine se prépare pour la version 0.2. Objectif : simplifier la déclaration annuelle à l'URSSAF. Mais on commence avec un détail : Nadine ouvre désormais votre gestionnaire de mail lorsque vous cliquez sur le mail d'un client. Idem sur l'interface de gestion de projet. Mais nous avons fait mieux : Nadine se souvient normalement* des SIRET des clients dans tout le système (*normalement parcequ'on a pas tout testé (❁´◡`❁) ) </td>
       </tr>
       <tr>
       <tr>
@@ -241,7 +246,7 @@
       <tr>
         <td width="10%">0.083</td>
         <td width="10%">03.02.2019</td>
-        <td>Des boutons supprimer sont apparuent dans la nuit. Ils ne semblent pas foncitonner pour l'instant.</td>
+        <td>Des boutons supprimer sont apparuent dans la nuit. Ils ne semblent pas fonctionner pour l'instant.</td>
       </tr>
       <tr>
         <td width="10%">0.082</td>
@@ -326,7 +331,7 @@
       <tr>
         <td width="10%">0.052</td>
         <td width="10%">17.01.2019</td>
-        <td>Oh non ! Nadine souffrait d'un bug idiot : lorsque l'on modifié les coordonées d'un cleint, cette mise à jour n'était pas appliquée aux projets. Nous avons retourné internet pour trouver une solution. C'est chose faîtes : après avoir modifier plein de ligne de code, Nadine va mieux !</td>
+        <td>Oh non ! Nadine souffrait d'un bug idiot : lorsque l'on modifié les coordonées d'un client, cette mise à jour n'était pas appliquée aux projets. Nous avons retourné internet pour trouver une solution. C'est chose faîtes : après avoir modifier plein de ligne de code, Nadine va mieux !</td>
       </tr>
       <tr>
         <td width="10%">0.051</td>

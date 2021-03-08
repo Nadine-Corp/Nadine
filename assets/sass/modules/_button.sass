@@ -1,33 +1,41 @@
 // main: ../../../style.sass
 
+  Le module Button stylise les boutons. Il exite
+  deux variantes : le bouton btn--plain et le btn--outline.
+
+
+  Exemple de HTML :
+
+    <button class="btn btn--outline" onclick="document.location = '<?php the_permalink(); ?>';">Mon Button</button>
+
+
+
 .btn
   display: inline-block
-  float: left
-  width: auto
-  margin-top: 48px !important
-  margin-right: 12px
-  padding: 12px !important
-  font-size: 14px !important
+  margin: $modulor*3 $modulor/3
+  padding: $modulor
+  font-size: $modulor
   text-transform: uppercase
-  font-family: 'Roboto', sans-serif !important
-  font-weight: 500 !important
-  border-radius: 5px !important
+  font-weight: 500
+  border-radius: $modulor*3
   cursor: pointer
-  transition: border-radius 0.2s
+  white-space: nowrap
+  @include box-shadow(4, rgba($color-back, 0))
+  @include prefix(transition, all 2s)
 
-.btn:hover
-  border-radius: 15px !important
-  transition: border-radius 0.2s
-
-a.btn:hover
-  text-decoration: none !important
+  &:hover
+    border-radius: $modulor/2
+    color: lighten($color-principale, 10)
+    text-decoration: none
+    @include box-shadow(100, $color-accent)
+    @include prefix(transition, all 0.2s)
 
 .btn--plain
-  background: #FE3636 !important
-  color: white !important
-  border: 1px solid #FE3636 !important
+  background: $color-accent
+  color: $color-secondaire
+  border: 2px solid $color-accent
 
 .btn--outline
-  background: none !important
-  color: #FE3636 !important
-  border: 1px solid #FE3636 !important
+  background: none
+  color: $color-accent
+  border: 2px solid $color-accent

@@ -113,13 +113,11 @@ input[type="submit"], input[type="reset"], input[type="button"] {
 }
 
 input[type="submit"], input[type="reset"], input[type="button"] {
-  background: none;
-  border: 0;
+  width: auto;
   color: inherit;
   font: inherit;
   line-height: normal;
   overflow: visible;
-  padding: 0;
   -webkit-appearance: button;
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -415,6 +413,15 @@ em {
   background: #1C1C1C;
 }
 
+.toolbar {
+  display: flex;
+  flex-direction: row;
+}
+
+.toolbar input[list="statut"] {
+  width: 15em;
+}
+
 @media (min-width: 576px) {
   display: block;
 }
@@ -433,39 +440,44 @@ em {
 
 .btn {
   display: inline-block;
-  float: left;
-  width: auto;
-  margin-top: 48px !important;
-  margin-right: 12px;
-  padding: 12px !important;
-  font-size: 14px !important;
+  margin: 3em 0.33333em;
+  padding: 1em;
+  font-size: 1em;
   text-transform: uppercase;
-  font-family: 'Roboto', sans-serif !important;
-  font-weight: 500 !important;
-  border-radius: 5px !important;
+  font-weight: 500;
+  border-radius: 3em;
   cursor: pointer;
-  transition: border-radius 0.2s;
+  white-space: nowrap;
+  box-shadow: 0 0.938em 2.188em rgba(231, 228, 221, 0.1), 0 0.313em 0.938em rgba(231, 228, 221, 0.07);
+  -webkit-transition: all 2s;
+  -moz-transition: all 2s;
+  -ms-transition: all 2s;
+  -o-transition: all 2s;
+  transition: all 2s;
 }
 
 .btn:hover {
-  border-radius: 15px !important;
-  transition: border-radius 0.2s;
-}
-
-a.btn:hover {
-  text-decoration: none !important;
+  border-radius: 0.5em;
+  color: #363636;
+  text-decoration: none;
+  box-shadow: 0 2.8px 2.2px rgba(254, 54, 54, 0.034), 0 6.7px 5.3px rgba(254, 54, 54, 0.048), 0 12.5px 10px rgba(254, 54, 54, 0.06), 0 22.3px 17.9px rgba(254, 54, 54, 0.072), 0 41.8px 33.4px rgba(254, 54, 54, 0.086), 0 100px 80px rgba(254, 54, 54, 0.12);
+  -webkit-transition: all 0.2s;
+  -moz-transition: all 0.2s;
+  -ms-transition: all 0.2s;
+  -o-transition: all 0.2s;
+  transition: all 0.2s;
 }
 
 .btn--plain {
-  background: #FE3636 !important;
-  color: white !important;
-  border: 1px solid #FE3636 !important;
+  background: #FE3636;
+  color: white;
+  border: 2px solid #FE3636;
 }
 
 .btn--outline {
-  background: none !important;
-  color: #FE3636 !important;
-  border: 1px solid #FE3636 !important;
+  background: none;
+  color: #FE3636;
+  border: 2px solid #FE3636;
 }
 
 .form {
