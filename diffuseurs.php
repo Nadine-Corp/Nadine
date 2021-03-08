@@ -19,7 +19,7 @@
         <th>#Modifier</th>
       </tr>
       <?php while($row = $result->fetch_assoc()):?>
-        <tr>
+        <tr onclick="document.location = 'diffuseur__modifier?__id=<?php echo $row["diffuseur__id"] ?>';">
           <td><?php echo $row["diffuseur__societe"] ?></td>
           <td><?php echo $row["diffuseur__siret"] ?></td>
           <td><?php echo $row["diffuseur__prenom"] ?></td>

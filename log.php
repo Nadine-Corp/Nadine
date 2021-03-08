@@ -12,6 +12,11 @@
         <th>#Description</th>
       </tr>
       <tr>
+        <td width="10%">0.1.040</td>
+        <td width="10%">07.03.2021</td>
+        <td>Nadine est restée 5min après la débauche : elle voulait finir de rentre cliquable les lignes de tous les tableaux pour vous faire gagner du temps. Merci Nadine : tu rends nos journées toujours plus agréables à vivre.</td>
+      </tr>
+      <tr>
         <td width="10%">0.1.039</td>
         <td width="10%">07.03.2021</td>
         <td>Un petit bouton <i>Imprimer le PDF</i> a été ajouté par Nadine pour vous faire gagner quelques clics. Après ça, Nadine a décidé de changer de couleurs. Se faisant, elle a rangé un peu ses fichiers. Après, elle a corrigé un vieux problème idiot de hiérarchie de balise HTML. Ensuite, c'était la pause. Elle a mangé un bout, pris un café, puis à fixer la barre de menu. Enfin, elle a centralisé un maximum la gestion des couleurs et d'ombres au même endroit (elle aime bien quand c'est <i>carré carré</i> la Nadine)</td>

@@ -54,7 +54,7 @@
               $devis__date = date_format($devis__date, 'd M. Y');
             ?>
 
-          <tr>
+          <tr onclick="document.location = './devis__modifier?devis__id=<?php echo $row["devis__id"] ?>';">
             <td><?php echo $row["devis__numero"] ?></td>
             <td><?php echo $devis__date ?></td>
             <td><?php echo $row["devis__total"] ?></td>
@@ -92,7 +92,7 @@
               $facture__date = date_format($facture__date, 'd M. Y');
             ?>
 
-            <tr>
+            <tr onclick="document.location = './facture__modifier?facture__id=<?php echo $row["facture__id"] ?>';">
               <td><?php echo $row["facture__numero"] ?></td>
               <td><?php echo $facture__date ?></td>
               <td><?php echo $row["facture__total"] ?></td>

@@ -156,6 +156,10 @@ input::-moz-focus-inner, button::-moz-focus-inner {
   font-stretch: normal;
 }
 
+svg {
+  fill: #1C1C1C;
+}
+
 ::selection {
   background-color: rgba(0, 0, 0, 0.99) !important;
   color: #f2f2f2 !important;
@@ -239,29 +243,25 @@ main {
   display: inline-block;
   margin: 0 24px;
   line-height: 76px;
-  border-bottom: 4px solid white;
+  border-bottom: 4px solid #FE3636;
   transition: border 0.4s;
 }
 
 .nav__main li.current-menu-item,
 .nav__main li:hover {
-  border-bottom: 4px solid #0074FF;
+  border-bottom: 4px solid white;
   transition: border 0.4s;
 }
 
 .nav__main a:hover {
   text-decoration: none;
-  color: #0074FF;
+  color: white;
   transition: color 0.4s;
 }
 
 .btn__menu-more-vert {
   float: right;
   padding-top: 27px;
-}
-
-.btn__menu-more-vert svg {
-  fill: #4e4e4e;
 }
 
 .l_facture .form__input-container {
@@ -288,10 +288,6 @@ main {
   right: 0;
   overflow: hidden;
   padding: 30px;
-}
-
-.l-projet tr {
-  cursor: pointer;
 }
 
 .Projet.terminé,
@@ -487,13 +483,14 @@ a.btn:hover {
 }
 
 .table tr {
-  border-top: 1px solid #e0e0e0;
+  border-top: 1px solid rgba(28, 28, 28, 0.15);
+  cursor: pointer;
   transition: all 0.5s;
 }
 
 .table tr:hover td {
   background: white;
-  color: #0074FF;
+  color: #FE3636;
   transition: all 0.5s;
 }
 
