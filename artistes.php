@@ -11,7 +11,7 @@
     <table class="table">
       <tr>
         <th>#Société</th>
-        <th>#Siret</th>
+        <th>#b° Mda</th>
         <th>#Prénom</th>
         <th>#Nom</th>
         <th>#Téléphone</th>
@@ -19,13 +19,13 @@
         <th>#Modifier</th>
       </tr>
       <?php while($row = $result->fetch_assoc()):?>
-        <tr>
+        <tr onclick="document.location = 'artiste__modifier?__id=<?php echo $row["artiste__id"] ?>';">
           <td><?php echo $row["artiste__societe"] ?></td>
-          <td><?php echo $row["artiste__siret"] ?></td>
+          <td><?php echo $row["artiste__numero_mda"] ?></td>
           <td><?php echo $row["artiste__prenom"] ?></td>
           <td><?php echo $row["artiste__nom"] ?></td>
           <td><?php echo $row["artiste__telephone"] ?></td>
-          <td><a href="mailto:<?php echo $row["diffuseur__email"] ?>"><?php echo $row["artiste__email"] ?></a></td>
+          <td><a href="mailto:<?php echo $row["artiste__email"] ?>"><?php echo $row["artiste__email"] ?></a></td>
           <td><a href="artiste__modifier?__id=<?php echo $row["artiste__id"] ?>">Modifier</a></td>
         </tr>
       <?php endwhile; ?>
@@ -35,7 +35,7 @@
   <?php endif; $conn->close(); ?>
 </div>
 <div class="col l12">
-  <a href="./arstite__new" class="btn btn--plain">Ajouter un artiste</a>
+  <a href="./artiste__new" class="btn btn--plain">Ajouter un artiste</a>
 </div>
 </section>
 

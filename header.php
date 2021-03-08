@@ -15,7 +15,7 @@
 <body>
 
 	<header class="l-header">
-		<div class="l-header__logo">
+		<div class="l-header__logo subheading">
 			<a href="./index" class="headline">Nadine</a>
 		</div>
 

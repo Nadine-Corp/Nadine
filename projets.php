@@ -11,7 +11,7 @@
 <?php $sql = "SELECT * FROM Projets, Diffuseurs WHERE Projets.diffuseur__id = Diffuseurs.diffuseur__id ORDER BY projet__date_de_creation DESC"; ?>
 <?php include './core/query.php'; $result = $conn->query($sql) or die($conn->error); ?>
 <?php if ($result->num_rows > 0): ?>
-    <table class="table">
+    <table class="table body">
       <thead>
         <tr>
           <th>#Nom du projet</th>

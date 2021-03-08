@@ -12,6 +12,11 @@
         <th>#Description</th>
       </tr>
       <tr>
+        <td width="10%">0.1.041</td>
+        <td width="10%">07.03.2021</td>
+        <td>Un soir, Nadine ne voulait pas aller se coucher. Alors elle a fini d'étudier comment classer des <i>Artites</i> dans sa base de données. Il lui reste maintenant à comprendre ce qu'elle peut bien faire. En attendant, elle encore modifier quelques marges. En faites : elle a refondu toute la gestion typographique (mais elle est un peu timide pour l'avouer).</td>
+      </tr>
+      <tr>
         <td width="10%">0.1.040</td>
         <td width="10%">07.03.2021</td>
         <td>Nadine est restée 5min après la débauche : elle voulait finir de rentre cliquable les lignes de tous les tableaux pour vous faire gagner du temps. Merci Nadine : tu rends nos journées toujours plus agréables à vivre.</td>

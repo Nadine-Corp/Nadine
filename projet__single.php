@@ -27,7 +27,7 @@
 
     <?php endwhile; ?>
   <?php else: ?>
-    <p>Chef, on pas trouvé de projets...</p>
+    <p class="body">Chef, on pas trouvé de projets...</p>
   <?php endif; $conn->close(); ?>
 
 
@@ -64,7 +64,7 @@
       <?php endwhile; ?>
         </table>
     <?php else: ?>
-      <p>Chef, on a pas trouvé de devis...</p>
+      <p class="body">Chef, on a pas trouvé de devis...</p>
     <?php endif; $conn->close(); ?>
     <a href="./devis__new?projet__id=<?php echo $projet__id ?>" class="btn btn--plain">Ajouter un devis</a>
   </div>
@@ -102,7 +102,7 @@
         <?php endwhile; ?>
           </table>
       <?php else: ?>
-        <p>Chef, on a pas trouvé de factures...</p>
+        <p class="body">Chef, on a pas trouvé de factures...</p>
       <?php endif; $conn->close(); ?>
       <a href="./facture__new?projet__id=<?php echo $projet__id ?>" class="btn btn--plain">Ajouter une facture</a>
     </div>

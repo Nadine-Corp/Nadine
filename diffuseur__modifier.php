@@ -29,7 +29,7 @@
           <input type="text" name="website" placeholder="Site web" class="form__input-full" value="<?php echo $row["diffuseur__website"] ?>">
         </div>
           <a href="./s" class="btn btn--outline">Annuler</a>
-          <a href="./core/supprimer?base=s&id=<?php echo $diffuseur__id ?> ?>" class="btn btn--outline">Supprimer</a>
+          <a href="./core/supprimer?base=diffuseurs&id=<?php echo $diffuseur__id ?> ?>" class="btn btn--outline">Supprimer</a>
           <input type="submit" name="Enregistrer" value="Enregistrer" class="btn btn--plain">
       </form>
 

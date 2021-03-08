@@ -34,9 +34,13 @@
   artiste__id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
   artiste__societe VARCHAR(255),
   artiste__siret VARCHAR(255),
+  artiste__societe VARCHAR(255),
+  artiste__siret VARCHAR(255),
   artiste__civilite VARCHAR(255),
   artiste__prenom VARCHAR(255),
   artiste__nom VARCHAR(255),
+  artiste__numero_secu VARCHAR(255)
+  artiste__numero_mda VARCHAR(255)
   artiste__adresse VARCHAR(255),
   artiste__code_postal VARCHAR(255),
   artiste__ville VARCHAR(255),
