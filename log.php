@@ -12,8 +12,13 @@
         <th>#Description</th>
       </tr>
       <tr>
+        <td width="10%">0.1.039</td>
+        <td width="10%">07.03.2021</td>
+        <td>Un petit bouton <i>Imprimer le PDF</i> a été ajouté par Nadine pour vous faire gagner quelques clics. Après ça, Nadine a décidé de changer de couleurs. Se faisant, elle a rangé un peu ses fichiers. Après, elle a corrigé un vieux problème idiot de hiérarchie de balise HTML. Ensuite, c'était la pause. Elle a mangé un bout, pris un café, puis à fixer la barre de menu. Enfin, elle a centralisé un maximum la gestion des couleurs et d'ombres au même endroit (elle aime bien quand c'est <i>carré carré</i> la Nadine)</td>
+      </tr>
+      <tr>
         <td width="10%">0.1.038</td>
-        <td width="10%">15.12.2021</td>
+        <td width="10%">15.02.2021</td>
         <td>Nadine vient de comprendre la nature des accents dans les dates. Fini les symbôles exotiques pour écrire Février, Août ou Décembre ! Un vilain bug a aussi été chassé : lorsque vous créez un nouveau projet, vous êtes désormais invité à créer un devis ou une facture de suite ! Pas besoin de retourner sur le menu de sélection des projets. Dernière trouvaille de Nadine, lorsque vous déménagé et que vous mettez votre profil à jour, Nadine pense à modifier le nom de la ville à côté de <i>Fait à : </i> sur les devis et factures.</td>
       </tr>
       <tr>

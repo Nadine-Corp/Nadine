@@ -1,0 +1,48 @@
+// main: ../../../style.sass
+
+// La fonction rgba-to-rgb permet de mélanger 2 couleurs entre elles
+  et le résultat en couleur Hexadécimal
+
+  Exemple de SASS :
+    div
+      background: rgba-to-rgb(transparentize($vert-menthe, 0.8), $color-back)
+
+@function rgba-to-rgb($rgba, $background: #fff)
+  @return mix(rgb(red($rgba), green($rgba), blue($rgba)), $background, alpha($rgba) * 100%)
+
+
+// La fonction prefix permet d'ajouter automatiquement certaine propriété css
+  pour les vieux navigateurs.
+
+  Exemple de SASS :
+    div
+      @include prefix(transition, color .3s ease)
+
+@mixin prefix($propriete, $args...)
+  -webkit-#{$propriete}: $args
+  -moz-#{$propriete}: $args
+  -ms-#{$propriete}: $args
+  -o-#{$propriete}: $args
+  #{$propriete}: $args
+
+
+// La fonction box-shadow pemet de centraliser la gestion des ombres
+  sur monobloc.
+
+  Exemple de SASS :
+    div
+      @include box-shadow(4, $color-principale)
+
+@mixin box-shadow ($level, $color)
+  @if $level == 1
+    box-shadow: 0 0.125em 0.313em rgba($color,.09),0 0.063em 0.125em rgba($color,.07)
+  @else if $level == 2
+    box-shadow: 0 0.250em 0.375em rgba($color,.09),0 0.063em 0.188em rgba($color,.08)
+  @else if $level == 3
+    box-shadow: 0 0.063em 0.313em 0 rgba($color,.07),0 0.438em 1.063em 0 rgba($color,.1)
+  @else if $level == 4
+    box-shadow: 0 0.938em 2.188em rgba($color,.1),0 0.313em 0.938em rgba($color,.07)
+  @else if $level == 5
+    box-shadow: 0 0.938em 2.188em rgba($color,.15),0 0.313em 0.938em rgba($color,.1)
+  @else if $level == 100
+    box-shadow: 0 2.8px 2.2px rgba($color, 0.034),0 6.7px 5.3px rgba($color, 0.048),0 12.5px 10px rgba($color, 0.06),0 22.3px 17.9px rgba($color, 0.072),0 41.8px 33.4px rgba($color, 0.086),0 100px 80px rgba($color, 0.12)

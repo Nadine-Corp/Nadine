@@ -1,7 +1,7 @@
 <?php include './header.php'; ?>
 
 
-<section class="row">
+<section class="l-projet row">
   <div class="col l12">
     <h1 class="display1">Liste des projets</h1>
   </div>
@@ -42,7 +42,7 @@
       ?>
 
 
-      <tr class="<?php echo $row["projet__statut"] ?>">
+      <tr class="<?php echo $row["projet__statut"] ?>" onclick="document.location = 'projet__single?projet__id=<?php echo $row["projet__id"] ?>';">
         <td><?php echo $row["projet__nom"] ?></td>
         <td><?php echo $row["diffuseur__societe"] ?></td>
         <td><?php echo $date_de_debut; ?></td>

@@ -58,6 +58,7 @@
             <option value="Validé">
             <option value="Annulé">
           </datalist>
+          <a href="javascript:window.print()" class="btn btn--plain">Imprimer en PDF</a>
           <input type="submit" name="Enregistrer" value="Enregistrer" class="btn btn--plain">
         </div>
       </section>
