@@ -12,9 +12,14 @@
         <th>#Description</th>
       </tr>
       <tr>
+        <td width="10%">0.1.043</td>
+        <td width="10%">11.03.2021</td>
+        <td>La vie n'est que détails. Alors Nadine c'est parée d'une nouvelle favicon. C'est bô.</td>
+      </tr>
+      <tr>
         <td width="10%">0.1.042</td>
         <td width="10%">07.03.2021</td>
-        <td>Nadine n'aimait pas ses boutons. Maintenant, elle se sent plus radieuse que jamais. Alors elle c'est remis au travail et quelques fautes de frappe un peu idiote.</td>
+        <td>Nadine n'aimait pas ses boutons. Maintenant, elle se sent plus radieuse que jamais. Alors elle c'est remis au travail et à corrigée quelques fautes de frappe un peu idiote.</td>
       </tr>
       <tr>
         <td width="10%">0.1.041</td>
