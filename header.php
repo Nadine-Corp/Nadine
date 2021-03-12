@@ -33,16 +33,20 @@
 
 	<header class="l-header">
 		<div class="l-header__logo subheading">
-			<a href="./index" class="headline">Nadine</a>
+			<a href="./index" class="subheading">Nadine</a>
+		</div>
+
+		<div class="l-header__bar">
+
 		</div>
 
 		<nav class="l-header__nav">
 			<button type="button" class="btn__menu-more-vert"><?php include './assets/img/inline-icon_more-vert.svg.php'; ?></button>
 			<ul class="nav__main">
-				<li><a href="./projets">Projets</a></li>
-				<li><a href="./diffuseurs">Diffuseurs</a></li>
-				<li><a href="./artistes">Artistes</a></li>
-				<li><a href="./suivi">Suivi</a></li>
+				<li><a href="./projets" class="subheading">Projets</a></li>
+				<li><a href="./diffuseurs" class="subheading">Diffuseurs</a></li>
+				<li><a href="./artistes" class="subheading">Artistes</a></li>
+				<li><a href="./suivi" class="subheading">Suivi</a></li>
 			</ul>
 
 			<ul class="nav__subnav menu">

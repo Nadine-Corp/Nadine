@@ -1,6 +1,8 @@
 // main: ../../../style.sass
 
 .l-header
+  display: flex
+  flex-direction: row
   position: fixed
   float: left
   width: 100%
@@ -17,22 +19,33 @@
 
 .l-header__logo
   float: left
-  width: 25%
 
   a
     line-height: 80px
+    &:hover
+     color: $color-secondaire
+
+.l-header__bar
+  flex-grow: 1
+  height: $header_barre-height - $modulor*2
+  margin: $modulor $modulor*2
+  border-radius: $modulor
+  background: $color-principale
 
 .l-header__nav
   float: right
-  width: 75%
 
 .nav__main
+  display: flex
+  flex-direction: row
   float: right
 
   li
-    display: inline-block
-    margin: 0 24px
-    line-height: 76px
+    display: flex
+    flex-direction: row
+    align-items: center
+    height: $header_barre-height
+    margin: 0 $modulor*2
     border-bottom: 4px solid $color-accent
     transition: border 0.4s
 
@@ -41,10 +54,13 @@
     border-bottom: 4px solid white
     transition: border 0.4s
 
-  a:hover
-    text-decoration: none
-    color: $color-secondaire
-    transition: color 0.4s
+  a
+    display: block
+    line-height: $header_barre-height
+    &:hover
+      text-decoration: none
+      color: $color-secondaire
+      transition: color 0.4s
 
 .btn__menu-more-vert
   float: right

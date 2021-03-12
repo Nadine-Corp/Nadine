@@ -8,7 +8,7 @@
   <?php $sql = "SELECT * FROM Artistes"; ?>
   <?php include './core/query.php'; $result = $conn->query($sql) or die($conn->error); ?>
   <?php if ($result->num_rows > 0): ?>
-    <table class="table">
+    <table class="table body">
       <tr>
         <th>#Société</th>
         <th>#b° Mda</th>
@@ -35,7 +35,7 @@
   <?php endif; $conn->close(); ?>
 </div>
 <div class="col l12">
-  <a href="./artiste__new" class="btn btn--plain">Ajouter un artiste</a>
+  <button href="./artiste__new" class="btn btn--plain">Ajouter un artiste</button>
 </div>
 </section>
 

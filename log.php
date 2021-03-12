@@ -5,11 +5,16 @@
     <h1 class="display1">Journal de dévéloppement</h1>
   </div>
   <div class="col l12">
-    <table class="table">
+    <table class="table body">
       <tr>
         <th width="10%">#Version</th>
         <th width="10%">#Date</th>
         <th>#Description</th>
+      </tr>
+      <tr>
+        <td width="10%">0.1.044</td>
+        <td width="10%">11.03.2021</td>
+        <td>Nadine a fini de soigner ces boutons. C'était une bonne journée. Ensuite, elle a changé la barre de scroll. Ça n'a aucun intêret, mais elle dit "que comme ça, on se sent mieux chez soi". Après, elle a fini de rentre cliquable les lignes de tous les tableaux (elle pensait l'avoir déjà fait, mais elle a trouvé des lignes qui n'était pas cliquables). Et puis juste avant faire une petite pause, elle a corrigé la barre de menu. Elle a même ajouté un étrange rectangle noir. Peut-être une future barre menu. Après, elle a bichonné les entêtes de tableau.</td>
       </tr>
       <tr>
         <td width="10%">0.1.043</td>

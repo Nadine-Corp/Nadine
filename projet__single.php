@@ -39,7 +39,7 @@
       <?php $sql = "SELECT * FROM Projets, Devis WHERE Projets.projet__id='".$projet__id."' AND Devis.projet__id = Projets.projet__id"; ?>
       <?php include './core/query.php'; $result = $conn->query($sql) or die($conn->error); ?>
       <?php if ($result->num_rows > 0): ?>
-        <table class="table">
+        <table class="table body">
           <tr>
             <th>#N°</th>
             <th>#Date</th>
@@ -66,7 +66,7 @@
     <?php else: ?>
       <p class="body">Chef, on a pas trouvé de devis...</p>
     <?php endif; $conn->close(); ?>
-    <a href="./devis__new?projet__id=<?php echo $projet__id ?>" class="btn btn--plain">Ajouter un devis</a>
+    <button href="./devis__new?projet__id=<?php echo $projet__id ?>" class="btn btn--plain">Ajouter un devis</button>
   </div>
 
 
@@ -78,7 +78,7 @@
         <?php $sql = "SELECT * FROM Projets, Factures WHERE Projets.projet__id='".$projet__id."' AND Factures.projet__id = Projets.projet__id"; ?>
         <?php include './core/query.php'; $result = $conn->query($sql) or die($conn->error); ?>
         <?php if ($result->num_rows > 0): ?>
-          <table class="table">
+          <table class="table body">
             <tr>
               <th>#N°</th>
               <th>#Date</th>
@@ -104,13 +104,13 @@
       <?php else: ?>
         <p class="body">Chef, on a pas trouvé de factures...</p>
       <?php endif; $conn->close(); ?>
-      <a href="./facture__new?projet__id=<?php echo $projet__id ?>" class="btn btn--plain">Ajouter une facture</a>
+      <button href="./facture__new?projet__id=<?php echo $projet__id ?>" class="btn btn--plain">Ajouter une facture</button>
     </div>
 
 
 
     <div class="col l12">
-      <a href="./projet__modifier?projet__id=<?php echo $projet__id ?>" class="btn btn--outline">Modifier le Projet</a>
+      <button href="./projet__modifier?projet__id=<?php echo $projet__id ?>" class="btn btn--outline">Modifier le Projet</button>
     </div>
 
 </section>

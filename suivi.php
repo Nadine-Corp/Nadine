@@ -15,7 +15,7 @@
     <?php $sql = "SELECT * FROM Devis WHERE devis__statut = 'Envoyé' "; ?>
     <?php include './core/query.php'; $result = $conn->query($sql) or die($conn->error); ?>
     <?php if ($result->num_rows > 0): ?>
-      <table class="table">
+      <table class="table body">
         <tr>
           <th>#N°</th>
           <th>#Nom du projet</th>
@@ -24,7 +24,7 @@
         </tr>
 
       <?php while($row = $result->fetch_assoc()): ?>
-        <tr>
+        <tr onclick="document.location = 'projet__single?projet__id=<?php echo $row["projet__id"] ?>';">
           <td><?php echo $row["devis__numero"] ?></td>
           <td><?php echo $row["projet__nom"] ?></td>
           <td><?php echo $row["diffuseur__societe"] ?></td>
@@ -48,7 +48,7 @@
         <?php $sql = "SELECT * FROM Factures WHERE facture__statut = 'Envoyée' "; ?>
         <?php include './core/query.php'; $result = $conn->query($sql) or die($conn->error); ?>
         <?php if ($result->num_rows > 0): ?>
-          <table class="table">
+          <table class="table body">
             <tr>
               <th>#N°</th>
               <th>#Nom du projet</th>
@@ -57,7 +57,7 @@
             </tr>
 
           <?php while($row = $result->fetch_assoc()): ?>
-            <tr>
+            <tr onclick="document.location = 'projet__single?projet__id=<?php echo $row["projet__id"] ?>';">
               <td><?php echo $row["facture__numero"] ?></td>
               <td><?php echo $row["projet__nom"] ?></td>
               <td><?php echo $row["diffuseur__societe"] ?></td>

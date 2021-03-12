@@ -60,7 +60,7 @@
 
   </div>
   <div class="col l12">
-    <a href="./projet__new" class="btn btn--plain">Ajouter un Projet</a>
+    <button href="./projet__new" class="btn btn--plain">Ajouter un Projet</button>
   </div>
 </section>
 <?php include './footer.php'; ?>
