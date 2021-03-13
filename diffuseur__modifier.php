@@ -28,8 +28,8 @@
           <input type="text" name="email" placeholder="Email" class="form__input-half" value="<?php echo $row["diffuseur__email"] ?>">
           <input type="text" name="website" placeholder="Site web" class="form__input-full" value="<?php echo $row["diffuseur__website"] ?>">
         </div>
-          <a href="./s" class="btn btn--outline">Annuler</a>
-          <a href="./core/supprimer?base=diffuseurs&id=<?php echo $diffuseur__id ?> ?>" class="btn btn--outline">Supprimer</a>
+          <button href="./s" class="btn btn--outline">Annuler</button>
+          <button href="./core/supprimer?base=diffuseurs&id=<?php echo $diffuseur__id ?> ?>" class="btn btn--outline">Supprimer</button>
           <input type="submit" name="Enregistrer" value="Enregistrer" class="btn btn--plain">
       </form>
 

@@ -1,15 +1,25 @@
 <?php include 'header.php'; ?>
 
-<section class="row">
-  <?php  $projet__id = $_GET['projet__id']; ?>
-  <?php $sql = "SELECT * FROM Projets, diffuseurs WHERE Projets.projet__id='".$projet__id."' AND Projets.diffuseur__id = Diffuseurs.diffuseur__id "; ?>
-  <?php include './core/query.php'; $result = $conn->query($sql) or die($conn->error); ?>
-  <?php if ($result->num_rows > 0): ?>
-    <?php while($row = $result->fetch_assoc()):?>
 
-      <div class="col l12">
-        <h1 class="display1"><?php echo $row["projet__nom"] ?></h1>
-      </div>
+<?php  $projet__id = $_GET['projet__id']; ?>
+<?php $sql = "SELECT * FROM Projets, diffuseurs WHERE Projets.projet__id='".$projet__id."' AND Projets.diffuseur__id = Diffuseurs.diffuseur__id "; ?>
+<?php include './core/query.php'; $result = $conn->query($sql) or die($conn->error); ?>
+<?php if ($result->num_rows > 0): ?>
+  <?php while($row = $result->fetch_assoc()):?>
+
+
+
+<section class="toolbar is--sticky">
+  <div class="toolbar__container">
+    <h1 class="display1"><?php echo $row["projet__nom"] ?></h1>
+    <div class="toolbar__btn">
+      <a href="./projet__modifier?projet__id=<?php echo $projet__id ?>" class="btn btn--outline">Modifier le Projet</a>
+    </div>
+  </div>
+</section>
+
+
+<section class="row">
 
       <div class="col l4">
         <p><?php echo $row["diffuseur__societe"] ?>
@@ -66,7 +76,7 @@
     <?php else: ?>
       <p class="body">Chef, on a pas trouvé de devis...</p>
     <?php endif; $conn->close(); ?>
-    <button href="./devis__new?projet__id=<?php echo $projet__id ?>" class="btn btn--plain">Ajouter un devis</button>
+    <a href="./devis__new?projet__id=<?php echo $projet__id ?>" class="btn btn--plain">Ajouter un devis</a>
   </div>
 
 
@@ -104,14 +114,7 @@
       <?php else: ?>
         <p class="body">Chef, on a pas trouvé de factures...</p>
       <?php endif; $conn->close(); ?>
-      <button href="./facture__new?projet__id=<?php echo $projet__id ?>" class="btn btn--plain">Ajouter une facture</button>
+      <a href="./facture__new?projet__id=<?php echo $projet__id ?>" class="btn btn--plain">Ajouter une facture</a>
     </div>
-
-
-
-    <div class="col l12">
-      <button href="./projet__modifier?projet__id=<?php echo $projet__id ?>" class="btn btn--outline">Modifier le Projet</button>
-    </div>
-
 </section>
 <?php include './footer.php'; ?>

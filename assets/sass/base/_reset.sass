@@ -70,8 +70,11 @@ hr
   margin: 1em 0
   padding: 0
 
-input, select
+input, select, textarea
+  border: none
   vertical-align: middle
+  &:focus
+    outline: none
 
 a:link
   text-decoration: none
@@ -97,7 +100,6 @@ input
 input
   &[type="submit"], &[type="reset"], &[type="button"]
     width: auto
-    color: inherit
     font: inherit
     line-height: normal
     overflow: visible

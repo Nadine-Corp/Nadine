@@ -58,7 +58,7 @@
   <section class="row l_facture">
     <div class="col l12">
       <?php include './template_facture/facture__v3/devis.php'; ?>
-      <a href="./projet__single?projet__id=<?php echo $projet__id ?>" class="btn btn--outline">Annuler</a>
+      <button href="./projet__single?projet__id=<?php echo $projet__id ?>" class="btn btn--outline">Annuler</button>
       <input type="submit" name="Enregistrer" value="Enregistrer" class="btn btn--plain">
     </div>
   </section>

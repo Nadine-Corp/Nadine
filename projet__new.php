@@ -21,7 +21,7 @@
         <input type="date" name="date_de_creation" placeholder="Date de création" class="form__input-half" value="<?php echo $today; ?>">
         <input type="text" name="diffuseur__societe" placeholder="Diffuseur" list="diffuseurs" class="form__input-full">
       </div>
-        <a href="./projets" class="btn btn--outline">Annuler</a>
+        <button href="./projets" class="btn btn--outline">Annuler</button>
         <input type="submit" name="Enregistrer" value="Enregistrer" class="btn btn--plain">
     </form>
   </div>

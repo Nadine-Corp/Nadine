@@ -1,9 +1,18 @@
 <?php include './header.php'; ?>
 
-<section class="row">
-  <div class="col l12">
+
+
+<section class="toolbar is--sticky">
+  <div class="toolbar__container">
     <h1 class="display1">Liste des diffuseurs</h1>
+    <div class="toolbar__btn">
+      <button href="./diffuseur__new" class="btn btn--plain">Ajouter un diffuseur</button>
+    </div>
   </div>
+</section>
+
+
+<section class="row">
   <div class="col l12">
   <?php $sql = "SELECT * FROM Diffuseurs"; ?>
   <?php include './core/query.php'; $result = $conn->query($sql) or die($conn->error); ?>
@@ -33,9 +42,6 @@
   <?php else: ?>
       <p>Chef, on a pas trouvé de s...</p>
   <?php endif; $conn->close(); ?>
-</div>
-<div class="col l12">
-  <button href="./diffuseur__new" class="btn btn--plain">Ajouter un diffuseur</button>
 </div>
 </section>
 

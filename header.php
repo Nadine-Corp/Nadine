@@ -24,7 +24,7 @@
 	<meta name="theme-color" content="#ffffff">
 	<link rel="stylesheet" href="https://use.typekit.net/xyy3gou.css">
 	<link rel='stylesheet' type='text/css' media="all" href='./style.min.css'>
-	<link rel="stylesheet" type="text/css" media="print"  href="./assets/css/print/impression.css">
+	<link rel="stylesheet" type="text/css" media="print"  href="./assets/sass/print/impression.css">
 	<script src="./assets/js/jquery.min.js"></script>
 </head>
 
@@ -36,8 +36,8 @@
 			<a href="./index" class="subheading">Nadine</a>
 		</div>
 
-		<div class="l-header__bar">
-
+		<div class="l-header__bar subheading">
+			<input type="text" name="" value="" placeholder="Soon™">
 		</div>
 
 		<nav class="l-header__nav">

@@ -25,8 +25,8 @@
           <input type="date" name="date_de_creation" placeholder="Date de création" class="form__input-half form__input-seperator" value="<?php echo $row["projet__date_de_creation"] ?>">
           <input type="date" name="date_de_fin" placeholder="Date de fin" class="form__input-half" value="<?php echo $row["projet__date_de_fin"] ?>">
         </div>
-          <a href="./projets" class="btn btn--outline">Annuler</a>
-          <a href="./core/supprimer.php?base=projets&cible=projet__id&id=<?php echo $projet__id ?>" class="btn btn--outline">Supprimer le Projet</a>
+          <button href="./projets" class="btn btn--outline">Annuler</button>
+          <button href="./core/supprimer.php?base=projets&cible=projet__id&id=<?php echo $projet__id ?>" class="btn btn--outline">Supprimer le Projet</button>
           <input type="submit" name="Enregistrer" value="Enregistrer" class="btn btn--plain">
       </form>
 

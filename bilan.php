@@ -17,9 +17,10 @@
     <h1 class="display1">Bilan annuel <?php echo $year; ?></h1>
   </div>
   <div class="col l12">
-    <a href="bilan.php?annee=2018" class="btn btn--outline">2018</a>
-    <a href="bilan.php?annee=2019" class="btn btn--outline">2019</a>
-    <a href="bilan.php?annee=2020" class="btn btn--outline">2020</a>
+    <button href="bilan.php?annee=2018" class="btn btn--outline">2018</a>
+    <button href="bilan.php?annee=2019" class="btn btn--outline">2019</a>
+    <button href="bilan.php?annee=2020" class="btn btn--outline">2020</a>
+    <button href="bilan.php?annee=2020" class="btn btn--outline">2021</a>
   </div>
   <div class="col l12">
 

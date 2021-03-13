@@ -4,13 +4,12 @@
   display: flex
   flex-direction: row
   position: fixed
-  float: left
+  top: 0
   width: 100%
-  padding: 0 48px
   height: $header_barre-height
+  padding: 0 48px
   background: $color-accent
   z-index: 10
-  @include box-shadow(100, $color-principale)
 
   .menu
     position: absolute
@@ -29,8 +28,20 @@
   flex-grow: 1
   height: $header_barre-height - $modulor*2
   margin: $modulor $modulor*2
-  border-radius: $modulor
-  background: $color-principale
+  input
+    width: 100%
+    height: $header_barre-height - $modulor*2
+    color: $color-secondaire
+    padding: 0 $modulor
+    border-radius: $modulor
+    background: $color-principale
+    transition: all 2s
+    &:focus
+      @include box-shadow(5, $color-principale)
+      padding: 0 $modulor*1.5
+      border-radius: $modulor*3
+      background: darken($color-principale, 10)
+      transition: all .5s
 
 .l-header__nav
   float: right

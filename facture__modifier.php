@@ -43,10 +43,11 @@ $date = strftime("%d %B %Y", strtotime($today));
       <input type="hidden" name="diffuseur__website" placeholder="diffuseur__website" value="<?php echo $row["diffuseur__website"] ?>">
       <input type="hidden" name="facture__total" placeholder="Total" class="facture__subheading">
 
-      <section class="row l_facture">
-        <div class="col l12">
-          <?php include './template_facture/facture__v3/facture.php'; ?>
-          <div class="toolbar">
+
+      <section class="toolbar is--sticky">
+        <div class="toolbar__container">
+          <h1 class="display1">Modifier une facture</h1>
+          <div class="toolbar__btn">
             <button href="./projet__single?projet__id=<?php echo $row["projet__id"] ?>" class="btn btn--outline">Annuler</button>
             <button href="./core/supprimer?base=Factures&cible=facture__id&id=<?php echo $facture__id ?>" class="btn btn--outline">Supprimer</button>
             <button href="./facture__mail?facture__id=<?php echo $facture__id ?>" class="btn btn--outline" class="btn btn--plain">Générer email</button>
@@ -60,6 +61,14 @@ $date = strftime("%d %B %Y", strtotime($today));
             <button href="javascript:window.print()" class="btn btn--plain">Imprimer en PDF</button>
             <input type="submit" name="Enregistrer" value="Enregistrer" class="btn btn--plain">
           </div>
+        </div>
+      </section>
+
+
+
+      <section class="row l_facture">
+        <div class="col l12">
+          <?php include './template_facture/facture__v3/facture.php'; ?>
         </div>
       </section>
       </form>

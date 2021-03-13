@@ -1,18 +1,16 @@
 // main: ../../../style.sass
 
-  Le module Button stylise les boutons. Il exite
-  deux variantes : le bouton btn--plain et le btn--outline.
-
-
-  Exemple de HTML :
-
-    <button class="btn btn--outline" onclick="document.location = '<?php the_permalink(); ?>';">Mon Button</button>
-
-
 
 .toolbar
+  width: 100%
+
+.toolbar__container
   display: flex
   flex-direction: row
+  align-items: center
+  justify-content: space-between
 
+  height: $header_barre-height
+  padding: 0 $modulor*4
   input[list="statut"]
     width: $modulor*15

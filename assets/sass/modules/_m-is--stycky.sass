@@ -1,0 +1,20 @@
+// main: ../../../style.sass
+
+
+.is--sticky
+  position: sticky
+  float: left
+  top: -1px
+  padding-top: $header_barre-height
+  background: rgba($color-secondaire, 0)
+  z-index: 1
+  transition: all .5s
+
+  &.is--pinned
+    background: $color-secondaire
+    @include box-shadow(100, $color-back)
+    transition: all .5s
+
+    .display1
+      font-size: $modulor*2
+      transition: all .5s

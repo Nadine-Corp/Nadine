@@ -12,9 +12,14 @@
         <th>#Description</th>
       </tr>
       <tr>
+        <td width="10%">0.1.045</td>
+        <td width="10%">13.03.2021</td>
+        <td>Nadine est entrée dans le bureau rongée par le remords : en renommant quelques dossiers pour ranger ses fichiers, elle ne s'était pas aperçue que le fichier print.css ne chargeait plus correctement ! On ne pouvait plus exporter les factures et devis en pdf correctement ! Heureusement, notre consciencieuse Nadine s'en est vite aperçue ! Elle a continué de convertir du code au système <i>$modulor</i> ainsi qu'aux nouveaux modules <i>m-type-system</i> et de gestion de couleurs centralisées. Quelques buttons ont aussi été convertis (Nadine espère qu'il s'agisse des deniers cette fois-ci encore). On peut désormais écrire du texte dans le mystérieux rectangle noir que Nadine ajoutée au dernier patch. Il semblerait que cela ne sert encore à rien. Mais que nous prépare Nadine ? Enfin (et peut-être surtout), pour s'excuser de la pagaille qu'elle a mise en changeant le nom de quelques dossiers, Nadine a refondu toutes les barres d'outils. Elles sont maintenant bien plus simples à utiliser. Encore une victoire de Nadine. Merci Nadine.</td>
+      </tr>
+      <tr>
         <td width="10%">0.1.044</td>
         <td width="10%">11.03.2021</td>
-        <td>Nadine a fini de soigner ces boutons. C'était une bonne journée. Ensuite, elle a changé la barre de scroll. Ça n'a aucun intêret, mais elle dit "que comme ça, on se sent mieux chez soi". Après, elle a fini de rentre cliquable les lignes de tous les tableaux (elle pensait l'avoir déjà fait, mais elle a trouvé des lignes qui n'était pas cliquables). Et puis juste avant faire une petite pause, elle a corrigé la barre de menu. Elle a même ajouté un étrange rectangle noir. Peut-être une future barre menu. Après, elle a bichonné les entêtes de tableau.</td>
+        <td>Nadine a fini de soigner ces boutons. C'était une bonne journée. Ensuite, elle a changé la barre de scroll. Ça n'a aucun intérêt, mais elle dit "que comme ça, on se sent mieux chez soi". Après, elle a fini de rentre cliquable les lignes de tous les tableaux (elle pensait l'avoir déjà fait, mais elle a trouvé des lignes qui n'était pas cliquables). Et puis juste avant faire une petite pause, elle a corrigé la barre de menu. Elle a même ajouté un étrange rectangle noir. Peut-être une future barre menu. Après, elle a bichonné les entêtes de tableau.</td>
       </tr>
       <tr>
         <td width="10%">0.1.043</td>
