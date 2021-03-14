@@ -6,7 +6,7 @@
     <h1 class="display1">Ajouter un nouveau diffuseur</h1>
   </div>
   <div class="col l12">
-    <form class="form" action="./core/add__diffuseur.php" method="post">
+    <form class="form body" action="./core/add__diffuseur.php" method="post">
       <div class="form__input-container">
         <input type="text" name="societe" placeholder="Société" class="form__input-half form__input-seperator">
         <input type="text" name="siret" placeholder="Siret" class="form__input-half">

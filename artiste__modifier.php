@@ -13,7 +13,7 @@
     <?php if ($result->num_rows > 0): ?>
       <?php while($row = $result->fetch_assoc()):?>
 
-      <form class="form" action="./core/modifier__artiste.php" method="post">
+      <form class="form body" action="./core/modifier__artiste.php" method="post">
         <div class="form__input-container">
           <input type="hidden" name="artiste__id" placeholder="Id " class="form__input-full" value="<?php echo $row["artiste__id"] ?>">
           <input type="text" name="civilite" placeholder="Civilité" class="form__input-full" value="<?php echo $row["artiste__civilite"] ?>">

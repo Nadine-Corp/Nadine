@@ -12,6 +12,16 @@
         <th>#Description</th>
       </tr>
       <tr>
+        <td width="10%">0.1.047</td>
+        <td width="10%">13.03.2021</td>
+        <td>La tête de Nadine bouillonne. Quelque chose se prépare. C'est probablement à propos des Artistes. Nadine se creuse la tête pour pouvoir attacher plusieurs Artistes par Projet. D'abord, il faut réussir à mettre plusieurs Artistes dans un même champ (et donc pouvoir faire apparaître une liste d'Artiste). Ça bouillonne, ça bouillonne !</td>
+      </tr>
+      <tr>
+        <td width="10%">0.1.046</td>
+        <td width="10%">13.03.2021</td>
+        <td>Nadine vous a ramené un petit cadeau pour s'excuser de sa bourde d'hier : le mystérieux rectangle noir était en faites une barre de recherche ! OMG ! Essayez de taper "poivron" par exemple, et Nadine trouvera rapidement tous les Projets ou Diffuseurs en rapport avec le mot "poivron". (Elle a aussi affiné un truc ou deux, mais à côté de cette barre de recherche, ce n’est vraiment pas important)</td>
+      </tr>
+      <tr>
         <td width="10%">0.1.045</td>
         <td width="10%">13.03.2021</td>
         <td>Nadine est entrée dans le bureau rongée par le remords : en renommant quelques dossiers pour ranger ses fichiers, elle ne s'était pas aperçue que le fichier print.css ne chargeait plus correctement ! On ne pouvait plus exporter les factures et devis en pdf correctement ! Heureusement, notre consciencieuse Nadine s'en est vite aperçue ! Elle a continué de convertir du code au système <i>$modulor</i> ainsi qu'aux nouveaux modules <i>m-type-system</i> et de gestion de couleurs centralisées. Quelques buttons ont aussi été convertis (Nadine espère qu'il s'agisse des deniers cette fois-ci encore). On peut désormais écrire du texte dans le mystérieux rectangle noir que Nadine ajoutée au dernier patch. Il semblerait que cela ne sert encore à rien. Mais que nous prépare Nadine ? Enfin (et peut-être surtout), pour s'excuser de la pagaille qu'elle a mise en changeant le nom de quelques dossiers, Nadine a refondu toutes les barres d'outils. Elles sont maintenant bien plus simples à utiliser. Encore une victoire de Nadine. Merci Nadine.</td>

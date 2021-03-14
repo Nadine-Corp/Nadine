@@ -17,7 +17,7 @@
       <table class="table body">
         <tr>
           <th>#Société</th>
-          <th>#b° Mda</th>
+          <th>#N° Mda</th>
           <th>#Prénom</th>
           <th>#Nom</th>
           <th>#Téléphone</th>

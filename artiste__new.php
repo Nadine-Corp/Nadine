@@ -6,7 +6,7 @@
     <h1 class="display1">Ajouter un nouvel artiste</h1>
   </div>
   <div class="col l12">
-    <form class="form" action="./core/add__artiste.php" method="post">
+    <form class="form body" action="./core/add__artiste.php" method="post">
       <div class="form__input-container">
         <input type="text" name="civilite" placeholder="Civilité" class="form__input-full">
         <input type="text" name="prenom" placeholder="Prénom" class="form__input-half form__input-seperator">

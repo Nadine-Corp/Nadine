@@ -10,7 +10,7 @@
   <div class="col l12">
     <h1 class="display1">Modifier votre profil</h1>
   </div>
-  <form class="form" action="./core/add__profil.php" method="post">
+  <form class="form body" action="./core/add__profil.php" method="post">
     <div class="col l12">
       <h2 class="headline">Coordonnées</h1>
     </div>

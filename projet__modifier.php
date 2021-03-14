@@ -15,7 +15,7 @@
         while($row = $result->fetch_assoc()):
       ?>
 
-      <form class="form" action="./core/modifier__projet.php" method="post">
+      <form class="form body" action="./core/modifier__projet.php" method="post">
         <div class="form__input-container">
           <input type="hidden" name="projet__id" placeholder="Id Projet" class="form__input-half" value="<?php echo $row["projet__id"] ?>">
           <input type="text" name="nom_du_projet" placeholder="Nom du projet" class="form__input-half form__input-seperator" value="<?php echo $row["projet__nom"] ?>">
