@@ -55,11 +55,25 @@
   <input type="hidden" name="diffuseur__website" placeholder="__website" value="<?php echo $row["diffuseur__website"] ?>">
   <input type="hidden" name="devis__total" placeholder="Total">
 
+
+
+
+  <section class="toolbar is--sticky">
+    <div class="toolbar__container">
+      <h1 class="display1">Créer un devis</h1>
+      <div class="toolbar__btn">
+        <a href="./projet__single?projet__id=<?php echo $projet__id ?>" class="btn btn--outline">Annuler</a>
+        <input type="submit" name="Enregistrer" value="Enregistrer" class="btn btn--plain">
+      </div>
+    </div>
+  </section>
+
+
+
+
   <section class="row l_facture">
     <div class="col l12">
       <?php include './template_facture/facture__v3/devis.php'; ?>
-      <button href="./projet__single?projet__id=<?php echo $projet__id ?>" class="btn btn--outline">Annuler</button>
-      <input type="submit" name="Enregistrer" value="Enregistrer" class="btn btn--plain">
     </div>
   </section>
 </form>

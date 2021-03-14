@@ -7,7 +7,7 @@
   <div class="toolbar__container">
     <h1 class="display1">Liste des projets</h1>
     <div class="toolbar__btn">
-      <button href="./projet__new" class="btn btn--plain">Ajouter un Projet</button>
+      <a href="./projet__new" class="btn btn--plain">Ajouter un Projet</a>
     </div>
   </div>
 </section>

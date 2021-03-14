@@ -43,16 +43,17 @@ $date = strftime("%d %B %Y", strtotime($today));
       <input type="hidden" name="diffuseur__website" placeholder="diffuseur__website" value="<?php echo $row["diffuseur__website"] ?>">
       <input type="hidden" name="facture__total" placeholder="Total" class="facture__subheading">
 
-      <section class="row l_facture">
-        <div class="col l12">
-          <?php include './template_facture/facture__v3/devis.php'; ?>
 
-          <div class="toolbar">
-            <button href="./projet__single?projet__id=<?php echo $row["projet__id"] ?>" class="btn btn--outline">Annuler</button>
-            <button href="./devis__mail?devis__id=<?php echo $devis__id ?>" class="btn btn--outline" target="_blank">Générer email</button>
-            <button href="./devis__convertir?devis__id=<?php echo $devis__id ?>" class="btn btn--outline">Convertir en facture</button>
-            <button href="./core/add__devis.php" class="btn btn--outline">Dupliquer ce devis</button>
-            <button href="./core/supprimer?base=Devis&cible=devis__id&id=<?php echo $devis__id ?>" class="btn btn--outline">Supprimer</button>
+
+      <section class="toolbar is--sticky">
+        <div class="toolbar__container">
+          <h1 class="display1">Modifier un devis</h1>
+          <div class="toolbar__btn">
+            <a href="./projet__single?projet__id=<?php echo $row["projet__id"] ?>" class="btn btn--outline">Annuler</a>
+            <a href="./devis__mail?devis__id=<?php echo $devis__id ?>" class="btn btn--outline" target="_blank">Générer email</a>
+            <a href="./devis__convertir?devis__id=<?php echo $devis__id ?>" class="btn btn--outline">Convertir en facture</a>
+            <a href="./core/add__devis.php" class="btn btn--outline">Dupliquer ce devis</button>
+            <a href="./core/supprimer?base=Devis&cible=devis__id&id=<?php echo $devis__id ?>" class="btn btn--outline">Supprimer</a>
             <input list="statut" name="devis__statut" class="btn btn--outline" value="<?php echo $row["devis__statut"] ?>">
             <datalist id="statut">
               <option value="Brouillon">
@@ -60,9 +61,19 @@ $date = strftime("%d %B %Y", strtotime($today));
               <option value="Validé">
               <option value="Annulé">
             </datalist>
-            <button href="javascript:window.print()" class="btn btn--plain">Imprimer en PDF</button>
+            <a href="javascript:window.print()" class="btn btn--plain">Imprimer en PDF</a>
             <input type="submit" name="Enregistrer" value="Enregistrer" class="btn btn--plain">
           </div>
+        </div>
+      </section>
+
+
+
+
+
+      <section class="row l_facture">
+        <div class="col l12">
+          <?php include './template_facture/facture__v3/devis.php'; ?>
         </div>
       </section>
     </form>

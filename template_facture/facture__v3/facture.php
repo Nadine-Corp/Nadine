@@ -1,5 +1,5 @@
-<link rel='stylesheet' type='text/css' media="all" href='./template_facture/facture__v2/style.css'>
-<script src="./template_facture/facture__v2/facture.js"></script>
+<link rel='stylesheet' type='text/css' media="all" href='./template_facture/facture__v3/style.css'>
+<script src="./template_facture/facture__v3/facture.js"></script>
 
 
 <form class="form" action="" method="post">

@@ -37,7 +37,7 @@
 		</div>
 
 		<div class="l-header__bar subheading">
-			<input type="text" name="" value="" placeholder="Soon™">
+			<input type="text" name="" value="" placeholder="Soon™ : pleins de trucs ici.">
 		</div>
 
 		<nav class="l-header__nav">

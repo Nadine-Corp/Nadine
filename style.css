@@ -183,6 +183,10 @@ main {
   margin-top: 80px;
 }
 
+.l_facture {
+  margin-top: 80px;
+}
+
 .l_facture .form__input-container {
   border: none;
 }
@@ -526,7 +530,6 @@ em {
 
 .btn:hover {
   border-radius: 8px;
-  color: #363636;
   text-decoration: none;
   box-shadow: 0 2.8px 2.2px rgba(254, 54, 54, 0.034), 0 6.7px 5.3px rgba(254, 54, 54, 0.048), 0 12.5px 10px rgba(254, 54, 54, 0.06), 0 22.3px 17.9px rgba(254, 54, 54, 0.072), 0 41.8px 33.4px rgba(254, 54, 54, 0.086), 0 100px 80px rgba(254, 54, 54, 0.12);
   -webkit-transition: all 0.2s;
@@ -611,18 +614,18 @@ em {
 .table tr {
   border-bottom: 1px solid rgba(28, 28, 28, 0.15);
   cursor: pointer;
-  transition: all 0.5s;
 }
 
 .table tr:hover td {
   background: white;
   color: #FE3636;
-  transition: all 0.5s;
+  transition: all .2s;
 }
 
 .table th, .table td {
   text-align: left;
   padding: 16px 0;
+  transition: all 4s;
 }
 
 .table th, .table .tablesorter-header-inner {

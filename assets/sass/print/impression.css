@@ -1,9 +1,11 @@
 footer,
 .l-header,
 input[type="submit"],
+.toolbar,
 .btn{
   display: none;
 }
+main, html, body,
 .paper,
 .row,
 .l12{
