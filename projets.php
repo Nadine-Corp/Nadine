@@ -21,13 +21,13 @@
       <table class="table body">
         <thead>
           <tr>
-            <th>#Nom du projet</th>
-            <th>#Diffuseur</th>
+            <th>Nom du projet</th>
+            <th>Diffuseur</th>
             <th data-sorter="shortDate" data-date-format="M. Y">#Date du début</th>
             <th data-sorter="shortDate" data-date-format="M. Y">#Date de fin</th>
-            <th>#Bénéfice</th>
-            <th>#État</th>
-            <th>#Voir</th>
+            <th>Bénéfice</th>
+            <th>État</th>
+            <th>Voir</th>
           </tr>
         </thead>
         <tbody>

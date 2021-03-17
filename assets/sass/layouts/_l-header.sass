@@ -7,7 +7,7 @@
   top: 0
   width: 100%
   height: $header_barre-height
-  padding: 0 48px
+  padding: 0 $modulor*2
   background: $color-accent
   z-index: 10
 
@@ -16,13 +16,9 @@
     top: 70px
     right: 48px
 
-.l-header__logo
-  float: left
+.l-header__logo svg
+  height: $header_barre-height - $modulor*2
 
-  a
-    line-height: 80px
-    &:hover
-     color: $color-secondaire
 
 .l-header__bar
   flex-grow: 1
@@ -31,6 +27,8 @@
   input
     width: 100%
     height: $header_barre-height - $modulor*2
+    font-family: "Redaction", serif
+    font-style: italic
     color: $color-secondaire
     padding: 0 $modulor
     border-radius: $modulor

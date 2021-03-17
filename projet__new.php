@@ -22,7 +22,6 @@ if ($result->num_rows > 0) :
   endwhile;
   $listdiffuseur = rtrim($listdiffuseur, ", "); // On efface la dernière virgule
   $listdiffuseur.= ']';
-  echo $listdiffuseur;
 else:
   $listdiffuseur = "Aucun Diffuseur. Rien. Quel dalle. Nada.";
 endif; $conn->close();
@@ -41,7 +40,6 @@ if ($result->num_rows > 0) :
   endwhile;
   $listartiste = rtrim($listartiste, ", "); // On efface la dernière virgule
   $listartiste.= ']';
-  echo $listartiste;
 else:
   $listdiffuseur = "Aucun Diffuseur. Rien. Quel dalle. Nada.";
 endif; $conn->close();
@@ -70,7 +68,7 @@ endif; $conn->close();
         <input type="text" name="diffuseur__societe" placeholder="Diffuseur" list="diffuseurs" class="form__input-full">
       </div>
 
-      <h2 class="headline">Ici, on test des trucs. Merci de ne pas toucher.</h1>
+      <h2 class="headline">Ici, on test des trucs. Merci de ne pas toucher (de toute façon, ça ne sert pas pour le moment. Alors vous pouvez toucher pour regarder si vous voulez).</h1>
         <div class="form__input-container">
           <div class="form__input-half form__input-seperator directorist-select directorist-select-multi" id="multiSelect1" data-isSearch="true" data-max="1" data-multiSelect="<?php echo $listdiffuseur; ?>" >
             <input type="hidden">

@@ -4,7 +4,7 @@
 <head>
 	<meta charset="UTF-8" />
 	<title>Nadine</title>
-	<meta content="width=device-width; initial-scale = 1.0; maximum-scale=1.0; user-scalable=no" name="viewport">
+	<meta content="width=device-width, initial-scale = 1.0, maximum-scale=1.0, user-scalable=no" name="viewport">
 	<link rel="apple-touch-icon" sizes="57x57" href="./assets/favicon/apple-icon-57x57.png">
 	<link rel="apple-touch-icon" sizes="60x60" href="./assets/favicon/apple-icon-60x60.png">
 	<link rel="apple-touch-icon" sizes="72x72" href="./assets/favicon/apple-icon-72x72.png">
@@ -22,7 +22,8 @@
 	<meta name="msapplication-TileColor" content="#ffffff">
 	<meta name="msapplication-TileImage" content="./assets/favicon/ms-icon-144x144.png">
 	<meta name="theme-color" content="#ffffff">
-	<link rel="stylesheet" href="https://use.typekit.net/xyy3gou.css">
+	<link rel="preconnect" href="https://fonts.gstatic.com">
+	<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
 	<link rel='stylesheet' type='text/css' media="all" href='./style.min.css'>
 	<link rel="stylesheet" type="text/css" media="print"  href="./assets/sass/print/impression.css">
 	<script src="./assets/js/jquery.min.js"></script>
@@ -32,8 +33,8 @@
 <body>
 
 	<header class="l-header">
-		<div class="l-header__logo subheading">
-			<a href="./index" class="subheading">Nadine</a>
+		<div class="l-header__logo isv--parent">
+			<a href="./index"><?php include './assets/img/inline-nadine-logo.svg.php'; ?></a>
 		</div>
 
 		<div class="l-header__bar subheading">

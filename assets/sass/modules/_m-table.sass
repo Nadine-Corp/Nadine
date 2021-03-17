@@ -5,7 +5,6 @@
   width: 100%
 
   tr
-    border-bottom: 1px solid rgba($color-principale, 0.15)
     cursor: pointer
 
   tr:hover td
@@ -15,8 +14,20 @@
 
   th, td
     text-align: left
-    padding: $modulor 0
+    padding: $modulor/2 $modulor/2
+    border-right: 1px solid $color-back
     transition: all 4s
 
+  td
+    color: $color-accent
+
   th, .tablesorter-header-inner
-    font-weight: 800
+    font-family: "Redaction", serif
+    font-style: italic
+    color: $color-back
+
+  tbody tr:nth-child(2n),
+  thead tr
+    background: $color-accent
+    td
+      color: $color-back

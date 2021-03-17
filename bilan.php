@@ -29,11 +29,11 @@
   <?php if ($result->num_rows > 0): ?>
     <table class="table body">
       <tr>
-        <th>#Nature de l'activité</th>
-        <th>#Diffuseur</th>
-        <th>#Date</th>
-        <th>#Montant HT</th>
-        <th>#Voir</th>
+        <th>Nature de l'activité</th>
+        <th>Diffuseur</th>
+        <th>Date</th>
+        <th>Montant HT</th>
+        <th>Voir</th>
       </tr>
 
     <?php while($row = $result->fetch_assoc()):
