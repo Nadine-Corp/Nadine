@@ -15,6 +15,11 @@
       </thead>
       <tbody>
         <tr>
+          <td width="10%">0.1.049</td>
+          <td width="10%">17.03.2021</td>
+          <td>"Quand yen a plus, yen a encore" comme on dit souvent à NadineCorp© : alors Nadine vient de découvrir de nouvelles couleurs.</td>
+        </tr>
+        <tr>
           <td width="10%">0.1.048</td>
           <td width="10%">17.03.2021</td>
           <td>Aujourd'hui, Nadine c'est pouponné. Elle a changé de fontes pour se faire belle. Elle a aussi changé son logo en haut à droite, modifié un peu les tableaux et peaufiné quelques marges.</td>

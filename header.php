@@ -4,6 +4,9 @@
 <head>
 	<meta charset="UTF-8" />
 	<title>Nadine</title>
+	<meta name="description" content="👨‍💻 Premier logiciel open-source de compta pour la Maison des Artistes : essayer Nadine, c'est l'adopter. 👍" >
+	<meta name="keywords" content="Comptabilité, Maison des Artistes, MDA, précompte, artistes, gratuit, free, logiciel, facture, devis, open-source" >
+	<meta name="contact" content="bonjour@nadinecorp.net">
 	<meta content="width=device-width, initial-scale = 1.0, maximum-scale=1.0, user-scalable=no" name="viewport">
 	<link rel="apple-touch-icon" sizes="57x57" href="./assets/favicon/apple-icon-57x57.png">
 	<link rel="apple-touch-icon" sizes="60x60" href="./assets/favicon/apple-icon-60x60.png">
