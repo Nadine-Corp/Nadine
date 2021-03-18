@@ -15,6 +15,11 @@
       </thead>
       <tbody>
         <tr>
+          <td width="10%">0.1.050</td>
+          <td width="10%">17.03.2021</td>
+          <td>Nadine a essayé de rédiger un manuel d'installation. Pour le moment, c'est un peu sommaire. Nadine a aussi ajouté un drôle de bouton rond dans la barre de menu. Il ne sert à pas grand-chose pour le moment.</td>
+        </tr>
+        <tr>
           <td width="10%">0.1.049</td>
           <td width="10%">17.03.2021</td>
           <td>"Quand yen a plus, yen a encore" comme on dit souvent à NadineCorp© : alors Nadine vient de découvrir de nouvelles couleurs.</td>
