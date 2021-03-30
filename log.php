@@ -15,6 +15,11 @@
       </thead>
       <tbody>
         <tr>
+          <td width="10%">0.1.051</td>
+          <td width="10%">30.03.2021</td>
+          <td>Il y a des dates qui resteront dans la mémoire des Hommes pendant plusieurs siècles : aujourd'hui, Nadine sait maintenant attacher plusieurs artistes à un projet. Le jour où nous pourrons travailler à plusieurs sur une même mission s'approche à grands pas. Merci Nadine : chaque jour, tu transformes nos vies. (Par contre, si elle mémorise qu'il y a plusieurs artistes, elle ne sait pas quoi faire de cette info pour le moment. Un jour viendra où elle s'en souviendra pour simplifier notre déclaration annuelle à l'Urssaf). Elle en a profité pour améliorer les formulaires d'ajout et de modification de projets. Elle a aussi corrigé un vilain bug qui s'était caché dans le gabarit de facture.</td>
+        </tr>
+        <tr>
           <td width="10%">0.1.050</td>
           <td width="10%">17.03.2021</td>
           <td>Nadine a essayé de rédiger un manuel d'installation. Pour le moment, c'est un peu sommaire. Nadine a aussi ajouté un drôle de bouton rond dans la barre de menu. Il ne sert à pas grand-chose pour le moment.</td>

@@ -60,7 +60,8 @@
   projet__date_de_creation VARCHAR(255),
   projet__date_de_fin DATE NULL DEFAULT NULL,
   projet__statut VARCHAR(255),
-  diffuseur__id VARCHAR(255)
+  diffuseur__id VARCHAR(255),
+  artiste__id VARCHAR(255)
   )";
   include 'query.php'; $result = $conn->query($sql) or die($conn->error);
 

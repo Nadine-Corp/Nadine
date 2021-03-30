@@ -18,4 +18,11 @@ Toutes les équipes de [NadineCorp©](http://nadinecorp.net/) travaillent dur po
 
 ## Une question ? Une idée ?
 
-Nos équipes vous accueillent aux [NadineClub©](https://discord.gg/Fg2m8gvdWR) 24 H / 24H et 7 J / 7. C'est aussi ça le service par [NadineCorp©](http://nadinecorp.net/)
+Nos équipes vous accueillent aux [NadineClub©](https://discord.gg/Fg2m8gvdWR) sur Discord 24 H / 24H et 7 J / 7. C'est aussi ça le service par [NadineCorp©](http://nadinecorp.net/)
+
+
+## Roadmap de la Disruption
+
+- [x] Version 0.1 : éditer, sauver et modifier des devis ou factures par projet. Donc gérer aussi les diffuseurs.
+- [ ] Version 0.2 : simplifier la déclaration annuelle à l'[URSAAF](https://www.artistes-auteurs.urssaf.fr/). Donc gérer aussi les diffuseurs.
+- [ ] Version 0.3 :

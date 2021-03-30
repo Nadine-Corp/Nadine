@@ -2,12 +2,11 @@
 
 
 <?php  $projet__id = $_GET['projet__id']; ?>
+
 <?php $sql = "SELECT * FROM Projets, diffuseurs WHERE Projets.projet__id='".$projet__id."' AND Projets.diffuseur__id = Diffuseurs.diffuseur__id "; ?>
 <?php include './core/query.php'; $result = $conn->query($sql) or die($conn->error); ?>
 <?php if ($result->num_rows > 0): ?>
   <?php while($row = $result->fetch_assoc()):?>
-
-
 
     <section class="toolbar is--sticky">
       <div class="toolbar__container">
@@ -37,7 +36,9 @@
 
           <?php endwhile; ?>
         <?php else: ?>
-          <p class="body">Chef, on pas trouvé de projets...</p>
+          <section class="row">
+            <p class="body">Chef, on a pas trouvé de diffuseur pour ce projet...</p>
+          </section>
         <?php endif; $conn->close(); ?>
 
 

@@ -25,6 +25,6 @@
   </tr>
   <tr>
     <td class="facture__w-75 facture__tl facture__subheading" colspan="3"><input type="text" name="facture__tache_7" style="text-align:left;" value="<?php if(isset($facture__tache_7)){ echo $facture__tache_7; }?>"></td>
-    <td class="facture__w-25 facture__tr facture__subheading"><input type="text" name="facture__prix_7" class="facture__subheading form__input-prix" value="<?php if(isset($facture__prix_6)){ echo $facture__prix_6; }?>"> €</td>
+    <td class="facture__w-25 facture__tr facture__subheading"><input type="text" name="facture__prix_7" class="facture__subheading form__input-prix" value="<?php if(isset($facture__prix_7)){ echo $facture__prix_7; }?>"> €</td>
   </tr>
 </table>

@@ -6,7 +6,7 @@
   <div class="toolbar__container">
     <h1 class="display1">Liste des diffuseurs</h1>
     <div class="toolbar__btn">
-      <button href="./diffuseur__new" class="btn btn--plain">Ajouter un diffuseur</button>
+      <a href="./diffuseur__new" class="btn btn--plain">Ajouter un diffuseur</a>
     </div>
   </div>
 </section>

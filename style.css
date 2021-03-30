@@ -835,7 +835,7 @@ em {
   width: 50%;
 }
 
-.form__input-seperator {
+input.form__input-seperator {
   border-right: 1px solid #d0cdc0;
 }
 
@@ -849,7 +849,7 @@ em {
 
 .table tr:hover td {
   background: white;
-  color: #FF3636;
+  color: #FF3636 !important;
   transition: all .2s;
 }
 

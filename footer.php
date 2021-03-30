@@ -9,7 +9,7 @@
 	<footer>
 		<section class="row">
 			<div class="col l12">
-				<p class="caption"><a href="./log">Nadine travaille dur pour s'améliorer !</a></p>
+				<p class="body"><a href="./log">Nadine travaille dur pour s'améliorer !</a></p>
 			</div>
 		</section>
 		<script src="./assets/js/tablesorter.min.js"></script>

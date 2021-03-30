@@ -44,7 +44,7 @@
 
         </tr>
       </table>
-      <?php include './template_facture/facture__v2/body.php'; ?>
+      <?php include 'body.php'; ?>
       <table class="facture__h-100">
         <tr>
           <td class="facture__w-50"></td>

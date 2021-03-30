@@ -5,7 +5,7 @@
   <div class="toolbar__container">
     <h1 class="display1">Liste des artistes</h1>
     <div class="toolbar__btn">
-      <button href="./artiste__new" class="btn btn--plain">Ajouter un artiste</button>
+      <a href="./artiste__new" class="btn btn--plain">Ajouter un artiste</a>
     </div>
   </div>
 </section>
