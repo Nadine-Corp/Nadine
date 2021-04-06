@@ -16,10 +16,10 @@
         </tr>
         <tr>
           <td class="facture__b-l facture__h-20 facture__bl">
-            <p class="facture__body">SIRET : <?php echo $row["profil__siret"] ?>  |  N° Secu : <?php echo $row["profil__numero_secu"] ?></p>
+            <p class="facture__body">SIRET : <?php echo $row["profil__siret"] ?></p>
           </td>
           <td class="facture__h-20 facture__br">
-            <p class="facture__body">N°d'ordre MDA : <?php echo $row["profil__numero_mda"] ?></p>
+            <p class="facture__body">N° Secu : <?php echo $row["profil__numero_secu"] ?></p>
           </td>
         </tr>
         <tr>

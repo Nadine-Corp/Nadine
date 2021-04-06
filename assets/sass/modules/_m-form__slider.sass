@@ -1,0 +1,72 @@
+// main: ../../../style.sass
+
+
+  Le module Form__slider permet d'ajouter des boutons On/Off.
+
+
+  Attention : pensez à activé le module SASS is--fullsize.
+
+
+  Exemple de HTML : Rectangular switch
+
+  <label class="switch">
+    <input type="checkbox">
+    <span class="slider is--fullsize"></span>
+  </label>
+
+  Exemple de HTML : Rounded switch
+
+  <label class="switch">
+    <input type="checkbox">
+    <span class="slider is--fullsize round"></span>
+  </label>
+
+.form__slider-container
+  display: flex
+  width: 100%
+  flex-direction: row
+  align-items: center
+  &>*
+    margin-right: $modulor
+
+.switch
+  float: left
+  position: relative
+  display: inline-block
+  width: $modulor*3
+  height: $modulor*2
+
+  input
+    opacity: 0
+    width: 0
+    height: 0
+
+.slider
+  cursor: pointer
+  border: 3px solid $color-principale
+  background: $color-secondaire
+  @include prefix(transition, .4s)
+  &:before
+    position: absolute
+    content: ""
+    height: $modulor
+    width: $modulor
+    left: $modulor/3
+    bottom: $modulor/3
+    background-color: $color-accent
+    @include prefix(transition, .4s)
+  &:hover
+    @include box-shadow(100, $color-accent)
+
+input
+  &:checked + .slider
+    // background-color: $color-accent
+  &:checked + .slider:before
+    @include prefix(transform, translateX($modulor))
+
+/* Rounded sliders
+
+.slider.round
+  border-radius: $modulor
+  &:before
+    border-radius: 50%

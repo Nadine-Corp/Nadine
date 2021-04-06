@@ -15,6 +15,11 @@
       </thead>
       <tbody>
         <tr>
+          <td width="10%">0.1.052</td>
+          <td width="10%">05.04.2021</td>
+          <td>Après avoir chasser quelques bugs et continué d'améliorer l'intégration des Artistes dans les Projets, Nadine a préparé ses bases de données à quelques choses qu'elle appelle l'Historique. Personne ne sait encore de quoi il s'agit. Idem pour un truc qu'elle appelle Corbeille. Elle parle aussi de Template de facture, Gabarits de messages, etc. Bref : on sent qu'elle se prépare à la suite. Plus tard dans la journée, elle a fusionné la page Profil et la page Option. Elle en a profité pour revoir le design : de magnifiques accordéons rendent la navigation plus agréable. Elle a aussi apprit un mémoriser un truc que l'on appelle "Précompte". Nadine a aussi revu timidement les premiers pas d'un nouvel utilisateur (mais il y a encore du pain sur la planche : vivement demain !).</td>
+        </tr>
+        <tr>
           <td width="10%">0.1.051</td>
           <td width="10%">30.03.2021</td>
           <td>Il y a des dates qui resteront dans la mémoire des Hommes pendant plusieurs siècles : aujourd'hui, Nadine sait maintenant attacher plusieurs artistes à un projet. Le jour où nous pourrons travailler à plusieurs sur une même mission s'approche à grands pas. Merci Nadine : chaque jour, tu transformes nos vies. (Par contre, si elle mémorise qu'il y a plusieurs artistes, elle ne sait pas quoi faire de cette info pour le moment. Un jour viendra où elle s'en souviendra pour simplifier notre déclaration annuelle à l'Urssaf). Elle en a profité pour améliorer les formulaires d'ajout et de modification de projets. Elle a aussi corrigé un vilain bug qui s'était caché dans le gabarit de facture.</td>

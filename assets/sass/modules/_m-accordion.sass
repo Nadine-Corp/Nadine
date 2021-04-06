@@ -1,0 +1,64 @@
+// main: ../../../style.sass
+
+  Le module Accordion permet de créer des accordions
+  rapidement
+
+
+  Exemple de HTML :
+
+    <li class="accordion">
+      <div class="accordion__titre">
+        <h3>Ici, le titre de l'accordion</h3>
+        <div class="accordion__icon">
+          <?php get_template_part('assets/img/inline', 'icon_arrow_accordion.svg'); ?>
+        </div>
+      </div>
+      <div class="accordion__container">
+        Ici, le contenu de l'accordion
+      </div>
+    </li>
+
+
+
+
+.accordion__titre
+  position: relative
+  float: left
+  width: 100%
+  cursor: pointer
+  margin: 5px 0
+  padding: 10px 0
+  border-bottom: 1px solid $color-principale
+
+.accordion__icon
+  position: absolute
+  transform: rotate(-90deg)
+  right: 0
+  top: -10px
+  width: 20px
+  transition: transform .5s
+
+  svg
+    fill: none
+    stroke: $color-principale
+    stroke-width: 5
+
+.accordion__container
+  float: left
+  width: 100%
+  max-height: 0
+  margin: 0
+  opacity: 0
+  overflow: hidden
+  transition: all 1s
+
+.accordion.is--active
+  .accordion__icon
+    transform: rotate(0deg)
+    transition: transform .5s
+
+  .accordion__container
+    opacity: 1
+    max-height: 1000vh
+    margin: 5px 0 30px 0
+    transition: all 1s

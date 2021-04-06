@@ -64,7 +64,13 @@ endif; $conn->close();
     include './core/query.php'; $result = $conn->query($sql) or die($conn->error);
     if ($result->num_rows > 0):
       while($row = $result->fetch_assoc()):
-        ?>
+
+        if( $row["diffuseur__societe"] ):
+          $diffuseur__societe = $row["diffuseur__societe"];
+          $diffuseur = '["'.$diffuseur__societe.'"]';
+          $diffuseur = htmlspecialchars($diffuseur);
+        endif;
+      ?>
 
         <form class="form body" action="./core/modifier__projet.php" method="post">
           <div class="form__input-container">
@@ -74,10 +80,16 @@ endif; $conn->close();
             <input list="statut" name="projet__statut" placeholder="Statut" class="form__input-half" value="<?php echo $row["projet__statut"] ?>">
             <input type="date" name="date_de_creation" placeholder="Date de création" class="form__input-half form__input-seperator" value="<?php echo $row["projet__date_de_creation"] ?>">
             <input type="date" name="date_de_fin" placeholder="Date de fin" class="form__input-half" value="<?php echo $row["projet__date_de_fin"] ?>">
-            <div class="form__input-half form__input-seperator directorist-select directorist-select-multi" data-default="['<?php echo $row["diffuseur__societe"] ?>']" id="multi--diffuseurs" data-isSearch="true" data-max="1" data-placeholder="Rechercher un Diffuseur" data-multiSelect="<?php echo $listdiffuseur; ?>" >
-              <input name="diffuseur__societe" type="hidden" value='["<?php echo $row["diffuseur__societe"] ?>"]'>
+            <div class="form__input-half form__input-seperator directorist-select directorist-select-multi" <?php if($row["diffuseur__societe"]): ?>data-default="['<?php echo addslashes($row["diffuseur__societe"]) ?>']"<?php endif; ?> id="multi--diffuseurs" data-isSearch="true" data-max="1" data-placeholder="Rechercher un Diffuseur" data-multiSelect="<?php echo $listdiffuseur; ?>" >
+            <?php
+              if ($diffuseur) {
+                echo "<input name='diffuseur__societe' type='hidden' value=\"".htmlspecialchars($diffuseur)."\">";
+              }else{
+                echo "<input name='diffuseur__societe' type='hidden'>";
+              };
+            ?>
             </div>
-            <div class="form__input-half directorist-select directorist-select-multi" id="multi--artistes" data-isSearch="true" data-placeholder="Rechercher un Artiste" data-multiSelect="<?php echo $listartiste; ?>">
+            <div class="form__input-half directorist-select directorist-select-multi" <?php if($row["artiste__id"]): ?>data-default="['<?php echo addslashes($row["artiste__id"]) ?>']"<?php endif; ?> id="multi--artistes" data-isSearch="true" data-placeholder="Rechercher un Artiste" data-multiSelect="<?php echo $listartiste; ?>">
               <input name="artiste__societe" type="hidden" value="">
             </div>
           </div>
@@ -88,7 +100,7 @@ endif; $conn->close();
 
       <?php endwhile; ?>
     <?php else: ?>
-      <p>Chef, on a pas trouvé de projets...</p>
+      <p>Chef, on n'a pas trouvé de projets...</p>
     <?php endif; $conn->close(); ?>
   </div>
 </section>

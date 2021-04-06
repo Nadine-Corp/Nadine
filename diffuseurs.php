@@ -44,7 +44,7 @@
       </tbody>
     </table>
   <?php else: ?>
-      <p>Chef, on a pas trouvé de s...</p>
+      <p>Chef, on n'a pas trouvé de Diffuseurs...</p>
   <?php endif; $conn->close(); ?>
 </div>
 </section>

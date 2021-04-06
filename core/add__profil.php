@@ -1,4 +1,15 @@
 <?php
+
+  // Le fichier Add__profil permet de mettre à jour le profil de l'utilisateur.
+  // Pour que les anciennes Facture ou Devis ne soit pas modifier, un nouveau
+  // profil utilisateur est créé à chaque mise à jour.
+
+
+
+  /**
+  * Récuparation des variables
+  */
+
   $profil__societe =  addslashes($_POST['societe']);
   $profil__siret =  addslashes($_POST['siret']);
   $profil__civilite =  addslashes($_POST['civilite']);
@@ -16,11 +27,27 @@
   $profil__iban =  addslashes($_POST['iban']);
   $profil__bic =  addslashes($_POST['bic']);
 
+  // Traitement des Checkbox
 
+  if( isset($_POST['precompte'])){
+    $profil__precompte = '1';
+  } else {
+    $profil__precompte = '0';
+  };
+  echo $profil__precompte;
 
-  $sql = "INSERT INTO profil (profil__societe, profil__siret, profil__civilite, profil__prenom, profil__nom, profil__adresse, profil__code_postal, profil__ville, profil__telephone, profil__email, profil__website, profil__numero_secu, profil__numero_mda, profil__titulaire_du_compte, profil__iban, profil__bic)
-  VALUES ('$profil__societe', '$profil__siret', '$profil__civilite', '$profil__prenom', '$profil__nom', '$profil__adresse', '$profil__code_postal', '$profil__ville', '$profil__telephone', '$profil__email', '$profil__website', '$profil__numero_secu', '$profil__numero_mda', '$profil__titulaire_du_compte', '$profil__iban', '$profil__bic' )";
+  /**
+  * Mise à jour de la base de données
+  */
+
+  $sql = "INSERT INTO profil (profil__societe, profil__siret, profil__civilite, profil__prenom, profil__nom, profil__adresse, profil__code_postal, profil__ville, profil__telephone, profil__email, profil__website, profil__numero_secu, profil__numero_mda, profil__precompte, profil__titulaire_du_compte, profil__iban, profil__bic)
+  VALUES ('$profil__societe', '$profil__siret', '$profil__civilite', '$profil__prenom', '$profil__nom', '$profil__adresse', '$profil__code_postal', '$profil__ville', '$profil__telephone', '$profil__email', '$profil__website', '$profil__numero_secu', '$profil__numero_mda', $profil__precompte, '$profil__titulaire_du_compte', '$profil__iban', '$profil__bic' )";
   include 'query.php'; $result = $conn->query($sql) or die($conn->error); $conn->close();
+
+
+  /**
+  * Redirection vers la page profil
+  */
 
   header('Location: ../profil.php');
 ?>

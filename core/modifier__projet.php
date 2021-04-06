@@ -12,9 +12,9 @@
   // Convertion des array js en array PHP
 
   $artiste__societe = json_decode($_POST['artiste__societe']);
-  $diffuseur__societe =  json_decode($_POST['diffuseur__societe']);
+  $diffuseur__societe = htmlspecialchars_decode($_POST['diffuseur__societe']);
+  $diffuseur__societe =  json_decode($diffuseur__societe);
   $diffuseur__societe =  addslashes($diffuseur__societe[0]);
-
 
 
   /**

@@ -23,9 +23,8 @@
           <tr>
             <th>Nom du projet</th>
             <th>Diffuseur</th>
-            <th data-sorter="shortDate" data-date-format="M. Y">#Date du début</th>
-            <th data-sorter="shortDate" data-date-format="M. Y">#Date de fin</th>
-            <th>Bénéfice</th>
+            <th data-sorter="shortDate" data-date-format="M. Y">Date du début</th>
+            <th data-sorter="shortDate" data-date-format="M. Y">Date de fin</th>
             <th>État</th>
             <th>Voir</th>
           </tr>
@@ -54,7 +53,6 @@
               <td><?php echo $row["diffuseur__societe"] ?></td>
               <td><?php echo $date_de_debut; ?></td>
               <td><?php echo $date_de_fin; ?></td>
-              <td>-</td>
               <td><?php echo $row["projet__statut"] ?></td>
               <td><a href="projet__single?projet__id=<?php echo $row["projet__id"] ?>">Voir</a></td>
             </tr>

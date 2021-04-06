@@ -29,6 +29,18 @@ $( document ).ready(function() {
 	});
 
 
+	// Block Accordion
+
+	$('.accordion__titre').click(function(){
+		if (	$(this).closest('.accordion').hasClass('is--active') ) {
+			$('.accordion').removeClass('is--active');
+		}else{
+			$('.accordion').removeClass('is--active');
+			$(this).closest('.accordion').addClass('is--active');
+		}
+	});
+
+
 	// Modal DoYouConfirm ?
 
 	$('.doyouconfirm').click(function( event ) {
@@ -38,6 +50,7 @@ $( document ).ready(function() {
 	});
 
 });
+
 
 
 const el = document.querySelector(".is--sticky")

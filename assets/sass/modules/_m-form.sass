@@ -5,11 +5,6 @@
   float: left
   width: 100%
 
-  label
-    float: left
-    width: 100%
-    margin: $modulor
-
 .form__input-container
   float: left
   width: 100%
@@ -27,6 +22,9 @@
     color: $color-principale
     background: $color-secondaire
     transition: background .5s
+
+  &>textarea
+    height: auto
 
   input:focus, textarea:focus
     background: darken($color-secondaire, 5)

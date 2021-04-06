@@ -2,7 +2,7 @@
 
 <html lang="fr">
 <head>
-	<meta charset="UTF-8" />
+	<meta charset="UTF-8">
 	<title>Nadine</title>
 	<meta name="description" content="👨‍💻 Premier logiciel open-source de compta pour la Maison des Artistes : essayer Nadine, c'est l'adopter. 👍" >
 	<meta name="keywords" content="Comptabilité, Maison des Artistes, MDA, précompte, artistes, gratuit, free, logiciel, facture, devis, open-source" >
@@ -56,12 +56,11 @@
 
 			<ul class="nav__subnav menu">
 				<li><a href="./profil">Modifier votre profil</a></li>
-				<li><a href="./options">Options</a></li>
-				<li><a href="./log">Journal de dévéloppement</a></li>
 				<li><a href="./bilan">Générer le bilan annuel</a></li>
-				<li><a href="https://discord.gg/Fg2m8gvdWR" target="_blank">Rejoindre le NadineClub©</a></li>
-				<li><a href="mailto:coucoucorine@nadinecorp.net" target="_blank">Demander de l'aide</a></li>
+				<li class="separator"><a href="https://discord.gg/Fg2m8gvdWR" target="_blank">Rejoindre le NadineClub©</a></li>
+				<li><a href="mailto:coucoucorine@nadinecorp.net" target="_blank">Demander de l'aide par mail</a></li>
 				<!-- <li class="separator"><a class="doyouconfirm" href="./core/init">Reset la Database</a></li> -->
+				<li class="separator"><a href="./log">Journal de dévéloppement</a></li>
 			</ul>
 		</nav>
 		<div class="l-header__btn-color"></div>
