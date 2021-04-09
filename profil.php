@@ -62,7 +62,6 @@
           <div class="accordion__container">
             <div class="form__slider-container">
             <p class="lead_paragraph">Êtes assujetti⸱e au précompte ?</p>
-            <?php echo $row["profil__precompte"] ?>
             <span>Non</span>
             <label class="switch">
               <?php
@@ -129,7 +128,7 @@
         </div>
 
 
-        <input type="submit" name="Enregistrer" class="btn btn--plain">
+        <input type="submit" name="Enregistrer" class="btn btn--plain" value="Enregistrer">
 
       </form>
     </section>

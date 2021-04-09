@@ -10,18 +10,19 @@
 ?>
 
 
-
+<section class="toolbar is--sticky">
+  <div class="toolbar__container">
+    <h1 class="display1">Bilan annuel <?php echo $year; ?></h1>
+    <div class="toolbar__btn">
+      <a href="bilan.php?annee=2018" class="btn btn--outline">2018</a>
+      <a href="bilan.php?annee=2019" class="btn btn--outline">2019</a>
+      <a href="bilan.php?annee=2020" class="btn btn--outline">2020</a>
+      <a href="bilan.php?annee=2021" class="btn btn--outline">2021</a>
+    </div>
+  </div>
+</section>
 
 <section class="row">
-  <div class="col l12">
-    <h1 class="display1">Bilan annuel <?php echo $year; ?></h1>
-  </div>
-  <div class="col l12">
-    <a href="bilan.php?annee=2018" class="btn btn--outline">2018</a>
-    <a href="bilan.php?annee=2019" class="btn btn--outline">2019</a>
-    <a href="bilan.php?annee=2020" class="btn btn--outline">2020</a>
-    <a href="bilan.php?annee=2021" class="btn btn--outline">2021</a>
-  </div>
   <div class="col l12">
 
   <?php $sql = "SELECT * FROM Projets, Diffuseurs WHERE Projets.diffuseur__id = Diffuseurs.diffuseur__id AND projet__statut = 'Projet terminé' AND projet__date_de_fin BETWEEN CAST('".$year."-01-01' AS DATE) AND CAST('".$year."-12-31' AS DATE) ORDER BY projet__date_de_fin ASC;"; ?>

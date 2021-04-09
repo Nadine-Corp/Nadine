@@ -15,9 +15,14 @@
       </thead>
       <tbody>
         <tr>
+          <td width="10%">0.1.053</td>
+          <td width="10%">09.04.2021</td>
+          <td>Nadine a encore complétée ses bases données. Elle a aussi ajouter un petit texte à l'intention de nouveaux utilisateur (ça, c'est bien notre Nadine : le cœur sur la main. Toujours.). Après, elle c'est dit qu'elle avait bien bosser mais que personne ne verrait la différence. Alors elle c'est concentré sur l'expérience utilisateur. Elle a amélioré mille détails, puis elle a refondu le système de gestion de couleur. Ceci étant fait, elle a put finir la fonction qui permet de changer la couleur de l'interface. Oh ! Et elle a aussi séparée les projets en cours et les projets terminés (voir annulés) pour une meilleure lisibilité. C'est bien maintenant : la vie est encore plus chouette qu'hier !</td>
+        </tr>
+        <tr>
           <td width="10%">0.1.052</td>
           <td width="10%">05.04.2021</td>
-          <td>Après avoir chasser quelques bugs et continué d'améliorer l'intégration des Artistes dans les Projets, Nadine a préparé ses bases de données à quelques choses qu'elle appelle l'Historique. Personne ne sait encore de quoi il s'agit. Idem pour un truc qu'elle appelle Corbeille. Elle parle aussi de Template de facture, Gabarits de messages, etc. Bref : on sent qu'elle se prépare à la suite. Plus tard dans la journée, elle a fusionné la page Profil et la page Option. Elle en a profité pour revoir le design : de magnifiques accordéons rendent la navigation plus agréable. Elle a aussi apprit un mémoriser un truc que l'on appelle "Précompte". Nadine a aussi revu timidement les premiers pas d'un nouvel utilisateur (mais il y a encore du pain sur la planche : vivement demain !).</td>
+          <td>Après avoir chasser quelques bugs et continué d'améliorer l'intégration des Artistes dans les Projets, Nadine a préparé ses bases de données à quelques choses qu'elle appelle l'Historique. Personne ne sait encore de quoi il s'agit. Idem pour un truc qu'elle appelle Corbeille. Elle parle aussi de Template de facture, Gabarits de messages, etc. Bref : on sent qu'elle se prépare à la suite. Plus tard dans la journée, elle a fusionné la page Profil et la page Option. Elle en a profité pour revoir le design : de magnifiques accordéons rendent la navigation plus agréable. Elle a aussi apprit un mémoriser un truc que l'on appelle "Précompte". Nadine a enfin revu timidement les premiers pas d'un nouvel utilisateur (mais il y a encore du pain sur la planche : vivement demain !).</td>
         </tr>
         <tr>
           <td width="10%">0.1.051</td>

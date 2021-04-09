@@ -13,28 +13,24 @@
 .btn
   display: inline-block
   margin: $modulor*3 $modulor/3
-  padding: $modulor
+  padding: $modulor/2
+  border: 2px solid var(--color-principale)
+  font-family: "Redaction", sans-serif !important
   font-size: $modulor
-  text-transform: uppercase
-  font-weight: 500
-  border-radius: $modulor*3
+  font-weight: 600
   cursor: pointer
   white-space: nowrap
-  @include box-shadow(4, rgba($color-back, 0))
-  @include prefix(transition, all 2s)
+  box-shadow: 2px 2px var(--color-principale)
+  @include prefix(transition, all 1s)
 
   &:hover
-    border-radius: $modulor/2
     text-decoration: none
-    @include box-shadow(100, $color-accent)
+    background: var(--color-accent)
+    box-shadow: 6px 6px var(--color-principale)
     @include prefix(transition, all 0.2s)
 
 .btn--plain
-  background: $color-accent
-  color: $color-secondaire
-  border: 2px solid $color-accent
+  background: var(--color-secondaire)
 
 .btn--outline
   background: none
-  color: $color-accent
-  border: 2px solid $color-accent

@@ -21,7 +21,7 @@
   * Convertion des diffuseur__societe en diffuseur__id
   */
 
-  $sql = "SELECT * FROM Diffuseurs WHERE diffuseur__societe='".$diffuseur__societe."'";
+  $sql = "SELECT * FROM Diffuseurs WHERE diffuseur__societe ='".$diffuseur__societe."'";
   include 'query.php'; $result = $conn->query($sql) or die($conn->error);
 
   $row = $result->fetch_assoc();
@@ -40,7 +40,7 @@
   WHERE projet__id = $projet__id";
   include 'query.php'; $result = $conn->query($sql) or die($conn->error); $conn->close();
 
-  // Upadate Date fin
+  // Update Date fin
 
   if(!empty( $_POST['date_de_fin'] )) {
     $projet__date_de_fin =  addslashes($_POST['date_de_fin']);

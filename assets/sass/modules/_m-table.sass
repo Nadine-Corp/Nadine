@@ -7,27 +7,30 @@
   tr
     cursor: pointer
 
-  tr:hover td
-    background: white
-    color: $color-accent !important
-    transition: all .2s
+    &:hover
+      td
+        background: var(--color-secondaire)
+        color: var(--color-accent) !important
+        z-index: 100
+        padding: $modulor*2 $modulor/2
+        transition: all .3s
 
   th, td
     text-align: left
     padding: $modulor/2 $modulor/2
-    border-right: 1px solid $color-back
-    transition: all 4s
+    border-right: 1px solid var(--color-back)
+    transition: all .3s
 
   td
-    color: $color-accent
+    color: var(--color-accent)
 
   th, .tablesorter-header-inner
     font-family: "Redaction", serif
     font-style: italic
-    color: $color-back
+    color: var(--color-back)
 
   tbody tr:nth-child(2n),
   thead tr
-    background: $color-accent
+    background: var(--color-accent)
     td
-      color: $color-back
+      color: var(--color-back)

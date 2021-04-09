@@ -8,7 +8,7 @@
 .form__input-container
   float: left
   width: 100%
-  border: 1px solid darken($color-back, 10)
+  border: 1px solid var(--color-back)
   border-bottom: none
   margin: $modulor 0
 
@@ -17,24 +17,25 @@
     height: $modulor*4
     padding: $modulor*1.5
     border: none
-    border-bottom: 1px solid darken($color-back, 10)
+    border-bottom: 1px solid var(--color-back)
     resize: none
-    color: $color-principale
-    background: $color-secondaire
+    color: var(--color-principale)
+    background: var(--color-secondaire)
     transition: background .5s
 
   &>textarea
     height: auto
 
   input:focus, textarea:focus
-    background: darken($color-secondaire, 5)
+    background: var(--color-secondaire)
     transition: background .5s
 
   input:disabled
+    text-decoration: line-through
     opacity: 0.6
 
   input::placeholder
-    color: rgba($color-principale, .33)
+    color: var(--color-principale)
 
 .form__input-full
   width: 100%
@@ -43,4 +44,9 @@
   width: 50%
 
 input.form__input-seperator
-  border-right: 1px solid darken($color-back, 10)
+  border-right: 1px solid var(--color-back)
+
+input:disabled
+  text-decoration: line-through
+  cursor: auto
+  opacity: 0.5

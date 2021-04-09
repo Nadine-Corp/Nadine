@@ -4,7 +4,12 @@
 *
   font-family: 'Poppins', "Helvetica", sans-serif
   font-weight: 400
-  color: $color-principale
+  font-style: normal
+  font-stretch: normal
+  font-feature-settings: "liga", "kern"
+  -webkit-font-smoothing: antialiased
+  -moz-osx-font-smoothing: grayscale
+  color: var(--color-principale)
 
 h1, h2, h3, h4, h5, h6
   font-size: $modulor*2
@@ -20,13 +25,13 @@ p
       font-weight: 200
       color: inherit
       text-decoration: none
-      box-shadow: 0 1px 0 0 rgba($color-accent, 0)
+      box-shadow: 0 1px 0 0 rgba(var(--color-accent), 0)
       transition: all 0.8s
 
     &:hover
-      color: $color-accent
+      color: var(--color-accent)
       padding-bottom: 3px
-      box-shadow: 0 1px 0 0 rgba($color-accent, 0.2)
+      box-shadow: 0 1px 0 0 rgba(var(--color-accent), 0.2)
       transition: all 0.8s
 
 .liste__de__lien
@@ -69,6 +74,7 @@ em
 .lead_paragraph, .lead_paragraph *
   font-size: $modulor*1.5
   line-height: $modulor*1.5
+  font-weight: 600
   letter-spacing: -1px
 
 .body, .body *
@@ -79,10 +85,10 @@ em
   width: 2px
   height: $modulor*4
   margin: $modulor
-  background: $color-principale
+  background:
 
 .divider-h
   width: $modulor*4
   height: 2px
   margin: $modulor 0
-  background: $color-principale
+  background:

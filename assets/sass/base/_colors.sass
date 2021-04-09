@@ -1,5 +1,6 @@
 // main: ../../../style.sass
 
+  Le fichier couleur controle les thèmes coloré de Nadine.
 
 // Couleurs NadineCorp©
 
@@ -14,8 +15,38 @@ $jaune-post-it: #FFDC61
 
 
 
+\:root, .__rouge-trash-mode
+  --color-principale: #{$gris-dark}
+  --color-secondaire: white
+  --color-accent: #{$rouge-trash}
+  --color-back: #{$papier}
 
-$color-principale: $gris-dark
-$color-secondaire: white
-$color-accent: $rouge-trash
-$color-back: $papier
+\.__bleu-google-mode:root, .__bleu-google-mode
+  --color-principale: #{$gris-dark}
+  --color-secondaire: white
+  --color-accent: #{$bleu-google}
+  --color-back: #{$papier}
+
+\.__violet-cool-mode:root, .__violet-cool-mode
+  --color-principale: #{$gris-dark}
+  --color-secondaire: white
+  --color-accent: #{$violet-cool}
+  --color-back: #{$papier}
+
+\.__rose-neutre-mode:root, .__rose-neutre-mode
+  --color-principale: #{$gris-dark}
+  --color-secondaire: white
+  --color-accent: #{$rose-neutre}
+  --color-back: #{$papier}
+
+\.__orange-fluo-mode:root, .__orange-fluo-mode
+  --color-principale: #{$gris-dark}
+  --color-secondaire: white
+  --color-accent: #{$orange-fluo}
+  --color-back: #{$papier}
+
+\.__gris-dark-mode:root, .__gris-dark-mode
+  --color-principale: #{$papier}
+  --color-secondaire: white
+  --color-accent: #{lighten($gris-dark,10%)}
+  --color-back: #{$gris-dark}

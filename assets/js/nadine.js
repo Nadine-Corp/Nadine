@@ -2,12 +2,49 @@
 $( document ).ready(function() {
 
 
-	// Ouverture du menu secondaire
+	// Menu : Ajout de la classe is--current
 
-	$('.btn__menu-more-vert').click(function(){
-		$('.menu').slideToggle()
+	var currentUrl = location.pathname;
+	$('.l-header__nav a').each(function(){
+		var url = $(this).attr('href');
+		if(currentUrl.indexOf(url) > -1){
+			$(this).addClass('is--current');
+		}
+	})
+
+
+	// Changement de couleur en Ajax
+
+	$(".l-header__btn-color").click(function(){
+		$.ajax({
+			url : './core/modifier__option-couleur.php',
+			type: 'GET',
+			success:function( newColor ) {
+				if(newColor){
+					var newClass = '__' + newColor + "-mode";
+					$('html').removeClass();
+					$('html').addClass(newClass);
+				}
+			},
+			error: function (xhr, ajaxOptions, thrownError) {
+				alert(xhr.status);
+				alert(thrownError);
+			}
+		});
 	});
 
+
+	// Ouverture du menu secondaire
+
+	var menu = $('.menu');
+	$('.btn__menu-more-vert').click(function(){
+		menu.slideToggle()
+	});
+	$(document).mouseup(function(e) {
+		if (!menu.is(e.target) && menu.has(e.target).length === 0) {
+			menu.slideUp();
+		}
+	});
 
 	// Table Shorter
 

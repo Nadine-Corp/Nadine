@@ -5,7 +5,7 @@
 
   Exemple de SASS :
     div
-      background: rgba-to-rgb(transparentize($vert-menthe, 0.8), $color-back)
+      background: rgba-to-rgb(transparentize($vert-menthe, 0.8), var(--color-back))
 
 @function rgba-to-rgb($rgba, $background: #fff)
   @return mix(rgb(red($rgba), green($rgba), blue($rgba)), $background, alpha($rgba) * 100%)
@@ -31,7 +31,7 @@
 
   Exemple de SASS :
     div
-      @include box-shadow(4, $color-principale)
+      @include box-shadow(4, var(--color-principale))
 
 @mixin box-shadow ($level, $color)
   @if $level == 1

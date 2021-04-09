@@ -1,10 +1,24 @@
 <!DOCTYPE html>
 
-<html lang="fr">
+<?php
+/**
+* Récuparation le thème couloré actuellement stockée dans la base
+*/
+
+$sql = "SELECT * FROM Options WHERE Options.option__nom = 'option__couleur'";
+include './core/query.php'; $result = $conn->query($sql) or die($conn->error);
+if ($result->num_rows > 0):
+  while($row = $result->fetch_assoc()):
+    $couleurActuelle = $row["option__valeur"];
+  endwhile;
+endif;
+?>
+
+<html lang="fr" class="<?php echo '__'.$couleurActuelle.'-mode' ?>">
 <head>
 	<meta charset="UTF-8">
 	<title>Nadine</title>
-	<meta name="description" content="👨‍💻 Premier logiciel open-source de compta pour la Maison des Artistes : essayer Nadine, c'est l'adopter. 👍" >
+	<meta name="description" content="👨‍💻 Premier logiciel open source de compta pour la Maison des Artistes : essayer Nadine, c'est l'adopter. 👍" >
 	<meta name="keywords" content="Comptabilité, Maison des Artistes, MDA, précompte, artistes, gratuit, free, logiciel, facture, devis, open-source" >
 	<meta name="contact" content="bonjour@nadinecorp.net">
 	<meta content="width=device-width, initial-scale = 1.0, maximum-scale=1.0, user-scalable=no" name="viewport">
@@ -35,7 +49,6 @@
 
 
 <body>
-
 	<header class="l-header">
 		<div class="l-header__logo isv--parent">
 			<a href="./index"><?php include './assets/img/inline-nadine-logo.svg.php'; ?></a>
@@ -48,10 +61,10 @@
 		<nav class="l-header__nav">
 			<button type="button" class="btn__menu-more-vert"><?php include './assets/img/inline-icon_more-vert.svg.php'; ?></button>
 			<ul class="nav__main">
-				<li><a href="./projets" class="subheading">Projets</a></li>
-				<li><a href="./diffuseurs" class="subheading">Diffuseurs</a></li>
-				<li><a href="./artistes" class="subheading">Artistes</a></li>
-				<li><a href="./suivi" class="subheading">Suivi</a></li>
+				<li class="menu__item"><a href="projets" class="lead_paragraph">Projets</a></li>
+				<li class="menu__item"><a href="diffuseurs" class="lead_paragraph">Diffuseurs</a></li>
+				<li class="menu__item"><a href="artistes" class="lead_paragraph">Artistes</a></li>
+				<li class="menu__item"><a href="suivi" class="lead_paragraph">Suivi</a></li>
 			</ul>
 
 			<ul class="nav__subnav menu">
@@ -63,6 +76,10 @@
 				<li class="separator"><a href="./log">Journal de dévéloppement</a></li>
 			</ul>
 		</nav>
+
+
 		<div class="l-header__btn-color"></div>
+
+
 	</header>
 	<main>

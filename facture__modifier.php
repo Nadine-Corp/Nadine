@@ -59,7 +59,12 @@ $date = strftime("%d %B %Y", strtotime($today));
               <option value="Annulée">
             </datalist>
             <a href="javascript:window.print()" class="btn btn--plain">Imprimer en PDF</a>
-            <input type="submit" name="Enregistrer" value="Enregistrer" class="btn btn--plain">
+
+            <?php if(!$row["facture__statut"]=='Envoyée'): ?>
+              <input type="submit" name="Enregistrer" value="Enregistrer" class="btn btn--plain">
+            <?php else: ?>
+              <input type="submit" name="Enregistrer" value="Enregistrer" class="btn btn--plain" disabled>
+            <?php endif; ?>
           </div>
         </div>
       </section>

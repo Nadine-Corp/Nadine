@@ -4,7 +4,7 @@
 
 
   /**
-  *  Importation des paramètres de connection
+  *  Importation des paramètres
   */
 
   include 'config.php';
@@ -39,6 +39,24 @@
 
 
   /**
+  *  Création de la table Options
+  */
+
+  $sql = "CREATE TABLE options(
+  option__id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+  option__nom VARCHAR(255) COLLATE '$interclassement',
+  option__valeur VARCHAR(255) COLLATE '$interclassement'
+  )";
+  include 'query.php'; $result = $conn->query($sql) or die($conn->error);
+
+  // Ajout des options par defaut de Nadine
+
+  $sql = "INSERT INTO options ( option__nom, option__valeur)
+  VALUES ('option__couleur','rouge-trash')";
+  include 'query.php'; $result = $conn->query($sql) or die($conn->error);
+
+
+  /**
   *  Création de la table Diffuseurs
   */
 
@@ -55,7 +73,8 @@
   diffuseur__ville VARCHAR(255) COLLATE '$interclassement',
   diffuseur__telephone VARCHAR(255) COLLATE '$interclassement',
   diffuseur__email VARCHAR(255) COLLATE '$interclassement',
-  diffuseur__website VARCHAR(255) COLLATE '$interclassement'
+  diffuseur__website VARCHAR(255) COLLATE '$interclassement',
+  diffuseur__notes VARCHAR(255) COLLATE '$interclassement'
   )";
   include 'query.php'; $result = $conn->query($sql) or die($conn->error);
 
@@ -79,7 +98,8 @@
   artiste__ville VARCHAR(255) COLLATE '$interclassement',
   artiste__telephone VARCHAR(255) COLLATE '$interclassement',
   artiste__email VARCHAR(255) COLLATE '$interclassement',
-  artiste__website VARCHAR(255) COLLATE '$interclassement'
+  artiste__website VARCHAR(255) COLLATE '$interclassement',
+  artiste__notes VARCHAR(255) COLLATE '$interclassement'
   )";
   include 'query.php'; $result = $conn->query($sql) or die($conn->error);
 
@@ -97,6 +117,7 @@
   projet__date_de_fin DATE NULL DEFAULT NULL,
   projet__statut VARCHAR(255) COLLATE '$interclassement',
   projet__historique VARCHAR(255) COLLATE '$interclassement',
+  projet__notes VARCHAR(255) COLLATE '$interclassement',
   diffuseur__id VARCHAR(255) COLLATE '$interclassement',
   artiste__id VARCHAR(255) COLLATE '$interclassement'
   )";
@@ -114,6 +135,7 @@
   facture__date VARCHAR(255) COLLATE '$interclassement',
   facture__numero VARCHAR(255) COLLATE '$interclassement',
   facture__statut VARCHAR(255) COLLATE '$interclassement',
+  facture__notes VARCHAR(255) COLLATE '$interclassement',
   facture__tache_1 VARCHAR(255) COLLATE '$interclassement',
   facture__prix_1 VARCHAR(255) COLLATE '$interclassement',
   facture__tache_2 VARCHAR(255) COLLATE '$interclassement',
@@ -160,6 +182,7 @@
   devis__date VARCHAR(255) COLLATE '$interclassement',
   devis__numero VARCHAR(255) COLLATE '$interclassement',
   devis__statut VARCHAR(255) COLLATE '$interclassement',
+  devis__notes VARCHAR(255) COLLATE '$interclassement',
   devis__tache_1 VARCHAR(255) COLLATE '$interclassement',
   devis__prix_1 VARCHAR(255) COLLATE '$interclassement',
   devis__tache_2 VARCHAR(255) COLLATE '$interclassement',
@@ -214,6 +237,7 @@
   profil__siret VARCHAR(255) COLLATE '$interclassement',
   profil__numero_secu VARCHAR(255) COLLATE '$interclassement',
   profil__numero_mda VARCHAR(255) COLLATE '$interclassement',
+  profil__precompte TINYINT(1) DEFAULT 0,
   profil__titulaire_du_compte VARCHAR(255) COLLATE '$interclassement',
   profil__iban VARCHAR(255) COLLATE '$interclassement',
   profil__bic VARCHAR(255) COLLATE '$interclassement',
@@ -223,9 +247,6 @@
   include 'query.php'; $result = $conn->query($sql) or die($conn->error);
 
 
-  /**
-  *  Redirection
-  */
 
-  header('Location: ../index.php');
+header('Location: ../index.php');
 ?>

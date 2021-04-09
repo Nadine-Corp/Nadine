@@ -24,6 +24,9 @@
       <div class="col l12">
         <h1 class="display1">Bonjour, je suis Nadine</h1>
       </div>
+      <div class="col l6">
+        <h1 class="body">Bienvenue dans votre nouveau logiciel de comptablité. Je vais vous guider pour notre première rencontre. Pour commencer, j'ai besoin de mieux vous connaître. Pouvez-vous me donner queleques informations sur vous ?</h1>
+      </div>
       <form class="form" action="./core/add__profil.php" method="post">
 
 
@@ -35,7 +38,7 @@
 
         <div class="accordion col l12">
           <div class="accordion__titre">
-            <h2 class="subheading">Modifier vos coordonnées</h2>
+            <h2 class="subheading">Vos coordonnées</h2>
             <div class="accordion__icon">
               <?php include './assets/img/inline-icon_arrow_accordion.svg.php'; ?>
             </div>
@@ -87,7 +90,7 @@
 
         <div class="accordion col l12">
           <div class="accordion__titre">
-            <h2 class="subheading">Coordonnées bancaires</h2>
+            <h2 class="subheading">Vos coordonnées bancaires</h2>
             <div class="accordion__icon">
               <?php include './assets/img/inline-icon_arrow_accordion.svg.php'; ?>
             </div>
@@ -102,7 +105,7 @@
         </div>
 
 
-        <input type="submit" name="Enregistrer" class="btn btn--plain">
+        <input type="submit" name="Enregistrer" class="btn btn--plain" value="Suivant">
 
       </form>
     </section>
