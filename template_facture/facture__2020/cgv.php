@@ -6,7 +6,7 @@
   </tr>
   <tr class="facture__h-80">
     <td>
-      <p class="facture__display2">methodic design est membre de l’Alliance Française des Designers</p>
+      <p class="facture__display2"><?php echo $row["profil__societe"] ?> est membre de l’Alliance Française des Designers</p>
     </td>
   </tr>
   <tr>

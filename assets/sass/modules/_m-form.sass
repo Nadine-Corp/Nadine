@@ -46,7 +46,8 @@
 input.form__input-seperator
   border-right: 1px solid var(--color-back)
 
-input:disabled
+input[type=submit]:disabled,
+.form__input--line-through
   text-decoration: line-through
   cursor: auto
   opacity: 0.5

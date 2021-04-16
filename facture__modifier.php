@@ -18,6 +18,7 @@ $date = strftime("%d %B %Y", strtotime($today));
     <form class="form" action="./core/modifier__facture.php" method="post">
 
       <?php $facture__numero = $row["facture__numero"]; ?>
+      <?php $facture__template = $row["facture__template"]; ?>
       <?php $facture__tache_1 = $row["facture__tache_1"]; $facture__prix_1 = $row["facture__prix_1"]; ?>
       <?php $facture__tache_2 = $row["facture__tache_2"]; $facture__prix_2 = $row["facture__prix_2"]; ?>
       <?php $facture__tache_3 = $row["facture__tache_3"]; $facture__prix_3 = $row["facture__prix_3"]; ?>
@@ -60,10 +61,10 @@ $date = strftime("%d %B %Y", strtotime($today));
             </datalist>
             <a href="javascript:window.print()" class="btn btn--plain">Imprimer en PDF</a>
 
-            <?php if(!$row["facture__statut"]=='Envoyée'): ?>
-              <input type="submit" name="Enregistrer" value="Enregistrer" class="btn btn--plain">
-            <?php else: ?>
+            <?php if($row["facture__statut"]=='Envoyée'): ?>
               <input type="submit" name="Enregistrer" value="Enregistrer" class="btn btn--plain" disabled>
+            <?php else: ?>
+              <input type="submit" name="Enregistrer" value="Enregistrer" class="btn btn--plain">
             <?php endif; ?>
           </div>
         </div>
@@ -73,14 +74,14 @@ $date = strftime("%d %B %Y", strtotime($today));
 
       <section class="row l_facture">
         <div class="col l12">
-          <?php include './template_facture/facture__v3/facture.php'; ?>
+          <?php include './template_facture/'.$facture__template.'/facture.php'; ?>
         </div>
       </section>
       </form>
 
           <?php endwhile; ?>
         <?php else: ?>
-          <p>Chef, on a rien trouvé ici...</p>
+          <p>Chef, on n'a rien trouvé ici...</p>
         <?php endif; $conn->close(); ?>
 
         <?php include 'footer.php'; ?>

@@ -241,8 +241,8 @@
   profil__titulaire_du_compte VARCHAR(255) COLLATE '$interclassement',
   profil__iban VARCHAR(255) COLLATE '$interclassement',
   profil__bic VARCHAR(255) COLLATE '$interclassement',
-  profil__msg_facture VARCHAR(255) COLLATE '$interclassement',
-  profil__msg_devis VARCHAR(255) COLLATE '$interclassement'
+  profil__msg_facture TEXT COLLATE '$interclassement',
+  profil__msg_devis TEXT COLLATE '$interclassement'
   )";
   include 'query.php'; $result = $conn->query($sql) or die($conn->error);
 

@@ -18,6 +18,7 @@ $date = strftime("%d %B %Y", strtotime($today));
     <form class="form" action="./core/modifier__devis.php" method="post">
 
       <?php $facture__numero = $row["devis__numero"]; ?>
+      <?php $facture__template = $row["facture__template"]; ?>
       <?php $facture__tache_1 = $row["devis__tache_1"]; $facture__prix_1 = $row["devis__prix_1"]; ?>
       <?php $facture__tache_2 = $row["devis__tache_2"]; $facture__prix_2 = $row["devis__prix_2"]; ?>
       <?php $facture__tache_3 = $row["devis__tache_3"]; $facture__prix_3 = $row["devis__prix_3"]; ?>
@@ -73,7 +74,7 @@ $date = strftime("%d %B %Y", strtotime($today));
 
       <section class="row l_facture">
         <div class="col l12">
-          <?php include './template_facture/facture__v3/devis.php'; ?>
+          <?php include './template_facture/'.$facture__template.'/devis.php'; ?>
         </div>
       </section>
     </form>

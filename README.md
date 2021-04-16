@@ -4,13 +4,13 @@ Aidez tous les artistes-auteurs de [la Maison des Artistes](https://www.lamaison
 
 # Table des matières
 1. [À propos de Nadine](#à-propos-de-Nadine)
-1. [Tarif](#tarif-:-gratuit-à-vie-!)
+1. [Tarif](#tarif-:-gratuit-à-vie-)
 1. [Installation](#la-fameuse-installation-en-20-minutes)
 1. [Contact](#une-question-?-une-idée-?)
 1. [Roadmap](#roadmap-de-la-disruption)
 
 
-# À propos de Nadine
+## À propos de Nadine
 
 Nadine, c'est vous. C'est le premier logiciel gratuit et open source de compta conçu pour les artistes-auteurs de [la Maison des Artistes](https://www.lamaisondesartistes.fr/) : essayer Nadine, c'est l'adopter. 👍
 

@@ -851,7 +851,8 @@ input.form__input-seperator {
   border-right: 1px solid var(--color-back);
 }
 
-input:disabled {
+input[type=submit]:disabled,
+.form__input--line-through {
   text-decoration: line-through;
   cursor: auto;
   opacity: 0.5;
@@ -989,9 +990,9 @@ input:disabled {
 
 .paper {
   position: relative;
-  width: 900px;
+  width: 800px;
   margin: 0 auto 50px auto;
-  padding-top: 1272px;
+  padding-top: 1130px;
   background: white;
   border-radius: 10px;
   box-shadow: 0 2.8px 2.2px rgba(28, 28, 28, 0.034), 0 6.7px 5.3px rgba(28, 28, 28, 0.048), 0 12.5px 10px rgba(28, 28, 28, 0.06), 0 22.3px 17.9px rgba(28, 28, 28, 0.072), 0 41.8px 33.4px rgba(28, 28, 28, 0.086), 0 100px 80px rgba(28, 28, 28, 0.12);

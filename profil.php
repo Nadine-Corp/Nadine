@@ -121,8 +121,26 @@
           </div>
           <div class="accordion__container">
             <div class="form__input-container">
-              <textarea class="form__input-full" rows="10"></textarea>
-              <textarea class="form__input-full" rows="10"></textarea>
+              <p>Liste des variables :
+                <ul>
+                  <li>{{diffuseur__civilite}}</li>
+                  <li>{{diffuseur__prenom}}</li>
+                  <li>{{diffuseur__nom}}</li>
+                  <li>{{diffuseur__societe}}</li>
+                  <li>{{diffuseur__email}}</li>
+                  <li>{{projet__nom}}</li>
+                  <li>{{profil__societe}}</li>
+                  <li>{{profil__civilite}}</li>
+                  <li>{{profil__prenom}}</li>
+                  <li>{{profil__nom}}</li>
+                  <li>{{profil__numero_secu}}</li>
+                  <li>{{profil__titulaire_du_compte}}</li>
+                  <li>{{profil__iban}}</li>
+                  <li>{{profil__bic}}</li>
+                </ul>
+              </p>
+              <textarea name="profil__msg_devis" class="form__input-full" rows="10"><?php if (!empty( $row["profil__msg_devis"] )) {echo $row["profil__msg_devis"];} ?></textarea>
+              <textarea name="profil__msg_facture" class="form__input-full" rows="10"><?php if (!empty( $row["profil__msg_facture"] )) {echo $row["profil__msg_facture"];} ?></textarea>
             </div>
           </div>
         </div>

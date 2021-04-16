@@ -2,13 +2,27 @@
 
 
 <?php
+
+  /**
+  * Récupérer la date du jour
+  */
+
   date_default_timezone_set('UTC');
   $today = date("Y-m-d");
   setlocale(LC_TIME, "fr_FR","French");
   $date = strftime("%d %B %Y", strtotime($today));
 
 
- /* Créer le numéro de facture */
+  /**
+  * Déduire le gabarit de Facture à utiliser
+  */
+
+  $facture__template = "facture__".date("Y");
+
+
+  /**
+  * Créer le numéro de facture
+  */
 
   $sql = "SELECT MAX(facture__id) AS LastID FROM Factures";
   include './core/query.php'; $result = $conn->query($sql) or die($conn->error);
@@ -17,7 +31,10 @@
     $facture__numero = "FMD." . date("Y"). "." . ( $row["LastID"] + 1 );
   }
 
- /* Récupérer le dernier Profil créer */
+
+  /**
+  * Récupérer le dernier Profil créer
+  */
 
   $sql = "SELECT MAX(profil__id) AS LastProfil FROM Profil";
   include './core/query.php'; $result = $conn->query($sql) or die($conn->error);
@@ -27,22 +44,27 @@
   }
 
 
- /* Récupérer les infos du projet */
+  /**
+  * Récupérer les infos du projet
+  */
 
+  $projet__id = $_GET['projet__id'];
+  $sql = "SELECT * FROM Projets,diffuseurs,Profil WHERE Projets.projet__id='".$projet__id."' AND Projets.diffuseur__id = diffuseurs.diffuseur__id AND Profil.profil__id = '".$profil__id."'";
+  include './core/query.php'; $result = $conn->query($sql) or die($conn->error);
+  if ($result->num_rows > 0):
+  while($row = $result->fetch_assoc()):
+
+
+  /**
+  * Créer le formulaire
+  */
   ?>
-  <?php $projet__id = $_GET['projet__id']; ?>
-  <?php $sql = "SELECT * FROM Projets,diffuseurs,Profil WHERE Projets.projet__id='".$projet__id."' AND Projets.diffuseur__id = diffuseurs.diffuseur__id AND Profil.profil__id = '".$profil__id."'"; ?>
-  <?php include './core/query.php'; $result = $conn->query($sql) or die($conn->error); ?>
-  <?php if ($result->num_rows > 0): ?>
-  <?php while($row = $result->fetch_assoc()):?>
-
-
-
 
   <form class="form" action="./core/add__facture.php" method="post">
 
   <input type="hidden" name="projet__id" placeholder="projet__id" value="<?php echo $projet__id ?>">
   <input type="hidden" name="profil__id" placeholder="projet__id" value="<?php echo $profil__id ?>">
+  <input type="hidden" name="facture__template" placeholder="facture__template" value="<?php echo $facture__template ?>">
   <input type="hidden" name="projet__nom" placeholder="projet__nom" value="<?php echo $row["projet__nom"] ?>">
   <input type="hidden" name="projet__numero" placeholder="projet__numero" value="<?php echo $row["projet__numero"] ?>">
   <input type="hidden" name="diffuseur__id" placeholder="__id" value="<?php echo $row["diffuseur__id"] ?>">
@@ -74,14 +96,14 @@
 
   <section class="row l_facture">
     <div class="col l12">
-      <?php include './template_facture/facture__v3/facture.php'; ?>
+      <?php include './template_facture/'.$facture__template.'/facture.php'; ?>
     </div>
   </section>
 </form>
 
 <?php endwhile; ?>
 <?php else: ?>
-<p>Chef, on a rien trouvé ici...</p>
+<p>Chef, on n'a rien trouvé ici...</p>
 <?php endif; $conn->close(); ?>
 
 <?php include 'footer.php'; ?>

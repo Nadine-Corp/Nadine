@@ -30,7 +30,6 @@
   }
 
 
-
   /**
   * Mise à jour de la base de données
   */
@@ -50,7 +49,6 @@
     include 'query.php'; $result = $conn->query($sql) or die($conn->error); $conn->close();
   }
   $conn->close();
-
 
 
   /**

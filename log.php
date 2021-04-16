@@ -15,9 +15,14 @@
       </thead>
       <tbody>
         <tr>
+          <td width="10%">0.1.054</td>
+          <td width="10%">15.04.2021</td>
+          <td>Retour aux fondamentaux : une petite erreur c'était glissée dans le calcule de la Cotisation Sécurité sociale et de la Cotisation vieillesse plafonnée. Merci à Nathalie de nous avoir prévenues : Nadine a pu corriger ça rapidement. Cela dit, pour le faire proprement, elle dut refondre une partie du code pour mettre en place un nouveau système pour choisir ses gabarits de facture et devis (pour le moment, il n'y en a qu'un de dispo. Un jour, Nadine nous le promet, il y aura pour tout les goûts). Ceci étant fait, c'est ensuite Constance qui a eu une idée pour améliorer les gabarits des emails. Alors Nadine s'est dit que c'était le moment pour refondre aussi ce système-là. Désormais, vous pouvez modifier vous même les gabarits d'emails depuis la page Profil. Merci à tous : grâce à vous, Nadine apprend encore plus vite chaque jour ! Dernière chose : Nadine a refusé ensuite d'apprendre quoi que ce soit. Elle répétait à tort et à cris que 42 changements, c'était parfait. Parfois, Nadine aussi a ses lubies.</td>
+        </tr>
+        <tr>
           <td width="10%">0.1.053</td>
           <td width="10%">09.04.2021</td>
-          <td>Nadine a encore complétée ses bases données. Elle a aussi ajouter un petit texte à l'intention de nouveaux utilisateur (ça, c'est bien notre Nadine : le cœur sur la main. Toujours.). Après, elle c'est dit qu'elle avait bien bosser mais que personne ne verrait la différence. Alors elle c'est concentré sur l'expérience utilisateur. Elle a amélioré mille détails, puis elle a refondu le système de gestion de couleur. Ceci étant fait, elle a put finir la fonction qui permet de changer la couleur de l'interface. Oh ! Et elle a aussi séparée les projets en cours et les projets terminés (voir annulés) pour une meilleure lisibilité. C'est bien maintenant : la vie est encore plus chouette qu'hier !</td>
+          <td>Nadine a encore complété ses bases données. Elle a aussi ajouté un petit texte à l'intention de nouveaux utilisateurs (ça, c'est bien notre Nadine : le cœur sur la main. Toujours.). Après, elle s'est dit qu'elle avait bien bossé mais que personne ne verrait la différence. Alors elle s'est concentrée sur l'expérience utilisateur. Elle a amélioré mille détails, puis elle a refondu le système de gestion de couleur. Ceci étant fait, elle a pu finir la fonction qui permet de changer la couleur de l'interface. Oh ! Et elle a aussi séparé les projets en cours et les projets terminés (voir annulés) pour une meilleure lisibilité. C'est bien maintenant : la vie est encore plus chouette qu'hier !</td>
         </tr>
         <tr>
           <td width="10%">0.1.052</td>
