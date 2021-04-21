@@ -81,7 +81,7 @@ $date = strftime("%d %B %Y", strtotime($today));
 
     <?php endwhile; ?>
   <?php else: ?>
-    <p>Chef, on a rien trouvé ici...</p>
+    <p>Chef, on n'a rien trouvé ici...</p>
   <?php endif; $conn->close(); ?>
 
   <?php include 'footer.php'; ?>

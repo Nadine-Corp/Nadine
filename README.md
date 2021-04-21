@@ -12,17 +12,17 @@ Aidez tous les artistes-auteurs de [la Maison des Artistes](https://www.lamaison
 
 ## À propos de Nadine
 
-Nadine, c'est vous. C'est le premier logiciel gratuit et open source de compta conçu pour les artistes-auteurs de [la Maison des Artistes](https://www.lamaisondesartistes.fr/) : essayer Nadine, c'est l'adopter. 👍
+Nadine, c'est quoi ? Nadine, c'est vous ! C'est le premier logiciel gratuit et open source de compta conçu pour les artistes-auteurs de [la Maison des Artistes](https://www.lamaisondesartistes.fr/) : essayer Nadine, c'est l'adopter. 👍
 
 ## Tarif : gratuit à vie !
 
-Nadine, ce n'est pas une arnaque : c'est gratuit et le restera pour toute la vie. Jamais elle ne vous quittera.
+Il n'y a pas d'arnaque : Nadine, c'est gratuit et le restera pour toute la vie. Jamais elle ne vous quittera.
 
 ## La Fameuse installation en 20 minutes
 
 Toutes les équipes de [NadineCorp©](http://nadinecorp.net/) travaillent dur pour rendre Nadine chaque jour plus simple a utiliser. En attendant, vous allez devoir mériter le bonheur quotidien de travailler avec Nadine. Courage !
 
-1. Installez d'un serveur Apache en Localhost. Rien de compliqué : pour Windows, installez [Wamp](https://www.wampserver.com/) (avec un W comme dans *Windows*), pour MacOS, installez [Mamp](https://www.mamp.info/en/downloads/) (avec un M comme dans *MacOS*) et pour Linux, installez [Xampp](https://www.apachefriends.org/fr/index.html) (avec un X comme dans *Xénophobe*).
+1. Installez un serveur Apache en Localhost. Rien de compliqué : pour Windows, installez [Wamp](https://www.wampserver.com/) (avec un W comme dans *Windows*), pour MacOS, installez [Mamp](https://www.mamp.info/en/downloads/) (avec un M comme dans *MacOS*) et pour Linux, installez [Xampp](https://www.apachefriends.org/fr/index.html) (avec un X comme dans *Xénophobe*).
 1. Grace à votre nouveau logiciel (aka [Wamp](https://www.wampserver.com/), [Mamp](https://www.mamp.info/en/downloads/) ou [Xampp](https://www.apachefriends.org/fr/index.html)), [apprenez et créez une base de données](https://www.google.com/search?q=comment+cr%C3%A9er+une+base+de+donn%C3%A9e+avec+wamp). Vous pouvez l'appeler *nadine* si vous le souhaitez.
 1. [Téléchargez la dernière version de Nadine](https://github.com/Nadine-Corp/Nadine/archive/main.zip) au format zip, puis déposez cette archive dans le dossier *www* ou *htdocs* de votre nouveau serveur Apache. Dézippez Nadine.
 1. Dans les fichiers de Nadine que vous venez de désarchivez, retrouver le fichier */core/config.php*. Ouvrez-le avec le Bloc-Note (ou n'importe quelle application de traitement de texte), puis modifier les valeurs  *$servername = "localhost"*, *$username = "root"*, *$password = ""*, *$dbname = "nadine"* en fonction de la configuration de votre nouveau serveur.

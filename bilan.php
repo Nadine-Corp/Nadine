@@ -64,7 +64,7 @@
     <?php endwhile; ?>
   </table>
   <?php else: ?>
-      <p>Chef, on a pas trouvé de projet cette année...</p>
+      <p>Chef, on n'a pas trouvé de projet cette année...</p>
   <?php endif; $conn->close(); ?>
 </div>
 </section>

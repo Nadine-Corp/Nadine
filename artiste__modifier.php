@@ -40,7 +40,7 @@
 
     <?php endwhile; ?>
     <?php else: ?>
-      <p>Chef, on a pas trouvé de projets...</p>
+      <p>Chef, on n'a pas trouvé de projets...</p>
     <?php endif; $conn->close(); ?>
   </div>
 </section>

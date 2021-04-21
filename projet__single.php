@@ -37,7 +37,7 @@
           <?php endwhile; ?>
         <?php else: ?>
           <section class="row">
-            <p class="body">Chef, on a pas trouvé de diffuseur pour ce projet...</p>
+            <p class="body">Chef, on n'a pas trouvé de diffuseur pour ce projet...</p>
           </section>
         <?php endif; $conn->close(); ?>
 
@@ -79,7 +79,7 @@
               </tbody>
             </table>
           <?php else: ?>
-            <p class="body">Chef, on a pas trouvé de devis...</p>
+            <p class="body">Chef, on n'a pas trouvé de devis...</p>
           <?php endif; $conn->close(); ?>
           <a href="./devis__new?projet__id=<?php echo $projet__id ?>" class="btn btn--plain">Ajouter un devis</a>
         </div>
@@ -121,7 +121,7 @@
               </tbody>
             </table>
           <?php else: ?>
-            <p class="body">Chef, on a pas trouvé de factures...</p>
+            <p class="body">Chef, on n'a pas trouvé de factures...</p>
           <?php endif; $conn->close(); ?>
           <a href="./facture__new?projet__id=<?php echo $projet__id ?>" class="btn btn--plain">Ajouter une facture</a>
         </div>

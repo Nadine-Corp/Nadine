@@ -29,7 +29,7 @@
             </div>
           </div>
           <div class="accordion__container">
-            <div class="form__input-container">
+            <div class="form__input-container body">
               <input type="text" name="civilite" placeholder="Civilité" class="form__input-full" <?php if (!empty( $row["profil__civilite"] )) {echo 'value="'.$row["profil__civilite"].'""';} ?> >
               <input type="text" name="prenom" placeholder="Prénom" class="form__input-half form__input-seperator" <?php if (!empty( $row["profil__prenom"] )) {echo 'value="'.$row["profil__prenom"].'""';} ?> >
               <input type="text" name="nom" placeholder="Nom" class="form__input-half" <?php if (!empty( $row["profil__nom"] )) {echo 'value="'.$row["profil__nom"].'""';} ?> >
@@ -61,21 +61,21 @@
           </div>
           <div class="accordion__container">
             <div class="form__slider-container">
-            <p class="lead_paragraph">Êtes assujetti⸱e au précompte ?</p>
-            <span>Non</span>
-            <label class="switch">
-              <?php
-                if($row["profil__precompte"] == "1"){
-                  echo '<input name="precompte" type="checkbox" checked>';
-                }else{
-                  echo '<input name="precompte" type="checkbox">';
-                };
-               ?>
-              <span class="slider  is--fullsize round"></span>
-            </label>
-            <span>Oui</span>
+              <p class="lead_paragraph">Êtes-vous assujetti⸱e au précompte ?</p>
+              <span>Non</span>
+              <label class="switch">
+                <?php
+                  if($row["profil__precompte"] == "1"){
+                    echo '<input name="precompte" type="checkbox" checked>';
+                  }else{
+                    echo '<input name="precompte" type="checkbox">';
+                  };
+                 ?>
+                <span class="slider  is--fullsize round"></span>
+              </label>
+              <span>Oui</span>
             </div>
-            <div class="form__input-container">
+            <div class="form__input-container body">
               <input type="text" name="numero_secu" placeholder="N° de Sécurité sociale" class="form__input-half form__input-seperator" <?php if (!empty( $row["profil__numero_secu"] )) {echo 'value="'.$row["profil__numero_secu"].'""';} ?> >
               <input type="text" name="numero_mda" placeholder="N° MDA" class="form__input-half" <?php if (!empty( $row["profil__numero_mda"] )) {echo 'value="'.$row["profil__numero_mda"].'""';} ?> >
             </div>
@@ -97,7 +97,7 @@
             </div>
           </div>
           <div class="accordion__container">
-            <div class="form__input-container">
+            <div class="form__input-container body">
               <input type="text" name="titulaire_du_compte" placeholder="Titulaire du compte" class="form__input-full" <?php if (!empty( $row["profil__titulaire_du_compte"] )) {echo 'value="'.$row["profil__titulaire_du_compte"].'""';} ?> >
               <input type="text" name="iban" placeholder="IBAN" class="form__input-half form__input-seperator" <?php if (!empty( $row["profil__iban"] )) {echo 'value="'.$row["profil__iban"].'""';} ?> >
               <input type="text" name="bic" placeholder="BIC" class="form__input-half" <?php if (!empty( $row["profil__bic"] )) {echo 'value="'.$row["profil__bic"].'""';} ?> >
@@ -120,7 +120,7 @@
             </div>
           </div>
           <div class="accordion__container">
-            <div class="form__input-container">
+            <div class="form__input-container body">
               <p>Liste des variables :
                 <ul>
                   <li>{{diffuseur__civilite}}</li>

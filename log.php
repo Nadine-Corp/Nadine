@@ -15,6 +15,11 @@
       </thead>
       <tbody>
         <tr>
+          <td width="10%">0.1.055</td>
+          <td width="10%">21.04.2021</td>
+          <td>Manches remontées, Nadine a tapé joyeusement dans le code avec ardeur. Elle commence par remplacer le Poppin par le Nimbus (et affiner un peu la gestion des textes). Puis elle n'a rien lâché : elle a enchainé (comme Kool Shen) en refondant la page de création des projets. Désormais, tous les paramètres s'affichent pour contrôler les rétrocessions et les ventes à un particulier. La version 0.2 se rapproche doucement. Mais Nadine n'en ai pas resté pas là : elle a encore retapé ses bases de données pour accueillir les nouveaux paramètres. Après (même si c'était pénible), elle a commencé à changer les scripts d'ajout de modification de projet ainsi que l'interface de modification des projets). Merci Nadine. C'est toi la plus forte.</td>
+        </tr>
+        <tr>
           <td width="10%">0.1.054</td>
           <td width="10%">15.04.2021</td>
           <td>Retour aux fondamentaux : une petite erreur c'était glissée dans le calcule de la Cotisation Sécurité sociale et de la Cotisation vieillesse plafonnée. Merci à Nathalie de nous avoir prévenues : Nadine a pu corriger ça rapidement. Cela dit, pour le faire proprement, elle dut refondre une partie du code pour mettre en place un nouveau système pour choisir ses gabarits de facture et devis (pour le moment, il n'y en a qu'un de dispo. Un jour, Nadine nous le promet, il y aura pour tout les goûts). Ceci étant fait, c'est ensuite Constance qui a eu une idée pour améliorer les gabarits des emails. Alors Nadine s'est dit que c'était le moment pour refondre aussi ce système-là. Désormais, vous pouvez modifier vous même les gabarits d'emails depuis la page Profil. Merci à tous : grâce à vous, Nadine apprend encore plus vite chaque jour ! Dernière chose : Nadine a refusé ensuite d'apprendre quoi que ce soit. Elle répétait à tort et à cris que 42 changements, c'était parfait. Parfois, Nadine aussi a ses lubies.</td>
