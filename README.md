@@ -2,11 +2,14 @@
 
 Aidez tous les artistes-auteurs de [la Maison des Artistes](https://www.lamaisondesartistes.fr/) à trouver Nadine dans l'immensité du web : mettez une étoile ⭐ à ce projet !
 
+
+
+
 # Table des matières
-1. [À propos de Nadine](#à-propos-de-Nadine)
-1. [Tarif](#tarif-:-gratuit-à-vie-)
+1. [À propos de Nadine](#à-propos-de-nadine)
+1. [Tarif](#tarif--gratuit-à-vie-)
 1. [Installation](#la-fameuse-installation-en-20-minutes)
-1. [Contact](#une-question-?-une-idée-?)
+1. [Contact](#une-question--une-idée-)
 1. [Roadmap](#roadmap-de-la-disruption)
 
 
