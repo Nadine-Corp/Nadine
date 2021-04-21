@@ -1,8 +1,9 @@
+![Sans-titre-1](https://user-images.githubusercontent.com/74113050/115491154-7976f800-a22d-11eb-99b1-862eaf5fdf0a.jpg)
+
+
 # Vous aussi : aimez Nadine.
 
 Aidez tous les artistes-auteurs de [la Maison des Artistes](https://www.lamaisondesartistes.fr/) à trouver Nadine dans l'immensité du web : mettez une étoile ⭐ à ce projet !
-
-
 
 
 # Table des matières
@@ -41,8 +42,8 @@ Tenez-vous au courant des annonces de [NadineCorp©](http://nadinecorp.net/) gr�
 
 ## Roadmap de la Disruption
 
-- [x] Version Alpha 0.1 : éditer, sauver et modifier des devis ou factures par projet. Donc gérer aussi les diffuseurs.
-- [ ] Version Alpha 0.2 : simplifier la déclaration annuelle à l'[URSAAF](https://www.artistes-auteurs.urssaf.fr/). Donc gérer aussi les rétrocessions et les artistes, le précompte, la vente à des privés, etc..
+- [x] Version Alpha 0.1 : éditer, sauver et modifier des devis ou factures par projet. Donc gérer les projets, mais aussi les diffuseurs.
+- [ ] Version Alpha 0.2 : simplifier la déclaration annuelle à l'[URSSAF](https://www.artistes-auteurs.urssaf.fr/). Donc gérer aussi les rétrocessions et les artistes, le précompte, la vente à des privés, etc..
 - [ ] Version Alpha 0.3 : permettre d'installer facilement Nadine et pouvoir y accéder de partout. Donc pouvoir installer sur un serveur en ligne, gérer des comptes utilisateur, des mots de passe, garantir le secret bancaire, etc.
 - [ ] Version Alpha 0.4 : permettre de mettre à jour Nadine automatiquement.
 - [ ] Objectif ultime : rendre le monde meilleur.
