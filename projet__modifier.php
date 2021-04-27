@@ -63,7 +63,7 @@ if ($result->num_rows > 0):
     endif;
     ?>
 
-    <form class="form" action="./core/modifier__projet.php" method="post">
+    <form class="form" action="./core/update__projet.php" method="post">
 
       <section class="toolbar is--sticky">
         <div class="toolbar__container">
@@ -153,7 +153,7 @@ if ($result->num_rows > 0):
               <p class="lead_paragraph">Êtes-vous plusieurs Artistes-Auteurs à travailler sur ce projet ?</p>
               <span>Non</span>
               <label class="switch">
-                <input name="precompte" type="checkbox">
+                <input name="retrocession" type="checkbox">
                 <span class="slider  is--fullsize round"></span>
               </label>
               <span>Oui</span>
@@ -162,7 +162,7 @@ if ($result->num_rows > 0):
               <p class="lead_paragraph">Êtes-vous le porteur du projet ? Est-ce vous qui allez facturer au diffuseur ?</p>
               <span>Non</span>
               <label class="switch">
-                <input name="precompte" type="checkbox">
+                <input name="porteurduprojet" type="checkbox">
                 <span class="slider  is--fullsize round"></span>
               </label>
               <span>Oui</span>

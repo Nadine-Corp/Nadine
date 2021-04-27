@@ -7,13 +7,13 @@
   </div>
   <div class="col l12">
 
-    <?php  $diffuseur__id = $_GET['__id']; ?>
+    <?php  $diffuseur__id = $_GET['diffuseur__id']; ?>
     <?php $sql = "SELECT * FROM Diffuseurs WHERE diffuseur__id ='".$diffuseur__id."'"; ?>
     <?php include './core/query.php'; $result = $conn->query($sql) or die($conn->error); ?>
     <?php if ($result->num_rows > 0): ?>
       <?php while($row = $result->fetch_assoc()):?>
 
-      <form class="form body" action="./core/modifier__diffuseur.php" method="post">
+      <form class="form body" action="./core/update__diffuseur.php" method="post">
         <div class="form__input-container">
           <input type="hidden" name="diffuseur__id" placeholder="Id " class="form__input-full" value="<?php echo $row["diffuseur__id"] ?>">
           <input type="text" name="societe" placeholder="Société" class="form__input-half form__input-seperator" value="<?php echo $row["diffuseur__societe"] ?>">

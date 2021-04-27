@@ -23,6 +23,10 @@
 
   <div class="col l12">
     <h2 class="lead_paragraph">Projets en cours</h2>
+  </div>
+
+  <div class="col l12">
+
     <?php $sql = "SELECT * FROM Projets, Diffuseurs
     WHERE Projets.diffuseur__id = Diffuseurs.diffuseur__id
     AND Projets.projet__statut = 'Projet en cours'
@@ -87,6 +91,9 @@
 
   <div class="col l12">
     <h2 class="lead_paragraph">Projets terminés ou annulés</h2>
+  </div>
+
+  <div class="col l12">
     <?php $sql = "SELECT * FROM Projets, Diffuseurs
     WHERE Projets.diffuseur__id = Diffuseurs.diffuseur__id
     AND Projets.projet__statut != 'Projet en cours'

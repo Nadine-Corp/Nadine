@@ -1,4 +1,13 @@
 <?php
+
+// Ce fichier permet de créer de nouveaux artistes
+// et de les ajouter à la base donnée
+
+
+/**
+* Récuparation des valeurs
+*/
+
   $artiste__societe =  addslashes($_POST['societe']);
   $artiste__siret =  addslashes($_POST['siret']);
   $artiste__civilite =  addslashes($_POST['civilite']);
@@ -14,9 +23,20 @@
   $artiste__website =  addslashes($_POST['website']);
 
 
+
+/**
+* Mettre à jour la base de données
+*/
+
   $sql = "INSERT INTO artistes ( artiste__societe, artiste__siret, artiste__civilite, artiste__prenom, artiste__nom, artiste__numero_secu, artiste__numero_mda, artiste__adresse, artiste__code_postal, artiste__ville, artiste__telephone, artiste__email, artiste__website)
   VALUES ('$artiste__societe', '$artiste__siret', '$artiste__civilite', '$artiste__prenom', '$artiste__nom', '$artiste__numero_secu', '$artiste__numero_mda', '$artiste__adresse', '$artiste__code_postal', '$artiste__ville', '$artiste__telephone', '$artiste__email', '$artiste__website')";
   include 'query.php'; $result = $conn->query($sql) or die($conn->error);
+
+
+
+/**
+* Redirection vers la page Artites
+*/
 
   header('Location: ../artistes.php');
 ?>

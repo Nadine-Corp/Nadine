@@ -138,7 +138,7 @@ endif; $conn->close();
           <p class="lead_paragraph">Êtes-vous plusieurs Artistes-Auteurs à travailler sur ce projet ?</p>
           <span>Non</span>
           <label class="switch">
-            <input name="precompte" type="checkbox">
+            <input name="retrocession" type="checkbox">
             <span class="slider  is--fullsize round"></span>
           </label>
           <span>Oui</span>
@@ -147,7 +147,7 @@ endif; $conn->close();
           <p class="lead_paragraph">Êtes-vous le porteur du projet ? Est-ce vous qui allez facturer au diffuseur ?</p>
           <span>Non</span>
           <label class="switch">
-            <input name="precompte" type="checkbox">
+            <input name="porteurduprojet" type="checkbox">
             <span class="slider  is--fullsize round"></span>
           </label>
           <span>Oui</span>

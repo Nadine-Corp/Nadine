@@ -3,11 +3,13 @@
   // Le fichier init.php permet de reset de la base donnée et de repartir à zéro
 
 
+
   /**
   *  Importation des paramètres
   */
 
   include 'config.php';
+
 
 
   /**
@@ -18,6 +20,7 @@
   $conn = new mysqli($servername, $username, $password);
   if ($conn->connect_error) {die("Connection failed: " . $conn->connect_error);}
   $result = $conn->query($sql) or die($conn->error);
+
 
 
   /**
@@ -31,11 +34,13 @@
   $result = $conn->query($sql) or die($conn->error);
 
 
+
   /**
   *  Paramètre de création des Tables
   */
 
   $interclassement = "utf8mb4_unicode_ci";
+
 
 
   /**
@@ -54,6 +59,7 @@
   $sql = "INSERT INTO options ( option__nom, option__valeur)
   VALUES ('option__couleur','rouge-trash')";
   include 'query.php'; $result = $conn->query($sql) or die($conn->error);
+
 
 
   /**
@@ -77,6 +83,7 @@
   diffuseur__notes VARCHAR(255) COLLATE '$interclassement'
   )";
   include 'query.php'; $result = $conn->query($sql) or die($conn->error);
+
 
 
   /**
@@ -104,6 +111,7 @@
   include 'query.php'; $result = $conn->query($sql) or die($conn->error);
 
 
+
   /**
   *  Création de la table Projets
   */
@@ -125,6 +133,7 @@
   artiste__id VARCHAR(255) COLLATE '$interclassement'
   )";
   include 'query.php'; $result = $conn->query($sql) or die($conn->error);
+
 
 
   /**
@@ -174,6 +183,7 @@
   include 'query.php'; $result = $conn->query($sql) or die($conn->error);
 
 
+
   /**
   *  Création de la table Devis
   */
@@ -221,6 +231,7 @@
   include 'query.php'; $result = $conn->query($sql) or die($conn->error);
 
 
+
   /**
   *  Création de la table Profil
   */
@@ -250,6 +261,11 @@
   include 'query.php'; $result = $conn->query($sql) or die($conn->error);
 
 
+
+  /**
+  *  Redirection vers la page index.php pour que l'utilisateur
+  *  entre des infos pour créer son premier profil.
+  */
 
 header('Location: ../index.php');
 ?>

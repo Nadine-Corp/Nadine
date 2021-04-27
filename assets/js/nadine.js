@@ -17,7 +17,7 @@ $( document ).ready(function() {
 
 	$(".l-header__btn-color").click(function(){
 		$.ajax({
-			url : './core/modifier__option-couleur.php',
+			url : './core/update__option-couleur.php',
 			type: 'GET',
 			success:function( newColor ) {
 				if(newColor){

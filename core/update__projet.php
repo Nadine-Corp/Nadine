@@ -1,5 +1,8 @@
 <?php
 
+// Ce fichier permet de modifier un projet existant
+
+
   /**
   * Récuparation des variables
   */
@@ -17,6 +20,46 @@
   $diffuseur__societe =  addslashes($diffuseur__societe[0]);
 
 
+
+  /**
+  * Traitement Checkbox Précompte
+  */
+
+  if( isset($_POST['precompte'])){
+    $projet__precompte = '1';
+  } else {
+    $projet__precompte = '0';
+  };
+  echo $projet__precompte;
+
+
+
+  /**
+  * Traitement Checkbox Rétrocession
+  */
+
+  if( isset($_POST['retrocession'])){
+    $projet__retrocession = '1';
+  } else {
+    $projet__retrocession = '0';
+  };
+  echo $projet__retrocession;
+
+
+
+  /**
+  * Traitement Checkbox Porteur du projet
+  */
+
+  if( isset($_POST['porteurduprojet'])){
+    $projet__porteurduprojet = '1';
+  } else {
+    $projet__porteurduprojet = '0';
+  };
+  echo $projet__porteurduprojet;
+
+
+
   /**
   * Convertion des diffuseur__societe en diffuseur__id
   */
@@ -30,12 +73,13 @@
   }
 
 
+
   /**
   * Mise à jour de la base de données
   */
 
   $sql = "UPDATE Projets
-  SET projet__nom = '$projet__nom', projet__date_de_creation = '$projet__date_de_creation', projet__statut = '$projet__statut', diffuseur__id = '$diffuseur__id'
+  SET projet__nom = '$projet__nom', precompte = '$precompte', retrocession = '$retrocession', porteurduprojet = '$porteurduprojet', projet__date_de_creation = '$projet__date_de_creation', projet__statut = '$projet__statut', diffuseur__id = '$diffuseur__id'
   WHERE projet__id = $projet__id";
   include 'query.php'; $result = $conn->query($sql) or die($conn->error); $conn->close();
 
@@ -49,6 +93,7 @@
     include 'query.php'; $result = $conn->query($sql) or die($conn->error); $conn->close();
   }
   $conn->close();
+
 
 
   /**

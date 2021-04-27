@@ -15,7 +15,7 @@ $date = strftime("%d %B %Y", strtotime($today));
 <?php if ($result->num_rows > 0): ?>
   <?php while($row = $result->fetch_assoc()):?>
 
-    <form class="form" action="./core/modifier__devis.php" method="post">
+    <form class="form" action="./core/update__devis.php" method="post">
 
       <?php $facture__numero = $row["devis__numero"]; ?>
       <?php $facture__template = $row["facture__template"]; ?>

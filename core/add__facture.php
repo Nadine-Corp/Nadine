@@ -4,6 +4,7 @@
 // et de les ajouter à la base donnée
 
 
+
 /**
 * Récuparation des valeurs
 */
@@ -45,6 +46,7 @@ $facture__prix_7 =  addslashes($_POST['facture__prix_7']);
 $facture__total =  addslashes($_POST['facture__total']);
 
 
+
 /**
 * Mettre à jour la base de données
 */
@@ -52,6 +54,7 @@ $facture__total =  addslashes($_POST['facture__total']);
 $sql = "INSERT INTO Factures ( projet__id, profil__id, facture__template, projet__nom, projet__numero, diffuseur__id, diffuseur__societe, diffuseur__siret, diffuseur__civilite, diffuseur__prenom, diffuseur__nom, diffuseur__adresse, diffuseur__code_postal, diffuseur__ville, diffuseur__telephone, diffuseur__email, diffuseur__website, facture__statut, facture__date, facture__numero, facture__tache_1, facture__tache_2, facture__tache_3, facture__tache_4, facture__tache_5, facture__tache_6, facture__tache_7, facture__prix_1, facture__prix_2, facture__prix_3, facture__prix_4, facture__prix_5, facture__prix_6, facture__prix_7, facture__total )
 VALUES ('$projet__id', '$profil__id', '$facture__template', '$projet__nom', '$projet__numero', '$diffuseur__id', '$diffuseur__societe', '$diffuseur__siret', '$diffuseur__civilite', '$diffuseur__prenom', '$diffuseur__nom', '$diffuseur__adresse', '$diffuseur__code_postal', '$diffuseur__ville', '$diffuseur__telephone', '$diffuseur__email', '$diffuseur__website', '$facture__statut', '$facture__date', '$facture__numero', '$facture__tache_1', '$facture__tache_2', '$facture__tache_3', '$facture__tache_4', '$facture__tache_5', '$facture__tache_6', '$facture__tache_7', '$facture__prix_1', '$facture__prix_2', '$facture__prix_3', '$facture__prix_4', '$facture__prix_5', '$facture__prix_6', '$facture__prix_7', '$facture__total')";
 include 'query.php'; $result = $conn->query($sql) or die($conn->error);
+
 
 
 /**

@@ -40,6 +40,7 @@ if( isset($_POST['precompte'])){
 echo $profil__precompte;
 
 
+
 /**
 * Mise à jour de la base de données
 */
@@ -47,6 +48,7 @@ echo $profil__precompte;
 $sql = "INSERT INTO profil (profil__societe, profil__siret, profil__civilite, profil__prenom, profil__nom, profil__adresse, profil__code_postal, profil__ville, profil__telephone, profil__email, profil__website, profil__numero_secu, profil__numero_mda, profil__precompte, profil__titulaire_du_compte, profil__iban, profil__bic, profil__msg_devis, profil__msg_facture)
 VALUES ('$profil__societe', '$profil__siret', '$profil__civilite', '$profil__prenom', '$profil__nom', '$profil__adresse', '$profil__code_postal', '$profil__ville', '$profil__telephone', '$profil__email', '$profil__website', '$profil__numero_secu', '$profil__numero_mda', $profil__precompte, '$profil__titulaire_du_compte', '$profil__iban', '$profil__bic', '$profil__msg_devis', '$profil__msg_facture')";
 include 'query.php'; $result = $conn->query($sql) or die($conn->error); $conn->close();
+
 
 
 /**

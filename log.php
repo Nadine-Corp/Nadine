@@ -3,6 +3,7 @@
 <section class="row">
   <div class="col l12">
     <h1 class="display1">Journal de dévéloppement</h1>
+    <p>Nadine est constamant mise à jour : vérifiez de temps en temps qu'une nouvelle version n'est pas sortie sur <a href="https://github.com/Nadine-Corp/Nadine/commits/main" target="_blank">github.com/Nadine-Corp</a>. Vous pouvez aussi partager vos idées pour améliorer le design ou certaines fonctions : n'hésitez pas à envoyer un message à bonjour@nadineclub.net ou passer au <a href="https://discord.gg/Fg2m8gvdWR" target="_blank">NadineClub©</a>.</p>
   </div>
   <div class="col l12">
     <table class="table body">
@@ -14,6 +15,11 @@
         </tr>
       </thead>
       <tbody>
+        <tr>
+          <td width="10%">0.1.056</td>
+          <td width="10%">27.04.2021</td>
+          <td>Nadine a commencé sa journée en essayant de convertir le journal de développement au format CSV et d'améliorer l'arborescence des fichiers. Tout ne s'est pas tout à fait passé comme prévu, mais Nadine a compris que ce chantier pourra se terminer qu'entre la 0.2 et la 0.3 (une histoire de rooter et de MVC). Elle a quand même rangé un peu ses affaires. Ensuite, elle a fini les scripts permettant de gérer les rétrocessions et les ventes à un particulier. Comme ceci était fait, elle a amélioré (un peu) l'interface des projets. Désormais, de nouvelles informations concernant le projet s'affichent à l'écran et un nouveau bouton permettant de modifier directement les coordonnées du diffuseur a été ajouté.</td>
+        </tr>
         <tr>
           <td width="10%">0.1.055</td>
           <td width="10%">21.04.2021</td>

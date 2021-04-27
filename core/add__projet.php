@@ -17,6 +17,45 @@
 
 
   /**
+  * Traitement Checkbox Précompte
+  */
+
+  if( isset($_POST['precompte'])){
+    $projet__precompte = '1';
+  } else {
+    $projet__precompte = '0';
+  };
+  echo $projet__precompte;
+
+
+
+  /**
+  * Traitement Checkbox Rétrocession
+  */
+
+  if( isset($_POST['retrocession'])){
+    $projet__retrocession = '1';
+  } else {
+    $projet__retrocession = '0';
+  };
+  echo $projet__retrocession;
+
+
+
+  /**
+  * Traitement Checkbox Porteur du projet
+  */
+
+  if( isset($_POST['porteurduprojet'])){
+    $projet__porteurduprojet = '1';
+  } else {
+    $projet__porteurduprojet = '0';
+  };
+  echo $projet__porteurduprojet;
+
+
+
+  /**
   * Convertion des diffuseur__societe en diffuseur__id
   */
 
@@ -53,8 +92,8 @@
   * Insertion dans la base donnée
   */
 
-  $sql = "INSERT INTO Projets ( projet__nom, projet__date_de_creation, projet__statut, diffuseur__id, artiste__id)
-  VALUES ('$projet__nom', '$projet__date_de_creation', '$projet__statut', '$diffuseur__id', '$artiste__id')";
+  $sql = "INSERT INTO Projets ( projet__nom, retrocession, retrocession, porteurduprojet, projet__date_de_creation, projet__statut, diffuseur__id, artiste__id)
+  VALUES ('$projet__nom', '$retrocession', '$retrocession', '$porteurduprojet', '$projet__date_de_creation', '$projet__statut', '$diffuseur__id', '$artiste__id')";
   include 'query.php'; $result = $conn->query($sql) or die($conn->error);
 
   $conn->close();
