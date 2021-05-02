@@ -2,7 +2,6 @@
 
 
 <?php
-
   /**
   * Récupérer la date du jour
   */

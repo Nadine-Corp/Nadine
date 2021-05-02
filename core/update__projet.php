@@ -30,7 +30,6 @@
   } else {
     $projet__precompte = '0';
   };
-  echo $projet__precompte;
 
 
 
@@ -43,7 +42,6 @@
   } else {
     $projet__retrocession = '0';
   };
-  echo $projet__retrocession;
 
 
 
@@ -52,11 +50,10 @@
   */
 
   if( isset($_POST['porteurduprojet'])){
-    $projet__porteurduprojet = '1';
+    $porteurduprojet = '1';
   } else {
     $projet__porteurduprojet = '0';
   };
-  echo $projet__porteurduprojet;
 
 
 
@@ -79,7 +76,7 @@
   */
 
   $sql = "UPDATE Projets
-  SET projet__nom = '$projet__nom', precompte = '$precompte', retrocession = '$retrocession', porteurduprojet = '$porteurduprojet', projet__date_de_creation = '$projet__date_de_creation', projet__statut = '$projet__statut', diffuseur__id = '$diffuseur__id'
+  SET projet__nom = '$projet__nom', projet__precompte = '$projet__precompte', projet__retrocession = '$projet__retrocession', projet__porteurduprojet = '$projet__porteurduprojet', projet__date_de_creation = '$projet__date_de_creation', projet__statut = '$projet__statut', diffuseur__id = '$diffuseur__id'
   WHERE projet__id = $projet__id";
   include 'query.php'; $result = $conn->query($sql) or die($conn->error); $conn->close();
 

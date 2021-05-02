@@ -46,3 +46,31 @@
     box-shadow: 0 0.938em 2.188em rgba($color,.15),0 0.313em 0.938em rgba($color,.1)
   @else if $level == 100
     box-shadow: 0 2.8px 2.2px rgba($color, 0.034),0 6.7px 5.3px rgba($color, 0.048),0 12.5px 10px rgba($color, 0.06),0 22.3px 17.9px rgba($color, 0.072),0 41.8px 33.4px rgba($color, 0.086),0 100px 80px rgba($color, 0.12)
+
+
+
+// La fonction for-size permet de changer l'affichage des élèments en fonction
+  de la taille de l'écran de l'utilisateur.
+  Exemple de SASS :
+    div
+      display: block
+      @include for-size(phone-only)
+        display: none
+
+
+@mixin for-size($size)
+  @if $size == smartphone
+    @media (max-width: 599px)
+      @content
+  @else if $size == tablette-portrait
+    @media (min-width: 600px)
+      @content
+  @else if $size == tablette-paysage
+    @media (min-width: 900px)
+      @content
+  @else if $size == desktop
+    @media (min-width: 1200px)
+      @content
+  @else if $size == big-desktop
+    @media (min-width: 1800px)
+      @content

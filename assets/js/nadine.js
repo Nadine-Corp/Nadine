@@ -46,10 +46,21 @@ $( document ).ready(function() {
 		}
 	});
 
+
 	// Table Shorter
 
 	$(".table").tablesorter();
 
+
+	// Facture : active le bouton Enregistrer si c'est passer une facturer
+	// à l'état Payée
+
+	$("input[name=facture__statut]").on('input', function() {
+	    var factureStatut = $(this).val();
+			if (factureStatut == "Payée") {
+				$("input[type=submit]").prop("disabled", false);
+			}
+	});
 
 	// Barre de recherche
 

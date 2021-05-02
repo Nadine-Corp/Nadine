@@ -1,0 +1,27 @@
+// main: ../../../style.sass
+
+  Ce fichier permet de controler l'affichage d'un message sur les smartphones
+  afin de conseiler à nos aimbables utilisateurs de bien vouloir utiliser
+  Nadine uniqument sur leurs ordinateurs.
+
+.l-msg-smartphone
+  display: none
+  position: fixed
+  background: var(--color-accent)
+  z-index: 9000
+
+  & > div
+    height: 50%
+
+  .divider
+    background: var(--color-principale)
+
+  @include for-size(smartphone)
+    display: block
+
+.l-msg-smartphone__logo
+  position: relative
+  svg
+    position: absolute
+    width: 150px
+    bottom: 0

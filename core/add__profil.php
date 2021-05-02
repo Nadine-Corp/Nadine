@@ -37,7 +37,6 @@ if( isset($_POST['precompte'])){
 } else {
   $profil__precompte = '0';
 };
-echo $profil__precompte;
 
 
 

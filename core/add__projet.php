@@ -25,7 +25,6 @@
   } else {
     $projet__precompte = '0';
   };
-  echo $projet__precompte;
 
 
 
@@ -38,7 +37,6 @@
   } else {
     $projet__retrocession = '0';
   };
-  echo $projet__retrocession;
 
 
 
@@ -51,7 +49,6 @@
   } else {
     $projet__porteurduprojet = '0';
   };
-  echo $projet__porteurduprojet;
 
 
 

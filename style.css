@@ -670,7 +670,7 @@ em {
 
 .subheading, .subheading * {
   font-size: 32px;
-  line-height: 40px;
+  line-height: 32px;
   font-weight: 600;
   letter-spacing: -2px;
 }
@@ -958,43 +958,52 @@ input[type=submit]:disabled,
   padding: 16px;
 }
 
-@media (min-width: 992px) {
-  .l1 {
-    width: 8.33%;
-  }
-  .l2 {
-    width: 16.66%;
-  }
-  .l3 {
-    width: 25%;
-  }
-  .l4 {
-    width: 33.33%;
-  }
-  .l5 {
-    width: 41.66%;
-  }
-  .l6 {
-    width: 50%;
-  }
-  .l7 {
-    width: 58.33%;
-  }
-  .l8 {
-    width: 66.66%;
-  }
-  .l9 {
-    width: 75%;
-  }
-  .l10 {
-    width: 83.33%;
-  }
-  .l11 {
-    width: 91.66%;
-  }
-  .l12 {
-    width: 100%;
-  }
+.l1 {
+  width: 8.33%;
+}
+
+.l2 {
+  width: 16.66%;
+}
+
+.l3 {
+  width: 25%;
+}
+
+.l4 {
+  width: 33.33%;
+}
+
+.l5 {
+  width: 41.66%;
+}
+
+.l6 {
+  width: 50%;
+}
+
+.l7 {
+  width: 58.33%;
+}
+
+.l8 {
+  width: 66.66%;
+}
+
+.l9 {
+  width: 75%;
+}
+
+.l10 {
+  width: 83.33%;
+}
+
+.l11 {
+  width: 91.66%;
+}
+
+.l12 {
+  width: 100%;
 }
 
 .menu {
@@ -1024,6 +1033,37 @@ input[type=submit]:disabled,
 .menu a:hover {
   background: #fbfbfb;
   text-decoration: none;
+}
+
+.l-msg-smartphone {
+  display: none;
+  position: fixed;
+  background: var(--color-accent);
+  z-index: 9000;
+}
+
+.l-msg-smartphone > div {
+  height: 50%;
+}
+
+.l-msg-smartphone .divider {
+  background: var(--color-principale);
+}
+
+@media (max-width: 599px) {
+  .l-msg-smartphone {
+    display: block;
+  }
+}
+
+.l-msg-smartphone__logo {
+  position: relative;
+}
+
+.l-msg-smartphone__logo svg {
+  position: absolute;
+  width: 150px;
+  bottom: 0;
 }
 
 .l_facture {
