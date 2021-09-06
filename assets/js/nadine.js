@@ -62,6 +62,7 @@ $( document ).ready(function() {
 			}
 	});
 
+
 	// Barre de recherche
 
 	$('.l-header__bar input').on('input', function(){

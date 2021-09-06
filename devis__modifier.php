@@ -53,7 +53,7 @@ $date = strftime("%d %B %Y", strtotime($today));
             <a href="./projet__single?projet__id=<?php echo $row["projet__id"] ?>" class="btn btn--outline">Annuler</a>
             <a href="./devis__mail?devis__id=<?php echo $devis__id ?>" class="btn btn--outline" target="_blank">Générer email</a>
             <a href="./devis__convertir?devis__id=<?php echo $devis__id ?>" class="btn btn--outline">Convertir en facture</a>
-            <a href="./core/add__devis.php" class="btn btn--outline">Dupliquer ce devis</button>
+            <input type="submit" name="Dupliquer" value="Dupliquer ce devis" class="btn btn--outline">
             <a href="./core/supprimer?base=Devis&cible=devis__id&id=<?php echo $devis__id ?>" class="btn btn--outline">Supprimer</a>
             <input list="statut" name="devis__statut" class="btn btn--outline" value="<?php echo $row["devis__statut"] ?>">
             <datalist id="statut">

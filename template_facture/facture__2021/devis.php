@@ -38,7 +38,7 @@
         "></p>
           </td>
           <td class="facture__h-100 facture__br facture__w-25">
-            <p class="facture__body">Fait à <?php echo $row["profil__ville"] ?>, le <?php echo utf8_encode(strftime("%d %B %Y", strtotime($today))) ?></p>
+            <p class="facture__body">Fait à <?php echo $row["profil__ville"] ?>, le <?php echo utf8_encode(strftime("%d %b %Y", strtotime($today))) ?></p>
             <input type="hidden" name="facture__date" placeholder="date" value="<?php echo $today ?>">
           </td>
 

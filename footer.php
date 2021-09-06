@@ -16,7 +16,7 @@ if (($journal = fopen("./assets/csv/journal.csv", "r")) !== FALSE):
 	fclose($journal);
 
 	// Extraire le dernier numéros de version du journal
-	$numVersion = $numVersion[1][0];
+	$numVersion = $numVersion[0][0];
 endif;
 
 

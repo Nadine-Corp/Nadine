@@ -118,7 +118,6 @@ input[type="submit"], input[type="reset"], input[type="button"] {
 
 input[type="submit"], input[type="reset"], input[type="button"] {
   width: auto;
-  font: inherit;
   line-height: normal;
   overflow: visible;
   -webkit-appearance: button;
@@ -1223,6 +1222,10 @@ input[type=submit]:disabled,
 .l-footer {
   display: flex;
   justify-content: space-between;
+}
+
+.hidden {
+  display: none;
 }
 
 @media (min-width: 576px) {

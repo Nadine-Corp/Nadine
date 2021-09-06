@@ -89,8 +89,8 @@
   * Insertion dans la base donnée
   */
 
-  $sql = "INSERT INTO Projets ( projet__nom, retrocession, retrocession, porteurduprojet, projet__date_de_creation, projet__statut, diffuseur__id, artiste__id)
-  VALUES ('$projet__nom', '$retrocession', '$retrocession', '$porteurduprojet', '$projet__date_de_creation', '$projet__statut', '$diffuseur__id', '$artiste__id')";
+  $sql = "INSERT INTO Projets ( projet__nom, 	projet__precompte, projet__retrocession, projet__porteurduprojet, projet__date_de_creation, projet__statut, diffuseur__id, artiste__id)
+  VALUES ('$projet__nom', '$projet__precompte', '$projet__retrocession', '$projet__porteurduprojet', '$projet__date_de_creation', '$projet__statut', '$diffuseur__id', '$artiste__id')";
   include 'query.php'; $result = $conn->query($sql) or die($conn->error);
 
   $conn->close();

@@ -7,7 +7,7 @@
 
 <section class="l-msg-smartphone is--fullsize row">
   <div class="col l12">
-    <h1 class="subheading">Pas encore dispo sur les Téléphones Intéligent</h1>
+    <h1 class="subheading">Pas encore dispo sur les Téléphones Intéligents</h1>
     <div class="divider"></div>
     <p class="lead_paragraph">En attendant, revenez vite essayer Nadine avec votre ordinateur personnel !</p>
   </div>

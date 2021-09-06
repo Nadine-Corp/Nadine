@@ -26,9 +26,10 @@
   </div>
 
   <div class="col l12">
-
-    <?php $sql = "SELECT * FROM Projets, Diffuseurs
+    <?php $sql = "SELECT * FROM Projets, Diffuseurs, Factures, Devis
     WHERE Projets.diffuseur__id = Diffuseurs.diffuseur__id
+    AND Projets.projet__id = Factures.projet__id
+    AND Projets.projet__id = Devis.projet__id
     AND Projets.projet__statut = 'Projet en cours'
     ORDER BY projet__date_de_creation DESC"; ?>
     <?php include './core/query.php'; $result = $conn->query($sql) or die($conn->error); ?>
@@ -38,6 +39,8 @@
           <tr>
             <th>Nom du projet</th>
             <th>Diffuseur</th>
+            <th class="hidden">Facture</th>
+            <th class="hidden">Devis</th>
             <th data-sorter="shortDate" data-date-format="M. Y">Date du début</th>
             <th data-sorter="shortDate" data-date-format="M. Y">Date de fin</th>
             <th>État</th>
@@ -55,17 +58,16 @@
               $date_de_fin = "-";
             endif;
 
-
             $date_de_debut = date_create($row["projet__date_de_creation"]);
             $date_de_debut = date_format($date_de_debut, 'M. Y');
-
-
             ?>
 
 
-            <tr onclick="document.location = 'projet__single?projet__id=<?php echo $row["projet__id"] ?>';">
+            <tr onclick="document.location = 'projet__single?projet__id=<?php echo $row["projet__id"] ?>';" class="projet__<?php echo $row["projet__id"] ?>">
               <td><?php echo $row["projet__nom"] ?></td>
               <td><?php echo $row["diffuseur__societe"] ?></td>
+              <td class="hidden"><?php echo $row["facture__numero"] ?></td>
+              <td class="hidden"><?php echo $row["devis__numero"] ?></td>
               <td><?php echo $date_de_debut; ?></td>
               <td><?php echo $date_de_fin; ?></td>
               <td><?php echo $row["projet__statut"] ?></td>
@@ -94,8 +96,10 @@
   </div>
 
   <div class="col l12">
-    <?php $sql = "SELECT * FROM Projets, Diffuseurs
+    <?php $sql = "SELECT * FROM Projets, Diffuseurs, Factures, Devis
     WHERE Projets.diffuseur__id = Diffuseurs.diffuseur__id
+    AND Projets.projet__id = Factures.projet__id
+    AND Projets.projet__id = Devis.projet__id
     AND Projets.projet__statut != 'Projet en cours'
     ORDER BY projet__date_de_creation DESC"; ?>
     <?php include './core/query.php'; $result = $conn->query($sql) or die($conn->error); ?>
@@ -105,6 +109,8 @@
           <tr>
             <th>Nom du projet</th>
             <th>Diffuseur</th>
+            <th class="hidden">Facture</th>
+            <th class="hidden">Devis</th>
             <th data-sorter="shortDate" data-date-format="M. Y">Date du début</th>
             <th data-sorter="shortDate" data-date-format="M. Y">Date de fin</th>
             <th>État</th>
@@ -122,17 +128,16 @@
               $date_de_fin = "-";
             endif;
 
-
             $date_de_debut = date_create($row["projet__date_de_creation"]);
             $date_de_debut = date_format($date_de_debut, 'M. Y');
-
-
             ?>
 
 
             <tr onclick="document.location = 'projet__single?projet__id=<?php echo $row["projet__id"] ?>';">
               <td><?php echo $row["projet__nom"] ?></td>
               <td><?php echo $row["diffuseur__societe"] ?></td>
+              <td class="hidden"><?php echo $row["facture__numero"] ?></td>
+              <td class="hidden"><?php echo $row["devis__numero"] ?></td>
               <td><?php echo $date_de_debut; ?></td>
               <td><?php echo $date_de_fin; ?></td>
               <td><?php echo $row["projet__statut"] ?></td>
