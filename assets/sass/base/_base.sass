@@ -1,10 +1,14 @@
 // main: ../../../style.sass
 
+::selection
+  background-color: rgba($gris-dark, 0.99) !important
+  color: $papier
+
 html
   overflow-y: scroll
 
 body
-  background: var(--color-back)
+  background: color('back')
 
 main
   float: left
@@ -12,4 +16,4 @@ main
   margin-top: $header_barre-height
 
 svg
-  fill: var(--color-principale)
+  fill: color('principale')

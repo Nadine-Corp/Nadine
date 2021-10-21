@@ -13,7 +13,7 @@
   $diffuseur__website =  addslashes($_POST['website']);
 
 
-  $sql = "UPDATE diffuseurs
+  $sql = "UPDATE Diffuseurs
   SET diffuseur__societe = '$diffuseur__societe', diffuseur__siret = '$diffuseur__siret', diffuseur__civilite = '$diffuseur__civilite', diffuseur__prenom = '$diffuseur__prenom', diffuseur__nom = '$diffuseur__nom', diffuseur__adresse = '$diffuseur__adresse', diffuseur__code_postal = '$diffuseur__code_postal', diffuseur__ville = '$diffuseur__ville', diffuseur__telephone = '$diffuseur__telephone', diffuseur__email = '$diffuseur__email', diffuseur__website = '$diffuseur__website'
   WHERE diffuseur__id = $diffuseur__id";
   include 'query.php'; $result = $conn->query($sql) or die($conn->error); $conn->close();

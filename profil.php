@@ -1,7 +1,7 @@
 <?php include './header.php'; ?>
 
 
-<?php $sql = "SELECT * FROM profil ORDER BY profil__id DESC LIMIT 1;"; ?>
+<?php $sql = "SELECT * FROM Profil ORDER BY profil__id DESC LIMIT 1;"; ?>
 <?php include './core/query.php'; $result = $conn->query($sql) or die($conn->error); ?>
 <?php if ($result->num_rows > 0): ?>
   <?php while($row = $result->fetch_assoc()):?>

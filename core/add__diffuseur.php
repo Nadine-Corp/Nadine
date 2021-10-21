@@ -27,7 +27,7 @@ $diffuseur__website =  addslashes($_POST['website']);
 * Mettre à jour la base de données
 */
 
-$sql = "INSERT INTO diffuseurs ( diffuseur__societe, diffuseur__siret, diffuseur__civilite, diffuseur__prenom, diffuseur__nom, diffuseur__adresse, diffuseur__code_postal, diffuseur__ville, diffuseur__telephone, diffuseur__email, diffuseur__website)
+$sql = "INSERT INTO Diffuseurs ( diffuseur__societe, diffuseur__siret, diffuseur__civilite, diffuseur__prenom, diffuseur__nom, diffuseur__adresse, diffuseur__code_postal, diffuseur__ville, diffuseur__telephone, diffuseur__email, diffuseur__website)
 VALUES ('$diffuseur__societe', '$diffuseur__siret', '$diffuseur__civilite', '$diffuseur__prenom', '$diffuseur__nom', '$diffuseur__adresse', '$diffuseur__code_postal', '$diffuseur__ville', '$diffuseur__telephone', '$diffuseur__email', '$diffuseur__website')";
 include 'query.php'; $result = $conn->query($sql) or die($conn->error);
 

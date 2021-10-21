@@ -47,7 +47,7 @@
   *  Création de la table Options
   */
 
-  $sql = "CREATE TABLE options(
+  $sql = "CREATE TABLE Options(
   option__id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
   option__nom VARCHAR(255) COLLATE '$interclassement',
   option__valeur VARCHAR(255) COLLATE '$interclassement'
@@ -66,7 +66,7 @@
   *  Création de la table Diffuseurs
   */
 
-  $sql = "CREATE TABLE diffuseurs(
+  $sql = "CREATE TABLE Diffuseurs(
   diffuseur__id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
   diffuseur__corbeille TINYINT(1) DEFAULT 0,
   diffuseur__societe VARCHAR(255) COLLATE '$interclassement',
@@ -90,7 +90,7 @@
   *  Création de la table Artistes
   */
 
-  $sql = "CREATE TABLE artistes(
+  $sql = "CREATE TABLE Artistes(
   artiste__id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
   artiste__corbeille TINYINT(1) DEFAULT 0,
   artiste__societe VARCHAR(255) COLLATE '$interclassement',

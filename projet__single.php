@@ -3,7 +3,7 @@
 
 <?php  $projet__id = $_GET['projet__id']; ?>
 
-<?php $sql = "SELECT * FROM Projets, diffuseurs WHERE Projets.projet__id='".$projet__id."' AND Projets.diffuseur__id = Diffuseurs.diffuseur__id "; ?>
+<?php $sql = "SELECT * FROM Projets, Diffuseurs WHERE Projets.projet__id='".$projet__id."' AND Projets.diffuseur__id = Diffuseurs.diffuseur__id "; ?>
 <?php include './core/query.php'; $result = $conn->query($sql) or die($conn->error); ?>
 <?php if ($result->num_rows > 0): ?>
   <?php while($row = $result->fetch_assoc()):?>

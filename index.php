@@ -7,7 +7,7 @@
    *  Test de la base de donnée
    */
 
-   $sql = "SELECT * FROM profil ORDER BY profil__id DESC LIMIT 1;";
+   $sql = "SELECT * FROM Profil ORDER BY profil__id DESC LIMIT 1;";
    include './core/query.php'; $result = $conn->query($sql) or die($conn->error);
    if ($result->num_rows > 0):
      include './projets.php';

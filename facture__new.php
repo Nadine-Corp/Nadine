@@ -49,7 +49,7 @@
   */
 
   $projet__id = $_GET['projet__id'];
-  $sql = "SELECT * FROM Projets,diffuseurs,Profil WHERE Projets.projet__id='".$projet__id."' AND Projets.diffuseur__id = diffuseurs.diffuseur__id AND Profil.profil__id = '".$profil__id."'";
+  $sql = "SELECT * FROM Projets,Diffuseurs,Profil WHERE Projets.projet__id='".$projet__id."' AND Projets.diffuseur__id = diffuseurs.diffuseur__id AND Profil.profil__id = '".$profil__id."'";
   include './core/query.php'; $result = $conn->query($sql) or die($conn->error);
   if ($result->num_rows > 0):
   while($row = $result->fetch_assoc()):

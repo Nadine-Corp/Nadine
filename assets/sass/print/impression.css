@@ -15,7 +15,6 @@ main, html, body,
   padding: 0;
   box-shadow: none;
 }
-.paper{ padding: 0 }
 .paper__content{
   position: relative;
   padding: 0;

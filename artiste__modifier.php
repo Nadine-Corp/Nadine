@@ -8,7 +8,7 @@
   <div class="col l12">
 
     <?php  $artiste__id = $_GET['__id']; ?>
-    <?php $sql = "SELECT * FROM artistes WHERE artiste__id ='".$artiste__id."'"; ?>
+    <?php $sql = "SELECT * FROM Artistes WHERE artiste__id ='".$artiste__id."'"; ?>
     <?php include './core/query.php'; $result = $conn->query($sql) or die($conn->error); ?>
     <?php if ($result->num_rows > 0): ?>
       <?php while($row = $result->fetch_assoc()):?>

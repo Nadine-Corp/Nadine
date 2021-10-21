@@ -1,5 +1,25 @@
 // main: ../../../style.sass
 
+// Le fichier de fonctions centralise toutes les fonctions Sass utilsées
+  par Nadine
+
+
+// La fonction color() permet d'utiliser le système de théme de couleurs
+  plus facilement. La fonction accepte 2 paramètres : Le nom de la couleur,
+  sa déclinaison. Un troisième peut-être ajouter pour renseigner l'opatité.
+
+  Exemple de SASS :
+    div
+      background: color('principale')
+      color: color('back', 0.5)
+
+@function color($var, $opacity:1)
+  @if $opacity < 1
+    @return #{"rgba(var(--color-"+$var"), "+$opacity+")"}
+  @else
+    @return #{"rgb(var(--color-"+$var"))"}
+
+
 // La fonction rgba-to-rgb permet de mélanger 2 couleurs entre elles
   et le résultat en couleur Hexadécimal
 

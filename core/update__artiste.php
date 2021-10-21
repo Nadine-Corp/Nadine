@@ -15,7 +15,7 @@
   $artiste__website =  addslashes($_POST['website']);
 
 
-  $sql = "UPDATE artistes
+  $sql = "UPDATE Artistes
   SET artiste__societe = '$artiste__societe', artiste__siret = '$artiste__siret', artiste__civilite = '$artiste__civilite', artiste__prenom = '$artiste__prenom', artiste__nom = '$artiste__nom', artiste__numero_secu = '$artiste__numero_secu', artiste__numero_mda = '$artiste__numero_mda', artiste__adresse = '$artiste__adresse', artiste__code_postal = '$artiste__code_postal', artiste__ville = '$artiste__ville', artiste__telephone = '$artiste__telephone', artiste__email = '$artiste__email', artiste__website = '$artiste__website'
   WHERE artiste__id = $artiste__id";
   include 'query.php'; $result = $conn->query($sql) or die($conn->error); $conn->close();
