@@ -61,15 +61,15 @@ endif;
 		<nav class="l-header__nav">
 			<button type="button" class="btn__menu-more-vert"><?php include './assets/img/inline-icon_more-vert.svg.php'; ?></button>
 			<ul class="nav__main">
-				<li class="menu__item"><a href="projets" class="lead_paragraph">Projets</a></li>
-				<li class="menu__item"><a href="diffuseurs" class="lead_paragraph">Diffuseurs</a></li>
-				<li class="menu__item"><a href="artistes" class="lead_paragraph">Artistes</a></li>
-				<li class="menu__item"><a href="suivi" class="lead_paragraph">Suivi</a></li>
+				<li class="menu__item"><a href="./projets.php" class="lead_paragraph">Projets</a></li>
+				<li class="menu__item"><a href="./diffuseurs.php" class="lead_paragraph">Diffuseurs</a></li>
+				<li class="menu__item"><a href="./artistes.php" class="lead_paragraph">Artistes</a></li>
+				<li class="menu__item"><a href="./suivi.php" class="lead_paragraph">Suivi</a></li>
 			</ul>
 
 			<ul class="nav__subnav menu">
-				<li><a href="./profil">Modifier votre profil</a></li>
-				<li><a href="./bilan">Générer le bilan annuel</a></li>
+				<li><a href="./profil.php">Modifier votre profil</a></li>
+				<li><a href="./bilan.php">Générer le bilan annuel</a></li>
 				<li class="separator"><a href="https://discord.gg/Fg2m8gvdWR" target="_blank">Rejoindre le NadineClub©</a></li>
 				<li><a href="mailto:coucoucorine@nadinecorp.net" target="_blank">Demander de l'aide par mail</a></li>
 				<!-- <li class="separator"><a class="doyouconfirm" href="./core/init">Reset la Database</a></li> -->

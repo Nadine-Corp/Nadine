@@ -1224,6 +1224,10 @@ input[type=submit]:disabled,
   justify-content: space-between;
 }
 
+.is--active #l-projet__diffuseurs-accordion {
+  min-height: 520px;
+}
+
 @media (min-width: 576px) {
   display: block;
 }

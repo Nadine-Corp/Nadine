@@ -56,7 +56,7 @@
 
   // Ajout des options par defaut de Nadine
 
-  $sql = "INSERT INTO options ( option__nom, option__valeur)
+  $sql = "INSERT INTO Options ( option__nom, option__valeur)
   VALUES ('option__couleur','rouge-trash')";
   include 'query.php'; $result = $conn->query($sql) or die($conn->error);
 

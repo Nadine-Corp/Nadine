@@ -101,7 +101,7 @@ endif; $conn->close();
           <?php include './assets/img/inline-icon_arrow_accordion.svg.php'; ?>
         </div>
       </div>
-      <div class="accordion__container">
+      <div id="l-projet__diffuseurs-accordion" class="accordion__container">
         <div class="form__slider-container">
           <p class="lead_paragraph">Est-ce une vente à un particulier ou un galeriste ou une société étrangère ?</p>
           <span>Non</span>
