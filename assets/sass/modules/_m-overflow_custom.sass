@@ -1,20 +1,31 @@
 // main: ../../../style.sass
 
-/* width */
+  Le module Overflow_Custom permet de modifier l'apparence des Scrolls
+  sur tout les navigateurs utilisant le noyaux Chronium : Google Chrome,
+  Opera, Vivaldi, Brave, etc.
+
+
+// width
+
 ::-webkit-scrollbar
-  width: $modulor/2
+  width: $modulor
+  height: $modulor
 
-/* Track */
+
+// Track
+
 ::-webkit-scrollbar-track
-  background: $gris-dark
+  background: color('principale')
 
-/* Handle */
+
+// Handle
+
 ::-webkit-scrollbar-thumb
-  background:
-  border-radius: $modulor
-  background: $rouge-trash
-  border: 2px solid $gris-dark
+  background: color('accent')
+  border: $modulor/3 solid color('principale')
 
-/* Handle on hover */
+
+// Handle on hover
+
 ::-webkit-scrollbar-thumb:hover
-  background: $rouge-trash
+  background: color('secondaire')

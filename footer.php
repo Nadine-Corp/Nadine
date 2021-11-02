@@ -21,17 +21,6 @@ endif;
 
 
 	/**
-	* Injection de la modale de confirmation
-	*/
-
-	// Cette modale est cachée. Elle s'affiche de temps en temps
-	// pour que l'utilisateur confirme quelques chose.
-
-	include './parts/modal__doyouconfirm.php';
-
-
-
-	/**
 	* Injection du message pour Smartphone
 	*/
 
@@ -46,6 +35,24 @@ endif;
 
 </main>
 <footer class="l-footer row">
+	<?php
+	/**
+	* Injection de l'Overlay Universel
+	*/
+
+	// Cette modale div.m-overlay permet à Nadine de recouvrir l'écran.
+	// C'est utile lorsqu'elle veut afficher une modal par exemple.
+
+	?>
+	<div class="m-overlay"></div>
+
+
+	<?php
+	/**
+	* Ajout du reste du footer
+	*/
+	?>
+
 	<p class="col body">
 		<strong>Numéro de version :</strong> Nadine Alpha <?php echo $numVersion;?>  | 	<a href="https://github.com/Nadine-Corp/Nadine/commits/main" target="_blank">Pensez à mettre à jour Nadine de temps en temps.</a>
 			<br><a href="./log">Nadine travaille tellement dur pour s'améliorer !</a>

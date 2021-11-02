@@ -2,15 +2,18 @@
 
 <?php
 /**
-* Récuparation le thème couloré actuellement stockée dans la base
+* Récuparation du thème coloré actuellement stockée dans la base de donnée
 */
 
 $sql = "SELECT * FROM Options WHERE Options.option__nom = 'option__couleur'";
-include './core/query.php'; $result = $conn->query($sql) or die($conn->error);
-if ($result->num_rows > 0):
+include './core/query.php'; $result = $conn->query($sql);
+if ($result && $result->num_rows > 0):
   while($row = $result->fetch_assoc()):
     $couleurActuelle = $row["option__valeur"];
   endwhile;
+else:
+  // Si pas de thème, afficher le thème coloré Rouge-trash par defaut
+  $couleurActuelle = "__rouge-trash-mode";
 endif;
 ?>
 

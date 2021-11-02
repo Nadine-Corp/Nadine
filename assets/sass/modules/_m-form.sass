@@ -8,7 +8,7 @@
 .form__input-container
   float: left
   width: 100%
-  border: 1px solid var(--color-back)
+  border: 1px solid color('back')
   border-bottom: none
   margin: $modulor 0
 
@@ -17,17 +17,17 @@
     height: $modulor*4
     padding: $modulor*1.5
     border: none
-    border-bottom: 1px solid var(--color-back)
+    border-bottom: 1px solid color('back')
     resize: none
-    color: var(--color-principale)
-    background: var(--color-secondaire)
+    color: color('principale')
+    background: color('secondaire')
     transition: background .5s
 
   &>textarea
     height: auto
 
   input:focus, textarea:focus
-    background: var(--color-secondaire)
+    background: color('secondaire')
     transition: background .5s
 
   input:disabled
@@ -35,7 +35,7 @@
     opacity: 0.6
 
   input::placeholder
-    color: var(--color-principale)
+    color: color('principale')
 
 .form__input-full
   width: 100%
@@ -44,7 +44,7 @@
   width: 50%
 
 input.form__input-seperator
-  border-right: 1px solid var(--color-back)
+  border-right: 1px solid color('back')
 
 input[type=submit]:disabled,
 .form__input--line-through

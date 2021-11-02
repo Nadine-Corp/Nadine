@@ -1,13 +1,23 @@
 
-<?php include 'header.php'; ?>
+<?php
+
+// Ce fichier permet à Nadine de traquer plus facilement
+// les mauvais payeurs et les devis qui trainent un peu.
+
+
+include './header.php';
+?>
 
 <section class="row">
   <div class="col l12">
     <h1 class="display1">Suivi</h1>
   </div>
 
-
-  <!-- Liste des devis -->
+  <?php
+  /**
+  * Liste des devis
+  */
+  ?>
 
   <div class="col l6">
     <h2 class="headline">Devis non signés</h2>
@@ -41,8 +51,11 @@
   </div>
 
 
-  <!-- Liste des factures -->
-
+  <?php
+  /**
+  * Liste des factures
+  */
+  ?>
 
   <div class="col l6">
     <h2 class="headline">Factures impayées</h2>

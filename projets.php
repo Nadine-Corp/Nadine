@@ -1,6 +1,11 @@
-<?php include './header.php'; ?>
+<?php
+
+// C'est grace à ce fichier que seront affiché la liste
+// de tous vos glorieux projets. C'est donc ce fichier
+// qui gère la page d'accueil de Nadine
 
 
+include './header.php'; ?>
 
 
 <section class="toolbar is--sticky">

@@ -1,0 +1,18 @@
+// main: ../../../style.sass
+
+  Le module Overlay permet de gérer une div capable de recouvrir tout l'écran.
+  Cet Overlay est notament utilisé par les volets, les ligthbox, le mode dev.
+
+  Attention : pensez à activer l'effet SASS is--fullsize.
+
+  Exemple de HTML :
+
+  <footer>
+    <div class="m-overlay"></div>
+  </footer>
+
+.m-overlay
+  display: none
+  position: fixed !important
+  background: color('principale', 50, 0.5)
+  z-index: $zindex__overlay

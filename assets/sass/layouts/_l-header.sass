@@ -8,7 +8,7 @@
   width: 100%
   height: $header_barre-height
   padding: 0 $modulor*2
-  background: var(--color-accent)
+  background: color('accent')
   z-index: 10
 
   .menu
@@ -30,10 +30,10 @@
     font-family: "Redaction", serif
     font-style: italic
     font-weight: 400
-    color: var(--color-secondaire)
+    color: color('secondaire')
     padding: 0 $modulor
     border-radius: $modulor
-    background: var(--color-principale)
+    background: color('principale')
     transition: all 2s
     &:focus
       @include box-shadow(5, $gris-dark)
@@ -56,7 +56,7 @@
     align-items: center
     height: $header_barre-height
     margin: 0 $modulor*2
-    border-bottom: 4px solid var(--color-accent)
+    border-bottom: 4px solid color('accent')
     transition: border 0.4s
 
   li:hover
@@ -68,7 +68,7 @@
     line-height: $header_barre-height
     &:hover
       text-decoration: none
-      color: var(--color-secondaire)
+      color: color('secondaire')
       transition: color 0.4s
 
   a.is--current::after
@@ -104,4 +104,4 @@
     width: $modulor*2 - 20px
     height: $modulor*2 - 20px
     border-radius: $modulor
-    border: 4px solid var(--color-secondaire)
+    border: 4px solid color('secondaire')

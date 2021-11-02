@@ -14,23 +14,23 @@
   display: inline-block
   margin: $modulor*3 $modulor/3
   padding: $modulor/2
-  border: 2px solid var(--color-principale)
+  border: 2px solid color('principale')
   font-family: "Redaction", sans-serif !important
   font-size: $modulor
   font-weight: 600
   cursor: pointer
   white-space: nowrap
-  box-shadow: 2px 2px var(--color-principale)
+  box-shadow: 2px 2px color('principale')
   @include prefix(transition, all 1s)
 
   &:hover
     text-decoration: none
-    background: var(--color-accent)
-    box-shadow: 6px 6px var(--color-principale)
+    background: color('accent')
+    box-shadow: 6px 6px color('principale')
     @include prefix(transition, all 0.2s)
 
 .btn--plain
-  background: var(--color-secondaire)
+  background: color('secondaire')
 
 .btn--outline
   background: none

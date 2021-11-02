@@ -6,21 +6,21 @@
   float: left
   top: -1px
   padding-top: $header_barre-height
-  background: rgba(var(--color-secondaire), 0)
+  background: color('secondaire', 50, 0)
   z-index: 1
   transition: all .5s
 
   &.is--pinned
-    background: var(--color-principale)
+    background: color('principale')
     @include box-shadow(4, rgba($gris-dark, 1))
     transition: all .5s
 
     .display1
       font-size: $modulor*2
-      color: var(--color-accent)
+      color: color('accent')
       transition: all .5s
 
     .btn
-      color: var(--color-accent)
-      border: 2px solid var(--color-accent)
-      box-shadow: 2px 2px var(--color-accent)
+      color: color('accent')
+      border: 2px solid color('accent')
+      box-shadow: 2px 2px color('accent')

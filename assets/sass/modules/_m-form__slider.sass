@@ -44,7 +44,7 @@
 .slider
   cursor: pointer
   border: 3px solid
-  background: var(--color-secondaire)
+  background: color('secondaire')
   @include prefix(transition, .4s)
   &:before
     position: absolute
@@ -53,14 +53,14 @@
     width: $modulor
     left: $modulor/3
     bottom: $modulor/3
-    background-color: var(--color-accent)
+    background-color: color('accent')
     @include prefix(transition, .4s)
   &:hover
     @include box-shadow(100, $gris-dark)
 
 input
   &:checked + .slider
-    // background-color: var(--color-accent)
+    // background-color: color('accent')
   &:checked + .slider:before
     @include prefix(transform, translateX($modulor))
 

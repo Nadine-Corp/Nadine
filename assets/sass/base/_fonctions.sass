@@ -6,18 +6,19 @@
 
 // La fonction color() permet d'utiliser le système de théme de couleurs
   plus facilement. La fonction accepte 2 paramètres : Le nom de la couleur,
-  sa déclinaison. Un troisième peut-être ajouter pour renseigner l'opatité.
+  sa déclinaison. Un troisième peut-être ajouter pour renseigner l'opacité.
 
   Exemple de SASS :
     div
       background: color('principale')
-      color: color('back', 0.5)
+      color: color('back', 100, 0.5)
 
-@function color($var, $opacity:1)
+
+@function color($var, $decli:50, $opacity:1)
   @if $opacity < 1
-    @return #{"rgba(var(--color-"+$var"), "+$opacity+")"}
+    @return #{"rgba(var(--color-"+$var+"-"+$decli+"), "+$opacity+")"}
   @else
-    @return #{"rgb(var(--color-"+$var"))"}
+    @return #{"rgb(var(--color-"+$var+"-"+$decli+"))"}
 
 
 // La fonction rgba-to-rgb permet de mélanger 2 couleurs entre elles
@@ -29,6 +30,18 @@
 
 @function rgba-to-rgb($rgba, $background: #fff)
   @return mix(rgb(red($rgba), green($rgba), blue($rgba)), $background, alpha($rgba) * 100%)
+
+
+// La fonction hex-to-rgb() permet convertir une couleur Hexa en RGB().
+  hex-to-rgb est notament utiliser pour convertir les var(color) css
+  afin de les utiliser dans le @mixin box-shadow
+
+  Exemple de SASS :
+    div
+      background: rgb(#{hex-to-rgb($color)})
+
+@function hex-to-rgb($hex)
+  @return red($hex) + ", " + green($hex) + ", " + blue($hex)
 
 
 // La fonction prefix permet d'ajouter automatiquement certaine propriété css
@@ -46,8 +59,8 @@
   #{$propriete}: $args
 
 
-// La fonction box-shadow pemet de centraliser la gestion des ombres
-  sur monobloc.
+// La fonction box-shadow pemet de centraliser
+  la gestion des ombres utilisées par Nadine
 
   Exemple de SASS :
     div
@@ -94,3 +107,24 @@
   @else if $size == big-desktop
     @media (min-width: 1800px)
       @content
+
+
+// La fonction themeColor() génere les variables de couleurs CSS
+   de la balise <html>. Ces variables permettent de gérer
+   les thèmes colorés utilisé par Nadine.
+
+   0..10..20..30..40..50..60..70..80..90..100
+   ↑                  ↑                   ↑
+   0=blanc            50=couleur pure     100=noir
+
+@mixin themeColor($colors)
+  @each $nom, $hexa in $colors
+    @each $declinaison in $declinaisons
+      @if $declinaison >= 50
+        $weight: ($declinaison - 50)*2
+        $color: mix(black, $hexa, $weight)
+        --color-#{$nom}-#{$declinaison}: #{hex-to-rgb($color)}
+      @else
+        $weight: $declinaison*2
+        $color: mix($hexa, white, $weight)
+        --color-#{$nom}-#{$declinaison}: #{hex-to-rgb($color)}

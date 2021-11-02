@@ -1,6 +1,19 @@
 // main: ../../../style.sass
 
-  Le fichier couleur controle les thèmes coloré de Nadine.
+  Le fichier Colors contrôle les thèmes colorés de Nadine.
+  Utilisez la fonction color() pour définir une couleur.
+  La fonction accepte 2 paramètres : Le nom de la couleur, sa déclinaison.
+  Un troisième peut-être ajouter pour renseigner l'opatité.
+
+   0..10..20..30..40..50..60..70..80..90..100
+   ↑                  ↑                   ↑
+   0=blanc            50=couleur pure     100=noir
+
+  Exemple de SASS :
+    div
+      background: color('principale')
+      color: color('back', 70, 0.5)
+
 
 // Couleurs NadineCorp©
 
@@ -12,41 +25,37 @@ $violet-cool: #9348FF
 $rose-neutre: #FF97DC
 $orange-fluo: #FF6B5C
 $jaune-post-it: #FFDC61
+$pur-white: #FFFFFF
 
 
+// Nombre de déclinaison pour chaque couleur.
+
+   0..10..20..30..40..50..60..70..80..90..100
+   ↑                  ↑                   ↑
+   0=blanc            50=couleur pure     100=noir
+
+$declinaisons: 0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100
 
 \:root, .__rouge-trash-mode
-  --color-principale: #{$gris-dark}
-  --color-secondaire: white
-  --color-accent: #{$rouge-trash}
-  --color-back: #{$papier}
+  $colors: ("principale" $gris-dark, "secondaire" $pur-white, "accent" $rouge-trash, "back" $papier)
+  @include themeColor($colors)
 
 \.__bleu-google-mode:root, .__bleu-google-mode
-  --color-principale: #{$gris-dark}
-  --color-secondaire: white
-  --color-accent: #{$bleu-google}
-  --color-back: #{$papier}
+  $colors: ("principale" $gris-dark, "secondaire" $pur-white, "accent" $bleu-google, "back" $papier)
+  @include themeColor($colors)
 
 \.__violet-cool-mode:root, .__violet-cool-mode
-  --color-principale: #{$gris-dark}
-  --color-secondaire: white
-  --color-accent: #{$violet-cool}
-  --color-back: #{$papier}
+  $colors: ("principale" $gris-dark, "secondaire" $pur-white, "accent" $violet-cool, "back" $papier)
+  @include themeColor($colors)
 
-\.__rose-neutre-mode:root, .__rose-neutre-mode
-  --color-principale: #{$gris-dark}
-  --color-secondaire: white
-  --color-accent: #{$rose-neutre}
-  --color-back: #{$papier}
+\.__violet-cool-mode:root, .__violet-cool-mode
+  $colors: ("principale" $gris-dark, "secondaire" $pur-white, "accent" $rose-neutre, "back" $papier)
+  @include themeColor($colors)
 
 \.__orange-fluo-mode:root, .__orange-fluo-mode
-  --color-principale: #{$gris-dark}
-  --color-secondaire: white
-  --color-accent: #{$orange-fluo}
-  --color-back: #{$papier}
+  $colors: ("principale" $gris-dark, "secondaire" $pur-white, "accent" $orange-fluo, "back" $papier)
+  @include themeColor($colors)
 
 \.__gris-dark-mode:root, .__gris-dark-mode
-  --color-principale: #{$papier}
-  --color-secondaire: white
-  --color-accent: #{lighten($gris-dark,10%)}
-  --color-back: #{$gris-dark}
+  $colors: ("principale" $papier, "secondaire" $pur-white, "accent" lighten($gris-dark,10%), "back" $gris-dark)
+  @include themeColor($colors)

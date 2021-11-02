@@ -1,4 +1,4 @@
-<?php include 'header.php'; ?>
+<?php include './header.php'; ?>
 
 <?php
 date_default_timezone_set('UTC');

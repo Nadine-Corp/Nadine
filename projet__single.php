@@ -1,4 +1,4 @@
-<?php include 'header.php'; ?>
+<?php include './header.php'; ?>
 
 
 <?php  $projet__id = $_GET['projet__id']; ?>

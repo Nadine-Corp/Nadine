@@ -9,8 +9,8 @@
 
     &:hover
       td
-        background: var(--color-secondaire)
-        color: var(--color-accent) !important
+        background: color('secondaire')
+        color: color('accent') !important
         z-index: 100
         padding: $modulor $modulor/2
         transition: all .3s
@@ -18,19 +18,19 @@
   th, td
     text-align: left
     padding: $modulor/2 $modulor/2
-    border-right: 1px solid var(--color-back)
+    border-right: 1px solid color('back')
     transition: all .3s
 
   td
-    color: var(--color-accent)
+    color: color('accent')
 
   th, .tablesorter-header-inner
     font-family: "Redaction", serif
     font-style: italic
-    color: var(--color-back)
+    color: color('back')
 
   tbody tr:nth-child(2n),
   thead tr
-    background: var(--color-accent)
+    background: color('accent')
     td
-      color: var(--color-back)
+      color: color('back')
