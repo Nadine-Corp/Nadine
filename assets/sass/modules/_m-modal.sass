@@ -5,14 +5,66 @@
 
 
 .m-modal
+  display: none
   position: fixed
-  width: 50vw
-  height: 33vw
-  padding: 40px
-  border-radius: 20px
-  text-align: center
-  background: color('secondaire')
   top: 50%
   left: 50%
+  background: color('secondaire')
   transform: translate(-50%, -50%)
   z-index: $zindex__modal
+  @include box-shadow(100, 'principale')
+
+  &.is--active
+    display: flex
+
+  &.m-alerte
+    background: color('accent')
+
+  input
+    width: 50%
+    height: $modulor*3
+    margin-top: $modulor*2
+    font-size: $modulor*2
+    text-align: center
+
+.m-modal__error
+  position: relative
+  width: 12.5%
+  background: color('accent')
+  overflow: hidden
+  .is--denko__container
+    position: absolute
+    top: 100%
+    width: 100vh
+    height: 18.75%
+    display: block
+    transform: rotate(-90deg)
+    transform-origin: top left
+
+  .is--denko
+    animation: thedenkooldfashonway 3000s linear infinite reverse
+
+// Taille de Modal XL
+
+.m-modal__xl
+  width: 50vw
+  min-height: 33vh
+  .m-modal__img
+    flex: 1 0 auto
+
+  .m-modal__msg
+    padding: $modulor*3
+    width: 50%
+
+// Taille de Modal S
+.m-modal__s
+  width: 33vw
+  height: auto
+
+  .m-modal__msg
+    display: flex
+    flex-direction: column
+    align-items: center
+    padding: $modulor*3
+    flex: 1 0 auto
+    text-align: center

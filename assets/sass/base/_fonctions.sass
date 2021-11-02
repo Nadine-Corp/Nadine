@@ -59,26 +59,41 @@
   #{$propriete}: $args
 
 
-// La fonction box-shadow pemet de centraliser
-  la gestion des ombres utilisées par Nadine
+// La fonction box-shadow() pemet de centraliser la gestion
+  des ombres sur Monobloc.
 
   Exemple de SASS :
     div
-      @include box-shadow(4, var(--color-principale))
+      @include box-shadow(4, 'principale', 70)
 
-@mixin box-shadow ($level, $color)
+@mixin box-shadow($level, $var, $decli:50)
+  @if $level == 0
+    box-shadow: 0 0 0 #{"rgba(var(--color-"+$var+"-"+$decli+"),0)"},0 0 0 #{"rgba(var(--color-"+$var+"-"+$decli+"),0)"}
   @if $level == 1
-    box-shadow: 0 0.125em 0.313em rgba($color,.09),0 0.063em 0.125em rgba($color,.07)
+    box-shadow: 0 0.125em 0.313em #{"rgba(var(--color-"+$var+"-"+$decli+"),.09)"},0 0.063em 0.125em #{"rgba(var(--color-"+$var+"-"+$decli+"),.07)"}
   @else if $level == 2
-    box-shadow: 0 0.250em 0.375em rgba($color,.09),0 0.063em 0.188em rgba($color,.08)
+    box-shadow: 0 0.250em 0.375em #{"rgba(var(--color-"+$var+"-"+$decli+"),.09)"},0 0.063em 0.188em #{"rgba(var(--color-"+$var+"-"+$decli+"),.08)"}
   @else if $level == 3
-    box-shadow: 0 0.063em 0.313em 0 rgba($color,.07),0 0.438em 1.063em 0 rgba($color,.1)
+    box-shadow: 0 0.063em 0.313em 0 #{"rgba(var(--color-"+$var+"-"+$decli+"),.07)"},0 0.438em 1.063em 0 #{"rgba(var(--color-"+$var+"-"+$decli+"),.1)"}
   @else if $level == 4
-    box-shadow: 0 0.938em 2.188em rgba($color,.1),0 0.313em 0.938em rgba($color,.07)
+    box-shadow: 0 0.938em 2.188em #{"rgba(var(--color-"+$var+"-"+$decli+"),.1)"},0 0.313em 0.938em #{"rgba(var(--color-"+$var+"-"+$decli+"),.07)"}
   @else if $level == 5
-    box-shadow: 0 0.938em 2.188em rgba($color,.15),0 0.313em 0.938em rgba($color,.1)
+    box-shadow: 0 0.938em 2.188em #{"rgba(var(--color-"+$var+"-"+$decli+"),.15)"},0 0.313em 0.938em #{"rgba(var(--color-"+$var+"-"+$decli+"),.1)"}
   @else if $level == 100
-    box-shadow: 0 2.8px 2.2px rgba($color, 0.034),0 6.7px 5.3px rgba($color, 0.048),0 12.5px 10px rgba($color, 0.06),0 22.3px 17.9px rgba($color, 0.072),0 41.8px 33.4px rgba($color, 0.086),0 100px 80px rgba($color, 0.12)
+    box-shadow: 0 2.8px 2.2px #{"rgba(var(--color-"+$var+"-"+$decli+"), 0.034)"},0 6.7px 5.3px #{"rgba(var(--color-"+$var+"-"+$decli+"), 0.048)"},0 12.5px 10px #{"rgba(var(--color-"+$var+"-"+$decli+"), 0.06)"},0 22.3px 17.9px #{"rgba(var(--color-"+$var+"-"+$decli+"), 0.072)"},0 41.8px 33.4px #{"rgba(var(--color-"+$var+"-"+$decli+"), 0.086)"},0 100px 80px #{"rgba(var(--color-"+$var+"-"+$decli+"), 0.12)"}
+  @else if $level == 150
+    box-shadow: 2px 18px 20px 5px #{"rgba(var(--color-"+$var+"-"+$decli+"), 0.28)"}
+
+  @if $level == -1
+    box-shadow: 0 -0.125em 0.313em #{"rgba(var(--color-"+$var+"-"+$decli+"),.09)"},0 -0.063em 0.125em #{"rgba(var(--color-"+$var+"-"+$decli+"),.07)"}
+  @else if $level == -2
+    box-shadow: 0 -0.250em 0.375em #{"rgba(var(--color-"+$var+"-"+$decli+"),.09)"},0 -0.063em 0.188em #{"rgba(var(--color-"+$var+"-"+$decli+"),.08)"}
+  @else if $level == -3
+    box-shadow: 0 -0.063em 0.313em 0 #{"rgba(var(--color-"+$var+"-"+$decli+"),.07)"},0 -0.438em 1.063em 0 #{"rgba(var(--color-"+$var+"-"+$decli+"),.1)"}
+  @else if $level == -5
+    box-shadow: 0 -0.938em 2.188em #{"rgba(var(--color-"+$var+"-"+$decli+"),.15)"},0 -0.313em 0.938em #{"rgba(var(--color-"+$var+"-"+$decli+"),.1)"}
+  @else if $level == -100
+    box-shadow: 0 -2.8px 2.2px #{"rgba(var(--color-"+$var+"-"+$decli+"), 0.034)"},0 -6.7px 5.3px #{"rgba(var(--color-"+$var+"-"+$decli+"), 0.048)"},0 -12.5px 10px #{"rgba(var(--color-"+$var+"-"+$decli+"), 0.06)"},0 22.3px 17.9px #{"rgba(var(--color-"+$var+"-"+$decli+"), 0.072)"},0 -41.8px 33.4px #{"rgba(var(--color-"+$var+"-"+$decli+"), 0.086)"},0 -100px 80px #{"rgba(var(--color-"+$var+"-"+$decli+"), 0.12)"}
 
 
 

@@ -1,0 +1,65 @@
+// main: ../../../style.sass
+
+  Le module Image permet de recardrer facilement
+  des images dans leur div parent.
+
+  Attention : pensez à activer l'effet SASS is--fullsize.
+
+
+  Exemple de HTML :
+
+  <div class="image-full">
+    <div class="image-full__content is--fullsize">
+      <img>
+    </div>
+  </div>
+
+  <div class="image-full__ratio-1-1">
+    <div class="image-full__content is--fullsize">
+      <img>
+    </div>
+  </div>
+
+
+.image-full
+  position: relative
+  width: 100%
+  height: 100%
+
+// .image-full__ratio-1-1
+//   position: relative
+//   width: 100%
+//   padding-top: 100%
+
+// .image-full__ratio-1-2
+//   position: relative
+//   width: 100%
+//   padding-top: 50%
+
+// .image-full__ratio-2-3
+//   position: relative
+//   width: 100%
+//   padding-top: 66.66%
+
+// .image-full__ratio-2-1
+//   position: relative
+//   width: 100%
+//   padding-top: 200%
+
+// .image-full__ratio-3-2
+//   position: relative
+//   width: 100%
+//   padding-top: 150%
+
+// .image-full__ratio-5-4
+//   position: relative
+//   width: 100%
+//   padding-top: 80%
+
+.image-full__content
+  overflow: hidden
+
+  img
+    width: 100%
+    height: 100%
+    object-fit: cover

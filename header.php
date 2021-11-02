@@ -75,7 +75,6 @@ endif;
 				<li><a href="./bilan.php">Générer le bilan annuel</a></li>
 				<li class="separator"><a href="https://discord.gg/Fg2m8gvdWR" target="_blank">Rejoindre le NadineClub©</a></li>
 				<li><a href="mailto:coucoucorine@nadinecorp.net" target="_blank">Demander de l'aide par mail</a></li>
-				<!-- <li class="separator"><a class="doyouconfirm" href="./core/init">Reset la Database</a></li> -->
 				<li class="separator"><a href="./log">Journal de dévéloppement</a></li>
 			</ul>
 		</nav>

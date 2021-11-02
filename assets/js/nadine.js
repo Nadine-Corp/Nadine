@@ -90,15 +90,35 @@ $( document ).ready(function() {
 	});
 
 
-	// Modal DoYouConfirm ?
+	// Effet is--DenkoKeijiban
 
-	$('.doyouconfirm').click(function( event ) {
-		event.preventDefault();
-		var link = $(this).prop('href');
-		$('.doyouconfirm').fadeIn();
-	});
-
+  jQuery('.is--denko').each(function() {
+    var clone = jQuery(this).find('*')
+    var n = 100;
+    while(n > 0){
+      jQuery(this).append(clone.clone());
+      n -= 1;
+    }
+  });
 });
+
+
+// Gestion des modal
+
+if ( $('.m-modal.is--active').length ) {
+	$('.m-overlay').show();
+}
+$(document).on('click', '[data-toggle="m-modal"]', function (e){
+	var target = $(this).data('target');
+	$(target).show();
+});
+$(document).on('click', '[name="init__doyouconfirme"]', function (e){
+	var konmari = $('[name="input__doyouconfirme"]').val();
+	if( konmari == "KonMari"){
+		window.location.href = './core/init.php';
+	}
+});
+
 
 
 

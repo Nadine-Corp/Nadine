@@ -11,8 +11,10 @@
    */
 
    $sql = "SELECT * FROM Profil ORDER BY profil__id DESC LIMIT 1;";
-   include './core/query.php'; $result = $conn->query($sql) or include './core/init__tuto.php';
+   include './core/query.php'; $result = $conn->query($sql);
    if ($result &&  $result->num_rows > 0):
      include './projets.php';
+   else:
+      include './core/init__tuto.php';
   endif;
 ?>

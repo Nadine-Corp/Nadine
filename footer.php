@@ -44,7 +44,7 @@ endif;
 	// C'est utile lorsqu'elle veut afficher une modal par exemple.
 
 	?>
-	<div class="m-overlay"></div>
+	<div class="m-overlay is--fullsize"></div>
 
 
 	<?php
