@@ -13,7 +13,7 @@ Aidez tous les artistes-auteurs de [la Maison des Artistes](https://www.lamaison
 1. [Tarif](#tarif--gratuit-à-vie-)
 1. [Installation](#la-fameuse-installation-en-20-minutes)
 1. [Mettre à jour sa Nadine](#mettre-à-jour-Nadine-)
-1. [Erreurs connues](#mettre-à-jour-Nadine-)
+1. [Erreurs connues](#listes-des-erreurs-connues-et-solution)
 1. [Contact](#besoin-daide--une-question--une-idée-)
 1. [Roadmap](#roadmap-de-la-disruption)
 
@@ -58,8 +58,7 @@ Bientôt : un système de mise à jour automatique rivalisant avec ceux des plus
 1. Gardez les fichiers de votre ancienne Nadine et la sauvegarde de votre base de données quelques jours au cas où. Si quelques semaines plus tard tout semble ok, vous pouvez les supprimer de votre disque dur.
 1. **Important :** pensez à recycler le papier.
 
-
-**Un problème après la mise à jour ?**
+### Un problème après la mise à jour ?
 
 Pas de panique ! Plusieurs solutions simples s'offrent à vous :
   1. Foncez sur le Discord du [NadineClub©](https://discord.gg/Fg2m8gvdWR) pour demander de l'aide : nos meilleurs ingénieurs-informaticiens seront vous dépaner.
@@ -69,9 +68,9 @@ Pas de panique ! Plusieurs solutions simples s'offrent à vous :
 
 ## Listes des erreurs connues et solution
 
-À chaque problème, Nadine a des solutions.
-
-* **Erreur QuinzeMilleQautre :** Nadine pense que sa base de donnée est vide. **Solutions :** Pas de panique. Si vous lancez Nadine pour la première fois, il est normal que la base de données soit vide. Nous vous invitons à continuer l'Installation Automatique du _TurboTuto™_. Si par contre vous utilisez Nadine depuis des lustres, [contactez nos équipes](#besoin-d-aide--une-question--une-idée-) : nous nous ferons une joie de vous dépaner gratuitement.
+### Erreur QuinzeMilleQuatre
+**Problème :** Nadine pense que sa base de donnée est vide.
+**Solutions :** Pas de panique. Si vous lancez Nadine pour la première fois, il est normal que la base de données soit vide. Nous vous invitons à continuer l'Installation Automatique du _TurboTuto™_. Si par contre vous utilisez Nadine depuis des lustres, [contactez nos équipes](#besoin-daide--une-question--une-idée-) : nous nous ferons une joie de vous dépaner gratuitement.
 
 
 ## Besoin d'aide ? Une question ? Une idée ?
