@@ -15,7 +15,7 @@
           <a href="./diffuseur__modifier.php?diffuseur__id=<?php echo $row["diffuseur__id"]?>" class="btn btn--outline">Modifier le Diffuseur</a>
           <a href="./projet__modifier.php?projet__id=<?php echo $projet__id ?>" class="btn btn--outline">Modifier le Projet</a>
         </div>
-      </div>.php
+      </div>
     </section>
 
 
