@@ -5,7 +5,7 @@
   <div class="toolbar__container">
     <h1 class="display1">Liste des artistes</h1>
     <div class="toolbar__btn">
-      <a href="./artiste__new" class="btn btn--plain">Ajouter un artiste</a>
+      <a href="./artiste__new.php" class="btn btn--plain">Ajouter un artiste</a>
     </div>
   </div>
 </section>
@@ -28,14 +28,14 @@
         </thead>
         <tbody>
         <?php while($row = $result->fetch_assoc()):?>
-          <tr onclick="document.location = 'artiste__modifier?__id=<?php echo $row["artiste__id"] ?>';">
+          <tr onclick="document.location = 'artiste__modifier.php?__id=<?php echo $row["artiste__id"] ?>';">
             <td><?php echo $row["artiste__societe"] ?></td>
             <td><?php echo $row["artiste__numero_mda"] ?></td>
             <td><?php echo $row["artiste__prenom"] ?></td>
             <td><?php echo $row["artiste__nom"] ?></td>
             <td><?php echo $row["artiste__telephone"] ?></td>
             <td><a href="mailto:<?php echo $row["artiste__email"] ?>"><?php echo $row["artiste__email"] ?></a></td>
-            <td><a href="artiste__modifier?__id=<?php echo $row["artiste__id"] ?>">Modifier</a></td>
+            <td><a href="artiste__modifier.php?__id=<?php echo $row["artiste__id"] ?>">Modifier</a></td>
           </tr>
         <?php endwhile; ?>
         </tbody>

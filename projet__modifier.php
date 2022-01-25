@@ -69,8 +69,8 @@ if ($result->num_rows > 0):
         <div class="toolbar__container">
           <h1 class="display1">Modifier un projet</h1>
           <div class="toolbar__btn">
-            <button href="./projets" class="btn btn--outline">Annuler</button>
-            <button href="./core/supprimer.php?base=projets&cible=projet__id&id=<?php echo $projet__id ?>" class="btn btn--outline">Supprimer le Projet</button>
+            <a href="./projets.php" class="btn btn--outline">Annuler</a>
+            <a href="./core/supprimer.php?base=projets&cible=projet__id&id=<?php echo $projet__id ?>" class="btn btn--outline">Supprimer le Projet</a>
             <input type="submit" name="Enregistrer" value="Enregistrer" class="btn btn--plain">
           </div>
         </div>

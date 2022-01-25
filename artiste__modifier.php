@@ -33,7 +33,7 @@
           <input type="text" name="website" placeholder="Site web" class="form__input-full" value="<?php echo $row["artiste__website"] ?>">
         </div>
           <a href="./artistes.php" class="btn btn--outline">Annuler</a>
-          <a href="./core/supprimer?base=artistes&id=<?php echo $artiste__id ?> ?>" class="btn btn--outline">Supprimer</a>
+          <a href="./core/supprimer.php?base=artistes&id=<?php echo $artiste__id ?> ?>" class="btn btn--outline">Supprimer</a>
           <input type="submit" name="Enregistrer" value="Enregistrer" class="btn btn--plain">
       </form>
 

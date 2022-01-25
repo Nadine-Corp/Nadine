@@ -87,7 +87,7 @@
     <div class="toolbar__container">
       <h1 class="display1">Convertir un devis</h1>
       <div class="toolbar__btn">
-        <a href="./projet__single?projet__id=<?php echo $row["projet__id"] ?>" class="btn btn--outline">Annuler</a>
+        <a href="./projet__single.php?projet__id=<?php echo $row["projet__id"] ?>" class="btn btn--outline">Annuler</a>
         <input type="submit" name="Enregistrer" value="Enregistrer" class="btn btn--plain">
       </div>
     </div>

@@ -12,7 +12,7 @@ include './header.php'; ?>
   <div class="toolbar__container">
     <h1 class="display1">Liste des projets</h1>
     <div class="toolbar__btn">
-      <a href="./projet__new" class="btn btn--plain">Ajouter un Projet</a>
+      <a href="./projet__new.php" class="btn btn--plain">Ajouter un Projet</a>
     </div>
   </div>
 </section>
@@ -70,7 +70,7 @@ include './header.php'; ?>
             ?>
 
 
-            <tr onclick="document.location = 'projet__single?projet__id=<?php echo $row["projet__id"] ?>';" class="projet__<?php echo $row["projet__id"] ?>">
+            <tr onclick="document.location = 'projet__single.php?projet__id=<?php echo $row["projet__id"] ?>';" class="projet__<?php echo $row["projet__id"] ?>">
               <td><?php echo $row["projet__nom"] ?></td>
               <td><?php echo $row["diffuseur__societe"] ?></td>
               <!-- <td class="hidden"><?php echo $row["facture__numero"] ?></td>
@@ -78,7 +78,7 @@ include './header.php'; ?>
               <td><?php echo $date_de_debut; ?></td>
               <td><?php echo $date_de_fin; ?></td>
               <td><?php echo $row["projet__statut"] ?></td>
-              <td><a href="projet__single?projet__id=<?php echo $row["projet__id"] ?>">Voir</a></td>
+              <td><a href="projet__single.php?projet__id=<?php echo $row["projet__id"] ?>">Voir</a></td>
             </tr>
           <?php endwhile; ?>
         </tbody>
@@ -141,7 +141,7 @@ include './header.php'; ?>
             ?>
 
 
-            <tr onclick="document.location = 'projet__single?projet__id=<?php echo $row["projet__id"] ?>';">
+            <tr onclick="document.location = 'projet__single.php?projet__id=<?php echo $row["projet__id"] ?>';">
               <td><?php echo $row["projet__nom"] ?></td>
               <td><?php echo $row["diffuseur__societe"] ?></td>
               <!-- <td class="hidden"><?php echo $row["facture__numero"] ?></td>
@@ -149,7 +149,7 @@ include './header.php'; ?>
               <td><?php echo $date_de_debut; ?></td>
               <td><?php echo $date_de_fin; ?></td>
               <td><?php echo $row["projet__statut"] ?></td>
-              <td><a href="projet__single?projet__id=<?php echo $row["projet__id"] ?>">Voir</a></td>
+              <td><a href="projet__single.php?projet__id=<?php echo $row["projet__id"] ?>">Voir</a></td>
             </tr>
           <?php endwhile; ?>
         </tbody>

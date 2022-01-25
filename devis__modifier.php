@@ -1,4 +1,4 @@
-<?php include './header.php'; ?>
+.php<?php include './header.php'; ?>
 
 
 <?php
@@ -50,11 +50,11 @@ $date = strftime("%d %B %Y", strtotime($today));
         <div class="toolbar__container">
           <h1 class="display1">Modifier un devis</h1>
           <div class="toolbar__btn">
-            <a href="./projet__single?projet__id=<?php echo $row["projet__id"] ?>" class="btn btn--outline">Annuler</a>
-            <a href="./devis__mail?devis__id=<?php echo $devis__id ?>" class="btn btn--outline" target="_blank">Générer email</a>
-            <a href="./devis__convertir?devis__id=<?php echo $devis__id ?>" class="btn btn--outline">Convertir en facture</a>
+            <a href="./projet__single.php?projet__id=<?php echo $row["projet__id"] ?>" class="btn btn--outline">Annuler</a>
+            <a href="./devis__mail.php?devis__id=<?php echo $devis__id ?>" class="btn btn--outline" target="_blank">Générer email</a>
+            <a href="./devis__convertir.php?devis__id=<?php echo $devis__id ?>" class="btn btn--outline">Convertir en facture</a>
             <input type="submit" name="Dupliquer" value="Dupliquer ce devis" class="btn btn--outline">
-            <a href="./core/supprimer?base=Devis&cible=devis__id&id=<?php echo $devis__id ?>" class="btn btn--outline">Supprimer</a>
+            <a href="./core/supprimer.php?base=Devis&cible=devis__id&id=<?php echo $devis__id ?>" class="btn btn--outline">Supprimer</a>
             <input list="statut" name="devis__statut" class="btn btn--outline" value="<?php echo $row["devis__statut"] ?>">
             <datalist id="statut">
               <option value="Brouillon">

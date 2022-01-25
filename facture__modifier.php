@@ -49,9 +49,9 @@ $date = strftime("%d %B %Y", strtotime($today));
         <div class="toolbar__container">
           <h1 class="display1">Modifier une facture</h1>
           <div class="toolbar__btn">
-            <a href="./projet__single?projet__id=<?php echo $row["projet__id"] ?>" class="btn btn--outline">Annuler</a>
-            <a href="./core/supprimer?base=Factures&cible=facture__id&id=<?php echo $facture__id ?>" class="btn btn--outline">Supprimer</a>
-            <a href="./facture__mail?facture__id=<?php echo $facture__id ?>" class="btn btn--outline" class="btn btn--plain">Générer email</a>
+            <a href="./projet__single.php?projet__id=<?php echo $row["projet__id"] ?>" class="btn btn--outline">Annuler</a>
+            <a href="./core/supprimer.php?base=Factures&cible=facture__id&id=<?php echo $facture__id ?>" class="btn btn--outline">Supprimer</a>
+            <a href="./facture__mail.php?facture__id=<?php echo $facture__id ?>" class="btn btn--outline" class="btn btn--plain">Générer email</a>
             <input list="statut" class="btn btn--outline" name="facture__statut" value="<?php echo $row["facture__statut"] ?>">
             <datalist id="statut">
               <option value="Brouillon">

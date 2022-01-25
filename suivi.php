@@ -36,11 +36,11 @@ include './header.php';
         </thead>
         <tbody>
           <?php while($row = $result->fetch_assoc()): ?>
-            <tr onclick="document.location = 'projet__single?projet__id=<?php echo $row["projet__id"] ?>';">
+            <tr onclick="document.location = 'projet__single.php?projet__id=<?php echo $row["projet__id"] ?>';">
               <td><?php echo $row["devis__numero"] ?></td>
               <td><?php echo $row["projet__nom"] ?></td>
               <td><?php echo $row["diffuseur__societe"] ?></td>
-              <td><a href="projet__single?projet__id=<?php echo $row["projet__id"] ?>">Voir</a></td>
+              <td><a href="projet__single.php?projet__id=<?php echo $row["projet__id"] ?>">Voir</a></td>
             </tr>
           <?php endwhile; ?>
         </tbody>
@@ -74,11 +74,11 @@ include './header.php';
         </thead>
         <tbody>
           <?php while($row = $result->fetch_assoc()): ?>
-            <tr onclick="document.location = 'projet__single?projet__id=<?php echo $row["projet__id"] ?>';">
+            <tr onclick="document.location = 'projet__single.php?projet__id=<?php echo $row["projet__id"] ?>';">
               <td><?php echo $row["facture__numero"] ?></td>
               <td><?php echo $row["projet__nom"] ?></td>
               <td><?php echo $row["diffuseur__societe"] ?></td>
-              <td><a href="projet__single?projet__id=<?php echo $row["projet__id"] ?>">Voir</a></td>
+              <td><a href="projet__single.php?projet__id=<?php echo $row["projet__id"] ?>">Voir</a></td>
             </tr>
           <?php endwhile; ?>
         </tbody>

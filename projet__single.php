@@ -12,10 +12,10 @@
       <div class="toolbar__container">
         <h1 class="display1"><?php echo $row["projet__nom"] ?><span class="badge"><?php echo $row["projet__statut"] ?></span></h1>
         <div class="toolbar__btn">
-          <a href="./diffuseur__modifier?diffuseur__id=<?php echo $row["diffuseur__id"]?>" class="btn btn--outline">Modifier le Diffuseur</a>
-          <a href="./projet__modifier?projet__id=<?php echo $projet__id ?>" class="btn btn--outline">Modifier le Projet</a>
+          <a href="./diffuseur__modifier.php?diffuseur__id=<?php echo $row["diffuseur__id"]?>" class="btn btn--outline">Modifier le Diffuseur</a>
+          <a href="./projet__modifier.php?projet__id=<?php echo $projet__id ?>" class="btn btn--outline">Modifier le Projet</a>
         </div>
-      </div>
+      </div>.php
     </section>
 
 
@@ -78,12 +78,12 @@
             $devis__date = date_format($devis__date, 'd M. Y');
             ?>
 
-            <tr onclick="document.location = './devis__modifier?devis__id=<?php echo $row["devis__id"] ?>';">
+            <tr onclick="document.location = './devis__modifier.php?devis__id=<?php echo $row["devis__id"] ?>';">
               <td><?php echo $row["devis__numero"] ?></td>
               <td><?php echo $devis__date ?></td>
               <td><?php echo $row["devis__total"] ?></td>
               <td><?php echo $row["devis__statut"] ?></td>
-              <td><a href="./devis__modifier?devis__id=<?php echo $row["devis__id"] ?>">Voir</a></td>
+              <td><a href="./devis__modifier.php?devis__id=<?php echo $row["devis__id"] ?>">Voir</a></td>
             </tr>
           <?php endwhile; ?>
         </tbody>
@@ -91,7 +91,7 @@
     <?php else: ?>
       <p class="body">Chef, on n'a pas trouvé de devis...</p>
     <?php endif; $conn->close(); ?>
-    <a href="./devis__new?projet__id=<?php echo $projet__id ?>" class="btn btn--plain">Ajouter un devis</a>
+    <a href="./devis__new.php?projet__id=<?php echo $projet__id ?>" class="btn btn--plain">Ajouter un devis</a>
   </div>
 
 
@@ -120,12 +120,12 @@
             $facture__date = date_format($facture__date, 'd M. Y');
             ?>
 
-            <tr onclick="document.location = './facture__modifier?facture__id=<?php echo $row["facture__id"] ?>';">
+            <tr onclick="document.location = './facture__modifier.php?facture__id=<?php echo $row["facture__id"] ?>';">
               <td><?php echo $row["facture__numero"] ?></td>
               <td><?php echo $facture__date ?></td>
               <td><?php echo $row["facture__total"] ?></td>
               <td><?php echo $row["facture__statut"] ?></td>
-              <td><a href="./facture__modifier?facture__id=<?php echo $row["facture__id"] ?>">Voir</a></td>
+              <td><a href="./facture__modifier.php?facture__id=<?php echo $row["facture__id"] ?>">Voir</a></td>
             </tr>
           <?php endwhile; ?>
         </tbody>
@@ -133,7 +133,7 @@
     <?php else: ?>
       <p class="body">Chef, on n'a pas trouvé de factures...</p>
     <?php endif; $conn->close(); ?>
-    <a href="./facture__new?projet__id=<?php echo $projet__id ?>" class="btn btn--plain">Ajouter une facture</a>
+    <a href="./facture__new.php?projet__id=<?php echo $projet__id ?>" class="btn btn--plain">Ajouter une facture</a>
   </div>
 </section>
 <?php include './footer.php'; ?>

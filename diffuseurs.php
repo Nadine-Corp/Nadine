@@ -6,7 +6,7 @@
   <div class="toolbar__container">
     <h1 class="display1">Liste des diffuseurs</h1>
     <div class="toolbar__btn">
-      <a href="./diffuseur__new" class="btn btn--plain">Ajouter un diffuseur</a>
+      <a href="./diffuseur__new.php" class="btn btn--plain">Ajouter un diffuseur</a>
     </div>
   </div>
 </section>
@@ -31,14 +31,14 @@
       </thead>
       <tbody>
       <?php while($row = $result->fetch_assoc()):?>
-        <tr onclick="document.location = 'diffuseur__modifier?diffuseur__id=<?php echo $row["diffuseur__id"] ?>';">
+        <tr onclick="document.location = 'diffuseur__modifier.php?diffuseur__id=<?php echo $row["diffuseur__id"] ?>';">
           <td><?php echo $row["diffuseur__societe"] ?></td>
           <td><?php echo $row["diffuseur__siret"] ?></td>
           <td><?php echo $row["diffuseur__prenom"] ?></td>
           <td><?php echo $row["diffuseur__nom"] ?></td>
           <td><?php echo $row["diffuseur__telephone"] ?></td>
           <td><a href="mailto:<?php echo $row["diffuseur__email"] ?>"><?php echo $row["diffuseur__email"] ?></a></td>
-          <td><a href="diffuseur__modifier?diffuseur__id=<?php echo $row["diffuseur__id"] ?>">Modifier</a></td>
+          <td><a href="diffuseur__modifier.php?diffuseur__id=<?php echo $row["diffuseur__id"] ?>">Modifier</a></td>
         </tr>
       <?php endwhile; ?>
       </tbody>

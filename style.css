@@ -772,7 +772,7 @@ span.directorist-select__selected-list--item:first-letter {
 }
 
 .slider:hover {
-  box-shadow: 0 2.8px 2.2px rgba(var(--color-#1C1C1C-50), 0.034), 0 6.7px 5.3px rgba(var(--color-#1C1C1C-50), 0.048), 0 12.5px 10px rgba(var(--color-#1C1C1C-50), 0.06), 0 22.3px 17.9px rgba(var(--color-#1C1C1C-50), 0.072), 0 41.8px 33.4px rgba(var(--color-#1C1C1C-50), 0.086), 0 100px 80px rgba(var(--color-#1C1C1C-50), 0.12);
+  box-shadow: 0 2.8px 2.2px rgba(var(--color-principale-50), 0.034), 0 6.7px 5.3px rgba(var(--color-principale-50), 0.048), 0 12.5px 10px rgba(var(--color-principale-50), 0.06), 0 22.3px 17.9px rgba(var(--color-principale-50), 0.072), 0 41.8px 33.4px rgba(var(--color-principale-50), 0.086), 0 100px 80px rgba(var(--color-principale-50), 0.12);
 }
 
 input:checked + .slider:before {
@@ -1373,7 +1373,7 @@ input[type=submit]:disabled,
 
 .is--sticky.is--pinned {
   background: rgb(var(--color-principale-50));
-  box-shadow: 0 0.938em 2.188em rgba(var(--color-#1c1c1c-50),.1), 0 0.313em 0.938em rgba(var(--color-#1c1c1c-50),.07);
+  box-shadow: 0 0.938em 2.188em rgba(var(--color-principale-100),.15), 0 0.313em 0.938em rgba(var(--color-principale-100),.1);
   transition: all .5s;
 }
 
@@ -1435,7 +1435,7 @@ input[type=submit]:disabled,
   padding-top: 1130px;
   background: white;
   border-radius: 10px;
-  box-shadow: 0 2.8px 2.2px rgba(var(--color-#1C1C1C-50), 0.034), 0 6.7px 5.3px rgba(var(--color-#1C1C1C-50), 0.048), 0 12.5px 10px rgba(var(--color-#1C1C1C-50), 0.06), 0 22.3px 17.9px rgba(var(--color-#1C1C1C-50), 0.072), 0 41.8px 33.4px rgba(var(--color-#1C1C1C-50), 0.086), 0 100px 80px rgba(var(--color-#1C1C1C-50), 0.12);
+  box-shadow: 0 2.8px 2.2px rgba(var(--color-principale-70), 0.034), 0 6.7px 5.3px rgba(var(--color-principale-70), 0.048), 0 12.5px 10px rgba(var(--color-principale-70), 0.06), 0 22.3px 17.9px rgba(var(--color-principale-70), 0.072), 0 41.8px 33.4px rgba(var(--color-principale-70), 0.086), 0 100px 80px rgba(var(--color-principale-70), 0.12);
   page-break-after: always;
   page-break-before: always;
 }
@@ -1492,7 +1492,7 @@ input[type=submit]:disabled,
 }
 
 .l-header__bar input:focus {
-  box-shadow: 0 0.938em 2.188em rgba(var(--color-#1C1C1C-50),.15), 0 0.313em 0.938em rgba(var(--color-#1C1C1C-50),.1);
+  box-shadow: 0 2.8px 2.2px rgba(var(--color-principale-100), 0.034), 0 6.7px 5.3px rgba(var(--color-principale-100), 0.048), 0 12.5px 10px rgba(var(--color-principale-100), 0.06), 0 22.3px 17.9px rgba(var(--color-principale-100), 0.072), 0 41.8px 33.4px rgba(var(--color-principale-100), 0.086), 0 100px 80px rgba(var(--color-principale-100), 0.12);
   padding: 0 24px;
   border-radius: 48px;
   transition: all .5s;
