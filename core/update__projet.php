@@ -50,7 +50,7 @@
   */
 
   if( isset($_POST['porteurduprojet'])){
-    $porteurduprojet = '1';
+    $projet__porteurduprojet = '1';
   } else {
     $projet__porteurduprojet = '0';
   };

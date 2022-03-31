@@ -143,6 +143,7 @@
   $sql = "CREATE TABLE Factures (
   facture__id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
   facture__corbeille TINYINT(1) DEFAULT 0,
+  facture__precompte TINYINT(1) DEFAULT 0,
   facture__template VARCHAR(255) COLLATE '$interclassement',
   facture__date VARCHAR(255) COLLATE '$interclassement',
   facture__numero VARCHAR(255) COLLATE '$interclassement',

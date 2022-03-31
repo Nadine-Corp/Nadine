@@ -1,7 +1,15 @@
-<?php include './header.php'; ?>
-
-
 <?php
+
+// Ce fichier permet de modifier une facture existante
+
+
+include './header.php';
+
+
+/**
+* Récupération de la date du jour
+*/
+
 date_default_timezone_set('UTC');
 $today = date("Y-m-d");
 setlocale(LC_TIME, "fr_FR","French");
@@ -71,10 +79,25 @@ $date = strftime("%d %B %Y", strtotime($today));
       </section>
 
 
+      <?php
+
+      /**
+      * Sélection du bon Template de facture
+      */
+
+      $facture__precompte = $row["facture__precompte"];
+
+      if ($facture__precompte == 0) {
+        $facture__template = $facture__template.'/facture__precompte.php';
+      }else {
+        $facture__template = $facture__template.'/facture.php';
+      };
+     ?>
+
 
       <section class="row l_facture">
         <div class="col l12">
-          <?php include './template_facture/'.$facture__template.'/facture.php'; ?>
+          <?php include './template_facture/'.$facture__template; ?>
         </div>
       </section>
       </form>

@@ -21,6 +21,7 @@
   $artiste__telephone =  addslashes($_POST['telephone']);
   $artiste__email =  addslashes($_POST['email']);
   $artiste__website =  addslashes($_POST['website']);
+  $artiste__notes =  '';
 
 
 
@@ -28,8 +29,8 @@
 * Mettre à jour la base de données
 */
 
-  $sql = "INSERT INTO Artistes ( artiste__societe, artiste__siret, artiste__civilite, artiste__prenom, artiste__nom, artiste__numero_secu, artiste__numero_mda, artiste__adresse, artiste__code_postal, artiste__ville, artiste__telephone, artiste__email, artiste__website)
-  VALUES ('$artiste__societe', '$artiste__siret', '$artiste__civilite', '$artiste__prenom', '$artiste__nom', '$artiste__numero_secu', '$artiste__numero_mda', '$artiste__adresse', '$artiste__code_postal', '$artiste__ville', '$artiste__telephone', '$artiste__email', '$artiste__website')";
+  $sql = "INSERT INTO Artistes ( artiste__societe, artiste__siret, artiste__civilite, artiste__prenom, artiste__nom, artiste__numero_secu, artiste__numero_mda, artiste__adresse, artiste__code_postal, artiste__ville, artiste__telephone, artiste__email, artiste__website, artiste__notes)
+  VALUES ('$artiste__societe', '$artiste__siret', '$artiste__civilite', '$artiste__prenom', '$artiste__nom', '$artiste__numero_secu', '$artiste__numero_mda', '$artiste__adresse', '$artiste__code_postal', '$artiste__ville', '$artiste__telephone', '$artiste__email', '$artiste__website', '$artiste__notes')";
   include 'query.php'; $result = $conn->query($sql) or die($conn->error);
 
 

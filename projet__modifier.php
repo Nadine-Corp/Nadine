@@ -61,6 +61,20 @@ if ($result->num_rows > 0):
       $diffuseur = '["'.$diffuseur__societe.'"]';
       $diffuseur = htmlspecialchars($diffuseur);
     endif;
+
+    // Récuparation des infos sur les rétrocessions d’honoraires
+
+    if( $row["projet__retrocession"] == 0){
+      $projet__retrocession = '';
+    }else {
+      $projet__retrocession = 'checked';
+    };
+
+    if( $row["projet__porteurduprojet"] == 0){
+      $projet__porteurduprojet = '';
+    }else {
+      $projet__porteurduprojet = 'checked';
+    };
     ?>
 
     <form class="form" action="./core/update__projet.php" method="post">
@@ -153,7 +167,7 @@ if ($result->num_rows > 0):
               <p class="lead_paragraph">Êtes-vous plusieurs Artistes-Auteurs à travailler sur ce projet ?</p>
               <span>Non</span>
               <label class="switch">
-                <input name="retrocession" type="checkbox">
+                <input name="retrocession" type="checkbox" <?php echo $projet__retrocession; ?>>
                 <span class="slider  is--fullsize round"></span>
               </label>
               <span>Oui</span>
@@ -162,7 +176,7 @@ if ($result->num_rows > 0):
               <p class="lead_paragraph">Êtes-vous le porteur du projet ? Est-ce vous qui allez facturer au diffuseur ?</p>
               <span>Non</span>
               <label class="switch">
-                <input name="porteurduprojet" type="checkbox">
+                <input name="porteurduprojet" type="checkbox" <?php echo $projet__porteurduprojet; ?>>
                 <span class="slider  is--fullsize round"></span>
               </label>
               <span>Oui</span>
