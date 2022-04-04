@@ -62,12 +62,12 @@ endif;
 		</div>
 
 		<nav class="l-header__nav">
-			<button type="button" class="btn__menu-more-vert"><?php include './assets/img/inline-icon_more-vert.svg.php'; ?></button>
 			<ul class="nav__main">
 				<li class="menu__item"><a href="./projets.php" class="lead_paragraph">Projets</a></li>
 				<li class="menu__item"><a href="./diffuseurs.php" class="lead_paragraph">Diffuseurs</a></li>
 				<li class="menu__item"><a href="./artistes.php" class="lead_paragraph">Artistes</a></li>
 				<li class="menu__item"><a href="./suivi.php" class="lead_paragraph">Suivi</a></li>
+        <li class="menu__item"><button type="button" class="btn__menu-more-vert"><?php include './assets/img/inline-icon_more-vert.svg.php'; ?></button></li>
 			</ul>
 
 			<ul class="nav__subnav menu">

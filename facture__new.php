@@ -92,14 +92,27 @@
     </div>
   </section>
 
+  <?php
 
+  /**
+  * Sélection du bon Template de facture
+  */
+
+  $facture__precompte = $row["profil__precompte"];
+
+  if ($facture__precompte == 0) {
+    $facture__template = $facture__template.'/facture.php';
+  }else {
+    $facture__template = $facture__template.'/facture__precompte.php';
+  };
+ ?>
 
   <section class="row l_facture">
     <div class="col l12">
-      <?php include './template_facture/'.$facture__template.'/facture.php'; ?>
+      <?php include './template_facture/'.$facture__template; ?>
     </div>
   </section>
-</form>
+  </form>
 
 <?php endwhile; ?>
 <?php else: ?>

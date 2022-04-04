@@ -8,27 +8,22 @@
   float: left
   padding: $modulor
 
-.l1
-  width: 8.33%
-.l2
-  width: 16.66%
-.l3
-  width: 25%
-.l4
-  width: 33.33%
-.l5
-  width: 41.66%
-.l6
-  width: 50%
-.l7
-  width: 58.33%
-.l8
-  width: 66.66%
-.l9
-  width: 75%
-.l10
-  width: 83.33%
-.l11
-  width: 91.66%
-.l12
-  width: 100%
+
+// Cette fonction génére toutes les .class permettant de gérer les colonnes
+  en HTML. Elles utilise les variables $nbColonne et $breakpoints du fichier
+  assets/sass/base/_config.sass
+
+    Exemple de HTML :
+
+    <div class="row">
+      <div class="col s8 xl6">
+        <!-- content -->
+      </div>
+    </div>
+
+@each $breakpoint, $size in $breakpoints
+  @include respond($breakpoint)
+    @for $i from 1 through $nbColonne
+      .#{$breakpoint}#{$i}
+        $width: 100% / $nbColonne * $i
+        width: $width

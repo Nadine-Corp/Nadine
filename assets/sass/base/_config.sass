@@ -1,8 +1,29 @@
 // main: ../../../style.sass
 
 
+// Définition du $Modulor. Le $Modulor gére toutes les proportions de Monobloc :
+   marges, corps typographiques, tailles des élèments, etc.
+   Tous est un multiple du $Modulor
+
 $modulor: 16px
 $header_barre-height: $modulor*5
+
+
+// $breakpoints définit les 'Tailles' nécessaire au système responsive de Monobloc.
+  Ces 'Tailles' peuvent être utilisées avec la fonction respond()
+
+   Exemple de SASS :
+     div
+       display: none
+       @include respond('m')
+         display: block
+
+$breakpoints: ('xxs': 0px, 'xs': 500px, 's': 768px, 'm': 900px, 'l': 1024px, 'xl': 1280px, 'xxl': 1440px)
+
+
+// Définition du nombre de colonne pour le module .m-grid
+
+$nbColonne: 12
 
 
 // Ajout du Redaction

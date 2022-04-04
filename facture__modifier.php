@@ -88,9 +88,9 @@ $date = strftime("%d %B %Y", strtotime($today));
       $facture__precompte = $row["facture__precompte"];
 
       if ($facture__precompte == 0) {
-        $facture__template = $facture__template.'/facture__precompte.php';
-      }else {
         $facture__template = $facture__template.'/facture.php';
+      }else {
+        $facture__template = $facture__template.'/facture__precompte.php';
       };
      ?>
 

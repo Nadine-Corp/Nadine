@@ -41,6 +41,7 @@
               <p class="facture__body">Fait à <?php echo $row["profil__ville"] ?>, le <?php echo utf8_encode(strftime("%d %b %Y", strtotime($today))) ?></p>
               <input type="hidden" name="facture__date" placeholder="date" value="<?php echo $today ?>">
             </td>
+
           </tr>
         </table>
         <?php include 'body.php'; ?>
@@ -92,6 +93,7 @@
             <td></td>
           </tr>
         </table>
+
         <table class="facture__h-80 facture__b-t">
           <tr>
             <td class="facture__w-40 facture__tl"><p class="facture__caption">Cotisation Sécurité sociale 0,40% du Montant HT<br>Prise en charge par l'État : 0.40%</p></td>
@@ -124,7 +126,7 @@
             <td class="facture__w-10 facture__tr"><p class="facture__caption"></p></td>
           </tr>
           <tr>
-            <td class="facture__w-40 facture__tl"><p class="facture__caption">Total Précomptes (1)</p></td>
+            <td class="facture__w-40 facture__tl"><p class="facture__caption">Total Contribution artiste-auteur</p></td>
             <td class="facture__w-10 facture__tr"><p class="facture__caption"><input type="text" name="total-precompte" placeholder="Total" class="facture__caption" disabled> €</p></td>
             <td class="facture__b-ld facture__w-40 facture__tl"><p class="facture__caption"></p></td>
             <td class="facture__w-10 facture__tr"><p class="facture__caption"></p></td>
@@ -135,25 +137,25 @@
           <tr class="facture__h-100">
             <td class="facture__w-50 facture__total">
               <p class="facture__display2">Total à verser<br>à l'artiste auteur</p>
-              <p class="facture__caption">Montant HT − Total du précompte (1)</p>
-              <img src="./template_facture/facture__2022/arrow.png" alt="">
+              <img src="./template_facture/facture__2022/arrow.png">
             </td>
             <td class="facture__w-50 facture__b-ld facture__total">
               <p class="facture__display2">Total à verser<br>à L’URSSAF *</p>
-              <p class="facture__caption">Total des contributions diffuseur (2)</p>
               <p class="facture__caption">* Taux en vigueur en 2022</p>
-              <img src="./template_facture/facture__2022/arrow.png" alt="">
+              <img src="./template_facture/facture__2022/arrow.png">
             </td>
           </tr>
           <tr class="facture__h-20 facture__b-t">
-            <td id="total-artiste-precompte" class="facture__w-50 facture__total facture__display2">
+            <td id="total-artiste" class="facture__w-50 facture__total facture__display2">
             </td>
-            <td id="total-mda-precompte" class="facture__w-50 facture__b-ld facture__total facture__display2">
+            <td id="total-mda" class="facture__w-50 facture__b-ld facture__total facture__display2">
               <input type="hidden" name="total-mda" placeholder="Total" class="facture__subheading">
             </td>
           </tr>
           <tr class="facture__h-80"></tr>
         </table>
+
+
         <table class="facture__footer facture__b-t">
           <tr>
             <td>

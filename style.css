@@ -1234,52 +1234,277 @@ input[type=submit]:disabled,
   padding: 16px;
 }
 
-.l1 {
-  width: 8.33%;
+@media screen and (min-width: 0px) {
+  .xxs1 {
+    width: 8.33333%;
+  }
+  .xxs2 {
+    width: 16.66667%;
+  }
+  .xxs3 {
+    width: 25%;
+  }
+  .xxs4 {
+    width: 33.33333%;
+  }
+  .xxs5 {
+    width: 41.66667%;
+  }
+  .xxs6 {
+    width: 50%;
+  }
+  .xxs7 {
+    width: 58.33333%;
+  }
+  .xxs8 {
+    width: 66.66667%;
+  }
+  .xxs9 {
+    width: 75%;
+  }
+  .xxs10 {
+    width: 83.33333%;
+  }
+  .xxs11 {
+    width: 91.66667%;
+  }
+  .xxs12 {
+    width: 100%;
+  }
 }
 
-.l2 {
-  width: 16.66%;
+@media screen and (min-width: 500px) {
+  .xs1 {
+    width: 8.33333%;
+  }
+  .xs2 {
+    width: 16.66667%;
+  }
+  .xs3 {
+    width: 25%;
+  }
+  .xs4 {
+    width: 33.33333%;
+  }
+  .xs5 {
+    width: 41.66667%;
+  }
+  .xs6 {
+    width: 50%;
+  }
+  .xs7 {
+    width: 58.33333%;
+  }
+  .xs8 {
+    width: 66.66667%;
+  }
+  .xs9 {
+    width: 75%;
+  }
+  .xs10 {
+    width: 83.33333%;
+  }
+  .xs11 {
+    width: 91.66667%;
+  }
+  .xs12 {
+    width: 100%;
+  }
 }
 
-.l3 {
-  width: 25%;
+@media screen and (min-width: 768px) {
+  .s1 {
+    width: 8.33333%;
+  }
+  .s2 {
+    width: 16.66667%;
+  }
+  .s3 {
+    width: 25%;
+  }
+  .s4 {
+    width: 33.33333%;
+  }
+  .s5 {
+    width: 41.66667%;
+  }
+  .s6 {
+    width: 50%;
+  }
+  .s7 {
+    width: 58.33333%;
+  }
+  .s8 {
+    width: 66.66667%;
+  }
+  .s9 {
+    width: 75%;
+  }
+  .s10 {
+    width: 83.33333%;
+  }
+  .s11 {
+    width: 91.66667%;
+  }
+  .s12 {
+    width: 100%;
+  }
 }
 
-.l4 {
-  width: 33.33%;
+@media screen and (min-width: 900px) {
+  .m1 {
+    width: 8.33333%;
+  }
+  .m2 {
+    width: 16.66667%;
+  }
+  .m3 {
+    width: 25%;
+  }
+  .m4 {
+    width: 33.33333%;
+  }
+  .m5 {
+    width: 41.66667%;
+  }
+  .m6 {
+    width: 50%;
+  }
+  .m7 {
+    width: 58.33333%;
+  }
+  .m8 {
+    width: 66.66667%;
+  }
+  .m9 {
+    width: 75%;
+  }
+  .m10 {
+    width: 83.33333%;
+  }
+  .m11 {
+    width: 91.66667%;
+  }
+  .m12 {
+    width: 100%;
+  }
 }
 
-.l5 {
-  width: 41.66%;
+@media screen and (min-width: 1024px) {
+  .l1 {
+    width: 8.33333%;
+  }
+  .l2 {
+    width: 16.66667%;
+  }
+  .l3 {
+    width: 25%;
+  }
+  .l4 {
+    width: 33.33333%;
+  }
+  .l5 {
+    width: 41.66667%;
+  }
+  .l6 {
+    width: 50%;
+  }
+  .l7 {
+    width: 58.33333%;
+  }
+  .l8 {
+    width: 66.66667%;
+  }
+  .l9 {
+    width: 75%;
+  }
+  .l10 {
+    width: 83.33333%;
+  }
+  .l11 {
+    width: 91.66667%;
+  }
+  .l12 {
+    width: 100%;
+  }
 }
 
-.l6 {
-  width: 50%;
+@media screen and (min-width: 1280px) {
+  .xl1 {
+    width: 8.33333%;
+  }
+  .xl2 {
+    width: 16.66667%;
+  }
+  .xl3 {
+    width: 25%;
+  }
+  .xl4 {
+    width: 33.33333%;
+  }
+  .xl5 {
+    width: 41.66667%;
+  }
+  .xl6 {
+    width: 50%;
+  }
+  .xl7 {
+    width: 58.33333%;
+  }
+  .xl8 {
+    width: 66.66667%;
+  }
+  .xl9 {
+    width: 75%;
+  }
+  .xl10 {
+    width: 83.33333%;
+  }
+  .xl11 {
+    width: 91.66667%;
+  }
+  .xl12 {
+    width: 100%;
+  }
 }
 
-.l7 {
-  width: 58.33%;
-}
-
-.l8 {
-  width: 66.66%;
-}
-
-.l9 {
-  width: 75%;
-}
-
-.l10 {
-  width: 83.33%;
-}
-
-.l11 {
-  width: 91.66%;
-}
-
-.l12 {
-  width: 100%;
+@media screen and (min-width: 1440px) {
+  .xxl1 {
+    width: 8.33333%;
+  }
+  .xxl2 {
+    width: 16.66667%;
+  }
+  .xxl3 {
+    width: 25%;
+  }
+  .xxl4 {
+    width: 33.33333%;
+  }
+  .xxl5 {
+    width: 41.66667%;
+  }
+  .xxl6 {
+    width: 50%;
+  }
+  .xxl7 {
+    width: 58.33333%;
+  }
+  .xxl8 {
+    width: 66.66667%;
+  }
+  .xxl9 {
+    width: 75%;
+  }
+  .xxl10 {
+    width: 83.33333%;
+  }
+  .xxl11 {
+    width: 91.66667%;
+  }
+  .xxl12 {
+    width: 100%;
+  }
 }
 
 .menu {
@@ -1514,9 +1739,21 @@ input[type=submit]:disabled,
   flex-direction: row;
   align-items: center;
   height: 80px;
-  margin: 0 32px;
+  margin: 0 8px;
   border-bottom: 4px solid rgb(var(--color-accent-50));
   transition: border 0.4s;
+}
+
+@media screen and (min-width: 900px) {
+  .nav__main li {
+    margin: 0 16px;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .nav__main li {
+    margin: 0 32px;
+  }
 }
 
 .nav__main li:hover {
@@ -1548,11 +1785,6 @@ input[type=submit]:disabled,
   background-repeat: no-repeat;
   background-size: contain;
   z-index: -1;
-}
-
-.btn__menu-more-vert {
-  float: right;
-  padding-top: 27px;
 }
 
 .l-header__btn-color {

@@ -55,9 +55,17 @@
     flex-direction: row
     align-items: center
     height: $header_barre-height
-    margin: 0 $modulor*2
+    margin: 0 $modulor/2
     border-bottom: 4px solid color('accent')
     transition: border 0.4s
+
+    @include respond('m')
+      margin: 0 $modulor
+
+
+    @include respond('xl')
+      margin: 0 $modulor*2
+
 
   li:hover
     border-bottom: 4px solid white
@@ -84,10 +92,6 @@
     background-repeat: no-repeat
     background-size: contain
     z-index: -1
-
-.btn__menu-more-vert
-  float: right
-  padding-top: 27px
 
 .l-header__btn-color
   align-self: center
