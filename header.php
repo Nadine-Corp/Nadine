@@ -44,7 +44,7 @@ endif;
 	<meta name="theme-color" content="#ffffff">
 	<link rel="preconnect" href="https://fonts.gstatic.com">
 	<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
-	<link rel="stylesheet" href="https://use.typekit.net/nas3qgo.css">
+	<link rel="stylesheet" href="https://use.typekit.net/znq5njd.css">
 	<link rel='stylesheet' type='text/css' media="all" href='./style.min.css'>
 	<link rel="stylesheet" type="text/css" media="print"  href="./assets/sass/print/impression.css">
 	<script src="./assets/js/jquery.min.js"></script>
