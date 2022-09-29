@@ -1,13 +1,17 @@
 // main: ../../../style.sass
+
+  Le module Grid est l'un des plus ancien de Nadine.
+  Il gére le système de grille "à l'ancienne".
+
 .row
   float: left
   width: 100%
-  padding: $modulor*3 $modulor
+  padding: $row__marge-top $row__marge-horiz $row__marge-bottom $row__marge-horiz
 
 .col
+  width: 100%
   float: left
-  padding: $modulor
-
+  padding: $modulor/2
 
 // Cette fonction génére toutes les .class permettant de gérer les colonnes
   en HTML. Elles utilise les variables $nbColonne et $breakpoints du fichier

@@ -77,7 +77,7 @@ if( !($result) ):
       <div class="accordion__titre">
         <h2 class="subheading">Vos coordonnées</h2>
         <div class="accordion__icon">
-          <?php include './assets/img/inline-icon_arrow_accordion.svg.php'; ?>
+          <?php include './assets/img/ico_arrow-accordion.svg.php'; ?>
         </div>
       </div>
       <div class="accordion__container">
@@ -107,7 +107,7 @@ if( !($result) ):
       <div class="accordion__titre">
         <h2 class="subheading">N° de Secu & Maison des Artistes</h2>
         <div class="accordion__icon">
-          <?php include './assets/img/inline-icon_arrow_accordion.svg.php'; ?>
+          <?php include './assets/img/ico_arrow-accordion.svg.php'; ?>
         </div>
       </div>
       <div class="accordion__container">
@@ -129,7 +129,7 @@ if( !($result) ):
       <div class="accordion__titre">
         <h2 class="subheading">Vos coordonnées bancaires</h2>
         <div class="accordion__icon">
-          <?php include './assets/img/inline-icon_arrow_accordion.svg.php'; ?>
+          <?php include './assets/img/ico_arrow-accordion.svg.php'; ?>
         </div>
       </div>
       <div class="accordion__container">

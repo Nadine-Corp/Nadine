@@ -75,7 +75,7 @@ endif; $conn->close();
       <div class="accordion__titre">
         <h2 class="subheading">Informations générales</h2>
         <div class="accordion__icon">
-          <?php include './assets/img/inline-icon_arrow_accordion.svg.php'; ?>
+          <?php include './assets/img/ico_arrow-accordion.svg.php'; ?>
         </div>
       </div>
       <div class="accordion__container">
@@ -98,7 +98,7 @@ endif; $conn->close();
       <div class="accordion__titre">
         <h2 class="subheading">Diffuseurs</h2>
         <div class="accordion__icon">
-          <?php include './assets/img/inline-icon_arrow_accordion.svg.php'; ?>
+          <?php include './assets/img/ico_arrow-accordion.svg.php'; ?>
         </div>
       </div>
       <div id="l-projet__diffuseurs-accordion" class="accordion__container">
@@ -130,10 +130,10 @@ endif; $conn->close();
       <div class="accordion__titre">
         <h2 class="subheading">Rétrocessions d’honoraires</h2>
         <div class="accordion__icon">
-          <?php include './assets/img/inline-icon_arrow_accordion.svg.php'; ?>
+          <?php include './assets/img/ico_arrow-accordion.svg.php'; ?>
         </div>
       </div>
-      <div class="accordion__container">
+      <div  id="l-projet__retrocessions-accordion"  class="accordion__container">
         <div class="form__slider-container">
           <p class="lead_paragraph">Êtes-vous plusieurs Artistes-Auteurs à travailler sur ce projet ?</p>
           <span>Non</span>
@@ -144,10 +144,10 @@ endif; $conn->close();
           <span>Oui</span>
         </div>
         <div class="form__slider-container">
-          <p class="lead_paragraph">Êtes-vous le porteur du projet ? Est-ce vous qui allez facturer au diffuseur ?</p>
+          <p class="lead_paragraph">Êtes-vous le porteur du projet ? Allez-vous facturer au diffuseur ?</p>
           <span>Non</span>
           <label class="switch">
-            <input name="porteurduprojet" type="checkbox">
+            <input name="porteurduprojet" type="checkbox" checked>
             <span class="slider  is--fullsize round"></span>
           </label>
           <span>Oui</span>

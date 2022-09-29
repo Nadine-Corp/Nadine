@@ -96,7 +96,7 @@
     box-shadow: 0 -2.8px 2.2px #{"rgba(var(--color-"+$var+"-"+$decli+"), 0.034)"},0 -6.7px 5.3px #{"rgba(var(--color-"+$var+"-"+$decli+"), 0.048)"},0 -12.5px 10px #{"rgba(var(--color-"+$var+"-"+$decli+"), 0.06)"},0 22.3px 17.9px #{"rgba(var(--color-"+$var+"-"+$decli+"), 0.072)"},0 -41.8px 33.4px #{"rgba(var(--color-"+$var+"-"+$decli+"), 0.086)"},0 -100px 80px #{"rgba(var(--color-"+$var+"-"+$decli+"), 0.12)"}
 
 
-// La fonction respond() gère les comportements responsive de Monobloc.
+// La fonction respond() gère les comportements responsive de Nadine.
 
     Exemple de SASS :
       div
@@ -110,49 +110,86 @@
       @content
 
 
-// La fonction for-size permet de changer l'affichage des élèments en fonction
-  de la taille de l'écran de l'utilisateur.
-  Exemple de SASS :
-    div
-      display: block
-      @include for-size(phone-only)
-        display: none
-
-
-@mixin for-size($size)
-  @if $size == smartphone
-    @media (max-width: 599px)
-      @content
-  @else if $size == tablette-portrait
-    @media (min-width: 600px)
-      @content
-  @else if $size == tablette-paysage
-    @media (min-width: 900px)
-      @content
-  @else if $size == desktop
-    @media (min-width: 1200px)
-      @content
-  @else if $size == big-desktop
-    @media (min-width: 1800px)
-      @content
-
-
 // La fonction themeColor() génere les variables de couleurs CSS
    de la balise <html>. Ces variables permettent de gérer
    les thèmes colorés utilisé par Nadine.
 
    0..10..20..30..40..50..60..70..80..90..100
    ↑                  ↑                   ↑
-   0=blanc            50=couleur pure     100=noir
+   0=papier           50=rouge-trash     100=gris-dark
 
 @mixin themeColor($colors)
   @each $nom, $hexa in $colors
     @each $declinaison in $declinaisons
       @if $declinaison >= 50
         $weight: ($declinaison - 50)*2
-        $color: mix(black, $hexa, $weight)
+        $color: mix($gris-dark, $hexa, $weight)
         --color-#{$nom}-#{$declinaison}: #{hex-to-rgb($color)}
       @else
         $weight: $declinaison*2
-        $color: mix($hexa, white, $weight)
+        $color: mix($hexa, $papier, $weight)
         --color-#{$nom}-#{$declinaison}: #{hex-to-rgb($color)}
+
+
+// La fonction font-face() simplifie l'ajout de font
+
+  Exemple de SASS :
+    @include font-face('Graphik', './assets/fonts/graphik/graphik', 400, normal, [eot, woff, woff2] )
+    @include font-face('Graphik', './assets/fonts/graphik/graphik', 400, italic, [eot, woff, woff2] )
+
+@mixin font-face($name, $path, $weight:null, $style:null, $exts:woff)
+  $src: local('#{$name}')
+
+  @each $ext in $exts
+    $url: url('#{$path}.#{$ext}')
+    @if $ext == 'svg'
+      $url: url('#{$path}.#{$ext}##{$name}')
+    @if $ext == 'ttf'
+      $ext: 'truetype'
+    @if $ext == 'otf'
+      $ext: 'opentype'
+    $format: format('#{$ext}')
+    $src: append($src, $url $format, comma )
+
+  @font-face
+    font-family: $name
+    src: $src
+    font-stretch: normal
+    font-style: $style
+    font-weight: $weight
+
+
+// La fonction vh() permet de patcher un problème
+   avec l'unité vh sur smartphone.
+
+  Exemple de SASS :
+    div
+      min-height: vh(100)
+
+@function vh($quantity)
+  @return calc(var(--vh, 1vh) * #{$quantity})
+
+
+// La fonction modulor() permet d'utilisé plus facilement
+   la variable css --m
+
+  Exemple de SASS :
+    div
+      width: m(1)
+
+@function m($quantity:1)
+  @return calc(var(--m) * #{$quantity}px)
+
+
+// La fonction hover() simplifie l'utilisation du media(hover)
+
+    Exemple de SASS :
+      div
+        background: black
+        @include hover
+          background: white
+
+@mixin hover
+  @media(hover)
+    &:hover
+      @content

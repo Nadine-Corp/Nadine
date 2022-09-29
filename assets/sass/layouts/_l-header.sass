@@ -1,39 +1,40 @@
 // main: ../../../style.sass
 
-.l-header
-  display: flex
-  flex-direction: row
-  position: fixed
-  top: 0
-  width: 100%
-  height: $header_barre-height
-  padding: 0 $modulor*2
-  background: color('accent')
-  z-index: 10
+  Le layout Header permet de personnaliser l'affichage du header de Nadine.
+  Il comprend les élèments de navigation, les menus, le logo de Nadine, etc.
 
-  .menu
-    position: absolute
-    top: 70px
-    right: 48px
-
-.l-header__logo svg
-  height: $header_barre-height - $modulor*2
 
 
 .l-header__bar
+  display: flex
+  position: fixed
+  top: 0
+  z-index: $zindex__header
+
+
+// Barre principale
+
+.l-header__mainbar
+  flex-direction: row
+  width: 100%
+  height: $header__height
+  outline: 1px solid color('accent')
+  border: 1px solid color('accent')
+  background: color('accent')
+
+.l-header__searchbar
   flex-grow: 1
-  height: $header_barre-height - $modulor*2
-  margin: $modulor $modulor*2
+  margin-left: $header__height
   input
-    width: 100%
-    height: $header_barre-height - $modulor*2
+    width: 50%
+    height: $header__height
     font-family: "Redaction", serif
     font-style: italic
     font-weight: 400
+    font-size: m(2)
     color: color('secondaire')
     padding: 0 $modulor
-    border-radius: $modulor
-    background: color('principale')
+    background: color('back')
     transition: all 2s
     &:focus
       @include box-shadow(100, 'principale', 100)
@@ -41,43 +42,76 @@
       border-radius: $modulor*3
       transition: all .5s
 
+
+// Barre de nav
+
+.l-header__navbar
+  flex-direction: column
+  align-items: center
+  width: $header__height
+  padding-top: $header__height
+  min-height: vh(100)
+  background: color('back')
+  border-right: 1px solid color('accent')
+  transition: .5s
+
+  &.is--active
+    width: m(20)
+
+    .nav__main
+      width: m(20)
+      padding-right: m(2)
+
+    .l-header__logo
+      opacity: 0
+
+    .l-header__mention
+      opacity: 1
+
+// Header Bottom
+
+.l-header__bottom
+  position: absolute
+  bottom: $row__marge-bottom
+  padding: 0 m(.5)
+  transition: .5s
+
+// Gestion du glorieux logo NadineCorp©
+
+.l-header__logo
+  svg
+    width: m(2.5)
+
 .l-header__nav
   float: right
 
 .nav__main
+  position: absolute
   display: flex
-  flex-direction: row
-  float: right
+  flex-direction: column
+  left: 0
+  width: $header__height
+  overflow: hidden
+  transition: .5s
 
-  li
+  li,  a
     position: relative
     display: flex
     flex-direction: row
     align-items: center
-    height: $header_barre-height
-    margin: 0 $modulor/2
-    border-bottom: 4px solid color('accent')
-    transition: border 0.4s
+    height: $header__height
 
-    @include respond('m')
-      margin: 0 $modulor
-
-
-    @include respond('xl')
-      margin: 0 $modulor*2
-
-
-  li:hover
-    border-bottom: 4px solid white
-    transition: border 0.4s
+  svg
+    width: m(2)
 
   a
-    display: block
-    line-height: $header_barre-height
     &:hover
       text-decoration: none
       color: color('secondaire')
       transition: color 0.4s
+
+      svg
+        fill: color('principale')
 
   a.is--current::after
     content: ''
@@ -93,19 +127,69 @@
     background-size: contain
     z-index: -1
 
-.l-header__btn-color
-  align-self: center
-  width: $modulor*2 - 6px
-  height: $modulor*2 - 6px
-  margin-left: $modulor
-  border: 3px solid
-  border-radius: $modulor
-  cursor: pointer
+.l-header__nav-ico
+  display: flex
+  width: $header__height
+  height: $header__height
+  align-items: center
+  justify-content: center
 
-  &::before
-    content: ""
+// Bouton Menu Burger
+
+.nav__btn
+  position: fixed
+  display: flex
+  align-items: center
+  top: 0
+  left: 0
+  cursor: pointer
+  background: color('accent')
+  z-index: $zindex__header
+
+  @include hover
+    #nav__btn-stick1
+      transform: translateY(calc(#{$header__height}/10))
+
+    #nav__btn-stick2
+      transform: translateY(calc(#{$header__height}/10))
+      opacity: 0
+
+    #nav__btn-stick3
+      transform: translateY(calc(#{$header__height}/-10))
+
+  &.is--active
+    #nav__btn-stick1
+      transform: translateY(calc(#{$header__height}/6)) rotate(135deg)
+
+    #nav__btn-stick2
+      transform: translateY(calc(#{$header__height}/-6)) rotate(-30deg)
+      opacity: 0
+
+    #nav__btn-stick3
+      transform: translateY(calc(#{$header__height}/-6)) rotate(-135deg)
+
+.nav__btn-gp
+  display: flex
+  flex-direction: column
+  justify-content: space-around
+  width: $header__height
+  height: $header__height
+  padding: calc(#{$header__height} /4)
+
+  div
+    height: 3px
+    background: color('principale', 100)
+    transition: .5s
+
+// Mention
+
+.l-header__mention
+  opacity: 0
+  span
     display: block
-    width: $modulor*2 - 20px
-    height: $modulor*2 - 20px
-    border-radius: $modulor
-    border: 4px solid color('secondaire')
+    width: 100%
+    color: color('principale',90)
+  a
+    color: color('principale',80)
+    @include hover
+      color: color('principale',50)

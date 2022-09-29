@@ -8,11 +8,17 @@
   Exemple de HTML :
 
   <footer>
-    <div class="m-overlay"></div>
+    <div class="m-overlay is--fullsize is--glass"></div>
   </footer>
 
 .m-overlay
   display: none
   position: fixed !important
-  background: color('principale', 50, 0.5)
   z-index: $zindex__overlay
+  pointer-events: none
+  background: color('back', 50, 0.95)
+
+  // permet de fermer les volets, etc.
+  &.is--active
+    pointer-events: auto
+    cursor: pointer

@@ -1,8 +1,67 @@
 
-$( document ).ready(function() {
+$( document ).ready(function($) {
+
+	/**
+	* Variables
+	*/
+
+	// Modulor
+	var modulor = window.getComputedStyle(document.documentElement).getPropertyValue('--m');
+
+	// Modifie la variable --vh lors du redimensionnement.
+	const appHeight = () => {
+		const vh = window.innerHeight * 0.01;
+		document.documentElement.style.setProperty('--vh', `${vh}px`);
+	}
+	window.addEventListener('resize', appHeight);
+	appHeight();
 
 
-	// Menu : Ajout de la classe is--current
+	/**
+	* Bouton Menu Nav
+	*/
+
+	// Déclare qq variables
+	let overlay = document.querySelector('.m-overlay');
+	let nav__btn = document.querySelector('.nav__btn');
+	let header__navbar = document.querySelector('.l-header__navbar');
+
+	// Vérifie si qq'un click sur le Menu Burger
+	nav__btn.addEventListener('click', function() {
+		if ( header__navbar.classList.contains('is--active') ) {
+			HideNav();
+		}else{
+			ShowNav();
+		}
+	});
+
+	// Ferme le volet si qq'un click à l'extérieur du menu
+	overlay.addEventListener('click', function() {
+		HideNav();
+	});
+
+	// Cette fonction est appelée pour ouvrir le nav
+	function ShowNav() {
+		nav__btn.classList.add('is--active');
+		header__navbar.classList.add('is--active');
+		overlay.classList.add('is--active');
+		$('.m-overlay').fadeIn();
+		document.body.classList.add('overflow--is--hidden');
+		document.documentElement.classList.add('overflow--is--hidden');
+	};
+	// Cette fonction est appelée pour fermer le nav
+	function HideNav() {
+		nav__btn.classList.remove('is--active');
+		header__navbar.classList.remove('is--active');
+		overlay.classList.add('is--active');
+		document.body.classList.remove('overflow--is--hidden');
+		document.documentElement.classList.remove('overflow--is--hidden');
+		$('.m-overlay').fadeOut();
+	};
+
+	/**
+	*  Menu : Ajout de la classe is--current
+	*/
 
 	var currentUrl = location.pathname;
 	$('.l-header__nav a').each(function(){
@@ -11,28 +70,6 @@ $( document ).ready(function() {
 			$(this).addClass('is--current');
 		}
 	})
-
-
-	// Changement de couleur en Ajax
-
-	$(".l-header__btn-color").click(function(){
-		$.ajax({
-			url : './core/update__option-couleur.php',
-			type: 'GET',
-			success:function( newColor ) {
-				if(newColor){
-					var newClass = '__' + newColor + "-mode";
-					$('html').removeClass();
-					$('html').addClass(newClass);
-				}
-			},
-			error: function (xhr, ajaxOptions, thrownError) {
-				alert(xhr.status);
-				alert(thrownError);
-			}
-		});
-	});
-
 
 	// Ouverture du menu secondaire
 
@@ -47,7 +84,9 @@ $( document ).ready(function() {
 	});
 
 
-	// Table Shorter
+	/**
+	*  Table Shorter
+	*/
 
 	$(".table").tablesorter();
 
@@ -63,7 +102,9 @@ $( document ).ready(function() {
 	});
 
 
-	// Barre de recherche
+	/**
+	*  Barre de recherche
+	*/
 
 	$('.l-header__bar input').on('input', function(){
 
@@ -77,8 +118,9 @@ $( document ).ready(function() {
 		$('td:containsIN(' + val +')').parent().show();
 	});
 
-
-	// Block Accordion
+	/**
+	*  Module : Accordion
+	*/
 
 	$('.accordion__titre').click(function(){
 		if (	$(this).closest('.accordion').hasClass('is--active') ) {
@@ -90,20 +132,24 @@ $( document ).ready(function() {
 	});
 
 
-	// Effet is--DenkoKeijiban
+	/**
+	*  Effet : is--DenkoKeijiban
+	*/
 
-  jQuery('.is--denko').each(function() {
-    var clone = jQuery(this).find('*')
+  $('.is--denko').each(function() {
+    var clone = $(this).find('*')
     var n = 100;
     while(n > 0){
-      jQuery(this).append(clone.clone());
+      $(this).append(clone.clone());
       n -= 1;
     }
   });
-});
+}); //Fin du jQuery(document).ready
 
 
-// Gestion des modal
+/**
+* Module : Modale
+*/
 
 if ( $('.m-modal.is--active').length ) {
 	$('.m-overlay').show();
@@ -118,9 +164,6 @@ $(document).on('click', '[name="init__doyouconfirme"]', function (e){
 		window.location.href = './core/init.php';
 	}
 });
-
-
-
 
 const el = document.querySelector(".is--sticky")
 const observer = new IntersectionObserver(

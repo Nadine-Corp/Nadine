@@ -1,23 +1,22 @@
-<!DOCTYPE html>
-
 <?php
+
+// Ce fichier est le premier a être exécuter lors de la construction
+// des pages. C'est ici que tout commence...
+
+
 /**
-* Récuparation du thème coloré actuellement stockée dans la base de donnée
+* Injection du fichier rassemblant toutes les fonctions
+* les plus importantes de Nadine
 */
 
-$sql = "SELECT * FROM Options WHERE Options.option__nom = 'option__couleur'";
-include './core/query.php'; $result = $conn->query($sql);
-if ($result && $result->num_rows > 0):
-  while($row = $result->fetch_assoc()):
-    $couleurActuelle = $row["option__valeur"];
-  endwhile;
-else:
-  // Si pas de thème, afficher le thème coloré Rouge-trash par defaut
-  $couleurActuelle = "__rouge-trash-mode";
-endif;
-?>
+  include './core/fonctions.php';
 
-<html lang="fr" class="<?php echo '__'.$couleurActuelle.'-mode' ?>">
+ ?>
+
+
+<!DOCTYPE html>
+
+<html lang="fr">
 <head>
 	<meta charset="UTF-8">
 	<title>Nadine</title>
@@ -43,8 +42,8 @@ endif;
 	<meta name="msapplication-TileImage" content="./assets/favicon/ms-icon-144x144.png">
 	<meta name="theme-color" content="#ffffff">
 	<link rel="preconnect" href="https://fonts.gstatic.com">
-	<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
 	<link rel="stylesheet" href="https://use.typekit.net/znq5njd.css">
+	<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
 	<link rel='stylesheet' type='text/css' media="all" href='./style.min.css'>
 	<link rel="stylesheet" type="text/css" media="print"  href="./assets/sass/print/impression.css">
 	<script src="./assets/js/jquery.min.js"></script>
@@ -53,35 +52,91 @@ endif;
 
 <body>
 	<header class="l-header">
-		<div class="l-header__logo isv--parent">
-			<a href="./index.php"><?php include './assets/img/inline-nadine-logo.svg.php'; ?></a>
+
+		<?php
+		// La MainBar contient la barre de recherche et les futurs Widgets
+		?>
+		<div class="l-header__bar l-header__mainbar">
+			<div class="l-header__searchbar subheading">
+				<input type="text" name="" value="" placeholder="Soon™ : pleins de trucs ici.">
+			</div>
 		</div>
 
-		<div class="l-header__bar subheading">
-			<input type="text" name="" value="" placeholder="Soon™ : pleins de trucs ici.">
+		<?php // La NavBar permet de naviguer d'une page à l'autre ?>
+		<div class="l-header__bar l-header__navbar">
+
+			<div class="nav__btn">
+				<div class="nav__btn-gp">
+					<div id="nav__btn-stick1" class="">&nbsp;</div>
+					<div id="nav__btn-stick2" class="">&nbsp;</div>
+					<div id="nav__btn-stick3" class="">&nbsp;</div>
+				</div>
+			</div>
+
+
+			<nav class="l-header__nav">
+				<ul class="nav__main">
+					<li class="l-header__nav-item">
+						<a href="./projets.php" class="lead_paragraph">
+							<div class="l-header__nav-ico">
+								<?php include './assets/img/ico_projet.svg.php'; ?>
+							</div>
+							<div class="l-header__nav-txt">
+								Projets
+							</div>
+						</a>
+					</li>
+					<li class="l-header__nav-item">
+						<a href="./diffuseurs.php" class="lead_paragraph">
+							<div class="l-header__nav-ico">
+								<?php include './assets/img/ico_contact.svg.php'; ?>
+							</div>
+							<div class="l-header__nav-txt">
+								Diffuseurs
+							</div>
+						</a>
+					</li>
+					<li class="l-header__nav-item">
+						<a href="./artistes.php" class="lead_paragraph">
+							<div class="l-header__nav-ico">
+								<?php include './assets/img/ico_contact.svg.php'; ?>
+							</div>
+							<div class="l-header__nav-txt">
+								Artistes
+							</div>
+						</a>
+					</li>
+					<li class="l-header__nav-item">
+						<a href="./suivi.php" class="lead_paragraph">
+							<div class="l-header__nav-ico">
+								<?php include './assets/img/ico_suivi.svg.php'; ?>
+							</div>
+							<div class="l-header__nav-txt">
+								Suivi
+							</div>
+						</a>
+					</li>
+					<li class="l-header__nav-item"><button type="button" class="btn__menu-more-vert"><?php include './assets/img/inline-icon_more-vert.svg.php'; ?></button></li>
+				</ul>
+
+				<ul class="nav__subnav menu">
+					<li><a href="./profil.php">Modifier votre profil</a></li>
+					<li><a href="./bilan.php">Générer le bilan annuel</a></li>
+					<li class="separator"><a href="https://discord.gg/Fg2m8gvdWR" target="_blank">Rejoindre le NadineClub©</a></li>
+					<li><a href="mailto:coucoucorine@nadinecorp.net" target="_blank">Demander de l'aide par mail</a></li>
+					<li class="separator"><a href="./log.php">Journal de développement</a></li>
+				</ul>
+			</nav>
+			<div class="l-header__logo l-header__bottom">
+				<a href="./index.php"><?php include './assets/img/nadine-logo.svg.php'; ?></a>
+			</div>
+			<div class="l-header__mention l-header__bottom tiny">
+				<span>Nadine <a href="./log.php">travaille tellement dur</a> pour s'améliorer !</span>
+				<span>Numéro de version : Nadine Alpha <?php echo get_num_version(); ?></span>
+				<span>Pensez à <a href="https://github.com/Nadine-Corp/Nadine/commits/main" target="_blank">mettre à jour</a> Nadine de temps en temps.</span>
+			</div>
 		</div>
-
-		<nav class="l-header__nav">
-			<ul class="nav__main">
-				<li class="menu__item"><a href="./projets.php" class="lead_paragraph">Projets</a></li>
-				<li class="menu__item"><a href="./diffuseurs.php" class="lead_paragraph">Diffuseurs</a></li>
-				<li class="menu__item"><a href="./artistes.php" class="lead_paragraph">Artistes</a></li>
-				<li class="menu__item"><a href="./suivi.php" class="lead_paragraph">Suivi</a></li>
-        <li class="menu__item"><button type="button" class="btn__menu-more-vert"><?php include './assets/img/inline-icon_more-vert.svg.php'; ?></button></li>
-			</ul>
-
-			<ul class="nav__subnav menu">
-				<li><a href="./profil.php">Modifier votre profil</a></li>
-				<li><a href="./bilan.php">Générer le bilan annuel</a></li>
-				<li class="separator"><a href="https://discord.gg/Fg2m8gvdWR" target="_blank">Rejoindre le NadineClub©</a></li>
-				<li><a href="mailto:coucoucorine@nadinecorp.net" target="_blank">Demander de l'aide par mail</a></li>
-				<li class="separator"><a href="./log.php">Journal de dévéloppement</a></li>
-			</ul>
-		</nav>
-
-
-		<div class="l-header__btn-color"></div>
-
 
 	</header>
+
 	<main>

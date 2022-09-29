@@ -25,7 +25,7 @@
           <div class="accordion__titre">
             <h2 class="subheading">Modifier vos coordonnées</h2>
             <div class="accordion__icon">
-              <?php include './assets/img/inline-icon_arrow_accordion.svg.php'; ?>
+              <?php include './assets/img/ico_arrow-accordion.svg.php'; ?>
             </div>
           </div>
           <div class="accordion__container">
@@ -56,7 +56,7 @@
           <div class="accordion__titre">
             <h2 class="subheading">N° de Secu & Maison des Artistes</h2>
             <div class="accordion__icon">
-              <?php include './assets/img/inline-icon_arrow_accordion.svg.php'; ?>
+              <?php include './assets/img/ico_arrow-accordion.svg.php'; ?>
             </div>
           </div>
           <div class="accordion__container">
@@ -93,7 +93,7 @@
           <div class="accordion__titre">
             <h2 class="subheading">Coordonnées bancaires</h2>
             <div class="accordion__icon">
-              <?php include './assets/img/inline-icon_arrow_accordion.svg.php'; ?>
+              <?php include './assets/img/ico_arrow-accordion.svg.php'; ?>
             </div>
           </div>
           <div class="accordion__container">
@@ -116,7 +116,7 @@
           <div class="accordion__titre">
             <h2 class="subheading">Gabarits d'email des devis et facture</h2>
             <div class="accordion__icon">
-              <?php include './assets/img/inline-icon_arrow_accordion.svg.php'; ?>
+              <?php include './assets/img/ico_arrow-accordion.svg.php'; ?>
             </div>
           </div>
           <div class="accordion__container">

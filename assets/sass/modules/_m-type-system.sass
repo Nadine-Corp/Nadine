@@ -1,15 +1,25 @@
 // main: ../../../style.sass
 
 
+  Le module Type System gère tous les styles
+  de paragraphe de Nadine.
+
+  Exemple de HTML :
+
+    <h1 class="display1">Something</h1>
+    <p class="body">Something else</p>
+
+
 *
-  font-family: "NimbusSans", "Helvetica", sans-serif
+  font-family: font('sans-serif')
+  color: color('principale')
   font-weight: 400
   font-style: normal
   font-stretch: normal
   font-feature-settings: "liga", "kern"
   -webkit-font-smoothing: antialiased
   -moz-osx-font-smoothing: grayscale
-  color: color('principale')
+
 
 h1, h2, h3, h4, h5, h6
   font-size: $modulor*2
@@ -22,7 +32,7 @@ p
 
   a
     cursor: pointer
-    
+
     &:link, &:visited
       font-weight: 200
       color: inherit
@@ -46,42 +56,83 @@ p
   a:first-of-type::before
     content: ''
 
-strong
+strong, strong *
   font-weight: 800
 
-em
+em, em *
   font-style: italic
 
-.display3
-  font-size: $modulor*6
-  line-height: $modulor*6
+// .display13, .display13 *
+//   font-size: m(5)
+//   line-height: m(5)
 
-.display2
-  font-size: $modulor*4
-  line-height: $modulor*4
+// .display12, .display12 *
+//   font-size: m(4.75)
+//   line-height: m(4.75)
+
+// .display11, .display11 *
+//   font-size: m(4.5)
+//   line-height: m(4.5)
+
+// .display10, .display10 *
+//   font-size: m(4.25)
+//   line-height: m(4.25)
+
+// .display9, .display9 *
+//   font-size: m(4)
+//   line-height: m(4)
+
+// .display8, .display8 *
+//   font-size: m(3.75)
+//   line-height: m(3.75)
+
+// .display7, .display7 *
+//   font-size: m(3.5)
+//   line-height: m(3.5)
+
+// .display6, .display6 *
+//   font-size: m(3.25)
+//   line-height: m(3.25)
+
+// .display5, .display5 *
+//   font-size: m(3)
+//   line-height: m(3)
+
+// .display4, .display4 *
+//   font-size: m(2.75)
+//   line-height: m(3)
+
+// .display3, .display3 *
+//   font-size: m(2.5).5
+//   line-height: m(2.5)
+//
+// .display2, .display2 *
+//   font-size: m(2.25)
+//   line-height: m(2)
 
 .display1, .display1 *
-  font-family: "Redaction", sans-serif !important
-  font-style: italic
-  font-size: $modulor*3
-  line-height: $modulor*4
-  letter-spacing: -2px
+  font-size: m(2)
+  line-height: m(2)
 
-.subheading, .subheading *
-  font-size: $modulor*2
-  line-height: $modulor*2
-  font-weight: 600
-  letter-spacing: -2px
+.subtitle, .subtitle *
+  font-size: m(1.75)
+  line-height: m(2)
 
-.lead_paragraph, .lead_paragraph *
-  font-size: $modulor*1.5
-  line-height: $modulor*1.5
-  font-weight: 600
-  letter-spacing: -1px
+.lead_para, .lead_para *
+  font-size: m(1.5)
+  line-height: m(2)
 
 .body, .body *
-  font-size: $modulor
-  line-height: $modulor*1.5
+  font-size: m(1.25)
+  line-height: m(1.5)
+
+// .caption, .caption *
+//   font-size: m()
+//   line-height: m(1.5)
+
+.tiny, .tiny *
+  font-size: m(0.75)
+  line-height: m()
 
 .divider
   width: 2px

@@ -7,7 +7,7 @@
 
    0..10..20..30..40..50..60..70..80..90..100
    ↑                  ↑                   ↑
-   0=blanc            50=couleur pure     100=noir
+   0=papier           50=rouge-trash     100=gris-dark
 
   Exemple de SASS :
     div
@@ -20,42 +20,16 @@
 $gris-dark: #1C1C1C
 $rouge-trash: #FF3636
 $papier: #E6E4DD
-$bleu-google: #1178FF
-$violet-cool: #9348FF
-$rose-neutre: #FF97DC
-$orange-fluo: #FF6B5C
-$jaune-post-it: #FFDC61
-$pur-white: #FFFFFF
 
 
 // Nombre de déclinaison pour chaque couleur.
 
    0..10..20..30..40..50..60..70..80..90..100
    ↑                  ↑                   ↑
-   0=blanc            50=couleur pure     100=noir
+   0=papier           50=rouge-trash     100=gris-dark
 
 $declinaisons: 0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100
 
-\:root, .__rouge-trash-mode
-  $colors: ("principale" $gris-dark, "secondaire" $pur-white, "accent" $rouge-trash, "back" $papier)
-  @include themeColor($colors)
-
-\.__bleu-google-mode:root, .__bleu-google-mode
-  $colors: ("principale" $gris-dark, "secondaire" $pur-white, "accent" $bleu-google, "back" $papier)
-  @include themeColor($colors)
-
-\.__violet-cool-mode:root, .__violet-cool-mode
-  $colors: ("principale" $gris-dark, "secondaire" $pur-white, "accent" $violet-cool, "back" $papier)
-  @include themeColor($colors)
-
-\.__violet-cool-mode:root, .__violet-cool-mode
-  $colors: ("principale" $gris-dark, "secondaire" $pur-white, "accent" $rose-neutre, "back" $papier)
-  @include themeColor($colors)
-
-\.__orange-fluo-mode:root, .__orange-fluo-mode
-  $colors: ("principale" $gris-dark, "secondaire" $pur-white, "accent" $orange-fluo, "back" $papier)
-  @include themeColor($colors)
-
-\.__gris-dark-mode:root, .__gris-dark-mode
-  $colors: ("principale" $papier, "secondaire" $pur-white, "accent" lighten($gris-dark,10%), "back" $gris-dark)
+\:root
+  $colors: ("accent" $rouge-trash, "principale" $papier, "back" $gris-dark)
   @include themeColor($colors)

@@ -10,10 +10,15 @@ html
 body
   background: color('back')
 
+html, body
+  &.overflow--is--hidden
+    overflow: hidden
+
 main
   float: left
   width: 100%
-  margin-top: $header_barre-height
+  margin-top: $header__height
+  padding-left: $header__height
 
 svg
-  fill: color('principale')
+  fill: color('accent')

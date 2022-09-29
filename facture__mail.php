@@ -1,8 +1,8 @@
 <?php
 
-  // Ce fichier permet de créer des messages personnalisé
-  // pour envoyer ses factures. Pour modifier le gabarit,
-  // RDV sur la page profil.
+// Ce fichier permet de créer des messages personnalisé
+// pour envoyer ses factures. Pour modifier le gabarit,
+// RDV sur la page profil.
 
 
 
