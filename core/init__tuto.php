@@ -73,14 +73,14 @@ if( !($result) ):
     */
     ?>
 
-    <div class="accordion col l12">
-      <div class="accordion__titre">
+    <div class="m-accordion col l12">
+      <div class="m-accordion__titre">
         <h2 class="subheading">Vos coordonnées</h2>
-        <div class="accordion__icon">
+        <div class="m-accordion__ico">
           <?php include './assets/img/ico_arrow-accordion.svg.php'; ?>
         </div>
       </div>
-      <div class="accordion__container">
+      <div class="m-accordion__wrapper">
         <div class="form__input-container">
           <input type="text" name="civilite" placeholder="Civilité" class="form__input-full">
           <input type="text" name="prenom" placeholder="Prénom" class="form__input-half form__input-seperator" required>
@@ -103,14 +103,14 @@ if( !($result) ):
     */
     ?>
 
-    <div class="accordion col l12">
-      <div class="accordion__titre">
+    <div class="m-accordion col l12">
+      <div class="m-accordion__titre">
         <h2 class="subheading">N° de Secu & Maison des Artistes</h2>
-        <div class="accordion__icon">
+        <div class="m-accordion__ico">
           <?php include './assets/img/ico_arrow-accordion.svg.php'; ?>
         </div>
       </div>
-      <div class="accordion__container">
+      <div class="m-accordion__wrapper">
         <div class="form__input-container">
           <input type="text" name="numero_secu" placeholder="N° de Sécurité sociale" class="form__input-half form__input-seperator">
           <input type="text" name="numero_mda" placeholder="N° MDA" class="form__input-half">
@@ -125,14 +125,14 @@ if( !($result) ):
     */
     ?>
 
-    <div class="accordion col l12">
-      <div class="accordion__titre">
+    <div class="m-accordion col l12">
+      <div class="m-accordion__titre">
         <h2 class="subheading">Vos coordonnées bancaires</h2>
-        <div class="accordion__icon">
+        <div class="m-accordion__ico">
           <?php include './assets/img/ico_arrow-accordion.svg.php'; ?>
         </div>
       </div>
-      <div class="accordion__container">
+      <div class="m-accordion__wrapper">
         <div class="form__input-container">
           <input type="text" name="titulaire_du_compte" placeholder="Titulaire du compte" class="form__input-full"?>
           <input type="text" name="iban" placeholder="IBAN" class="form__input-half form__input-seperator">

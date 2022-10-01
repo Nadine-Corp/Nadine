@@ -6,59 +6,55 @@
 
   Exemple de HTML :
 
-    <li class="accordion">
-      <div class="accordion__titre">
+    <li class="m-accordion">
+      <div class="m-accordion__titre">
         <h3>Ici, le titre de l'accordion</h3>
-        <div class="accordion__icon">
+        <div class="m-accordion__ico">
           <?php include './assets/img/ico_arrow-accordion.svg.php'; ?>
         </div>
       </div>
-      <div class="accordion__container">
+      <div class="m-accordion__wrapper">
         Ici, le contenu de l'accordion
       </div>
     </li>
 
 
+.m-accordion
+  display: flex
+  //width: 100%
+  flex-direction: column !important
+  &.is--active
+    .m-accordion__ico
+      transform: rotate(0deg)
+      transition: transform .5s
 
+    .m-accordion__wrapper
+      opacity: 1
+      max-height: 1000vh
+      transition: all 1s
 
-.accordion__titre
-  position: relative
-  float: left
+.m-accordion__titre
+  display: flex
+  justify-content: space-between
+  align-items: center
   width: 100%
   cursor: pointer
-  margin: 5px 0
-  padding: 10px 0
-  border-bottom: 1px solid
 
-.accordion__icon
-  position: absolute
+.m-accordion__ico
+  margin-left: auto
   transform: rotate(-90deg)
-  right: 0
-  top: -10px
-  width: 20px
-  transition: transform .5s
+  width: m()
+  transition: .5s
 
   svg
     fill: none
-    stroke: color('principale')
-    stroke-width: 5
+    stroke: color('accent', 80)
+    stroke-width: m()
 
-.accordion__container
-  float: left
-  width: 100%
+.m-accordion__wrapper
+  display: flex
   max-height: 0
   margin: 0
   opacity: 0
   overflow: hidden
   transition: all 1s
-
-.accordion.is--active
-  .accordion__icon
-    transform: rotate(0deg)
-    transition: transform .5s
-
-  .accordion__container
-    opacity: 1
-    max-height: 1000vh
-    margin: 5px 0 30px 0
-    transition: all 1s

@@ -25,6 +25,7 @@ $( document ).ready(function($) {
 	let overlay = document.querySelector('.m-overlay');
 	let nav__btn = document.querySelector('.nav__btn');
 	let header__navbar = document.querySelector('.l-header__navbar');
+	let nav__accordion = document.querySelector('.l-header__navbar .m-accordion');
 
 	// Vérifie si qq'un click sur le Menu Burger
 	nav__btn.addEventListener('click', function() {
@@ -45,43 +46,39 @@ $( document ).ready(function($) {
 		nav__btn.classList.add('is--active');
 		header__navbar.classList.add('is--active');
 		overlay.classList.add('is--active');
-		$('.m-overlay').fadeIn();
 		document.body.classList.add('overflow--is--hidden');
 		document.documentElement.classList.add('overflow--is--hidden');
 	};
+
 	// Cette fonction est appelée pour fermer le nav
 	function HideNav() {
 		nav__btn.classList.remove('is--active');
 		header__navbar.classList.remove('is--active');
-		overlay.classList.add('is--active');
+		overlay.classList.remove('is--active');
+		nav__accordion.classList.remove('is--active');
 		document.body.classList.remove('overflow--is--hidden');
 		document.documentElement.classList.remove('overflow--is--hidden');
-		$('.m-overlay').fadeOut();
 	};
+
+	// Vérifie si qq'un click sur le bouton Plus
+	nav__accordion.addEventListener('click', function() {
+		if ( !header__navbar.classList.contains('is--active') ) {
+			ShowNav();
+		}
+	});
+
 
 	/**
 	*  Menu : Ajout de la classe is--current
 	*/
 
 	var currentUrl = location.pathname;
-	$('.l-header__nav a').each(function(){
-		var url = $(this).attr('href');
-		if(currentUrl.indexOf(url) > -1){
+	$('.l-header__nav-item a').each(function(){
+		var url = $(this).attr('data-url');
+		if( currentUrl.includes(url) ){
 			$(this).addClass('is--current');
 		}
 	})
-
-	// Ouverture du menu secondaire
-
-	var menu = $('.menu');
-	$('.btn__menu-more-vert').click(function(){
-		menu.slideToggle()
-	});
-	$(document).mouseup(function(e) {
-		if (!menu.is(e.target) && menu.has(e.target).length === 0) {
-			menu.slideUp();
-		}
-	});
 
 
 	/**
@@ -122,12 +119,12 @@ $( document ).ready(function($) {
 	*  Module : Accordion
 	*/
 
-	$('.accordion__titre').click(function(){
-		if (	$(this).closest('.accordion').hasClass('is--active') ) {
-			$('.accordion').removeClass('is--active');
+	$('.m-accordion__titre').click(function(){
+		if (	$(this).closest('.m-accordion').hasClass('is--active') ) {
+			$('.m-accordion').removeClass('is--active');
 		}else{
-			$('.accordion').removeClass('is--active');
-			$(this).closest('.accordion').addClass('is--active');
+			$('.m-accordion').removeClass('is--active');
+			$(this).closest('.m-accordion').addClass('is--active');
 		}
 	});
 

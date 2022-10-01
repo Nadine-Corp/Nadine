@@ -21,14 +21,14 @@
         */
         ?>
 
-        <div class="accordion col l12">
-          <div class="accordion__titre">
+        <div class="m-accordion col l12">
+          <div class="m-accordion__titre">
             <h2 class="subheading">Modifier vos coordonnées</h2>
-            <div class="accordion__icon">
+            <div class="m-accordion__ico">
               <?php include './assets/img/ico_arrow-accordion.svg.php'; ?>
             </div>
           </div>
-          <div class="accordion__container">
+          <div class="m-accordion__wrapper">
             <div class="form__input-container body">
               <input type="text" name="civilite" placeholder="Civilité" class="form__input-full" <?php if (!empty( $row["profil__civilite"] )) {echo 'value="'.$row["profil__civilite"].'""';} ?> >
               <input type="text" name="prenom" placeholder="Prénom" class="form__input-half form__input-seperator" <?php if (!empty( $row["profil__prenom"] )) {echo 'value="'.$row["profil__prenom"].'""';} ?> >
@@ -52,14 +52,14 @@
         */
         ?>
 
-        <div class="accordion col l12">
-          <div class="accordion__titre">
+        <div class="m-accordion col l12">
+          <div class="m-accordion__titre">
             <h2 class="subheading">N° de Secu & Maison des Artistes</h2>
-            <div class="accordion__icon">
+            <div class="m-accordion__ico">
               <?php include './assets/img/ico_arrow-accordion.svg.php'; ?>
             </div>
           </div>
-          <div class="accordion__container">
+          <div class="m-accordion__wrapper">
             <div class="form__slider-container">
               <p class="lead_paragraph">Êtes-vous assujetti⸱e au précompte ?</p>
               <span>Non</span>
@@ -89,14 +89,14 @@
         */
         ?>
 
-        <div class="accordion col l12">
-          <div class="accordion__titre">
+        <div class="m-accordion col l12">
+          <div class="m-accordion__titre">
             <h2 class="subheading">Coordonnées bancaires</h2>
-            <div class="accordion__icon">
+            <div class="m-accordion__ico">
               <?php include './assets/img/ico_arrow-accordion.svg.php'; ?>
             </div>
           </div>
-          <div class="accordion__container">
+          <div class="m-accordion__wrapper">
             <div class="form__input-container body">
               <input type="text" name="titulaire_du_compte" placeholder="Titulaire du compte" class="form__input-full" <?php if (!empty( $row["profil__titulaire_du_compte"] )) {echo 'value="'.$row["profil__titulaire_du_compte"].'""';} ?> >
               <input type="text" name="iban" placeholder="IBAN" class="form__input-half form__input-seperator" <?php if (!empty( $row["profil__iban"] )) {echo 'value="'.$row["profil__iban"].'""';} ?> >
@@ -112,14 +112,14 @@
         */
         ?>
 
-        <div class="accordion col l12">
-          <div class="accordion__titre">
+        <div class="m-accordion col l12">
+          <div class="m-accordion__titre">
             <h2 class="subheading">Gabarits d'email des devis et facture</h2>
-            <div class="accordion__icon">
+            <div class="m-accordion__ico">
               <?php include './assets/img/ico_arrow-accordion.svg.php'; ?>
             </div>
           </div>
-          <div class="accordion__container">
+          <div class="m-accordion__wrapper">
             <div class="form__input-container body">
               <p>Liste des variables :
                 <ul>

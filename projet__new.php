@@ -71,14 +71,14 @@ endif; $conn->close();
   </section>
 
   <section class="row">
-    <div class="accordion col l12">
-      <div class="accordion__titre">
+    <div class="m-accordion col l12">
+      <div class="m-accordion__titre">
         <h2 class="subheading">Informations générales</h2>
-        <div class="accordion__icon">
+        <div class="m-accordion__ico">
           <?php include './assets/img/ico_arrow-accordion.svg.php'; ?>
         </div>
       </div>
-      <div class="accordion__container">
+      <div class="m-accordion__wrapper">
         <div class="form__input-container body">
           <input type="text" name="nom_du_projet" placeholder="Nom du projet" class="form__input-full">
           <input type="text" name="numero_du_projet" placeholder="Numéro du projet" class="form__input-half form__input-seperator" disabled>
@@ -94,14 +94,14 @@ endif; $conn->close();
     */
     ?>
 
-    <div class="accordion col l12">
-      <div class="accordion__titre">
+    <div class="m-accordion col l12">
+      <div class="m-accordion__titre">
         <h2 class="subheading">Diffuseurs</h2>
-        <div class="accordion__icon">
+        <div class="m-accordion__ico">
           <?php include './assets/img/ico_arrow-accordion.svg.php'; ?>
         </div>
       </div>
-      <div id="l-projet__diffuseurs-accordion" class="accordion__container">
+      <div id="l-projet__diffuseurs-m-accordion" class="m-accordion__wrapper">
         <div class="form__slider-container">
           <p class="lead_paragraph">Est-ce une vente à un particulier ou un galeriste ou une société étrangère ?</p>
           <span>Non</span>
@@ -126,14 +126,14 @@ endif; $conn->close();
     */
     ?>
 
-    <div class="accordion col l12">
-      <div class="accordion__titre">
+    <div class="m-accordion col l12">
+      <div class="m-accordion__titre">
         <h2 class="subheading">Rétrocessions d’honoraires</h2>
-        <div class="accordion__icon">
+        <div class="m-accordion__ico">
           <?php include './assets/img/ico_arrow-accordion.svg.php'; ?>
         </div>
       </div>
-      <div  id="l-projet__retrocessions-accordion"  class="accordion__container">
+      <div  id="l-projet__retrocessions-m-accordion"  class="m-accordion__wrapper">
         <div class="form__slider-container">
           <p class="lead_paragraph">Êtes-vous plusieurs Artistes-Auteurs à travailler sur ce projet ?</p>
           <span>Non</span>

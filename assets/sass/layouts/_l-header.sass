@@ -9,7 +9,6 @@
   display: flex
   position: fixed
   top: 0
-  z-index: $zindex__header
 
 
 // Barre principale
@@ -18,28 +17,29 @@
   flex-direction: row
   width: 100%
   height: $header__height
-  outline: 1px solid color('accent')
-  border: 1px solid color('accent')
+  border-bottom: 1px solid color('accent')
+  border-top: 1px solid color('accent')
   background: color('accent')
+  z-index: $zindex__mainbar
 
 .l-header__searchbar
+  display: flex
   flex-grow: 1
   margin-left: $header__height
   input
     width: 50%
-    height: $header__height
-    font-family: "Redaction", serif
+    font-family: font('serif')
     font-style: italic
     font-weight: 400
     font-size: m(2)
     color: color('secondaire')
-    padding: 0 $modulor
+    padding: 0 m()
     background: color('back')
     transition: all 2s
     &:focus
       @include box-shadow(100, 'principale', 100)
-      padding: 0 $modulor*1.5
-      border-radius: $modulor*3
+      padding: 0 m(1.5)
+      border-radius: m(3)
       transition: all .5s
 
 
@@ -54,12 +54,13 @@
   background: color('back')
   border-right: 1px solid color('accent')
   transition: .5s
+  z-index: $zindex__navbar
 
   &.is--active
-    width: m(20)
+    width: m(25)
 
     .nav__main
-      width: m(20)
+      width: m(25)
       padding-right: m(2)
 
     .l-header__logo
@@ -94,38 +95,29 @@
   overflow: hidden
   transition: .5s
 
-  li,  a
+  li, a
     position: relative
     display: flex
     flex-direction: row
     align-items: center
-    height: $header__height
 
-  svg
-    width: m(2)
+  .l-header__nav-item
+    a
+      *
+        font-family: font('serif')
+      @include hover
+        *
+          font-style: italic
+          color: color('principale')
+        .l-header__nav-ico svg
+          fill: color('principale')
 
-  a
-    &:hover
-      text-decoration: none
-      color: color('secondaire')
-      transition: color 0.4s
+      &.is--current
+        *
+          color: color('principale')
+        .l-header__nav-ico svg
+          fill: color('principale')
 
-      svg
-        fill: color('principale')
-
-  a.is--current::after
-    content: ''
-    display: block
-    position: absolute
-    top: 0
-    bottom: 0
-    right: 0
-    left: 0
-    background: url('assets/img/page--is--current.svg')
-    background-position: center center
-    background-repeat: no-repeat
-    background-size: contain
-    z-index: -1
 
 .l-header__nav-ico
   display: flex
@@ -133,6 +125,36 @@
   height: $header__height
   align-items: center
   justify-content: center
+  flex: 0 0 auto
+
+  svg
+    width: m(2)
+
+.l-header__nav-txt
+  padding: 0 m()
+  color: color('accent')
+
+
+// Sous-Menu Accordion
+
+.l-header__subnav-item
+  a
+    display: block
+    width: 100%
+    color: color('accent', 80)
+    font-weight: 800
+    font-style: normal
+    padding: m() 0
+    @include hover
+      color: color('principale')
+      font-style: italic
+
+.l-header__subnav-separator
+  a
+    border-top: 1px solid color('accent', 80)
+    margin-top: m()
+    padding-top: m(2)
+
 
 // Bouton Menu Burger
 
@@ -144,7 +166,7 @@
   left: 0
   cursor: pointer
   background: color('accent')
-  z-index: $zindex__header
+  z-index: $zindex__navbar
 
   @include hover
     #nav__btn-stick1

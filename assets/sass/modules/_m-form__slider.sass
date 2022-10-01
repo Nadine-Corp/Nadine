@@ -27,14 +27,14 @@
   flex-direction: row
   align-items: center
   &>*
-    margin-right: $modulor
+    margin-right: m()
 
 .switch
   float: left
   position: relative
   display: inline-block
-  width: $modulor*3
-  height: $modulor*2
+  width: m(3)
+  height: m(2)
 
   input
     opacity: 0
@@ -49,10 +49,10 @@
   &:before
     position: absolute
     content: ""
-    height: $modulor
-    width: $modulor
-    left: $modulor/3
-    bottom: $modulor/3
+    height: m()
+    width: m()
+    left: m(.5)
+    bottom: m(.5)
     background-color: color('accent')
     @include prefix(transition, .4s)
   &:hover
@@ -62,11 +62,11 @@ input
   &:checked + .slider
     // background-color: color('accent')
   &:checked + .slider:before
-    @include prefix(transform, translateX($modulor))
+    @include prefix(transform, translateX( m() ))
 
 /* Rounded sliders
 
 .slider.round
-  border-radius: $modulor
+  border-radius: m()
   &:before
     border-radius: 50%
