@@ -1,0 +1,59 @@
+// main: ../../../style.sass
+
+  Le module Form__radiobtn permet de modifier l'aspect des boutons radio
+  pour les faire ressembler aux autres inputs.
+
+  Attention : pensez à activer le module m-form dans le fichier style.sass
+
+
+  Exemple de HTML :
+
+  <form class="m-form">
+    <div class="m-form__input-container">
+      <label class="m-form__btnradio">
+        Something
+        <input type="checkbox" checked="checked">
+        <span class="checkmark"></span>
+      </label>
+      <label class="m-form__btnradio">
+        Something else
+        <input type="checkbox">
+        <span class="checkmark"></span>
+      </label>
+    </div>
+  </form>
+
+
+.m-form__btnradio
+  display: block
+  position: relative
+  padding-left: m(2)
+  margin-bottom: m()
+  color: color('back', 40)
+  cursor: pointer
+  @include prefix(user-select, none)
+
+  @include hover
+    color: color('back', 20)
+    input ~ .checkmark
+      background-color: color('accent', 80)
+
+  input
+    position: absolute
+    opacity: 0
+    cursor: pointer
+    height: 0
+    width: 0
+
+  .checkmark
+    position: absolute
+    top: 0
+    left: 0
+    height: m()
+    width: m()
+    background-color: color('back')
+    border: 1px solid color('accent', 80)
+    border-radius: 50%
+
+.m-form__btnradio input:checked ~ .checkmark
+  background-color: color('accent', 80)

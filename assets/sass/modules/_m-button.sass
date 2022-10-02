@@ -13,24 +13,28 @@
 .btn
   display: inline-block
   margin: m(3) m(.5)
-  padding: m(.5)
-  border: 2px solid color('principale')
-  font-family: font('serif') !important
-  font-size: m()
+  padding: m() m(3)
+  font-size: m(1.25)
   font-weight: 600
   cursor: pointer
   white-space: nowrap
-  box-shadow: 2px 2px color('principale')
+  border-radius: m(3)
   @include prefix(transition, all 1s)
 
   &:hover
     text-decoration: none
     background: color('accent')
-    box-shadow: 6px 6px color('principale')
     @include prefix(transition, all 0.2s)
 
 .btn--plain
-  background: color('secondaire')
+  color: color('back')
+  background: color('accent')
+  border: 1px solid color('accent')
 
 .btn--outline
+  color: color('accent', 80)
+  border: 1px solid color('accent', 80)
   background: none
+
+.btn--big
+  padding: m(2)

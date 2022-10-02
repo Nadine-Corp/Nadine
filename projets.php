@@ -8,14 +8,44 @@
 include './header.php'; ?>
 
 
-<section class="toolbar is--sticky">
-  <div class="toolbar__container">
-    <h1 class="display1">Liste des projets</h1>
-    <div class="toolbar__btn">
-      <a href="./projet__new.php" class="btn btn--plain">Ajouter un Projet</a>
+<aside class="m-aside col m3">
+  <h1 class="display9">Projets</h1>
+  <a href="./projet__new.php" class="btn btn--big btn--plain">Ajouter un Projet</a>
+  <div class="m-accordion is--active">
+    <div class="m-accordion__titre">
+      <span>Grouper</span>
+      <div class="m-accordion__ico">
+        <?php include './assets/img/ico_arrow-accordion.svg.php'; ?>
+      </div>
+    </div>
+    <div class="m-accordion__wrapper">
+      <form class="m-form">
+        <div class="m-form__input-container">
+          <label class="m-form__btnradio body">
+            Par états du projets
+            <input type="radio" name="grouper" checked="checked">
+            <span class="checkmark"></span>
+          </label>
+          <label class="m-form__btnradio body">
+            Par Diffuseurs
+            <input type="radio" name="grouper" >
+            <span class="checkmark"></span>
+          </label>
+          <label class="m-form__btnradio body">
+            Par Artistes-Auteurs
+            <input type="radio" name="grouper" >
+            <span class="checkmark"></span>
+          </label>
+          <label class="m-form__btnradio body">
+            Par années
+            <input type="radio" name="grouper" >
+            <span class="checkmark"></span>
+          </label>
+        </div>
+      </form>
     </div>
   </div>
-</section>
+</aside>
 
 
 <?php
@@ -24,7 +54,7 @@ include './header.php'; ?>
 */
 ?>
 
-<section class="l-projet row">
+<section class="l-projet row m9">
 
   <div class="col l12">
     <h2 class="lead_paragraph">Projets en cours</h2>
@@ -87,16 +117,12 @@ include './header.php'; ?>
       <p>Chef, on n'a pas trouvé de projets en cours...</p>
     <?php endif; $conn->close(); ?>
   </div>
-</section>
-
 
 <?php
 /**
 * Liste de projet terminé ou annulé
 */
 ?>
-
-<section class="l-projet row">
 
   <div class="col l12">
     <h2 class="lead_paragraph">Projets terminés ou annulés</h2>

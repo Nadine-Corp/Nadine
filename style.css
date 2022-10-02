@@ -187,7 +187,6 @@ input::-moz-focus-inner, button::-moz-focus-inner {
   --vh:    1vh;
   --m:     12;
   --hh:    calc(var(--m) * 4px);
-  --hhs:   calc(var(--m) * 2px);
   --mh:    calc(var(--m) * 1px);
   --mt:    calc(var(--m) * 1px);
   --mb:    calc(var(--m) * 2px);
@@ -562,7 +561,7 @@ input:checked + .slider:before {
 }
 
 * {
-  font-family: "NimbusSans", Helvetica, sans-serif;
+  font-family: "Redaction", Georgia, serif;
   color: rgb(var(--color-principale-50));
   font-weight: 400;
   font-style: normal;
@@ -622,6 +621,11 @@ em, em * {
   font-style: italic;
 }
 
+.display9, .display9 * {
+  font-size: calc(var(--m) * 4px);
+  line-height: calc(var(--m) * 4px);
+}
+
 .display1, .display1 * {
   font-size: calc(var(--m) * 2px);
   line-height: calc(var(--m) * 2px);
@@ -645,20 +649,6 @@ em, em * {
 .tiny, .tiny * {
   font-size: calc(var(--m) * 0.75px);
   line-height: calc(var(--m) * 1px);
-}
-
-.divider {
-  width: 2px;
-  height: calc(var(--m) * 4px);
-  margin: calc(var(--m) * 1px);
-  background: rgb(var(--color-principale-50));
-}
-
-.divider-h {
-  width: calc(var(--m) * 4px);
-  height: 2px;
-  margin: calc(var(--m) * 1px) 0;
-  background: rgb(var(--color-principale-50));
 }
 
 .m-accordion {
@@ -743,14 +733,12 @@ em, em * {
 .btn {
   display: inline-block;
   margin: calc(var(--m) * 3px) calc(var(--m) * 0.5px);
-  padding: calc(var(--m) * 0.5px);
-  border: 2px solid rgb(var(--color-principale-50));
-  font-family: "Redaction", Georgia, serif !important;
-  font-size: calc(var(--m) * 1px);
+  padding: calc(var(--m) * 1px) calc(var(--m) * 3px);
+  font-size: calc(var(--m) * 1.25px);
   font-weight: 600;
   cursor: pointer;
   white-space: nowrap;
-  box-shadow: 2px 2px rgb(var(--color-principale-50));
+  border-radius: calc(var(--m) * 3px);
   -webkit-transition: all 1s;
   -moz-transition: all 1s;
   -ms-transition: all 1s;
@@ -761,7 +749,6 @@ em, em * {
 .btn:hover {
   text-decoration: none;
   background: rgb(var(--color-accent-50));
-  box-shadow: 6px 6px rgb(var(--color-principale-50));
   -webkit-transition: all 0.2s;
   -moz-transition: all 0.2s;
   -ms-transition: all 0.2s;
@@ -770,11 +757,32 @@ em, em * {
 }
 
 .btn--plain {
-  background: rgb(var(--color-secondaire-50));
+  color: rgb(var(--color-back-50));
+  background: rgb(var(--color-accent-50));
+  border: 1px solid rgb(var(--color-accent-50));
 }
 
 .btn--outline {
+  color: rgb(var(--color-accent-80));
+  border: 1px solid rgb(var(--color-accent-80));
   background: none;
+}
+
+.btn--big {
+  padding: calc(var(--m) * 2px);
+}
+
+.m-aside {
+  position: sticky;
+  top: var(--hh);
+  min-height: calc( var(--vh, 1vh) * 100 - var(--hh));
+  padding: calc(var(--m) * 3px) calc(var(--m) * 2px) !important;
+  background: rgb(var(--color-back-50));
+  border-right: 1px solid rgb(var(--color-accent-90));
+}
+
+.m-aside h1 {
+  color: rgb(var(--color-accent-50));
 }
 
 .image-full {
@@ -893,8 +901,6 @@ em, em * {
 
 @media (hover) {
   .table tr:hover td {
-    background: rgb(var(--color-secondaire-50));
-    color: rgb(var(--color-accent-50)) !important;
     z-index: 100;
     padding: calc(var(--m) * 1px) calc(var(--m) * 0.5px);
     transition: all .3s;
@@ -913,7 +919,6 @@ em, em * {
 }
 
 .table th, .table .tablesorter-header-inner {
-  font-family: "Redaction", Georgia, serif;
   font-style: italic;
   color: rgb(var(--color-back-50));
 }
@@ -926,68 +931,6 @@ em, em * {
 .table tbody tr:nth-child(2n) td,
 .table thead tr td {
   color: rgb(var(--color-back-50));
-}
-
-.form {
-  float: left;
-  width: 100%;
-}
-
-.form__input-container {
-  float: left;
-  width: 100%;
-  border: 1px solid rgb(var(--color-back-50));
-  border-bottom: none;
-  margin: calc(var(--m) * 1px) 0;
-}
-
-.form__input-container > input, .form__input-container > textarea, .form__input-container > div {
-  float: left;
-  height: calc(var(--m) * 4px);
-  padding: calc(var(--m) * 1.5px);
-  border: none;
-  border-bottom: 1px solid rgb(var(--color-back-50));
-  resize: none;
-  color: rgb(var(--color-principale-50));
-  background: rgb(var(--color-secondaire-50));
-  transition: background .5s;
-}
-
-.form__input-container > textarea {
-  height: auto;
-}
-
-.form__input-container input:focus, .form__input-container textarea:focus {
-  background: rgb(var(--color-secondaire-50));
-  transition: background .5s;
-}
-
-.form__input-container input:disabled {
-  text-decoration: line-through;
-  opacity: 0.6;
-}
-
-.form__input-container input::placeholder {
-  color: rgb(var(--color-principale-50));
-}
-
-.form__input-full {
-  width: 100%;
-}
-
-.form__input-half {
-  width: 50%;
-}
-
-input.form__input-seperator {
-  border-right: 1px solid rgb(var(--color-back-50));
-}
-
-input[type=submit]:disabled,
-.form__input--line-through {
-  text-decoration: line-through;
-  cursor: auto;
-  opacity: 0.5;
 }
 
 .row {
@@ -1275,6 +1218,114 @@ input[type=submit]:disabled,
   }
 }
 
+.form {
+  float: left;
+  width: 100%;
+}
+
+.form__input-container {
+  float: left;
+  width: 100%;
+  border: 1px solid rgb(var(--color-back-50));
+  border-bottom: none;
+  margin: calc(var(--m) * 1px) 0;
+}
+
+.form__input-container > input, .form__input-container > textarea, .form__input-container > div {
+  float: left;
+  height: calc(var(--m) * 4px);
+  padding: calc(var(--m) * 1.5px);
+  border: none;
+  border-bottom: 1px solid rgb(var(--color-back-50));
+  resize: none;
+  color: rgb(var(--color-principale-50));
+  background: rgb(var(--color-secondaire-50));
+  transition: background .5s;
+}
+
+.form__input-container > textarea {
+  height: auto;
+}
+
+.form__input-container input:focus, .form__input-container textarea:focus {
+  background: rgb(var(--color-secondaire-50));
+  transition: background .5s;
+}
+
+.form__input-container input:disabled {
+  text-decoration: line-through;
+  opacity: 0.6;
+}
+
+.form__input-container input::placeholder {
+  color: rgb(var(--color-principale-50));
+}
+
+.form__input-full {
+  width: 100%;
+}
+
+.form__input-half {
+  width: 50%;
+}
+
+input.form__input-seperator {
+  border-right: 1px solid rgb(var(--color-back-50));
+}
+
+input[type=submit]:disabled,
+.form__input--line-through {
+  text-decoration: line-through;
+  cursor: auto;
+  opacity: 0.5;
+}
+
+.m-form__btnradio {
+  display: block;
+  position: relative;
+  padding-left: calc(var(--m) * 2px);
+  margin-bottom: calc(var(--m) * 1px);
+  color: rgb(var(--color-back-40));
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -o-user-select: none;
+  user-select: none;
+}
+
+@media (hover) {
+  .m-form__btnradio:hover {
+    color: rgb(var(--color-back-20));
+  }
+  .m-form__btnradio:hover input ~ .checkmark {
+    background-color: rgb(var(--color-accent-80));
+  }
+}
+
+.m-form__btnradio input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+.m-form__btnradio .checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: calc(var(--m) * 1px);
+  width: calc(var(--m) * 1px);
+  background-color: rgb(var(--color-back-50));
+  border: 1px solid rgb(var(--color-accent-80));
+  border-radius: 50%;
+}
+
+.m-form__btnradio input:checked ~ .checkmark {
+  background-color: rgb(var(--color-accent-80));
+}
+
 .is--denko__container {
   float: left;
   width: 100%;
@@ -1407,7 +1458,6 @@ input[type=submit]:disabled,
 
 .l-header__searchbar input {
   width: 50%;
-  font-family: "Redaction", Georgia, serif;
   font-style: italic;
   font-weight: 400;
   font-size: calc(var(--m) * 2px);
@@ -1485,10 +1535,6 @@ input[type=submit]:disabled,
   align-items: center;
 }
 
-.nav__main .l-header__nav-item a * {
-  font-family: "Redaction", Georgia, serif;
-}
-
 @media (hover) {
   .nav__main .l-header__nav-item a:hover * {
     font-style: italic;
@@ -1529,6 +1575,7 @@ input[type=submit]:disabled,
   display: block;
   width: 100%;
   color: rgb(var(--color-accent-80));
+  font-family: "NimbusSans", Helvetica, sans-serif;
   font-weight: 800;
   font-style: normal;
   padding: calc(var(--m) * 1px) 0;

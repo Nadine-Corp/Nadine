@@ -7,7 +7,7 @@
 ?>
 
 </main>
-<footer class="l-footer row">
+<footer class="l-footer">
 	<?php
 	/**
 	* Injection de l'Overlay Universel

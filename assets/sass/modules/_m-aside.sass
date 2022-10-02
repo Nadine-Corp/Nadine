@@ -1,0 +1,15 @@
+// main: ../../../style.sass
+
+  Le module Aside permet de gérer les barres latérales de Nadine
+
+
+.m-aside
+  position: sticky
+  top: $header__height
+  min-height: calc( var(--vh, 1vh) * 100 - var(--hh))
+  padding: m(3) m(2) !important
+  background: color('back')
+  border-right: 1px solid $border-color
+
+  h1
+    color: color('accent')
