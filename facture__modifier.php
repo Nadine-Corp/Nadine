@@ -57,22 +57,22 @@ $date = strftime("%d %B %Y", strtotime($today));
         <div class="toolbar__container">
           <h1 class="display1">Modifier une facture</h1>
           <div class="toolbar__btn">
-            <a href="./projet__single.php?projet__id=<?php echo $row["projet__id"] ?>" class="btn btn--outline">Annuler</a>
-            <a href="./core/supprimer.php?base=Factures&cible=facture__id&id=<?php echo $facture__id ?>" class="btn btn--outline">Supprimer</a>
-            <a href="./facture__mail.php?facture__id=<?php echo $facture__id ?>" class="btn btn--outline" class="btn btn--plain">Générer email</a>
-            <input list="statut" class="btn btn--outline" name="facture__statut" value="<?php echo $row["facture__statut"] ?>">
+            <a href="./projet__single.php?projet__id=<?php echo $row["projet__id"] ?>" class="btn btn__outline">Annuler</a>
+            <a href="./core/supprimer.php?base=Factures&cible=facture__id&id=<?php echo $facture__id ?>" class="btn btn__outline">Supprimer</a>
+            <a href="./facture__mail.php?facture__id=<?php echo $facture__id ?>" class="btn btn__outline" class="btn btn__plain">Générer email</a>
+            <input list="statut" class="btn btn__outline" name="facture__statut" value="<?php echo $row["facture__statut"] ?>">
             <datalist id="statut">
               <option value="Brouillon">
               <option value="Envoyée">
               <option value="Payée">
               <option value="Annulée">
             </datalist>
-            <a href="javascript:window.print()" class="btn btn--plain">Imprimer en PDF</a>
+            <a href="javascript:window.print()" class="btn btn__plain">Imprimer en PDF</a>
 
             <?php if($row["facture__statut"]=='Envoyée'): ?>
-              <input type="submit" name="Enregistrer" value="Enregistrer" class="btn btn--plain" disabled>
+              <input type="submit" name="Enregistrer" value="Enregistrer" class="btn btn__plain" disabled>
             <?php else: ?>
-              <input type="submit" name="Enregistrer" value="Enregistrer" class="btn btn--plain">
+              <input type="submit" name="Enregistrer" value="Enregistrer" class="btn btn__plain">
             <?php endif; ?>
           </div>
         </div>

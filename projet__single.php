@@ -12,8 +12,8 @@
       <div class="toolbar__container">
         <h1 class="display1"><?php echo $row["projet__nom"] ?><span class="badge"><?php echo $row["projet__statut"] ?></span></h1>
         <div class="toolbar__btn">
-          <a href="./diffuseur__modifier.php?diffuseur__id=<?php echo $row["diffuseur__id"]?>" class="btn btn--outline">Modifier le Diffuseur</a>
-          <a href="./projet__modifier.php?projet__id=<?php echo $projet__id ?>" class="btn btn--outline">Modifier le Projet</a>
+          <a href="./diffuseur__modifier.php?diffuseur__id=<?php echo $row["diffuseur__id"]?>" class="btn btn__outline">Modifier le Diffuseur</a>
+          <a href="./projet__modifier.php?projet__id=<?php echo $projet__id ?>" class="btn btn__outline">Modifier le Projet</a>
         </div>
       </div>
     </section>
@@ -60,7 +60,7 @@
     <?php $sql = "SELECT * FROM Projets, Devis WHERE Projets.projet__id='".$projet__id."' AND Devis.projet__id = Projets.projet__id"; ?>
     <?php include './core/query.php'; $result = $conn->query($sql) or die($conn->error); ?>
     <?php if ($result->num_rows > 0): ?>
-      <table class="table body">
+      <table class="m-table body">
         <thead>
           <tr>
             <th>N°</th>
@@ -91,7 +91,7 @@
     <?php else: ?>
       <p class="body">Chef, on n'a pas trouvé de devis...</p>
     <?php endif; $conn->close(); ?>
-    <a href="./devis__new.php?projet__id=<?php echo $projet__id ?>" class="btn btn--plain">Ajouter un devis</a>
+    <a href="./devis__new.php?projet__id=<?php echo $projet__id ?>" class="btn btn__plain">Ajouter un devis</a>
   </div>
 
 
@@ -103,7 +103,7 @@
     <?php $sql = "SELECT * FROM Projets, Factures WHERE Projets.projet__id='".$projet__id."' AND Factures.projet__id = Projets.projet__id"; ?>
     <?php include './core/query.php'; $result = $conn->query($sql) or die($conn->error); ?>
     <?php if ($result->num_rows > 0): ?>
-      <table class="table body">
+      <table class="m-table body">
         <thead>
           <tr>
             <th>N°</th>
@@ -133,7 +133,7 @@
     <?php else: ?>
       <p class="body">Chef, on n'a pas trouvé de factures...</p>
     <?php endif; $conn->close(); ?>
-    <a href="./facture__new.php?projet__id=<?php echo $projet__id ?>" class="btn btn--plain">Ajouter une facture</a>
+    <a href="./facture__new.php?projet__id=<?php echo $projet__id ?>" class="btn btn__plain">Ajouter une facture</a>
   </div>
 </section>
 <?php include './footer.php'; ?>

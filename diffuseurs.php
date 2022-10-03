@@ -6,7 +6,7 @@
   <div class="toolbar__container">
     <h1 class="display1">Liste des diffuseurs</h1>
     <div class="toolbar__btn">
-      <a href="./diffuseur__new.php" class="btn btn--plain">Ajouter un diffuseur</a>
+      <a href="./diffuseur__new.php" class="btn btn__plain">Ajouter un diffuseur</a>
     </div>
   </div>
 </section>
@@ -17,7 +17,7 @@
   <?php $sql = "SELECT * FROM Diffuseurs"; ?>
   <?php include './core/query.php'; $result = $conn->query($sql) or die($conn->error); ?>
   <?php if ($result->num_rows > 0): ?>
-    <table class="table body">
+    <table class="m-table body">
       <thead>
         <tr>
           <th>Société</th>

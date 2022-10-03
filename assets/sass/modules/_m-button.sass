@@ -1,40 +1,78 @@
 // main: ../../../style.sass
 
   Le module Button stylise les boutons. Il exite
-  deux variantes : le bouton btn--plain et le btn--outline.
+  deux variantes : le bouton btn__plain et le btn__outline.
 
 
   Exemple de HTML :
 
-    <button class="btn btn--outline" onclick="document.location = '<?php the_permalink(); ?>';">Mon Button</button>
+  <div class="btn__grp">
+    <a href="<?php the_permalink(); ?>" class="btn btn__outline">
+      <?php _e("Annuler","monobloc") ?>
+    </a>
+    <a href="<?php the_permalink(); ?>" class="btn btn__plain">
+      <?php _e("Valider","monobloc") ?>
+    </a>
+  </div>
 
 
+.btn__grp
+  display: flex
+  flex-direction: column
+  margin: m() 0
 
 .btn
   display: inline-block
-  margin: m(3) m(.5)
+  float: left
   padding: m() m(3)
   font-size: m(1.25)
   font-weight: 600
   cursor: pointer
   white-space: nowrap
   border-radius: m(3)
-  @include prefix(transition, all 1s)
+  transition: $slow
 
-  &:hover
+  @include hover
     text-decoration: none
     background: color('accent')
-    @include prefix(transition, all 0.2s)
+    transition: $fast
 
-.btn--plain
+.btn__plain
   color: color('back')
   background: color('accent')
   border: 1px solid color('accent')
 
-.btn--outline
+.btn__outline
   color: color('accent', 80)
   border: 1px solid color('accent', 80)
   background: none
 
-.btn--big
-  padding: m(2)
+.btn__big
+  display: flex
+  align-items: center
+  width: auto
+  padding: m()
+  border: m() solid
+  border-image: url('./assets/img/border-image.svg')
+  border-image-slice: 25%
+
+  @include hover
+    border-radius: 0
+    transition: $fast
+
+.btn__big-txt
+  padding: 0 m(2)
+  *
+    display: block
+    width: 100%
+  .display1
+    font-family: font('sans-serif')
+    color: color('back')
+  .lead_para
+    color: color('accent', 80)
+    font-style: italic
+
+
+.btn__big-ico svg
+  width: m(4.5)
+  fill: color('back')

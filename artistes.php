@@ -5,7 +5,7 @@
   <div class="toolbar__container">
     <h1 class="display1">Liste des artistes</h1>
     <div class="toolbar__btn">
-      <a href="./artiste__new.php" class="btn btn--plain">Ajouter un artiste</a>
+      <a href="./artiste__new.php" class="btn btn__plain">Ajouter un artiste</a>
     </div>
   </div>
 </section>
@@ -14,7 +14,7 @@
     <?php $sql = "SELECT * FROM Artistes"; ?>
     <?php include './core/query.php'; $result = $conn->query($sql) or die($conn->error); ?>
     <?php if ($result->num_rows > 0): ?>
-      <table class="table body">
+      <table class="m-table body">
         <thead>
           <tr>
             <th>Société</th>

@@ -29,8 +29,8 @@ if( !($result) ):
       </div>
     </div>
     <div class="m-modal__img">
-      <div class="image-full">
-        <div class="image-full__content is--fullsize">
+      <div class="m-img__full">
+        <div class="m-img__wrapper is--fullsize">
           <img src="./assets/img/back__modal.jpg" alt="">
         </div>
       </div>
@@ -50,7 +50,7 @@ if( !($result) ):
       <p class="lead_paragraph">Confirmez la réinstallation automatique de la Base de données en tapant <em>KonMari</em> ci-dessous.</p>
       <p class="body">Pas besoin de répéter deux fois la même chose à Nadine : si vous avez déjà utilisé Nadine, toutes vos données seront perdu à jamais.</p>
       <input type="text" name="input__doyouconfirme" value="" placeholder="Tapez ici">
-      <button type="button" name="init__doyouconfirme" class="btn btn--plain">Continuer</button>
+      <button type="button" name="init__doyouconfirme" class="btn btn__plain">Continuer</button>
     </div>
   </div>
 <?php endif; ?>
@@ -142,7 +142,7 @@ if( !($result) ):
     </div>
 
 
-    <input type="submit" name="Enregistrer" class="btn btn--plain" value="Suivant">
+    <input type="submit" name="Enregistrer" class="btn btn__plain" value="Suivant">
 
   </form>
 </section>

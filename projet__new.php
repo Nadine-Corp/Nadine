@@ -64,8 +64,8 @@ endif; $conn->close();
     <div class="toolbar__container">
       <h1 class="display1">Ajouter un nouveau projet</h1>
       <div class="toolbar__btn">
-        <a href="./projets.php" class="btn btn--outline">Annuler</a>
-        <input type="submit" name="Enregistrer" value="Enregistrer" class="btn btn--plain">
+        <a href="./projets.php" class="btn btn__outline">Annuler</a>
+        <input type="submit" name="Enregistrer" value="Enregistrer" class="btn btn__plain">
       </div>
     </div>
   </section>

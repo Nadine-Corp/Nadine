@@ -25,7 +25,7 @@ include './header.php';
     <?php $sql = "SELECT * FROM Devis WHERE devis__statut = 'Envoyé' "; ?>
     <?php include './core/query.php'; $result = $conn->query($sql) or die($conn->error); ?>
     <?php if ($result->num_rows > 0): ?>
-      <table class="table body">
+      <table class="m-table body">
         <thead>
           <tr>
             <th>N°</th>
@@ -63,7 +63,7 @@ include './header.php';
     <?php $sql = "SELECT * FROM Factures WHERE facture__statut = 'Envoyée' "; ?>
     <?php include './core/query.php'; $result = $conn->query($sql) or die($conn->error); ?>
     <?php if ($result->num_rows > 0): ?>
-      <table class="table body">
+      <table class="m-table body">
         <thead>
           <tr>
             <th>N°</th>

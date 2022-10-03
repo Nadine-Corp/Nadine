@@ -50,20 +50,20 @@ $date = strftime("%d %B %Y", strtotime($today));
         <div class="toolbar__container">
           <h1 class="display1">Modifier un devis</h1>
           <div class="toolbar__btn">
-            <a href="./projet__single.php?projet__id=<?php echo $row["projet__id"] ?>" class="btn btn--outline">Annuler</a>
-            <a href="./devis__mail.php?devis__id=<?php echo $devis__id ?>" class="btn btn--outline" target="_blank">Générer email</a>
-            <a href="./devis__convertir.php?devis__id=<?php echo $devis__id ?>" class="btn btn--outline">Convertir en facture</a>
-            <input type="submit" name="Dupliquer" value="Dupliquer ce devis" class="btn btn--outline">
-            <a href="./core/supprimer.php?base=Devis&cible=devis__id&id=<?php echo $devis__id ?>" class="btn btn--outline">Supprimer</a>
-            <input list="statut" name="devis__statut" class="btn btn--outline" value="<?php echo $row["devis__statut"] ?>">
+            <a href="./projet__single.php?projet__id=<?php echo $row["projet__id"] ?>" class="btn btn__outline">Annuler</a>
+            <a href="./devis__mail.php?devis__id=<?php echo $devis__id ?>" class="btn btn__outline" target="_blank">Générer email</a>
+            <a href="./devis__convertir.php?devis__id=<?php echo $devis__id ?>" class="btn btn__outline">Convertir en facture</a>
+            <input type="submit" name="Dupliquer" value="Dupliquer ce devis" class="btn btn__outline">
+            <a href="./core/supprimer.php?base=Devis&cible=devis__id&id=<?php echo $devis__id ?>" class="btn btn__outline">Supprimer</a>
+            <input list="statut" name="devis__statut" class="btn btn__outline" value="<?php echo $row["devis__statut"] ?>">
             <datalist id="statut">
               <option value="Brouillon">
               <option value="Envoyé">
               <option value="Validé">
               <option value="Annulé">
             </datalist>
-            <a href="javascript:window.print()" class="btn btn--plain">Imprimer en PDF</a>
-            <input type="submit" name="Enregistrer" value="Enregistrer" class="btn btn--plain">
+            <a href="javascript:window.print()" class="btn btn__plain">Imprimer en PDF</a>
+            <input type="submit" name="Enregistrer" value="Enregistrer" class="btn btn__plain">
           </div>
         </div>
       </section>

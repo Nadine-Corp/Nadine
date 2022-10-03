@@ -32,9 +32,9 @@
           <input type="text" name="email" placeholder="Email" class="form__input-half" value="<?php echo $row["artiste__email"] ?>">
           <input type="text" name="website" placeholder="Site web" class="form__input-full" value="<?php echo $row["artiste__website"] ?>">
         </div>
-          <a href="./artistes.php" class="btn btn--outline">Annuler</a>
-          <a href="./core/supprimer.php?base=artistes&location=artistes&cible=artiste__id&id=<?php echo $artiste__id ?>" class="btn btn--outline">Supprimer</a>
-          <input type="submit" name="Enregistrer" value="Enregistrer" class="btn btn--plain">
+          <a href="./artistes.php" class="btn btn__outline">Annuler</a>
+          <a href="./core/supprimer.php?base=artistes&location=artistes&cible=artiste__id&id=<?php echo $artiste__id ?>" class="btn btn__outline">Supprimer</a>
+          <input type="submit" name="Enregistrer" value="Enregistrer" class="btn btn__plain">
       </form>
 
 

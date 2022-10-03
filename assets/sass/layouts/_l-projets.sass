@@ -1,0 +1,37 @@
+// main: ../../../style.sass
+
+  Le layout Projets permet de gérer l'affichage de la pages Projets
+  (C'est à dire, de la page d'accueil de Nadine)
+
+
+.l-projets
+
+.l-projets__list
+  flex-direction: column
+
+.l-projets__name
+  color: color('accent')
+
+.l-projets__date
+  font-style: italic
+  color: color('back', 30)
+
+.l-projets__thumbnail
+  display: flex
+  justify-content: center
+  align-items: center
+  float: left
+  width: m(3)
+  height: m(3)
+  background: color('accent')
+  border-radius: 50%
+
+  svg
+    width: m(1.5)
+    fill: color('back')
+
+.l-projets__annule .l-projets__thumbnail
+  background: color('back',40)
+
+.l-projets__termine .l-projets__thumbnail
+  background: color('back',10)

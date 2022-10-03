@@ -85,7 +85,7 @@ $( document ).ready(function($) {
 	*  Table Shorter
 	*/
 
-	$(".table").tablesorter();
+	$(".m-table").tablesorter();
 
 
 	// Facture : active le bouton Enregistrer si c'est passer une facturer
@@ -121,9 +121,8 @@ $( document ).ready(function($) {
 
 	$('.m-accordion__titre').click(function(){
 		if (	$(this).closest('.m-accordion').hasClass('is--active') ) {
-			$('.m-accordion').removeClass('is--active');
+			$(this).closest('.m-accordion').removeClass('is--active');
 		}else{
-			$('.m-accordion').removeClass('is--active');
 			$(this).closest('.m-accordion').addClass('is--active');
 		}
 	});

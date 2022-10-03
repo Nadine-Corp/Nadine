@@ -1,5 +1,30 @@
 // main: ../../../style.sass
 
+  Le module Form permet de styliser les formulaires
+
+  Exemple de HTML :
+
+  <form class="m-form" action="<?php echo get_stylesheet_directory_uri(); ?>/scripts/s__send-mail-from-form.php" method="post">
+    <div class="m-form__input-container">
+      <input type="text" class="m-form__input-half" placeholder="Nom*" name="nom" value="" autocomplete="family-name" required>
+      <input type="email" class="m-form__input-half" placeholder="Email*" name="email" value="" autocomplete="email" required>
+      <input type="text" class="m-form__input-full" placeholder="Sujet*" name="sujet" value="" autocomplete="" required>
+      <textarea class="m-form__input-full" placeholder="Message*" name="message" value="" autocomplete="" required></textarea>
+
+      <input type="text" class="m-form__full" placeholder="Prénom*" name="shipping_first_name" value="" autocomplete="given-name" required>
+      <input type="text" class="m-form__full" placeholder="Nom*" name="shipping_last_name" value="" autocomplete="family-name" required>
+      <input type="text" class="m-form__full" placeholder="Nom de l'entreprise" name="shipping_company" value="" autocomplete="organization">
+      <input type="text" class="m-form__full" placeholder="Téléphone*" name="shipping_phone" value="" autocomplete="tel" required>
+      <input type="email" class="m-form__full automatewoo-capture-guest-email" placeholder="Email*" name="shipping_email" value="" autocomplete="email" required>
+      <input type="text" class="m-form__full" placeholder="Numéro et nom de rue*" name="shipping_address_1" value="" autocomplete="street-address" required>
+      <input type="text" class="m-form__full" placeholder="Code postal*" name="shipping_postcode" value="" pattern="[0-9]{5}" size="5" maxlength="5" autocomplete="postal-code" required>
+      <input type="text" class="m-form__full" placeholder="Ville*" name="shipping_city" value="" autocomplete="address-level2" required>
+
+      <input type="text" class="m-form__input-half" placeholder="url" name="url" hidden value="<?php echo get_home_url(); ?>">
+      <input type="text" class="m-form__input-half" placeholder="url" name="the_permalink" hidden value="<?php the_permalink(); ?>">
+    </div>
+      <input type="submit" name="submit" value="<?php _e("Envoyer votre message","monobloc") ?>" class="btn btn--plain">
+  </form>
 
 .form
   float: left

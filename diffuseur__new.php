@@ -20,7 +20,7 @@
         <input type="text" name="email" placeholder="Email" class="form__input-half">
         <input type="text" name="website" placeholder="Site web" class="form__input-full">
       </div>
-        <input type="submit" name="Enregistrer" value="Enregistrer" class="btn btn--plain">
+        <input type="submit" name="Enregistrer" value="Enregistrer" class="btn btn__plain">
     </form>
   </div>
 </section>

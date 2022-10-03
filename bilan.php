@@ -41,7 +41,7 @@ endif;
           $date_de_fin = date_create($row["projet__date_de_fin"]);
           $date_de_fin = date_format($date_de_fin, 'Y');
           if($date_de_fin!=$date_last):
-            echo '<a href="bilan.php?annee='.$date_de_fin.'" class="btn btn--outline">'.$date_de_fin.'</a>';
+            echo '<a href="bilan.php?annee='.$date_de_fin.'" class="btn btn__outline">'.$date_de_fin.'</a>';
             $date_last = $date_de_fin;
           endif;
         endwhile;
@@ -57,7 +57,7 @@ endif;
       <?php $sql = "SELECT * FROM Projets, Diffuseurs WHERE Projets.diffuseur__id = Diffuseurs.diffuseur__id AND projet__statut = 'Projet terminé' AND projet__date_de_fin BETWEEN CAST('".$year."-01-01' AS DATE) AND CAST('".$year."-12-31' AS DATE) ORDER BY projet__date_de_fin ASC;"; ?>
       <?php include './core/query.php'; $result = $conn->query($sql) or die($conn->error); ?>
       <?php if ($result->num_rows > 0): ?>
-        <table class="table body">
+        <table class="m-table body">
           <tr>
             <th>Nature de l'activité</th>
             <th>Diffuseur</th>

@@ -86,8 +86,8 @@
     <div class="toolbar__container">
       <h1 class="display1">Créer une facture</h1>
       <div class="toolbar__btn">
-        <button href="./projet__single.php?projet__id=<?php echo $projet__id ?>" class="btn btn--outline">Annuler</button>
-        <input type="submit" name="Enregistrer" value="Enregistrer" class="btn btn--plain">
+        <button href="./projet__single.php?projet__id=<?php echo $projet__id ?>" class="btn btn__outline">Annuler</button>
+        <input type="submit" name="Enregistrer" value="Enregistrer" class="btn btn__plain">
       </div>
     </div>
   </section>

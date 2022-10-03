@@ -146,7 +146,7 @@
         </div>
 
 
-        <input type="submit" name="Enregistrer" class="btn btn--plain" value="Enregistrer">
+        <input type="submit" name="Enregistrer" class="btn btn__plain" value="Enregistrer">
 
       </form>
     </section>

@@ -21,8 +21,8 @@
 
 .m-accordion
   display: flex
-  //width: 100%
   flex-direction: column !important
+  width: 100%
   &.is--active
     .m-accordion__ico
       transform: rotate(0deg)
@@ -31,7 +31,8 @@
     .m-accordion__wrapper
       opacity: 1
       max-height: 1000vh
-      transition: all 1s
+      padding-bottom: $row__marge-bottom
+      transition: $fast
 
 .m-accordion__titre
   display: flex
@@ -39,6 +40,13 @@
   align-items: center
   width: 100%
   cursor: pointer
+  border-bottom: 1px solid $border-color
+  padding-bottom: m()
+  margin-bottom: m()
+
+  span
+    font-family: font('sans-serif')
+    color: color('accent', 70)
 
 .m-accordion__ico
   margin-left: auto
@@ -57,4 +65,4 @@
   margin: 0
   opacity: 0
   overflow: hidden
-  transition: all 1s
+  transition: $fast

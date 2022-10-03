@@ -28,17 +28,19 @@ $nbColonne: 12
 // Définition des variables de marges et de height du site
 
 $header__height: var(--hh)
-$row__marge-horiz: var(--mh)
 $row__marge-top: var(--mt)
+$row__marge-horiz: var(--mh)
 $row__marge-bottom: var(--mb)
+$width__aside: var(--wa)
 
 \:root
   --vh:    1vh
   --m:     12
   --hh:    #{m(4)}
-  --mh:    #{m(1)}
-  --mt:    #{m(1)}
+  --mh:    #{m(2)}
+  --mt:    #{m(2)}
   --mb:    #{m(2)}
+  --wa:    #{m(30)}
 
 
 // Ajout des Fonts grâce à la fonction font-face() de Nadine.
@@ -67,3 +69,8 @@ $row__marge-bottom: var(--mb)
     @return 'Redaction', Georgia, serif
   @else if $family == 'sans-serif'
     @return 'NimbusSans', Helvetica, sans-serif
+
+// Qq variables
+
+$fast: .2s
+$slow: 3s

@@ -16,7 +16,7 @@
   <div class="col l12">
 
     <?php if (($journal = fopen("./assets/csv/journal.csv", "r")) !== FALSE): ?>
-      <table class="table body">
+      <table class="m-table body">
         <thead>
           <tr>
             <th width="10%">Version</th>
