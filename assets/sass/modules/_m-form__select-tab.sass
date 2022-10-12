@@ -1,0 +1,53 @@
+// main: ../../../style.sass
+
+  Le module Form__select-tab permet de modifier l'aspect des select
+  pour les faire a des onglets
+
+  Attention : pensez à activer le module m-form dans le fichier style.sass
+  Attention : pensez à activer le module Form : Select-tab dans le fichier assets/js/nadine.js
+
+
+  Exemple de HTML :
+
+  <form class="m-form">
+    <div class="m-form__select-tab">
+        <select>
+          <option value="Something" selected>Something</option>
+          <option value="An other thing">An other thing</option>
+          <option value="Something else">Something else</option>
+        </select>
+      <div>
+  </form>
+
+
+.m-form__select-tab
+  select
+    display: none
+
+.m-form__tabs
+  display: flex
+  height: $inputHeight
+  margin-top: $inputMarginTop
+  border: 1px solid $inputBorderColor
+  border-radius: $inputBorderRadius
+  background: $inputBackground
+  overflow: hidden
+
+.m-form__tab
+  flex: 2 2 auto
+  height: $inputHeight
+  padding: $inputPadding
+  font-size: $inputFontSize
+  color: $inputBorderColor
+  text-align: center
+  cursor: pointer
+  transition: $slow
+
+  @include hover
+    color: color('accent')
+    background: $inputFocusBackground
+    transition: $fast
+
+  &.is--active
+    background: $inputBorderColor
+    color: color('accent')

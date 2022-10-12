@@ -192,7 +192,7 @@
   $sql = "CREATE TABLE Devis (
   devis__id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
   devis__corbeille TINYINT(1) DEFAULT 0,
-  devis__template VARCHAR(255) COLLATE '$interclassement',
+  facture__template VARCHAR(255) COLLATE '$interclassement',
   devis__date VARCHAR(255) COLLATE '$interclassement',
   devis__numero VARCHAR(255) COLLATE '$interclassement',
   devis__statut VARCHAR(255) COLLATE '$interclassement',

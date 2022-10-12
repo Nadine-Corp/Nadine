@@ -49,10 +49,13 @@ $width__aside: var(--wa)
     @include font-face('Graphik', './assets/fonts/graphik/graphik', 400, normal, [eot, woff, woff2] )
     @include font-face('Graphik', './assets/fonts/graphik/graphik', bold, italic, [eot, woff, woff2] )
 
+// Ajout du Nimbus Sans
 @include font-face('NimbusSans', './assets/fonts/nimbus/nimbus', 400, normal, [ttf] )
 @include font-face('NimbusSans', './assets/fonts/nimbus/nimbus-italic', 400, italic, [ttf] )
 @include font-face('NimbusSans', './assets/fonts/nimbus/nimbus-bold', 600, normal, [ttf] )
 @include font-face('NimbusSans', './assets/fonts/nimbus/nimbus-bold-italic', 600, italic, [ttf] )
+
+// Ajout du Redaction
 @include font-face('Redaction', './assets/fonts/redaction/redaction-35', 400, normal, [woff2] )
 @include font-face('Redaction', './assets/fonts/redaction/redaction-35-italic', 400, italic, [woff2] )
 @include font-face('Redaction', './assets/fonts/redaction/redaction-35-bold', 600, normal, [woff2] )
@@ -70,7 +73,10 @@ $width__aside: var(--wa)
   @else if $family == 'sans-serif'
     @return 'NimbusSans', Helvetica, sans-serif
 
-// Qq variables
+
+// Les variables $fast et $slow permettre d'uniformiser
+  les vitesses des transitions de Nadine
 
 $fast: .2s
-$slow: 3s
+$slow: 0.6s
+$verySlow: 2s

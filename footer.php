@@ -17,7 +17,7 @@
 	// C'est utile lorsqu'elle veut afficher une modal par exemple.
 
 	?>
-	<div class="m-overlay is--fullsize"></div>
+	<div class="m-overlay is--fullsize is--active"></div>
 
 
 	<?php

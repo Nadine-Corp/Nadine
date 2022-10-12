@@ -16,14 +16,19 @@
   </div>
 
 
-.btn__grp
-  display: flex
-  flex-direction: column
-  margin: m() 0
+// Stylse les groupes de boutons
+
+.m-btn__grp
+  &>.btn:not(:first-child)
+    margin-left: m()
+
+
+// Stylse les boutons
 
 .btn
   display: inline-block
   float: left
+  height: m(4)
   padding: m() m(3)
   font-size: m(1.25)
   font-weight: 600
@@ -34,7 +39,8 @@
 
   @include hover
     text-decoration: none
-    background: color('accent')
+    background: color('accent', 50)
+    border-radius: m(1.5)
     transition: $fast
 
 .btn__plain
@@ -45,12 +51,43 @@
 .btn__outline
   color: color('accent', 80)
   border: 1px solid color('accent', 80)
-  background: none
+  background: color('back')
+  svg
+    fill: color('accent', 80)
+
+  @include hover
+    background: color('accent', 98)
+    color: color('accent')
+
+    svg
+      fill: color('accent')
+      transition: $fast
+
+.btn__ico
+  width: m(4)
+  padding: m()
+  svg
+    width: auto
+    height: m(1.5)
+    transition: $slow
+
+
+// Stylse les gros boutons
+
+  Exemple de HTML :
+  <a href="./projet__new.php" class="btn btn__big btn__plain btn__modal" data-modal='add-projet'>
+    <div class="btn__big-ico"><?php include './assets/img/ico_ajouter.svg.php'; ?></div>
+    <div class="btn__big-txt">
+      <span class=" display1">Ajouter</span>
+      <span class="lead_para">Projet</span>
+    </div>
+  </a>
 
 .btn__big
   display: flex
   align-items: center
   width: auto
+  height: auto
   padding: m()
   border: m() solid
   border-image: url('./assets/img/border-image.svg')
@@ -71,7 +108,6 @@
   .lead_para
     color: color('accent', 80)
     font-style: italic
-
 
 .btn__big-ico svg
   width: m(4.5)

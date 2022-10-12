@@ -1,12 +1,6 @@
 <?php include './header.php'; ?>
 
 <?php
-date_default_timezone_set('UTC');
-$today = date("Y-m-d");
-setlocale(LC_TIME, "fr_FR","French");
-$date = strftime("%d %B %Y", strtotime($today));
-
-
 
 
 /**
@@ -82,7 +76,7 @@ endif; $conn->close();
         <div class="form__input-container body">
           <input type="text" name="nom_du_projet" placeholder="Nom du projet" class="form__input-full">
           <input type="text" name="numero_du_projet" placeholder="Numéro du projet" class="form__input-half form__input-seperator" disabled>
-          <input type="date" name="date_de_creation" placeholder="Date de création" class="form__input-half" value="<?php echo $today; ?>">
+          <input type="date" name="date_de_creation" placeholder="Date de création" class="form__input-half" value="<?php the_date_today(); ?>">
         </div>
       </div>
     </div>

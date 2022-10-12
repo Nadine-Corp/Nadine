@@ -5,11 +5,11 @@
   Exemple de HTML :
 
   <form class="m-form" action="<?php echo get_stylesheet_directory_uri(); ?>/scripts/s__send-mail-from-form.php" method="post">
-    <div class="m-form__input-container">
-      <input type="text" class="m-form__input-half" placeholder="Nom*" name="nom" value="" autocomplete="family-name" required>
-      <input type="email" class="m-form__input-half" placeholder="Email*" name="email" value="" autocomplete="email" required>
-      <input type="text" class="m-form__input-full" placeholder="Sujet*" name="sujet" value="" autocomplete="" required>
-      <textarea class="m-form__input-full" placeholder="Message*" name="message" value="" autocomplete="" required></textarea>
+    <div class="m-form__wrapper">
+      <input type="text" class="m-form__half" placeholder="Nom*" name="nom" value="" autocomplete="family-name" required>
+      <input type="email" class="m-form__half" placeholder="Email*" name="email" value="" autocomplete="email" required>
+      <input type="text" class="m-form__full" placeholder="Sujet*" name="sujet" value="" autocomplete="" required>
+      <textarea class="m-form__full" placeholder="Message*" name="message" value="" autocomplete="" required></textarea>
 
       <input type="text" class="m-form__full" placeholder="Prénom*" name="shipping_first_name" value="" autocomplete="given-name" required>
       <input type="text" class="m-form__full" placeholder="Nom*" name="shipping_last_name" value="" autocomplete="family-name" required>
@@ -20,59 +20,118 @@
       <input type="text" class="m-form__full" placeholder="Code postal*" name="shipping_postcode" value="" pattern="[0-9]{5}" size="5" maxlength="5" autocomplete="postal-code" required>
       <input type="text" class="m-form__full" placeholder="Ville*" name="shipping_city" value="" autocomplete="address-level2" required>
 
-      <input type="text" class="m-form__input-half" placeholder="url" name="url" hidden value="<?php echo get_home_url(); ?>">
-      <input type="text" class="m-form__input-half" placeholder="url" name="the_permalink" hidden value="<?php the_permalink(); ?>">
+      <input type="text" class="m-form__half" placeholder="url" name="url" hidden value="<?php echo get_home_url(); ?>">
+      <input type="text" class="m-form__half" placeholder="url" name="the_permalink" hidden value="<?php the_permalink(); ?>">
     </div>
       <input type="submit" name="submit" value="<?php _e("Envoyer votre message","monobloc") ?>" class="btn btn--plain">
   </form>
 
-.form
-  float: left
-  width: 100%
 
-.form__input-container
-  float: left
-  width: 100%
-  border: 1px solid color('back')
-  border-bottom: none
-  margin: m() 0
+// Définition de qq variables
 
-  &>input, &>textarea, &>div
+$inputHeight: m(5)
+$inputPadding: m(1.5)
+$inputMarginTop: m(3)
+
+$inputBackground: color('back')
+$inputFocusBackground: color('accent', 98)
+$inputColor: color('principale')
+$inputBorderColor: color('accent', 80)
+$inputFocusBorderColor: color('accent')
+$inputBorderRadius: m(3)
+
+$inputFontSize: m(1.5)
+$labelFontSize: m()
+
+
+.m-form
+  .m-form__wrapper *,
+  .m-form__wrapper
     float: left
-    height: m(4)
-    padding: m(1.5)
-    border: none
-    border-bottom: 1px solid color('back')
+    width: 100%
+
+.m-form__half
+  width: 50% !important
+
+.m-form
+  input:not([type="submit"]), textarea
+    float: left
+    height: $inputHeight
+    padding: $inputPadding 0
+    margin-top: $inputMarginTop
+    border: 1px solid color('back')
+    border-bottom: 1px solid $inputBorderColor
     resize: none
-    color: color('principale')
-    background: color('secondaire')
-    transition: background .5s
+    font-size: $inputFontSize
+    color: $inputColor
+    background: $inputBackground
+    transition: $slow
 
-  &>textarea
-    height: auto
+    &:focus
+      padding: $inputPadding m(2)
+      border-radius: $inputBorderRadius
+      border: 1px solid $inputFocusBorderColor
+      background: $inputFocusBackground
+      transition: $fast
 
-  input:focus, textarea:focus
-    background: color('secondaire')
-    transition: background .5s
+  label
+    display: block
+    width: 100%
+    color: color('back',40)
+    font-size: $labelFontSize
+    font-family: font('sans-serif')
 
-  input:disabled
-    text-decoration: line-through
-    opacity: 0.6
+.m-form__wrapper
+  margin-bottom: m(5)
 
-  input::placeholder
-    color: color('principale')
+.m-form__btns
+  float: right
 
-.form__input-full
-  width: 100%
+// Stylise les labels
 
-.form__input-half
-  width: 50%
+.m-form__label-amimate,
+.m-form__label-simple
+  position: relative
 
-input.form__input-seperator
-  border-right: 1px solid color('back')
+  label
+    position: absolute
+    left: 0
+    top: m(1.5)
+    pointer-events: none
+    transition: $fast
 
-input[type=submit]:disabled,
-.form__input--line-through
-  text-decoration: line-through
-  cursor: auto
-  opacity: 0.5
+.m-form__label-amimate
+  label
+    top: m(5)
+
+    &.is--focus
+      top: m()
+
+    &.is--filled
+      top: m(2)
+
+  ::placeholder
+    color: color('back')
+
+
+// Stylise les Suggestion de Chome & Co.
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active
+  -webkit-box-shadow: 0 0 0 30px $inputBackground inset !important
+  -webkit-text-fill-color: $inputColor !important
+  padding: $inputPadding 0 !important
+
+
+// Modifie la couleur de l'icone Calendrier
+// des Input date sur Chrome & Co.
+::-webkit-calendar-picker-indicator
+  filter: invert(1)
+
+
+// Stylise les placeholder
+
+::placeholder
+  color: color('accent', 80)

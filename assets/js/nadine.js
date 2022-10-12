@@ -18,57 +18,6 @@ $( document ).ready(function($) {
 
 
 	/**
-	* Bouton Menu Nav
-	*/
-
-	// Déclare qq variables
-	let overlay = document.querySelector('.m-overlay');
-	let nav__btn = document.querySelector('.nav__btn');
-	let header__navbar = document.querySelector('.l-header__navbar');
-	let nav__accordion = document.querySelector('.l-header__navbar .m-accordion');
-
-	// Vérifie si qq'un click sur le Menu Burger
-	nav__btn.addEventListener('click', function() {
-		if ( header__navbar.classList.contains('is--active') ) {
-			HideNav();
-		}else{
-			ShowNav();
-		}
-	});
-
-	// Ferme le volet si qq'un click à l'extérieur du menu
-	overlay.addEventListener('click', function() {
-		HideNav();
-	});
-
-	// Cette fonction est appelée pour ouvrir le nav
-	function ShowNav() {
-		nav__btn.classList.add('is--active');
-		header__navbar.classList.add('is--active');
-		overlay.classList.add('is--active');
-		document.body.classList.add('overflow--is--hidden');
-		document.documentElement.classList.add('overflow--is--hidden');
-	};
-
-	// Cette fonction est appelée pour fermer le nav
-	function HideNav() {
-		nav__btn.classList.remove('is--active');
-		header__navbar.classList.remove('is--active');
-		overlay.classList.remove('is--active');
-		nav__accordion.classList.remove('is--active');
-		document.body.classList.remove('overflow--is--hidden');
-		document.documentElement.classList.remove('overflow--is--hidden');
-	};
-
-	// Vérifie si qq'un click sur le bouton Plus
-	nav__accordion.addEventListener('click', function() {
-		if ( !header__navbar.classList.contains('is--active') ) {
-			ShowNav();
-		}
-	});
-
-
-	/**
 	*  Menu : Ajout de la classe is--current
 	*/
 
@@ -92,10 +41,10 @@ $( document ).ready(function($) {
 	// à l'état Payée
 
 	$("input[name=facture__statut]").on('input', function() {
-	    var factureStatut = $(this).val();
-			if (factureStatut == "Payée") {
-				$("input[type=submit]").prop("disabled", false);
-			}
+		var factureStatut = $(this).val();
+		if (factureStatut == "Payée") {
+			$("input[type=submit]").prop("disabled", false);
+		}
 	});
 
 
@@ -132,39 +81,184 @@ $( document ).ready(function($) {
 	*  Effet : is--DenkoKeijiban
 	*/
 
-  $('.is--denko').each(function() {
-    var clone = $(this).find('*')
-    var n = 100;
-    while(n > 0){
-      $(this).append(clone.clone());
-      n -= 1;
-    }
-  });
+	$('.is--denko').each(function() {
+		var clone = $(this).find('*')
+		var n = 100;
+		while(n > 0){
+			$(this).append(clone.clone());
+			n -= 1;
+		}
+	});
 }); //Fin du jQuery(document).ready
 
 
 /**
-* Module : Modale
+* Bouton Menu Nav
 */
 
-if ( $('.m-modal.is--active').length ) {
-	$('.m-overlay').show();
-}
-$(document).on('click', '[data-toggle="m-modal"]', function (e){
-	var target = $(this).data('target');
-	$(target).show();
-});
-$(document).on('click', '[name="init__doyouconfirme"]', function (e){
-	var konmari = $('[name="input__doyouconfirme"]').val();
-	if( konmari == "KonMari"){
-		window.location.href = './core/init.php';
+// Déclare qq variables
+let nav__btn = document.querySelector('.nav__btn');
+let header__navbar = document.querySelector('.l-header__navbar');
+let nav__accordion = document.querySelector('.l-header__navbar .m-accordion');
+
+// Vérifie si qq'un click sur le Menu Burger
+nav__btn.addEventListener('click', function() {
+	if ( header__navbar.classList.contains('is--active') ) {
+		HideNav();
+	}else{
+		ShowNav();
 	}
 });
 
-const el = document.querySelector(".is--sticky")
-const observer = new IntersectionObserver(
-	([e]) => e.target.classList.toggle("is--pinned", e.intersectionRatio < 1),
-	{ threshold: [1] }
-);
+// Cette fonction est appelée pour ouvrir le nav
+function ShowNav() {
+	nav__btn.classList.add('is--active');
+	header__navbar.classList.add('is--active');
+	ShowOverlay();
+};
 
-observer.observe(el);
+// Cette fonction est appelée pour fermer le nav
+function HideNav() {
+	nav__btn.classList.remove('is--active');
+	header__navbar.classList.remove('is--active');
+	overlay.classList.remove('is--active');
+	nav__accordion.classList.remove('is--active');
+	document.body.classList.remove('overflow--is--hidden');
+	document.documentElement.classList.remove('overflow--is--hidden');
+};
+
+// Vérifie si qq'un click sur le bouton Plus
+nav__accordion.addEventListener('click', function() {
+	if ( !header__navbar.classList.contains('is--active') ) {
+		ShowNav();
+	}
+});
+
+
+/**
+* Module : Overlay
+*/
+
+
+let overlay = document.querySelector('.m-overlay');
+
+// Cette fonction permet d'afficher l'Overlay
+function ShowOverlay() {
+	document.querySelector('.m-overlay').classList.add('is--active');
+	document.body.classList.add('overflow--is--hidden');
+	document.documentElement.classList.add('overflow--is--hidden');
+};
+
+// Cette fonction fermer l'Overlay
+function HideOverlay() {
+	HideNav();
+	document.querySelector('.m-modal').classList.remove('is--active');
+	document.body.classList.remove('overflow--is--hidden');
+	document.documentElement.classList.remove('overflow--is--hidden');
+};
+
+// Ferme des trucs si qq'un click sur l'Overlay
+overlay.addEventListener('click', function() {
+	HideOverlay();
+});
+
+
+/**
+* Module : Modal
+*/
+
+// Cherche tous les boutons ouvrant des modal
+var btns__modal = document.querySelectorAll('.btn__modal');
+
+btns__modal.forEach(btn__modal => {
+	// Ajoute un script si qq'un click sur le bouton
+	btn__modal.addEventListener('click', function(e) {
+		// Empêche le comportement normal du lien
+		e.preventDefault();
+
+		// Récupére le nom de la modal que le bouton doit ouvrir
+		var modal = btn__modal.getAttribute('data-modal');
+
+		// Formate le nom de la modal
+		modal = '.m-modal__' + modal;
+
+		document.querySelector(modal).classList.add('is--active');
+		ShowOverlay()
+	});
+});
+
+
+/**
+* Module : Form
+*/
+
+// Cherche tous les Input with-label
+var inputsWithLabel = document.querySelectorAll('.m-form__label-amimate');
+inputsWithLabel.forEach(inputWithLabel => {
+
+	// Cherche l'Input à l'interieur de la div.m-form__with-label
+	var input = inputWithLabel.querySelector('input');
+	// Récupére le label de cet Input
+	var label = inputWithLabel.querySelector('label');
+
+
+	// Ajoute un script si qq'un modifie ces inputs
+	input.addEventListener('focus', function(e) {
+		label.removeAttribute('class');
+		label.classList.add('is--focus');
+	});
+
+	input.addEventListener('focusout', function(e) {
+		label.removeAttribute('class');
+		if (input.value.length == 0) {
+			label.classList.remove('is--filled');
+		}else {
+			label.classList.add('is--filled');
+		}
+	});
+});
+
+
+/**
+* Module : Form - Select Tab
+*/
+
+// Cherche tous les Selects m-form__select-tab
+var selectsTab = document.querySelectorAll('.m-form__select-tab');
+selectsTab.forEach(selectTab => {
+
+	// Ajoute un <ul> dans la div.m-form__select-tab
+	var ul = document.createElement('ul');
+	ul.className = 'm-form__tabs';
+	selectTab.append(ul);
+
+	// Récupére les options de ce select
+	var options = selectTab.querySelectorAll('option');
+
+	// Ajoute un <li> par options dans le <ul> précédemment ajouté
+	options.forEach(option => {
+		let li = document.createElement('li');
+		li.className = 'm-form__tab';
+		li.textContent = option.text;
+		ul.append(li);
+
+		// Ajoute une fonction si chaque <li> si qq'un clic dessus
+		li.addEventListener('click', function(e) {
+			// Enlève la class is--active du <li> précèdement sélectionné
+			selectTab.querySelector('li.is--active').classList.remove('is--active');
+			// Ajoute la class is--active sur le <li> sélectionné
+			li.classList.add('is--active');
+			// Récupére le contenu du <li> sélectionné
+			let optionText = li.innerHTML;
+			// Cherche le select
+			let select = selectTab.querySelector('select');
+			// Sélectionne l'option correspondant au <li>
+			select.value = optionText;
+		});
+	});
+
+	// Sélectionne le premier <li>
+	ul.firstChild.classList.add('is--active');
+
+
+});

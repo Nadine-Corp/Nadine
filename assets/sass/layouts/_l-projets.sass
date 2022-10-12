@@ -5,24 +5,54 @@
 
 
 .l-projets
+  a
+    display: flex
+    align-items: center
+    padding: m() 0
+    width: 100%
+
+  span
+    display: block
+    width: 100%
+
+  .col
+    flex: 1 1 auto
+
+  .lead_para
+    color: color('accent')
+
+  .caption
+    font-style: italic
+    color: color('back', 30)
+
+.l-projets__projet
+  margin-bottom: m(.5)
+  border-radius: m(2)
+  transition: $verySlow
+
+  @include hover
+    padding: 0 m()
+    background: color('accent',90)
+    transition: $fast
+
+    .caption
+      color: color('accent',70)
 
 .l-projets__list
   flex-direction: column
 
-.l-projets__name
-  color: color('accent')
-
-.l-projets__date
-  font-style: italic
-  color: color('back', 30)
+.l-projets__statut
+  flex: 0 0 auto
+  text-align: right
 
 .l-projets__thumbnail
   display: flex
+  flex: 0 0 auto
   justify-content: center
   align-items: center
-  float: left
   width: m(3)
   height: m(3)
+  margin-right: m()
   background: color('accent')
   border-radius: 50%
 

@@ -7,64 +7,56 @@
 .m-modal
   display: none
   position: fixed
+  width: 50vw
+  min-height: 33vh
   top: 50%
   left: 50%
-  background: color('accent')
+  background: color('back')
   transform: translate(-50%, -50%)
   z-index: $zindex__modal
-  @include box-shadow(100, 'back')
+  @include box-shadow(100, 'dark')
 
   &.is--active
     display: flex
 
-  &.m-alerte
-    background: color('accent')
+.m-modal__wrapper
+  flex: 1 1 auto
+  padding: m(5)
 
-  input
-    width: 50%
-    height: m(3)
-    margin-top: m(2)
-    font-size: m(2)
-    text-align: center
+.m-modal__nav
+  margin-bottom: m(5)
+  ul
+    display: flex
 
-.m-modal__error
+  li
+    position: relative
+    padding-right: m(4)
+
+    &.is--active a
+      color: color('accent')
+
+    &:not(:last-of-type):after
+      content: url('./assets/img/ico_arrow-modal-nav.svg')
+      position: absolute
+      width: m(0.5)
+      right: m(1.75)
+
+  a
+    font-family: font('sans-serif')
+    color: color('back', 40)
+
+
+.m-modal__denko
   position: relative
-  width: 12.5%
+  flex: 0 0 auto
+  width: m(10)
   background: color('accent')
   overflow: hidden
   .is--denko__container
     position: absolute
     top: 100%
     width: 100vh
-    height: 18.75%
+    height: m(9)
     display: block
     transform: rotate(-90deg)
     transform-origin: top left
-
-  .is--denko
-    animation: thedenkooldfashonway 3000s linear infinite reverse
-
-// Taille de Modal XL
-
-.m-modal__xl
-  width: 50vw
-  min-height: 33vh
-  .m-modal__img
-    flex: 1 0 auto
-
-  .m-modal__msg
-    padding: m(3)
-    width: 50%
-
-// Taille de Modal S
-.m-modal__s
-  width: 33vw
-  height: auto
-
-  .m-modal__msg
-    display: flex
-    flex-direction: column
-    align-items: center
-    padding: m(3)
-    flex: 1 0 auto
-    text-align: center
