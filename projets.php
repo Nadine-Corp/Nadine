@@ -17,7 +17,7 @@ include './header.php'; ?>
 <aside class="m-aside">
   <h1 class="display9">Projets</h1>
   <a href="./projet__new.php" class="btn btn__big btn__plain btn__modal" data-modal='add-projet'>
-    <div class="btn__big-ico"><?php include './assets/img/ico_ajouter.svg.php'; ?></div>
+    <div class="btn__big-ico"><?php include './assets/img/ico_ajouter--plain.svg.php'; ?></div>
     <div class="btn__big-txt">
       <span class=" display1">Ajouter</span>
       <span class="lead_para">Projet</span>
@@ -32,27 +32,27 @@ include './header.php'; ?>
     </div>
     <div class="m-accordion__wrapper">
       <form class="m-form">
-        <div class="m-form__input-container">
-          <label class="m-form__btnradio body">
+        <div class="m-form__radio-vert">
+          <div class="m-form__radio body">
             Par états du projets
             <input type="radio" name="grouper" checked="checked">
             <span class="checkmark"></span>
-          </label>
-          <label class="m-form__btnradio body">
+          </div>
+          <div class="m-form__radio body">
             Par Diffuseurs
             <input type="radio" name="grouper" >
             <span class="checkmark"></span>
-          </label>
-          <label class="m-form__btnradio body">
+          </div>
+          <div class="m-form__radio body">
             Par Artistes-Auteurs
             <input type="radio" name="grouper" >
             <span class="checkmark"></span>
-          </label>
-          <label class="m-form__btnradio body">
+          </div>
+          <div class="m-form__radio body">
             Par années
             <input type="radio" name="grouper" >
             <span class="checkmark"></span>
-          </label>
+          </div>
         </div>
       </form>
     </div>

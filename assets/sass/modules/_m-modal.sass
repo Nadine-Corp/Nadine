@@ -13,8 +13,9 @@
   left: 50%
   background: color('back')
   transform: translate(-50%, -50%)
+  transition: $slow
   z-index: $zindex__modal
-  @include box-shadow(100, 'dark')
+  @include box-shadow(200, 'dark')
 
   &.is--active
     display: flex
@@ -23,35 +24,13 @@
   flex: 1 1 auto
   padding: m(5)
 
-.m-modal__nav
-  margin-bottom: m(5)
-  ul
-    display: flex
-
-  li
-    position: relative
-    padding-right: m(4)
-
-    &.is--active a
-      color: color('accent')
-
-    &:not(:last-of-type):after
-      content: url('./assets/img/ico_arrow-modal-nav.svg')
-      position: absolute
-      width: m(0.5)
-      right: m(1.75)
-
-  a
-    font-family: font('sans-serif')
-    color: color('back', 40)
-
-
 .m-modal__denko
   position: relative
   flex: 0 0 auto
   width: m(10)
   background: color('accent')
   overflow: hidden
+
   .is--denko__container
     position: absolute
     top: 100%
@@ -60,3 +39,10 @@
     display: block
     transform: rotate(-90deg)
     transform-origin: top left
+
+
+// Style la modal permettant d'ajouter un projet
+
+.m-modal__add-projet
+  .m-form__equipe
+    display: none

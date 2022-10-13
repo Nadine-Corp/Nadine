@@ -69,6 +69,7 @@
   $sql = "CREATE TABLE Diffuseurs(
   diffuseur__id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
   diffuseur__corbeille TINYINT(1) DEFAULT 0,
+  diffuseur__type VARCHAR(255) COLLATE '$interclassement',
   diffuseur__societe VARCHAR(255) COLLATE '$interclassement',
   diffuseur__siret VARCHAR(255) COLLATE '$interclassement',
   diffuseur__civilite VARCHAR(255) COLLATE '$interclassement',

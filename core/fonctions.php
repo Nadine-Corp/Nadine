@@ -143,6 +143,7 @@ function the_diffuseur_societe($row){
   echo $row["diffuseur__societe"];
 }
 
+
 /**
 * La fonction the_diffuseur_nom() affiche la civilité, le Prénom
 * et le nom des diffuseurs du projet demandé
@@ -156,6 +157,102 @@ function the_diffuseur_nom($row){
 
   // Retoune le résultat au template
   echo $diffuseur__civilite.' '.$diffuseur__prenom.' '.$diffuseur__nom;
+}
+
+
+/**
+* La fonction the_diffuseurs_list() permet d'afficher
+* la liste de tous les diffuseurs
+*/
+
+function the_diffuseurs_list(){
+  // Demande tous les diffuseurs à la base de donnée
+  $args = array(
+    'FROM'     => 'Diffuseurs',
+    'ORDER BY' => 'diffuseur__societe'
+  );
+  $loop = nadine_query($args);
+
+
+  // Formate chaque diffuseurs et les retoune au template
+  if ($loop->num_rows > 0):
+    while($row = $loop->fetch_assoc()):
+
+      // Ajoute l'ID sur diffuseur en valeur
+      echo '<option value='.$row["diffuseur__id"].'>';
+
+      // Affiche le nom de société ou le nom et prenom du diffuseur
+      // en fonction du type de diffuseur
+      if ($row["diffuseur__type"] == 'particulier') {
+        the_diffuseur_nom($row);
+      }else {
+        the_diffuseur_societe($row);
+      }
+      echo '</option>';
+
+    endwhile;
+  endif;
+}
+
+
+/**
+* La fonction the_artiste_societe() affiche le nom de société
+* des diffuseurs du projet demandé
+*/
+
+function the_artiste_societe($row){
+  echo $row["artiste__societe"];
+}
+
+
+/**
+* La fonction the_artiste_nom() affiche la civilité, le Prénom
+* et le nom des artistes demandés
+*/
+
+function the_artiste_nom($row){
+  // Récupère les infos du diffuseur
+  $artiste__civilite = $row["artiste__civilite"];
+  $artiste__prenom = $row["artiste__prenom"];
+  $artiste__nom = $row["artiste__nom"];
+
+  // Retoune le résultat au template
+  echo $artiste__civilite.' '.$artiste__prenom.' '.$artiste__nom;
+}
+
+
+/**
+* La fonction the_artistes_list() permet d'afficher
+* la liste de tous les diffuseurs
+*/
+
+function the_artistes_list(){
+  // Demande tous les diffuseurs à la base de donnée
+  $args = array(
+    'FROM'     => 'Artistes',
+    'ORDER BY' => 'artiste__societe'
+  );
+  $loop = nadine_query($args);
+
+
+  // Formate chaque diffuseurs et les retoune au template
+  if ($loop->num_rows > 0):
+    while($row = $loop->fetch_assoc()):
+
+      // Ajoute l'ID sur diffuseur en valeur
+      echo '<option value='.$row["artiste__id"].'>';
+
+      // Affiche le nom de société ou le nom et prenom du diffuseur
+      // en fonction du type de diffuseur
+      if ($row["artiste__societe"]) {
+        the_artiste_societe($row);
+      }else {
+        the_artiste_nom($row);
+      }
+      echo '</option>';
+
+    endwhile;
+  endif;
 }
 
 

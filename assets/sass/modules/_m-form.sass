@@ -27,7 +27,9 @@
   </form>
 
 
-// Définition de qq variables
+
+// Définition de qq variables pour faciliter
+// les évolutions de design de tous les modules form
 
 $inputHeight: m(5)
 $inputPadding: m(1.5)
@@ -35,27 +37,30 @@ $inputMarginTop: m(3)
 
 $inputBackground: color('back')
 $inputFocusBackground: color('accent', 98)
-$inputColor: color('principale')
 $inputBorderColor: color('accent', 80)
 $inputFocusBorderColor: color('accent')
 $inputBorderRadius: m(3)
 
 $inputFontSize: m(1.5)
+$inputColor: color('principale')
 $labelFontSize: m()
+$labeColor: color('back',40)
 
 
 .m-form
-  .m-form__wrapper *,
-  .m-form__wrapper
+  .m-form__wrapper > *,
+  .m-form__wrapper,
+  input:not([type="submit"]):not([type="radio"]),
+  textarea
     float: left
     width: 100%
 
-.m-form__half
-  width: 50% !important
+  .m-form__half
+    width: 50%
 
 .m-form
-  input:not([type="submit"]), textarea
-    float: left
+  input:not([type="submit"]):not([type="radio"]),
+  textarea
     height: $inputHeight
     padding: $inputPadding 0
     margin-top: $inputMarginTop
@@ -77,20 +82,21 @@ $labelFontSize: m()
   label
     display: block
     width: 100%
-    color: color('back',40)
+    color: $labeColor
     font-size: $labelFontSize
     font-family: font('sans-serif')
 
 .m-form__wrapper
   margin-bottom: m(5)
 
-.m-form__btns
+.m-form__submit-bar
   float: right
+
 
 // Stylise les labels
 
 .m-form__label-amimate,
-.m-form__label-simple
+.m-form__label
   position: relative
 
   label
@@ -111,7 +117,28 @@ $labelFontSize: m()
       top: m(2)
 
   ::placeholder
-    color: color('back')
+    color: color('back', 50, 0)
+
+
+// Stylise les inputs avec des boutons à côté
+
+.m-form__with-btn
+  display: flex
+  align-items: flex-end
+
+  .btn
+    margin-left: m()
+    flex: 0 0 auto
+
+
+// Stylise les inputs avec des boutons à côté
+
+.m-form__info
+  align-items: center
+  margin-top: $inputMarginTop
+  span
+    color: $labeColor
+    margin-left: auto
 
 
 // Stylise les Suggestion de Chome & Co.
@@ -125,8 +152,9 @@ input:-webkit-autofill:active
   padding: $inputPadding 0 !important
 
 
-// Modifie la couleur de l'icone Calendrier
+// Stylise la couleur de l'icone Calendrier
 // des Input date sur Chrome & Co.
+
 ::-webkit-calendar-picker-indicator
   filter: invert(1)
 
@@ -134,4 +162,4 @@ input:-webkit-autofill:active
 // Stylise les placeholder
 
 ::placeholder
-  color: color('accent', 80)
+  color: $inputBorderColor

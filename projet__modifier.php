@@ -207,10 +207,5 @@ if ($result->num_rows > 0):
   <option value="Projet annulé">
 </datalist>
 
-<script src="./assets/js/multiple-select.js"></script>
-<script>
-  pureScriptSelect('#multi--diffuseurs');
-  pureScriptSelect('#multi--artistes');
-</script>
 
 <?php include 'footer.php'; ?>

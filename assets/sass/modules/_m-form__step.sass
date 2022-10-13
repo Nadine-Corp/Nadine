@@ -1,0 +1,77 @@
+// main: ../../../style.sass
+
+  Le module Form__step permet de modifier l'aspect des formulaires
+  en plusieurs étapes
+
+  Attention : pensez à activer le module m-form dans le fichier style.sass
+  Attention : pensez à activer le module Form : step dans le fichier assets/js/nadine.js
+
+
+  Exemple de HTML :
+
+  <form class="m-form m-form__step">
+
+    <nav  class="m-form__nav">
+      <ul>
+        <li class="display1 is--active" data-step="1">Information</li>
+        <li class="display1" data-step="2">Diffuseur</li>
+      </ul>
+    </nav>
+
+
+    <div class="m-form__wrapper m-form__step-1">
+        <input>
+        <input>
+        <input>
+      <div>
+      <div class="m-form__wrapper m-form__step-2">
+        <input>
+        <input>
+        <input>
+      <div>
+
+      <div class="m-form__submit-bar m-btn__grp">
+        <button class="btn btn__outline btn__cancel">Annuler</button>
+        <button class="btn btn__outline btn__prev">Précédent</button>
+        <button class="btn btn__plain btn__next">Suivant</button>
+      </div>
+  </form>
+
+
+
+// Cache tout les éléments inutile au lancement
+
+.m-form__step
+  .m-form__wrapper:not(:first-of-type)
+    display: none
+
+.btn__prev, .btn__submit
+  display: none
+
+
+// Stylise la nav des formulaires à étapes
+
+.m-form__nav
+  margin-bottom: m(5)
+  ul
+    display: flex
+
+  li
+    position: relative
+    font-family: font('sans-serif')
+    color: color('back', 40)
+    padding-right: m(4)
+    cursor: pointer
+
+    &.is--active
+      color: color('accent')
+
+    &:not(:last-of-type):after
+      content: url('./assets/img/ico_arrow-modal-nav.svg')
+      position: absolute
+      width: m(0.5)
+      right: m(1.75)
+
+
+
+// stop scroll

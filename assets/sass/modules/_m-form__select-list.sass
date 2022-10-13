@@ -1,0 +1,93 @@
+// main: ../../../style.sass
+
+  Le module Form__select-list permet de modifier l'aspect des select
+  pour les transformer en joli menu déroulant
+
+  Attention : pensez à activer le module m-form dans le fichier style.sass
+  Attention : pensez à activer le module Form : Select-list dans le fichier assets/js/nadine.js
+
+
+  Exemple de HTML :
+
+  <form class="m-form">
+    <div class="m-form__select-list">
+        <select>
+          <option value="Something" selected>Something</option>
+          <option value="An other thing">An other thing</option>
+          <option value="Something else">Something else</option>
+        </select>
+      <div>
+  </form>
+
+
+// Définition de qq variables pour faciliter
+// les évolutions de design de ce module
+
+$listFocusBorderRadius: m()
+
+
+.m-form__select-list
+  select
+    display: none
+
+.m-form__list
+  position: relative
+  float: left
+  width: 100%
+  margin-top: $inputMarginTop
+  border: 1px solid color('back')
+  border-bottom: 1px solid $inputBorderColor
+  transition: $slow
+
+  &.is--focus
+    border: 1px solid $inputFocusBorderColor
+    border-bottom: 1px solid color('back')
+    border-top-right-radius: $listFocusBorderRadius
+    border-top-left-radius: $listFocusBorderRadius
+    transition: $fast
+
+    .m-form__list-items
+      height: auto
+      max-height: m(10)
+      border: 1px solid $inputFocusBorderColor
+      border-top: 1px solid color('back')
+      border-bottom-right-radius: $listFocusBorderRadius
+      border-bottom-left-radius: $listFocusBorderRadius
+      overflow-y: scroll
+
+.m-form__list-input
+  margin-top: 0 !important
+  border: none !important
+
+.m-form__list-items
+  position: absolute
+  width: calc(100% + 2px)
+  height: 0
+  margin-top: $inputHeight
+  top: -2px
+  left: -1px
+  border: 1px solid color('back')
+  border-top: 1px solid color('back')
+  background: color('back')
+  overflow: hidden
+
+.m-form__list-item
+  padding: m(.75) m()
+  cursor: pointer
+  font-size: $labelFontSize
+  color: $labeColor
+  transition: $slow
+  @include hover
+    color: color('accent')
+    background: $inputFocusBackground
+    transition: $fast
+
+
+
+
+
+
+
+
+
+// stop scroll

@@ -1,6 +1,11 @@
 
-$( document ).ready(function($) {
 
+// Ce fichier permet de faire toutes sortes de choses un peu magiques
+// après qu'une page est chargé : il fait apparaître les modals,
+// fait disparaître le menu, fait bouger tout seul des éléments, etc.
+
+
+$(document).ready(function($) {
 	/**
 	* Variables
 	*/
@@ -37,8 +42,10 @@ $( document ).ready(function($) {
 	$(".m-table").tablesorter();
 
 
-	// Facture : active le bouton Enregistrer si c'est passer une facturer
-	// à l'état Payée
+	/**
+	*  Facture : active le bouton Enregistrer si c'est passer une facturer
+	*  à l'état Payée
+	*/
 
 	$("input[name=facture__statut]").on('input', function() {
 		var factureStatut = $(this).val();
@@ -47,22 +54,6 @@ $( document ).ready(function($) {
 		}
 	});
 
-
-	/**
-	*  Barre de recherche
-	*/
-
-	$('.l-header__bar input').on('input', function(){
-
-		$.extend($.expr[":"], {
-			'containsIN': function(elem, i, match, array) {
-				return (elem.textContent || elem.innerText || '').toLowerCase().indexOf((match[3] || "").toLowerCase()) >= 0;
-			}
-		});
-		var val = $(this).val();
-		$('td').parent().hide();
-		$('td:containsIN(' + val +')').parent().show();
-	});
 
 	/**
 	*  Module : Accordion
@@ -89,6 +80,7 @@ $( document ).ready(function($) {
 			n -= 1;
 		}
 	});
+
 }); //Fin du jQuery(document).ready
 
 
@@ -117,7 +109,7 @@ function ShowNav() {
 	ShowOverlay();
 };
 
-// Cette fonction est appelée pour fermer le nav
+// Cette fonction est appelée pour fermer la nav
 function HideNav() {
 	nav__btn.classList.remove('is--active');
 	header__navbar.classList.remove('is--active');
@@ -136,9 +128,35 @@ nav__accordion.addEventListener('click', function() {
 
 
 /**
-* Module : Overlay
+* Fonction : searchAndHide();
 */
 
+// Cette fonction cherche cache tous les élèments
+// qui ne contient pas une chaine de caractère
+function searchAndHide(string, items) {
+	console.clear();
+	items.forEach(item => {
+		// Récupére le contenu de l'élèment
+		var content = item.innerHTML;
+		content = content.toString();
+		// Convertie tout en bas de case pour comparer plus facilement
+		content = content.toLowerCase();
+		string = string.toLowerCase();
+
+		// Compare le contenu de l'élèment et la chaine de caractère
+		if(content.indexOf(string) !== -1){
+			console.log(content);
+			item.style.display = 'block';
+		}else{
+			item.style.display = 'none';
+		}
+	});
+};
+
+
+/**
+* Module : Overlay
+*/
 
 let overlay = document.querySelector('.m-overlay');
 
@@ -230,7 +248,7 @@ selectsTab.forEach(selectTab => {
 	// Ajoute un <ul> dans la div.m-form__select-tab
 	var ul = document.createElement('ul');
 	ul.className = 'm-form__tabs';
-	selectTab.append(ul);
+	selectTab.prepend(ul);
 
 	// Récupére les options de ce select
 	var options = selectTab.querySelectorAll('option');
@@ -259,6 +277,193 @@ selectsTab.forEach(selectTab => {
 
 	// Sélectionne le premier <li>
 	ul.firstChild.classList.add('is--active');
+});
 
 
+/**
+* Module : Form - Select List
+*/
+
+// Cherche tous les Selects m-form__select-list
+var selectsList = document.querySelectorAll('.m-form__select-list');
+selectsList.forEach(selectList => {
+
+	// Ajoute une <div> dans la div.m-form__select-list
+	var div = document.createElement('div');
+	div.className = 'm-form__list';
+	selectList.prepend(div);
+
+	// Ajoute un <input> dans la <div> précédemment ajoutée
+	var input = document.createElement('input');
+	input.className = 'm-form__list-input';
+	div.prepend(input);
+
+	// Ajoute un <ul> dans la <div> précédemment ajoutée
+	var ul = document.createElement('ul');
+	ul.className = 'm-form__list-items';
+	div.append(ul);
+
+	// Récupére les options de ce select
+	var options = selectList.querySelectorAll('option');
+
+	// Ajoute un <li> par options dans la <div> précédemment ajoutée
+	options.forEach(option => {
+		let li = document.createElement('li');
+		li.className = 'm-form__list-item';
+		li.textContent = option.text;
+		ul.append(li);
+
+		// Ajoute une fonction si chaque <li> si qq'un clic dessus
+		li.addEventListener('click', function(e) {
+			// Récupére le contenu du <li> sélectionné
+			let optionText = li.innerHTML;
+			// Cherche le select
+			let select = selectList.querySelector('select');
+			// Sélectionne l'option correspondant au <li>
+			select.value = optionText;
+			// Change la valeur de l'input
+			input.value = optionText;
+		});
+	});
+
+	// Ouvre la liste lorsque qq'un clic sur l'input
+	input.addEventListener('focus', function(e) {
+		div.classList.add('is--focus');
+	});
+
+	// Ferme la liste lorsque qq'un clic sur l'input
+	input.addEventListener('focusout', function(e) {
+		// Ajoute un léger délais permettant de verfier
+		// si qq'un a cliqué sur un diffuseur
+		setTimeout(function () {
+			div.classList.remove('is--focus');
+		}, 250)
+	});
+
+	// Cherche le diffuseur lorsque qq'un commence à taper dans l'input
+	input.addEventListener('keyup', function(e) {
+		var string = input.value;
+		var items = ul.querySelectorAll('li');
+		searchAndHide(string, items);
+	});
+});
+
+
+/**
+* Module : Form - Step
+*/
+
+// Cherche tous formulaire découpé en étape
+var formsStep = document.querySelectorAll('.m-form__step');
+formsStep.forEach(formStep => {
+
+	// Défini le numeros d'étape actuelle
+	let step = 3;
+	changeStep(formStep, step);
+
+	// Cherche les boutons
+	let btn__next = formStep.querySelector('.btn__next');
+	let btn__prev = formStep.querySelector('.btn__prev');
+
+	// Change le numuros d'étape si qq'un click sur Suivant
+	btn__next.addEventListener('click', function(e) {
+		step++;
+		changeStep(formStep, step)
+	});
+
+	// Change le numuros d'étape si qq'un click sur Précédent
+	btn__prev.addEventListener('click', function(e) {
+		step--;
+		changeStep(formStep, step)
+	});
+
+	// Cherche la nav du formulaire
+	let form__navs = formStep.querySelectorAll('.m-form__nav li');
+	// Enlève la class .is--active a tout les éléments de la nav
+	form__navs.forEach(form__nav => {
+		form__nav.addEventListener('click', function(e) {
+			step = form__nav.getAttribute('data-step');
+			changeStep(formStep, step);
+		});
+	});
+});
+
+// Cette fonction permet d'afficher l'étape d'un formulaire sur demande
+
+function changeStep(formStep, step) {
+	// Cherche tous les .m-form__wrapper
+	let form__wrappers = formStep.querySelectorAll('.m-form__wrapper');
+	// Cache tous les .m-form__wrapper
+	form__wrappers.forEach(form__wrapper => {
+		form__wrapper.style.display = 'none';
+	});
+	// Compte le nombre d'étapes
+	let stepMax = form__wrappers.length;
+	// Cherche le .m-form__wrapper correspondant à l'étape
+	form__wrapper = formStep.querySelector('.m-form__step-' + step);
+	// Affiche le .m-form__wrapper correspondant à l'étape
+	form__wrapper.style.display = 'block';
+	// Cherche les boutons
+	let btn__next = formStep.querySelector('.btn__next');
+	let btn__prev = formStep.querySelector('.btn__prev');
+	let btn__submit = formStep.querySelector('.btn__submit');
+	let btn__cancel = formStep.querySelector('.btn__cancel');
+	// Change la visibilité des boutons en fonction de l'étape
+	if (step == stepMax) {
+		btn__submit.style.display = 'block';
+		btn__next.style.display = 'none';
+	}else {
+		btn__submit.style.display = 'none';
+		btn__next.style.display = 'block';
+	};
+	if (step > 1) {
+		btn__prev.style.display = 'block';
+		btn__cancel.style.display = 'none';
+	}else {
+		btn__prev.style.display = 'none';
+		btn__cancel.style.display = 'block';
+	};
+	// Cherche la nav du formulaire
+	let form__navs = formStep.querySelectorAll('.m-form__nav li');
+	// Enlève la class .is--active a tout les éléments de la nav
+	form__navs.forEach(form__nav => {
+		form__nav.classList.remove('is--active');
+	});
+	// Cherche l'élément de la nav correspondant à l'étape
+	form__nav = formStep.querySelector('.m-form__nav li:nth-of-type(' + step + ')');
+	// Affiche le .m-form__wrapper correspondant à l'étape
+	form__nav.classList.add('is--active');
+}
+
+
+/**
+* Part : Search bar
+*/
+
+var searchBar = document.querySelector('.l-header__searchbar input');
+searchBar.addEventListener('keyup', function(e) {
+	var string = searchBar.value;
+	var items = document.querySelectorAll('.l-projets__projet');
+	searchAndHide(string, items);
+});
+
+
+/**
+* Part : Modal add-projet
+*/
+
+// Cherche les boutons radio de la partie Équipe d'une modale
+var retroRadios = document.querySelectorAll('input[name="projet__retrocession"]');
+retroRadios.forEach(retroRadio => {
+	// Vérifie que le bouton Oui est checked
+	retroRadio.addEventListener('click', function(e) {
+		let value = retroRadio.value;
+		let div = document.querySelector('.m-form__equipe');
+		// Si le bouton Oui est Checked, la partie suivante est affichée
+		if (value == 1) {
+			div.style.display = 'block';
+		}else {
+			div.style.display = 'none';
+		}
+	});
 });

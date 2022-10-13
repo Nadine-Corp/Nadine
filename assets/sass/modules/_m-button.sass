@@ -23,7 +23,7 @@
     margin-left: m()
 
 
-// Stylse les boutons
+// Stylse tous les boutons
 
 .btn
   display: inline-block
@@ -43,10 +43,16 @@
     border-radius: m(1.5)
     transition: $fast
 
+
+// Stylise les boutons avec un fond
+
 .btn__plain
   color: color('back')
   background: color('accent')
   border: 1px solid color('accent')
+
+
+// Stylise les boutons avec un simple contour
 
 .btn__outline
   color: color('accent', 80)
@@ -58,12 +64,19 @@
   @include hover
     background: color('accent', 98)
     color: color('accent')
+    transition: $fast
 
     svg
       fill: color('accent')
       transition: $fast
 
+
+// Stylise les boutons avec une icone
+
 .btn__ico
+  display: flex
+  align-items: center
+  justify-content: center
   width: m(4)
   padding: m()
   svg
@@ -71,12 +84,19 @@
     height: m(1.5)
     transition: $slow
 
+.btn__ico-label
+  transition: $slow
+
+.btn__ico-label:has( + .btn__ico:hover)
+  color: color('accent')
+  transition: $fast
+
 
 // Stylse les gros boutons
 
   Exemple de HTML :
   <a href="./projet__new.php" class="btn btn__big btn__plain btn__modal" data-modal='add-projet'>
-    <div class="btn__big-ico"><?php include './assets/img/ico_ajouter.svg.php'; ?></div>
+    <div class="btn__big-ico"><?php include './assets/img/ico_ajouter--plain.svg.php'; ?></div>
     <div class="btn__big-txt">
       <span class=" display1">Ajouter</span>
       <span class="lead_para">Projet</span>

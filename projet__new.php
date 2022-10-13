@@ -157,10 +157,4 @@ endif; $conn->close();
   </section>
 
 
-  <script src="./assets/js/multiple-select.js"></script>
-  <script>
-  pureScriptSelect('#multi--diffuseurs');
-  pureScriptSelect('#multi--artistes');
-</script>
-
 <?php include 'footer.php'; ?>

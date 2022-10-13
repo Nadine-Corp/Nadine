@@ -38,9 +38,9 @@ include './core/fonctions.php';
   <link rel="icon" type="image/png" sizes="96x96" href="./assets/favicon/favicon-96x96.png">
   <link rel="icon" type="image/png" sizes="16x16" href="./assets/favicon/favicon-16x16.png">
   <link rel="manifest" href="./assets/favicon/manifest.json">
-  <meta name="msapplication-TileColor" content="#ffffff">
+  <meta name="msapplication-TileColor" content="#ff3636">
   <meta name="msapplication-TileImage" content="./assets/favicon/ms-icon-144x144.png">
-  <meta name="theme-color" content="#ffffff">
+  <meta name="theme-color" content="#ff3636">
   <link rel="preconnect" href="https://fonts.gstatic.com">
   <link rel="stylesheet" href="https://use.typekit.net/znq5njd.css">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
@@ -54,11 +54,10 @@ include './core/fonctions.php';
   <header class="l-header">
 
     <?php
-    // La MainBar contient la barre de recherche et les futurs Widgets
-    ?>
+    // La MainBar contient la barre de recherche et les futurs Widgets ?>
     <div class="l-header__bar l-header__mainbar">
       <div class="l-header__searchbar subheading">
-        <input type="text" name="" value="" placeholder="Soon™ : pleins de trucs ici.">
+        <input type="text" placeholder="Soon™ : pleins de trucs ici.">
       </div>
     </div>
 
