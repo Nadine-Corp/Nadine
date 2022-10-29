@@ -34,6 +34,14 @@
       padding-bottom: $row__marge-bottom
       transition: $fast
 
+  @include hover
+    .m-accordion__titre span
+      color: color('rouge', 50)
+      margin: 0 m()
+      transition: $fast
+    .m-accordion__ico svg
+      stroke: color('rouge', 50)
+
 .m-accordion__titre
   display: flex
   justify-content: space-between
@@ -46,7 +54,8 @@
 
   span
     font-family: font('sans-serif')
-    color: color('accent', 70)
+    color: color('rouge', 70)
+    transition: $verySlow
 
 .m-accordion__ico
   margin-left: auto
@@ -56,7 +65,7 @@
 
   svg
     fill: none
-    stroke: color('accent', 80)
+    stroke: color('rouge', 80)
     stroke-width: m()
 
 .m-accordion__wrapper

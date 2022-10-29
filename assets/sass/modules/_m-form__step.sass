@@ -39,7 +39,7 @@
 
 
 
-// Cache tout les éléments inutile au lancement
+// Cache tous les éléments inutils au lancement
 
 .m-form__step
   .m-form__wrapper:not(:first-of-type)
@@ -59,12 +59,15 @@
   li
     position: relative
     font-family: font('sans-serif')
-    color: color('back', 40)
+    color: color('grey', 40)
     padding-right: m(4)
     cursor: pointer
 
     &.is--active
-      color: color('accent')
+      color: color('texte')
+
+    @include hover
+      color: color('rouge',50)
 
     &:not(:last-of-type):after
       content: url('./assets/img/ico_arrow-modal-nav.svg')

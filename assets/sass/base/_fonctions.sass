@@ -4,7 +4,7 @@
   par Nadine
 
 
-// La fonction color() permet d'utiliser le système de théme de couleurs
+// La fonction color() permet d'utiliser le système de thème de couleurs
   plus facilement. La fonction accepte 2 paramètres : Le nom de la couleur,
   sa déclinaison. Un troisième peut-être ajouter pour renseigner l'opacité.
 
@@ -14,11 +14,17 @@
       color: color('back', 100, 0.5)
 
 
-@function color($var, $decli:50, $opacity:1)
+@function color($var, $decli:null, $opacity:1)
   @if $opacity < 1
-    @return #{"rgba(var(--color-"+$var+"-"+$decli+"), "+$opacity+")"}
+    @if $decli
+      @return #{"rgba(var(--color-rgb-"+$var+"-"+$decli+"), "+$opacity+")"}
+    @else
+      @return #{"rgba(var(--color-rgb-"+$var+"), "+$opacity+")"}
   @else
-    @return #{"rgb(var(--color-"+$var+"-"+$decli+"))"}
+    @if $decli
+      @return #{"var(--color-"+$var+"-"+$decli+")"}
+    @else
+      @return #{"var(--color-"+$var+")"}
 
 
 // La fonction rgba-to-rgb permet de mélanger 2 couleurs entre elles
@@ -68,34 +74,34 @@
 
 @mixin box-shadow($level, $var, $decli:50)
   @if $level == 0
-    box-shadow: 0 0 0 #{"rgba(var(--color-"+$var+"-"+$decli+"),0)"},0 0 0 #{"rgba(var(--color-"+$var+"-"+$decli+"),0)"}
+    box-shadow: 0 0 0 #{"rgba(var(--color-rgb-"+$var+"-"+$decli+"),0)"},0 0 0 #{"rgba(var(--color-rgb-"+$var+"-"+$decli+"),0)"}
   @if $level == 1
-    box-shadow: 0 0.125em 0.313em #{"rgba(var(--color-"+$var+"-"+$decli+"),.09)"},0 0.063em 0.125em #{"rgba(var(--color-"+$var+"-"+$decli+"),.07)"}
+    box-shadow: 0 0.125em 0.313em #{"rgba(var(--color-rgb-"+$var+"-"+$decli+"),.09)"},0 0.063em 0.125em #{"rgba(var(--color-rgb-"+$var+"-"+$decli+"),.07)"}
   @else if $level == 2
-    box-shadow: 0 0.250em 0.375em #{"rgba(var(--color-"+$var+"-"+$decli+"),.09)"},0 0.063em 0.188em #{"rgba(var(--color-"+$var+"-"+$decli+"),.08)"}
+    box-shadow: 0 0.250em 0.375em #{"rgba(var(--color-rgb-"+$var+"-"+$decli+"),.09)"},0 0.063em 0.188em #{"rgba(var(--color-rgb-"+$var+"-"+$decli+"),.08)"}
   @else if $level == 3
-    box-shadow: 0 0.063em 0.313em 0 #{"rgba(var(--color-"+$var+"-"+$decli+"),.07)"},0 0.438em 1.063em 0 #{"rgba(var(--color-"+$var+"-"+$decli+"),.1)"}
+    box-shadow: 0 0.063em 0.313em 0 #{"rgba(var(--color-rgb-"+$var+"-"+$decli+"),.07)"},0 0.438em 1.063em 0 #{"rgba(var(--color-rgb-"+$var+"-"+$decli+"),.1)"}
   @else if $level == 4
-    box-shadow: 0 0.938em 2.188em #{"rgba(var(--color-"+$var+"-"+$decli+"),.1)"},0 0.313em 0.938em #{"rgba(var(--color-"+$var+"-"+$decli+"),.07)"}
+    box-shadow: 0 0.938em 2.188em #{"rgba(var(--color-rgb-"+$var+"-"+$decli+"),.1)"},0 0.313em 0.938em #{"rgba(var(--color-rgb-"+$var+"-"+$decli+"),.07)"}
   @else if $level == 5
-    box-shadow: 0 0.938em 2.188em #{"rgba(var(--color-"+$var+"-"+$decli+"),.15)"},0 0.313em 0.938em #{"rgba(var(--color-"+$var+"-"+$decli+"),.1)"}
+    box-shadow: 0 0.938em 2.188em #{"rgba(var(--color-rgb-"+$var+"-"+$decli+"),.15)"},0 0.313em 0.938em #{"rgba(var(--color-rgb-"+$var+"-"+$decli+"),.1)"}
   @else if $level == 100
-    box-shadow: 0 2.8px 2.2px #{"rgba(var(--color-"+$var+"-"+$decli+"), 0.034)"},0 6.7px 5.3px #{"rgba(var(--color-"+$var+"-"+$decli+"), 0.048)"},0 12.5px 10px #{"rgba(var(--color-"+$var+"-"+$decli+"), 0.06)"},0 22.3px 17.9px #{"rgba(var(--color-"+$var+"-"+$decli+"), 0.072)"},0 41.8px 33.4px #{"rgba(var(--color-"+$var+"-"+$decli+"), 0.086)"},0 100px 80px #{"rgba(var(--color-"+$var+"-"+$decli+"), 0.12)"}
+    box-shadow: 0 2.8px 2.2px #{"rgba(var(--color-rgb-"+$var+"-"+$decli+"), 0.034)"},0 6.7px 5.3px #{"rgba(var(--color-rgb-"+$var+"-"+$decli+"), 0.048)"},0 12.5px 10px #{"rgba(var(--color-rgb-"+$var+"-"+$decli+"), 0.06)"},0 22.3px 17.9px #{"rgba(var(--color-rgb-"+$var+"-"+$decli+"), 0.072)"},0 41.8px 33.4px #{"rgba(var(--color-rgb-"+$var+"-"+$decli+"), 0.086)"},0 100px 80px #{"rgba(var(--color-rgb-"+$var+"-"+$decli+"), 0.12)"}
   @else if $level == 150
-    box-shadow: 2px 18px 20px 5px #{"rgba(var(--color-"+$var+"-"+$decli+"), 0.28)"}
+    box-shadow: 2px 18px 20px 5px #{"rgba(var(--color-rgb-"+$var+"-"+$decli+"), 0.28)"}
   @else if $level == 200
-    box-shadow: 0 m(5) m(5) 0 #{"rgba(var(--color-"+$var+"-"+$decli+"), 0.75)"}
+    box-shadow: 0 m(5) m(5) 0 #{"rgba(var(--color-rgb-"+$var+"-"+$decli+"), 0.75)"}
 
   @if $level == -1
-    box-shadow: 0 -0.125em 0.313em #{"rgba(var(--color-"+$var+"-"+$decli+"),.09)"},0 -0.063em 0.125em #{"rgba(var(--color-"+$var+"-"+$decli+"),.07)"}
+    box-shadow: 0 -0.125em 0.313em #{"rgba(var(--color-rgb-"+$var+"-"+$decli+"),.09)"},0 -0.063em 0.125em #{"rgba(var(--color-rgb-"+$var+"-"+$decli+"),.07)"}
   @else if $level == -2
-    box-shadow: 0 -0.250em 0.375em #{"rgba(var(--color-"+$var+"-"+$decli+"),.09)"},0 -0.063em 0.188em #{"rgba(var(--color-"+$var+"-"+$decli+"),.08)"}
+    box-shadow: 0 -0.250em 0.375em #{"rgba(var(--color-rgb-"+$var+"-"+$decli+"),.09)"},0 -0.063em 0.188em #{"rgba(var(--color-rgb-"+$var+"-"+$decli+"),.08)"}
   @else if $level == -3
-    box-shadow: 0 -0.063em 0.313em 0 #{"rgba(var(--color-"+$var+"-"+$decli+"),.07)"},0 -0.438em 1.063em 0 #{"rgba(var(--color-"+$var+"-"+$decli+"),.1)"}
+    box-shadow: 0 -0.063em 0.313em 0 #{"rgba(var(--color-rgb-"+$var+"-"+$decli+"),.07)"},0 -0.438em 1.063em 0 #{"rgba(var(--color-rgb-"+$var+"-"+$decli+"),.1)"}
   @else if $level == -5
-    box-shadow: 0 -0.938em 2.188em #{"rgba(var(--color-"+$var+"-"+$decli+"),.15)"},0 -0.313em 0.938em #{"rgba(var(--color-"+$var+"-"+$decli+"),.1)"}
+    box-shadow: 0 -0.938em 2.188em #{"rgba(var(--color-rgb-"+$var+"-"+$decli+"),.15)"},0 -0.313em 0.938em #{"rgba(var(--color-rgb-"+$var+"-"+$decli+"),.1)"}
   @else if $level == -100
-    box-shadow: 0 -2.8px 2.2px #{"rgba(var(--color-"+$var+"-"+$decli+"), 0.034)"},0 -6.7px 5.3px #{"rgba(var(--color-"+$var+"-"+$decli+"), 0.048)"},0 -12.5px 10px #{"rgba(var(--color-"+$var+"-"+$decli+"), 0.06)"},0 22.3px 17.9px #{"rgba(var(--color-"+$var+"-"+$decli+"), 0.072)"},0 -41.8px 33.4px #{"rgba(var(--color-"+$var+"-"+$decli+"), 0.086)"},0 -100px 80px #{"rgba(var(--color-"+$var+"-"+$decli+"), 0.12)"}
+    box-shadow: 0 -2.8px 2.2px #{"rgba(var(--color-rgb-"+$var+"-"+$decli+"), 0.034)"},0 -6.7px 5.3px #{"rgba(var(--color-rgb-"+$var+"-"+$decli+"), 0.048)"},0 -12.5px 10px #{"rgba(var(--color-rgb-"+$var+"-"+$decli+"), 0.06)"},0 22.3px 17.9px #{"rgba(var(--color-rgb-"+$var+"-"+$decli+"), 0.072)"},0 -41.8px 33.4px #{"rgba(var(--color-rgb-"+$var+"-"+$decli+"), 0.086)"},0 -100px 80px #{"rgba(var(--color-rgb-"+$var+"-"+$decli+"), 0.12)"}
 
 
 // La fonction respond() gère les comportements responsive de Nadine.
@@ -112,25 +118,49 @@
       @content
 
 
-// La fonction themeColor() génere les variables de couleurs CSS
+// La fonction getThemeColor() génere les variables de couleurs CSS
    de la balise <html>. Ces variables permettent de gérer
    les thèmes colorés utilisé par Nadine.
 
    0..10..20..30..40..50..60..70..80..90..100
-   ↑                  ↑                   ↑
-   0=papier           50=rouge-trash     100=gris-dark
+   ↑                  ↑                    ↑
+   0=grey-0            50=couleur pure      100=grey-100
 
-@mixin themeColor($colors)
-  @each $nom, $hexa in $colors
+@mixin getThemeColor($colorTheme)
+  // Ajoute le gris-50 au nuancier
+  $grey-50: mix($grey-100, $grey-0)
+  $grey: ('grey': $grey-50)
+  $colorTheme: map-merge($colorTheme, $grey)
+
+  // Ajoute chaque couleur au nuancier
+  @each $nom, $hexa in $colorTheme
     @each $declinaison in $declinaisons
       @if $declinaison >= 50
         $weight: ($declinaison - 50)*2
-        $color: mix($gris-dark, $hexa, $weight)
-        --color-#{$nom}-#{$declinaison}: #{hex-to-rgb($color)}
+        $color: mix($grey-100, $hexa, $weight)
+        --color-#{$nom}-#{$declinaison}: #{$color}
+        --color-rgb-#{$nom}-#{$declinaison}: #{hex-to-rgb($color)}
       @else
         $weight: $declinaison*2
-        $color: mix($hexa, $papier, $weight)
-        --color-#{$nom}-#{$declinaison}: #{hex-to-rgb($color)}
+        $color: mix($hexa, $grey-0, $weight)
+        --color-#{$nom}-#{$declinaison}: #{$color}
+        --color-rgb-#{$nom}-#{$declinaison}: #{hex-to-rgb($color)}
+
+
+// La fonction addVarCSS() simplifie l'ajout de variable CSS.
+  La fonction accepte 2 paramètres : Le nom de la couleur, sa déclinaison.
+  Un troisième peut-être ajouter pour renseigner l'opacité.
+
+    Exemple de SASS :
+      @include addVarCSS('borderColor', 'grey')
+      @include addVarCSS('backgroundColor', 'grey', 70)
+      @include addVarCSS('backgroundColor', 'grey', 30, 0.5)
+
+@mixin addVarCSS($nom, $var, $decli:50, $opacity:1)
+  @if $opacity < 1
+    --color-#{$nom}: rgba( var(--color-rgb-#{$var}-#{$decli}) , #{$opacity} )
+  @else
+    --color-#{$nom}: var(--color-#{$var}-#{$decli})
 
 
 // La fonction font-face() simplifie l'ajout de font
@@ -195,3 +225,19 @@
   @media(hover)
     &:hover
       @content
+
+
+// La fonction addVarCSS() simplifie l'ajout de variable CSS.
+  La fonction accepte 2 paramètres : Le nom de la couleur, sa déclinaison.
+  Un troisième peut-être ajouter pour renseigner l'opacité.
+
+    Exemple de SASS :
+      @include addVarCSS('borderColor', 'grey')
+      @include addVarCSS('backgroundColor', 'grey', 70)
+      @include addVarCSS('backgroundColor', 'grey', 30, 0.5)
+
+@mixin addVarCSS($nom, $var, $decli:50, $opacity:1)
+  @if $opacity < 1
+    --color-#{$nom}: rgba( var(--color-rgb-#{$var}-#{$decli}) , #{$opacity} )
+  @else
+    --color-#{$nom}: var(--color-#{$var}-#{$decli})

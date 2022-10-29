@@ -19,11 +19,12 @@
     flex: 1 1 auto
 
   .lead_para
-    color: color('accent')
+    color: color('texte')
 
   .caption
     font-style: italic
-    color: color('back', 30)
+    color: color('grey', 30)
+    transition: $verySlow
 
 .l-projets__projet
   margin-bottom: m(.5)
@@ -32,11 +33,12 @@
 
   @include hover
     padding: 0 m()
-    background: color('accent',90)
+    background: color('rouge',90)
     transition: $fast
 
     .caption
-      color: color('accent',70)
+      color: color('rouge',70)
+      transition: $fast
 
 .l-projets__list
   flex-direction: column
@@ -53,15 +55,15 @@
   width: m(3)
   height: m(3)
   margin-right: m()
-  background: color('accent')
+  background: color('texte')
   border-radius: 50%
 
   svg
     width: m(1.5)
-    fill: color('back')
+    fill: color('grey')
 
 .l-projets__annule .l-projets__thumbnail
-  background: color('back',40)
+  background: color('grey',40)
 
 .l-projets__termine .l-projets__thumbnail
-  background: color('back',10)
+  background: color('grey',10)

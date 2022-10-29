@@ -11,7 +11,7 @@
 <section class="row">
   <div class="col l12">
     <h1 class="display1">Journal de dévéloppement</h1>
-    <p>Nadine est constamant mise à jour : vérifiez de temps en temps qu'une nouvelle version n'est pas sortie sur <a href="https://github.com/Nadine-Corp/Nadine/commits/main" target="_blank">github.com/Nadine-Corp</a>. Vous pouvez aussi partager vos idées pour améliorer le design ou certaines fonctions : n'hésitez pas à envoyer un message à <a href="mailto:bonjour@nadineclub.net">bonjour@nadineclub.net</a> ou passer au <a href="https://discord.gg/Fg2m8gvdWR" target="_blank">NadineClub©</a>.</p>
+    <p>Nadine est constamant mise à jour : vérifiez de temps en temps qu'une nouvelle version n'est pas sortie sur <a href="https://github.com/Nadine-Corp/Nadine/commits/main" target="_blank">github.com/Nadine-Corp</a>. Vous pouvez aussi partager vos idées pour améliorer le design ou certaines fonctions : n'hésitez pas à envoyer un message à <a href="mailto:bonjour@nadinecorp.net">bonjour@nadinecorp.net</a> ou passer au <a href="https://discord.gg/Fg2m8gvdWR" target="_blank">NadineClub©</a>.</p>
   </div>
   <div class="col l12">
 

@@ -5,7 +5,7 @@
 
 ?>
 
-<div class="m-modal__add-projet m-modal is--active">
+<div class="m-modal__add-projet m-modal">
   <div class="m-modal__denko">
     <div class="is--denko__container">
       <ul>
@@ -45,7 +45,7 @@
         </div>
         <div class="m-form__label m-form__half">
           <label for="date_de_fin">Date de fin</label>
-          <input type="date" name="date_de_fin" placeholder="Date de fin" value="">
+          <input type="date" name="date_de_fin" placeholder="Date de fin" value="" disabled>
         </div>
         <div class="m-form__label m-form__select-tab">
           <label for="projet__statut">État du projet</label>
@@ -66,8 +66,8 @@
           <select name="diffuseur__societe" required>
             <?php the_diffuseurs_list(); ?>
           </select>
-          <button class="btn btn__outline btn__ico"><?php include './assets/img/ico_modifier.svg.php'; ?></button>
-          <button class="btn btn__outline btn__ico"><?php include './assets/img/ico_ajouter.svg.php'; ?></button>
+          <button class="btn btn__outline btn__ico" type="button"><?php include './assets/img/ico_modifier.svg.php'; ?></button>
+          <button class="btn btn__outline btn__ico" type="button"><?php include './assets/img/ico_ajouter.svg.php'; ?></button>
         </div>
       </div>
 
@@ -77,7 +77,7 @@
       <div class="m-form__wrapper m-form__step-3">
         <div class="m-form__label m-form__radio-horiz">
           <label for="nom_du_projet">Seul•e ou plusieurs ?</label>
-          <span class="m-form__radio-txt subtitle">
+          <span class="m-form__radio-txt m-lead">
             Allez-vous réaliser ce projet avec d’autres Artistes-Auteurs ?
           </span>
           <div class="m-form__radio">
@@ -92,17 +92,30 @@
           </div>
         </div>
         <div class="m-form__equipe">
-          <div class="m-form__label m-form__select-list m-form__with-btn">
-            <label for="diffuseur__societe">Liste des coéquipiers</label>
-            <select name="diffuseur__societe" required>
+          <label for="artiste__1">Liste des coéquipiers</label>
+
+          <?php // INFO : la div.m-form__artiste sera dubliqué si qq'un clic
+                // sur Ajouter un•e Artiste-Auteur ?>
+          <div class="m-form__label m-form__select-list m-form__with-btn m-form__artiste">
+            <select name="artiste__1" required>
               <?php the_artistes_list(); ?>
             </select>
-            <button class="btn btn__outline btn__ico"><?php include './assets/img/ico_modifier.svg.php'; ?></button>
-            <button class="btn btn__outline btn__ico"><?php include './assets/img/ico_enlever.svg.php'; ?></button>
+            <button class="btn btn__outline btn__ico" type="button"><?php include './assets/img/ico_modifier.svg.php'; ?></button>
+            <button class="btn btn__outline btn__ico btn__remove-artiste" type="button"><?php include './assets/img/ico_enlever.svg.php'; ?></button>
           </div>
+
           <div class="m-form__info m-form__with-btn">
             <span class="body btn__ico-label">Ajouter un•e Artiste-Auteur</span>
-            <button class="btn btn__outline btn__ico"><?php include './assets/img/ico_ajouter.svg.php'; ?></button>
+            <button class="btn btn__outline btn__ico btn__add-artiste" type="button"><?php include './assets/img/ico_ajouter.svg.php'; ?></button>
+          </div>
+
+          <?php // INFO : la div.m-form__artiste sera dubliqué si qq'un clic
+                // sur Ajouter un•e Artiste-Auteur ?>
+          <div class="m-form__label m-form__select-list m-form__porteurduprojet">
+            <label for="projet__porteurduprojet">Quel•le Artiste-Auteur va facturer au diffuseur ?</label>
+            <select name="projet__porteurduprojet" required>
+              <option value="0">Vous</option>
+            </select>
           </div>
         </div>
       </div>
@@ -112,10 +125,10 @@
 
       <div class="m-form__submit-bar m-btn__grp">
         <button class="btn btn__outline btn__ico"><?php include './assets/img/ico_corbeille.svg.php'; ?></button>
-        <button class="btn btn__outline btn__cancel">Annuler</button>
-        <button class="btn btn__outline btn__prev">Précédent</button>
-        <button class="btn btn__plain btn__next">Suivant</button>
-        <button class="btn btn__plain btn__submit">Valider</button>
+        <button class="btn btn__outline btn__cancel" type="button">Annuler</button>
+        <button class="btn btn__outline btn__prev" type="button">Précédent</button>
+        <button class="btn btn__plain btn__next" type="button">Suivant</button>
+        <button class="btn btn__plain btn__submit" type="submit">Valider</button>
       </div>
     </div>
   </form>

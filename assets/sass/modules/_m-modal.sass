@@ -11,11 +11,11 @@
   min-height: 33vh
   top: 50%
   left: 50%
-  background: color('back')
+  background: color('grey')
   transform: translate(-50%, -50%)
   transition: $slow
   z-index: $zindex__modal
-  @include box-shadow(200, 'dark')
+  @include box-shadow(200, 'shadow')
 
   &.is--active
     display: flex
@@ -28,7 +28,7 @@
   position: relative
   flex: 0 0 auto
   width: m(10)
-  background: color('accent')
+  background: color('texte')
   overflow: hidden
 
   .is--denko__container

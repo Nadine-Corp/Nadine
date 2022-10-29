@@ -11,7 +11,6 @@
   include 'config.php';
 
 
-
   /**
   *  Suppression de l'ancienne base
   */
@@ -20,7 +19,6 @@
   $conn = new mysqli($servername, $username, $password);
   if ($conn->connect_error) {die("Connection failed: " . $conn->connect_error);}
   $result = $conn->query($sql) or die($conn->error);
-
 
 
   /**
@@ -34,13 +32,11 @@
   $result = $conn->query($sql) or die($conn->error);
 
 
-
   /**
   *  Paramètre de création des Tables
   */
 
   $interclassement = "utf8mb4_unicode_ci";
-
 
 
   /**
@@ -59,7 +55,6 @@
   $sql = "INSERT INTO Options ( option__nom, option__valeur)
   VALUES ('option__couleur','rouge-trash')";
   include 'query.php'; $result = $conn->query($sql) or die($conn->error);
-
 
 
   /**
@@ -84,7 +79,6 @@
   diffuseur__notes VARCHAR(255) COLLATE '$interclassement'
   )";
   include 'query.php'; $result = $conn->query($sql) or die($conn->error);
-
 
 
   /**
@@ -112,7 +106,6 @@
   include 'query.php'; $result = $conn->query($sql) or die($conn->error);
 
 
-
   /**
   *  Création de la table Projets
   */
@@ -134,7 +127,6 @@
   artiste__id VARCHAR(255) COLLATE '$interclassement'
   )";
   include 'query.php'; $result = $conn->query($sql) or die($conn->error);
-
 
 
   /**
@@ -185,7 +177,6 @@
   include 'query.php'; $result = $conn->query($sql) or die($conn->error);
 
 
-
   /**
   *  Création de la table Devis
   */
@@ -233,7 +224,6 @@
   include 'query.php'; $result = $conn->query($sql) or die($conn->error);
 
 
-
   /**
   *  Création de la table Profil
   */
@@ -261,7 +251,6 @@
   profil__msg_devis TEXT COLLATE '$interclassement'
   )";
   include 'query.php'; $result = $conn->query($sql) or die($conn->error);
-
 
 
   /**

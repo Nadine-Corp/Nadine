@@ -57,7 +57,7 @@
   transition: $slow
 
   @include hover
-    color: color('back', 20)
+    color: color('grey', 20)
     transition: $fast
     input ~ .checkmark
       background: $inputFocusBackground
@@ -70,6 +70,7 @@
     bottom: 0
     left: 0
     right: 0
+    margin: 0
 
   .checkmark
     position: absolute
@@ -77,9 +78,10 @@
     left: 0
     height: m()
     width: m()
-    background: color('back')
+    background: color('grey')
     border: 1px solid $inputBorderColor
     border-radius: 50%
+    pointer-events: none
 
   input:checked ~ .checkmark
     background: $inputBorderColor

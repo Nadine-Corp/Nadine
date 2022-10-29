@@ -16,9 +16,9 @@
   flex-direction: row
   width: 100%
   height: $header__height
-  border-bottom: 1px solid color('accent')
-  border-top: 1px solid color('accent')
-  background: color('accent')
+  border-bottom: 1px solid color('texte')
+  border-top: 1px solid color('texte')
+  background: color('texte')
   z-index: $zindex__mainbar
 
 .l-header__searchbar
@@ -30,12 +30,10 @@
     font-style: italic
     font-weight: 400
     font-size: m(2)
-    color: color('secondaire')
     padding: 0 m()
-    background: color('back')
+    background: color('backgroundColor')
     transition: all 2s
     &:focus
-      @include box-shadow(100, 'principale', 100)
       padding: 0 m(1.5)
       border-radius: m(3)
       transition: all .5s
@@ -49,8 +47,8 @@
   width: $header__height
   padding-top: $header__height
   min-height: vh(100)
-  background: color('back')
-  border-right: 1px solid color('accent')
+  background: color('backgroundColor')
+  border-right: 1px solid color('texte')
   transition: .5s
   z-index: $zindex__navbar
 
@@ -66,6 +64,7 @@
 
     .l-header__mention
       opacity: 1
+      pointer-events: all
 
 // Header Bottom
 
@@ -105,15 +104,15 @@
       @include hover
         *
           font-style: italic
-          color: color('principale')
+          color: color('texte')
         .l-header__nav-ico svg
-          fill: color('principale')
+          fill: color('texte')
 
       &.is--current
         *
-          color: color('principale')
+          color: color('texte')
         .l-header__nav-ico svg
-          fill: color('principale')
+          fill: color('texte')
 
   .m-accordion__titre
     border-bottom: none
@@ -133,7 +132,7 @@
 
 .l-header__nav-txt
   padding: 0 m()
-  color: color('accent')
+  color: color('texte')
 
 
 // Sous-Menu Accordion
@@ -142,18 +141,18 @@
   a
     display: block
     width: 100%
-    color: color('accent', 80)
+    color: color('rouge', 80)
     font-family: font('sans-serif')
     font-weight: 800
     font-style: normal
     padding: m() 0
     @include hover
-      color: color('principale')
+      color: color('texte')
       font-style: italic
 
 .l-header__subnav-separator
   a
-    border-top: 1px solid color('accent', 80)
+    border-top: 1px solid color('rouge', 80)
     margin-top: m()
     padding-top: m(2)
 
@@ -167,7 +166,7 @@
   top: 0
   left: 0
   cursor: pointer
-  background: color('accent')
+  background: color('texte')
   z-index: $zindex__navbar
 
   @include hover
@@ -202,18 +201,19 @@
 
   div
     height: 3px
-    background: color('principale', 100)
+    background: color('rouge', 100)
     transition: .5s
 
 // Mention
 
 .l-header__mention
   opacity: 0
+  pointer-events: none
   span
     display: block
     width: 100%
-    color: color('principale',90)
+    color: color('rouge',90)
   a
-    color: color('principale',80)
+    color: color('rouge',80)
     @include hover
-      color: color('principale',50)
+      color: color('rouge',50)

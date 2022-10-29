@@ -39,7 +39,7 @@
 
   @include hover
     text-decoration: none
-    background: color('accent', 50)
+    background: color('rouge', 50)
     border-radius: m(1.5)
     transition: $fast
 
@@ -47,27 +47,27 @@
 // Stylise les boutons avec un fond
 
 .btn__plain
-  color: color('back')
-  background: color('accent')
-  border: 1px solid color('accent')
+  color: color('backgroundColor')
+  background: color('rouge', 50)
+  border: 1px solid color('rouge', 50)
 
 
 // Stylise les boutons avec un simple contour
 
 .btn__outline
-  color: color('accent', 80)
-  border: 1px solid color('accent', 80)
-  background: color('back')
+  color: color('rouge', 80)
+  border: 1px solid color('rouge', 80)
+  background: color('backgroundColor')
   svg
-    fill: color('accent', 80)
+    fill: color('rouge', 80)
 
   @include hover
-    background: color('accent', 98)
-    color: color('accent')
+    background: color('rouge', 98)
+    color: color('texte')
     transition: $fast
 
     svg
-      fill: color('accent')
+      fill: color('texte')
       transition: $fast
 
 
@@ -88,7 +88,7 @@
   transition: $slow
 
 .btn__ico-label:has( + .btn__ico:hover)
-  color: color('accent')
+  color: color('texte')
   transition: $fast
 
 
@@ -124,11 +124,14 @@
     width: 100%
   .display1
     font-family: font('sans-serif')
-    color: color('back')
+    color: color('backgroundColor')
   .lead_para
-    color: color('accent', 80)
+    color: color('rouge', 80)
     font-style: italic
+
+
+// Stylse boutons avec des icones
 
 .btn__big-ico svg
   width: m(4.5)
-  fill: color('back')
+  fill: color('backgroundColor')

@@ -246,6 +246,8 @@ function the_artistes_list(){
       // en fonction du type de diffuseur
       if ($row["artiste__societe"]) {
         the_artiste_societe($row);
+        echo ' — ';
+        the_artiste_nom($row);
       }else {
         the_artiste_nom($row);
       }

@@ -7,12 +7,12 @@
 
    0..10..20..30..40..50..60..70..80..90..100
    ↑                  ↑                   ↑
-   0=papier           50=rouge-trash     100=gris-dark
+   0=grey-0            50=couleur pure      100=grey-100
 
   Exemple de SASS :
     div
-      background: color('principale')
-      color: color('back', 70, 0.5)
+      background: color('texte')
+      color: color('grey', 70, 0.5)
 
 
 // Couleurs NadineCorp©
@@ -22,20 +22,31 @@ $rouge-trash: #FF3636
 $papier: #E6E4DD
 
 
-// Nombre de déclinaison pour chaque couleur.
+// Blanc & Noir NadineCorp©
+
+$grey-100: $gris-dark
+$grey-0: $papier
+
+// Nombre de déclinaison pour chaque couleur
 
    0..10..20..30..40..50..60..70..80..90..100
-   ↑                  ↑                   ↑
-   0=papier           50=rouge-trash     100=gris-dark
+   ↑                  ↑                    ↑
+   0=grey-0            50=couleur pure      100=grey-100
 
 $declinaisons: 0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 98, 100
 
+
+// Ajout du nuancier
+
 \:root
-  $colors: ("accent" $rouge-trash, "principale" $papier, "back" $gris-dark)
-  @include themeColor($colors)
-  --color-dark-50: 13, 13, 13
+  $colorTheme: ('rouge': $rouge-trash)
+  @include getThemeColor($colorTheme)
+  @include addVarCSS('texte', 'rouge', 50)
+  @include addVarCSS('backgroundColor', 'grey', 100)
+  @include addVarCSS('overlay', 'grey', 100, 95)
+  --color-rgb-shadow-50: 13, 13, 13
 
 
-// Qq variables
+// Ajout du thème coloré : .__Dark-mode
 
-$border-color: color('accent', 90)
+$border-color: color('rouge', 90)

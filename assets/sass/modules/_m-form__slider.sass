@@ -53,14 +53,14 @@
     width: m()
     left: m(.5)
     bottom: m(.5)
-    background-color: color('accent')
+    background-color: color('texte')
     @include prefix(transition, .4s)
   &:hover
     @include box-shadow(100, 'principale', 50)
 
 input
   &:checked + .slider
-    // background-color: color('accent')
+    // background-color: color('texte')
   &:checked + .slider:before
     @include prefix(transform, translateX( m() ))
 

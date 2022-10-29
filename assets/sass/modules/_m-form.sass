@@ -35,16 +35,16 @@ $inputHeight: m(5)
 $inputPadding: m(1.5)
 $inputMarginTop: m(3)
 
-$inputBackground: color('back')
-$inputFocusBackground: color('accent', 98)
-$inputBorderColor: color('accent', 80)
-$inputFocusBorderColor: color('accent')
+$inputBackground: color('grey')
+$inputFocusBackground: color('rouge', 98)
+$inputBorderColor: color('rouge', 80)
+$inputFocusBorderColor: color('texte')
 $inputBorderRadius: m(3)
 
 $inputFontSize: m(1.5)
-$inputColor: color('principale')
+$inputColor: color('texte')
 $labelFontSize: m()
-$labeColor: color('back',40)
+$labeColor: color('grey',40)
 
 
 .m-form
@@ -64,7 +64,7 @@ $labeColor: color('back',40)
     height: $inputHeight
     padding: $inputPadding 0
     margin-top: $inputMarginTop
-    border: 1px solid color('back')
+    border: 1px solid color('grey')
     border-bottom: 1px solid $inputBorderColor
     resize: none
     font-size: $inputFontSize
@@ -85,6 +85,11 @@ $labeColor: color('back',40)
     color: $labeColor
     font-size: $labelFontSize
     font-family: font('sans-serif')
+
+  input:disabled
+    opacity: .33
+    color: color('grey', 70) !important
+    cursor: not-allowed
 
 .m-form__wrapper
   margin-bottom: m(5)
@@ -117,7 +122,7 @@ $labeColor: color('back',40)
       top: m(2)
 
   ::placeholder
-    color: color('back', 50, 0)
+    color: color('grey', 50, 0)
 
 
 // Stylise les inputs avec des boutons à côté

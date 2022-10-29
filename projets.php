@@ -1,6 +1,6 @@
 <?php
 
-// C'est grace à ce fichier que seront affiché la liste
+// C'est grâce à ce fichier que seront affiché la liste
 // de tous vos glorieux projets. C'est donc ce fichier
 // qui gère la page d'accueil de Nadine
 

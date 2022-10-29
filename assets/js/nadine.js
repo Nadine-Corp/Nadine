@@ -6,6 +6,8 @@
 
 
 $(document).ready(function($) {
+
+
 	/**
 	* Variables
 	*/
@@ -96,7 +98,7 @@ let nav__accordion = document.querySelector('.l-header__navbar .m-accordion');
 // Vérifie si qq'un click sur le Menu Burger
 nav__btn.addEventListener('click', function() {
 	if ( header__navbar.classList.contains('is--active') ) {
-		HideNav();
+		hideNav();
 	}else{
 		ShowNav();
 	}
@@ -106,11 +108,11 @@ nav__btn.addEventListener('click', function() {
 function ShowNav() {
 	nav__btn.classList.add('is--active');
 	header__navbar.classList.add('is--active');
-	ShowOverlay();
+	showOverlay();
 };
 
 // Cette fonction est appelée pour fermer la nav
-function HideNav() {
+function hideNav() {
 	nav__btn.classList.remove('is--active');
 	header__navbar.classList.remove('is--active');
 	overlay.classList.remove('is--active');
@@ -134,7 +136,6 @@ nav__accordion.addEventListener('click', function() {
 // Cette fonction cherche cache tous les élèments
 // qui ne contient pas une chaine de caractère
 function searchAndHide(string, items) {
-	console.clear();
 	items.forEach(item => {
 		// Récupére le contenu de l'élèment
 		var content = item.innerHTML;
@@ -145,7 +146,6 @@ function searchAndHide(string, items) {
 
 		// Compare le contenu de l'élèment et la chaine de caractère
 		if(content.indexOf(string) !== -1){
-			console.log(content);
 			item.style.display = 'block';
 		}else{
 			item.style.display = 'none';
@@ -161,15 +161,15 @@ function searchAndHide(string, items) {
 let overlay = document.querySelector('.m-overlay');
 
 // Cette fonction permet d'afficher l'Overlay
-function ShowOverlay() {
+function showOverlay() {
 	document.querySelector('.m-overlay').classList.add('is--active');
 	document.body.classList.add('overflow--is--hidden');
 	document.documentElement.classList.add('overflow--is--hidden');
 };
 
 // Cette fonction fermer l'Overlay
-function HideOverlay() {
-	HideNav();
+function hideOverlay() {
+	hideNav();
 	document.querySelector('.m-modal').classList.remove('is--active');
 	document.body.classList.remove('overflow--is--hidden');
 	document.documentElement.classList.remove('overflow--is--hidden');
@@ -177,7 +177,7 @@ function HideOverlay() {
 
 // Ferme des trucs si qq'un click sur l'Overlay
 overlay.addEventListener('click', function() {
-	HideOverlay();
+	hideOverlay();
 });
 
 
@@ -201,7 +201,7 @@ btns__modal.forEach(btn__modal => {
 		modal = '.m-modal__' + modal;
 
 		document.querySelector(modal).classList.add('is--active');
-		ShowOverlay()
+		showOverlay()
 	});
 });
 
@@ -272,6 +272,10 @@ selectsTab.forEach(selectTab => {
 			let select = selectTab.querySelector('select');
 			// Sélectionne l'option correspondant au <li>
 			select.value = optionText;
+			// Simule un changement dans le select pour que d'autres fonction
+			// puisse le détecter
+			var event = new Event('change');
+			select.dispatchEvent(event);
 		});
 	});
 
@@ -287,7 +291,13 @@ selectsTab.forEach(selectTab => {
 // Cherche tous les Selects m-form__select-list
 var selectsList = document.querySelectorAll('.m-form__select-list');
 selectsList.forEach(selectList => {
+	// Transforme chaque select en joli menu déroulant
+	initSelectList(selectList);
+});
 
+// Cette fonction permet de modifier l'aspect d'un select
+// en un joli menu déroulant
+function initSelectList(selectList){
 	// Ajoute une <div> dans la div.m-form__select-list
 	var div = document.createElement('div');
 	div.className = 'm-form__list';
@@ -310,6 +320,7 @@ selectsList.forEach(selectList => {
 	options.forEach(option => {
 		let li = document.createElement('li');
 		li.className = 'm-form__list-item';
+		let optionValue = option.value;
 		li.textContent = option.text;
 		ul.append(li);
 
@@ -320,9 +331,13 @@ selectsList.forEach(selectList => {
 			// Cherche le select
 			let select = selectList.querySelector('select');
 			// Sélectionne l'option correspondant au <li>
-			select.value = optionText;
+			select.value = optionValue;
 			// Change la valeur de l'input
 			input.value = optionText;
+			// Simule un changement dans le select pour que d'autres fonction
+			// puisse le détecter
+			var event = new Event('change');
+			select.dispatchEvent(event);
 		});
 	});
 
@@ -346,7 +361,7 @@ selectsList.forEach(selectList => {
 		var items = ul.querySelectorAll('li');
 		searchAndHide(string, items);
 	});
-});
+}
 
 
 /**
@@ -358,17 +373,33 @@ var formsStep = document.querySelectorAll('.m-form__step');
 formsStep.forEach(formStep => {
 
 	// Défini le numeros d'étape actuelle
-	let step = 3;
+	let step = 1;
 	changeStep(formStep, step);
 
 	// Cherche les boutons
 	let btn__next = formStep.querySelector('.btn__next');
 	let btn__prev = formStep.querySelector('.btn__prev');
+	let btn__cancel = formStep.querySelector('.btn__cancel');
+
 
 	// Change le numuros d'étape si qq'un click sur Suivant
 	btn__next.addEventListener('click', function(e) {
-		step++;
-		changeStep(formStep, step)
+		// Cherche le .m-form__wrapper correspondant à l'étape
+		form__wrapper = formStep.querySelector('.m-form__step-' + step);
+
+		// Cherche les input et select du .m-form__wrapper complétés incorrectement
+		input__requireds = form__wrapper.querySelectorAll(':invalid');
+
+		// Passe à l'étape suivante uniquement si tout est correctement rempli
+		if (input__requireds.length === 0) {
+			step++;
+			changeStep(formStep, step)
+		};
+	});
+
+	// Ferme la modale si qq'un click sur Annuler
+	btn__cancel.addEventListener('click', function(e) {
+		hideOverlay();
 	});
 
 	// Change le numuros d'étape si qq'un click sur Précédent
@@ -467,3 +498,180 @@ retroRadios.forEach(retroRadio => {
 		}
 	});
 });
+
+
+// Cherche le select du statut du projet
+var selectStatut = document.querySelector('select[name="projet__statut"]');
+if (selectStatut !== null) {
+	// Vérifie si le select change de valeur
+	selectStatut.addEventListener('change', function(e) {
+		// Récupére la valeur du select
+		let value = selectStatut.value;
+		// Cherche l'input pour de la date de fin
+		let inputDate = document.querySelector('input[name="date_de_fin"]');
+		// Si select affiche "Projet en cours"
+		if (value == 'Projet en cours') {
+			// Active l'input pour de la date de fin
+			inputDate.disabled = true;
+		}else {
+			// Désactive l'input pour de la date de fin
+			inputDate.disabled = false;
+		}
+	});
+}
+
+// Cherche le bouton Ajouter un•e Artiste-Auteur de la partie Équipe d'une modale
+var btn__addArtiste = document.querySelector('.btn__add-artiste');
+// Vérifie si qq'un clic sur le bouton
+if (btn__addArtiste) {
+	btn__addArtiste.addEventListener('click', function(e) {
+		// Cherche le premier formulaire permettant d'ajouter un artiste
+		let formArtiste = document.querySelector('.m-form__artiste');
+		// Copie ce premier formulaire permettant d'ajouter un artiste
+		let newFormArtiste = formArtiste.cloneNode(true);
+		// Réinitialise la copie (supprime les valeurs contenu dans celle-ci)
+		newFormArtiste.querySelector('select').value = '';
+		// Supprime les éléments ajouté dans la copie pour transformer
+		// le select en un joli menu (pas panique : ils seront ré-ajouté plus tard)
+		newFormArtiste.querySelector('.m-form__list').remove();
+		// Cherche le dernier formulaire précédemment ajoutée
+		let lastFormArtiste = Array.from(
+			document.querySelectorAll('.m-form__artiste')
+		).pop();
+		// Ajoute la copie du formulaire sous les précédents
+		lastFormArtiste.after(newFormArtiste);
+		// Retranforme le select en joli menu
+		initSelectList(newFormArtiste);
+		// Relance le changement de nom des selects
+		artisteChangeSelectName()
+		// Cherche le btn__removeArtiste
+		let btn__removeArtiste = newFormArtiste.querySelector('.btn__remove-artiste')
+		// Relance la détection des boutons permettant de supprimer un artiste
+		initBtnRemoveArtiste(btn__removeArtiste);
+		// Cherche le select
+		let artisteSelect = newFormArtiste.querySelector('select')
+		onChangeArtisteSelect(artisteSelect);
+	});
+}
+
+// Cherche tous les boutons Suprimer un•e Artiste-Auteur de la partie Équipe d'une modale
+var btns__removeArtiste = document.querySelectorAll('.btn__remove-artiste');
+btns__removeArtiste.forEach(btn__removeArtiste => {
+	// Lance une fonction permettant de supprimer un formulaire
+	initBtnRemoveArtiste(btn__removeArtiste);
+});
+
+// La fonction initBtnRemoveArtiste() permet d'activer un btn capable
+// de supprimer un artiste, notament à chaque fois qu'un artiste
+// est ajouté
+function initBtnRemoveArtiste(btn__removeArtiste) {
+	// Vérifie si qq'un clic sur le bouton
+	btn__removeArtiste.addEventListener('click', function(e) {
+		// Compte le nombre de formulaire affiché
+		let nbFormArtiste = document.querySelectorAll('.m-form__artiste').length;
+		// Vérifie que le formulaire n'est pas le dernier
+		if (nbFormArtiste == 1) {
+			// Si le formulaire est le dernier, cache simplent la section
+			let div = document.querySelector('.m-form__equipe');
+			div.style.display = 'none';
+			// Cherche le bouton radio Non
+			retroRadio = document.querySelector('input[name="projet__retrocession"][value="0"]');
+			// Check le bouton Non
+			retroRadio.checked = true;
+		}else{
+			// Si le formulaire n'est pas le dernier, cherche le formulaire du bouton
+			let formArtiste = btn__removeArtiste.closest('.m-form__artiste');
+			// Supprime ce formulaire
+			formArtiste.remove();
+			// Relance la detection des changement dans les select
+			artisteChangeSelectName();
+			// Actualise la liste du porteur du projet
+			updateSelectPorteurProjet();
+		}
+	});
+}
+
+// La fonction artisteChangeSelectName() permet changer le name des select
+// pour que chaque select est un nom unique
+function artisteChangeSelectName(){
+	// Cherche tous les formulaires permettant d'ajouter un artiste
+	let formsArtiste = document.querySelectorAll('.m-form__artiste');
+	// Ajoute une variable
+	let nbArtiste = 1;
+	// Modifie le name du select pour que chaque select est un nom unique
+	formsArtiste.forEach(formArtiste => {
+		formArtiste.querySelector('select').setAttribute('name', 'artiste__'+nbArtiste);
+		// À chaque formArtiste trouvé la variablee est incrémenté de 1
+		nbArtiste++
+	});
+}
+
+// Cherche tous les select permettant d'ajouter des artistes
+var artisteSelects = document.querySelectorAll('.m-form__artiste select');
+artisteSelects.forEach(artisteSelect => {
+	// Lance une fonction permettant d'actualiser le select du porteur du projet
+	onChangeArtisteSelect(artisteSelect);
+});
+
+// La fonction onChangeArtisteSelect() permet d'actualiser
+// le select du porteur du projet
+function onChangeArtisteSelect(artisteSelect){
+	artisteSelect.addEventListener('change', function(e) {
+		updateSelectPorteurProjet();
+	});
+}
+
+// La fonction updateSelectPorteurProjet() permet d'actualiser
+// le select du porteur du projet
+function updateSelectPorteurProjet(){
+	// Cherche qq balises
+	let div = document.querySelector('.m-form__porteurduprojet');
+	let select = div.querySelector('select');
+	let ul = div.querySelector('ul');
+	// Sauvegarde la valeur du select
+	let valueBackup = select.value;
+	// Supprime les éléments ajouté pour transformer le select en un joli menu
+	// (pas panique : ils seront ré-ajouté plus tard)
+	div.querySelector('.m-form__list').remove();
+	// Supprime toutes les options du select
+	// (pas panique : ils seront ré-ajouté plus tard)
+	select.innerText = null;
+	// Prepare l'ajout de la première option
+	let value =  0;
+	let texte =  'Vous';
+	// Créer une nouvelle option
+	let option = document.createElement('option');
+	option.value = value;
+	option.textContent = texte;
+	// Ajoute la nouvelle option dans le select
+	select.append(option);
+	// Cherche tous les select permettant d'ajouter un artiste
+	let artisteSelects = document.querySelectorAll('.m-form__artiste select');
+	// Cherche la valeur et le texte de l'option sélectionnée
+	artisteSelects.forEach(artisteSelect => {
+		// Cherche la valeur et le texte de l'option sélectionnée
+		let value =  artisteSelect.value;
+		let texte =  artisteSelect.options[artisteSelect.selectedIndex].text;
+		// Créer une nouvelle option
+		let option = document.createElement('option');
+		option.value = value;
+		option.textContent = texte;
+		// Ajoute la novuelle option dans le select
+		select.append(option);
+	});
+	// Retranforme le select en joli menu
+	initSelectList(div);
+	// Cherche le nouvel input
+	let input = div.querySelector('input');
+	// Défini comme valeur par defaut 'Vous'
+	select.value = 0;
+	input.value = 'Vous';
+	// Vérifie si la valeur précédente du select exite encore
+	for (i = 0; i < select.length; ++i){
+		if (select.options[i].value == valueBackup){
+			// Si la valeur exite, la valeur est re-définie
+			select.value = valueBackup;
+			input.value = select.options[select.selectedIndex].text;
+		}
+	}
+}

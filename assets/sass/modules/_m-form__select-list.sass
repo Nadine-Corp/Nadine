@@ -35,25 +35,27 @@ $listFocusBorderRadius: m()
   float: left
   width: 100%
   margin-top: $inputMarginTop
-  border: 1px solid color('back')
+  border: 1px solid color('grey')
   border-bottom: 1px solid $inputBorderColor
   transition: $slow
 
   &.is--focus
     border: 1px solid $inputFocusBorderColor
-    border-bottom: 1px solid color('back')
+    border-bottom: 1px solid color('grey')
     border-top-right-radius: $listFocusBorderRadius
     border-top-left-radius: $listFocusBorderRadius
+    z-index: 100
     transition: $fast
 
     .m-form__list-items
       height: auto
       max-height: m(10)
       border: 1px solid $inputFocusBorderColor
-      border-top: 1px solid color('back')
+      border-top: 1px solid color('grey')
       border-bottom-right-radius: $listFocusBorderRadius
       border-bottom-left-radius: $listFocusBorderRadius
       overflow-y: scroll
+      z-index: 100
 
 .m-form__list-input
   margin-top: 0 !important
@@ -66,9 +68,9 @@ $listFocusBorderRadius: m()
   margin-top: $inputHeight
   top: -2px
   left: -1px
-  border: 1px solid color('back')
-  border-top: 1px solid color('back')
-  background: color('back')
+  border: 1px solid color('grey')
+  border-top: 1px solid color('grey')
+  background: color('grey')
   overflow: hidden
 
 .m-form__list-item
@@ -78,7 +80,7 @@ $listFocusBorderRadius: m()
   color: $labeColor
   transition: $slow
   @include hover
-    color: color('accent')
+    color: color('texte')
     background: $inputFocusBackground
     transition: $fast
 
