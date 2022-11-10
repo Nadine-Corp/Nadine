@@ -125,6 +125,7 @@
   projet__notes VARCHAR(255) COLLATE '$interclassement',
   diffuseur__id VARCHAR(255) COLLATE '$interclassement',
   artiste__id VARCHAR(255) COLLATE '$interclassement'
+  profil__id VARCHAR(255) COLLATE '$interclassement'
   )";
   include 'query.php'; $result = $conn->query($sql) or die($conn->error);
 
@@ -134,6 +135,54 @@
   */
 
   $sql = "CREATE TABLE Factures (
+  facture__id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+  facture__corbeille TINYINT(1) DEFAULT 0,
+  facture__precompte TINYINT(1) DEFAULT 0,
+  facture__template VARCHAR(255) COLLATE '$interclassement',
+  facture__date VARCHAR(255) COLLATE '$interclassement',
+  facture__numero VARCHAR(255) COLLATE '$interclassement',
+  facture__statut VARCHAR(255) COLLATE '$interclassement',
+  facture__notes VARCHAR(255) COLLATE '$interclassement',
+  facture__tache_1 VARCHAR(255) COLLATE '$interclassement',
+  facture__prix_1 VARCHAR(255) COLLATE '$interclassement',
+  facture__tache_2 VARCHAR(255) COLLATE '$interclassement',
+  facture__prix_2 VARCHAR(255) COLLATE '$interclassement',
+  facture__tache_3 VARCHAR(255) COLLATE '$interclassement',
+  facture__prix_3 VARCHAR(255) COLLATE '$interclassement',
+  facture__tache_4 VARCHAR(255) COLLATE '$interclassement',
+  facture__prix_4 VARCHAR(255) COLLATE '$interclassement',
+  facture__tache_5 VARCHAR(255) COLLATE '$interclassement',
+  facture__prix_5 VARCHAR(255) COLLATE '$interclassement',
+  facture__tache_6 VARCHAR(255) COLLATE '$interclassement',
+  facture__prix_6 VARCHAR(255) COLLATE '$interclassement',
+  facture__tache_7 VARCHAR(255) COLLATE '$interclassement',
+  facture__prix_7 VARCHAR(255) COLLATE '$interclassement',
+  facture__total VARCHAR(255) COLLATE '$interclassement',
+  projet__id VARCHAR(255) COLLATE '$interclassement',
+  projet__nom VARCHAR(255) COLLATE '$interclassement',
+  projet__numero VARCHAR(255) COLLATE '$interclassement',
+  diffuseur__id VARCHAR(255) COLLATE '$interclassement',
+  diffuseur__societe VARCHAR(255) COLLATE '$interclassement',
+  diffuseur__siret VARCHAR(255) COLLATE '$interclassement',
+  diffuseur__civilite VARCHAR(255) COLLATE '$interclassement',
+  diffuseur__prenom VARCHAR(255) COLLATE '$interclassement',
+  diffuseur__nom VARCHAR(255) COLLATE '$interclassement',
+  diffuseur__adresse VARCHAR(255) COLLATE '$interclassement',
+  diffuseur__code_postal VARCHAR(255) COLLATE '$interclassement',
+  diffuseur__ville VARCHAR(255) COLLATE '$interclassement',
+  diffuseur__telephone VARCHAR(255) COLLATE '$interclassement',
+  diffuseur__email VARCHAR(255) COLLATE '$interclassement',
+  diffuseur__website VARCHAR(255) COLLATE '$interclassement',
+  profil__id VARCHAR(255) COLLATE '$interclassement'
+  )";
+  include 'query.php'; $result = $conn->query($sql) or die($conn->error);
+
+
+  /**
+  *  Création de la table Factures d'Acompte
+  */
+
+  $sql = "CREATE TABLE Facturesacompte (
   facture__id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
   facture__corbeille TINYINT(1) DEFAULT 0,
   facture__precompte TINYINT(1) DEFAULT 0,

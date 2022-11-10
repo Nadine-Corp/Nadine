@@ -1,0 +1,41 @@
+// main: ../../../style.sass
+
+  Le module Breadcrumb permet de contrôler le fleron de l'Humanité ;
+  se que le reste de la galaxie nous envie : le fil d'Ariane.
+
+
+  Exemple de HTML :
+
+    <section class="m-breadcrumb">
+      <a href="./projet.php" class="m-breadcrumb__link body">Projets</a>
+      <a href="./projet.php" class="m-breadcrumb__link body"><?php the_projet_name($row) ?></a>
+    </section>
+
+
+.m-breadcrumb
+  display: flex
+  align-items: center
+  width: 100%
+  height: m(4)
+  padding: 0 $row__marge-horiz
+  background: color('breadcrumbBackgroundColor')
+
+.m-breadcrumb__link
+  position: relative
+  font-family: font('sans-serif')
+  color: color('rouge', 70)
+  padding: m() m(3) m() 0
+  transition: $slow
+
+  &:not(:last-of-type):after
+    content: url('./assets/img/ico_arrow-breadcrumb.svg')
+    position: absolute
+    width: m(0.5)
+    right: m(1.25)
+
+  &:last-of-type
+    color: color('rouge', 50)
+
+  @include hover
+    color: color('rouge', 50)
+    transition: $fast

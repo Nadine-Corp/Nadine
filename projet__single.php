@@ -1,139 +1,211 @@
-<?php include './header.php'; ?>
+<?php
+
+// C'est grâce à ce fichier que le détail de chaque projet.
+// On retrouve ici la liste des devis et facture,
+// l'historique du projet, etc. Bref : que des choses passionnantes !
+
+/**
+* Récupère l'ID du projet dans l'URL de la page
+*/
+
+$projet__id = $_GET['projet__id'];
 
 
-<?php  $projet__id = $_GET['projet__id']; ?>
+/**
+* Si l'ID du projet n'existe pas : redirection vers la page Projets
+*/
 
-<?php $sql = "SELECT * FROM Projets, Diffuseurs WHERE Projets.projet__id='".$projet__id."' AND Projets.diffuseur__id = Diffuseurs.diffuseur__id "; ?>
-<?php include './core/query.php'; $result = $conn->query($sql) or die($conn->error); ?>
-<?php if ($result->num_rows > 0): ?>
-  <?php while($row = $result->fetch_assoc()):?>
+if (!isset($projet__id)) {
+  header('Location: ./projets.php');
+  die();
+}
 
-    <section class="toolbar is--sticky">
-      <div class="toolbar__container">
-        <h1 class="display1"><?php echo $row["projet__nom"] ?><span class="badge"><?php echo $row["projet__statut"] ?></span></h1>
-        <div class="toolbar__btn">
-          <a href="./diffuseur__modifier.php?diffuseur__id=<?php echo $row["diffuseur__id"]?>" class="btn btn__outline">Modifier le Diffuseur</a>
-          <a href="./projet__modifier.php?projet__id=<?php echo $projet__id ?>" class="btn btn__outline">Modifier le Projet</a>
+
+/**
+* Ajout du Header
+*/
+
+include './header.php';
+?>
+
+<main class="l-projet" role="main">
+
+  <?php
+  $args = array(
+    'FROM'     => 'Projets, Diffuseurs',
+    'WHERE'    => 'Projets.projet__id ='.$projet__id,
+    'AND'      => 'Projets.diffuseur__id = Diffuseurs.diffuseur__id'
+  );
+  $loop = nadine_query($args);
+  ?>
+  <?php if ($loop->num_rows > 0): ?>
+    <?php while($row = $loop->fetch_assoc()): ?>
+
+      <?php // Ajout du fil d'Ariane ?>
+      <section class="m-breadcrumb">
+        <a href="./projets.php" class="m-breadcrumb__link body">Projets</a>
+        <a href="./projet__single.php?projet__id=<?php the_projet_id($row) ?>" class="m-breadcrumb__link body"><?php the_projet_name($row) ?></a>
+      </section>
+
+      <?php // Ajout de la couverture ?>
+      <section class="m-cover">
+        <div class="row">
+          <?php // Ajout du nom du projet ?>
+          <h1 class="l-projets__name display9"><?php the_projet_name($row) ?></h1>
+          <?php // Ajout du statut du projet ?>
+          <div class="m-cover__bigbadge">
+            <span class="caption">
+              <?php the_projet_statut($row) ?>
+            </span>
+          </div>
+          <?php // Ajout des boutons ?>
+          <div class="m-cover__toolbar m-btn__grp">
+            <button class="btn btn__outline btn__ico"><?php include './assets/img/ico_corbeille.svg.php'; ?></button>
+            <button class="btn btn__outline"><?php // include './assets/img/ico_modifier.svg.php'; ?>Modifier le projet</button>
+            <?php if ($row['projet__precompte'] == 1): ?>
+              <span class="caption">Le précompte est activé pour ce projet.</span>
+            <?php else: ?>
+              <span class="caption">Le précompte est désactivé pour ce projet.</span>
+            <?php endif; ?>
+          </div>
+          <div class="m-cover__cdvs">
+            <?php // Ajout des infos Diffuseur ?>
+            <div class="m-cover__diffuseur m-cover__cdv">
+              <span class="m-cover__diffuseur-societe display1"><?php the_diffuseur_societe($row) ?></span>
+              <span class="m-cover__diffuseur-nom lead_para"><em><?php the_diffuseur_nom($row) ?></em></span>
+              <span class="m-cover__diffuseur-info caption">Diffuseur</span>
+              <div class="m-cover__diffuseur-half">
+                <div>
+                  <span class="caption"><?php the_diffuseur_website($row) ?></span>
+                  <span class="caption"><?php the_diffuseur_email($row) ?></span>
+                  <span class="caption"><?php the_diffuseur_telephone($row) ?></span>
+                </div>
+                <div>
+                  <span class="m-cover__diffuseur-ads caption"><?php the_diffuseur_adresse($row); ?></span>
+                </div>
+              </div>
+              <button class="btn btn__outline">Modifier le diffuseur</button>
+            </div>
+
+            <?php // Ajout des infos Artistes ?>
+            <div class="m-cover__artistes m-cover__cdv">
+              <?php the_projet_equipe($row); ?>
+              <div class="m-cover__cdv-bottom">
+                <button class="btn btn__outline">Modifier l'équipe</button>
+              </div>
+            </div>
+          </div>
+
         </div>
-      </div>
-    </section>
+        <?php // Ajout la frise en bas de la cover ?>
+        <div class="m-cover__frise">
+          <div class="m-cover__frise-01"></div>
+          <div class="m-cover__frise-02"></div>
+          <div class="m-cover__frise-03"></div>
+          <div class="m-cover__frise-04"></div>
+          <div class="m-cover__frise-05"></div>
+        </div>
+      </section>
 
+      <?php // Ajout des devis ?>
+      <section class="row">
+        <div class="m-accordion is--active">
+          <div class="m-accordion__titre">
+            <h2>Devis</h2>
+            <div class="m-accordion__ico">
+              <?php include './assets/img/ico_arrow-accordion.svg.php'; ?>
+            </div>
+          </div>
+          <div class="m-accordion__wrapper">
+            <?php
+            $args = array(
+              'FROM'     => 'Projets, Devis',
+              'WHERE'    => 'Projets.projet__id ='.$projet__id,
+              'AND'      => 'Devis.projet__id = Projets.projet__id'
+            );
+            $loop = nadine_query($args);
+            ?>
+            <?php if ($loop->num_rows > 0): ?>
+              <?php while($row = $loop->fetch_assoc()): ?>
+                <?php include './parts/p__facture-single.php'; ?>
+              <?php endwhile; ?>
+            <?php endif;?>
+          </div>
+        </div>
+      </section>
 
+      <?php // Ajout des factures d'acompte ?>
+      <section class="row">
+        <div class="m-accordion">
+          <div class="m-accordion__titre">
+            <h2>Factures d'acompte</h2>
+            <div class="m-accordion__ico">
+              <?php include './assets/img/ico_arrow-accordion.svg.php'; ?>
+            </div>
+          </div>
+          <div class="m-accordion__wrapper">
+            <?php
+            $args = array(
+              'FROM'     => 'Projets, Facturesacompte',
+              'WHERE'    => 'Projets.projet__id ='.$projet__id,
+              'AND'      => 'Facturesacompte.projet__id = Projets.projet__id'
+            );
+            $loop = nadine_query($args);
+            ?>
+            <?php if ($loop->num_rows > 0): ?>
+              <?php while($row = $loop->fetch_assoc()): ?>
+                <?php include './parts/p__facture-single.php'; ?>
+              <?php endwhile; ?>
+            <?php endif;?>
+          </div>
+        </div>
+      </section>
+
+      <?php // Ajout des factures ?>
+      <section class="row">
+        <div class="m-accordion">
+          <div class="m-accordion__titre">
+            <h2>Factures</h2>
+            <div class="m-accordion__ico">
+              <?php include './assets/img/ico_arrow-accordion.svg.php'; ?>
+            </div>
+          </div>
+          <div class="m-accordion__wrapper">
+            <?php
+            $args = array(
+              'FROM'     => 'Projets, Factures',
+              'WHERE'    => 'Projets.projet__id ='.$projet__id,
+              'AND'      => 'Factures.projet__id = Projets.projet__id'
+            );
+            $loop = nadine_query($args);
+            ?>
+            <?php if ($loop->num_rows > 0): ?>
+              <?php while($row = $loop->fetch_assoc()): ?>
+                <?php include './parts/p__facture-single.php'; ?>
+              <?php endwhile; ?>
+            <?php endif;?>
+          </div>
+        </div>
+      </section>
+    <?php endwhile; ?>
+  <?php else: ?>
     <section class="row">
-      <div class="col l3">
-        <p><?php echo $row["diffuseur__societe"] ?>
-          <br><?php echo $row["diffuseur__civilite"] ?> <?php echo $row["diffuseur__prenom"] ?> <?php echo $row["diffuseur__nom"] ?>
-        </p>
-      </div>
-      <div class="col l3">
-        <p><?php echo $row["diffuseur__adresse"] ?>
-          <br><?php echo $row["diffuseur__code_postal"] ?> <?php echo $row["diffuseur__ville"] ?>
-        </p>
-      </div>
-      <div class="col l3">
-        <p><?php echo $row["diffuseur__telephone"] ?>
-          <br><a href="mailto:<?php echo $row["diffuseur__email"] ?>"><?php echo $row["diffuseur__email"] ?></a>
-          <br><?php echo $row["diffuseur__website"] ?>
-        </p>
-      </div>
-      <div class="col l3">
-        <p>Précompte : <?php if($row["projet__precompte"] == 0) {echo "Non";} else {echo "Oui";}; ?>
-          <br>Rétrocession : <?php if($row["projet__retrocession"] == 0) {echo "Non";} else {echo "Oui";}; ?>
-          <br>Porteur du projet : <?php if($row["projet__porteurduprojet"] == 0) {echo "Non";} else {echo "Oui";}; ?>
-        </p>
-      </div>
+      <p>Chef, on n'a pas trouvé de projets en cours...</p>
     </section>
-  <?php endwhile; ?>
-<?php else: ?>
-  <section class="row">
-    <p class="body">Chef, on n'a pas trouvé de diffuseur pour ce projet...</p>
-  </section>
-<?php endif; $conn->close(); ?>
+  <?php endif;?>
 
 
 
-<!-- Liste des devis -->
+  <?php
+  /**
+  * Ajout des modales
+  */
 
-<section class="row">
-  <div class="col l6">
-    <h2 class="headline">Devis</h2>
-    <?php $sql = "SELECT * FROM Projets, Devis WHERE Projets.projet__id='".$projet__id."' AND Devis.projet__id = Projets.projet__id"; ?>
-    <?php include './core/query.php'; $result = $conn->query($sql) or die($conn->error); ?>
-    <?php if ($result->num_rows > 0): ?>
-      <table class="m-table body">
-        <thead>
-          <tr>
-            <th>N°</th>
-            <th>Date</th>
-            <th>Total</th>
-            <th>Statut</th>
-            <th>Modifier</th>
-          </tr>
-        </thead>
-        <tbody>
-          <?php while($row = $result->fetch_assoc()):?>
-
-            <?php
-            $devis__date = date_create($row["devis__date"]);
-            $devis__date = date_format($devis__date, 'd M. Y');
-            ?>
-
-            <tr onclick="document.location = './devis__modifier.php?devis__id=<?php echo $row["devis__id"] ?>';">
-              <td><?php echo $row["devis__numero"] ?></td>
-              <td><?php echo $devis__date ?></td>
-              <td><?php echo $row["devis__total"] ?></td>
-              <td><?php echo $row["devis__statut"] ?></td>
-              <td><a href="./devis__modifier.php?devis__id=<?php echo $row["devis__id"] ?>">Voir</a></td>
-            </tr>
-          <?php endwhile; ?>
-        </tbody>
-      </table>
-    <?php else: ?>
-      <p class="body">Chef, on n'a pas trouvé de devis...</p>
-    <?php endif; $conn->close(); ?>
-    <a href="./devis__new.php?projet__id=<?php echo $projet__id ?>" class="btn btn__plain">Ajouter un devis</a>
-  </div>
+  include './parts/modal__projets.php';
 
 
-  <!-- Liste des factures -->
+  /**
+  * Ajout du Footer
+  */
 
-
-  <div class="col l6">
-    <h2 class="headline">Factures</h2>
-    <?php $sql = "SELECT * FROM Projets, Factures WHERE Projets.projet__id='".$projet__id."' AND Factures.projet__id = Projets.projet__id"; ?>
-    <?php include './core/query.php'; $result = $conn->query($sql) or die($conn->error); ?>
-    <?php if ($result->num_rows > 0): ?>
-      <table class="m-table body">
-        <thead>
-          <tr>
-            <th>N°</th>
-            <th>Date</th>
-            <th>Total</th>
-            <th>Statut</th>
-            <th>Modifier</th>
-          </tr>
-        </thead>
-        <tbody>
-          <?php while($row = $result->fetch_assoc()):?>
-            <?php
-            $facture__date = date_create($row["facture__date"]);
-            $facture__date = date_format($facture__date, 'd M. Y');
-            ?>
-
-            <tr onclick="document.location = './facture__modifier.php?facture__id=<?php echo $row["facture__id"] ?>';">
-              <td><?php echo $row["facture__numero"] ?></td>
-              <td><?php echo $facture__date ?></td>
-              <td><?php echo $row["facture__total"] ?></td>
-              <td><?php echo $row["facture__statut"] ?></td>
-              <td><a href="./facture__modifier.php?facture__id=<?php echo $row["facture__id"] ?>">Voir</a></td>
-            </tr>
-          <?php endwhile; ?>
-        </tbody>
-      </table>
-    <?php else: ?>
-      <p class="body">Chef, on n'a pas trouvé de factures...</p>
-    <?php endif; $conn->close(); ?>
-    <a href="./facture__new.php?projet__id=<?php echo $projet__id ?>" class="btn btn__plain">Ajouter une facture</a>
-  </div>
-</section>
-<?php include './footer.php'; ?>
+  include './footer.php';

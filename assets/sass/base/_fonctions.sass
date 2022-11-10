@@ -210,7 +210,10 @@
       width: m(1)
 
 @function m($quantity:1)
-  @return calc(var(--m) * #{$quantity}px)
+  @if $quantity == 1
+    @return var(--m)
+  @else
+    @return calc(var(--m) * #{$quantity})
 
 
 // La fonction hover() simplifie l'utilisation du media(hover)

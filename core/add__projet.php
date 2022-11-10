@@ -1,118 +1,97 @@
 <?php
 
-  /**
-  * Récuparation des variables
-  */
+// Ce fichier est permet d'ajouter un nouveau projet dans la base de donnée
 
-  $projet__statut =  "Projet en cours";
-  $projet__nom =  addslashes($_POST['nom_du_projet']);
-  $projet__date_de_creation =  addslashes($_POST['date_de_creation']);
+/**
+* Injection du fichier rassemblant toutes les fonctions
+* les plus importantes de Nadine
+*/
 
-  // Convertion des array js en array PHP
-
-  $artiste__societe = json_decode($_POST['artiste__societe']);
-  $diffuseur__societe =  json_decode($_POST['diffuseur__societe']);
-  $diffuseur__societe =  addslashes($diffuseur__societe[0]);
+include './fonctions.php';
 
 
+/**
+* Ajoute une variable pour stocker les infos à envoyer dans la base de donnée
+*/
 
-  /**
-  * Traitement Checkbox Précompte
-  */
-
-  if( isset($_POST['precompte'])){
-    $projet__precompte = '1';
-  } else {
-    $projet__precompte = '0';
-  };
+$data = array();
+$data['artiste__id'] = array();
 
 
+/**
+* Récuparation des info et ajout dans la variable
+*/
 
-  /**
-  * Traitement Checkbox Rétrocession
-  */
-
-  if( isset($_POST['retrocession'])){
-    $projet__retrocession = '1';
-  } else {
-    $projet__retrocession = '0';
-  };
-
-
-
-  /**
-  * Traitement Checkbox Porteur du projet
-  */
-
-  if( isset($_POST['porteurduprojet'])){
-    $projet__porteurduprojet = '1';
-  } else {
-    $projet__porteurduprojet = '0';
-  };
-
-
-
-  /**
-  * Convertion des diffuseur__societe en diffuseur__id
-  */
-
-  $sql = "SELECT * FROM Diffuseurs WHERE diffuseur__societe='".$diffuseur__societe."'";
-  include 'query.php'; $result = $conn->query($sql) or die($conn->error);
-
-  $row = $result->fetch_assoc();
-  if($row){
-    $diffuseur__id = $row["diffuseur__id"];
+foreach($_POST as $key => $value) {
+  // Vérifie que l'input a été complété
+  if (isset($$key)) continue;
+  // Rassemble les artistes dans un même sous-array
+  if (str_contains($key, 'artiste')) {
+    array_push($data['artiste__id'], addslashes($value));
+  }else {
+    $data[$key] = addslashes($value);
   }
+}
 
 
+/**
+* Formate la liste des artites
+*/
 
-  /**
-  * Convertion des artiste__societe en ariste__id
-  */
-
-  $artiste__id = array();
-
-  foreach ($artiste__societe as &$artiste) {
-    $sql = "SELECT * FROM Artistes WHERE artiste__societe ='".$artiste."'";
-    include 'query.php'; $result = $conn->query($sql) or die($conn->error);
-
-    $row = $result->fetch_assoc();
-    if($row){
-      array_push($artiste__id, $row["artiste__id"]);
-    }
-  }
-  $artiste__id = serialize($artiste__id);
+$data['artiste__id'] = serialize($data['artiste__id']);
 
 
+/**
+* Vérifie si le precompte doit être appliqué
+*/
 
-  /**
-  * Insertion dans la base donnée
-  */
-
-  $sql = "INSERT INTO Projets ( projet__nom, 	projet__precompte, projet__retrocession, projet__porteurduprojet, projet__date_de_creation, projet__statut, diffuseur__id, artiste__id)
-  VALUES ('$projet__nom', '$projet__precompte', '$projet__retrocession', '$projet__porteurduprojet', '$projet__date_de_creation', '$projet__statut', '$diffuseur__id', '$artiste__id')";
-  include 'query.php'; $result = $conn->query($sql) or die($conn->error);
-
-  $conn->close();
-
+if ( check_if_precompte($data['diffuseur__id']) ) {
+  $data['projet__precompte'] = '1';
+}else {
+  $data['projet__precompte'] = '0';
+}
 
 
-  /**
-  * Redirection vers la page projet-single
-  */
+/**
+* Ajoute le statut 'Projet en cours' par defaut
+*/
 
-  $sql = "SELECT * FROM Projets ORDER BY projet__id DESC LIMIT 1;";
-  include 'query.php'; $result = $conn->query($sql) or die($conn->error);
+$data['projet__statut'] = 'Projet en cours';
 
-  if (!$result) {
-      die('Could not query:' . mysql_error());
-  }
-  $row = $result->fetch_assoc();
-  if($row){
+
+/**
+* Insertion dans la base donnée
+*/
+
+$table = 'Projets';
+nadine_insert($table, $data);
+
+
+/**
+* Recupere l'ID du dernier projet créé
+*/
+
+$args = array(
+  'FROM'     => 'Projets',
+  'ORDER BY' => 'projet__id',
+  'ORDER'    => 'DESC',
+  'LIMIT'    => 1,
+);
+$loop = nadine_query($args);
+
+
+if ($loop->num_rows > 0):
+  while($row = $loop->fetch_assoc()):
     $last_id = $row['projet__id'];
-  }
+  endwhile;
+endif;
 
-  $conn->close();
 
-  header('Location: ../projet__single.php?projet__id='.$last_id.'');
+/**
+* Redirection vers la page projet-single
+*/
+
+header('Location: ../projet__single.php?projet__id='.$last_id.'');
+die();
+
 ?>

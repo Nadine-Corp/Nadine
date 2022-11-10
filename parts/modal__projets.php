@@ -5,7 +5,7 @@
 
 ?>
 
-<div class="m-modal__add-projet m-modal">
+<div class="m-modal__projet m-modal">
   <div class="m-modal__denko">
     <div class="is--denko__container">
       <ul>
@@ -21,7 +21,7 @@
 
     <?php // Ajout du formulaire ?>
 
-    <form class="m-form m-form__step">
+    <form class="m-form m-form__step" action="./core/add__projet.php" method="post">
 
       <?php // Ajout de la navigation ?>
 
@@ -36,18 +36,18 @@
       <?php // Ajout première étape du formulaire : les Informations ?>
       <div class="m-form__wrapper m-form__step-1">
         <div class="m-form__label-amimate">
-          <label for="nom_du_projet">Nom du projet</label>
-          <input type="text" name="nom_du_projet" placeholder="Nom du projet" required>
+          <label for="projet__nom">Nom du projet</label>
+          <input type="text" name="projet__nom" placeholder="Nom du projet" required>
         </div>
-        <div class="m-form__label m-form__half">
-          <label for="date_de_creation">Date de création</label>
-          <input type="date" name="date_de_creation" placeholder="Date de création" value="<?php the_date_today() ?>" required>
+        <div class="m-form__label m-form__half not--for--new--projet">
+          <label for="projet__date_de_creation">Date de création</label>
+          <input type="date" name="projet__date_de_creation" placeholder="Date de création" value="<?php the_date_today() ?>" required>
         </div>
-        <div class="m-form__label m-form__half">
-          <label for="date_de_fin">Date de fin</label>
-          <input type="date" name="date_de_fin" placeholder="Date de fin" value="" disabled>
+        <div class="m-form__label m-form__half not--for--new--projet">
+          <label for="projet__date_de_fin">Date de fin</label>
+          <input type="date" name="projet__date_de_fin" placeholder="Date de fin" value="" disabled>
         </div>
-        <div class="m-form__label m-form__select-tab">
+        <div class="m-form__label m-form__select-tab not--for--new--projet">
           <label for="projet__statut">État du projet</label>
           <select name="projet__statut">
             <option value="Projet en cours" selected>Projet en cours</option>
@@ -62,8 +62,8 @@
 
       <div class="m-form__wrapper m-form__step-2">
         <div class="m-form__label m-form__select-list m-form__with-btn">
-          <label for="diffuseur__societe">Nom du diffuseur</label>
-          <select name="diffuseur__societe" required>
+          <label for="diffuseur__id">Nom du diffuseur</label>
+          <select name="diffuseur__id" required>
             <?php the_diffuseurs_list(); ?>
           </select>
           <button class="btn btn__outline btn__ico" type="button"><?php include './assets/img/ico_modifier.svg.php'; ?></button>

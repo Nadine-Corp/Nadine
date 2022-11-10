@@ -5,8 +5,14 @@
 // qui gère la page d'accueil de Nadine
 
 
-include './header.php'; ?>
+/**
+* Ajout du Header
+*/
 
+include './header.php';
+?>
+
+<main class="l-projets" role="main">
 
 <?php
 /**
@@ -16,7 +22,7 @@ include './header.php'; ?>
 
 <aside class="m-aside">
   <h1 class="display9">Projets</h1>
-  <a href="./projet__new.php" class="btn btn__big btn__plain btn__modal" data-modal='add-projet'>
+  <a href="./modal__projets" class="btn btn__big btn__plain btn__modal" data-modal='projet'>
     <div class="btn__big-ico"><?php include './assets/img/ico_ajouter--plain.svg.php'; ?></div>
     <div class="btn__big-txt">
       <span class=" display1">Ajouter</span>
@@ -66,7 +72,7 @@ include './header.php'; ?>
 */
 ?>
 
-<section class="l-projets row with--aside">
+<section class="row with--aside">
 
   <div class="m-accordion is--active">
     <div class="m-accordion__titre">
@@ -172,5 +178,17 @@ include './header.php'; ?>
   </div>
 </section>
 
-<?php include './parts/modal__projets-new.php'; ?>
-<?php include './footer.php'; ?>
+
+<?php
+/**
+* Ajout des modales
+*/
+
+include './parts/modal__projets.php';
+
+
+/**
+* Ajout du Footer
+*/
+
+include './footer.php';

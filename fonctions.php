@@ -167,37 +167,7 @@ function the_projet_equipe($row){
 
 
   // Récupère les infos du profil
-  if (isset($row['profil__id'])) {
-    $args = array(
-      'FROM'     => 'Profil',
-      'WHERE'    => 'Profil.profil__id ='.$row['profil__id'],
-    );
-  }else {
-    $args = array(
-      'FROM'     => 'Profil',
-      'ORDER BY' => 'profil__id',
-      'ORDER'    => 'DESC',
-      'LIMIT'    => 1
-    );
-  }
 
-  $loop = nadine_query($args);
-  if ($loop->num_rows > 0):
-    while($row = $loop->fetch_assoc()):
-      // Récupère les infos du profil
-      $civilite = $row['profil__civilite'];
-      $prenom = $row['profil__prenom'];
-      $nom = $row['profil__nom'];
-
-      // Formate les infos du profil
-      $profil = nadine_nom($civilite, $prenom, $nom);
-      $profil = '<span class="caption"><em>'.$profil.'</em></span>';
-      $profil = $profil.'<span class="caption">Artiste-Auteur</span>';
-
-      // Ajoute profil au résultat
-      $list .= '<li class="m-cover__artiste">'.$profil.'</li>';
-    endwhile;
-  endif;
 
   // Récupère les infos de chaque artistes du projet
   foreach($artistes as $key => $artiste__id) {
@@ -209,16 +179,15 @@ function the_projet_equipe($row){
     if ($loop->num_rows > 0):
       while($row = $loop->fetch_assoc()):
         // Récupère les infos de l'artiste
-        $civilite = $row['artiste__civilite'];
-        $prenom = $row['artiste__prenom'];
-        $nom = $row['artiste__nom'];
+        $civilite = $row["artiste__civilite"];
+        $prenom = $row["artiste__prenom"];
+        $nom = $row["artiste__nom"];
 
-        // Formate les infos du diffuseur
+        // Retourne le résultat au template
         $artiste = nadine_nom($civilite, $prenom, $nom);
-        $artiste = '<span class="caption"><em>'.$artiste.'</em></span>';
+        $artiste = '<span class="caption">'.$artiste.'</span>';
         $artiste = $artiste.'<span class="caption">Artiste-Auteur</span>';
 
-        // Ajoute l'artiste au résultat
         $list .= '<li class="m-cover__artiste">'.$artiste.'</li>';
       endwhile;
     endif;
@@ -349,24 +318,24 @@ function the_diffuseur_telephone($row){
 */
 
 function the_diffuseur_adresse($row){
-  // Récupère les infos du diffuseur
-  $adresse = $row['diffuseur__adresse'];
-  $code_postal = $row['diffuseur__code_postal'];
-  $ville = $row['diffuseur__ville'];
+    // Récupère les infos du diffuseur
+    $adresse = $row['diffuseur__adresse'];
+    $code_postal = $row['diffuseur__code_postal'];
+    $ville = $row['diffuseur__ville'];
 
-  // Formate l'adresse
-  $link_title = $adresse.'<br>'.$code_postal.' '.$ville;
+    // Formate l'adresse
+    $link_title = $adresse.'<br>'.$code_postal.' '.$ville;
 
-  // Formate l'URL
-  $link_url = str_replace('<br>',' ',$link_title);
-  $link_url = str_replace(' ','+',$link_url);
-  $link_url = 'https://www.google.fr/maps/place/'.$link_url;
+    // Formate l'URL
+    $link_url = str_replace('<br>',' ',$link_title);
+    $link_url = str_replace(' ','+',$link_url);
+    $link_url = 'https://www.google.fr/maps/place/'.$link_url;
 
-  // Formate le résultat
-  $link = '<a href="'.$link_url.'" target="_blank">'.$link_title.'</a>';
+    // Formate le résultat
+    $link = '<a href="'.$link_url.'" target="_blank">'.$link_title.'</a>';
 
-  // Retourne le résultat au template
-  echo $link;
+    // Retourne le résultat au template
+    echo $link;
 }
 
 
@@ -472,148 +441,6 @@ function the_artistes_list(){
 
 
 /**
-* La fonction the_facture_numero() permet d'afficher
-* le numero d'un devis ou d'une facture
-*/
-
-function the_facture_numero($row){
-  // Récupére la bonne table
-  $table = get_facture_table($row);
-
-  // Recupère le numero de facture
-  $facture_numero = $row[$table.'__numero'];
-
-  // Retourne le résultat au template
-  echo $facture_numero;
-}
-
-
-/**
-* La fonction the_facture_link() permet d'afficher
-* le lien vers la page devis ou  facture
-*/
-
-function the_facture_link($row){
-  // Récupére la bonne table
-  $table = get_facture_table($row);
-
-  // Recupère le numero de facture
-  $facture_id = $row[$table.'__id'];
-
-  // Recupère le résultat de facture
-  $facture_link = './'.$table.'__modifier.php?'.$table.'__id='.$facture_id;
-
-  // Retourne le résultat au template
-  echo $facture_link;
-}
-
-
-/**
-* La fonction the_facture_date() permet d'afficher
-* la date de création du devis ou de la facture
-*/
-
-function the_facture_date($row){
-  // Récupére la bonne table
-  $table = get_facture_table($row);
-
-  // Recupère le numero de facture
-  $facture_date = date_create($row[$table.'__date']);
-
-  // Formate la réponse
-  $facture_date = nadine_date($facture_date);
-
-  // Retourne le résultat au template
-  echo $facture_date;
-}
-
-
-/**
-* La fonction the_facture_total_auteur() permet d'afficher
-* le total d'un devis ou d'une facture
-*/
-
-function the_facture_total_auteur($row){
-  // Récupére la bonne table
-  $table = get_facture_table($row);
-
-  // Recupère le total de facture
-  $facture_total = $row[$table.'__total'];
-
-  // Formate le résultat
-  $facture_total = nadine_prix($facture_total);
-
-  // Retourne le résultat au template
-  echo $facture_total;
-}
-
-
-/**
-* La fonction the_facture_total_ht() permet d'afficher
-* le total hors taxe d'un devis ou d'une facture
-*/
-
-function the_facture_total_ht($row){
-  // Récupére la bonne table
-  $table = get_facture_table($row);
-
-  // Ajoute une variable pour calculer le total
-  $facture_total_ht = 0;
-
-  // Recupère le prix de chaque de tâche de la facture
-  for ($i = 1; $i <= 7; $i++) {
-    $prix = $row[$table.'__prix_'.$i];
-    $prix = floatval($prix);
-    $facture_total_ht += $prix;
-  }
-
-  // Formate le résultat
-  $facture_total_ht = nadine_prix($facture_total_ht);
-
-  // Retourne le résultat au template
-  echo $facture_total_ht;
-}
-
-
-/**
-* La fonction the_facture_table() d'afficher si le template
-* doit afficher les infos d'un devis ou d'une facture
-*/
-
-function the_facture_table($row){
-  if ( !empty( $row['devis__numero'] ) ){
-    $table = 'Devis';
-  }else {
-    if ( !empty( $row['facture__numero'] ) ){
-      $table = 'Facture';
-    }else {
-      $table = "Facture d'acompte";
-    }
-  };
-  echo $table;
-}
-
-
-/**
-* La fonction get_facture_table() savoir si le template
-* doit afficher les infos d'un devis ou d'une facture
-*/
-
-function get_facture_table($row){
-  if ( !empty( $row['devis__numero'] ) ){
-    $table = 'devis';
-  }else {
-    if ( !empty( $row['facture__numero'] ) ){
-      $table = 'facture';
-    }else {
-      $table = 'facturesacompte';
-    }
-  };
-  return $table;
-}
-
-
-/**
 * La fonction the_date_today() permet de connaître
 * la date du jour
 */
@@ -645,24 +472,12 @@ function nadine_date($date) {
 
 /**
 * La fonction nadine_nom() permet d'harmoniser
-* l'affichage des noms sur Nadine
+* l'affichage des noms de Nadine
 */
 
 function nadine_nom($civilite, $prenom, $nom) {
   return $civilite.' '.$prenom.' '.$nom;
 }
-
-
-/**
-* La fonction nadine_prix() permet d'harmoniser
-* l'affichage de prix sur Nadine
-*/
-
-function nadine_prix($prix) {
-  $prix = number_format($prix, 2, ',' , ' ').' €';
-  return $prix;
-}
-
 
 /**
 * La fonction get_template_part() permet de stocker des fichiers

@@ -169,11 +169,3 @@ include './core/fonctions.php';
     </div>
 
   </header>
-
-
-  <?php
-  /**
-  *   Début du Main
-  */
-  ?>
-  <main>

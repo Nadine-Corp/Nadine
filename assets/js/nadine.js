@@ -390,10 +390,13 @@ formsStep.forEach(formStep => {
 		// Cherche les input et select du .m-form__wrapper complétés incorrectement
 		input__requireds = form__wrapper.querySelectorAll(':invalid');
 
-		// Passe à l'étape suivante uniquement si tout est correctement rempli
 		if (input__requireds.length === 0) {
+			// Si tous les champs sont rempli : passe à l'étape suivante
 			step++;
 			changeStep(formStep, step)
+		}else {
+			// Sinon : Focus le premier élèment à remplir
+			input__requireds[0].focus();
 		};
 	});
 

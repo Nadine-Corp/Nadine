@@ -1,0 +1,162 @@
+// main: ../../../style.sass
+
+  Le module Cover permet de gérer de fantastique couverture.
+  Elles sont notament utiliser en haut de chaque page Projet
+  pour pimenter la mise en page.
+
+  Exemple de HTML :
+
+  <section class="m-cover">
+    <h1>Un titre splendide</h1>
+  </section>
+
+
+.m-cover
+  position: relative
+  width: 100%
+  float: left
+  background: color('coverBackgroundColor')
+  margin-bottom: m(10)
+
+  h1
+    float: left
+    color: color('backgroundColor')
+
+  .row
+    padding-bottom: m(10)
+
+
+// Stylise la gros badge à droite des cover
+
+.m-cover__bigbadge
+  display: flex
+  justify-content: center
+  align-items: center
+  float: right
+  width: m(6)
+  height: m(6)
+  background: color('backgroundColor')
+  border-radius: 50%
+  transform: rotate(20deg)
+
+  span
+    text-align: center
+
+
+// Stylise la bar des boutons
+
+.m-cover__toolbar
+  display: flex
+  align-items: center
+  width: 100%
+  margin: m(2) 0
+
+  span
+    margin-left: m()
+    font-family: font('sans-serif')
+    color: color('rouge',70)
+
+.m-cover
+  .btn
+    border: 1px solid color('rouge',70)
+    background: color('rouge',50)
+    @include hover
+      border: 1px solid color('rouge',90)
+      color: color('rouge',90)
+      background: color('rouge',50)
+      svg
+        fill: color('rouge',90)
+
+// Stylise les cartes Diffuseur & Artistes
+
+.m-cover__cdvs
+  position: absolute
+  display: flex
+  justify-content: space-between
+  width: calc(100% - 2*#{$row__marge-horiz})
+
+.m-cover__cdv
+  position: relative
+  width: calc(50% - #{m(.5)})
+  padding: m()
+  border: 1px solid color('rouge', 70)
+  border-radius: m()
+  background-color: color('rouge', 50)
+  @include box-shadow(200, 'shadow')
+
+  span, span *
+    width: 100%
+    float: left
+    color: color('rouge', 80)
+
+  .btn
+    width: 100%
+
+span.m-cover__diffuseur-societe,
+span.m-cover__diffuseur-info
+  color: color('backgroundColor')
+
+span.m-cover__diffuseur-info
+  font-family: font('sans-serif')
+  margin-bottom: m()
+
+span.m-cover__diffuseur-ads
+  text-align: right
+
+.m-cover__diffuseur-half
+  display: flex
+  width: 100%
+
+  div
+    width: 50%
+    float: left
+    padding: m()
+    border-top: 1px solid color('rouge', 70)
+    &:first-of-type
+      padding-left: 0
+    &:last-of-type
+      padding-right: 0
+      border-left: 1px solid color('rouge', 70)
+
+  span, span *
+    font-family: font('sans-serif')
+
+.m-cover__artiste
+  display: flex
+  flex-direction: row
+  justify-content: space-evenly
+  padding: m(.5) 0
+  border-bottom: 1px solid color('rouge', 70)
+  span:first-of-type
+    color: color('backgroundColor')
+  span:last-of-type
+    font-family: font('sans-serif')
+
+.m-cover__cdv-bottom
+  position: absolute
+  width: calc(100% - #{m(2)})
+  bottom: m()
+
+
+// Stylise la frise en bas de la cover
+
+.m-cover__frise
+  display: flex
+  flex-direction: column
+  float: left
+  width: 100%
+  height: m(2)
+  div
+    display: flex
+    flex-grow: 1
+
+.m-cover__frise-01
+  background: color('rouge', 50)
+.m-cover__frise-02
+  background: color('rouge', 60)
+.m-cover__frise-03
+  background: color('rouge', 70)
+.m-cover__frise-04
+  background: color('rouge', 80)
+.m-cover__frise-05
+  background: color('rouge', 90)
