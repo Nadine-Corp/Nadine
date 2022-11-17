@@ -3,18 +3,18 @@
 
 <section class="toolbar is--sticky">
   <div class="toolbar__container">
-    <h1 class="display1">Liste des artistes</h1>
+    <h1 class="m-lead">Liste des artistes</h1>
     <div class="toolbar__btn">
       <a href="./artiste__new.php" class="btn btn__plain">Ajouter un artiste</a>
     </div>
   </div>
 </section>
-<section class="row">
-  <div class="col l12">
+<section class="m-rom">
+  <div class="m-col">
     <?php $sql = "SELECT * FROM Artistes"; ?>
     <?php include './core/query.php'; $result = $conn->query($sql) or die($conn->error); ?>
     <?php if ($result->num_rows > 0): ?>
-      <table class="m-table body">
+      <table class="m-table m-body">
         <thead>
           <tr>
             <th>Société</th>

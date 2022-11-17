@@ -185,8 +185,8 @@ function the_projet_equipe($row){
 
         // Retourne le résultat au template
         $artiste = nadine_nom($civilite, $prenom, $nom);
-        $artiste = '<span class="caption">'.$artiste.'</span>';
-        $artiste = $artiste.'<span class="caption">Artiste-Auteur</span>';
+        $artiste = '<span class="m-body-s">'.$artiste.'</span>';
+        $artiste = $artiste.'<span class="m-body-s">Artiste-Auteur</span>';
 
         $list .= '<li class="m-cover__artiste">'.$artiste.'</li>';
       endwhile;

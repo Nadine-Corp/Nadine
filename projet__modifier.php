@@ -81,7 +81,7 @@ if ($result->num_rows > 0):
 
       <section class="toolbar is--sticky">
         <div class="toolbar__container">
-          <h1 class="display1">Modifier un projet</h1>
+          <h1 class="m-lead">Modifier un projet</h1>
           <div class="toolbar__btn">
             <a href="./projets.php" class="btn btn__outline">Annuler</a>
             <a href="./core/supprimer.php?base=projets&cible=projet__id&id=<?php echo $projet__id ?>" class="btn btn__outline">Supprimer le Projet</a>
@@ -91,7 +91,7 @@ if ($result->num_rows > 0):
       </section>
 
       <section class="row">
-        <div class="m-accordion col l12">
+        <div class="m-accordion m-col">
           <div class="m-accordion__titre">
             <h2 class="subheading">Informations générales</h2>
             <div class="m-accordion__ico">
@@ -99,7 +99,7 @@ if ($result->num_rows > 0):
             </div>
           </div>
           <div class="m-accordion__wrapper">
-            <div class="form__input-container body">
+            <div class="form__input-container m-body">
               <input type="hidden" name="projet__id" placeholder="Id Projet" class="form__input-half" value="<?php echo $row["projet__id"] ?>">
               <input type="text" name="nom_du_projet" placeholder="Nom du projet" class="form__input-full" value="<?php echo $row["projet__nom"] ?>">
               <input type="text" name="numero_du_projet" placeholder="Numéro du projet" class="form__input-half form__input-seperator" disabled>
@@ -117,7 +117,7 @@ if ($result->num_rows > 0):
         */
         ?>
 
-        <div class="m-accordion col l12">
+        <div class="m-accordion m-col">
           <div class="m-accordion__titre">
             <h2 class="subheading">Diffuseurs</h2>
             <div class="m-accordion__ico">
@@ -125,7 +125,7 @@ if ($result->num_rows > 0):
             </div>
           </div>
           <div id="l-projet__diffuseurs-m-accordion" class="m-accordion__wrapper">
-            <div class="form__slider-container body">
+            <div class="form__slider-container m-body">
               <p class="lead_paragraph">Est-ce une vente à un particulier ou un galeriste ou une société étrangère ?</p>
               <span>Non</span>
               <label class="switch">
@@ -134,7 +134,7 @@ if ($result->num_rows > 0):
               </label>
               <span>Oui</span>
             </div>
-            <div class="form__input-container body">
+            <div class="form__input-container m-body">
               <div class="form__input-half form__input-seperator directorist-select directorist-select-multi" <?php if($row["diffuseur__societe"]): ?>data-default="['<?php echo addslashes($row["diffuseur__societe"]) ?>']"<?php endif; ?> id="multi--diffuseurs" data-isSearch="true" data-max="1" data-placeholder="Rechercher un Diffuseur" data-multiSelect="<?php echo $listdiffuseur; ?>" >
                 <?php
                 if ($diffuseur) {
@@ -155,7 +155,7 @@ if ($result->num_rows > 0):
         */
         ?>
 
-        <div class="m-accordion col l12">
+        <div class="m-accordion m-col">
           <div class="m-accordion__titre">
             <h2 class="subheading">Rétrocessions d’honoraires</h2>
             <div class="m-accordion__ico">
@@ -181,7 +181,7 @@ if ($result->num_rows > 0):
               </label>
               <span>Oui</span>
             </div>
-            <div class="form__input-container body">
+            <div class="form__input-container m-body">
               <div class="form__input-half directorist-select directorist-select-multi" <?php if($row["artiste__id"]): ?>data-default="['<?php echo addslashes($row["artiste__id"]) ?>']"<?php endif; ?> id="multi--artistes" data-isSearch="true" data-placeholder="Rechercher un Artiste" data-multiSelect="<?php echo $listartiste; ?>">
                 <input name="artiste__societe" type="hidden" value="">
               </div>
@@ -194,7 +194,7 @@ if ($result->num_rows > 0):
   <?php endwhile; ?>
 <?php else: ?>
   <section>
-    <div class="col l12">
+    <div class="m-col">
       <p>Chef, on n'a pas trouvé de projets...</p>
     </div>
   </section>

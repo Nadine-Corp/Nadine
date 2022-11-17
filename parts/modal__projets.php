@@ -7,10 +7,10 @@
 
 <div class="m-modal__projet m-modal">
   <div class="m-modal__denko">
-    <div class="is--denko__container">
+    <div class="is--denko__container m-row">
       <ul>
         <li class="is--denko">
-          <span class="display13">Ajouter un projet</span>
+          <span class="m-display">Ajouter un projet</span>
         </li>
       </ul>
     </div>
@@ -27,9 +27,9 @@
 
       <nav  class="m-form__nav">
         <ul>
-          <li class="display1 is--active" data-step="1">Information</li>
-          <li class="display1" data-step="2">Diffuseur</li>
-          <li class="display1" data-step="3">Équipe</li>
+          <li class="m-lead is--active" data-step="1">Information</li>
+          <li class="m-lead" data-step="2">Diffuseur</li>
+          <li class="m-lead" data-step="3">Équipe</li>
         </ul>
       </nav>
 
@@ -105,7 +105,7 @@
           </div>
 
           <div class="m-form__info m-form__with-btn">
-            <span class="body btn__ico-label">Ajouter un•e Artiste-Auteur</span>
+            <span class="m-body btn__ico-label">Ajouter un•e Artiste-Auteur</span>
             <button class="btn btn__outline btn__ico btn__add-artiste" type="button"><?php include './assets/img/ico_ajouter.svg.php'; ?></button>
           </div>
 

@@ -1,11 +1,11 @@
 <?php include './header.php'; ?>
 
 
-<section class="row">
-  <div class="col l12">
-    <h1 class="display1">Modifier un artiste</h1>
+<section class="m-rom">
+  <div class="m-col">
+    <h1 class="m-lead">Modifier un artiste</h1>
   </div>
-  <div class="col l12">
+  <div class="m-col">
 
     <?php  $artiste__id = $_GET['__id']; ?>
     <?php $sql = "SELECT * FROM Artistes WHERE artiste__id ='".$artiste__id."'"; ?>
@@ -13,7 +13,7 @@
     <?php if ($result->num_rows > 0): ?>
       <?php while($row = $result->fetch_assoc()):?>
 
-      <form class="form body" action="./core/update__artiste.php" method="post">
+      <form class="form m-body" action="./core/update__artiste.php" method="post">
         <div class="form__input-container">
           <input type="hidden" name="artiste__id" placeholder="Id " class="form__input-full" value="<?php echo $row["artiste__id"] ?>">
           <input type="text" name="civilite" placeholder="Civilité" class="form__input-full" value="<?php echo $row["artiste__civilite"] ?>">

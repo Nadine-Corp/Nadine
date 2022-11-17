@@ -95,15 +95,20 @@ function the_projet_statut($row){
 */
 
 function the_projet_class($row){
-  $class  = 'l-projets__'.$row["projet__id"].' ';
-  if ( $row["projet__statut"] == 'Projet en cours' ) {
+
+  // Ajoute l'id comme class
+  $class  = 'l-projets__'.$row['projet__id'].' ';
+
+  // Ajoute le statut comme class
+  if ( $row['projet__statut'] == 'Projet en cours' ) {
     $class .= 'l-projets__encours';
-  }elseif ($row["projet__statut"] == 'Projet terminé' ) {
+  }elseif ($row['projet__statut'] == 'Projet terminé' ) {
     $class .= 'l-projets__termine';
-  }elseif ($row["projet__statut"] == 'Projet annulé' ) {
+  }elseif ($row['projet__statut'] == 'Projet annulé' ) {
     $class .= 'l-projets__annule';
   }
 
+  // Retourne le résultat au template
   echo $class;
 }
 
@@ -191,8 +196,8 @@ function the_projet_equipe($row){
 
       // Formate les infos du profil
       $profil = nadine_nom($civilite, $prenom, $nom);
-      $profil = '<span class="caption"><em>'.$profil.'</em></span>';
-      $profil = $profil.'<span class="caption">Artiste-Auteur</span>';
+      $profil = '<span class="m-body-s"><em>'.$profil.'</em></span>';
+      $profil = $profil.'<span class="m-body-s">Artiste-Auteur</span>';
 
       // Ajoute profil au résultat
       $list .= '<li class="m-cover__artiste">'.$profil.'</li>';
@@ -215,8 +220,8 @@ function the_projet_equipe($row){
 
         // Formate les infos du diffuseur
         $artiste = nadine_nom($civilite, $prenom, $nom);
-        $artiste = '<span class="caption"><em>'.$artiste.'</em></span>';
-        $artiste = $artiste.'<span class="caption">Artiste-Auteur</span>';
+        $artiste = '<span class="m-body-s"><em>'.$artiste.'</em></span>';
+        $artiste = $artiste.'<span class="m-body-s">Artiste-Auteur</span>';
 
         // Ajoute l'artiste au résultat
         $list .= '<li class="m-cover__artiste">'.$artiste.'</li>';
@@ -489,6 +494,44 @@ function the_facture_numero($row){
 
 
 /**
+* La fonction the_facture_class() affiche qq class
+* dans la balise <article> des devis ou des facture
+*/
+
+function the_facture_class($row){
+  // Récupére la bonne table
+  $table = get_facture_table($row);
+
+  // Ajoute l'id comme class
+  $class = 'p-facture__'.$row[$table.'__id'].' ';
+
+  // Recupère le statut de facture
+  $facture_statut = $row[$table.'__statut'];
+  $class .= sanitize('p-facture__'.$facture_statut);
+
+  // Retourne le résultat au template
+  echo $class;
+}
+
+
+/**
+* La fonction the_facture_statut() permet d'afficher
+* le staut d'un devis ou d'une facture
+*/
+
+function the_facture_statut($row){
+  // Récupére la bonne table
+  $table = get_facture_table($row);
+
+  // Recupère le statut de facture
+  $facture_statut = $row[$table.'__statut'];
+
+  // Retourne le résultat au template
+  echo $facture_statut;
+}
+
+
+/**
 * La fonction the_facture_link() permet d'afficher
 * le lien vers la page devis ou  facture
 */
@@ -639,7 +682,15 @@ function the_date_today(){
 */
 
 function nadine_date($date) {
-  return date_format($date, 'M. Y');
+  // Défini le fuseau horaire
+  date_default_timezone_set('Europe/Paris');
+
+  // Formate la date «À la française»
+  $dateFormatted = IntlDateFormatter::formatObject($date,'LLL Y');
+  $dateFormatted = ucwords($dateFormatted);
+
+  // Retourne le résultat au template
+  return $dateFormatted;
 }
 
 
@@ -685,6 +736,8 @@ function get_template_part($filename) {
 */
 
 function sanitize($string){
+  // Change les caractères accentués
+  $string = strtr(utf8_decode($string), utf8_decode('àáâãäçèéêëìíîïñòóôõöùúûüýÿÀÁÂÃÄÇÈÉÊËÌÍÎÏÑÒÓÔÕÖÙÚÛÜÝ'), 'aaaaaceeeeiiiinooooouuuuyyAAAAACEEEEIIIINOOOOOUUUUY');
   // Modifie tous les caractères spéciaux et les espaces
   $string = filter_var($string, FILTER_SANITIZE_URL);
   // Met tous les caractères en minuscules

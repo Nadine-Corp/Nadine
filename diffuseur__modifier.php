@@ -1,11 +1,11 @@
 <?php include './header.php'; ?>
 
 
-<section class="row">
-  <div class="col l12">
-    <h1 class="display1">Modifier un diffuseur</h1>
+<section class="m-rom">
+  <div class="m-col">
+    <h1 class="m-lead">Modifier un diffuseur</h1>
   </div>
-  <div class="col l12">
+  <div class="m-col">
 
     <?php  $diffuseur__id = $_GET['diffuseur__id']; ?>
     <?php $sql = "SELECT * FROM Diffuseurs WHERE diffuseur__id ='".$diffuseur__id."'"; ?>
@@ -13,7 +13,7 @@
     <?php if ($result->num_rows > 0): ?>
       <?php while($row = $result->fetch_assoc()):?>
 
-      <form class="form body" action="./core/update__diffuseur.php" method="post">
+      <form class="form m-body" action="./core/update__diffuseur.php" method="post">
         <div class="form__input-container">
           <input type="hidden" name="diffuseur__id" placeholder="Id " class="form__input-full" value="<?php echo $row["diffuseur__id"] ?>">
           <input type="text" name="societe" placeholder="Société" class="form__input-half form__input-seperator" value="<?php echo $row["diffuseur__societe"] ?>">

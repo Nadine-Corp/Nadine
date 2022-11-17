@@ -6,8 +6,8 @@
 
   Exemple de HTML :
 
-    <h1 class="display1">Something</h1>
-    <p class="body">Something else</p>
+    <h1 class="m-lead">Something</h1>
+    <p class="m-body">Something else</p>
 
 
 *
@@ -22,39 +22,11 @@
 
 
 h1, h2, h3, h4, h5, h6
-  font-size: m(2)
-  line-height: m(3)
+  font-size: 2rem
+  line-height: 3rem
 
-p
-  font-size: m()
-  line-height: m(1.5)
-  padding: 10px 0
-
-  a
-    cursor: pointer
-
-    &:link, &:visited
-      font-weight: 200
-      color: inherit
-      text-decoration: none
-      box-shadow: 0 1px 0 0 color('rouge',50)
-      transition: all 0.8s
-
-    &:hover
-      color: color('texte')
-      padding-bottom: 3px
-      box-shadow: 0 1px 0 0 color('rouge',50,0.2)
-      transition: all 0.8s
-
-.liste__de__lien
-  a:nth-last-of-type(n+3)::after
-    content: ', '
-
-  a:last-of-type::before
-    content: ' & '
-
-  a:first-of-type::before
-    content: ''
+h1, h2, h3, h4, h5, h6, p, a
+  transition: $fast
 
 strong, strong *
   font-weight: 800
@@ -62,86 +34,57 @@ strong, strong *
 em, em *
   font-style: italic
 
-.display13, .display13 *
-  font-size: m(5)
-  line-height: m(5)
+p + p
+  margin-top: m()
 
-// .display12, .display12 *
-//   font-size: m(4.75)
-//   line-height: m(4.75)
+p
+  a
+    cursor: pointer
 
-// .display11, .display11 *
-//   font-size: m(4.5)
-//   line-height: m(4.5)
+    &:link, &:visited
+      color: inherit
+      text-decoration: none
+      box-shadow: 0 1px 0 0 color('rouge',50)
+      transition: all 0.8s
 
-// .display10, .display10 *
-//   font-size: m(4.25)
-//   line-height: m(4.25)
+    @include hover
+      color: color('texte')
+      padding-bottom: 3px
+      box-shadow: 0 1px 0 0 color('rouge',50,0.2)
+      transition: all 0.8s
 
-.display9, .display9 *
-  font-size: m(4)
-  line-height: m(4)
 
-// .display8, .display8 *
-//   font-size: m(3.75)
-//   line-height: m(3.75)
+// Style le éléments en sans-serif
 
-// .display7, .display7 *
-//   font-size: m(3.5)
-//   line-height: m(3.5)
+.m-ss
+  font-family: font('sans-serif')
 
-// .display6, .display6 *
-//   font-size: m(3.25)
-//   line-height: m(3.25)
+// Style les styles de paragraphe de Nadine
 
-// .display5, .display5 *
-//   font-size: m(3)
-//   line-height: m(3)
+.m-display, .m-display *
+  font-size: 5rem
+  line-height: 5rem
 
-// .display4, .display4 *
-//   font-size: m(2.75)
-//   line-height: m(3)
+.m-headline, .m-headline *
+  font-size: 4rem
+  line-height: 4rem
 
-// .display3, .display3 *
-//   font-size: m(2.5).5
-//   line-height: m(2.5)
-//
-// .display2, .display2 *
-//   font-size: m(2.25)
-//   line-height: m(2)
+.m-lead, .m-lead *
+  font-size: 2rem
+  line-height: 2rem
 
-.display1, .display1 *
-  font-size: m(2)
-  line-height: m(2)
+.m-body-l, .m-body-l *
+  font-size: 1.5rem
+  line-height: 2rem
 
-.subtitle, .subtitle *
-  font-size: m(1.75)
-  line-height: m(2)
+.m-body, .m-body *
+  font-size: 1.25rem
+  line-height: 1.5rem
 
-.lead_para, .lead_para *
-  font-size: m(1.5)
-  line-height: m(2)
+.m-body-s, .m-body-s *
+  font-size: 1rem
+  line-height: 1.25rem
 
-.body, .body *
-  font-size: m(1.25)
-  line-height: m(1.5)
-
-.caption, .caption *
-  font-size: m()
-  line-height: m(1.5)
-
-.tiny, .tiny *
+.m-caption, .m-caption *
   font-size: m(0.75)
   line-height: m()
-
-// .divider
-//   width: 2px
-//   height: m(4)
-//   margin: m()
-//   background: color('texte')
-//
-// .divider-h
-//   width: m(4)
-//   height: 2px
-//   margin: m() 0
-//   background: color('texte')

@@ -27,7 +27,7 @@ endif;
 
 <section class="toolbar is--sticky">
   <div class="toolbar__container">
-    <h1 class="display1">Bilan annuel <?php echo $year; ?></h1>
+    <h1 class="m-lead">Bilan annuel <?php echo $year; ?></h1>
     <div class="toolbar__btn">
       <?php
 
@@ -51,13 +51,13 @@ endif;
   </section>
 
 
-  <section class="row">
-    <div class="col l12">
+  <section class="m-rom">
+    <div class="m-col">
 
       <?php $sql = "SELECT * FROM Projets, Diffuseurs WHERE Projets.diffuseur__id = Diffuseurs.diffuseur__id AND projet__statut = 'Projet terminé' AND projet__date_de_fin BETWEEN CAST('".$year."-01-01' AS DATE) AND CAST('".$year."-12-31' AS DATE) ORDER BY projet__date_de_fin ASC;"; ?>
       <?php include './core/query.php'; $result = $conn->query($sql) or die($conn->error); ?>
       <?php if ($result->num_rows > 0): ?>
-        <table class="m-table body">
+        <table class="m-table m-body">
           <tr>
             <th>Nature de l'activité</th>
             <th>Diffuseur</th>

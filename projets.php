@@ -21,17 +21,17 @@ include './header.php';
 ?>
 
 <aside class="m-aside">
-  <h1 class="display9">Projets</h1>
+  <h1 class="m-headline">Projets</h1>
   <a href="./modal__projets" class="btn btn__big btn__plain btn__modal" data-modal='projet'>
     <div class="btn__big-ico"><?php include './assets/img/ico_ajouter--plain.svg.php'; ?></div>
     <div class="btn__big-txt">
-      <span class=" display1">Ajouter</span>
-      <span class="lead_para">Projet</span>
+      <span class=" m-lead">Ajouter</span>
+      <span class="m-body-l">Projet</span>
     </div>
   </a>
   <div class="m-accordion is--active">
     <div class="m-accordion__titre">
-      <span class="display1"> Grouper</span>
+      <span class="m-lead"> Grouper</span>
       <div class="m-accordion__ico">
         <?php include './assets/img/ico_arrow-accordion.svg.php'; ?>
       </div>
@@ -39,22 +39,22 @@ include './header.php';
     <div class="m-accordion__wrapper">
       <form class="m-form">
         <div class="m-form__radio-vert">
-          <div class="m-form__radio body">
+          <div class="m-form__radio m-body">
             Par états du projets
             <input type="radio" name="grouper" checked="checked">
             <span class="checkmark"></span>
           </div>
-          <div class="m-form__radio body">
+          <div class="m-form__radio m-body">
             Par Diffuseurs
             <input type="radio" name="grouper" >
             <span class="checkmark"></span>
           </div>
-          <div class="m-form__radio body">
+          <div class="m-form__radio m-body">
             Par Artistes-Auteurs
             <input type="radio" name="grouper" >
             <span class="checkmark"></span>
           </div>
-          <div class="m-form__radio body">
+          <div class="m-form__radio m-body">
             Par années
             <input type="radio" name="grouper" >
             <span class="checkmark"></span>
@@ -72,11 +72,11 @@ include './header.php';
 */
 ?>
 
-<section class="row with--aside">
+<section class="m-rom with--aside">
 
   <div class="m-accordion is--active">
     <div class="m-accordion__titre">
-      <span class="display1">Projets en cours</span>
+      <span class="m-lead">Projets en cours</span>
       <div class="m-accordion__ico">
         <?php include './assets/img/ico_arrow-accordion.svg.php'; ?>
       </div>
@@ -112,7 +112,7 @@ include './header.php';
 
   <div class="m-accordion">
     <div class="m-accordion__titre">
-      <span class="display1">Projets terminés</span>
+      <span class="m-lead">Projets terminés</span>
       <div class="m-accordion__ico">
         <?php include './assets/img/ico_arrow-accordion.svg.php'; ?>
       </div>
@@ -148,7 +148,7 @@ include './header.php';
 
   <div class="m-accordion">
     <div class="m-accordion__titre">
-      <span class="display1">Projets annulés</span>
+      <span class="m-lead">Projets annulés</span>
       <div class="m-accordion__ico">
         <?php include './assets/img/ico_arrow-accordion.svg.php'; ?>
       </div>

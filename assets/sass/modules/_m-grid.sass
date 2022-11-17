@@ -3,18 +3,18 @@
   Le module Grid est l'un des plus ancien de Nadine.
   Il gére le système de grille "à l'ancienne".
 
-.row
+.m-row, .m-rom, .m-col
   float: left
   width: 100%
+
+.m-rom
   padding: $row__marge-top $row__marge-horiz $row__marge-bottom $row__marge-horiz
 
   &.with--aside
     float: right
     width: calc(100% - #{$width__aside} )
 
-.col
-  width: 100%
-  float: left
+.m-col
   padding: m(.5)
 
 // Cette fonction génére toutes les .class permettant de gérer les colonnes
@@ -23,8 +23,8 @@
 
     Exemple de HTML :
 
-    <div class="row">
-      <div class="col s8 xl6">
+    <div class="m-rom">
+      <div class="m-col s8 xl6">
         <!-- content -->
       </div>
     </div>

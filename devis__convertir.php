@@ -85,7 +85,7 @@
 
   <section class="toolbar is--sticky">
     <div class="toolbar__container">
-      <h1 class="display1">Convertir un devis</h1>
+      <h1 class="m-lead">Convertir un devis</h1>
       <div class="toolbar__btn">
         <a href="./projet__single.php?projet__id=<?php echo $row["projet__id"] ?>" class="btn btn__outline">Annuler</a>
         <input type="submit" name="Enregistrer" value="Enregistrer" class="btn btn__plain">
@@ -94,8 +94,8 @@
   </section>
 
 
-  <section class="row l_facture">
-    <div class="col l12">
+  <section class="m-rom l_facture">
+    <div class="m-col">
       <?php include './template_facture/'.$facture__template.'/facture.php'; ?>
     </div>
   </section>

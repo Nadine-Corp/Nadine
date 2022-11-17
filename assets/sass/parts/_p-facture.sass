@@ -6,23 +6,102 @@
 
 
 .p-facture
-  float: left
-  width: 25%
   margin-right: m()
+  transition: $slow
+  @include hover
+    .p-facture__wrapper
+      background: color('rouge', 50)
+      border: 1px solid color('rouge', 50)
+      transition: $fast
+      span, em
+        color: color('rouge', 80)
+        transition: $fast
+    .p-facture__statut
+      background: color('rouge', 80)
+      color: color('backgroundColor')
+      transition: $fast
+
 
 .p-facture__paper
   position: relative
   width: 100%
   padding-top: 133.33%
+  overflow: hidden
 
 .p-facture__wrapper
   display: flex
   flex-direction: column
-  overflow: hidden
+  justify-content: space-around
   padding: m()
   border-radius: m()
   border: 1px solid color('backgroundColor')
   background: color('grey',0)
+  overflow: hidden
+  transition: $slow
 
-  span
+  .m-row
+    display: flex
+    flex-direction: column
+
+  span, em
     color: color('backgroundColor')
+    transition: $slow
+
+  em
+    margin-left: m()
+
+.p-facture__prix
+  height: 33%
+
+
+// Stylise le statut
+
+.p-facture__statut
+  position: absolute
+  top: m()
+  right: m(-7)
+  display: flex
+  justify-content: center
+  align-items: center
+  width: m(20)
+  height: m(3)
+  z-index: 10
+  color: color('grey',0)
+  background: color('backgroundColor')
+  transform: rotate(45deg)
+  transition: $slow
+
+  @include respond('s')
+    top: m(2)
+    right: m(-6)
+
+
+// Stylise les factures en fonction de son état
+
+
+.p-facture__annule,
+.p-facture__annulee
+  .p-facture__wrapper
+    background: color('backgroundColor')
+    border: 1px solid color('rouge', 80)
+    span, em
+      color: color('rouge', 80)
+  .p-facture__statut
+    background: color('rouge', 80)
+    color: color('backgroundColor')
+
+
+
+.p-facture__brouillon,
+.p-facture__envoye
+  .p-facture__wrapper
+    background: color('rouge', 80)
+    border: 1px solid color('rouge', 80)
+  .p-facture__statut
+    color: color('rouge', 80)
+
+
+
+
+
+// StopScroll

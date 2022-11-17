@@ -5,20 +5,37 @@
   color: color('rouge', 40)
 
 html
+  height: 100%
+  font-size: m()
   overflow-y: scroll
+  scroll-behavior: smooth
+
+@media screen and (prefers-reduced-motion: reduce)
+  html
+	  scroll-behavior: auto
 
 body
-  background: color('backgroundColor')
+  display: flex !important
+  flex-direction: column
+  height: 100%
 
 html, body
   &.overflow--is--hidden
     overflow: hidden
 
-main
-  float: left
+body, main
   width: 100%
+  float: left
+  background: color('backgroundColor')
+
+main
+  flex: 1 0 auto
   margin-top: $header__height
   padding-left: $header__height
+  overflow: clip
+
+footer
+  flex-shrink: 0
 
 svg
   fill: color('texte')

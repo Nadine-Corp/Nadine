@@ -7,18 +7,21 @@
   Exemple de HTML :
 
     <section class="m-breadcrumb">
-      <a href="./projet.php" class="m-breadcrumb__link body">Projets</a>
-      <a href="./projet.php" class="m-breadcrumb__link body"><?php the_projet_name($row) ?></a>
+      <a href="./projet.php" class="m-breadcrumb__link m-body">Projets</a>
+      <a href="./projet.php" class="m-breadcrumb__link m-body"><?php the_projet_name($row) ?></a>
     </section>
 
 
 .m-breadcrumb
   display: flex
+  position: sticky
+  top: $header__height
   align-items: center
   width: 100%
   height: m(4)
   padding: 0 $row__marge-horiz
   background: color('breadcrumbBackgroundColor')
+  z-index: $zindex__breadcrumb
 
 .m-breadcrumb__link
   position: relative

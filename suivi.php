@@ -8,9 +8,9 @@
 include './header.php';
 ?>
 
-<section class="row">
-  <div class="col l12">
-    <h1 class="display1">Suivi</h1>
+<section class="m-rom">
+  <div class="m-col">
+    <h1 class="m-lead">Suivi</h1>
   </div>
 
   <?php
@@ -19,13 +19,13 @@ include './header.php';
   */
   ?>
 
-  <div class="col l6">
-    <h2 class="headline">Devis non signés</h2>
+  <div class="m-col l6">
+    <h2 class="m-headline">Devis non signés</h2>
     <?php $thisYear = date("Y") ?>
     <?php $sql = "SELECT * FROM Devis WHERE devis__statut = 'Envoyé' "; ?>
     <?php include './core/query.php'; $result = $conn->query($sql) or die($conn->error); ?>
     <?php if ($result->num_rows > 0): ?>
-      <table class="m-table body">
+      <table class="m-table m-body">
         <thead>
           <tr>
             <th>N°</th>
@@ -57,13 +57,13 @@ include './header.php';
   */
   ?>
 
-  <div class="col l6">
-    <h2 class="headline">Factures impayées</h2>
+  <div class="m-col l6">
+    <h2 class="m-headline">Factures impayées</h2>
     <?php $thisYear = date("Y") ?>
     <?php $sql = "SELECT * FROM Factures WHERE facture__statut = 'Envoyée' "; ?>
     <?php include './core/query.php'; $result = $conn->query($sql) or die($conn->error); ?>
     <?php if ($result->num_rows > 0): ?>
-      <table class="m-table body">
+      <table class="m-table m-body">
         <thead>
           <tr>
             <th>N°</th>

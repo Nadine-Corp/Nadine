@@ -80,7 +80,7 @@ include './core/fonctions.php';
               <div class="l-header__nav-ico">
                 <?php include './assets/img/ico_projet.svg.php'; ?>
               </div>
-              <div class="l-header__nav-txt display1">
+              <div class="l-header__nav-txt m-lead">
                 PROJETS
               </div>
             </a>
@@ -90,7 +90,7 @@ include './core/fonctions.php';
               <div class="l-header__nav-ico">
                 <?php include './assets/img/ico_contact.svg.php'; ?>
               </div>
-              <div class="l-header__nav-txt display1">
+              <div class="l-header__nav-txt m-lead">
                 DIFFUSEURS
               </div>
             </a>
@@ -100,7 +100,7 @@ include './core/fonctions.php';
               <div class="l-header__nav-ico">
                 <?php include './assets/img/ico_contact.svg.php'; ?>
               </div>
-              <div class="l-header__nav-txt display1">
+              <div class="l-header__nav-txt m-lead">
                 ARTISTES
               </div>
             </a>
@@ -110,7 +110,7 @@ include './core/fonctions.php';
               <div class="l-header__nav-ico">
                 <?php include './assets/img/ico_suivi.svg.php'; ?>
               </div>
-              <div class="l-header__nav-txt display1">
+              <div class="l-header__nav-txt m-lead">
                 SUIVI
               </div>
             </a>
@@ -120,7 +120,7 @@ include './core/fonctions.php';
               <div class="l-header__nav-ico">
                 <?php include './assets/img/ico_menu.svg.php'; ?>
               </div>
-              <div class="l-header__nav-txt display1">
+              <div class="l-header__nav-txt m-lead">
                 PLUS
               </div>
               <div class="m-accordion__ico">
@@ -130,19 +130,19 @@ include './core/fonctions.php';
             <div class="m-accordion__wrapper">
               <ul class="l-header__subnav">
                 <li class="l-header__subnav-item l-header__subnav-separator">
-                  <a href="./profil.php" data-url="profil" class="body">Modifier votre profil</a>
+                  <a href="./profil.php" data-url="profil" class="m-body m-ss">Modifier votre profil</a>
                 </li>
                 <li class="l-header__subnav-item">
-                  <a href="./bilan.php" data-url="bilan" class="body">Générer le bilan annuel</a>
+                  <a href="./bilan.php" data-url="bilan" class="m-body m-ss">Générer le bilan annuel</a>
                 </li>
                 <li class="l-header__subnav-item l-header__subnav-separator">
-                  <a href="https://discord.gg/Fg2m8gvdWR" target="_blank" class="body">Rejoindre le NadineClub©</a>
+                  <a href="https://discord.gg/Fg2m8gvdWR" target="_blank" class="m-body m-ss">Rejoindre le NadineClub©</a>
                 </li>
                 <li class="l-header__subnav-item">
-                  <a href="mailto:coucoucorine@nadinecorp.net" target="_blank" class="body">Demander de l'aide par mail</a>
+                  <a href="mailto:coucoucorine@nadinecorp.net" target="_blank" class="m-body m-ss">Demander de l'aide par mail</a>
                 </li>
                 <li class="l-header__subnav-item l-header__subnav-separator">
-                  <a href="./log.php" data-url="log" class="body">Journal de développement</a>
+                  <a href="./log.php" data-url="log" class="m-body m-ss">Journal de développement</a>
                 </li>
               </ul>
             </div>
@@ -161,7 +161,7 @@ include './core/fonctions.php';
       <div class="l-header__logo l-header__bottom">
         <a href="./index.php"><?php include './assets/img/nadine-logo.svg.php'; ?></a>
       </div>
-      <div class="l-header__mention l-header__bottom tiny">
+      <div class="l-header__mention l-header__bottom m-caption">
         <span>Nadine <a href="./log.php">travaille tellement dur</a> pour s'améliorer !</span>
         <span>Numéro de version : Nadine Alpha <?php echo get_num_version(); ?></span>
         <span>Pensez à <a href="https://github.com/Nadine-Corp/Nadine/commits/main" target="_blank">mettre à jour</a> Nadine de temps en temps.</span>
