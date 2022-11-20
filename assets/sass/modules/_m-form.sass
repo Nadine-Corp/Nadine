@@ -35,14 +35,14 @@ $inputHeight: m(5)
 $inputPadding: m(1.5)
 $inputMarginTop: m(3)
 
-$inputBackground: color('grey')
+$inputBackground: color('backgroundColor')
 $inputFocusBackground: color('rouge', 98)
 $inputBorderColor: color('rouge', 80)
 $inputFocusBorderColor: color('texte')
 $inputBorderRadius: m(3)
 
 $inputFontSize: m(1.5)
-$inputColor: color('texte')
+$inputColor: color('grey',0)
 $labelFontSize: m()
 $labeColor: color('grey',40)
 
@@ -55,8 +55,11 @@ $labeColor: color('grey',40)
     float: left
     width: 100%
 
-  .m-form__half
-    width: 50%
+.m-form__grp
+  align-items: center
+  display: flex
+  &>div
+    width: 100%
 
 .m-form
   input:not([type="submit"]):not([type="radio"]),
@@ -96,6 +99,15 @@ $labeColor: color('grey',40)
 
 .m-form__submit-bar
   float: right
+
+.m-form__instructions
+  margin: m() 0
+  color: color('rouge', 80)
+  em
+    color: color('rouge', 80)
+
+  strong
+    color: color('rouge', 50)
 
 
 // Stylise les labels

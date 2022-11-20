@@ -22,16 +22,16 @@ include './header.php';
 
 <aside class="m-aside">
   <h1 class="m-headline">Projets</h1>
-  <a href="./modal__projets" class="btn btn__big btn__plain btn__modal" data-modal='projet'>
+  <a href="./p__modal-projets" class="btn btn__big btn__plain btn__modal" data-modal='projet'>
     <div class="btn__big-ico"><?php include './assets/img/ico_ajouter--plain.svg.php'; ?></div>
     <div class="btn__big-txt">
-      <span class=" m-lead">Ajouter</span>
+      <span class="m-lead m-ss">Ajouter</span>
       <span class="m-body-l">Projet</span>
     </div>
   </a>
   <div class="m-accordion is--active">
     <div class="m-accordion__titre">
-      <span class="m-lead"> Grouper</span>
+      <span class="m-lead">Grouper</span>
       <div class="m-accordion__ico">
         <?php include './assets/img/ico_arrow-accordion.svg.php'; ?>
       </div>
@@ -184,7 +184,7 @@ include './header.php';
 * Ajout des modales
 */
 
-include './parts/modal__projets.php';
+include './parts/p__modal-projets.php';
 
 
 /**

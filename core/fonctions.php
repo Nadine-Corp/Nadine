@@ -9,22 +9,21 @@
 * La fonction nadine_query() simplifie les requêtes à la base de données
 */
 
-function nadine_query($args){
+function nadine_query($args, $sql = 'SELECT *'){
 
-  // Crée la variable $sql
-  $sql = 'SELECT *';
-
-  // Ajoute les propriété demandées
-  foreach($args as $key => $value) {
-    // Traite le cas particulier de ORDER
-    if ($key == 'ORDER') {
-      $sql .= ' '.$value;
-    }else {
-      $sql .= ' '.$key.' '.$value;
-    }
+  if ( $sql == 'SELECT *') {
+    // Ajoute les propriétés demandées
+    foreach($args as $key => $value) {
+      // Traite le cas particulier de ORDER
+      if ($key == 'ORDER') {
+        $sql .= ' '.$value;
+      }else {
+        $sql .= ' '.$key.' '.$value;
+      }
+    };
   };
 
-  // Importe les info de connection à la base de donnée
+  // Importe les info de connexion à la base de donnée
   include 'config.php';
 
   // Vérifie si la connection à la base de donnée fonctionne
@@ -238,12 +237,49 @@ function the_projet_equipe($row){
 
 
 /**
+* La fonction get_diffuseur_societe() affiche le nom de société
+* des diffuseurs du projet demandé
+*/
+
+function get_diffuseur_societe($row){
+  // Récupère les infos du diffuseur
+  $diffuseur_societe = $row["diffuseur__societe"];
+
+  // Retourne le résultat au template
+  return $diffuseur_societe;
+}
+
+
+/**
 * La fonction the_diffuseur_societe() affiche le nom de société
 * des diffuseurs du projet demandé
 */
 
 function the_diffuseur_societe($row){
-  echo $row["diffuseur__societe"];
+  // Récupère les infos du diffuseur
+  $diffuseur_societe = get_diffuseur_societe($row);
+
+  // Retourne le résultat au template
+  echo $diffuseur_societe;
+}
+
+
+/**
+* La fonction get_diffuseur_nom() affiche la civilité, le Prénom
+* et le nom des diffuseurs du projet demandé
+*/
+
+function get_diffuseur_nom($row){
+  // Récupère les infos du diffuseur
+  $civilite = $row["diffuseur__civilite"];
+  $prenom = $row["diffuseur__prenom"];
+  $nom = $row["diffuseur__nom"];
+
+  // Formate le nom
+  $diffuseur_nom = nadine_nom($civilite, $prenom, $nom);
+
+  // Retourne le résultat au template
+  return $diffuseur_nom;
 }
 
 
@@ -254,12 +290,7 @@ function the_diffuseur_societe($row){
 
 function the_diffuseur_nom($row){
   // Récupère les infos du diffuseur
-  $civilite = $row["diffuseur__civilite"];
-  $prenom = $row["diffuseur__prenom"];
-  $nom = $row["diffuseur__nom"];
-
-  // Formate le nom
-  $diffuseur_nom = nadine_nom($civilite, $prenom, $nom);
+  $diffuseur_nom = get_diffuseur_nom($row);
 
   // Retourne le résultat au template
   echo $diffuseur_nom;
@@ -411,12 +442,50 @@ function the_diffuseurs_list(){
 
 
 /**
+* La fonction get_artiste_societe() affiche le nom de société
+* des artistes du projet demandé
+*/
+
+function get_artiste_societe($row){
+  // Récupère les infos de l'artiste
+  $artiste_societe = $row["artiste__societe"];
+
+  // Retourne le résultat au template
+  return $artiste_societe;
+}
+
+
+
+/**
 * La fonction the_artiste_societe() affiche le nom de société
-* des diffuseurs du projet demandé
+* des artistes du projet demandé
 */
 
 function the_artiste_societe($row){
+  // Récupère les infos de l'artiste
+  $artiste_societe = get_artiste_societe($row);
+
+  // Retourne le résultat au template
   echo $row["artiste__societe"];
+}
+
+
+/**
+* La fonction get_artiste_nom() affiche la civilité, le Prénom
+* et le nom des artistes demandés
+*/
+
+function get_artiste_nom($row){
+  // Récupère les infos de l'artiste
+  $civilite = $row["artiste__civilite"];
+  $prenom = $row["artiste__prenom"];
+  $nom = $row["artiste__nom"];
+
+  // Formate le nom
+  $artiste_nom = nadine_nom($civilite, $prenom, $nom);
+
+  // Retourne le résultat au template
+  return $artiste_nom;
 }
 
 
@@ -427,16 +496,12 @@ function the_artiste_societe($row){
 
 function the_artiste_nom($row){
   // Récupère les infos de l'artiste
-  $civilite = $row["artiste__civilite"];
-  $prenom = $row["artiste__prenom"];
-  $nom = $row["artiste__nom"];
-
-  // Formate le nom
-  $artiste_nom = nadine_nom($civilite, $prenom, $nom);
+  $artiste_nom = get_artiste_nom($row);
 
   // Retourne le résultat au template
   echo $artiste_nom;
 }
+
 
 
 /**
@@ -473,6 +538,82 @@ function the_artistes_list(){
 
     endwhile;
   endif;
+}
+
+
+/**
+* La fonction the_contact_societe() affiche la civilité, le Prénom
+* et le nom d'un contact
+*/
+
+function the_contact_societe($row){
+  // Récupére la bonne table
+  $table = get_contact_table($row);
+
+  // Récupère les infos du contact
+  if ($table == 'Artistes') {
+    $contact_societe = get_artiste_societe($row);
+  }else {
+    $contact_societe = get_diffuseur_societe($row);
+  }
+
+  // Retourne le résultat au template
+  echo $contact_societe;
+}
+
+
+/**
+* La fonction the_contact_name() affiche la civilité, le Prénom
+* et le nom d'un contact
+*/
+
+function the_contact_name($row){
+  // Récupére la bonne table
+  $table = get_contact_table($row);
+
+  // Récupère les infos du contact
+  if ($table == 'Artistes') {
+    $contact_nom = get_artiste_nom($row);
+  }else {
+    $contact_nom = get_diffuseur_nom($row);
+  }
+
+  // Retourne le résultat au template
+  echo $contact_nom;
+}
+
+
+/**
+* La fonction the_contact_id() affiche l'ID d'un contact demandé
+*/
+
+function the_contact_id($row){
+  echo "string";
+}
+
+
+/**
+* La fonction the_contact_class() affiche qq class
+* dans la balise <article> des contacts
+*/
+
+function the_contact_class($row){
+  echo "string";
+}
+
+
+/**
+* La fonction get_contact_table() savoir si le template
+* doit afficher les infos d'un devis ou d'une facture
+*/
+
+function get_contact_table($row){
+  if ( !empty( $row['diffuseur__id'] ) ){
+    $table = 'Diffuseurs';
+  }else {
+    $table = 'Artistes';
+  };
+  return $table;
 }
 
 

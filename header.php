@@ -86,22 +86,12 @@ include './core/fonctions.php';
             </a>
           </li>
           <li class="l-header__nav-item">
-            <a href="./diffuseurs.php" data-url="diffuseurs">
+            <a href="./contacts.php" data-url="contacts">
               <div class="l-header__nav-ico">
                 <?php include './assets/img/ico_contact.svg.php'; ?>
               </div>
               <div class="l-header__nav-txt m-lead">
-                DIFFUSEURS
-              </div>
-            </a>
-          </li>
-          <li class="l-header__nav-item">
-            <a href="./artistes.php" data-url="artistes">
-              <div class="l-header__nav-ico">
-                <?php include './assets/img/ico_contact.svg.php'; ?>
-              </div>
-              <div class="l-header__nav-txt m-lead">
-                ARTISTES
+                CONTACTS
               </div>
             </a>
           </li>

@@ -5,18 +5,24 @@
 
 
 .l-projets
-  a
-    display: flex
-    align-items: center
-    padding: m() 0
-    width: 100%
-
   span
     display: block
     width: 100%
 
   .m-col
     flex: 1 1 auto
+
+
+.l-projets__projet
+  margin-bottom: m(.5)
+  border-radius: m(2)
+  transition: $verySlow
+
+  a
+    display: flex
+    align-items: center
+    padding: m() 0
+    width: 100%
 
   .m-body-l
     color: color('texte')
@@ -25,11 +31,6 @@
     font-style: italic
     color: color('grey', 30)
     transition: $verySlow
-
-.l-projets__projet
-  margin-bottom: m(.5)
-  border-radius: m(2)
-  transition: $verySlow
 
   @include hover
     padding: 0 m()

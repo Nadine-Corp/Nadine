@@ -107,8 +107,8 @@ include './header.php';
         </div>
       </section>
 
-      <?php // Ajout des devis ?>
       <section class="m-rom">
+        <?php // Ajout des devis ?>
         <div class="m-accordion is--active">
           <div class="m-accordion__titre">
             <h2>Devis</h2>
@@ -127,18 +127,30 @@ include './header.php';
             ?>
             <?php if ($loop->num_rows > 0): ?>
               <?php while($row = $loop->fetch_assoc()): ?>
+                <?php // Ajout du template du Devis ?>
                 <?php include './parts/p__facture-single.php'; ?>
               <?php endwhile; ?>
             <?php endif;?>
+            <?php // Ajout du bouton Ajouter un Devis ?>
+            <a href="./facture__new.php" class="p-facture xxs6 m4 l3 xl2 btn btn__big btn__plain">
+              <div class="p-facture__paper">
+                <div class="is--fullsize">
+                  <div class="btn__big-ico"><?php include './assets/img/ico_ajouter--plain.svg.php'; ?></div>
+                  <div class="btn__big-txt">
+                    <span class=" m-lead">Ajouter</span>
+                    <span class="m-body-l">Devis</span>
+                  </div>
+                </div>
+              </div>
+            </a>
           </div>
         </div>
-      </section>
 
-      <?php // Ajout des factures d'acompte ?>
-      <section class="m-rom">
+
+        <?php // Ajout des factures d'acompte ?>
         <div class="m-accordion">
           <div class="m-accordion__titre">
-            <h2>Factures d'acompte</h2>
+            <h2>Facture d'acompte</h2>
             <div class="m-accordion__ico">
               <?php include './assets/img/ico_arrow-accordion.svg.php'; ?>
             </div>
@@ -154,18 +166,29 @@ include './header.php';
             ?>
             <?php if ($loop->num_rows > 0): ?>
               <?php while($row = $loop->fetch_assoc()): ?>
+                <?php // Ajout du template des Factures d'acompte ?>
                 <?php include './parts/p__facture-single.php'; ?>
               <?php endwhile; ?>
             <?php endif;?>
+            <?php // Ajout du bouton Ajouter une Facture ?>
+            <a href="./facture__new.php" class="p-facture xxs6 m4 l3 xl2 btn btn__big btn__plain">
+              <div class="p-facture__paper">
+                <div class="is--fullsize">
+                  <div class="btn__big-ico"><?php include './assets/img/ico_ajouter--plain.svg.php'; ?></div>
+                  <div class="btn__big-txt">
+                    <span class=" m-lead">Ajouter</span>
+                    <span class="m-body-l">Facture d'accompte</span>
+                  </div>
+                </div>
+              </div>
+            </a>
           </div>
         </div>
-      </section>
 
-      <?php // Ajout des factures ?>
-      <section class="m-rom">
+        <?php // Ajout des factures ?>
         <div class="m-accordion">
           <div class="m-accordion__titre">
-            <h2>Factures</h2>
+            <h2>Facture</h2>
             <div class="m-accordion__ico">
               <?php include './assets/img/ico_arrow-accordion.svg.php'; ?>
             </div>
@@ -181,9 +204,22 @@ include './header.php';
             ?>
             <?php if ($loop->num_rows > 0): ?>
               <?php while($row = $loop->fetch_assoc()): ?>
+                <?php // Ajout du template des Factures ?>
                 <?php include './parts/p__facture-single.php'; ?>
               <?php endwhile; ?>
             <?php endif;?>
+            <?php // Ajout du bouton Ajouter une Facture ?>
+            <a href="./facture__new.php" class="p-facture xxs6 m4 l3 xl2 btn btn__big btn__plain">
+              <div class="p-facture__paper">
+                <div class="is--fullsize">
+                  <div class="btn__big-ico"><?php include './assets/img/ico_ajouter--plain.svg.php'; ?></div>
+                  <div class="btn__big-txt">
+                    <span class=" m-lead">Ajouter</span>
+                    <span class="m-body-l">Facture</span>
+                  </div>
+                </div>
+              </div>
+            </a>
           </div>
         </div>
       </section>

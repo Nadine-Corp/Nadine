@@ -39,13 +39,15 @@
           <label for="projet__nom">Nom du projet</label>
           <input type="text" name="projet__nom" placeholder="Nom du projet" required>
         </div>
-        <div class="m-form__label m-form__half not--for--new--projet">
+        <div class="m-form__grp">
+        <div class="m-form__label not--for--new--projet">
           <label for="projet__date_de_creation">Date de création</label>
           <input type="date" name="projet__date_de_creation" placeholder="Date de création" value="<?php the_date_today() ?>" required>
         </div>
-        <div class="m-form__label m-form__half not--for--new--projet">
+        <div class="m-form__label not--for--new--projet">
           <label for="projet__date_de_fin">Date de fin</label>
           <input type="date" name="projet__date_de_fin" placeholder="Date de fin" value="" disabled>
+        </div>
         </div>
         <div class="m-form__label m-form__select-tab not--for--new--projet">
           <label for="projet__statut">État du projet</label>
