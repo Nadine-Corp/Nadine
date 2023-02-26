@@ -114,8 +114,7 @@
 
 @mixin respond($_key)
   @media screen and (min-width: map-get($breakpoints, $_key))
-    &
-      @content
+    @content
 
 
 // La fonction getThemeColor() génere les variables de couleurs CSS
@@ -136,12 +135,12 @@
   @each $nom, $hexa in $colorTheme
     @each $declinaison in $declinaisons
       @if $declinaison >= 50
-        $weight: ($declinaison - 50)*2
+        $weight: ($declinaison - 50)*2%
         $color: mix($grey-100, $hexa, $weight)
         --color-#{$nom}-#{$declinaison}: #{$color}
         --color-rgb-#{$nom}-#{$declinaison}: #{hex-to-rgb($color)}
       @else
-        $weight: $declinaison*2
+        $weight: $declinaison*2%
         $color: mix($hexa, $grey-0, $weight)
         --color-#{$nom}-#{$declinaison}: #{$color}
         --color-rgb-#{$nom}-#{$declinaison}: #{hex-to-rgb($color)}

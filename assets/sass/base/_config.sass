@@ -49,16 +49,17 @@ $width__aside: var(--wa)
     @include font-face('Graphik', './assets/fonts/graphik/graphik', 400, normal, [eot, woff, woff2] )
     @include font-face('Graphik', './assets/fonts/graphik/graphik', bold, italic, [eot, woff, woff2] )
 
+// Ajout du Redaction
+@include font-face('Redaction', './assets/fonts/redaction/redaction', 400, normal, [woff2] )
+@include font-face('Redaction', './assets/fonts/redaction/redaction-italic', 400, italic, [woff2] )
+@include font-face('Redaction', './assets/fonts/redaction/redaction-bold', 600, normal, [woff2] )
+
 // Ajout du Nimbus Sans
 @include font-face('NimbusSans', './assets/fonts/nimbus/nimbus', 400, normal, [ttf] )
 @include font-face('NimbusSans', './assets/fonts/nimbus/nimbus-italic', 400, italic, [ttf] )
 @include font-face('NimbusSans', './assets/fonts/nimbus/nimbus-bold', 600, normal, [ttf] )
 @include font-face('NimbusSans', './assets/fonts/nimbus/nimbus-bold-italic', 600, italic, [ttf] )
 
-// Ajout du Redaction
-@include font-face('Redaction', './assets/fonts/redaction/redaction-35', 400, normal, [woff2] )
-@include font-face('Redaction', './assets/fonts/redaction/redaction-35-italic', 400, italic, [woff2] )
-@include font-face('Redaction', './assets/fonts/redaction/redaction-35-bold', 600, normal, [woff2] )
 
 
 // La fonction font() permet d'ajouter de gérer les font-family de façon systémique.
@@ -74,7 +75,7 @@ $width__aside: var(--wa)
     @return 'NimbusSans', Helvetica, sans-serif
 
 
-// Les variables $fast et $slow permettre d'uniformiser
+// Les variables $fast, $slow et $verySlow permettent d'uniformiser
   les vitesses des transitions de Nadine
 
 $fast: .2s

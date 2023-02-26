@@ -16,7 +16,7 @@
     </div>
     <div class="m-col">
       <span class="l-projets__diffuseur-societe m-body-l"><?php the_diffuseur_societe($row) ?></span>
-      <span class="l-projets__diffuseur-nom m-body-s"><?php the_diffuseur_nom($row) ?></span>
+      <span class="l-projets__diffuseur-nom m-body-s"><?php the_diffuseur_name($row) ?></span>
     </div>
     <div class="l-projets__statut">
       <span class="m-body-s"><?php the_projet_statut($row) ?></span>

@@ -6,7 +6,7 @@
 
   Exemple de HTML :
 
-  <div class="btn__grp">
+  <div class="m-btn__grp">
     <a href="<?php the_permalink(); ?>" class="btn btn__outline">
       <?php _e("Annuler","monobloc") ?>
     </a>
@@ -22,6 +22,17 @@
   &>.btn:not(:first-child)
     margin-left: m()
 
+  &.m-btn__grp-v
+    display: flex
+    flex-direction: column
+    align-items: flex-start
+    
+    &>.btn
+      margin-left: 0
+    
+    &>.btn:not(:first-child)
+      margin-top: m()
+
 
 // Stylse tous les boutons
 
@@ -31,6 +42,7 @@
   height: m(4)
   padding: m() m(3)
   font-size: m(1.25)
+  line-height: m(2)
   font-weight: 600
   cursor: pointer
   white-space: nowrap

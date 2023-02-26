@@ -5,23 +5,24 @@
 
 
 /**
-* Injection du fichier rassemblant toutes les fonctions
-* les plus importantes de Nadine
-*/
+ * Importe le fichier rassemblant toutes les fonctions
+ * les plus importantes de Nadine
+ */
 
-include './core/fonctions.php';
+include_once(__DIR__ . './core/fonctions.php');
 
 ?>
 
 
 <!DOCTYPE html>
 
-<html lang="fr">
+<html lang="fr" class="light__mode">
+
 <head>
   <meta charset="UTF-8">
   <title>Nadine</title>
-  <meta name="description" content="👨‍💻 Premier logiciel open source de compta pour la Maison des Artistes : essayer Nadine, c'est l'adopter. 👍" >
-  <meta name="keywords" content="Comptabilité, Maison des Artistes, MDA, précompte, artistes, gratuit, free, logiciel, facture, devis, open-source" >
+  <meta name="description" content="👨‍💻 Premier logiciel open source de compta pour la Maison des Artistes : essayer Nadine, c'est l'adopter. 👍">
+  <meta name="keywords" content="Comptabilité, Maison des Artistes, MDA, précompte, artistes, gratuit, free, logiciel, facture, devis, open-source">
   <meta name="contact" content="bonjour@nadinecorp.net">
   <meta content="width=device-width, initial-scale = 1.0, maximum-scale=1.0, user-scalable=no" name="viewport">
   <link rel="apple-touch-icon" sizes="57x57" href="./assets/favicon/apple-icon-57x57.png">
@@ -33,7 +34,7 @@ include './core/fonctions.php';
   <link rel="apple-touch-icon" sizes="144x144" href="./assets/favicon/apple-icon-144x144.png">
   <link rel="apple-touch-icon" sizes="152x152" href="./assets/favicon/apple-icon-152x152.png">
   <link rel="apple-touch-icon" sizes="180x180" href="./assets/favicon/apple-icon-180x180.png">
-  <link rel="icon" type="image/png" sizes="192x192"  href="./assets/favicon/android-icon-192x192.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="./assets/favicon/android-icon-192x192.png">
   <link rel="icon" type="image/png" sizes="32x32" href="./assets/favicon/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="96x96" href="./assets/favicon/favicon-96x96.png">
   <link rel="icon" type="image/png" sizes="16x16" href="./assets/favicon/favicon-16x16.png">
@@ -45,7 +46,7 @@ include './core/fonctions.php';
   <link rel="stylesheet" href="https://use.typekit.net/znq5njd.css">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel='stylesheet' type='text/css' media="all" href='./style.min.css'>
-  <link rel="stylesheet" type="text/css" media="print"  href="./assets/sass/print/impression.css">
+  <link rel="stylesheet" type="text/css" media="print" href="./assets/sass/print/impression.css">
   <script src="./assets/js/jquery.min.js"></script>
 </head>
 
@@ -54,14 +55,16 @@ include './core/fonctions.php';
   <header class="l-header">
 
     <?php
-    // La MainBar contient la barre de recherche et les futurs Widgets ?>
+    // La MainBar contient la barre de recherche et les futurs Widgets 
+    ?>
     <div class="l-header__bar l-header__mainbar">
       <div class="l-header__searchbar subheading">
         <input type="text" placeholder="Soon™ : pleins de trucs ici.">
       </div>
     </div>
 
-    <?php // La NavBar permet de naviguer d'une page à l'autre ?>
+    <?php // La NavBar permet de naviguer d'une page à l'autre 
+    ?>
     <div class="l-header__bar l-header__navbar">
 
       <div class="nav__btn">
@@ -143,8 +146,8 @@ include './core/fonctions.php';
 
       <?php
       /**
-      *   Header Bottom
-      */
+       *   Header Bottom
+       */
       // Le header bottom permet d'afficher qq élèments en bas de l'écran
       ?>
 

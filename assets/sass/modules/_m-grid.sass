@@ -33,5 +33,5 @@
   @include respond($breakpoint)
     @for $i from 1 through $nbColonne
       .#{$breakpoint}#{$i}
-        $width: 100% / $nbColonne * $i
+        $width: calc(100% / $nbColonne * $i)
         width: $width

@@ -1,7 +1,7 @@
 <?php
 
 // Ce fichier permet de controler l'affichage d'une facture ou d'un devis
-// dans une listes. Notament sur les pages de chaque article
+// dans une listes. Notament sur les pages de chaque projet
 // ou la page de suivi
 
 ?>
@@ -10,13 +10,15 @@
   <a href="<?php the_facture_link($row) ?>">
     <div class="p-facture__paper">
 
-      <?php // Ajoute le statut ?>
+      <?php // Ajoute le statut 
+      ?>
 
       <div class="p-facture__statut m-body m-ss">
         <?php the_facture_statut($row) ?>
       </div>
 
-      <?php // Ajoute les autres infos ?>
+      <?php // Ajoute les autres infos 
+      ?>
 
       <div class="p-facture__wrapper is--fullsize">
         <div class="p-facture__title m-row">
