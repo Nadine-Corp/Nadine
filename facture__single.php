@@ -37,7 +37,7 @@ if (!isset($projet__id) || !isset($table) || !isset($facture__id)) {
   header('Location: ./projets.php');
   die();
 }
-
++
 
 /**
  * Ajout du Header
@@ -49,12 +49,45 @@ include './header.php';
 <main class="l-facture" role="main">
 
   <?php
-  $args = array(
-    'FROM'     => 'Projets, Diffuseurs',
-    'WHERE'    => 'Projets.projet__id =' . $projet__id,
-    'AND'      => 'Projets.diffuseur__id = Diffuseurs.diffuseur__id'
-  );
+
+  /**
+   * Récupère les infos dans la base de données
+   */
+
+
+  // Vérifie s'il s'agit d'une nouvelle facture
+  if ($facture__id == 'new') {
+    $args = array(
+      'FROM'     => 'Projets, Diffuseurs',
+      'WHERE'    => 'Projets.projet__id =' . $projet__id,
+      'AND'      => 'Projets.diffuseur__id = Diffuseurs.diffuseur__id'
+    );
+  } else {
+    $args = array(
+      'FROM'     => $table . ', Profil',
+      'WHERE'    => $prefix . '__id' . ' = ' . $facture__id,
+      'AND'      => $table . '.profil__id = Profil.profil__id'
+    );
+  }
   $loop = nadine_query($args);
+
+
+  /**
+   * Récupère le numéros de la facture
+   */
+
+
+  $facture__numero = 'coucou';
+
+
+  /**
+   * Récupère les dates
+   */
+
+  // Récupère et formate la date du jour
+  $today = get_date_today();
+  $today = date('d/m/Y', strtotime($today));
+
   ?>
   <?php if ($loop->num_rows > 0) : ?>
     <?php while ($row = $loop->fetch_assoc()) : ?>
@@ -62,14 +95,14 @@ include './header.php';
       <?php // Ajout du formulaire 
       ?>
 
-      <form class="m-form" action="./core/add__projet.php" method="post">
+      <form class="m-form m-row" action="./core/add__projet.php" method="post">
 
         <?php // Ajout du fil d'Ariane 
         ?>
         <section class="m-breadcrumb">
           <a href="./projets.php" class="m-breadcrumb__link m-body">Projets</a>
           <a href="./projet__single.php?projet__id=<?php the_projet_id($row) ?>" class="m-breadcrumb__link m-body"><?php the_projet_name($row) ?></a>
-          <a href="./facture__single.php?facture__id=<?php the_projet_id($row) ?>" class="m-breadcrumb__link m-body"><?php the_projet_name($row) ?></a>
+          <a href="<?php the_facture_link($row) ?>" class="m-breadcrumb__link m-body"><?php the_facture_numero($row) ?></a>
         </section>
 
         <?php
@@ -85,6 +118,7 @@ include './header.php';
               <option value="Brouillon">Brouillon</option>
               <option value="Envoyé">Envoyé</option>
               <option value="Relancé">Relancé</option>
+              <option value="Signé">Signé</option>
               <option value="Payé">Payé</option>
               <option value="Annulé">Annulé</option>
             </select>
@@ -100,20 +134,34 @@ include './header.php';
             <a href="" class="btn btn__outline">
               Dupliquer
             </a>
+            <a href="" class="btn btn__outline">
+              Générer la facture
+            </a>
           </div>
           <div class="m-form__submit-bar m-btn__grp">
             <button class="btn btn__outline btn__ico"><?php include(__DIR__ . '/assets/img/ico_corbeille.svg.php'); ?></button>
-            <button class="btn btn__outline btn__cancel" type="button">Annuler</button>
+            <a href="projet__single.php?projet__id=<?php the_projet_id($row) ?>" class="btn btn__outline btn__cancel">Annuler</a>
             <button class="btn btn__plain btn__submit" type="submit">Enregistrer</button>
           </div>
         </aside>
 
+        <?php
+        /**
+         * Sélection du bon Template de facture
+         */
+
+        ?>
+        <section class="m-rom with--aside">
+          <div class="m-col">
+            <?php include the_facture_template($projet__id, $table, $facture__id); ?>
+          </div>
+        </section>
 
       </form>
     <?php endwhile; ?>
   <?php else : ?>
     <section class="m-rom">
-      <p>Chef, on n'a pas trouvé de projets en cours...</p>
+      <p>Chef, on n'a pas trouvé de facture en cours...</p>
     </section>
   <?php endif; ?>
 

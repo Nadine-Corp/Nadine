@@ -1,10 +1,15 @@
 // main: ../../../style.sass
 
 
-.l_facture
-  margin-top: m(5)
+.l-facture
   .form__input-container
     border: none
+
+  .m-aside
+   width: 33vw
+
+  .with--aside
+    width: calc(100% - 33vw )
 
 .paper
   position: relative
@@ -12,7 +17,7 @@
   margin: 0 auto 50px auto
   padding-top: 1130px
   background: white
-  border-radius: 10px
+  border-radius: m()
   @include box-shadow(100, 'principale', 70)
   page-break-after: always
   page-break-before: always

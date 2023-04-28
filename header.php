@@ -1,6 +1,6 @@
 <?php
 
-// Ce fichier est le premier a être exécuter lors de la construction
+// Ce fichier est le premier a être exécuté lors de la construction
 // des pages. C'est ici que tout commence...
 
 
@@ -16,7 +16,7 @@ include_once(__DIR__ . './core/fonctions.php');
 
 <!DOCTYPE html>
 
-<html lang="fr" class="light__mode">
+<html lang="fr">
 
 <head>
   <meta charset="UTF-8">

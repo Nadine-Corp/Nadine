@@ -38,7 +38,7 @@
               "></p>
           </td>
           <td class="facture__h-100 facture__br facture__w-25">
-            <p class="facture__body">Fait à <?php echo $row["profil__ville"] ?>, le <?php echo utf8_encode(strftime("%d %b %Y", strtotime($today))) ?></p>
+            <p class="facture__body">Fait à <?php echo $row["profil__ville"] ?>, le <?php echo $today ?></p>
             <input type="hidden" name="facture__date" placeholder="date" value="<?php echo $today ?>">
           </td>
 
@@ -204,11 +204,13 @@
       </table>
 
 
+      <?php // Ajout du footer 
+      ?>
+
       <table class="facture__footer facture__b-t">
         <tr>
           <td>
-            <p class="facture__body">Délai de paiement : 7 jours francs dès réception de la facture | Date de réception de la facture : <?php echo strftime("%d/%m/%Y", strtotime($today)) ?> | Date limite de règlement : <?php $date = strtotime("+7 day", strtotime($today));
-                                                                                                                                                                                                                            echo date('d/m/Y', $date); ?></p>
+          <p class="facture__body">Délai de paiement : 7 jours francs dès réception de la facture | Date de réception de la facture : <?php echo $today) ?> | Date limite de règlement : <?php echo strtotime("+7 day", strtotime($today)); ?></p>
             <p class="facture__body">Règlement par virement bancaire : Titulaire du compte : <?php echo $row["profil__titulaire_du_compte"] ?> | IBAN : <?php echo $row["profil__iban"] ?> | BIC : <?php echo $row["profil__bic"] ?></p>
           </td>
         </tr>
@@ -216,6 +218,11 @@
       </table>
     </div>
   </div>
+
+
+  <?php // Ajout des Conditions Générales de Ventes
+  ?>
+
   <div class="paper">
     <div class="paper__content">
       <?php include 'cgv.php'; ?>

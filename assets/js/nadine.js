@@ -6,7 +6,7 @@
 
 
 $(document).ready(function ($) {
-
+	console.log('test');
 	/**
 	* Variables
 	*/
@@ -61,6 +61,7 @@ $(document).ready(function ($) {
 	*/
 
 	$('.m-accordion__titre').click(function () {
+		console.log('click');
 		if ($(this).closest('.m-accordion').hasClass('is--active')) {
 			$(this).closest('.m-accordion').removeClass('is--active');
 		} else {

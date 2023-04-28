@@ -250,7 +250,6 @@ include './header.php';
   <?php endif; ?>
 
 
-
   <?php
   /**
    * Ajout des modals

@@ -231,8 +231,8 @@ function the_projet_date_de_creation($row)
     // Retourne le résultat au template
     echo $date_de_debut;
   } else {
-    // Si
-    // Retourne le résultat au template
+    // Sinon : Récupère, formate et retourne
+    // la date du jour au template
     the_date_today();
   }
 }
@@ -477,7 +477,7 @@ function the_diffuseur_societe($row)
 function get_diffuseur_siret($row)
 {
   if (isset($row)) {
-    // Récupère les infos de l'diffuseur
+    // Récupère les infos du diffuseur
     $diffuseur_siret = $row["diffuseur__siret"];
 
     // Retourne le résultat au template
@@ -494,7 +494,7 @@ function get_diffuseur_civilite($row)
 {
   if (isset($row)) {
     if (!empty($row['diffuseur__civilite'])) {
-      // Récupère les infos de l'artiste
+      // Récupère les infos du diffuseur
       $diffuseur_civilite = $row["diffuseur__civilite"];
 
       // Formate le résultat
@@ -516,11 +516,27 @@ function get_diffuseur_civilite($row)
 function get_diffuseur_nom($row)
 {
   if (isset($row)) {
-    // Récupère les infos de l'artiste
+    // Récupère les infos du diffuseur
     $diffuseur_nom = $row["diffuseur__nom"];
 
     // Formate le résultat
     $diffuseur_nom = ucwords(strtolower($diffuseur_nom));
+
+    // Retourne le résultat au template
+    return $diffuseur_nom;
+  }
+}
+
+
+/**
+ * La fonction the_diffuseur_nom() affiche le nom d'un difffuseur demandé
+ */
+
+function the_diffuseur_nom($row)
+{
+  if (isset($row)) {
+    // Récupère les infos du diffuseur
+    $diffuseur_nom = get_diffuseur_nom($row);
 
     // Retourne le résultat au template
     return $diffuseur_nom;
@@ -535,7 +551,7 @@ function get_diffuseur_nom($row)
 function get_diffuseur_prenom($row)
 {
   if (isset($row)) {
-    // Récupère les infos de l'artiste
+    // Récupère les infos du diffuseur
     $diffuseur_prenom = $row["diffuseur__prenom"];
 
     // Formate le résultat
@@ -1841,7 +1857,7 @@ function the_facture_statut($row)
 
 /**
  * La fonction the_facture_link() permet d'afficher
- * le lien vers la page devis ou  facture
+ * le lien vers la page devis ou facture
  */
 
 function the_facture_link($row)
@@ -1866,6 +1882,76 @@ function the_facture_link($row)
 
 
 /**
+ * La fonction the_facture_template() permet de choisir le bon
+ * template pour afficher les devis ou factures
+ */
+
+function the_facture_template($projet__id, $table, $facture__id)
+{
+  if (isset($projet__id) && isset($table) && isset($facture__id)) {
+
+    // Récupére la bonne table
+    if ($table == 'factures') {
+      $facture__file = 'facture';
+      $prefix = 'facture';
+    } elseif ($table == 'devis') {
+      $facture__file = 'devis';
+      $prefix = 'devis';
+    } else {
+      $facture__file = 'facturesacompte';
+      $prefix = 'facture';
+    }
+
+    // Récupère les infos du Diffuseur
+    if ($facture__id == 'new') {
+      $args = array(
+        'FROM'     => 'Projets, Diffuseurs',
+        'WHERE'    => 'Projets.projet__id =' . $projet__id,
+        'AND'      => 'Projets.diffuseur__id = Diffuseurs.diffuseur__id'
+      );
+    } else {
+      $args = array(
+        'FROM'     => $table,
+        'WHERE'    => $prefix . '__id' . ' = ' . $facture__id,
+      );
+    }
+    $loop = nadine_query($args);
+
+    // Récupère l'ID du Diffuseur
+    // et le Template (si la facture exite déjà)
+    if ($loop->num_rows > 0) {
+
+      $row = $loop->fetch_assoc();
+      $diffuseur__id = $row['diffuseur__id'];
+
+      // Vérifie si le précompte doit être appliqué
+      if ($facture__file != 'devis') {
+        if (check_if_precompte($diffuseur__id)) {
+          $facture__file .= '__precompte';
+        }
+      };
+
+      // Formate le nom du fichier
+      $facture__file = $facture__file . '.php';
+
+      // Récupère le nom du template
+      if (isset($row[$prefix . '__template'])) {
+        $facture__folder = $row[$prefix . '__template'];
+      } else {
+        $facture__folder = 'facture__2023';
+      }
+
+      // Formate le résultat
+      $facture__template = './template_facture/' . $facture__folder . '/' . $facture__file;
+
+      // Retourne le résultat au template
+      return $facture__template;
+    }
+  }
+}
+
+
+/**
  * La fonction the_facture_date() permet d'afficher
  * la date de création du devis ou de la facture
  */
@@ -1876,7 +1962,7 @@ function the_facture_date($row)
     // Récupére la bonne table
     $table = get_facture_table($row);
 
-    // Recupère le numero de facture
+    // Recupère la date
     $facture_date = date_create($row[$table . '__date']);
 
     // Formate la réponse
@@ -1884,6 +1970,46 @@ function the_facture_date($row)
 
     // Retourne le résultat au template
     echo $facture_date;
+  }
+}
+
+
+/**
+ * La fonction the_facture_tache() permet d'afficher
+ * la description de la tâche  dans une facture ou un devis
+ */
+
+function the_facture_tache($row, $numTache = 1)
+{
+  if (isset($row)) {
+    // Récupére la bonne table
+    $table = get_facture_table($row);
+
+    // Recupère la tâche 
+    $facture_tache = $row[$table . '__tache_' . $numTache];
+
+    // Retourne le résultat au template
+    echo $facture_tache;
+  }
+}
+
+
+/**
+ * La fonction the_facture_prix() permet d'afficher
+ * le prix d'une la tâche dans une facture ou un devis
+ */
+
+function the_facture_prix($row, $numTache = 1)
+{
+  if (isset($row)) {
+    // Récupére la bonne table
+    $table = get_facture_table($row);
+
+    // Recupère le prix 
+    $facture_prix = $row[$table . '__prix_' . $numTache];
+
+    // Retourne le résultat au template
+    echo $facture_prix;
   }
 }
 
@@ -1990,11 +2116,11 @@ function get_facture_table($row)
 
 
 /**
- * La fonction the_date_today() permet de connaître
+ * La fonction get_date_today() permet de connaître
  * la date du jour
  */
 
-function the_date_today()
+function get_date_today()
 {
   // Défini le fuseau horaire
   date_default_timezone_set('Europe/Paris');
@@ -2006,7 +2132,22 @@ function the_date_today()
   $dateFormatted  = IntlDateFormatter::formatObject($date, 'Y-MM-dd');
 
   // Retourne le résultat au template
-  echo $dateFormatted;
+  return $dateFormatted;
+}
+
+
+/**
+ * La fonction the_date_today() permet de connaître
+ * la date du jour
+ */
+
+function the_date_today()
+{
+  // Récupère la date du jour
+  $dateToday = get_date_today();
+
+  // Retourne le résultat au template
+  echo $dateToday;
 }
 
 
@@ -2124,7 +2265,7 @@ function get_num_version()
  * ou pas le systeme de précompte
  */
 
-function check_if_precompte($diffuseur__id)
+function check_if_precompte($diffuseur__id = '')
 {
 
   // Vérifie si un Diffuseur ID a été envoyé avec la demande
