@@ -64,14 +64,15 @@
     <td class="facture__w-75 facture__tl facture__subheading" colspan="3">
       <input type="text" name="facture__tache_6" style="text-align:left;" value="<?php the_facture_tache($row, 6) ?>">
     </td>
-    <td class="facture__w-25 facture__tr facture__subheading"><input type="text" name="facture__prix_6" class="facture__subheading form__input-prix" value="<?php the_facture_prix($row, 6) ?>"> €
+    <td class="facture__w-25 facture__tr facture__subheading">
+      <input type="text" name="facture__prix_6" class="facture__subheading form__input-prix" value="<?php the_facture_prix($row, 6) ?>"> €
     </td>
   </tr>
 
 
   <tr>
     <td class="facture__w-75 facture__tl facture__subheading" colspan="3">
-      <input type="text" name="facture__tache_7" style="text-align:left;" value=<?php the_facture_tache($row, 7) ?>">
+      <input type="text" name="facture__tache_7" style="text-align:left;" value="<?php the_facture_tache($row, 7) ?>">
     </td>
     <td class="facture__w-25 facture__tr facture__subheading">
       <input type="text" name="facture__prix_7" class="facture__subheading form__input-prix" value="<?php the_facture_prix($row, 7) ?>"> €

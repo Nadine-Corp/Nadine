@@ -67,7 +67,7 @@ foreach ($tables as $table_name => $columns) {
     // Envoie la requête demandée à la base de données
     $result = $conn->query($sql) or die($conn->error);
   } else {
-    // Ajoute une variable
+    // Ajoute qq variables
     $prev_column_name = '';
     // Vérifie chaque colonne
     foreach ($columns as $column_name => $column_info) {
@@ -80,8 +80,14 @@ foreach ($tables as $table_name => $columns) {
       if ($result->num_rows == 0) {
 
         // Formate la requête SQL
-        $sql = "ALTER TABLE $table_name ADD COLUMN $column_name $column_format AFTER $prev_column_name";
+        if (!$prev_column_name == '') {
+          $sql = "ALTER TABLE $table_name ADD COLUMN $column_name $column_format AFTER $prev_column_name";
+        } else {
+          // Gère la requête SQL si la colonne manquante est la première
+          $sql = "ALTER TABLE $table_name ADD COLUMN $column_name $column_format";
+        };
 
+        echo $sql;
         // Envoie la requête demandée à la base de données
         $result = $conn->query($sql) or die($conn->error);
       } else {
@@ -92,8 +98,8 @@ foreach ($tables as $table_name => $columns) {
           // Envoie la requête demandée à la base de données
           $result = $conn->query($sql) or die($conn->error);
         };
-        $prev_column_name = $column_name;
       }
+      $prev_column_name = $column_name;
     }
   }
 }

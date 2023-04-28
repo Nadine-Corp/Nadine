@@ -210,7 +210,7 @@
       <table class="facture__footer facture__b-t">
         <tr>
           <td>
-          <p class="facture__body">Délai de paiement : 7 jours francs dès réception de la facture | Date de réception de la facture : <?php echo $today) ?> | Date limite de règlement : <?php echo strtotime("+7 day", strtotime($today)); ?></p>
+            <p class="facture__body">Délai de paiement : 7 jours francs dès réception de la facture | Date de réception de la facture : <?php echo $today; ?> | Date limite de règlement : <?php echo strtotime("+7 day", strtotime($today)); ?></p>
             <p class="facture__body">Règlement par virement bancaire : Titulaire du compte : <?php echo $row["profil__titulaire_du_compte"] ?> | IBAN : <?php echo $row["profil__iban"] ?> | BIC : <?php echo $row["profil__bic"] ?></p>
           </td>
         </tr>

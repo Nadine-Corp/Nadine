@@ -9,7 +9,8 @@
  * Ajout du Header
  */
 
-include './header.php';
+
+include(__DIR__ . '/header.php');
 ?>
 
 <main class="l-projets" role="main">

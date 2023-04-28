@@ -9,10 +9,9 @@
  * les plus importantes de Nadine
  */
 
-include_once(__DIR__ . './core/fonctions.php');
+include_once(__DIR__ . '/core/fonctions.php');
 
 ?>
-
 
 <!DOCTYPE html>
 

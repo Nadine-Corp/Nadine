@@ -10,7 +10,7 @@
  *  Importe les paramètres
  */
 
-include_once(__DIR__ .  './core/query.php');
+require(__DIR__ .  '/core/query.php');
 
 
 /**
@@ -40,7 +40,8 @@ $result = $conn->query($sql) or die($conn->error);
 $table_exists = mysqli_num_rows($result);
 
 if ($table_exists) {
-  include './projets.php';
+  require(__DIR__ .  '/core/database/db__check.php');
+  include(__DIR__ .  '/projets.php');
 } else {
-  include './core/init__tuto.php';
+  include(__DIR__ .  '/core/init__tuto.php');
 };
