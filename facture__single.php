@@ -77,17 +77,6 @@ include './header.php';
    */
 
 
-  $facture__numero = 'coucou';
-
-
-  /**
-   * Récupère les dates
-   */
-
-  // Récupère et formate la date du jour
-  $today = get_date_today();
-  $today = date('d/m/Y', strtotime($today));
-
   ?>
   <?php if ($loop->num_rows > 0) : ?>
     <?php while ($row = $loop->fetch_assoc()) : ?>

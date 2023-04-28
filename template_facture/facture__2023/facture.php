@@ -34,12 +34,12 @@
         </tr>
         <tr>
           <td class="facture__h-100 facture__bl facture__w-25">
-            <p class="facture__body">Facture n°<input type="text" name="facture__numero" placeholder="Numéro de facture" class="facture__body" style="text-align:left;" value="<?php echo $facture__numero ?>
+            <p class="facture__body">Facture n°<input type="text" name="facture__numero" placeholder="Numéro de facture" class="facture__body" style="text-align:left;" value="<?php the_facture_numero($row); ?>
               "></p>
           </td>
           <td class="facture__h-100 facture__br facture__w-25">
-            <p class="facture__body">Fait à <?php echo $row["profil__ville"] ?>, le <?php echo $today ?></p>
-            <input type="hidden" name="facture__date" placeholder="date" value="<?php echo $today ?>">
+            <p class="facture__body">Fait à <?php echo $row["profil__ville"] ?>, le <?php the_facture_date($row, 'full'); ?></p>
+            <input type="hidden" name="facture__date" placeholder="date" value="<?php the_facture_date($row, 'brut'); ?>">
           </td>
 
         </tr>

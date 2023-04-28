@@ -13,33 +13,33 @@
           <td class="facture__b-l facture__h-80 facture__tl" colspan="2">
             <p class="facture__body"><?php echo $row["profil__societe"] ?><br><?php echo $row["profil__adresse"] ?> | <?php echo $row["profil__code_postal"] ?> <?php echo $row["profil__ville"] ?><br><?php echo $row["profil__email"] ?><br><?php echo $row["profil__telephone"] ?></p>
           </td>
-          </tr>
-          <tr>
+        </tr>
+        <tr>
           <td class="facture__b-l facture__h-20 facture__bl">
             <p class="facture__body">SIRET : <?php echo $row["profil__siret"] ?></p>
           </td>
           <td class="facture__h-20 facture__br">
             <p class="facture__body">N° Secu : <?php echo $row["profil__numero_secu"] ?></p>
           </td>
-          </tr>
+        </tr>
         <tr>
           <td colspan="2"></td>
           <td class="facture__b-t facture__b-l facture__h-100 facture__tl" colspan="2" rowspan="2">
             <p class="facture__body">
               <?php echo $row["diffuseur__societe"] ?><br>
-              Adressée à  <?php echo $row["diffuseur__civilite"] ?> <?php echo $row["diffuseur__prenom"] ?> <?php echo $row["diffuseur__nom"] ?><br>
+              Adressée à <?php echo $row["diffuseur__civilite"] ?> <?php echo $row["diffuseur__prenom"] ?> <?php echo $row["diffuseur__nom"] ?><br>
               <?php echo $row["diffuseur__adresse"] ?> <br> <?php echo $row["diffuseur__code_postal"] ?> <?php echo $row["diffuseur__ville"] ?><br>
             </p>
           </td>
         </tr>
         <tr>
           <td class="facture__h-100 facture__bl facture__w-25">
-            <p class="facture__body">Devis n°<input type="text" name="facture__numero" placeholder="Numéro de facture" class="facture__body" style="text-align:left;" value="<?php echo $facture__numero ?>
+            <p class="facture__body">Devis n°<input type="text" name="facture__numero" placeholder="Numéro de facture" class="facture__body" style="text-align:left;" value="<?php the_facture_numero($row); ?>
         "></p>
           </td>
           <td class="facture__h-100 facture__br facture__w-25">
-            <p class="facture__body">Fait à <?php echo $row["profil__ville"] ?>, le <?php echo utf8_encode(strftime("%d %b %Y", strtotime($today))) ?></p>
-            <input type="hidden" name="facture__date" placeholder="date" value="<?php echo $today ?>">
+            <p class="facture__body">Fait à <?php echo $row["profil__ville"] ?>, le <?php the_facture_date($row, 'full'); ?></p>
+            <input type="hidden" name="facture__date" placeholder="date" value="<?php the_facture_date($row, 'brut'); ?>">
           </td>
 
         </tr>
@@ -84,7 +84,7 @@
         </tr>
         <tr class="facture__h-20">
           <td class="facture__w-50"></td>
-          <td class=""  colspan="2">
+          <td class="" colspan="2">
             <span class="facture__body">TVA non applicable, article 293B du Code Général des Impôts</span>
           </td>
         </tr>

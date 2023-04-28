@@ -1956,7 +1956,7 @@ function the_facture_template($projet__id, $table, $facture__id)
  * la date de création du devis ou de la facture
  */
 
-function the_facture_date($row)
+function the_facture_date($row, $format = 'abrv')
 {
   if (isset($row)) {
     // Récupére la bonne table
@@ -1966,10 +1966,14 @@ function the_facture_date($row)
     $facture_date = date_create($row[$table . '__date']);
 
     // Formate la réponse
-    $facture_date = nadine_date($facture_date);
+    $facture_date = nadine_date($facture_date, $format);
 
     // Retourne le résultat au template
     echo $facture_date;
+  } else {
+    // Sinon : Récupère, formate et retourne
+    // la date du jour au template
+    the_date_today();
   }
 }
 
@@ -2156,15 +2160,32 @@ function the_date_today()
  * l'affichage des dates de Nadine
  */
 
-function nadine_date($date)
+function nadine_date($date, $format = 'abrv')
 {
   if (isset($date)) {
     // Défini le fuseau horaire
     date_default_timezone_set('Europe/Paris');
 
-    // Formate la date «À la française»
-    $dateFormatted = IntlDateFormatter::formatObject($date, 'LLL Y');
-    $dateFormatted = ucwords($dateFormatted);
+    // Formate la date en abrv
+    // Exemple : Sept. 2021
+    if ($format == 'abrv') {
+      $dateFormatted = IntlDateFormatter::formatObject($date, 'LLL Y');
+      $dateFormatted = ucwords($dateFormatted);
+    }
+
+    // Formate la date en full
+    // Exemple : Sam. 18 Sept. 2021
+    if ($format == 'full') {
+      $dateFormatted = IntlDateFormatter::formatObject($date, 'eee dd LLL Y');
+      $dateFormatted = ucwords($dateFormatted);
+    }
+
+    // Formate la date en brut
+    // Exemple : 2021-09-18
+    if ($format == 'brut') {
+      $dateFormatted = IntlDateFormatter::formatObject($date, 'Y-LL-dd');
+      $dateFormatted = ucwords($dateFormatted);
+    }
 
     // Retourne le résultat au template
     return $dateFormatted;
