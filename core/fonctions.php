@@ -2421,12 +2421,219 @@ function get_profil_id($row)
 function the_profil_id($row)
 {
   if (isset($row)) {
-
     // Récupère les infos du profil
     $profil__id = get_profil_id($row);
 
     // Retourne le résultat au template
     echo $profil__id;
+  }
+}
+
+
+/**
+ * La fonction the_profil_societe() affiche
+ * le nom de société de l'utilisateur
+ */
+
+function the_profil_societe($row)
+{
+  if (isset($row)) {
+    // Récupère les infos du profil
+    $profil__societe = $row['profil__societe'];
+
+    // Retourne le résultat au template
+    echo $profil__societe;
+  }
+}
+
+
+/**
+ * La fonction the_profil_siret() affiche
+ * le nom de société de l'utilisateur
+ */
+
+function the_profil_siret($row)
+{
+  if (isset($row)) {
+    // Récupère les infos du profil
+    $profil__siret = $row['profil__siret'];
+
+    // Retourne le résultat au template
+    echo $profil__siret;
+  }
+}
+
+
+/**
+ * La fonction the_profil_prenom() affiche
+ * le prénom de l'utilisateur
+ */
+
+function the_profil_prenom($row)
+{
+  if (isset($row)) {
+    // Récupère les infos du profil
+    $profil__prenom = $row['profil__prenom'];
+
+    // Retourne le résultat au template
+    echo $profil__prenom;
+  }
+}
+
+
+/**
+ * La fonction the_profil_nom() affiche
+ * le prénom de l'utilisateur
+ */
+
+function the_profil_nom($row)
+{
+  if (isset($row)) {
+    // Récupère les infos du profil
+    $profil__nom = $row['profil__nom'];
+
+    // Retourne le résultat au template
+    echo $profil__nom;
+  }
+}
+
+
+/**
+ * La fonction the_profil_adresse() affiche
+ * l'adresse de l'utilisateur
+ */
+
+function the_profil_adresse($row)
+{
+  if (isset($row)) {
+    // Récupère les infos du profil
+    $profil__adresse = $row['profil__adresse'];
+
+    // Retourne le résultat au template
+    echo $profil__adresse;
+  }
+}
+
+
+/**
+ * La fonction the_profil_code_postal() affiche
+ * le code postal de l'utilisateur
+ */
+
+function the_profil_code_postal($row)
+{
+  if (isset($row)) {
+    // Récupère les infos du profil
+    $profil__code_postal = $row['profil__code_postal'];
+
+    // Formate le résultat
+    $profil__code_postal = str_replace(' ', '', $profil__code_postal);
+
+    // Retourne le résultat au template
+    echo $profil__code_postal;
+  }
+}
+
+
+/**
+ * La fonction the_profil_ville() affiche
+ * la ville de l'utilisateur
+ */
+
+function the_profil_ville($row)
+{
+  if (isset($row)) {
+    // Récupère les infos du profil
+    $profil__ville = $row['profil__ville'];
+
+    // Retourne le résultat au template
+    echo $profil__ville;
+  }
+}
+
+
+/**
+ * La fonction the_profil_pays() affiche
+ * le pays de l'utilisateur
+ */
+
+function the_profil_pays($row)
+{
+  if (isset($row)) {
+    if (!empty($row['profil__pays'])) {
+      $profil__pays = $row['profil__pays'];
+
+      // Formate le résultat
+      $profil__pays = ucwords(strtolower($profil__pays));
+
+      // Retourne le résultat au template
+      echo $profil__pays;
+    }
+  }
+}
+
+
+/**
+ * La fonction the_profil_telephone() affiche
+ * le numéros de téléphone de l'utilisateur
+ */
+
+function the_profil_telephone($row)
+{
+  if (isset($row)) {
+    if (!empty($row['profil__telephone'])) {
+      // Récupère les infos du profil
+      $profil__telephone = $row['profil__telephone'];
+
+      // Reset le format du numero de téléphone
+      $phone_formated = $profil__telephone;
+      $phone_formated = str_replace(' ', '', $phone_formated);
+      $phone_formated = str_replace('.', '', $phone_formated);
+
+      // Formate le titre du numero de téléphone
+      $phone_title = chunk_split($phone_formated, 2, " ");
+
+      // Retourne le résultat au template
+      echo $phone_title;
+    }
+  }
+}
+
+
+/**
+ * La fonction the_profil_email() affiche
+ * le courriel de l'utilisateur
+ */
+
+function the_profil_email($row)
+{
+  if (isset($row)) {
+    if (!empty($row['profil__email'])) {
+      // Récupère les infos du diffuseur
+      $profil__email = $row['profil__email'];
+
+      // Retourne le résultat au template
+      echo $profil__email;
+    }
+  }
+}
+
+
+/**
+ * La fonction the_profil_website() affiche
+ * le site internet de l'utilisateur
+ */
+
+function the_profil_website($row)
+{
+  if (isset($row)) {
+    if (!empty($row['profil__website'])) {
+      // Récupère les infos du diffuseur
+      $profil__website = $row['profil__website'];
+
+      // Retourne le résultat au template
+      echo $profil__website;
+    }
   }
 }
 

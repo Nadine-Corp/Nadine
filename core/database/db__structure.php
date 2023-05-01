@@ -231,6 +231,7 @@ $tables = array(
     'profil__adresse' => array('type' => 'VARCHAR(255)', 'collate' => $interclassement, 'default' => 'NULL'),
     'profil__code_postal' => array('type' => 'VARCHAR(255)', 'collate' => $interclassement, 'default' => 'NULL'),
     'profil__ville' => array('type' => 'VARCHAR(255)', 'collate' => $interclassement, 'default' => 'NULL'),
+    'profil__pays' => array('type' => 'VARCHAR(255)', 'collate' => $interclassement, 'default' => 'NULL'),
     'profil__telephone' => array('type' => 'VARCHAR(255)', 'collate' => $interclassement, 'default' => 'NULL'),
     'profil__email' => array('type' => 'VARCHAR(255)', 'collate' => $interclassement, 'default' => 'NULL'),
     'profil__website' => array('type' => 'VARCHAR(255)', 'collate' => $interclassement, 'default' => 'NULL'),

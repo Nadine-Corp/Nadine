@@ -9,7 +9,6 @@
  * Ajout du Header
  */
 
-
 include(__DIR__ . '/header.php');
 ?>
 

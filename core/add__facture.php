@@ -1,7 +1,7 @@
 <?php
 
 // Ce fichier est permet de modifier ou ajouter
-// un nouveau devis ou facture dans la base de données.
+// de nouveaux devis ou factures dans la base de données.
 
 
 
