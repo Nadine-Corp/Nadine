@@ -24,7 +24,7 @@ $data['artiste__id'] = array();
  */
 
 foreach ($_POST as $key => $value) {
-  // Vérifie que l'input a été complété
+  // Vérifie si l'input a été complété
   if (isset($$key)) continue;
   // Rassemble les artistes dans un même sous-array
   if (str_contains($key, 'artiste')) {

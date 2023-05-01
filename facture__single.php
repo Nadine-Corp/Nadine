@@ -15,12 +15,15 @@ if (isset($_GET['projet__id'])) {
 }
 
 // Récupère la bonne table
-if (isset($_GET['facture__id'])) {
-  $table = 'factures';
-  $prefix = 'facture';
-} elseif (isset($_GET['devis__id'])) {
+if (isset($_GET['devis__id'])) {
   $table = 'devis';
   $prefix = 'devis';
+} elseif (isset($_GET['facturea__id'])) {
+  $table = 'facturesacompte';
+  $prefix = 'facturea';
+} elseif (isset($_GET['facture__id'])) {
+  $table = 'factures';
+  $prefix = 'facture';
 }
 
 // Récupère l'id de la facture ou devis
@@ -37,7 +40,7 @@ if (!isset($projet__id) || !isset($table) || !isset($facture__id)) {
   header('Location: ./projets.php');
   die();
 }
-+
+
 
 /**
  * Ajout du Header
@@ -104,9 +107,9 @@ include './header.php';
         ?>
 
         <aside class="m-aside">
-          <div class="m-form__label m-form__select-tab not--for--new--projet">
-            <label for="projet__statut">État de la facture</label>
-            <select name="projet__statut" data-selected="">
+          <div class="m-form__label m-form__select-tab">
+            <label for="facture__statut">État de la facture</label>
+            <select name="facture__statut" data-selected="">
               <option value="Brouillon">Brouillon</option>
               <option value="Envoyé">Envoyé</option>
               <option value="Relancé">Relancé</option>
@@ -146,14 +149,18 @@ include './header.php';
         <section class="m-rom with--aside">
           <div class="m-col">
 
-            <?php // Ajoute des champs caché pour simplifier 
-            // l'ajout et modification de facture ou devis
-            // dans la base de données
+            <?php
+            // Ajoute des champs caché pour simplifier l'ajout
+            // et la modification des factures ou devis dans la base de données
+
             ?>
 
-            <input type="hidden" name="projet__id" placeholder="projet__id" value="<?php the_projet_id($row) ?>">
-            <input type="hidden" name="profil__id" placeholder="projet__id" value="<?php the_profil_id($row) ?>">
+            <input type="hidden" name="facture__id" placeholder="facture__id" value="<?php the_facture_id($row) ?>">
+            <input type="hidden" name="facture__table" placeholder="facture__table" value="<?php echo get_facture_table($row, $table) ?>">
             <input type="hidden" name="facture__template" placeholder="facture__template" value="<?php the_facture_template($row, $table) ?>">
+            <input type="hidden" name="facture__prefix" placeholder="facture__prefix" value="<?php the_facture_prefix($table) ?>">
+            <input type="hidden" name="facture__date" placeholder="date" value="<?php the_facture_date($row, 'brut'); ?>">
+            <input type="hidden" name="facture__numero" placeholder="facture__numero" value="<?php the_facture_numero($row, $table) ?>">
             <input type="hidden" name="projet__nom" placeholder="projet__nom" value="<?php echo $row["projet__nom"] ?>">
             <input type="hidden" name="projet__numero" placeholder="projet__numero" value="<?php echo $row["projet__numero"] ?>">
             <input type="hidden" name="diffuseur__id" placeholder="__id" value="<?php echo $row["diffuseur__id"] ?>">
@@ -169,6 +176,8 @@ include './header.php';
             <input type="hidden" name="diffuseur__email" placeholder="__email" value="<?php echo $row["diffuseur__email"] ?>">
             <input type="hidden" name="diffuseur__website" placeholder="__website" value="<?php echo $row["diffuseur__website"] ?>">
             <input type="hidden" name="facture__total" placeholder="Total" class="facture__subheading">
+            <input type="hidden" name="projet__id" placeholder="projet__id" value="<?php the_projet_id($row) ?>">
+            <input type="hidden" name="profil__id" placeholder="projet__id" value="<?php the_profil_id($row) ?>">
 
             <?php
             // Affiche le Template de facture ou devis

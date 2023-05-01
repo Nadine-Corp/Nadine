@@ -1793,6 +1793,33 @@ function the_contact_type($row)
 
 
 /**
+ * La fonction the_facture_id() permet d'afficher
+ * l'ID d'une facture ou devis
+ */
+
+function the_facture_id($row)
+{
+  if (isset($row)) {
+    // Récupére la bonne table
+    $table = get_facture_table($row);
+
+    // Récupére le bon prefix
+    $prefix = get_facture_prefix($table);
+
+    // Récupére l'ID de la facture ou du devis
+    if (isset($row[$prefix . '__id'])) {
+      $facture__id = $row[$prefix . '__id'];
+    } else {
+      $facture__id = 'new';
+    }
+
+    // Retourne le résultat au template
+    echo $facture__id;
+  }
+}
+
+
+/**
  * La fonction get_facture_new_numero() permet de créer
  * un nouveau numero de devis ou de facture
  */
@@ -1821,13 +1848,13 @@ function get_facture_new_numero($table)
 
     // Récupére le bon acronyme
     if ($table == 'devis') {
-      $acronyme = 'DMD';
+      $initiales = 'DMD';
     };
     if ($table == 'facturesacompte') {
-      $acronyme = 'AMD';
+      $initiales = 'AMD';
     };
     if ($table == 'factures') {
-      $acronyme = 'FMD';
+      $initiales = 'FMD';
     };
 
     // Récupére l'année en cours
@@ -1835,7 +1862,7 @@ function get_facture_new_numero($table)
 
     // Formate le résultat
     $facture_new_numero = $facture__id + 1;
-    $facture_new_numero = $acronyme . '.' . $year . '.' . $facture_new_numero;
+    $facture_new_numero = $initiales . '.' . $year . '.' . $facture_new_numero;
 
     // Retourne le résultat au template
     return $facture_new_numero;
@@ -1852,9 +1879,7 @@ function get_facture_numero($row, $table = '')
 {
   if (isset($row)) {
     // Récupére la bonne table
-    if ($table == '') {
-      $table = get_facture_table($row);
-    }
+    $table = get_facture_table($row, $table);
 
     // Récupére le bon prefix
     $prefix = get_facture_prefix($table);
@@ -1862,6 +1887,8 @@ function get_facture_numero($row, $table = '')
     // Vérifie si le numero de facture existe
     if (isset($row[$prefix . '__numero'])) {
       $facture_numero = $row[$prefix . '__numero'];
+      // Formate le résultat
+      $facture_numero = str_replace(' ', '', $facture_numero);
     } else {
       $facture_numero = get_facture_new_numero($table);
     };
@@ -1900,11 +1927,14 @@ function the_facture_class($row)
     // Récupére la bonne table
     $table = get_facture_table($row);
 
+    // Récupére le bon prefix
+    $prefix = get_facture_prefix($table);
+
     // Ajoute l'id comme class
-    $class = 'p-facture__' . $row[$table . '__id'] . ' ';
+    $class = 'p-facture__' . $row[$prefix . '__id'] . ' ';
 
     // Recupère le statut de facture
-    $facture_statut = $row[$table . '__statut'];
+    $facture_statut = $row[$prefix . '__statut'];
     $class .= sanitize('p-facture__' . $facture_statut);
 
     // Retourne le résultat au template
@@ -1924,8 +1954,11 @@ function the_facture_statut($row)
     // Récupére la bonne table
     $table = get_facture_table($row);
 
+    // Récupére le bon prefix
+    $prefix = get_facture_prefix($table);
+
     // Recupère le statut de facture
-    $facture_statut = $row[$table . '__statut'];
+    $facture_statut = $row[$prefix . '__statut'];
 
     // Retourne le résultat au template
     echo $facture_statut;
@@ -1944,17 +1977,20 @@ function the_facture_link($row)
     // Récupére la bonne table
     $table = get_facture_table($row);
 
+    // Récupére le bon prefix
+    $prefix = get_facture_prefix($table);
+
     // Vérifie si la facture a déjà un numéros
     // ou s'il s'agit d'une nouvelle facture
-    if (isset($row[$table . '__id'])) {
+    if (isset($row[$prefix . '__id'])) {
       // Recupère le numero de facture
-      $facture__id = $row[$table . '__id'];
+      $facture__id = $row[$prefix . '__id'];
 
       // Recupère le numero de facture
       $projet__id = $row['projet__id'];
 
       // Formate le résultat
-      $facture__link = './facture__single.php?projet__id=' . $projet__id . '&' . $table . '__id=' . $facture__id;
+      $facture__link = './facture__single.php?projet__id=' . $projet__id . '&' . $prefix . '__id=' . $facture__id;
 
       // Retourne le résultat au template
       echo $facture__link;
@@ -2081,10 +2117,14 @@ function get_facture_date($row, $format = 'abrv')
     // Récupére la bonne table
     $table = get_facture_table($row);
 
+    // Récupére le bon prefix
+    $prefix = get_facture_prefix($table);
+
+
     // Vérifie si la date existe
-    if (isset($row[$table . '__date'])) {
+    if (isset($row[$prefix . '__date'])) {
       // Recupère la date
-      $facture_date = date_create($row[$table . '__date']);
+      $facture_date = date_create($row[$prefix . '__date']);
 
       // Formate la réponse
       $facture_date = nadine_date($facture_date, $format);
@@ -2128,10 +2168,13 @@ function the_facture_tache($row, $numTache = 1)
     // Récupére la bonne table
     $table = get_facture_table($row);
 
+    // Récupére le bon prefix
+    $prefix = get_facture_prefix($table);
+
     // Vérifie si la tache existe
-    if (isset($row[$table . '__tache_' . $numTache])) {
+    if (isset($row[$prefix . '__tache_' . $numTache])) {
       // Recupère la tâche 
-      $facture_tache = $row[$table . '__tache_' . $numTache];
+      $facture_tache = $row[$prefix . '__tache_' . $numTache];
 
       // Retourne le résultat au template
       echo $facture_tache;
@@ -2151,10 +2194,13 @@ function the_facture_prix($row, $numTache = 1)
     // Récupére la bonne table
     $table = get_facture_table($row);
 
+    // Récupére le bon prefix
+    $prefix = get_facture_prefix($table);
+
     // Vérifie si le prix existe
-    if (isset($row[$table . '__prix_' . $numTache])) {
+    if (isset($row[$prefix . '__prix_' . $numTache])) {
       // Recupère le prix 
-      $facture_prix = $row[$table . '__prix_' . $numTache];
+      $facture_prix = $row[$prefix . '__prix_' . $numTache];
 
       // Retourne le résultat au template
       echo $facture_prix;
@@ -2174,8 +2220,11 @@ function the_facture_total_auteur($row)
     // Récupére la bonne table
     $table = get_facture_table($row);
 
+    // Récupére le bon prefix
+    $prefix = get_facture_prefix($table);
+
     // Recupère le total de facture
-    $facture_total = $row[$table . '__total'];
+    $facture_total = $row[$prefix  . '__total'];
 
     // Formate le résultat
     $facture_total = nadine_prix($facture_total);
@@ -2197,12 +2246,15 @@ function the_facture_total_ht($row)
     // Récupére la bonne table
     $table = get_facture_table($row);
 
+    // Récupére le bon prefix
+    $prefix = get_facture_prefix($table);
+
     // Ajoute une variable pour calculer le total
     $facture_total_ht = 0;
 
     // Recupère le prix de chaque de tâche de la facture
     for ($i = 1; $i <= 7; $i++) {
-      $prix = $row[$table . '__prix_' . $i];
+      $prix = $row[$prefix  . '__prix_' . $i];
       $prix = floatval($prix);
       $facture_total_ht += $prix;
     }
@@ -2217,6 +2269,37 @@ function the_facture_total_ht($row)
 
 
 /**
+ * La fonction get_facture_table() permet de savoir si le template
+ * doit afficher les infos d'un devis ou d'une facture
+ */
+
+function get_facture_table($row, $table = '')
+{
+  if (isset($row)) {
+    // Récupére la bonne table
+    if ($table != '') {
+      // Retourne le résultat au template
+      return $table;
+    }
+
+    // Récupére la bonne table
+    if (!empty($row['devis__numero'])) {
+      $table = 'devis';
+    };
+    if (!empty($row['facture__numero'])) {
+      $table = 'factures';
+    };
+    if (!empty($row['facturea__numero'])) {
+      $table = 'facturesacompte';
+    };
+
+    // Retourne le résultat au template
+    return $table;
+  }
+}
+
+
+/**
  * La fonction the_facture_table() d'afficher si le template
  * doit afficher les infos d'un devis ou d'une facture
  */
@@ -2226,44 +2309,16 @@ function the_facture_table($row)
   if (isset($row)) {
     if (!empty($row['devis__numero'])) {
       $table = 'Devis';
-    } else {
-      if (!empty($row['facture__numero'])) {
-        $table = 'Facture';
-      } else {
-        $table = "Facture d'acompte";
-      }
+    };
+    if (!empty($row['facture__numero'])) {
+      $table = 'Facture';
+    };
+    if (!empty($row['facturea__numero'])) {
+      $table = "Facture d'acompte";
     };
 
     // Retourne le résultat au template
     echo $table;
-  }
-}
-
-
-/**
- * La fonction get_facture_table() permet de savoir si le template
- * doit afficher les infos d'un devis ou d'une facture
- */
-
-function get_facture_table($row)
-{
-  if (isset($row)) {
-    // Déclare une variable
-    $table = '';
-
-    // Récupére la bonne table
-    if (!empty($row['devis__numero'])) {
-      $table = 'devis';
-    };
-    if (!empty($row['facture__numero'])) {
-      $table = 'facture';
-    };
-    if (!empty($row['facturea__numero'])) {
-      $table = 'facturesacompte';
-    };
-
-    // Retourne le résultat au template
-    return $table;
   }
 }
 
@@ -2283,11 +2338,28 @@ function get_facture_prefix($table)
     } elseif ($table == 'devis') {
       $prefix = 'devis';
     } else {
-      $prefix = 'facture';
+      $prefix = 'facturea';
     }
 
     // Retourne le résultat au template
     return $prefix;
+  }
+}
+
+
+/**
+ * La fonction the_facture_prefix() permet d'afficher si les requêtes
+ * doivent être prefixé pour un devis ou une facture
+ */
+
+function the_facture_prefix($table)
+{
+  if (isset($table)) {
+    // Récupére le bon prefix
+    $prefix = get_facture_prefix($table);
+
+    // Retourne le résultat au template
+    echo $prefix;
   }
 }
 
@@ -2637,4 +2709,25 @@ function db__format_column($column_info)
     // Retourne le résultat au template
     return $column_format;
   }
+}
+
+
+/**
+ * La fonction db__replace_prefix() permet de formater
+ * les data avant des rêquetes SQL
+ */
+
+function db__replace_prefix($data, $prefix, $prefix_new)
+{
+  // Formate le résultat
+  foreach ($data as $key => $value) {
+    if (strpos($key, $prefix) === 0) {
+      $new_key = str_replace($prefix, $prefix_new, $key);
+      $data[$new_key] = $value;
+      unset($data[$key]);
+    }
+  }
+
+  // Retourne le résultat au template
+  return $data;
 }
