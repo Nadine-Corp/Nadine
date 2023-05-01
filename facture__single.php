@@ -58,15 +58,18 @@ include './header.php';
   // Vérifie s'il s'agit d'une nouvelle facture
   if ($facture__id == 'new') {
     $args = array(
-      'FROM'     => 'Projets, Diffuseurs',
+      'FROM'     => 'Projets, Diffuseurs, Profil',
       'WHERE'    => 'Projets.projet__id =' . $projet__id,
-      'AND'      => 'Projets.diffuseur__id = Diffuseurs.diffuseur__id'
+      'AND'      => 'Projets.diffuseur__id = Diffuseurs.diffuseur__id',
+      'AND'      => 'Profil.profil__id = (SELECT MAX(profil__id) FROM Profil)',
+      'LIMIT'    => 1
     );
   } else {
     $args = array(
       'FROM'     => $table . ', Profil',
       'WHERE'    => $prefix . '__id' . ' = ' . $facture__id,
-      'AND'      => $table . '.profil__id = Profil.profil__id'
+      'AND'      => $table . '.profil__id = Profil.profil__id',
+      'LIMIT'    => 1
     );
   }
   $loop = nadine_query($args);
@@ -91,7 +94,7 @@ include './header.php';
         <section class="m-breadcrumb">
           <a href="./projets.php" class="m-breadcrumb__link m-body">Projets</a>
           <a href="./projet__single.php?projet__id=<?php the_projet_id($row) ?>" class="m-breadcrumb__link m-body"><?php the_projet_name($row) ?></a>
-          <a href="<?php the_facture_link($row) ?>" class="m-breadcrumb__link m-body"><?php the_facture_numero($row) ?></a>
+          <a href="<?php the_facture_link($row) ?>" class="m-breadcrumb__link m-body"><?php the_facture_numero($row, $table) ?></a>
         </section>
 
         <?php
@@ -142,7 +145,7 @@ include './header.php';
         ?>
         <section class="m-rom with--aside">
           <div class="m-col">
-            <?php include the_facture_template($projet__id, $table, $facture__id); ?>
+            <?php include(__DIR__ . the_facture_template($projet__id, $table, $facture__id)); ?>
           </div>
         </section>
 

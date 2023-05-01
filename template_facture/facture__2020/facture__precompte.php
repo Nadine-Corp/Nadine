@@ -180,13 +180,17 @@
       </table>
 
       <?php // Ajout du footer 
+
+      $the_facture_date = get_facture_date($row, 'brutfr');
+      $date_limite = get_facture_date($row, 'brut');
+      $date_limite = strtotime("+7 days", strtotime($date_limite));
+      $date_limite = date('d/m/Y', $date_limite);
       ?>
 
       <table class="facture__footer facture__b-t">
         <tr>
           <td>
-            <p class="facture__body">Délai de paiement : 7 jours francs dès réception de la facture | Date de réception de la facture : <?php echo strftime("%d/%m/%Y", strtotime($today)) ?> | Date limite de règlement : <?php $date = strtotime("+7 day", strtotime($today));
-                                                                                                                                                                                                                            echo date('dm/Y', $date); ?></p>
+            <p class="facture__body">Délai de paiement : 7 jours francs dès réception de la facture | Date de réception de la facture : <?php echo $the_facture_date; ?> | Date limite de règlement : <?php echo $date_limite; ?> </p>
             <p class="facture__body">Règlement par virement bancaire : Titulaire du compte : <?php echo $row["profil__titulaire_du_compte"] ?> | IBAN : <?php echo $row["profil__iban"] ?> | BIC : <?php echo $row["profil__bic"] ?></p>
           </td>
         </tr>

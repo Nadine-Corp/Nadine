@@ -1792,18 +1792,93 @@ function the_contact_type($row)
 
 
 /**
+ * La fonction get_facture_new_numero() permet de créer
+ * un nouveau numero de devis ou de facture
+ */
+
+function get_facture_new_numero($table)
+{
+  if (isset($table)) {
+
+    // Récupére le bon prefix
+    $prefix = get_facture_prefix($table);
+
+    // Récupère le dernier numéros de facture ou devis dans la base de donnée
+    $args = array(
+      'FROM'     => $table,
+      'ORDER BY' => $prefix . '__id',
+      'ORDER'    => 'DESC',
+      'LIMIT'    => 1
+    );
+    $loop = nadine_query($args);
+
+    // Récupère le dernier numéros de facture ou devis
+    if ($loop->num_rows > 0) {
+      while ($row = $loop->fetch_assoc()) {
+        $facture__id = $row[$prefix . '__id'];
+      }
+    }
+
+    // Récupére le bon acronyme
+    if ($table == 'devis') {
+      $acronyme = 'DMD';
+    };
+    if ($table == 'facturesacompte') {
+      $acronyme = 'AMD';
+    };
+    if ($table == 'factures') {
+      $acronyme = 'FMD';
+    };
+
+    // Récupére l'année en cours
+    $year = date('Y');
+
+    // Formate le résultat
+    $facture_new_numero = $facture__id + 1;
+    $facture_new_numero = $acronyme . '.' . $year . '.' . $facture_new_numero;
+
+    // Retourne le résultat au template
+    return $facture_new_numero;
+  }
+}
+
+
+/**
+ * La fonction get_facture_numero() permet de récupérer
+ * le numero d'un devis ou d'une facture
+ */
+
+function get_facture_numero($row, $table = '')
+{
+  if (isset($row)) {
+    // Récupére la bonne table
+    if ($table == '') {
+      $table = get_facture_table($row);
+    }
+
+    // Vérifie si le numero de facture existe
+    if (isset($row[$table . '__numero'])) {
+      $facture_numero = $row[$table . '__numero'];
+    } else {
+      $facture_numero = get_facture_new_numero($table);
+    };
+
+    // Retourne le résultat au template
+    return $facture_numero;
+  }
+}
+
+
+/**
  * La fonction the_facture_numero() permet d'afficher
  * le numero d'un devis ou d'une facture
  */
 
-function the_facture_numero($row)
+function the_facture_numero($row, $table = '')
 {
   if (isset($row)) {
-    // Récupére la bonne table
-    $table = get_facture_table($row);
-
     // Recupère le numero de facture
-    $facture_numero = $row[$table . '__numero'];
+    $facture_numero = get_facture_numero($row, $table);
 
     // Retourne le résultat au template
     echo $facture_numero;
@@ -1866,17 +1941,21 @@ function the_facture_link($row)
     // Récupére la bonne table
     $table = get_facture_table($row);
 
-    // Recupère le numero de facture
-    $facture__id = $row[$table . '__id'];
+    // Vérifie si la facture a déjà un numéros
+    // ou s'il s'agit d'une nouvelle facture
+    if (isset($row[$table . '__id'])) {
+      // Recupère le numero de facture
+      $facture__id = $row[$table . '__id'];
 
-    // Recupère le numero de facture
-    $projet__id = $row['projet__id'];
+      // Recupère le numero de facture
+      $projet__id = $row['projet__id'];
 
-    // Formate le résultat
-    $facture__link = './facture__single.php?projet__id=' . $projet__id . '&' . $table . '__id=' . $facture__id;
+      // Formate le résultat
+      $facture__link = './facture__single.php?projet__id=' . $projet__id . '&' . $table . '__id=' . $facture__id;
 
-    // Retourne le résultat au template
-    echo $facture__link;
+      // Retourne le résultat au template
+      echo $facture__link;
+    }
   }
 }
 
@@ -1890,16 +1969,16 @@ function the_facture_template($projet__id, $table, $facture__id)
 {
   if (isset($projet__id) && isset($table) && isset($facture__id)) {
 
-    // Récupére la bonne table
+    // Récupére le bon prefix
+    $prefix = get_facture_prefix($table);
+
+    // Récupére la bon nom de fichier
     if ($table == 'factures') {
       $facture__file = 'facture';
-      $prefix = 'facture';
     } elseif ($table == 'devis') {
       $facture__file = 'devis';
-      $prefix = 'devis';
     } else {
       $facture__file = 'facturesacompte';
-      $prefix = 'facture';
     }
 
     // Récupère les infos du Diffuseur
@@ -1926,7 +2005,7 @@ function the_facture_template($projet__id, $table, $facture__id)
 
       // Vérifie si le précompte doit être appliqué
       if ($facture__file != 'devis') {
-        if (check_if_precompte($diffuseur__id)) {
+        if (check_if_precompte($diffuseur__id, $table, $facture__id)) {
           $facture__file .= '__precompte';
         }
       };
@@ -1942,7 +2021,7 @@ function the_facture_template($projet__id, $table, $facture__id)
       }
 
       // Formate le résultat
-      $facture__template = './template_facture/' . $facture__folder . '/' . $facture__file;
+      $facture__template = '/template_facture/' . $facture__folder . '/' . $facture__file;
 
       // Retourne le résultat au template
       return $facture__template;
@@ -1952,11 +2031,11 @@ function the_facture_template($projet__id, $table, $facture__id)
 
 
 /**
- * La fonction the_facture_date() permet d'afficher
+ * La fonction get_facture_date() permet de récupérer
  * la date de création du devis ou de la facture
  */
 
-function the_facture_date($row, $format = 'abrv')
+function get_facture_date($row, $format = 'abrv')
 {
   if (isset($row)) {
     // Récupére la bonne table
@@ -1969,11 +2048,28 @@ function the_facture_date($row, $format = 'abrv')
     $facture_date = nadine_date($facture_date, $format);
 
     // Retourne le résultat au template
-    echo $facture_date;
+    return $facture_date;
   } else {
     // Sinon : Récupère, formate et retourne
     // la date du jour au template
-    the_date_today();
+    return get_date_today();
+  }
+}
+
+
+/**
+ * La fonction the_facture_date() permet d'afficher
+ * la date de création du devis ou de la facture
+ */
+
+function the_facture_date($row, $format = 'abrv')
+{
+  if (isset($row)) {
+    // Récupère la date de création du devis ou de la facture
+    $facture_date = get_facture_date($row, $format);
+
+    // Retourne le résultat au template
+    echo $facture_date;
   }
 }
 
@@ -2096,7 +2192,7 @@ function the_facture_table($row)
 
 
 /**
- * La fonction get_facture_table() savoir si le template
+ * La fonction get_facture_table() permet de savoir si le template
  * doit afficher les infos d'un devis ou d'une facture
  */
 
@@ -2115,6 +2211,30 @@ function get_facture_table($row)
 
     // Retourne le résultat au template
     return $table;
+  }
+}
+
+
+/**
+ * La fonction get_facture_prefix() permet de savoir si les requêtes
+ * doivent être prefixé pour un devis ou une facture
+ */
+
+function get_facture_prefix($table)
+{
+  if (isset($table)) {
+
+    // Récupére le bon prefix
+    if ($table == 'factures') {
+      $prefix = 'facture';
+    } elseif ($table == 'devis') {
+      $prefix = 'devis';
+    } else {
+      $prefix = 'facture';
+    }
+
+    // Retourne le résultat au template
+    return $prefix;
   }
 }
 
@@ -2181,10 +2301,15 @@ function nadine_date($date, $format = 'abrv')
     }
 
     // Formate la date en brut
+    // Exemple : 18/09/2021
+    if ($format == 'brutfr') {
+      $dateFormatted = IntlDateFormatter::formatObject($date, 'dd/LL/Y');
+    }
+
+    // Formate la date en brut
     // Exemple : 2021-09-18
     if ($format == 'brut') {
       $dateFormatted = IntlDateFormatter::formatObject($date, 'Y-LL-dd');
-      $dateFormatted = ucwords($dateFormatted);
     }
 
     // Retourne le résultat au template
@@ -2286,8 +2411,35 @@ function get_num_version()
  * ou pas le systeme de précompte
  */
 
-function check_if_precompte($diffuseur__id = '')
+function check_if_precompte($diffuseur__id = '', $table = '', $facture__id = '')
 {
+
+  // Vérifie si une facture ou devis ID a été envoyé avec la demande
+  if (!empty($facture__id)) {
+    $prefix = get_facture_prefix($table);
+
+    // Récupère les info de la facture ou devis dans la base de donnée
+    $args = array(
+      'FROM'     => $table,
+      'WHERE'    => $prefix . '__id' . ' = ' . $facture__id,
+    );
+    $loop = nadine_query($args);
+
+    // Récupère les options de précompte de la facture ou devis
+    if ($loop->num_rows > 0) :
+      while ($row = $loop->fetch_assoc()) :
+        $facture__precompte = $row['facture__precompte'];
+      endwhile;
+    endif;
+
+
+    // Retourne le résultat au template
+    if ($facture__precompte == 0) {
+      return false;
+    } else {
+      return true;
+    }
+  };
 
   // Vérifie si un Diffuseur ID a été envoyé avec la demande
   if (!empty($diffuseur__id)) {

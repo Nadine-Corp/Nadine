@@ -10,7 +10,7 @@
  *  Importe les paramètres
  */
 
-require(__DIR__ .  '/core/query.php');
+require(__DIR__ . '/core/query.php');
 
 
 /**

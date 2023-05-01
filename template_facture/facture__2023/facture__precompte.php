@@ -34,11 +34,11 @@
         </tr>
         <tr>
           <td class="facture__h-100 facture__bl facture__w-25">
-          <p class="facture__body">Facture n°<input type="text" name="facture__numero" placeholder="Numéro de facture" class="facture__body" style="text-align:left;" value="<?php the_facture_numero($row); ?>
+            <p class="facture__body">Facture n°<input type="text" name="facture__numero" placeholder="Numéro de facture" class="facture__body" style="text-align:left;" value="<?php the_facture_numero($row); ?>
               "></p>
           </td>
           <td class="facture__h-100 facture__br facture__w-25">
-          <p class="facture__body">Fait à <?php echo $row["profil__ville"] ?>, le <?php the_facture_date($row, 'full'); ?></p>
+            <p class="facture__body">Fait à <?php echo $row["profil__ville"] ?>, le <?php the_facture_date($row, 'full'); ?></p>
             <input type="hidden" name="facture__date" placeholder="date" value="<?php the_facture_date($row, 'brut'); ?>">
           </td>
         </tr>
@@ -205,13 +205,17 @@
 
 
       <?php // Ajout du footer 
+
+      $the_facture_date = get_facture_date($row, 'brutfr');
+      $date_limite = get_facture_date($row, 'brut');
+      $date_limite = strtotime("+7 days", strtotime($date_limite));
+      $date_limite = date('d/m/Y', $date_limite);
       ?>
 
       <table class="facture__footer facture__b-t">
         <tr>
           <td>
-            <p class="facture__body">Délai de paiement : 7 jours francs dès réception de la facture | Date de réception de la facture : <?php echo $today) ?> | Date limite de règlement : <?php $date = strtotime("+7 day", strtotime($today));
-                                                                                                                                                                                                                            echo date('d/m/Y', $date); ?></p>
+            <p class="facture__body">Délai de paiement : 7 jours francs dès réception de la facture | Date de réception de la facture : <?php echo $the_facture_date; ?> | Date limite de règlement : <?php echo $date_limite; ?> </p>
             <p class="facture__body">Règlement par virement bancaire : Titulaire du compte : <?php echo $row["profil__titulaire_du_compte"] ?> | IBAN : <?php echo $row["profil__iban"] ?> | BIC : <?php echo $row["profil__bic"] ?></p>
           </td>
         </tr>
