@@ -1,6 +1,7 @@
 <?php
 
-// Ce fichier est permet d'ajouter un nouveau projet dans la base de données
+// Ce fichier est permet de modifier ou ajouter
+// un nouveau projet dans la base de données.
 
 /**
  * Injection du fichier rassemblant toutes les fonctions
@@ -19,7 +20,7 @@ $data['artiste__id'] = array();
 
 
 /**
- * Ajout des infos dans la variable
+ * Ajout les infos dans la variable
  */
 
 foreach ($_POST as $key => $value) {
@@ -57,7 +58,7 @@ if (check_if_precompte($data['diffuseur__id'])) {
 
 
 /**
- * Vérifie si le projet doit être créé ou mise à jour
+ * Vérifie si le projet doit être créé ou mis à jour
  */
 
 if (empty($data['projet__id'])) {
@@ -91,6 +92,7 @@ if (empty($data['projet__id'])) {
     endwhile;
   endif;
 } else {
+
 
   /**
    * Modifie un projet existant

@@ -24,6 +24,7 @@ function nadine_query($args, $sql = 'SELECT *')
     };
   };
 
+
   // Importe les info de connexion à la base de donnée
   require(__DIR__ . '/config.php');
 
@@ -1799,7 +1800,6 @@ function the_contact_type($row)
 function get_facture_new_numero($table)
 {
   if (isset($table)) {
-
     // Récupére le bon prefix
     $prefix = get_facture_prefix($table);
 
@@ -1808,7 +1808,7 @@ function get_facture_new_numero($table)
       'FROM'     => $table,
       'ORDER BY' => $prefix . '__id',
       'ORDER'    => 'DESC',
-      'LIMIT'    => 1
+      'LIMIT'    => '1',
     );
     $loop = nadine_query($args);
 
@@ -1856,9 +1856,12 @@ function get_facture_numero($row, $table = '')
       $table = get_facture_table($row);
     }
 
+    // Récupére le bon prefix
+    $prefix = get_facture_prefix($table);
+
     // Vérifie si le numero de facture existe
-    if (isset($row[$table . '__numero'])) {
-      $facture_numero = $row[$table . '__numero'];
+    if (isset($row[$prefix . '__numero'])) {
+      $facture_numero = $row[$prefix . '__numero'];
     } else {
       $facture_numero = get_facture_new_numero($table);
     };
@@ -1961,14 +1964,55 @@ function the_facture_link($row)
 
 
 /**
- * La fonction the_facture_template() permet de choisir le bon
- * template pour afficher les devis ou factures
+ * La fonction get_facture_template() permet de récupérer
+ * le bon template pour afficher les devis ou facture
  */
 
-function the_facture_template($projet__id, $table, $facture__id)
+function get_facture_template($row, $table)
+{
+  if (isset($row) && isset($table)) {
+    // Récupére le bon prefix
+    $prefix = get_facture_prefix($table);
+
+    // Récupère le nom du template
+    if (isset($row[$prefix . '__template'])) {
+      $facture__template = $row[$prefix . '__template'];
+    } else {
+      $facture__template = 'facture__2023';
+    }
+
+    // Retourne le résultat au template
+    return $facture__template;
+  }
+}
+
+
+/**
+ * La fonction the_facture_template() permet d'afficher
+ * le bon template pour afficher les devis ou facture
+ */
+
+function the_facture_template($row, $table)
+{
+  if (isset($row) && isset($table)) {
+    // Récupère le nom du template
+    $facture__template = get_facture_template($row, $table);
+
+    // Retourne le résultat au template
+    echo $facture__template;
+  }
+}
+
+
+
+/**
+ * La fonction the_facture_template_url() permet de sélectionner
+ * le bon template pour afficher les devis ou facture
+ */
+
+function the_facture_template_url($projet__id, $table, $facture__id)
 {
   if (isset($projet__id) && isset($table) && isset($facture__id)) {
-
     // Récupére le bon prefix
     $prefix = get_facture_prefix($table);
 
@@ -1991,7 +2035,7 @@ function the_facture_template($projet__id, $table, $facture__id)
     } else {
       $args = array(
         'FROM'     => $table,
-        'WHERE'    => $prefix . '__id' . ' = ' . $facture__id,
+        'WHERE'    => $prefix . '__id' . ' = ' . $facture__id
       );
     }
     $loop = nadine_query($args);
@@ -2014,17 +2058,13 @@ function the_facture_template($projet__id, $table, $facture__id)
       $facture__file = $facture__file . '.php';
 
       // Récupère le nom du template
-      if (isset($row[$prefix . '__template'])) {
-        $facture__folder = $row[$prefix . '__template'];
-      } else {
-        $facture__folder = 'facture__2023';
-      }
+      $facture__folder = get_facture_template($row, $table);
 
       // Formate le résultat
-      $facture__template = '/template_facture/' . $facture__folder . '/' . $facture__file;
+      $facture__templateurl = '/template_facture/' . $facture__folder . '/' . $facture__file;
 
       // Retourne le résultat au template
-      return $facture__template;
+      return $facture__templateurl;
     }
   }
 }
@@ -2041,19 +2081,22 @@ function get_facture_date($row, $format = 'abrv')
     // Récupére la bonne table
     $table = get_facture_table($row);
 
-    // Recupère la date
-    $facture_date = date_create($row[$table . '__date']);
+    // Vérifie si la date existe
+    if (isset($row[$table . '__date'])) {
+      // Recupère la date
+      $facture_date = date_create($row[$table . '__date']);
 
-    // Formate la réponse
-    $facture_date = nadine_date($facture_date, $format);
+      // Formate la réponse
+      $facture_date = nadine_date($facture_date, $format);
 
-    // Retourne le résultat au template
-    return $facture_date;
-  } else {
-    // Sinon : Récupère, formate et retourne
-    // la date du jour au template
-    return get_date_today();
+      // Retourne le résultat au template
+      return $facture_date;
+    }
   }
+
+  // Sinon : Récupère, formate et retourne
+  // la date du jour au template
+  return get_date_today($format);
 }
 
 
@@ -2085,11 +2128,14 @@ function the_facture_tache($row, $numTache = 1)
     // Récupére la bonne table
     $table = get_facture_table($row);
 
-    // Recupère la tâche 
-    $facture_tache = $row[$table . '__tache_' . $numTache];
+    // Vérifie si la tache existe
+    if (isset($row[$table . '__tache_' . $numTache])) {
+      // Recupère la tâche 
+      $facture_tache = $row[$table . '__tache_' . $numTache];
 
-    // Retourne le résultat au template
-    echo $facture_tache;
+      // Retourne le résultat au template
+      echo $facture_tache;
+    }
   }
 }
 
@@ -2105,11 +2151,14 @@ function the_facture_prix($row, $numTache = 1)
     // Récupére la bonne table
     $table = get_facture_table($row);
 
-    // Recupère le prix 
-    $facture_prix = $row[$table . '__prix_' . $numTache];
+    // Vérifie si le prix existe
+    if (isset($row[$table . '__prix_' . $numTache])) {
+      // Recupère le prix 
+      $facture_prix = $row[$table . '__prix_' . $numTache];
 
-    // Retourne le résultat au template
-    echo $facture_prix;
+      // Retourne le résultat au template
+      echo $facture_prix;
+    }
   }
 }
 
@@ -2199,14 +2248,18 @@ function the_facture_table($row)
 function get_facture_table($row)
 {
   if (isset($row)) {
+    // Déclare une variable
+    $table = '';
+
+    // Récupére la bonne table
     if (!empty($row['devis__numero'])) {
       $table = 'devis';
-    } else {
-      if (!empty($row['facture__numero'])) {
-        $table = 'facture';
-      } else {
-        $table = 'facturesacompte';
-      }
+    };
+    if (!empty($row['facture__numero'])) {
+      $table = 'facture';
+    };
+    if (!empty($row['facturea__numero'])) {
+      $table = 'facturesacompte';
     };
 
     // Retourne le résultat au template
@@ -2240,20 +2293,85 @@ function get_facture_prefix($table)
 
 
 /**
+ * La fonction get_profil_last_id() permet de récupérer
+ * le numéros du dernier profil utilisateur
+ */
+
+function get_profil_last_id()
+{
+  // Récupère l'ID du dernier profil dans la base de donnée
+  $args = array(
+    'FROM'     => 'Profil',
+    'ORDER BY' => 'profil__id',
+    'ORDER'    => 'DESC',
+    'LIMIT'    => 1
+  );
+
+  $loop = nadine_query($args);
+  if ($loop->num_rows > 0) :
+    while ($row = $loop->fetch_assoc()) :
+      $profil__id = $row['profil__id'];
+    endwhile;
+  endif;
+
+  // Retourne le résultat au template
+  return $profil__id;
+}
+
+
+/**
+ * La fonction get_profil_id() permet de récupérer
+ * le numéros du profil utilisateur
+ */
+
+function get_profil_id($row)
+{
+  if (isset($row)) {
+
+    // Récupère les infos du profil
+    if (isset($row['profil__id'])) {
+      $profil__id = $row['profil__id'];
+    } else {
+      $profil__id = get_profil_last_id();
+    };
+
+    // Retourne le résultat au template
+    return $profil__id;
+  }
+}
+
+
+/**
+ * La fonction the_profil_id() permet d'afficher
+ * le numéros du profil utilisateur
+ */
+
+function the_profil_id($row)
+{
+  if (isset($row)) {
+
+    // Récupère les infos du profil
+    $profil__id = get_profil_id($row);
+
+    // Retourne le résultat au template
+    echo $profil__id;
+  }
+}
+
+
+/**
  * La fonction get_date_today() permet de connaître
  * la date du jour
  */
 
-function get_date_today()
+function get_date_today($format = 'abrv')
 {
-  // Défini le fuseau horaire
-  date_default_timezone_set('Europe/Paris');
 
   // Récupère la date du jour
-  $date = new DateTime('now', new DateTimeZone('Europe/Paris'));
+  $date_today = new DateTime('now', new DateTimeZone('Europe/Paris'));
 
-  // Formate la date «À la française»
-  $dateFormatted  = IntlDateFormatter::formatObject($date, 'Y-MM-dd');
+  // Formate la réponse
+  $dateFormatted = nadine_date($date_today, $format);
 
   // Retourne le résultat au template
   return $dateFormatted;
@@ -2265,10 +2383,10 @@ function get_date_today()
  * la date du jour
  */
 
-function the_date_today()
+function the_date_today($format = 'abrv')
 {
   // Récupère la date du jour
-  $dateToday = get_date_today();
+  $dateToday = get_date_today($format);
 
   // Retourne le résultat au template
   echo $dateToday;
@@ -2343,7 +2461,10 @@ function nadine_name($civilite, $prenom, $nom)
 function nadine_prix($prix)
 {
   if (isset($prix)) {
+    // Formate le résultat
     $prix = number_format($prix, 2, ',', ' ') . ' €';
+
+    // Retourne le résultat au template
     return $prix;
   }
 }
@@ -2413,10 +2534,11 @@ function get_num_version()
 
 function check_if_precompte($diffuseur__id = '', $table = '', $facture__id = '')
 {
-
   // Vérifie si une facture ou devis ID a été envoyé avec la demande
-  if (!empty($facture__id)) {
+  if ($facture__id !== 'new' && $facture__id !== '') {
+    // Récupére le bon prefix
     $prefix = get_facture_prefix($table);
+
 
     // Récupère les info de la facture ou devis dans la base de donnée
     $args = array(
@@ -2424,6 +2546,7 @@ function check_if_precompte($diffuseur__id = '', $table = '', $facture__id = '')
       'WHERE'    => $prefix . '__id' . ' = ' . $facture__id,
     );
     $loop = nadine_query($args);
+
 
     // Récupère les options de précompte de la facture ou devis
     if ($loop->num_rows > 0) :

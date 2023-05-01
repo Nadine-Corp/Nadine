@@ -34,7 +34,7 @@
         </tr>
         <tr>
           <td class="facture__h-100 facture__bl facture__w-25">
-            <p class="facture__body">Facture n°<input type="text" name="facture__numero" placeholder="Numéro de facture" class="facture__body" style="text-align:left;" value="<?php the_facture_numero($row); ?>
+            <p class="facture__body">Facture n°<input type="text" name="facture__numero" placeholder="Numéro de facture" class="facture__body" style="text-align:left;" value="<?php the_facture_numero($row, $table); ?>
               "></p>
           </td>
           <td class="facture__h-100 facture__br facture__w-25">

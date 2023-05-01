@@ -87,7 +87,7 @@ include './header.php';
       <?php // Ajout du formulaire 
       ?>
 
-      <form class="m-form m-row" action="./core/add__projet.php" method="post">
+      <form class="m-form m-row" action="./core/add__facture.php" method="post">
 
         <?php // Ajout du fil d'Ariane 
         ?>
@@ -145,7 +145,35 @@ include './header.php';
         ?>
         <section class="m-rom with--aside">
           <div class="m-col">
-            <?php include(__DIR__ . the_facture_template($projet__id, $table, $facture__id)); ?>
+
+            <?php // Ajoute des champs caché pour simplifier 
+            // l'ajout et modification de facture ou devis
+            // dans la base de données
+            ?>
+
+            <input type="hidden" name="projet__id" placeholder="projet__id" value="<?php the_projet_id($row) ?>">
+            <input type="hidden" name="profil__id" placeholder="projet__id" value="<?php the_profil_id($row) ?>">
+            <input type="hidden" name="facture__template" placeholder="facture__template" value="<?php the_facture_template($row, $table) ?>">
+            <input type="hidden" name="projet__nom" placeholder="projet__nom" value="<?php echo $row["projet__nom"] ?>">
+            <input type="hidden" name="projet__numero" placeholder="projet__numero" value="<?php echo $row["projet__numero"] ?>">
+            <input type="hidden" name="diffuseur__id" placeholder="__id" value="<?php echo $row["diffuseur__id"] ?>">
+            <input type="hidden" name="diffuseur__societe" placeholder="__societe" value="<?php echo $row["diffuseur__societe"] ?>">
+            <input type="hidden" name="diffuseur__siret" placeholder="__siret" value="<?php echo $row["diffuseur__siret"] ?>">
+            <input type="hidden" name="diffuseur__civilite" placeholder="__civilite" value="<?php echo $row["diffuseur__civilite"] ?>">
+            <input type="hidden" name="diffuseur__prenom" placeholder="__prenom" value="<?php echo $row["diffuseur__prenom"] ?>">
+            <input type="hidden" name="diffuseur__nom" placeholder="__nom" value="<?php echo $row["diffuseur__nom"] ?>">
+            <input type="hidden" name="diffuseur__adresse" placeholder="__adresse" value="<?php echo $row["diffuseur__adresse"] ?>">
+            <input type="hidden" name="diffuseur__code_postal" placeholder="__code_postal" value="<?php echo $row["diffuseur__code_postal"] ?>">
+            <input type="hidden" name="diffuseur__ville" placeholder="__ville" value="<?php echo $row["diffuseur__ville"] ?>">
+            <input type="hidden" name="diffuseur__telephone" placeholder="__telephone" value="<?php echo $row["diffuseur__telephone"] ?>">
+            <input type="hidden" name="diffuseur__email" placeholder="__email" value="<?php echo $row["diffuseur__email"] ?>">
+            <input type="hidden" name="diffuseur__website" placeholder="__website" value="<?php echo $row["diffuseur__website"] ?>">
+            <input type="hidden" name="facture__total" placeholder="Total" class="facture__subheading">
+
+            <?php
+            // Affiche le Template de facture ou devis
+            include(__DIR__ . the_facture_template_url($projet__id, $table, $facture__id));
+            ?>
           </div>
         </section>
 
