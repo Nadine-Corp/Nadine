@@ -887,7 +887,7 @@ p a:link, p a:visited {
 }
 .m-table th, .m-table .tablesorter-header-inner {
   font-style: italic;
-  color: var(--color-grey);
+  color: var(--color-grey-100);
 }
 .m-table tbody tr:nth-child(2n),
 .m-table thead tr {
@@ -895,7 +895,7 @@ p a:link, p a:visited {
 }
 .m-table tbody tr:nth-child(2n) td,
 .m-table thead tr td {
-  color: var(--color-grey);
+  color: var(--color-grey-100);
 }
 
 .m-cover {

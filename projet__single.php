@@ -120,7 +120,7 @@ include './header.php';
       <section class="m-rom">
         <?php // Ajout des devis 
         ?>
-        <div class="m-accordion">
+        <div class="m-accordion is--active">
           <div class="m-accordion__titre">
             <h2>Devis</h2>
             <div class="m-accordion__ico">

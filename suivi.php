@@ -45,7 +45,7 @@ include(__DIR__ . '/header.php');
                 <td><?php echo $row["devis__numero"] ?></td>
                 <td><?php echo $row["projet__nom"] ?></td>
                 <td><?php echo $row["diffuseur__societe"] ?></td>
-                <td><a href="projet__single.php?projet__id=<?php echo $row["projet__id"] ?>">Voir</a></td>
+                <td><a href="./projet__single.php?projet__id=<?php echo $row["projet__id"] ?>">Voir</a></td>
               </tr>
             <?php endwhile; ?>
           </tbody>
@@ -85,7 +85,7 @@ include(__DIR__ . '/header.php');
                 <td><?php echo $row["facture__numero"] ?></td>
                 <td><?php echo $row["projet__nom"] ?></td>
                 <td><?php echo $row["diffuseur__societe"] ?></td>
-                <td><a href="projet__single.php?projet__id=<?php echo $row["projet__id"] ?>">Voir</a></td>
+                <td><a href="./projet__single.php?projet__id=<?php echo $row["projet__id"] ?>">Voir</a></td>
               </tr>
             <?php endwhile; ?>
           </tbody>

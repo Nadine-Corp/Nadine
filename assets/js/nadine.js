@@ -6,7 +6,7 @@
 
 
 $(document).ready(function ($) {
-	console.log('test');
+
 	/**
 	* Variables
 	*/
@@ -28,6 +28,7 @@ $(document).ready(function ($) {
 	*/
 
 	var currentUrl = location.pathname;
+
 	$('.l-header__nav-item a').each(function () {
 		var url = $(this).attr('data-url');
 		if (currentUrl.includes(url)) {
@@ -61,7 +62,6 @@ $(document).ready(function ($) {
 	*/
 
 	$('.m-accordion__titre').click(function () {
-		console.log('click');
 		if ($(this).closest('.m-accordion').hasClass('is--active')) {
 			$(this).closest('.m-accordion').removeClass('is--active');
 		} else {
@@ -217,7 +217,7 @@ btns__modal.forEach(btn__modal => {
 		if (Boolean(dataTable) || Boolean(dataId)) {
 			// Lance une requête AJAX pour récupérer la modal préremplie
 			let xhr = new XMLHttpRequest();
-			xhr.open('GET', '/parts/p__modal-' + dataModal + '.php?id=' + dataId + '&table=' + dataTable);
+			xhr.open('GET', './parts/p__modal-' + dataModal + '.php?id=' + dataId + '&table=' + dataTable);
 			xhr.onload = function () {
 				if (xhr.status === 200) {
 					// Remplace la modal actuelle par sa version préremplie
