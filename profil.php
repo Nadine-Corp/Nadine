@@ -69,6 +69,10 @@ include(__DIR__ . '/header.php');
                 <label for="profil__siret">N° de Siret</label>
                 <input type="text" name="profil__siret" placeholder="N° de Siret" value="<?php the_profil_siret($row); ?>">
               </div>
+              <div class="m-form__label-amimate">
+                <label for="profil__initiales">Initiales / Acronyme</label>
+                <input type="text" name="profil__initiales" placeholder="Initiales / Acronyme" value="<?php the_profil_initiales($row); ?>">
+              </div>
             </div>
 
             <div class="m-form__grp">
@@ -99,6 +103,10 @@ include(__DIR__ . '/header.php');
               <div class="m-form__label-amimate">
                 <label for="profil__nom">Nom</label>
                 <input type="text" name="profil__nom" placeholder="Nom" value="<?php the_profil_nom($row); ?>">
+              </div>
+              <div class="m-form__label-amimate">
+                <label for="profil__pseudo">Pseudonyme</label>
+                <input type="text" name="profil__pseudo" placeholder="Pseudonyme" value="<?php the_profil_pseudo($row); ?>">
               </div>
             </div>
 

@@ -228,6 +228,8 @@ $tables = array(
     'profil__civilite' => array('type' => 'VARCHAR(255)', 'collate' => $interclassement, 'default' => 'NULL'),
     'profil__prenom' => array('type' => 'VARCHAR(255)', 'collate' => $interclassement, 'default' => 'NULL'),
     'profil__nom' => array('type' => 'VARCHAR(255)', 'collate' => $interclassement, 'default' => 'NULL'),
+    'profil__pseudo' => array('type' => 'VARCHAR(255)', 'collate' => $interclassement, 'default' => 'NULL'),
+    'profil__initiales' => array('type' => 'VARCHAR(255)', 'collate' => $interclassement, 'default' => 'NULL'),
     'profil__adresse' => array('type' => 'VARCHAR(255)', 'collate' => $interclassement, 'default' => 'NULL'),
     'profil__code_postal' => array('type' => 'VARCHAR(255)', 'collate' => $interclassement, 'default' => 'NULL'),
     'profil__ville' => array('type' => 'VARCHAR(255)', 'collate' => $interclassement, 'default' => 'NULL'),

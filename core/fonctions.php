@@ -1846,16 +1846,41 @@ function get_facture_new_numero($table)
       }
     }
 
+    // Récupère les infos du dernier profil
+    $args = array(
+      'FROM'     => 'Profil',
+      'ORDER BY' => 'Profil__id',
+      'ORDER'    => 'DESC',
+      'LIMIT'    => '1',
+    );
+    $loop = nadine_query($args);
+
+    // Récupère les initiales du profil de l'utilisateur
+    if ($loop->num_rows > 0) {
+      while ($row = $loop->fetch_assoc()) {
+
+        // Vérifie si le numero de facture existe
+        if (isset($row['profil__initiales'])) {
+          $initiales = $row['profil__initiales'];
+        } else {
+          $initiales = 'NA';
+        }
+      }
+    }
+
+
     // Récupére le bon acronyme
     if ($table == 'devis') {
-      $initiales = 'DMD';
+      $initiales = 'D' . $initiales;
     };
     if ($table == 'facturesacompte') {
-      $initiales = 'AMD';
+      $initiales = 'A' . $initiales;
     };
     if ($table == 'factures') {
-      $initiales = 'FMD';
+      $initiales = 'F' . $initiales;
     };
+
+
 
     // Récupére l'année en cours
     $year = date('Y');
@@ -2565,11 +2590,52 @@ function the_profil_prenom($row)
 function the_profil_nom($row)
 {
   if (isset($row)) {
-    // Récupère les infos du profil
-    $profil__nom = $row['profil__nom'];
+    if (!empty($row['profil__nom'])) {
+      // Récupère les infos du profil
+      $profil__nom = $row['profil__nom'];
 
-    // Retourne le résultat au template
-    echo $profil__nom;
+      // Retourne le résultat au template
+      echo $profil__nom;
+    }
+  }
+}
+
+
+/**
+ * La fonction the_profil_pseudo() affiche
+ * le pseudonyme de l'utilisateur
+ */
+
+function the_profil_pseudo($row)
+{
+  if (isset($row)) {
+    if (!empty($row['profil__pseudo'])) {
+      // Récupère les infos du profil
+      $profil__pseudo = $row['profil__pseudo'];
+
+      // Retourne le résultat au template
+      echo $profil__pseudo;
+    }
+  }
+}
+
+
+/**
+ * La fonction the_profil_initiales() affiche les initiales
+ * de l'utilisateur. Ces initiales sont notament utilisé
+ * dans la nomenclature des factures et devis
+ */
+
+function the_profil_initiales($row)
+{
+  if (isset($row)) {
+    if (!empty($row['profil__initiales'])) {
+      // Récupère les infos du profil
+      $profil__initiales = $row['profil__initiales'];
+
+      // Retourne le résultat au template
+      echo $profil__initiales;
+    }
   }
 }
 
