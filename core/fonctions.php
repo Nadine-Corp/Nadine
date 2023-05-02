@@ -234,7 +234,7 @@ function the_projet_date_de_creation($row)
   } else {
     // Sinon : Récupère, formate et retourne
     // la date du jour au template
-    the_date_today();
+    the_date_today('brut');
   }
 }
 
