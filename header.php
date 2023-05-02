@@ -23,6 +23,20 @@ include_once(__DIR__ . '/core/fonctions.php');
   <meta name="description" content="👨‍💻 Premier logiciel open source de compta pour la Maison des Artistes : essayer Nadine, c'est l'adopter. 👍">
   <meta name="keywords" content="Comptabilité, Maison des Artistes, MDA, précompte, artistes, gratuit, free, logiciel, facture, devis, open-source">
   <meta name="contact" content="bonjour@nadinecorp.net">
+
+  <?php
+  // Qq Meta pour empêcher les Robots d'indexer Nadine
+  // dans le cas hypothétique où un utilisateur étourdit
+  // décide malgrès nos recommandations plus qu'insistantes
+  // de mettre sa base de données sur les internets.
+  ?>
+  <meta name="robots" content="noindex, nofollow, noarchive">
+  <meta name="googlebot" content="noindex, nofollow, noarchive">
+  <meta name="googlebot-news" content="nosnippet">
+  <meta name="googlebot-image" content="index, follow, all">
+
+  <?php // Favicon 
+  ?>
   <meta content="width=device-width, initial-scale = 1.0, maximum-scale=1.0, user-scalable=no" name="viewport">
   <link rel="apple-touch-icon" sizes="57x57" href="./assets/favicon/apple-icon-57x57.png">
   <link rel="apple-touch-icon" sizes="60x60" href="./assets/favicon/apple-icon-60x60.png">
@@ -38,12 +52,21 @@ include_once(__DIR__ . '/core/fonctions.php');
   <link rel="icon" type="image/png" sizes="96x96" href="./assets/favicon/favicon-96x96.png">
   <link rel="icon" type="image/png" sizes="16x16" href="./assets/favicon/favicon-16x16.png">
   <link rel="manifest" href="./assets/favicon/manifest.json">
+
+  <?php // Themes colors 
+  ?>
   <meta name="msapplication-TileColor" content="#ff3636">
   <meta name="msapplication-TileImage" content="./assets/favicon/ms-icon-144x144.png">
   <meta name="theme-color" content="#ff3636">
+
+  <?php // Webfont 
+  ?>
   <link rel="preconnect" href="https://fonts.gstatic.com">
   <link rel="stylesheet" href="https://use.typekit.net/znq5njd.css">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <?php // Style CSS et Script JS 
+  ?>
   <link rel='stylesheet' type='text/css' media="all" href='./style.min.css'>
   <link rel="stylesheet" type="text/css" media="print" href="./assets/sass/print/impression.css">
   <script src="./assets/js/jquery.min.js"></script>
