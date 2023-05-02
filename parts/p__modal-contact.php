@@ -110,7 +110,7 @@ if (isset($_GET['id'])) {
       <div class="m-form__wrapper m-form__step-2">
         <div class="m-form__grp">
           <div class="m-form__label m-modal__contact-civilite">
-            <?php $value = get_contact_civilite($row); ?>
+            <?php $value = get_profil_civilite($row); ?>
             <label for="contact__civilite">Civilité</label>
             <div class="m-form__radio-horiz">
               <div class="m-form__radio">
@@ -163,6 +163,7 @@ if (isset($_GET['id'])) {
 
       <?php // Ajout troisième étape du formulaire : Coordonnées 
       ?>
+
       <div class="m-form__wrapper m-form__step-3">
         <div class="m-form__label-amimate">
           <label for="contact__adresse">Adresse</label>
@@ -209,6 +210,7 @@ if (isset($_GET['id'])) {
         <button class="btn btn__plain btn__next" type="button">Suivant</button>
         <button class="btn btn__plain btn__submit" type="submit">Enregistrer</button>
       </div>
+
+    </form>
   </div>
-  </form>
 </div>

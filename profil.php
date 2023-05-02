@@ -72,6 +72,26 @@ include(__DIR__ . '/header.php');
             </div>
 
             <div class="m-form__grp">
+              <div class="m-form__label m-modal__contact-civilite">
+                <?php $value = get_profil_civilite($row); ?>
+                <label for="profil__civilite">Civilité</label>
+                <div class="m-form__radio-horiz">
+                  <div class="m-form__radio">
+                    M.
+                    <input name="profil__civilite" type="radio" value="M." <?php if (empty($value) || $value == "M.") {
+                                                                              echo "checked";
+                                                                            } ?>>
+                    <span class="checkmark"></span>
+                  </div>
+                  <div class="m-form__radio">
+                    Mme
+                    <input name="profil__civilite" type="radio" value="Mme" <?php if ($value == "Mme") {
+                                                                              echo "checked";
+                                                                            } ?>>
+                    <span class="checkmark"></span>
+                  </div>
+                </div>
+              </div>
               <div class="m-form__label-amimate">
                 <label for="profil__prenom">Prénom</label>
                 <input type="text" name="profil__prenom" placeholder="Prénom" value="<?php the_profil_prenom($row); ?>">
@@ -79,6 +99,37 @@ include(__DIR__ . '/header.php');
               <div class="m-form__label-amimate">
                 <label for="profil__nom">Nom</label>
                 <input type="text" name="profil__nom" placeholder="Nom" value="<?php the_profil_nom($row); ?>">
+              </div>
+            </div>
+
+            <div class="m-form__grp">
+              <div class="m-form__label m-modal__contact-civilite">
+                <?php $value = get_profil_precompte($row); ?>
+                <label for="profil__precompte">Assujetti⸱e au précompte ?</label>
+                <div class="m-form__radio-horiz">
+                  <div class="m-form__radio">
+                    Non
+                    <input name="profil__precompte" type="radio" value="Non" <?php if (empty($value) || $value == "Non") {
+                                                                                echo "checked";
+                                                                              } ?>>
+                    <span class="checkmark"></span>
+                  </div>
+                  <div class="m-form__radio">
+                    Oui
+                    <input name="profil__precompte" type="radio" value="Oui" <?php if ($value == "Oui") {
+                                                                                echo "checked";
+                                                                              } ?>>
+                    <span class="checkmark"></span>
+                  </div>
+                </div>
+              </div>
+              <div class="m-form__label-amimate">
+                <label for="profil__numero_secu">N° de Sécu</label>
+                <input type="text" name="profil__numero_secu" placeholder="N° de Sécu" value="<?php the_profil_numero_secu($row); ?>">
+              </div>
+              <div class="m-form__label-amimate">
+                <label for="profil__numero_mda">N° de MDA</label>
+                <input type="text" name="profil__numero_mda" placeholder="N° de MDA" value="<?php the_profil_numero_mda($row); ?>">
               </div>
             </div>
 
@@ -121,126 +172,74 @@ include(__DIR__ . '/header.php');
 
           </div>
 
-          <input type="text" name="civilite" placeholder="Civilité" class="form__input-full" <?php if (!empty($row["profil__civilite"])) {
-                                                                                                echo 'value="' . $row["profil__civilite"] . '""';
-                                                                                              } ?>>
 
-
-          <?php
-          /**
-           * N° de Secu & Maison des Artistes
-           */
+          <?php // Ajout deuxième étape du formulaire : Identité 
           ?>
 
-          <div class="m-accordion m-col">
-            <div class="m-accordion__titre">
-              <h2 class="subheading">N° de Secu & Maison des Artistes</h2>
-              <div class="m-accordion__ico">
-                <?php include './assets/img/ico_arrow-accordion.svg.php'; ?>
+          <div class="m-form__wrapper m-form__step-2">
+
+            <div class="m-form__grp">
+              <div class="m-form__label-amimate">
+                <label for="profil__titulaire_du_compte">Titulaire du compte</label>
+                <input type="text" name="profil__titulaire_du_compte" placeholder="Titulaire du compte" value="<?php the_profil_titulaire_du_compte($row); ?>">
               </div>
             </div>
-            <div class="m-accordion__wrapper">
-              <div class="form__slider-container">
-                <p class="lead_paragraph">Êtes-vous assujetti⸱e au précompte ?</p>
-                <span>Non</span>
-                <label class="switch">
-                  <?php
-                  if ($row["profil__precompte"] == "1") {
-                    echo '<input name="precompte" type="checkbox" checked>';
-                  } else {
-                    echo '<input name="precompte" type="checkbox">';
-                  };
-                  ?>
-                  <span class="slider  is--fullsize round"></span>
-                </label>
-                <span>Oui</span>
+
+            <div class="m-form__grp">
+              <div class="m-form__label-amimate">
+                <label for="profil__iban">IBAN</label>
+                <input type="text" name="profil__iban" placeholder="IBAN" value="<?php the_profil_iban($row); ?>">
               </div>
-              <div class="form__input-container m-body">
-                <input type="text" name="numero_secu" placeholder="N° de Sécurité sociale" class="form__input-half form__input-seperator" <?php if (!empty($row["profil__numero_secu"])) {
-                                                                                                                                            echo 'value="' . $row["profil__numero_secu"] . '""';
-                                                                                                                                          } ?>>
-                <input type="text" name="numero_mda" placeholder="N° MDA" class="form__input-half" <?php if (!empty($row["profil__numero_mda"])) {
-                                                                                                      echo 'value="' . $row["profil__numero_mda"] . '""';
-                                                                                                    } ?>>
+              <div class="m-form__label-amimate">
+                <label for="profil__bic">BIC</label>
+                <input type="text" name="profil__bic" placeholder="BIC" value="<?php the_profil_bic($row); ?>">
               </div>
             </div>
+
           </div>
 
 
-          <?php
-          /**
-           * Coordonnées bancaires
-           */
+          <?php // Ajout troisième étape du formulaire : Gabarits de courriel 
           ?>
 
-          <div class="m-accordion m-col">
-            <div class="m-accordion__titre">
-              <h2 class="subheading">Coordonnées bancaires</h2>
-              <div class="m-accordion__ico">
-                <?php include './assets/img/ico_arrow-accordion.svg.php'; ?>
-              </div>
-            </div>
-            <div class="m-accordion__wrapper">
-              <div class="form__input-container m-body">
-                <input type="text" name="titulaire_du_compte" placeholder="Titulaire du compte" class="form__input-full" <?php if (!empty($row["profil__titulaire_du_compte"])) {
-                                                                                                                            echo 'value="' . $row["profil__titulaire_du_compte"] . '""';
-                                                                                                                          } ?>>
-                <input type="text" name="iban" placeholder="IBAN" class="form__input-half form__input-seperator" <?php if (!empty($row["profil__iban"])) {
-                                                                                                                    echo 'value="' . $row["profil__iban"] . '""';
-                                                                                                                  } ?>>
-                <input type="text" name="bic" placeholder="BIC" class="form__input-half" <?php if (!empty($row["profil__bic"])) {
-                                                                                            echo 'value="' . $row["profil__bic"] . '""';
-                                                                                          } ?>>
-              </div>
-            </div>
+          <div class="m-form__wrapper m-form__step-3">
+            <p>Liste des variables :
+            <ul>
+              <li>{{diffuseur__civilite}}</li>
+              <li>{{diffuseur__prenom}}</li>
+              <li>{{diffuseur__nom}}</li>
+              <li>{{diffuseur__societe}}</li>
+              <li>{{diffuseur__email}}</li>
+              <li>{{projet__nom}}</li>
+              <li>{{profil__societe}}</li>
+              <li>{{profil__civilite}}</li>
+              <li>{{profil__prenom}}</li>
+              <li>{{profil__nom}}</li>
+              <li>{{profil__numero_secu}}</li>
+              <li>{{profil__titulaire_du_compte}}</li>
+              <li>{{profil__iban}}</li>
+              <li>{{profil__bic}}</li>
+            </ul>
+            </p>
+
+            <textarea name="profil__msg_devis" class="form__input-full" rows="10"><?php if (!empty($row["profil__msg_devis"])) {
+                                                                                    echo $row["profil__msg_devis"];
+                                                                                  } ?></textarea>
+            <textarea name="profil__msg_facture" class="form__input-full" rows="10"><?php if (!empty($row["profil__msg_facture"])) {
+                                                                                      echo $row["profil__msg_facture"];
+                                                                                    } ?></textarea>
           </div>
 
 
-          <?php
-          /**
-           * Gabarits d'email des devis et facture
-           */
+          <?php // Ajout la barre avec les boutons 
           ?>
 
-          <div class="m-accordion m-col">
-            <div class="m-accordion__titre">
-              <h2 class="subheading">Gabarits d'email des devis et facture</h2>
-              <div class="m-accordion__ico">
-                <?php include './assets/img/ico_arrow-accordion.svg.php'; ?>
-              </div>
-            </div>
-            <div class="m-accordion__wrapper">
-              <div class="form__input-container m-body">
-                <p>Liste des variables :
-                <ul>
-                  <li>{{diffuseur__civilite}}</li>
-                  <li>{{diffuseur__prenom}}</li>
-                  <li>{{diffuseur__nom}}</li>
-                  <li>{{diffuseur__societe}}</li>
-                  <li>{{diffuseur__email}}</li>
-                  <li>{{projet__nom}}</li>
-                  <li>{{profil__societe}}</li>
-                  <li>{{profil__civilite}}</li>
-                  <li>{{profil__prenom}}</li>
-                  <li>{{profil__nom}}</li>
-                  <li>{{profil__numero_secu}}</li>
-                  <li>{{profil__titulaire_du_compte}}</li>
-                  <li>{{profil__iban}}</li>
-                  <li>{{profil__bic}}</li>
-                </ul>
-                </p>
-                <textarea name="profil__msg_devis" class="form__input-full" rows="10"><?php if (!empty($row["profil__msg_devis"])) {
-                                                                                        echo $row["profil__msg_devis"];
-                                                                                      } ?></textarea>
-                <textarea name="profil__msg_facture" class="form__input-full" rows="10"><?php if (!empty($row["profil__msg_facture"])) {
-                                                                                          echo $row["profil__msg_facture"];
-                                                                                        } ?></textarea>
-              </div>
-            </div>
+          <div class="m-form__submit-bar m-btn__grp">
+            <button class="btn btn__outline btn__cancel" type="button">Annuler</button>
+            <button class="btn btn__outline btn__prev" type="button">Précédent</button>
+            <button class="btn btn__plain btn__next" type="button">Suivant</button>
+            <button class="btn btn__plain btn__submit" type="submit">Enregistrer</button>
           </div>
-
-
-          <input type="submit" name="Enregistrer" class="btn btn__plain" value="Enregistrer">
 
         </form>
       </section>

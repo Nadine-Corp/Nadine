@@ -7,52 +7,65 @@
 
 
 /**
-* Récuparation des variables
-*/
+ * Injection du fichier rassemblant toutes les fonctions
+ * les plus importantes de Nadine
+ */
 
-$profil__societe =  addslashes($_POST['societe']);
-$profil__siret =  addslashes($_POST['siret']);
-$profil__civilite =  addslashes($_POST['civilite']);
-$profil__prenom =  addslashes($_POST['prenom']);
-$profil__nom =  addslashes($_POST['nom']);
-$profil__adresse =  addslashes($_POST['adresse']);
-$profil__code_postal =  addslashes($_POST['code_postal']);
-$profil__ville =  addslashes($_POST['ville']);
-$profil__telephone =  addslashes($_POST['telephone']);
-$profil__email =  addslashes($_POST['email']);
-$profil__website =  addslashes($_POST['website']);
-$profil__numero_secu =  addslashes($_POST['numero_secu']);
-$profil__numero_mda =  addslashes($_POST['numero_mda']);
-$profil__titulaire_du_compte =  addslashes($_POST['titulaire_du_compte']);
-$profil__iban =  addslashes($_POST['iban']);
-$profil__bic =  addslashes($_POST['bic']);
+require(__DIR__ . '/fonctions.php');
 
-$profil__msg_devis =  addslashes($_POST['profil__msg_devis']);
-$profil__msg_facture =  addslashes($_POST['profil__msg_facture']);
 
-// Traitement des Checkbox
+/**
+ * Ajoute une variable pour stocker les infos à envoyer dans la base de données
+ */
 
-if( isset($_POST['precompte'])){
-  $profil__precompte = '1';
+$data = array();
+
+
+/**
+ * Ajout les infos dans la variable
+ */
+
+foreach ($_POST as $key => $value) {
+  // Vérifie si l'input a été complété
+  if (isset($$key)) continue;
+
+  // Ajoute la value de l'input aux data
+  // à envoyer à la base de données
+  $data[$key] = addslashes($value);
+}
+
+
+/**
+ * Formate les data
+ */
+
+if ($data['profil__precompte'] == 'Oui') {
+  $data['profil__precompte'] = '1';
 } else {
-  $profil__precompte = '0';
+  $data['profil__precompte'] = '0';
 };
 
 
+echo "<pre>";
+var_dump($data);
+echo "</pre>";
 
-/**
-* Mise à jour de la base de données
-*/
-
-$sql = "INSERT INTO Profil (profil__societe, profil__siret, profil__civilite, profil__prenom, profil__nom, profil__adresse, profil__code_postal, profil__ville, profil__telephone, profil__email, profil__website, profil__numero_secu, profil__numero_mda, profil__precompte, profil__titulaire_du_compte, profil__iban, profil__bic, profil__msg_devis, profil__msg_facture)
-VALUES ('$profil__societe', '$profil__siret', '$profil__civilite', '$profil__prenom', '$profil__nom', '$profil__adresse', '$profil__code_postal', '$profil__ville', '$profil__telephone', '$profil__email', '$profil__website', '$profil__numero_secu', '$profil__numero_mda', $profil__precompte, '$profil__titulaire_du_compte', '$profil__iban', '$profil__bic', '$profil__msg_devis', '$profil__msg_facture')";
-include 'query.php'; $result = $conn->query($sql) or die($conn->error); $conn->close();
+die;
 
 
 
 /**
-* Redirection vers la page profil
-*/
+ * Ajout d'un nouveau Profil
+ */
+
+// Insertion dans la base données
+$table = 'Profil';
+$primaryKey = 'profil__id';
+nadine_insert($table, $primaryKey, $data);
+
+
+/**
+ * Redirection vers la page profil
+ */
 
 header('Location: ../profil.php');
-?>

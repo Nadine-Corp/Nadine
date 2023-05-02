@@ -2465,6 +2465,82 @@ function the_profil_siret($row)
 
 
 /**
+ * La fonction the_profil_numero_secu() affiche
+ * le Numéro de sécurité sociale de l'utilisateur
+ */
+
+function the_profil_numero_secu($row)
+{
+  if (isset($row)) {
+    // Récupère les infos du profil
+    $profil__numero_secu = $row['profil__numero_secu'];
+
+    // Retourne le résultat au template
+    echo $profil__numero_secu;
+  }
+}
+
+
+/**
+ * La fonction the_profil_numero_mda() affiche
+ * le Numéro de Maison des Artistes de l'utilisateur
+ */
+
+function the_profil_numero_mda($row)
+{
+  if (isset($row)) {
+    // Récupère les infos du profil
+    $profil__numero_mda = $row['profil__numero_mda'];
+
+    // Retourne le résultat au template
+    echo $profil__numero_mda;
+  }
+}
+
+
+/**
+ * La fonction get_profil_precompte() permet de savoir
+ * si l'utilisateur est dispensé de précompte ou pas
+ */
+
+function get_profil_precompte($row)
+{
+  if (isset($row)) {
+    if (!empty($row['profil__precompte'])) {
+      // Récupère les infos du diffuseur
+      $profil__precompte = $row["profil__precompte"];
+
+      // Retourne le résultat au template
+      return $profil__precompte;
+    }
+  }
+}
+
+
+/**
+ * La fonction get_profil_civilite() permet de récupérer
+ * la civilité de l'utilisateur
+ */
+
+function get_profil_civilite($row)
+{
+  if (isset($row)) {
+    if (!empty($row['profil__civilite'])) {
+      // Récupère les infos du diffuseur
+      $profil__civilite = $row["profil__civilite"];
+
+      // Formate le résultat
+      if (strpos($profil__civilite, 'Mme') === 0) {
+        $profil__civilite = "Mme";
+      }
+
+      // Retourne le résultat au template
+      return $profil__civilite;
+    }
+  }
+}
+
+/**
  * La fonction the_profil_prenom() affiche
  * le prénom de l'utilisateur
  */
@@ -2637,6 +2713,60 @@ function the_profil_website($row)
   }
 }
 
+
+/**
+ * La fonction the_profil_titulaire_du_compte() affiche
+ * le titulaire du compte bancaire de l'utilisateur
+ */
+
+function the_profil_titulaire_du_compte($row)
+{
+  if (isset($row)) {
+    if (!empty($row['profil__titulaire_du_compte'])) {
+      // Récupère les infos du diffuseur
+      $profil__titulaire_du_compte = $row['profil__titulaire_du_compte'];
+
+      // Retourne le résultat au template
+      echo $profil__titulaire_du_compte;
+    }
+  }
+}
+
+/**
+ * La fonction the_profil_iban() affiche
+ * l'IBAN du compte bancaire de l'utilisateur
+ */
+
+function the_profil_iban($row)
+{
+  if (isset($row)) {
+    if (!empty($row['profil__iban'])) {
+      // Récupère les infos du diffuseur
+      $profil__iban = $row['profil__iban'];
+
+      // Retourne le résultat au template
+      echo $profil__iban;
+    }
+  }
+}
+
+/**
+ * La fonction the_profil_bic() affiche
+ * le BIC du compte bancaire de l'utilisateur
+ */
+
+function the_profil_bic($row)
+{
+  if (isset($row)) {
+    if (!empty($row['profil__bic'])) {
+      // Récupère les infos du diffuseur
+      $profil__bic = $row['profil__bic'];
+
+      // Retourne le résultat au template
+      echo $profil__bic;
+    }
+  }
+}
 
 /**
  * La fonction get_date_today() permet de connaître
