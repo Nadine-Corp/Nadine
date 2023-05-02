@@ -150,8 +150,8 @@ include(__DIR__ . '/header.php');
                 <input type="text" name="profil__ville" placeholder="Ville" value="<?php the_profil_ville($row); ?>">
               </div>
               <div class="m-form__label-amimate">
-                <label for="the_profil_pays">Pays</label>
-                <input type="text" name="the_profil_pays" placeholder="Pays" value="<?php the_profil_pays($row); ?>">
+                <label for="profil__pays">Pays</label>
+                <input type="text" name="profil__pays" placeholder="Pays" value="<?php the_profil_pays($row); ?>">
               </div>
             </div>
 

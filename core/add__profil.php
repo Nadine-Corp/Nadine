@@ -46,14 +46,6 @@ if ($data['profil__precompte'] == 'Oui') {
 };
 
 
-echo "<pre>";
-var_dump($data);
-echo "</pre>";
-
-die;
-
-
-
 /**
  * Ajout d'un nouveau Profil
  */

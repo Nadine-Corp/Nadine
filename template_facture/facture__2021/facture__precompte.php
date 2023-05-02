@@ -3,7 +3,7 @@
 
 
 <form class="form" action="" method="post">
-  <div class="paper">
+  <div class="paper template-facture__2021">
     <div class="paper__content">
       <table>
         <tr>

@@ -61,11 +61,10 @@ include './header.php';
   // Vérifie s'il s'agit d'une nouvelle facture
   if ($facture__id == 'new') {
     $args = array(
-      'FROM'     => 'Projets, Diffuseurs, Profil',
-      'WHERE'    => 'Projets.projet__id =' . $projet__id,
-      'AND'      => 'Projets.diffuseur__id = Diffuseurs.diffuseur__id',
-      'AND'      => 'Profil.profil__id = (SELECT MAX(profil__id) FROM Profil)',
-      'LIMIT'    => 1
+      'FROM'     => 'Projets',
+      'JOIN'     => 'Diffuseurs ON Projets.diffuseur__id = Diffuseurs.diffuseur__id',
+      'JOIN '    => 'Profil ON Profil.profil__id = (SELECT MAX(profil__id) FROM Profil)',
+      'WHERE'    => 'Projets.projet__id =' . $projet__id
     );
   } else {
     $args = array(
@@ -113,8 +112,12 @@ include './header.php';
               <option value="Brouillon">Brouillon</option>
               <option value="Envoyé">Envoyé</option>
               <option value="Relancé">Relancé</option>
-              <option value="Signé">Signé</option>
-              <option value="Payé">Payé</option>
+              <?php if ($table == 'devis') : ?>
+                <option value="Signé">Signé</option>
+              <?php endif; ?>
+              <?php if ($table != 'devis') : ?>
+                <option value="Payé">Payé</option>
+              <?php endif; ?>
               <option value="Annulé">Annulé</option>
             </select>
           </div>
@@ -129,9 +132,11 @@ include './header.php';
             <a href="" class="btn btn__outline">
               Dupliquer
             </a>
-            <a href="" class="btn btn__outline">
-              Générer la facture
-            </a>
+            <?php if ($table == 'devis') : ?>
+              <a href="./facture__single.php?projet__id=<?php echo $projet__id ?>&facture__id=new&facture__gene=<?php echo $facture__id ?>" class="btn btn__outline">
+                Générer la facture
+              </a>
+            <?php endif; ?>
           </div>
           <div class="m-form__submit-bar m-btn__grp">
             <button class="btn btn__outline btn__ico"><?php include(__DIR__ . '/assets/img/ico_corbeille.svg.php'); ?></button>
