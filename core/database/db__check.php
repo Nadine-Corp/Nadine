@@ -87,7 +87,6 @@ foreach ($tables as $table_name => $columns) {
           $sql = "ALTER TABLE $table_name ADD COLUMN $column_name $column_format";
         };
 
-        echo $sql;
         // Envoie la requête demandée à la base de données
         $result = $conn->query($sql) or die($conn->error);
       } else {
