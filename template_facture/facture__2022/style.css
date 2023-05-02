@@ -49,6 +49,10 @@
 	font-style: normal;
 }
 
+.facture__caption input {
+	width: 75% !important
+}
+
 .cgv__titre {
 	font-size: 7pt;
 	line-height: 9pt;
@@ -216,7 +220,7 @@
 
 .paper__content input:disabled {
 	opacity: 1 !important;
-	color: black;
+	color: black !important;
 }
 
 .paper__content input {

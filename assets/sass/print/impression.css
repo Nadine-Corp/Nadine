@@ -1,32 +1,37 @@
 .l-footer,
 .l-header,
-.l-msg-smartphone,
-input[type="submit"],
-.toolbar,
-.btn{
+.m-aside,
+.m-breadcrumb {
   display: none;
 }
-main, html, body,
+
+main,
+html,
+body,
 .paper,
 .m-rom,
-.l12{
+.l-facture .with--aside {
   width: 100%;
   margin: 0;
   padding: 0;
   box-shadow: none;
 }
-.paper__content{
+
+.paper__content {
   position: relative;
   padding: 0;
 }
-.paper table{
+
+.paper table {
   width: 100%;
   display: table !important;
 }
-.paper tr{
+
+.paper tr {
   display: table-row !important;
 }
+
 .paper th,
-.paper td{
+.paper td {
   display: table-cell !important;
 }

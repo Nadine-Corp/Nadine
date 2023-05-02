@@ -120,7 +120,7 @@ include './header.php';
           </div>
 
           <div class="m-btn__grp m-btn__grp-v">
-            <a href="" class="btn btn__outline">
+            <a href="javascript:window.print()" class="btn btn__outline">
               Imprimer en PDF
             </a>
             <a href="" class="btn btn__outline">
