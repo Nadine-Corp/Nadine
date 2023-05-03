@@ -4,13 +4,15 @@
 
 
 .m-aside
+  display: flex
+  flex-direction: column
   position: sticky
   float: left
   width: $width__aside
   top: $header__height
   min-height: calc( var(--vh, 1vh) * 100 - var(--hh))
-  padding: m(3) m(2) !important
-  background: color('grey')
+  padding: m(3) m(2) $row__marge-bottom m(2) !important
+  background: color('backgroundColor')
   border-right: 1px solid color('border-color')
 
   &>*
@@ -19,3 +21,11 @@
 
   h1
     color: color('texte')
+
+.m-aside__bottom
+  margin-top: auto
+  margin-bottom: 0
+
+.m-aside__info
+  em
+    color: color('rouge', 80)

@@ -61,9 +61,7 @@ include_once(__DIR__ . '/core/fonctions.php');
 
   <?php // Webfont 
   ?>
-  <link rel="preconnect" href="https://fonts.gstatic.com">
   <link rel="stylesheet" href="https://use.typekit.net/znq5njd.css">
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
 
   <?php // Style CSS et Script JS 
   ?>

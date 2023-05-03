@@ -9,6 +9,7 @@
   position: fixed
   width: 50vw
   min-height: 33vh
+  max-height: 75vh
   top: 50%
   left: 50%
   background: color('grey')
@@ -23,6 +24,7 @@
 .m-modal__wrapper
   flex: 1 1 auto
   padding: m(5)
+  overflow: overlay
 
 .m-modal__denko
   position: relative
@@ -39,26 +41,3 @@
     display: block
     transform: rotate(-90deg)
     transform-origin: top left
-
-
-// Style la modal permettant d'ajouter un projet
-
-.m-modal__add-projet
-  .m-form__equipe
-    display: none
-
-
-// Style la modal permettant d'ajouter un contact
-
-.m-modal__contact-civilite
-  flex-shrink: 2
-  margin-right: m(2)
-  padding-bottom: m(1.5)
-  .m-form__radio-horiz
-    margin-top: m(1.5)
-
-
-
-
-
-// Stop Scroll

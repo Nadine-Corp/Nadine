@@ -1793,11 +1793,11 @@ function the_contact_type($row)
 
 
 /**
- * La fonction the_facture_id() permet d'afficher
+ * La fonction get_facture_id() permet d'afficher
  * l'ID d'une facture ou devis
  */
 
-function the_facture_id($row)
+function get_facture_id($row)
 {
   if (isset($row)) {
     // Récupére la bonne table
@@ -1812,6 +1812,23 @@ function the_facture_id($row)
     } else {
       $facture__id = 'new';
     }
+
+    // Retourne le résultat au template
+    return $facture__id;
+  }
+}
+
+
+/**
+ * La fonction the_facture_id() permet d'afficher
+ * l'ID d'une facture ou devis
+ */
+
+function the_facture_id($row)
+{
+  if (isset($row)) {
+    // Récupére l'ID de la facture ou du devis
+    $facture__id = get_facture_id($row);
 
     // Retourne le résultat au template
     echo $facture__id;
@@ -1868,7 +1885,6 @@ function get_facture_new_numero($table)
       }
     }
 
-
     // Récupére le bon acronyme
     if ($table == 'devis') {
       $initiales = 'D' . $initiales;
@@ -1879,8 +1895,6 @@ function get_facture_new_numero($table)
     if ($table == 'factures') {
       $initiales = 'F' . $initiales;
     };
-
-
 
     // Récupére l'année en cours
     $year = date('Y');
@@ -1969,11 +1983,11 @@ function the_facture_class($row)
 
 
 /**
- * La fonction the_facture_statut() permet d'afficher
+ * La fonction get_facture_statut() permet de récupérer
  * le staut d'un devis ou d'une facture
  */
 
-function the_facture_statut($row)
+function get_facture_statut($row)
 {
   if (isset($row)) {
     // Récupére la bonne table
@@ -1984,6 +1998,23 @@ function the_facture_statut($row)
 
     // Recupère le statut de facture
     $facture_statut = $row[$prefix . '__statut'];
+
+    // Retourne le résultat au template
+    return $facture_statut;
+  }
+}
+
+
+/**
+ * La fonction the_facture_statut() permet d'afficher
+ * le staut d'un devis ou d'une facture
+ */
+
+function the_facture_statut($row)
+{
+  if (isset($row)) {
+    // Recupère le statut de facture
+    $facture_statut = get_facture_statut($row);
 
     // Retourne le résultat au template
     echo $facture_statut;
@@ -2184,17 +2215,46 @@ function the_facture_date($row, $format = 'abrv')
 
 /**
  * La fonction the_facture_tache() permet d'afficher
- * la description de la tâche  dans une facture ou un devis
+ * la description de la tâche dans une facture ou un devis
  */
 
 function the_facture_tache($row, $numTache = 1)
 {
   if (isset($row)) {
-    // Récupére la bonne table
-    $table = get_facture_table($row);
 
-    // Récupére le bon prefix
-    $prefix = get_facture_prefix($table);
+    // Vérfie si la facture ou devis
+    // doit être dupliquée
+
+    if (isset($_GET['from__table'])) {
+      // Récupére la bonne table
+      $table = $_GET['from__table'];
+
+      // Récupére le bon prefix
+      $prefix = get_facture_prefix($table);
+
+      // Récupére l'ID de la facture
+      $facture__id = $_GET['from__id'];
+
+      // Récupère les infos de la facture ou devis
+      // à dupliquer
+      $args = array(
+        'FROM'     => $table,
+        'WHERE'    => $prefix . '__id' . ' = ' . $facture__id
+      );
+      $loop = nadine_query($args);
+      // Récupère l'ID du Diffuseur
+      // et le Template (si la facture exite déjà)
+      if ($loop->num_rows > 0) {
+        $row = $loop->fetch_assoc();
+      }
+    } else {
+
+      // Récupére la bonne table
+      $table = get_facture_table($row);
+
+      // Récupére le bon prefix
+      $prefix = get_facture_prefix($table);
+    }
 
     // Vérifie si la tache existe
     if (isset($row[$prefix . '__tache_' . $numTache])) {
@@ -2216,11 +2276,38 @@ function the_facture_tache($row, $numTache = 1)
 function the_facture_prix($row, $numTache = 1)
 {
   if (isset($row)) {
-    // Récupére la bonne table
-    $table = get_facture_table($row);
+    // Vérfie si la facture ou devis
+    // doit être dupliquée
 
-    // Récupére le bon prefix
-    $prefix = get_facture_prefix($table);
+    if (isset($_GET['from__table'])) {
+      // Récupére la bonne table
+      $table = $_GET['from__table'];
+
+      // Récupére le bon prefix
+      $prefix = get_facture_prefix($table);
+
+      // Récupére l'ID de la facture
+      $facture__id = $_GET['from__id'];
+
+      // Récupère les infos de la facture ou devis
+      // à dupliquer
+      $args = array(
+        'FROM'     => $table,
+        'WHERE'    => $prefix . '__id' . ' = ' . $facture__id
+      );
+      $loop = nadine_query($args);
+      // Récupère l'ID du Diffuseur
+      // et le Template (si la facture exite déjà)
+      if ($loop->num_rows > 0) {
+        $row = $loop->fetch_assoc();
+      }
+    } else {
+      // Récupére la bonne table
+      $table = get_facture_table($row);
+
+      // Récupére le bon prefix
+      $prefix = get_facture_prefix($table);
+    }
 
     // Vérifie si le prix existe
     if (isset($row[$prefix . '__prix_' . $numTache])) {
@@ -2289,6 +2376,83 @@ function the_facture_total_ht($row)
 
     // Retourne le résultat au template
     echo $facture_total_ht;
+  }
+}
+
+
+/**
+ * La fonction the_facture_msg() affiche le message
+ * a envoyé avec les facture ou les devis
+ */
+
+function the_facture_msg($row)
+{
+  if (isset($row)) {
+    // Récupére la bonne table
+    $table = get_facture_table($row);
+
+    // Récupére le bon prefix
+    $prefix = get_facture_prefix($table);
+
+    // Récupére le dernier profil
+    $profil__id = get_profil_last_id();
+
+    // Récupére l'ID de la facture ou du devis
+    $facture__id = get_facture_id($row);
+
+    // Récupère les infos du dernier profil et du projet
+    $args = array(
+      'FROM'     => $table . ', Profil',
+      'WHERE'    => $prefix . '__id' . ' = ' . $facture__id,
+      'AND'      => 'Profil.profil__id = ' . $profil__id
+    );
+    $loop = nadine_query($args);
+
+    // Récupère les info du profil de l'utilisateur
+    if ($loop->num_rows > 0) {
+      while ($row = $loop->fetch_assoc()) {
+        // Récupère le message
+        $profil__msg = $row['profil__msg_' . $prefix];
+
+        // Liste des {{String}} à remplacer par des $Variables
+        $vars = array(
+          '{{diffuseur__civilite}}'         => $row['diffuseur__civilite'],
+          '{{diffuseur__prenom}}'           => $row['diffuseur__prenom'],
+          '{{diffuseur__nom}}'              => $row['diffuseur__nom'],
+          '{{diffuseur__societe}}'          => $row['diffuseur__societe'],
+          '{{diffuseur__email}}'            => $row['diffuseur__email'],
+          '{{projet__nom}}'                 => $row['projet__nom'],
+          '{{profil__societe}}'             => $row['profil__societe'],
+          '{{profil__civilite}}'            => $row['profil__civilite'],
+          '{{profil__prenom}}'              => $row['profil__prenom'],
+          '{{profil__nom}}'                 => $row['profil__nom'],
+          '{{profil__pseudo}}'              => $row['profil__pseudo'],
+          '{{profil__initiales}}'           => $row['profil__prenom'],
+
+          '{{profil__adresse}}'             => $row['profil__adresse'],
+          '{{profil__code_postal}}'         => $row['profil__code_postal'],
+          '{{profil__ville}}'               => $row['profil__ville'],
+          '{{profil__pays}}'                => $row['profil__pays'],
+          '{{profil__telephone}}'           => $row['profil__telephone'],
+          '{{profil__email}}'               => $row['profil__email'],
+          '{{profil__website}}'             => $row['profil__website'],
+
+          '{{profil__numero_secu}}'         => $row['profil__numero_secu'],
+          '{{profil__numero_mda}}'          => $row['profil__numero_mda'],
+          '{{profil__siret}}'               => $row['profil__siret'],
+
+          '{{profil__titulaire_du_compte}}' => $row['profil__titulaire_du_compte'],
+          '{{profil__iban}}'                => $row['profil__iban'],
+          '{{profil__bic}}'                 => $row['profil__bic']
+        );
+
+        // Formate le résultat
+        $profil__msg = strtr(nl2br($profil__msg), $vars);
+      }
+    }
+
+    // Retourne le résultat au template
+    echo $profil__msg;
   }
 }
 

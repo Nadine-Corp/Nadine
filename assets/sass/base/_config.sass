@@ -50,15 +50,15 @@ $width__aside: var(--wa)
     @include font-face('Graphik', './assets/fonts/graphik/graphik', bold, italic, [eot, woff, woff2] )
 
 // Ajout du Redaction
-@include font-face('Redaction', './assets/fonts/redaction/redaction', 400, normal, [woff2] )
-@include font-face('Redaction', './assets/fonts/redaction/redaction-italic', 400, italic, [woff2] )
-@include font-face('Redaction', './assets/fonts/redaction/redaction-bold', 600, normal, [woff2] )
+@include font-face('Nadine Serif', './assets/fonts/redaction/redaction35', 400, normal, [ttf, otf, woff2] )
+@include font-face('Nadine Serif', './assets/fonts/redaction/redaction35-italic', 400, italic, [ttf, otf, woff2] )
+@include font-face('Nadine Serif', './assets/fonts/redaction/redaction35-bold', 600, normal, [ttf, otf, woff2] )
 
 // Ajout du Nimbus Sans
-@include font-face('NimbusSans', './assets/fonts/nimbus/nimbus', 400, normal, [ttf] )
-@include font-face('NimbusSans', './assets/fonts/nimbus/nimbus-italic', 400, italic, [ttf] )
-@include font-face('NimbusSans', './assets/fonts/nimbus/nimbus-bold', 600, normal, [ttf] )
-@include font-face('NimbusSans', './assets/fonts/nimbus/nimbus-bold-italic', 600, italic, [ttf] )
+@include font-face('Nadine Sans', './assets/fonts/nimbus/nimbus', 400, normal, [ttf] )
+@include font-face('Nadine Sans', './assets/fonts/nimbus/nimbus-italic', 400, italic, [ttf] )
+@include font-face('Nadine Sans', './assets/fonts/nimbus/nimbus-bold', 600, normal, [ttf] )
+@include font-face('Nadine Sans', './assets/fonts/nimbus/nimbus-bold-italic', 600, italic, [ttf] )
 
 
 
@@ -70,9 +70,9 @@ $width__aside: var(--wa)
 
 @function font($family)
   @if $family == 'serif'
-    @return 'Redaction', Georgia, serif
+    @return 'Nadine Serif', Georgia, serif
   @else if $family == 'sans-serif'
-    @return 'NimbusSans', Helvetica, sans-serif
+    @return 'Nadine Sans', Helvetica, sans-serif
 
 
 // Les variables $fast, $slow et $verySlow permettent d'uniformiser

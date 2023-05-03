@@ -58,7 +58,7 @@ include './header.php';
    */
 
 
-  // Vérifie s'il s'agit d'une nouvelle facture
+  // Vérifie s'il s'agit d'une nouvelle facture ou devis
   if ($facture__id == 'new') {
     $args = array(
       'FROM'     => 'Projets',
@@ -78,7 +78,7 @@ include './header.php';
 
 
   /**
-   * Récupère le numéros de la facture
+   * Récupère le numéros de la facture ou devis
    */
 
 
@@ -108,7 +108,7 @@ include './header.php';
         <aside class="m-aside">
           <div class="m-form__label m-form__select-tab">
             <label for="facture__statut">État de la facture</label>
-            <select name="facture__statut" data-selected="">
+            <select name="facture__statut" data-selected="<?php the_facture_statut($row) ?>">
               <option value="Brouillon">Brouillon</option>
               <option value="Envoyé">Envoyé</option>
               <option value="Relancé">Relancé</option>
@@ -126,14 +126,14 @@ include './header.php';
             <a href="javascript:window.print()" class="btn btn__outline">
               Imprimer en PDF
             </a>
-            <a href="" class="btn btn__outline">
+            <a href="./parts/p__modal-facture-message" class="btn btn__outline btn__modal" data-modal='facturemsg'>
               Générer le couriel
             </a>
-            <a href="" class="btn btn__outline">
+            <a href="./facture__single.php?projet__id=<?php echo $projet__id ?>&<?php echo $prefix ?>__id=new&from__table=<?php echo $table ?>&from__id=<?php echo $facture__id ?>" class="btn btn__outline">
               Dupliquer
             </a>
             <?php if ($table == 'devis') : ?>
-              <a href="./facture__single.php?projet__id=<?php echo $projet__id ?>&facture__id=new&facture__gene=<?php echo $facture__id ?>" class="btn btn__outline">
+              <a href="./facture__single.php?projet__id=<?php echo $projet__id ?>&facture__id=new&from__table=<?php echo $table ?>&from__id=<?php echo $facture__id ?>" class="btn btn__outline">
                 Générer la facture
               </a>
             <?php endif; ?>
@@ -142,6 +142,22 @@ include './header.php';
             <button class="btn btn__outline btn__ico"><?php include(__DIR__ . '/assets/img/ico_corbeille.svg.php'); ?></button>
             <a href="projet__single.php?projet__id=<?php the_projet_id($row) ?>" class="btn btn__outline btn__cancel">Annuler</a>
             <button class="btn btn__plain btn__submit" type="submit">Enregistrer</button>
+          </div>
+
+          <?php
+          // Ajout le statut du précompte
+          // sur cette facture ou devis
+          ?>
+          <div class="m-aside__bottom">
+            <span class="m-body m-aside__info">
+              <?php if (isset($row[$prefix . '__precompte'])) : ?>
+                <?php if ($row[$prefix . '__precompte'] == 1) : ?>
+                  <span class="m-ss">Information :</span> <em>Le précompte est activé sur ce projet.</em>
+                <?php else : ?>
+                  <span class="m-ss">Information :</span> <em>Le précompte est désactivé sur ce projet.</em>
+                <?php endif; ?>
+              <?php endif; ?>
+            </span>
           </div>
         </aside>
 
@@ -192,6 +208,14 @@ include './header.php';
         </section>
 
       </form>
+
+      <?php
+      /**
+       * Ajout des modales
+       */
+
+      include './parts/p__modal-facturemsg.php';
+      ?>
     <?php endwhile; ?>
   <?php else : ?>
     <section class="m-rom">

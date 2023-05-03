@@ -223,50 +223,50 @@ input::-moz-focus-inner, button::-moz-focus-inner {
 }
 
 @font-face {
-  font-family: "Redaction";
-  src: local("Redaction"), url("./assets/fonts/redaction/redaction.woff2") format("woff2");
+  font-family: "Nadine Serif";
+  src: local("Nadine Serif"), url("./assets/fonts/redaction/redaction35.ttf") format("truetype"), url("./assets/fonts/redaction/redaction35.otf") format("opentype"), url("./assets/fonts/redaction/redaction35.woff2") format("woff2");
   font-stretch: normal;
   font-style: normal;
   font-weight: 400;
 }
 @font-face {
-  font-family: "Redaction";
-  src: local("Redaction"), url("./assets/fonts/redaction/redaction-italic.woff2") format("woff2");
+  font-family: "Nadine Serif";
+  src: local("Nadine Serif"), url("./assets/fonts/redaction/redaction35-italic.ttf") format("truetype"), url("./assets/fonts/redaction/redaction35-italic.otf") format("opentype"), url("./assets/fonts/redaction/redaction35-italic.woff2") format("woff2");
   font-stretch: normal;
   font-style: italic;
   font-weight: 400;
 }
 @font-face {
-  font-family: "Redaction";
-  src: local("Redaction"), url("./assets/fonts/redaction/redaction-bold.woff2") format("woff2");
+  font-family: "Nadine Serif";
+  src: local("Nadine Serif"), url("./assets/fonts/redaction/redaction35-bold.ttf") format("truetype"), url("./assets/fonts/redaction/redaction35-bold.otf") format("opentype"), url("./assets/fonts/redaction/redaction35-bold.woff2") format("woff2");
   font-stretch: normal;
   font-style: normal;
   font-weight: 600;
 }
 @font-face {
-  font-family: "NimbusSans";
-  src: local("NimbusSans"), url("./assets/fonts/nimbus/nimbus.ttf") format("truetype");
+  font-family: "Nadine Sans";
+  src: local("Nadine Sans"), url("./assets/fonts/nimbus/nimbus.ttf") format("truetype");
   font-stretch: normal;
   font-style: normal;
   font-weight: 400;
 }
 @font-face {
-  font-family: "NimbusSans";
-  src: local("NimbusSans"), url("./assets/fonts/nimbus/nimbus-italic.ttf") format("truetype");
+  font-family: "Nadine Sans";
+  src: local("Nadine Sans"), url("./assets/fonts/nimbus/nimbus-italic.ttf") format("truetype");
   font-stretch: normal;
   font-style: italic;
   font-weight: 400;
 }
 @font-face {
-  font-family: "NimbusSans";
-  src: local("NimbusSans"), url("./assets/fonts/nimbus/nimbus-bold.ttf") format("truetype");
+  font-family: "Nadine Sans";
+  src: local("Nadine Sans"), url("./assets/fonts/nimbus/nimbus-bold.ttf") format("truetype");
   font-stretch: normal;
   font-style: normal;
   font-weight: 600;
 }
 @font-face {
-  font-family: "NimbusSans";
-  src: local("NimbusSans"), url("./assets/fonts/nimbus/nimbus-bold-italic.ttf") format("truetype");
+  font-family: "Nadine Sans";
+  src: local("Nadine Sans"), url("./assets/fonts/nimbus/nimbus-bold-italic.ttf") format("truetype");
   font-stretch: normal;
   font-style: italic;
   font-weight: 600;
@@ -332,7 +332,7 @@ svg {
 }
 
 * {
-  font-family: "Redaction", Georgia, serif;
+  font-family: "Nadine Serif", Georgia, serif;
   color: var(--color-texte);
   font-weight: 400;
   font-style: normal;
@@ -354,10 +354,11 @@ h1, h2, h3, h4, h5, h6, p, a {
 }
 
 strong, strong * {
-  font-weight: 800;
+  font-weight: 600;
 }
 
-em, em * {
+em, em *,
+i, i * {
   font-style: italic;
 }
 
@@ -388,7 +389,7 @@ p a:link, p a:visited {
 }
 
 .m-ss {
-  font-family: "NimbusSans", Helvetica, sans-serif;
+  font-family: "Nadine Sans", Helvetica, sans-serif;
 }
 
 .m-display, .m-display * {
@@ -444,7 +445,7 @@ p a:link, p a:visited {
 
 .m-breadcrumb__link {
   position: relative;
-  font-family: "NimbusSans", Helvetica, sans-serif;
+  font-family: "Nadine Sans", Helvetica, sans-serif;
   color: var(--color-rouge-70);
   padding: var(--m) calc(var(--m) * 3) var(--m) 0;
   -webkit-transition: 0.6s;
@@ -521,7 +522,7 @@ p a:link, p a:visited {
   margin-bottom: var(--m);
 }
 .m-accordion__titre span {
-  font-family: "NimbusSans", Helvetica, sans-serif;
+  font-family: "Nadine Sans", Helvetica, sans-serif;
   color: var(--color-rouge-70);
   -webkit-transition: 2s;
   transition: 2s;
@@ -758,13 +759,20 @@ p a:link, p a:visited {
 }
 
 .m-aside {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
   position: sticky;
   float: left;
   width: var(--wa);
   top: var(--hh);
   min-height: calc(var(--vh, 1vh) * 100 - var(--hh));
-  padding: calc(var(--m) * 3) calc(var(--m) * 2) !important;
-  background: var(--color-grey);
+  padding: calc(var(--m) * 3) calc(var(--m) * 2) var(--mb) calc(var(--m) * 2) !important;
+  background: var(--color-backgroundColor);
   border-right: 1px solid var(--color-border-color);
 }
 .m-aside > * {
@@ -773,6 +781,15 @@ p a:link, p a:visited {
 }
 .m-aside h1 {
   color: var(--color-texte);
+}
+
+.m-aside__bottom {
+  margin-top: auto;
+  margin-bottom: 0;
+}
+
+.m-aside__info em {
+  color: var(--color-rouge-80);
 }
 
 .m-img__full {
@@ -802,6 +819,7 @@ p a:link, p a:visited {
   position: fixed;
   width: 50vw;
   min-height: 33vh;
+  max-height: 75vh;
   top: 50%;
   left: 50%;
   background: var(--color-grey);
@@ -824,6 +842,7 @@ p a:link, p a:visited {
       -ms-flex: 1 1 auto;
           flex: 1 1 auto;
   padding: calc(var(--m) * 5);
+  overflow: overlay;
 }
 
 .m-modal__denko {
@@ -845,20 +864,6 @@ p a:link, p a:visited {
           transform: rotate(-90deg);
   -webkit-transform-origin: top left;
           transform-origin: top left;
-}
-
-.m-modal__add-projet .m-form__equipe {
-  display: none;
-}
-
-.m-modal__contact-civilite {
-  -ms-flex-negative: 2;
-      flex-shrink: 2;
-  margin-right: calc(var(--m) * 2);
-  padding-bottom: calc(var(--m) * 1.5);
-}
-.m-modal__contact-civilite .m-form__radio-horiz {
-  margin-top: calc(var(--m) * 1.5);
 }
 
 .m-table {
@@ -945,7 +950,7 @@ p a:link, p a:visited {
 }
 .m-cover__toolbar span {
   margin-left: var(--m);
-  font-family: "NimbusSans", Helvetica, sans-serif;
+  font-family: "Nadine Sans", Helvetica, sans-serif;
   color: var(--color-rouge-70);
 }
 
@@ -1000,7 +1005,7 @@ span.m-cover__diffuseur-info {
 }
 
 span.m-cover__diffuseur-info {
-  font-family: "NimbusSans", Helvetica, sans-serif;
+  font-family: "Nadine Sans", Helvetica, sans-serif;
   margin-bottom: var(--m);
 }
 
@@ -1028,7 +1033,7 @@ span.m-cover__diffuseur-ads {
   border-left: 1px solid var(--color-rouge-70);
 }
 .m-cover__diffuseur-half span, .m-cover__diffuseur-half span * {
-  font-family: "NimbusSans", Helvetica, sans-serif;
+  font-family: "Nadine Sans", Helvetica, sans-serif;
 }
 
 .m-cover__artiste {
@@ -1049,7 +1054,7 @@ span.m-cover__diffuseur-ads {
   color: var(--color-backgroundColor);
 }
 .m-cover__artiste span:last-of-type {
-  font-family: "NimbusSans", Helvetica, sans-serif;
+  font-family: "Nadine Sans", Helvetica, sans-serif;
 }
 
 .m-cover__cdv-bottom {
@@ -1428,7 +1433,7 @@ span.m-cover__diffuseur-ads {
   width: 100%;
   color: var(--color-grey-40);
   font-size: var(--m);
-  font-family: "NimbusSans", Helvetica, sans-serif;
+  font-family: "Nadine Sans", Helvetica, sans-serif;
 }
 .m-form input:disabled {
   opacity: 0.33;
@@ -1575,7 +1580,7 @@ input:-webkit-autofill:active {
 }
 .m-form__nav li {
   position: relative;
-  font-family: "NimbusSans", Helvetica, sans-serif;
+  font-family: "Nadine Sans", Helvetica, sans-serif;
   color: var(--color-grey-40);
   padding-right: calc(var(--m) * 4);
   cursor: pointer;
@@ -1943,6 +1948,24 @@ input:checked + .slider:before {
           box-shadow: 2px 2px var(--color-texte);
 }
 
+.m-modal__facturemsg {
+  background: white;
+}
+
+.m-modal__contact-civilite {
+  -ms-flex-negative: 2;
+      flex-shrink: 2;
+  margin-right: calc(var(--m) * 2);
+  padding-bottom: calc(var(--m) * 1.5);
+}
+.m-modal__contact-civilite .m-form__radio-horiz {
+  margin-top: calc(var(--m) * 1.5);
+}
+
+.m-modal__add-projet .m-form__equipe {
+  display: none;
+}
+
 .p-facture {
   margin-right: var(--m);
   -webkit-transition: 0.6s;
@@ -2097,6 +2120,8 @@ input:checked + .slider:before {
 }
 .l-facture .m-aside {
   width: 33vw;
+  top: calc(var(--hh) + (var(--m) * 4));
+  min-height: calc(var(--vh, 1vh) * 100 - var(--hh) - var(--m) * 4);
 }
 .l-facture .with--aside {
   width: calc(100% - 33vw);

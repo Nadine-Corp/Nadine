@@ -218,12 +218,28 @@ include(__DIR__ . '/header.php');
               <li>{{diffuseur__nom}}</li>
               <li>{{diffuseur__societe}}</li>
               <li>{{diffuseur__email}}</li>
+
               <li>{{projet__nom}}</li>
+
               <li>{{profil__societe}}</li>
               <li>{{profil__civilite}}</li>
               <li>{{profil__prenom}}</li>
               <li>{{profil__nom}}</li>
+              <li>{{profil__pseudo}}</li>
+              <li>{{profil__initiales}}</li>
+
+              <li>{{profil__adresse}}</li>
+              <li>{{profil__code_postal}}</li>
+              <li>{{profil__ville}}</li>
+              <li>{{profil__pays}}</li>
+              <li>{{profil__telephone}}</li>
+              <li>{{profil__email}}</li>
+              <li>{{profil__website}}</li>
+
               <li>{{profil__numero_secu}}</li>
+              <li>{{profil__numero_mda}}</li>
+              <li>{{profil__siret}}</li>
+
               <li>{{profil__titulaire_du_compte}}</li>
               <li>{{profil__iban}}</li>
               <li>{{profil__bic}}</li>
