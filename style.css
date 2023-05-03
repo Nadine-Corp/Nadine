@@ -610,13 +610,15 @@ p a:link, p a:visited {
   transition: 0.5s;
 }
 
+.m-btn__grp {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
 .m-btn__grp > .btn:not(:first-child) {
   margin-left: var(--m);
 }
 .m-btn__grp.m-btn__grp-v {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
@@ -665,7 +667,7 @@ p a:link, p a:visited {
 .btn__outline {
   color: var(--color-rouge-80);
   border: 1px solid var(--color-rouge-80);
-  background: var(--color-backgroundColor);
+  background: rgba(var(--color-rgb-grey-0), 0);
 }
 .btn__outline svg {
   fill: var(--color-rouge-80);
@@ -758,6 +760,21 @@ p a:link, p a:visited {
   fill: var(--color-backgroundColor);
 }
 
+.btn__info {
+  opacity: 0;
+  float: left;
+  height: calc(var(--m) * 4);
+  padding: var(--m);
+  font-size: calc(var(--m) * 1.25);
+  line-height: calc(var(--m) * 2);
+  font-weight: 400;
+  -webkit-transition: 0.6s;
+  transition: 0.6s;
+}
+.btn__info.is--active {
+  opacity: 1;
+}
+
 .m-aside {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -822,12 +839,12 @@ p a:link, p a:visited {
   max-height: 75vh;
   top: 50%;
   left: 50%;
-  background: var(--color-grey);
+  background: var(--color-backgroundColor);
   -webkit-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%);
   -webkit-transition: 0.6s;
   transition: 0.6s;
-  z-index: 900;
+  z-index: 1000;
   -webkit-box-shadow: 0 calc(var(--m) * 5) calc(var(--m) * 5) 0 rgba(var(--color-rgb-shadow-50), 0.75);
           box-shadow: 0 calc(var(--m) * 5) calc(var(--m) * 5) 0 rgba(var(--color-rgb-shadow-50), 0.75);
 }
@@ -901,6 +918,90 @@ p a:link, p a:visited {
 .m-table tbody tr:nth-child(2n) td,
 .m-table thead tr td {
   color: var(--color-grey-100);
+}
+
+.m-volet {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  position: fixed;
+  width: 85vw;
+  top: 0;
+  bottom: 0;
+  background: var(--color-backgroundColor);
+  z-index: 800;
+  -webkit-transition: 0.6s;
+  transition: 0.6s;
+  -webkit-box-shadow: 0 calc(var(--m) * 5) calc(var(--m) * 5) 0 rgba(var(--color-rgb-shadow-50), 0.75);
+          box-shadow: 0 calc(var(--m) * 5) calc(var(--m) * 5) 0 rgba(var(--color-rgb-shadow-50), 0.75);
+}
+@media screen and (min-width: 900px) {
+  .m-volet {
+    width: 75vw;
+  }
+}
+@media screen and (min-width: 1024px) {
+  .m-volet {
+    width: 66vw;
+  }
+}
+@media screen and (min-width: 1280px) {
+  .m-volet {
+    width: 50vw;
+  }
+}
+
+.m-modal__wrapper {
+  -webkit-box-flex: 1;
+      -ms-flex: 1 1 auto;
+          flex: 1 1 auto;
+  padding: calc(var(--m) * 5);
+  overflow: overlay;
+}
+
+.m-volet-l {
+  border-right: 1px solid var(--color-principale-10);
+  left: -85vw;
+}
+.m-volet-l.is--active {
+  left: 0;
+}
+
+.m-volet-r {
+  border-left: 1px solid var(--color-principale-10);
+  right: -85vw;
+}
+.m-volet-r.is--active {
+  right: 0;
+}
+
+.m-volet__wrapper {
+  -webkit-box-flex: 1;
+      -ms-flex: 1 1 auto;
+          flex: 1 1 auto;
+  padding: calc(var(--m) * 5);
+  overflow: overlay;
+}
+
+.m-volet__denko {
+  position: relative;
+  -webkit-box-flex: 0;
+      -ms-flex: 0 0 auto;
+          flex: 0 0 auto;
+  width: calc(var(--m) * 10);
+  background: var(--color-texte);
+  overflow: hidden;
+}
+.m-volet__denko .is--denko__container {
+  position: absolute;
+  top: 100%;
+  width: 100vh;
+  height: calc(var(--m) * 9);
+  display: block;
+  -webkit-transform: rotate(-90deg);
+          transform: rotate(-90deg);
+  -webkit-transform-origin: top left;
+          transform-origin: top left;
 }
 
 .m-cover {
@@ -1948,8 +2049,16 @@ input:checked + .slider:before {
           box-shadow: 2px 2px var(--color-texte);
 }
 
-.m-modal__facturemsg {
+.m-volet__facturemsg {
   background: white;
+}
+.m-volet__facturemsg .m-btn__grp {
+  margin-top: calc(var(--m) * 5);
+}
+
+.m-volet__facturemsg-mail {
+  font-family: sans-serif;
+  color: black;
 }
 
 .m-modal__contact-civilite {
@@ -2333,7 +2442,7 @@ input:checked + .slider:before {
   border-right: 1px solid var(--color-texte);
   -webkit-transition: 0.5s;
   transition: 0.5s;
-  z-index: 800;
+  z-index: 900;
 }
 .l-header__navbar.is--active {
   width: calc(var(--m) * 25);
@@ -2473,7 +2582,7 @@ input:checked + .slider:before {
   left: 0;
   cursor: pointer;
   background: var(--color-texte);
-  z-index: 800;
+  z-index: 900;
 }
 @media (hover) {
   .nav__btn:hover #nav__btn-stick1 {

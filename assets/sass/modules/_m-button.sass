@@ -19,11 +19,12 @@
 // Stylse les groupes de boutons
 
 .m-btn__grp
+  display: flex
+  
   &>.btn:not(:first-child)
     margin-left: m()
 
   &.m-btn__grp-v
-    display: flex
     flex-direction: column
     align-items: flex-start
     
@@ -69,7 +70,7 @@
 .btn__outline
   color: color('rouge', 80)
   border: 1px solid color('rouge', 80)
-  background: color('backgroundColor')
+  background: color('grey', 0, 0)
   svg
     fill: color('rouge', 80)
 
@@ -146,3 +147,25 @@
 .btn__big-ico svg
   width: m(4.5)
   fill: color('backgroundColor')
+
+
+// Stylse des feedback
+
+  Exemple de HTML :
+  <div class="m-btn__grp">
+    <button class="btn btn__outline btn__cancel" type="button">Annuler</button>
+    <button class="btn btn__plain btn__copy" type="button">Copier</button>
+    <span class="btn__info m-ss">Message copié !</span>
+  </div>
+
+.btn__info
+  opacity: 0
+  float: left
+  height: m(4)
+  padding: m()
+  font-size: m(1.25)
+  line-height: m(2)
+  font-weight: 400
+  transition: $slow
+  &.is--active
+    opacity: 1

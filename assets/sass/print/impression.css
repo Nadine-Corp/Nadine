@@ -1,6 +1,13 @@
+/*
+// Ce fichier permet d'optimiser la mise en page
+// des factures ou devis lorsque l'utilisateur
+// tente de l'imprimer
+*/
+
 .l-footer,
 .l-header,
 .m-aside,
+.m-volet,
 .m-breadcrumb {
   display: none;
 }

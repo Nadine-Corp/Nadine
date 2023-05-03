@@ -1,0 +1,94 @@
+// main: ../../../style.sass
+
+  Le module Volet contrôle la mise en page, l'ouverture et la fermeture
+  des volets de Monobloc.
+
+  Attention : pensez à activer le module Volet
+  dans le fichier assets/js/monobloc.js.
+
+  Exemple de HTML :
+
+  <main>
+    <div class="m-volet m-volet-l">
+      <ul>
+        <li></li>
+        <li></li>
+        <li></li>
+      </ul>
+    </div>
+
+    <div class="m-volet m-volet-r">
+      <ul>
+        <li></li>
+        <li></li>
+        <li></li>
+      </ul>
+    </div>
+  </main>
+
+
+.m-volet
+  display: flex
+  position: fixed
+  width: 85vw
+  top: 0
+  bottom: 0
+  background: color('backgroundColor')
+  z-index: $zindex__volet
+  transition: $slow
+  @include box-shadow(200, 'shadow')
+  @include respond('m')
+    width: 75vw
+  @include respond('l')
+    width: 66vw
+  @include respond('xl')
+    width: 50vw
+
+
+.m-modal__wrapper
+  flex: 1 1 auto
+  padding: m(5)
+  overflow: overlay
+
+
+// Volet gauche
+
+.m-volet-l
+  border-right: 1px solid color('principale', 10)
+  left: -85vw
+  &.is--active
+    left: 0
+
+
+// Volet droit
+
+.m-volet-r
+  border-left: 1px solid color('principale', 10)
+  right: -85vw
+  &.is--active
+    right: 0
+
+
+.m-volet__wrapper
+  flex: 1 1 auto
+  padding: m(5)
+  overflow: overlay
+  
+
+// Effet Denko
+
+.m-volet__denko
+  position: relative
+  flex: 0 0 auto
+  width: m(10)
+  background: color('texte')
+  overflow: hidden
+
+  .is--denko__container
+    position: absolute
+    top: 100%
+    width: 100vh
+    height: m(9)
+    display: block
+    transform: rotate(-90deg)
+    transform-origin: top left

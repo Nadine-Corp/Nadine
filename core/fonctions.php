@@ -1996,11 +1996,15 @@ function get_facture_statut($row)
     // Récupére le bon prefix
     $prefix = get_facture_prefix($table);
 
-    // Recupère le statut de facture
-    $facture_statut = $row[$prefix . '__statut'];
+    // Vérifie si la facture a déjà un statut
+    // ou s'il s'agit d'une nouvelle facture
+    if (isset($row[$prefix . '__statut'])) {
+      // Recupère le statut de facture
+      $facture_statut = $row[$prefix . '__statut'];
 
-    // Retourne le résultat au template
-    return $facture_statut;
+      // Retourne le résultat au template
+      return $facture_statut;
+    }
   }
 }
 
@@ -2385,71 +2389,55 @@ function the_facture_total_ht($row)
  * a envoyé avec les facture ou les devis
  */
 
-function the_facture_msg($row)
+function the_facture_msg($row, $prefix)
 {
   if (isset($row)) {
-    // Récupére la bonne table
-    $table = get_facture_table($row);
-
-    // Récupére le bon prefix
-    $prefix = get_facture_prefix($table);
-
-    // Récupére le dernier profil
-    $profil__id = get_profil_last_id();
-
-    // Récupére l'ID de la facture ou du devis
-    $facture__id = get_facture_id($row);
-
-    // Récupère les infos du dernier profil et du projet
+    // Récupère le message dans la base de donnée
     $args = array(
-      'FROM'     => $table . ', Profil',
-      'WHERE'    => $prefix . '__id' . ' = ' . $facture__id,
-      'AND'      => 'Profil.profil__id = ' . $profil__id
+      'FROM'     => 'Profil',
+      'ORDER BY' => 'profil__id',
+      'ORDER'    => 'DESC',
+      'LIMIT'    => 1
     );
+
     $loop = nadine_query($args);
+    if ($loop->num_rows > 0) :
+      while ($data = $loop->fetch_assoc()) :
+        $profil__msg = $data['profil__msg_' . $prefix];
+      endwhile;
+    endif;
 
-    // Récupère les info du profil de l'utilisateur
-    if ($loop->num_rows > 0) {
-      while ($row = $loop->fetch_assoc()) {
-        // Récupère le message
-        $profil__msg = $row['profil__msg_' . $prefix];
+    // Liste des {{String}} à remplacer par des $Variables
+    $vars = array(
+      '{{diffuseur__civilite}}'         => $row['diffuseur__civilite'],
+      '{{diffuseur__prenom}}'           => $row['diffuseur__prenom'],
+      '{{diffuseur__nom}}'              => $row['diffuseur__nom'],
+      '{{diffuseur__societe}}'          => $row['diffuseur__societe'],
+      '{{diffuseur__email}}'            => $row['diffuseur__email'],
+      '{{projet__nom}}'                 => $row['projet__nom'],
+      '{{profil__societe}}'             => $row['profil__societe'],
+      '{{profil__civilite}}'            => $row['profil__civilite'],
+      '{{profil__prenom}}'              => $row['profil__prenom'],
+      '{{profil__nom}}'                 => $row['profil__nom'],
+      '{{profil__pseudo}}'              => $row['profil__pseudo'],
+      '{{profil__initiales}}'           => $row['profil__prenom'],
+      '{{profil__adresse}}'             => $row['profil__adresse'],
+      '{{profil__code_postal}}'         => $row['profil__code_postal'],
+      '{{profil__ville}}'               => $row['profil__ville'],
+      '{{profil__pays}}'                => $row['profil__pays'],
+      '{{profil__telephone}}'           => $row['profil__telephone'],
+      '{{profil__email}}'               => $row['profil__email'],
+      '{{profil__website}}'             => $row['profil__website'],
+      '{{profil__numero_secu}}'         => $row['profil__numero_secu'],
+      '{{profil__numero_mda}}'          => $row['profil__numero_mda'],
+      '{{profil__siret}}'               => $row['profil__siret'],
+      '{{profil__titulaire_du_compte}}' => $row['profil__titulaire_du_compte'],
+      '{{profil__iban}}'                => $row['profil__iban'],
+      '{{profil__bic}}'                 => $row['profil__bic']
+    );
 
-        // Liste des {{String}} à remplacer par des $Variables
-        $vars = array(
-          '{{diffuseur__civilite}}'         => $row['diffuseur__civilite'],
-          '{{diffuseur__prenom}}'           => $row['diffuseur__prenom'],
-          '{{diffuseur__nom}}'              => $row['diffuseur__nom'],
-          '{{diffuseur__societe}}'          => $row['diffuseur__societe'],
-          '{{diffuseur__email}}'            => $row['diffuseur__email'],
-          '{{projet__nom}}'                 => $row['projet__nom'],
-          '{{profil__societe}}'             => $row['profil__societe'],
-          '{{profil__civilite}}'            => $row['profil__civilite'],
-          '{{profil__prenom}}'              => $row['profil__prenom'],
-          '{{profil__nom}}'                 => $row['profil__nom'],
-          '{{profil__pseudo}}'              => $row['profil__pseudo'],
-          '{{profil__initiales}}'           => $row['profil__prenom'],
-
-          '{{profil__adresse}}'             => $row['profil__adresse'],
-          '{{profil__code_postal}}'         => $row['profil__code_postal'],
-          '{{profil__ville}}'               => $row['profil__ville'],
-          '{{profil__pays}}'                => $row['profil__pays'],
-          '{{profil__telephone}}'           => $row['profil__telephone'],
-          '{{profil__email}}'               => $row['profil__email'],
-          '{{profil__website}}'             => $row['profil__website'],
-
-          '{{profil__numero_secu}}'         => $row['profil__numero_secu'],
-          '{{profil__numero_mda}}'          => $row['profil__numero_mda'],
-          '{{profil__siret}}'               => $row['profil__siret'],
-
-          '{{profil__titulaire_du_compte}}' => $row['profil__titulaire_du_compte'],
-          '{{profil__iban}}'                => $row['profil__iban'],
-          '{{profil__bic}}'                 => $row['profil__bic']
-        );
-
-        // Formate le résultat
-        $profil__msg = strtr(nl2br($profil__msg), $vars);
-      }
-    }
+    // Formate le résultat
+    $profil__msg = strtr(nl2br($profil__msg), $vars);
 
     // Retourne le résultat au template
     echo $profil__msg;

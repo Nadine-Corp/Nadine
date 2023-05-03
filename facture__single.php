@@ -81,7 +81,6 @@ include './header.php';
    * Récupère le numéros de la facture ou devis
    */
 
-
   ?>
   <?php if ($loop->num_rows > 0) : ?>
     <?php while ($row = $loop->fetch_assoc()) : ?>
@@ -126,13 +125,15 @@ include './header.php';
             <a href="javascript:window.print()" class="btn btn__outline">
               Imprimer en PDF
             </a>
-            <a href="./parts/p__modal-facture-message" class="btn btn__outline btn__modal" data-modal='facturemsg'>
+            <a href="./parts/p__volet-facture-message" class="btn btn__outline btn__volet" data-volet='facturemsg'>
               Générer le couriel
             </a>
-            <a href="./facture__single.php?projet__id=<?php echo $projet__id ?>&<?php echo $prefix ?>__id=new&from__table=<?php echo $table ?>&from__id=<?php echo $facture__id ?>" class="btn btn__outline">
-              Dupliquer
-            </a>
-            <?php if ($table == 'devis') : ?>
+            <?php if ($facture__id != 'new') : ?>
+              <a href="./facture__single.php?projet__id=<?php echo $projet__id ?>&<?php echo $prefix ?>__id=new&from__table=<?php echo $table ?>&from__id=<?php echo $facture__id ?>" class="btn btn__outline">
+                Dupliquer
+              </a>
+            <?php endif; ?>
+            <?php if ($table == 'devis' && $facture__id != 'new') : ?>
               <a href="./facture__single.php?projet__id=<?php echo $projet__id ?>&facture__id=new&from__table=<?php echo $table ?>&from__id=<?php echo $facture__id ?>" class="btn btn__outline">
                 Générer la facture
               </a>
@@ -214,7 +215,7 @@ include './header.php';
        * Ajout des modales
        */
 
-      include './parts/p__modal-facturemsg.php';
+      include './parts/p__volet-facturemsg.php';
       ?>
     <?php endwhile; ?>
   <?php else : ?>

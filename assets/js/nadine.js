@@ -138,6 +138,7 @@ function searchAndHide(string, items) {
 	});
 };
 
+
 /**
 *  Effet : is--DenkoKeijiban
 */
@@ -176,15 +177,69 @@ function showOverlay() {
 
 // Cette fonction fermer l'Overlay
 function hideOverlay() {
+	// Ferme la Nav
 	hideNav();
-	document.querySelector('.m-modal').classList.remove('is--active');
+
+	// Change les paramètres des scroll
 	document.body.classList.remove('overflow--is--hidden');
 	document.documentElement.classList.remove('overflow--is--hidden');
+
+	// Cherche des élèments à cacher
+	var elements = document.querySelectorAll('.m-modal, .m-volet, .btn__info');
+
+	// Parcourt tous les éléments et enlève la classe .is--active
+	for (var i = 0; i < elements.length; i++) {
+		elements[i].classList.remove('is--active');
+	}
 };
 
 // Ferme des trucs si qq'un click sur l'Overlay
 overlay.addEventListener('click', function () {
 	hideOverlay();
+});
+
+
+/**
+* BTN : Annuler
+*/
+
+// Cherche tous les boutons Cancel
+let btns__cancel = document.querySelectorAll('.btn__cancel');
+btns__cancel.forEach(btn__cancel => {
+	// Ferme la modale si qq'un click sur Annuler
+	btn__cancel.addEventListener('click', function (e) {
+		hideOverlay();
+	});
+});
+
+
+/**
+* Module : Volet
+*/
+
+// Cherche tous les boutons ouvrant des volets
+var btns__volet = document.querySelectorAll('.btn__volet');
+var volet;
+
+btns__volet.forEach(btn__volet => {
+	// Ajoute un script si qq'un click sur le bouton
+	btn__volet.addEventListener('click', function (e) {
+		// Empêche le comportement normal du lien
+		e.preventDefault();
+
+		// Récupére le nom de la modal que le bouton doit ouvrir
+		let dataVolet = btn__volet.getAttribute('data-volet');
+
+		// Formate le nom du volet
+		volet = '.m-volet__' + dataVolet;
+		volet = document.querySelector(volet);
+
+		// Affiche la modal
+		volet.classList.add('is--active');
+
+		// Affiche l'overlay
+		showOverlay();
+	});
 });
 
 
@@ -321,7 +376,6 @@ function mSelectsTab() {
 
 		// Récupére au besoin l'options initialement selected
 		let optionSelected = select.querySelector('option:checked');
-
 
 		// Ajoute un <li> par options dans le <ul> précédemment ajouté
 		options.forEach(option => {
@@ -482,8 +536,6 @@ function mFormStep() {
 		// Cherche les boutons
 		let btn__next = formStep.querySelector('.btn__next');
 		let btn__prev = formStep.querySelector('.btn__prev');
-		let btn__cancel = formStep.querySelector('.btn__cancel');
-
 
 		// Change le numuros d'étape si qq'un click sur Suivant
 		btn__next.addEventListener('click', function (e) {
@@ -501,11 +553,6 @@ function mFormStep() {
 				// Sinon : Focus le premier élèment à remplir
 				input__requireds[0].focus();
 			};
-		});
-
-		// Ferme la modale si qq'un click sur Annuler
-		btn__cancel.addEventListener('click', function (e) {
-			hideOverlay();
 		});
 
 		// Change le numuros d'étape si qq'un click sur Précédent
@@ -590,7 +637,6 @@ searchBar.addEventListener('keyup', function (e) {
 /**
 * Part : Modal add-projet
 */
-
 
 function modalAddProjet() {
 
@@ -927,3 +973,40 @@ function showFormGrps(mFormGrps) {
 	});
 }
 
+/**
+* Part : Volet Facture Message
+*/
+
+
+// Cherche tous les boutons Copier
+var btns__copy = document.querySelectorAll('.btn__copy');
+
+btns__copy.forEach(btn__copy => {
+	// Ajoute un script si qq'un click sur le bouton
+	btn__copy.addEventListener('click', function (e) {
+		// Empêche le comportement normal du lien
+		e.preventDefault();
+
+		// Sélectionne le texte dans l'élément <p>
+		const copyText = document.querySelector('.m-volet__facturemsg-mail');
+		const range = document.createRange();
+		range.selectNode(copyText);
+		window.getSelection().removeAllRanges();
+		window.getSelection().addRange(range);
+
+		// Copie le texte dans le presse-papiers
+		try {
+			const successful = document.execCommand('copy');
+			const message = successful ? 'Le texte a été copié dans le presse-papiers' : 'La copie a échoué';
+			console.log(message);
+		} catch (err) {
+			console.log('La copie a échoué : ', err);
+		}
+
+		// Désélectionne le texte
+		window.getSelection().removeAllRanges();
+
+		const btn__info = document.querySelector('.btn__info');
+		btn__info.classList.add('is--active');
+	});
+});
