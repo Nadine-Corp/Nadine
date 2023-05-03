@@ -14,7 +14,7 @@ include(__DIR__ . '/header.php');
 <main class="l-suivi" role="main">
   <section class="m-rom">
     <div class="m-col">
-      <h1 class="m-lead">Suivi</h1>
+      <h1 class="m-headline">Suivi</h1>
     </div>
 
     <?php
@@ -24,7 +24,7 @@ include(__DIR__ . '/header.php');
     ?>
 
     <div class="m-col l6">
-      <h2 class="m-headline">Devis non signés</h2>
+      <h2 class="m-lead">Devis non signés</h2>
       <?php $thisYear = date("Y") ?>
       <?php $sql = "SELECT * FROM Devis WHERE devis__statut = 'Envoyé' "; ?>
       <?php include './core/query.php';
@@ -64,7 +64,7 @@ include(__DIR__ . '/header.php');
     ?>
 
     <div class="m-col l6">
-      <h2 class="m-headline">Factures impayées</h2>
+      <h2 class="m-lead">Factures impayées</h2>
       <?php $thisYear = date("Y") ?>
       <?php $sql = "SELECT * FROM Factures WHERE facture__statut = 'Envoyée' "; ?>
       <?php include './core/query.php';

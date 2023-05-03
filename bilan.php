@@ -30,35 +30,48 @@ endif;
 ?>
 
 <main class="l-bilan" role="main">
-  <section class="toolbar is--sticky">
-    <div class="toolbar__container">
-      <h1 class="m-lead">Bilan annuel <?php echo $year; ?></h1>
-      <div class="toolbar__btn">
-        <?php
 
-        // Permet de créer les boutons pour chaque années dynamiquement
+  <?php
+  /**
+   * Aside
+   */
+  ?>
 
-        $sql = "SELECT * FROM Projets WHERE projet__statut = 'Projet terminé' ORDER BY projet__date_de_fin DESC;";
-        include './core/query.php';
-        $result = $conn->query($sql) or die($conn->error);
-        if ($result->num_rows > 0) :
-          $date_last = '1972';
-          while ($row = $result->fetch_assoc()) :
+  <aside class="m-aside">
+    <h1 class="m-headline">Bilan annuel <?php echo $year; ?></h1>
+    <div class="m-btn__grp m-btn__grp-v">
+      <?php
+      // Permet de créer les boutons pour chaque années dynamiquement
+
+      $args = array(
+        'FROM'     => 'Projets',
+        'WHERE'    => 'projet__statut = "Projet terminé"',
+        'ORDER BY' => 'projet__date_de_fin',
+        'ORDER'    => 'DESC'
+      );
+      $loop = nadine_query($args);
+
+      if ($loop->num_rows > 0) :
+        $date_last = '1972';
+
+        while ($row = $loop->fetch_assoc()) :
+          if (isset($row['projet__date_de_fin'])) :
             $date_de_fin = date_create($row["projet__date_de_fin"]);
             $date_de_fin = date_format($date_de_fin, 'Y');
             if ($date_de_fin != $date_last) :
               echo '<a href="bilan.php?annee=' . $date_de_fin . '" class="btn btn__outline">' . $date_de_fin . '</a>';
               $date_last = $date_de_fin;
             endif;
-          endwhile;
-        endif;
-        $conn->close();
-        ?>
-      </div>
-  </section>
+          endif;
+        endwhile;
+      else :
+        echo "<p>Chef, on n'a pas trouvé de projets en cours...</p>";
+      endif;
+      ?>
+    </div>
+  </aside>
 
-
-  <section class="m-rom">
+  <section class="m-rom with--aside">
     <div class="m-col">
 
       <?php $sql = "SELECT * FROM Projets, Diffuseurs WHERE Projets.diffuseur__id = Diffuseurs.diffuseur__id AND projet__statut = 'Projet terminé' AND projet__date_de_fin BETWEEN CAST('" . $year . "-01-01' AS DATE) AND CAST('" . $year . "-12-31' AS DATE) ORDER BY projet__date_de_fin ASC;"; ?>
@@ -107,4 +120,10 @@ endif;
     </div>
   </section>
 
-  <?php include './footer.php'; ?>
+
+  <?php
+  /**
+   * Ajout du Footer
+   */
+
+  include './footer.php';
