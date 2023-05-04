@@ -5,6 +5,14 @@
 
 
 /**
+ *  Importe les paramètres et test de la base de donnée
+ *  Si une erreur est détectée : lancement du TurboTuto™
+ */
+
+require(__DIR__ . '/core/query.php');
+
+
+/**
  * Importe le fichier rassemblant toutes les fonctions
  * les plus importantes de Nadine
  */

@@ -70,6 +70,9 @@ p
   font-size: 4rem
   line-height: 4rem
 
+.m-title, .m-title *
+  font-size: 3rem
+
 .m-lead, .m-lead *
   font-size: 2rem
   line-height: 2rem
@@ -89,3 +92,26 @@ p
 .m-caption, .m-caption *
   font-size: m(0.75)
   line-height: m()
+
+
+// Les Dividers sont de petit trait pour séparer des élements
+   de typographiques. Il exite 2 types de Dividers :
+   le divider__v vertical et le .divider__h horizontal.
+
+  Exemple de HTML :
+
+  <h1 class="m-display">Un titre</h1>
+  <div class="m-divider__v"></div>
+  <span class="m-title">Un Sous-titre</span>
+
+.m-divider__v
+  width: 1px
+  height: m(4)
+  margin: m()
+  background: color('texte')
+
+.m-divider__h
+  width: m(4)
+  height: 1px
+  margin: m() 0
+  background: color('texte')

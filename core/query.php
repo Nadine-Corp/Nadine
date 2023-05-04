@@ -20,8 +20,8 @@ try {
   $conn = new mysqli($servername, $username, $password, $dbname);
 } catch (mysqli_sql_exception $e) {
   // Lancement du TurboTuto™
-  header('Location: ./core/init__tuto.php');
-  die();
+  include_once(__DIR__ . './turbotuto.php');
+  exit();
 }
 
 

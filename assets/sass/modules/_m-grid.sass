@@ -18,8 +18,8 @@
   padding: m(.5)
 
 // Cette fonction génére toutes les .class permettant de gérer les colonnes
-  en HTML. Elles utilise les variables $nbColonne et $breakpoints du fichier
-  assets/sass/base/_config.sass
+   en HTML. Elles utilise les variables $nbColonne et $breakpoints du fichier
+   assets/sass/base/_config.sass
 
     Exemple de HTML :
 
@@ -35,3 +35,12 @@
       .#{$breakpoint}#{$i}
         $width: calc(100% / $nbColonne * $i)
         width: $width
+
+  // Cette fonction génére toutes les .class m-marge-bottom
+
+@for $i from 1 through 6
+  .m-mt#{$i}
+    margin-top: m(#{$i})
+
+  .m-mb#{$i}
+    margin-bottom: m(#{$i})
