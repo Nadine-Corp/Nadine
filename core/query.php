@@ -12,6 +12,20 @@ require(__DIR__ . '/config.php');
 
 
 /**
+ *  Importe les paramètres et test de la base de donnée
+ *  Si une erreur est détectée : lancement du TurboTuto™
+ */
+
+try {
+  $conn = new mysqli($servername, $username, $password, $dbname);
+} catch (mysqli_sql_exception $e) {
+  // Lancement du TurboTuto™
+  header('Location: ./core/init__tuto.php');
+  die();
+}
+
+
+/**
  *  Connection à la base de donnée
  */
 

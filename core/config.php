@@ -6,12 +6,4 @@
 $servername = "localhost";
 $username = "root";
 $password = "";
-$dbname = "nadine_crc";
-
-
-
-/**
- *  Test le nom de la base de donnée
- */
-
-// $dbname;
+$dbname = "nadine";
