@@ -204,13 +204,17 @@ overlay.addEventListener('click', function () {
 */
 
 // Cherche tous les boutons Cancel
-let btns__cancel = document.querySelectorAll('.btn__cancel');
-btns__cancel.forEach(btn__cancel => {
-	// Ferme la modale si qq'un click sur Annuler
-	btn__cancel.addEventListener('click', function (e) {
-		hideOverlay();
+function initInputBtnCancel() {
+	var btns__cancel = document.querySelectorAll('.btn__cancel');
+
+	btns__cancel.forEach(btn__cancel => {
+		// Ferme la modale si qq'un click sur Annuler
+		btn__cancel.addEventListener('click', function (e) {
+			hideOverlay();
+		});
 	});
-});
+};
+initInputBtnCancel();
 
 
 /**
@@ -290,6 +294,7 @@ btns__modal.forEach(btn__modal => {
 					hideAddContact();
 					hideAddArtistes();
 					initInputDateDeFin();
+					initInputBtnCancel();
 					updateSelectPorteurProjet();
 					// Affiche la modal
 					modal.classList.add('is--active');
@@ -757,7 +762,7 @@ function initInputDateDeFin() {
 };
 
 // La fonction initBtnRemoveArtiste() permet d'activer un btn capable
-// de supprimer un artiste, notament à chaque fois qu'un artiste
+// de supprimer un artiste, notamment à chaque fois qu'un artiste
 // est ajouté
 
 function initBtnRemoveArtiste(btn__removeArtiste) {

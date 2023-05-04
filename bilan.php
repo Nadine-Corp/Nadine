@@ -21,12 +21,6 @@ else :
   $year = date("Y");
 endif;
 
-
-
-
-/**
- * Affiche la sticky barre
- */
 ?>
 
 <main class="l-bilan" role="main">
@@ -42,7 +36,6 @@ endif;
     <div class="m-btn__grp m-btn__grp-v">
       <?php
       // Permet de créer les boutons pour chaque années dynamiquement
-
       $args = array(
         'FROM'     => 'Projets',
         'WHERE'    => 'projet__statut = "Projet terminé"',
@@ -74,49 +67,57 @@ endif;
   <section class="m-rom with--aside">
     <div class="m-col">
 
-      <?php $sql = "SELECT * FROM Projets, Diffuseurs WHERE Projets.diffuseur__id = Diffuseurs.diffuseur__id AND projet__statut = 'Projet terminé' AND projet__date_de_fin BETWEEN CAST('" . $year . "-01-01' AS DATE) AND CAST('" . $year . "-12-31' AS DATE) ORDER BY projet__date_de_fin ASC;"; ?>
-      <?php include './core/query.php';
-      $result = $conn->query($sql) or die($conn->error); ?>
-      <?php if ($result->num_rows > 0) : ?>
-        <table class="m-table m-body">
-          <tr>
-            <th>Nature de l'activité</th>
-            <th>Diffuseur</th>
-            <th>Date</th>
-            <th>Montant HT</th>
-            <th>Voir</th>
-          </tr>
+      <?php
+      /**
+       * Liste des succès
+       */
+      ?>
 
-          <?php while ($row = $result->fetch_assoc()) :
-
-            if (!empty($row["projet__date_de_fin"])) :
-              $date_de_fin = date_create($row["projet__date_de_fin"]);
-              $date_de_fin = date_format($date_de_fin, 'M. Y');
-            else :
-              $date_de_fin = "-";
-            endif;
+      <div class="m-accordion is--active">
+        <div class="m-accordion__titre">
+          <span class="m-lead">Succès Startup</span>
+          <div class="m-accordion__ico">
+            <?php include './assets/img/ico_arrow-accordion.svg.php'; ?>
+          </div>
+        </div>
+        <div class="l-projets__list m-accordion__wrapper">
+        </div>
+      </div>
 
 
-            $date_de_debut = date_create($row["projet__date_de_creation"]);
-            $date_de_debut = date_format($date_de_debut, 'M. Y');
+      <?php
+      /**
+       * Liste de projets terminés
+       */
 
+      $args = array(
+        'FROM'     => 'Projets, Diffuseurs',
+        'WHERE'    => 'Projets.diffuseur__id = Diffuseurs.diffuseur__id AND projet__statut = "Projet terminé" AND projet__date_de_fin BETWEEN CAST("' . $year . '-01-01" AS DATE) AND CAST("' . $year . '-12-31" AS DATE)',
+        'ORDER BY' => 'projet__date_de_fin',
+        'ORDER'    => 'ASC'
+      );
+      $loop = nadine_query($args);
+      ?>
+      <?php if ($loop->num_rows > 0) : ?>
 
-          ?>
+        <div class="m-accordion is--active">
+          <div class="m-accordion__titre">
+            <span class="m-lead">Liste des projets terminés</span>
+            <div class="m-accordion__ico">
+              <?php include './assets/img/ico_arrow-accordion.svg.php'; ?>
+            </div>
+          </div>
 
+          <div class="l-projets__list m-accordion__wrapper">
+            <?php while ($row = $loop->fetch_assoc()) : ?>
 
-            <tr>
-              <td>Créations graphiques</td>
-              <td><?php echo $row["diffuseur__societe"] ?><br><?php echo $row["diffuseur__adresse"] ?>, <?php echo $row["diffuseur__code_postal"] ?> <?php echo $row["diffuseur__ville"] ?><br>Siret : <?php echo $row["diffuseur__siret"] ?></td>
-              <td><?php echo $date_de_fin; ?></td>
-              <td></td>
-              <td><a href="projet__single?projet__id=<?php echo $row["projet__id"] ?>">Voir</a></td>
-            </tr>
-          <?php endwhile; ?>
-        </table>
+              <?php include './parts/p__projets-single.php'; ?>
+            <?php endwhile; ?>
+          </div>
+        </div>
       <?php else : ?>
-        <p>Chef, on n'a pas trouvé de projet cette année...</p>
-      <?php endif;
-      $conn->close(); ?>
+        <p>Chef, on n'a pas trouvé de projets en cours...</p>
+      <?php endif; ?>
     </div>
   </section>
 

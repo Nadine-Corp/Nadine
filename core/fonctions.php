@@ -24,7 +24,6 @@ function nadine_query($args, $sql = 'SELECT *')
     };
   };
 
-
   // Importe les info de connexion à la base de donnée
   require(__DIR__ . '/config.php');
 
