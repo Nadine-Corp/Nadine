@@ -81,7 +81,7 @@ include(__DIR__ . '/header.php');
           <?php include './assets/img/ico_arrow-accordion.svg.php'; ?>
         </div>
       </div>
-      <div class="l-projets__list m-accordion__wrapper">
+      <div class="l-projets__list p-projet__list m-accordion__wrapper">
         <?php
         $args = array(
           'FROM'     => 'Projets, Diffuseurs',
@@ -95,7 +95,9 @@ include(__DIR__ . '/header.php');
 
         <?php if ($loop->num_rows > 0) : ?>
           <?php while ($row = $loop->fetch_assoc()) : ?>
-            <?php include './parts/p__projets-single.php'; ?>
+            <?php // Affiche chaque projet sous forme de liste
+            include './parts/p__projet-list.php';
+            ?>
           <?php endwhile; ?>
         <?php else : ?>
           <p>Chef, on n'a pas trouvé de projets en cours...</p>
@@ -118,7 +120,7 @@ include(__DIR__ . '/header.php');
         </div>
       </div>
 
-      <div class="l-projets__list m-accordion__wrapper">
+      <div class="l-projets__list p-projet__list m-accordion__wrapper">
         <?php
         $args = array(
           'FROM'     => 'Projets, Diffuseurs',
@@ -130,7 +132,9 @@ include(__DIR__ . '/header.php');
         $loop = nadine_query($args); ?>
         <?php if ($loop->num_rows > 0) : ?>
           <?php while ($row = $loop->fetch_assoc()) : ?>
-            <?php include './parts/p__projets-single.php'; ?>
+            <?php // Affiche chaque projet sous forme de liste
+            include './parts/p__projet-list.php';
+            ?>
           <?php endwhile; ?>
 
         <?php else : ?>
@@ -154,7 +158,7 @@ include(__DIR__ . '/header.php');
         </div>
       </div>
 
-      <div class="l-projets__list m-accordion__wrapper">
+      <div class="l-projets__list p-projet__list m-accordion__wrapper">
         <?php
         $args = array(
           'FROM'     => 'Projets, Diffuseurs',
@@ -168,7 +172,9 @@ include(__DIR__ . '/header.php');
 
         <?php if ($loop->num_rows > 0) : ?>
           <?php while ($row = $loop->fetch_assoc()) : ?>
-            <?php include './parts/p__projets-single.php'; ?>
+            <?php // Affiche chaque projet sous forme de liste
+            include './parts/p__projet-list.php';
+            ?>
           <?php endwhile; ?>
 
         <?php else : ?>

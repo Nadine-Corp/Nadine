@@ -107,14 +107,34 @@ function nadine_update($table, $primaryKey, $data)
 
 
 /**
+ * La fonction get_projet_id() récupère
+ * l'ID d'un projet demandé
+ */
+
+function get_projet_id($row)
+{
+  if (isset($row)) {
+    // Recupère l'ID du projet
+    $projet__id = $row["projet__id"];
+
+    // Retourne le résultat au template
+    return $projet__id;
+  }
+}
+
+
+/**
  * La fonction the_projet_id() affiche l'ID d'un projet demandé
  */
 
 function the_projet_id($row)
 {
   if (isset($row)) {
+    // Recupère l'ID du projet
+    $projet__id = get_projet_id($row);
+
     // Retourne le résultat au template
-    echo $row["projet__id"];
+    echo $projet__id;
   }
 }
 
@@ -281,7 +301,6 @@ function the_projet_date($row)
 }
 
 
-
 /**
  * La fonction the_projet_equipe() affiche la liste
  * des artites travaillant sur un projet
@@ -402,6 +421,116 @@ function the_projet_input_equipe($row)
     }
   } else {
     include(__DIR__ . '/../parts/p__modal-projet-input-equipe.php');
+  }
+}
+
+
+/**
+ * La fonction get_projet_last_facture() affiche le total
+ * Hors taxe de la dernière facture ou devis d'un projet
+ */
+
+function get_projet_last_facture($row)
+{
+  if (isset($row)) {
+    // Recupère l'ID du projet
+    $projet__id = get_projet_id($row);
+
+    // Cherche le dernier devis du projet
+    $args = array(
+      'FROM'     => 'Devis',
+      'WHERE'    => 'projet__id =' . $projet__id,
+      'ORDER BY' => 'devis__date DESC',
+      'LIMIT'    => 1
+    );
+    $loop = nadine_query($args);
+    $last_devis = $loop->fetch_assoc();
+
+    // Cherche la dernière facture d'acompte du projet
+    $args = array(
+      'FROM'     => 'facturesacompte',
+      'WHERE'    => 'projet__id =' . $projet__id,
+      'ORDER BY' => 'facturea__date DESC',
+      'LIMIT'    => 1
+    );
+    $loop = nadine_query($args);
+    $last_facturea = $loop->fetch_assoc();
+
+    // Cherche la dernière facture du projet
+    $args = array(
+      'FROM'     => 'Factures',
+      'WHERE'    => 'projet__id =' . $projet__id,
+      'ORDER BY' => 'facture__date DESC',
+      'LIMIT'    => 1
+    );
+    $loop = nadine_query($args);
+    $last_facture = $loop->fetch_assoc();
+
+
+    // Récupère les date de création des dernières
+    // Facture ou devis
+    $last_devis_date = isset($last_devis['devis__date']) ? strtotime($last_devis['devis__date']) : 0;
+    $last_facturea_date = isset($last_facturea['facturea__date']) ? strtotime($last_facturea['facturea__date']) : 0;
+    $last_facture_date = isset($last_facture['facture__date']) ? strtotime($last_facture['facture__date']) : 0;
+
+    // Compare les dates de création
+    $latest_timestamp = max($last_devis_date, $last_facturea_date, $last_facture_date);
+    if ($latest_timestamp > 0) {
+      $latest_date = date('Y-m-d H:i:s', $latest_timestamp);
+    } else {
+      $latest_date = '';
+    }
+
+    // Sélectione la facture ou devis la plus récente
+    if ($latest_date == $last_devis_date) {
+      $last_facture = $last_devis;
+    } elseif ($latest_date == $last_facturea_date) {
+      $last_facture = $last_facturea;
+    } elseif ($latest_date == $last_facture_date) {
+      $last_facture = $last_facture;
+    }
+
+    // Retourne le résultat au template
+    return $last_facture;
+  }
+}
+
+
+/**
+ * La fonction the_projet_last_ht() affiche le total
+ * Hors taxe de la dernière facture ou devis d'un projet
+ */
+
+function the_projet_last_ht($row)
+{
+  if (isset($row)) {
+    // Cherche la dernière facture ou devis
+    $last_facture = get_projet_last_facture($row);
+
+    // Récupére le total de la dernière facture ou devis
+    $last_total = get_facture_total_ht($last_facture);
+
+    // Retourne le résultat au template
+    echo $last_total;
+  }
+}
+
+/**
+ * La fonction the_projet_last_total_auteur() affiche le total
+ * taxe comprise de la dernière facture ou devis d'un projet
+ */
+
+function the_projet_last_total_auteur($row)
+{
+  if (isset($row)) {
+    // Cherche la dernière facture ou devis
+    $last_facture = get_projet_last_facture($row);
+
+    // Récupére le total de la dernière facture ou devis
+    $last_total = get_facture_total_auteur($last_facture);
+
+    // Retourne le résultat au template
+    echo $last_total;
   }
 }
 
@@ -2271,6 +2400,7 @@ function the_facture_tache($row, $numTache = 1)
 }
 
 
+
 /**
  * La fonction the_facture_prix() permet d'afficher
  * le prix d'une la tâche dans une facture ou un devis
@@ -2325,11 +2455,11 @@ function the_facture_prix($row, $numTache = 1)
 
 
 /**
- * La fonction the_facture_total_auteur() permet d'afficher
+ * La fonction get_facture_total_auteur() permet de récupérer
  * le total d'un devis ou d'une facture
  */
 
-function the_facture_total_auteur($row)
+function get_facture_total_auteur($row)
 {
   if (isset($row)) {
     // Récupére la bonne table
@@ -2345,17 +2475,33 @@ function the_facture_total_auteur($row)
     $facture_total = nadine_prix($facture_total);
 
     // Retourne le résultat au template
-    echo $facture_total;
+    return $facture_total;
   }
 }
 
 
 /**
- * La fonction the_facture_total_ht() permet d'afficher
- * le total hors taxe d'un devis ou d'une facture
+ * La fonction the_facture_total_auteur() permet d'afficher
+ * le total d'une facture ou devis
  */
 
-function the_facture_total_ht($row)
+function the_facture_total_auteur($row)
+{
+  if (isset($row)) {
+    // Récupére le total d'une facture ou devis
+    $facture_total = get_facture_total_auteur($row);
+
+    // Retourne le résultat au template
+    echo $facture_total;
+  }
+}
+
+/**
+ * La fonction get_facture_total_ht() permet de récupèrer
+ * le total hors taxe d'une facture ou devis
+ */
+
+function get_facture_total_ht($row)
 {
   if (isset($row)) {
     // Récupére la bonne table
@@ -2378,7 +2524,24 @@ function the_facture_total_ht($row)
     $facture_total_ht = nadine_prix($facture_total_ht);
 
     // Retourne le résultat au template
-    echo $facture_total_ht;
+    return $facture_total_ht;
+  }
+}
+
+
+/**
+ * La fonction the_facture_total_ht() permet d'afficher
+ * le total hors taxe d'une facture ou devis
+ */
+
+function the_facture_total_ht($row)
+{
+  if (isset($row)) {
+    // Récupére le total
+    $facture_total_ht = get_facture_total_ht($row);
+
+    // Retourne le résultat au template
+    return $facture_total_ht;
   }
 }
 
@@ -2575,7 +2738,6 @@ function get_profil_last_id()
 function get_profil_id($row)
 {
   if (isset($row)) {
-
     // Récupère les infos du profil
     if (isset($row['profil__id'])) {
       $profil__id = $row['profil__id'];

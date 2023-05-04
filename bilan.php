@@ -108,10 +108,11 @@ endif;
             </div>
           </div>
 
-          <div class="l-projets__list m-accordion__wrapper">
+          <div class="l-bilan__list p-projet__list m-accordion__wrapper">
             <?php while ($row = $loop->fetch_assoc()) : ?>
-
-              <?php include './parts/p__projets-single.php'; ?>
+              <?php // Affiche chaque projet sous forme de liste
+              include './parts/p__projet-list.php';
+              ?>
             <?php endwhile; ?>
           </div>
         </div>
