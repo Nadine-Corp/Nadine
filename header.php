@@ -17,7 +17,7 @@ require(__DIR__ . '/core/query.php');
  * les plus importantes de Nadine
  */
 
-include_once(__DIR__ . '/core/fonctions.php');
+require_once(__DIR__ . '/core/fonctions.php');
 
 
 /**

@@ -49,6 +49,7 @@ try {
     // que l'utilisateur créer son premier profil.
 
     include_once(__DIR__ . './turbotuto/turbotuto__autoprofil.php');
+    die;
   }
 } catch (mysqli_sql_exception $exception) {
 
@@ -56,8 +57,8 @@ try {
   // Lancement d'un DatabaseCheck pour ajouter les tables manquantes
 
   include_once(__DIR__ . './database/db__check.php');
+  die;
 }
-die;
 
 
 /**
