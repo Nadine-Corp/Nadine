@@ -2776,11 +2776,13 @@ function the_profil_id($row)
 function the_profil_societe($row)
 {
   if (isset($row)) {
-    // Récupère les infos du profil
-    $profil__societe = $row['profil__societe'];
+    if (isset($row["profil__societe"])) {
+      // Récupère les infos du profil
+      $profil__societe = $row['profil__societe'];
 
-    // Retourne le résultat au template
-    echo $profil__societe;
+      // Retourne le résultat au template
+      echo $profil__societe;
+    }
   }
 }
 
@@ -2793,11 +2795,13 @@ function the_profil_societe($row)
 function the_profil_siret($row)
 {
   if (isset($row)) {
-    // Récupère les infos du profil
-    $profil__siret = $row['profil__siret'];
+    if (isset($row["profil__siret"])) {
+      // Récupère les infos du profil
+      $profil__siret = $row['profil__siret'];
 
-    // Retourne le résultat au template
-    echo $profil__siret;
+      // Retourne le résultat au template
+      echo $profil__siret;
+    }
   }
 }
 
@@ -2810,11 +2814,13 @@ function the_profil_siret($row)
 function the_profil_numero_secu($row)
 {
   if (isset($row)) {
-    // Récupère les infos du profil
-    $profil__numero_secu = $row['profil__numero_secu'];
+    if (isset($row["profil__numero_secu"])) {
+      // Récupère les infos du profil
+      $profil__numero_secu = $row['profil__numero_secu'];
 
-    // Retourne le résultat au template
-    echo $profil__numero_secu;
+      // Retourne le résultat au template
+      echo $profil__numero_secu;
+    }
   }
 }
 
@@ -2827,11 +2833,13 @@ function the_profil_numero_secu($row)
 function the_profil_numero_mda($row)
 {
   if (isset($row)) {
-    // Récupère les infos du profil
-    $profil__numero_mda = $row['profil__numero_mda'];
+    if (isset($row["profil__numero_mda"])) {
+      // Récupère les infos du profil
+      $profil__numero_mda = $row['profil__numero_mda'];
 
-    // Retourne le résultat au template
-    echo $profil__numero_mda;
+      // Retourne le résultat au template
+      echo $profil__numero_mda;
+    }
   }
 }
 
@@ -2844,7 +2852,7 @@ function the_profil_numero_mda($row)
 function get_profil_precompte($row)
 {
   if (isset($row)) {
-    if (!empty($row['profil__precompte'])) {
+    if (isset($row['profil__precompte'])) {
       // Récupère les infos du diffuseur
       $profil__precompte = $row["profil__precompte"];
 
@@ -2886,11 +2894,13 @@ function get_profil_civilite($row)
 function the_profil_prenom($row)
 {
   if (isset($row)) {
-    // Récupère les infos du profil
-    $profil__prenom = $row['profil__prenom'];
+    if (isset($row["profil__prenom"])) {
+      // Récupère les infos du profil
+      $profil__prenom = $row['profil__prenom'];
 
-    // Retourne le résultat au template
-    echo $profil__prenom;
+      // Retourne le résultat au template
+      echo $profil__prenom;
+    }
   }
 }
 
@@ -2903,7 +2913,7 @@ function the_profil_prenom($row)
 function the_profil_nom($row)
 {
   if (isset($row)) {
-    if (!empty($row['profil__nom'])) {
+    if (isset($row['profil__nom'])) {
       // Récupère les infos du profil
       $profil__nom = $row['profil__nom'];
 
@@ -2922,7 +2932,7 @@ function the_profil_nom($row)
 function the_profil_pseudo($row)
 {
   if (isset($row)) {
-    if (!empty($row['profil__pseudo'])) {
+    if (isset($row['profil__pseudo'])) {
       // Récupère les infos du profil
       $profil__pseudo = $row['profil__pseudo'];
 
@@ -2942,7 +2952,7 @@ function the_profil_pseudo($row)
 function the_profil_initiales($row)
 {
   if (isset($row)) {
-    if (!empty($row['profil__initiales'])) {
+    if (isset($row['profil__initiales'])) {
       // Récupère les infos du profil
       $profil__initiales = $row['profil__initiales'];
 
@@ -2961,11 +2971,13 @@ function the_profil_initiales($row)
 function the_profil_adresse($row)
 {
   if (isset($row)) {
-    // Récupère les infos du profil
-    $profil__adresse = $row['profil__adresse'];
+    if (isset($row["profil__adresse"])) {
+      // Récupère les infos du profil
+      $profil__adresse = $row['profil__adresse'];
 
-    // Retourne le résultat au template
-    echo $profil__adresse;
+      // Retourne le résultat au template
+      echo $profil__adresse;
+    }
   }
 }
 
@@ -2978,14 +2990,16 @@ function the_profil_adresse($row)
 function the_profil_code_postal($row)
 {
   if (isset($row)) {
-    // Récupère les infos du profil
-    $profil__code_postal = $row['profil__code_postal'];
+    if (isset($row["profil__code_postal"])) {
+      // Récupère les infos du profil
+      $profil__code_postal = $row['profil__code_postal'];
 
-    // Formate le résultat
-    $profil__code_postal = str_replace(' ', '', $profil__code_postal);
+      // Formate le résultat
+      $profil__code_postal = str_replace(' ', '', $profil__code_postal);
 
-    // Retourne le résultat au template
-    echo $profil__code_postal;
+      // Retourne le résultat au template
+      echo $profil__code_postal;
+    }
   }
 }
 
@@ -2998,11 +3012,13 @@ function the_profil_code_postal($row)
 function the_profil_ville($row)
 {
   if (isset($row)) {
-    // Récupère les infos du profil
-    $profil__ville = $row['profil__ville'];
+    if (isset($row["profil__ville"])) {
+      // Récupère les infos du profil
+      $profil__ville = $row['profil__ville'];
 
-    // Retourne le résultat au template
-    echo $profil__ville;
+      // Retourne le résultat au template
+      echo $profil__ville;
+    }
   }
 }
 

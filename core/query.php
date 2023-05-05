@@ -20,7 +20,7 @@ try {
   $conn = new mysqli($servername, $username, $password, $dbname);
 } catch (mysqli_sql_exception $e) {
   // Lancement du TurboTuto™
-  include_once(__DIR__ . './turbotuto.php');
+  include_once(__DIR__ . './turbotuto/turbotuto.php');
   exit();
 }
 
@@ -33,6 +33,31 @@ $conn = new mysqli($servername, $username, $password, $dbname);
 if ($conn->connect_error) {
   die("Connection failed: " . $conn->connect_error);
 }
+
+
+/**
+ *  Vérifie si un Profil existe dans la base de données
+ */
+
+try {
+  $result = $conn->query("SELECT COUNT(*) FROM Profil");
+  $row = $result->fetch_row();
+  if (!$row[0] > 0) {
+
+    // La table Profil existe mais est elle est vide :
+    // Lancement du TurboTuto™ AutoProfil pour
+    // que l'utilisateur créer son premier profil.
+
+    include_once(__DIR__ . './turbotuto/turbotuto__autoprofil.php');
+  }
+} catch (mysqli_sql_exception $exception) {
+
+  // La table Profil n'existe pas :
+  // Lancement d'un DatabaseCheck pour ajouter les tables manquantes
+
+  include_once(__DIR__ . './database/db__check.php');
+}
+die;
 
 
 /**
