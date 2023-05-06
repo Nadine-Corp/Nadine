@@ -250,9 +250,9 @@ function the_projet_thumbnail($row)
 
 function the_projet_date_de_creation($row)
 {
-  if (isset($row)) {
+  if (isset($row) && isset($row['projet__date_de_creation'])) {
     // Récupère et formate la date du début du projet
-    $date_de_debut = $row["projet__date_de_creation"];
+    $date_de_debut = $row['projet__date_de_creation'];
 
     // Retourne le résultat au template
     echo $date_de_debut;
@@ -271,9 +271,9 @@ function the_projet_date_de_creation($row)
 
 function the_projet_date_de_fin($row)
 {
-  if (isset($row)) {
+  if (isset($row) && isset($row['projet__date_de_fin'])) {
     // Récupère et formate la date du début du projet
-    $date_de_fin = $row["projet__date_de_fin"];
+    $date_de_fin = $row['projet__date_de_fin'];
 
     // Retourne le résultat au template
     echo $date_de_fin;
@@ -2024,9 +2024,15 @@ function get_facture_new_numero($table)
 
     // Récupère le dernier numéros de facture ou devis
     if ($loop->num_rows > 0) {
+
       while ($row = $loop->fetch_assoc()) {
         $facture__id = $row[$prefix . '__id'];
       }
+    } else {
+      // Si aucun numéros de facture ou devis est récupéré :
+      // formate Facture ID pour que Nadine se prépare
+      // à enregister sa première facture ou devis
+      $facture__id = 0;
     }
 
     // Récupère les infos du dernier profil
