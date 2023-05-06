@@ -25,13 +25,22 @@ $data['artiste__id'] = array();
 
 foreach ($_POST as $key => $value) {
   // Vérifie si l'input a été complété
-  if (isset($$key)) continue;
+  if (empty($value)) continue;
   // Rassemble les artistes dans un même sous-array
   if (str_contains($key, 'artiste')) {
     array_push($data['artiste__id'], addslashes($value));
   } else {
     $data[$key] = addslashes($value);
   }
+}
+
+
+/**
+ * Formate le champs retrocession
+ */
+
+if (!isset($data['projet__retrocession'])) {
+  $data['projet__retrocession'] = 0;
 }
 
 
@@ -55,6 +64,12 @@ if (check_if_precompte($data['diffuseur__id'])) {
 } else {
   $data['projet__precompte'] = '0';
 }
+
+
+echo "<pre>";
+var_dump($data);
+echo "</pre>";
+
 
 
 /**

@@ -5,11 +5,11 @@
 
 
 /**
- *  Importe les paramètres et test de la base de donnée
- *  Si une erreur est détectée : lancement du TurboTuto™
+ *  Test la connexion à la base de données
+ * Si une erreur est detectée, Nadine lancera le TurboTuto™️
  */
 
-require(__DIR__ . '/core/query.php');
+require(__DIR__ . '/core/database/db__test.php');
 
 
 /**
@@ -28,8 +28,6 @@ require_once(__DIR__ . '/core/fonctions.php');
 include_once(__DIR__ . '/parts/p__head.php');
 
 ?>
-
-
 
 
 <body>

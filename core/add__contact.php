@@ -35,7 +35,7 @@ if ($contact__type != 'diffuseur') {
 
 foreach ($_POST as $key => $value) {
     // Vérifie que l'input a été complété
-    if (isset($$key)) continue;
+    if (empty($value)) continue;
     // Remplace 'contact__' par le type de contact pour correspondre à la base de donnée
     $col = str_replace("contact", $contact__type, $key);
     // Ajoute l'info à la variable

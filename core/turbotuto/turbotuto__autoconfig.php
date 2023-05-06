@@ -42,9 +42,9 @@
   } catch (mysqli_sql_exception $e) {
     // Lancement du TurboTuto™
     header('Location: ../../index.php?modal=tt04');
-    exit();
+    die();
   }
 
 
   header('Location: ../../index.php');
-  die;
+  die();
