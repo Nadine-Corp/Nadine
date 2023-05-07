@@ -24,12 +24,12 @@ include(__DIR__ . '/header.php');
     ?>
 
     <div class="m-col l6">
-      <h2 class="m-lead">Devis non signés</h2>
       <?php $thisYear = date("Y") ?>
-      <?php $sql = "SELECT * FROM Devis WHERE devis__statut = 'Envoyé' "; ?>
+      <?php $sql = "SELECT * FROM Devis WHERE devis__statut = 'Envoyé' OR devis__statut = 'Relancé'"; ?>
       <?php include './core/query.php';
       $result = $conn->query($sql) or die($conn->error); ?>
       <?php if ($result->num_rows > 0) : ?>
+        <h2 class="m-lead">Devis non signés</h2>
         <table class="m-table m-body">
           <thead>
             <tr>
@@ -50,9 +50,8 @@ include(__DIR__ . '/header.php');
             <?php endwhile; ?>
           </tbody>
         </table>
-      <?php else : ?>
-        <p>Chef, on n'a pas trouvé de devis en attente...</p>
-      <?php endif;
+      <?php else : msg_nothing('Aucun devis en attente', "Cette section centralise tous les <i>Devis</i> ayant le statut <i>« Envoyé » ou « Relancé »</i>.");
+      endif;
       $conn->close(); ?>
     </div>
 
@@ -64,12 +63,12 @@ include(__DIR__ . '/header.php');
     ?>
 
     <div class="m-col l6">
-      <h2 class="m-lead">Factures impayées</h2>
       <?php $thisYear = date("Y") ?>
-      <?php $sql = "SELECT * FROM Factures WHERE facture__statut = 'Envoyée' "; ?>
+      <?php $sql = "SELECT * FROM Factures WHERE facture__statut = 'Envoyée' OR facture__statut = 'Relancé'"; ?>
       <?php include './core/query.php';
       $result = $conn->query($sql) or die($conn->error); ?>
       <?php if ($result->num_rows > 0) : ?>
+        <h2 class="m-lead">Factures impayées</h2>
         <table class="m-table m-body">
           <thead>
             <tr>
@@ -90,9 +89,8 @@ include(__DIR__ . '/header.php');
             <?php endwhile; ?>
           </tbody>
         </table>
-      <?php else : ?>
-        <p>Chef, on n'a pas trouvé de factures impayées...</p>
-      <?php endif;
+      <?php else : msg_nothing('Aucun factures impayées', "Nadine n'a trouvé aucune <i>Facture</i> avec le statut <i>« Envoyé » ou « Relancé »</i> dans la <i>Base de données</i>.");
+      endif;
       $conn->close(); ?>
     </div>
 

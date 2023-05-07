@@ -3320,6 +3320,34 @@ function nadine_prix($prix)
   }
 }
 
+/**
+ * La fonction nadine_prix() permet d'harmoniser
+ * l'affichage de prix sur Nadine
+ */
+
+function msg_nothing($titre = '', $msg = '')
+{
+  if (isset($titre) || isset($msg)) {
+
+    echo '<div class="m-msg__error">';
+    echo '<div class="m-msg__wrapper">';
+
+    if (!empty($titre)) {
+      echo '<h2 class="m-lead">';
+      echo $titre;
+      echo '</h2>';
+    };
+
+    if (!empty($msg)) {
+      echo '<span class="m-body m-mt1">';
+      echo $msg;
+      echo '</span>';
+    };
+
+    echo '</div>';
+    echo '</div>';
+  }
+}
 
 /**
  * La fonction get_template_part() permet de stocker des fichiers

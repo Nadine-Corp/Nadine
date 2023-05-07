@@ -35,15 +35,19 @@
       transition: $fast
 
   @include hover
-    .m-accordion__titre span
-      color: color('rouge', 50)
-      margin: 0 m()
-      transition: $fast
+    .m-accordion__titre
+      &:before
+        background: color('rouge', 50)
+      span, h2
+        color: color('rouge', 50)
+        margin: 0 m(2.25)
+        transition: $fast
     .m-accordion__ico svg
       stroke: color('rouge', 50)
 
 .m-accordion__titre
   display: flex
+  position: relative
   justify-content: space-between
   align-items: center
   width: 100%
@@ -51,11 +55,27 @@
   border-bottom: 1px solid color('border-color')
   padding-bottom: m()
   margin-bottom: m()
+        
+  &:before
+    content: ''
+    position: absolute
+    left: 0
+    top: 2px
+    width: m(1.75)
+    height: m(1.75)
+    border-radius: m(1.75)
+    background: color('rouge', 50,0)
+    z-index: 1
 
-  span
+
+  &>span, h2
     font-family: font('sans-serif')
     color: color('rouge', 70)
     transition: $verySlow
+    background: color('backgroundColor')
+    z-index: 2
+
+      
 
 .m-accordion__ico
   margin-left: auto
