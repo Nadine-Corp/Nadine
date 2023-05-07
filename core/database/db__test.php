@@ -9,7 +9,7 @@
  *  Importation des paramètres de connection
  */
 
-require(__DIR__ . '/../config.php');
+require_once(__DIR__ . '/../config.php');
 
 
 /**
@@ -20,7 +20,9 @@ require(__DIR__ . '/../config.php');
 try {
   $conn = new mysqli($servername, $username, $password, $dbname);
 } catch (mysqli_sql_exception $e) {
+
   // Lancement du TurboTuto™
+
   include_once(__DIR__ . './../turbotuto/turbotuto.php');
   exit();
 }
@@ -47,4 +49,9 @@ try {
   // Lancement d'un DatabaseCheck pour ajouter les tables manquantes
 
   include_once(__DIR__ . './db__check.php');
+
+
+  // Redirection vers la page d'accueil
+
+  header('Location: ./../../index.php');
 }

@@ -40,11 +40,10 @@
   try {
     $conn = new mysqli($servername, $username, $password, $dbname);
   } catch (mysqli_sql_exception $e) {
-    // Lancement du TurboTuto™
+    // Si test échoue, lancement du TurboTuto™
     header('Location: ../../index.php?modal=tt04');
     die();
   }
-
-
+  // Si test réussi, retour à la page d'index
   header('Location: ../../index.php');
   die();
