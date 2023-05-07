@@ -79,15 +79,14 @@ include './header.php';
 
       $sql = "SELECT * FROM Diffuseurs LEFT OUTER JOIN Artistes ON diffuseur__id = artiste__nom UNION SELECT * FROM Diffuseurs RIGHT OUTER JOIN Artistes ON diffuseur__id = artiste__nom";
       $loop = nadine_query($args, $sql);
-      ?>
 
-      <?php if ($loop->num_rows > 0) : ?>
-        <?php while ($row = $loop->fetch_assoc()) : ?>
-          <?php include './parts/p__contacts-single.php'; ?>
-        <?php endwhile; ?>
-      <?php else : ?>
-        <p>Chef, on n'a pas trouvé de contacts</p>
-      <?php endif; ?>
+      if ($loop->num_rows > 0) :
+        while ($row = $loop->fetch_assoc()) :
+          include './parts/p__contacts-single.php';
+        endwhile;
+      else : msg_nothing('Aucun Contact', "<i>Nadine</i> n'a trouvé aucun <i>Contact</i> dans la <i>base de données</i>. Commencez par ajouter un <i>Contact</i> de type <i>Diffuseur</i> pour envoyer vos premiers <i>Devis</i> ou <i>Facture</i>");
+      endif;
+      ?>
     </div>
   </section>
 

@@ -1,0 +1,42 @@
+// main: ../../../style.sass
+
+  Le module Message permet à Nadine d'afficher des messages
+  à l'utilisateur
+
+  
+  Exemple de HTML :
+
+  <div class="m-msg__error">
+    <div class="m-msg__error__wrapper">
+      <span class="m-body">
+        Aucun message.
+      </span>
+    </div>
+  </div>
+
+
+.m-msg__error
+  display: flex
+  align-items: center
+  justify-content: center
+
+.m-msg__wrapper
+  max-width: m(40)
+  border-radius: m()
+  margin-top: m()
+  padding: m(1.5)
+  border: 1px solid color('rouge', 80)
+  background: color('rouge', 98)
+  transition: $slow
+  text-align: center
+
+  span
+    display: block
+    color: color('rouge', 80)
+  i
+   color: color('rouge', 70)
+
+  @include hover
+    background: color('rouge', 95)
+    border-radius: m(1.5)
+    transition: $fast

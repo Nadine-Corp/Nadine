@@ -114,11 +114,13 @@ function nadine_update($table, $primaryKey, $data)
 function get_projet_id($row)
 {
   if (isset($row)) {
-    // Recupère l'ID du projet
-    $projet__id = $row["projet__id"];
+    if (isset($row["projet__id"])) {
+      // Recupère l'ID du projet
+      $projet__id = $row["projet__id"];
 
-    // Retourne le résultat au template
-    return $projet__id;
+      // Retourne le résultat au template
+      return $projet__id;
+    }
   }
 }
 
@@ -146,8 +148,10 @@ function the_projet_id($row)
 function the_projet_name($row)
 {
   if (isset($row)) {
-    // Retourne le résultat au template
-    echo $row["projet__nom"];
+    if (isset($row["projet__nom"])) {
+      // Retourne le résultat au template
+      echo $row["projet__nom"];
+    }
   }
 }
 
@@ -172,18 +176,20 @@ function the_projet_statut($row)
 function get_projet_retrocession($row)
 {
   if (isset($row)) {
-    // Récupère la liste des artistes du projet
-    $artistes = $row['artiste__id'];
+    if (isset($row['artiste__id'])) {
+      // Récupère la liste des artistes du projet
+      $artistes = $row['artiste__id'];
 
-    // Transforme la liste des artistes du projet en Array
-    $artistes = unserialize($artistes);
+      // Transforme la liste des artistes du projet en Array
+      $artistes = unserialize($artistes);
 
-    if (is_array($artistes) && count($artistes) > 0) {
-      // Retourne le résultat au template
-      return 1;
-    } else {
-      // Retourne le résultat au template
-      return 0;
+      if (is_array($artistes) && count($artistes) > 0) {
+        // Retourne le résultat au template
+        return 1;
+      } else {
+        // Retourne le résultat au template
+        return 0;
+      }
     }
   }
 }
@@ -244,9 +250,9 @@ function the_projet_thumbnail($row)
 
 function the_projet_date_de_creation($row)
 {
-  if (isset($row)) {
+  if (isset($row) && isset($row['projet__date_de_creation'])) {
     // Récupère et formate la date du début du projet
-    $date_de_debut = $row["projet__date_de_creation"];
+    $date_de_debut = $row['projet__date_de_creation'];
 
     // Retourne le résultat au template
     echo $date_de_debut;
@@ -265,9 +271,9 @@ function the_projet_date_de_creation($row)
 
 function the_projet_date_de_fin($row)
 {
-  if (isset($row)) {
+  if (isset($row) && isset($row['projet__date_de_fin'])) {
     // Récupère et formate la date du début du projet
-    $date_de_fin = $row["projet__date_de_fin"];
+    $date_de_fin = $row['projet__date_de_fin'];
 
     // Retourne le résultat au template
     echo $date_de_fin;
@@ -283,20 +289,22 @@ function the_projet_date_de_fin($row)
 function the_projet_date($row)
 {
   if (isset($row)) {
-    // Récupère et formate la date du début du projet
-    $date_de_debut = date_create($row["projet__date_de_creation"]);
-    $date_de_debut = nadine_date($date_de_debut);
+    if (isset($row["projet__date_de_creation"])) {
+      // Récupère et formate la date du début du projet
+      $date_de_debut = date_create($row["projet__date_de_creation"]);
+      $date_de_debut = nadine_date($date_de_debut);
 
-    // Récupère et formate la date de fin du projet (si elle existe)
-    if (!empty($row["projet__date_de_fin"])) {
-      $date_de_fin = date_create($row["projet__date_de_fin"]);
-      $date_de_fin = " — " . nadine_date($date_de_fin);
-    } else {
-      $date_de_fin = "";
-    };
+      // Récupère et formate la date de fin du projet (si elle existe)
+      if (!empty($row["projet__date_de_fin"])) {
+        $date_de_fin = date_create($row["projet__date_de_fin"]);
+        $date_de_fin = " — " . nadine_date($date_de_fin);
+      } else {
+        $date_de_fin = "";
+      };
 
-    // Retourne le résultat au template
-    echo $date_de_debut . $date_de_fin;
+      // Retourne le résultat au template
+      echo $date_de_debut . $date_de_fin;
+    }
   }
 }
 
@@ -395,7 +403,7 @@ function the_projet_equipe($row)
 
 function the_projet_input_equipe($row)
 {
-  if (isset($row)) {
+  if (isset($row) && isset($row['artiste__id'])) {
 
     // Récupère la liste des artistes du projet
     $artistes = $row['artiste__id'];
@@ -542,8 +550,10 @@ function the_projet_last_total_auteur($row)
 function get_diffuseur_id($row)
 {
   if (isset($row)) {
-    // Retourne le résultat au template
-    return $row["diffuseur__id"];
+    if (isset($row["diffuseur__id"])) {
+      // Retourne le résultat au template
+      return $row["diffuseur__id"];
+    }
   }
 }
 
@@ -572,11 +582,13 @@ function the_diffuseur_id($row)
 function get_diffuseur_societe($row)
 {
   if (isset($row)) {
-    // Récupère les infos du diffuseur
-    $diffuseur_societe = $row["diffuseur__societe"];
+    if (isset($row["diffuseur__societe"])) {
+      // Récupère les infos du diffuseur
+      $diffuseur_societe = $row["diffuseur__societe"];
 
-    // Retourne le résultat au template
-    return $diffuseur_societe;
+      // Retourne le résultat au template
+      return $diffuseur_societe;
+    }
   }
 }
 
@@ -606,11 +618,13 @@ function the_diffuseur_societe($row)
 function get_diffuseur_siret($row)
 {
   if (isset($row)) {
-    // Récupère les infos du diffuseur
-    $diffuseur_siret = $row["diffuseur__siret"];
+    if (isset($row["diffuseur__siret"])) {
+      // Récupère les infos du diffuseur
+      $diffuseur_siret = $row["diffuseur__siret"];
 
-    // Retourne le résultat au template
-    return $diffuseur_siret;
+      // Retourne le résultat au template
+      return $diffuseur_siret;
+    }
   }
 }
 
@@ -680,14 +694,16 @@ function the_diffuseur_nom($row)
 function get_diffuseur_prenom($row)
 {
   if (isset($row)) {
-    // Récupère les infos du diffuseur
-    $diffuseur_prenom = $row["diffuseur__prenom"];
+    if (isset($row["diffuseur__prenom"])) {
+      // Récupère les infos du diffuseur
+      $diffuseur_prenom = $row["diffuseur__prenom"];
 
-    // Formate le résultat
-    $diffuseur_prenom = ucwords(strtolower($diffuseur_prenom));
+      // Formate le résultat
+      $diffuseur_prenom = ucwords(strtolower($diffuseur_prenom));
 
-    // Retourne le résultat au template
-    return $diffuseur_prenom;
+      // Retourne le résultat au template
+      return $diffuseur_prenom;
+    }
   }
 }
 
@@ -901,14 +917,16 @@ function get_diffuseur_adresse($row)
 function get_diffuseur_code_postal($row)
 {
   if (isset($row)) {
-    // Récupère les infos du diffuseur
-    $diffuseur__code_postal = $row['diffuseur__code_postal'];
+    if ($row['diffuseur__code_postal']) {
+      // Récupère les infos du diffuseur
+      $diffuseur__code_postal = $row['diffuseur__code_postal'];
 
-    // Formate le résultat
-    $diffuseur__code_postal = str_replace(' ', '', $diffuseur__code_postal);
+      // Formate le résultat
+      $diffuseur__code_postal = str_replace(' ', '', $diffuseur__code_postal);
 
-    // Retourne le résultat au template
-    return $diffuseur__code_postal;
+      // Retourne le résultat au template
+      return $diffuseur__code_postal;
+    }
   }
 }
 
@@ -1024,9 +1042,13 @@ function the_diffuseurs_list()
       // Affiche le nom de société ou le nom et prenom du diffuseur
       // en fonction du type de diffuseur
       if ($row["diffuseur__type"] == 'particulier') {
-        the_diffuseur_nom($row);
+        the_diffuseur_name($row);
       } else {
-        the_diffuseur_societe($row);
+        if (!empty(get_diffuseur_societe($row))) {
+          the_diffuseur_societe($row);
+          echo ' — ';
+        }
+        the_diffuseur_name($row);
       }
       echo '</option>';
 
@@ -1043,11 +1065,13 @@ function the_diffuseurs_list()
 function get_artiste_id($row)
 {
   if (isset($row)) {
-    // Récupère les infos de l'artiste
-    $artiste__id = $row["artiste__id"];
+    if (isset($row["artiste__id"])) {
+      // Récupère les infos de l'artiste
+      $artiste__id = $row["artiste__id"];
 
-    // Retourne le résultat au template
-    return $artiste__id;
+      // Retourne le résultat au template
+      return $artiste__id;
+    }
   }
 }
 
@@ -1061,11 +1085,13 @@ function get_artiste_id($row)
 function get_artiste_societe($row)
 {
   if (isset($row)) {
-    // Récupère les infos de l'artiste
-    $artiste__societe = $row["artiste__societe"];
+    if (isset($row["artiste__societe"])) {
+      // Récupère les infos de l'artiste
+      $artiste__societe = $row["artiste__societe"];
 
-    // Retourne le résultat au template
-    return $artiste__societe;
+      // Retourne le résultat au template
+      return $artiste__societe;
+    }
   }
 }
 
@@ -1097,11 +1123,13 @@ function the_artiste_societe($row)
 function get_artiste_siret($row)
 {
   if (isset($row)) {
-    // Récupère les infos de l'artiste
-    $artiste_siret = $row["artiste__siret"];
+    if (isset($row["artiste__siret"])) {
+      // Récupère les infos de l'artiste
+      $artiste_siret = $row["artiste__siret"];
 
-    // Retourne le résultat au template
-    return $artiste_siret;
+      // Retourne le résultat au template
+      return $artiste_siret;
+    }
   }
 }
 
@@ -1173,14 +1201,16 @@ function get_artiste_civilite($row)
 function get_artiste_nom($row)
 {
   if (isset($row)) {
-    // Récupère les infos de l'artiste
-    $artiste_nom = $row["artiste__nom"];
+    if (isset($row["artiste__nom"])) {
+      // Récupère les infos de l'artiste
+      $artiste_nom = $row["artiste__nom"];
 
-    // Formate le résultat
-    $artiste_nom = ucwords(strtolower($artiste_nom));
+      // Formate le résultat
+      $artiste_nom = ucwords(strtolower($artiste_nom));
 
-    // Retourne le résultat au template
-    return $artiste_nom;
+      // Retourne le résultat au template
+      return $artiste_nom;
+    }
   }
 }
 
@@ -1192,14 +1222,16 @@ function get_artiste_nom($row)
 function get_artiste_prenom($row)
 {
   if (isset($row)) {
-    // Récupère les infos de l'artiste
-    $artiste_prenom = $row["artiste__prenom"];
+    if (isset($row["artiste__prenom"])) {
+      // Récupère les infos de l'artiste
+      $artiste_prenom = $row["artiste__prenom"];
 
-    // Formate le résultat
-    $artiste_prenom = ucwords(strtolower($artiste_prenom));
+      // Formate le résultat
+      $artiste_prenom = ucwords(strtolower($artiste_prenom));
 
-    // Retourne le résultat au template
-    return $artiste_prenom;
+      // Retourne le résultat au template
+      return $artiste_prenom;
+    }
   }
 }
 
@@ -1394,11 +1426,13 @@ function the_artiste_telephone($row)
 function get_artiste_adresse($row)
 {
   if (isset($row)) {
-    // Récupère les infos du artiste
-    $artiste__adresse = $row['artiste__adresse'];
+    if (isset($row['artiste__adresse'])) {
+      // Récupère les infos du artiste
+      $artiste__adresse = $row['artiste__adresse'];
 
-    // Retourne le résultat au template
-    return $artiste__adresse;
+      // Retourne le résultat au template
+      return $artiste__adresse;
+    }
   }
 }
 
@@ -1411,14 +1445,16 @@ function get_artiste_adresse($row)
 function get_artiste_code_postal($row)
 {
   if (isset($row)) {
-    // Récupère les infos du artiste
-    $artiste__code_postal = $row['artiste__code_postal'];
+    if (isset($row['artiste__code_postal'])) {
+      // Récupère les infos du artiste
+      $artiste__code_postal = $row['artiste__code_postal'];
 
-    // Formate le résultat
-    $artiste__code_postal = str_replace(' ', '', $artiste__code_postal);
+      // Formate le résultat
+      $artiste__code_postal = str_replace(' ', '', $artiste__code_postal);
 
-    // Retourne le résultat au template
-    return $artiste__code_postal;
+      // Retourne le résultat au template
+      return $artiste__code_postal;
+    }
   }
 }
 
@@ -1431,11 +1467,13 @@ function get_artiste_code_postal($row)
 function get_artiste_ville($row)
 {
   if (isset($row)) {
-    // Récupère les infos du artiste
-    $artiste__ville = $row['artiste__ville'];
+    if (isset($row['artiste__ville'])) {
+      // Récupère les infos du artiste
+      $artiste__ville = $row['artiste__ville'];
 
-    // Retourne le résultat au template
-    return $artiste__ville;
+      // Retourne le résultat au template
+      return $artiste__ville;
+    }
   }
 }
 
@@ -1448,7 +1486,7 @@ function get_artiste_ville($row)
 function get_artiste_pays($row)
 {
   if (isset($row)) {
-    if (!empty($row['artiste__pays'])) {
+    if (isset($row['artiste__pays'])) {
       // Récupère les infos du artiste
       $artiste__pays = $row['artiste__pays'];
 
@@ -1986,9 +2024,15 @@ function get_facture_new_numero($table)
 
     // Récupère le dernier numéros de facture ou devis
     if ($loop->num_rows > 0) {
+
       while ($row = $loop->fetch_assoc()) {
         $facture__id = $row[$prefix . '__id'];
       }
+    } else {
+      // Si aucun numéros de facture ou devis est récupéré :
+      // formate Facture ID pour que Nadine se prépare
+      // à enregister sa première facture ou devis
+      $facture__id = 0;
     }
 
     // Récupère les infos du dernier profil
@@ -2776,11 +2820,13 @@ function the_profil_id($row)
 function the_profil_societe($row)
 {
   if (isset($row)) {
-    // Récupère les infos du profil
-    $profil__societe = $row['profil__societe'];
+    if (isset($row["profil__societe"])) {
+      // Récupère les infos du profil
+      $profil__societe = $row['profil__societe'];
 
-    // Retourne le résultat au template
-    echo $profil__societe;
+      // Retourne le résultat au template
+      echo $profil__societe;
+    }
   }
 }
 
@@ -2793,11 +2839,13 @@ function the_profil_societe($row)
 function the_profil_siret($row)
 {
   if (isset($row)) {
-    // Récupère les infos du profil
-    $profil__siret = $row['profil__siret'];
+    if (isset($row["profil__siret"])) {
+      // Récupère les infos du profil
+      $profil__siret = $row['profil__siret'];
 
-    // Retourne le résultat au template
-    echo $profil__siret;
+      // Retourne le résultat au template
+      echo $profil__siret;
+    }
   }
 }
 
@@ -2810,11 +2858,13 @@ function the_profil_siret($row)
 function the_profil_numero_secu($row)
 {
   if (isset($row)) {
-    // Récupère les infos du profil
-    $profil__numero_secu = $row['profil__numero_secu'];
+    if (isset($row["profil__numero_secu"])) {
+      // Récupère les infos du profil
+      $profil__numero_secu = $row['profil__numero_secu'];
 
-    // Retourne le résultat au template
-    echo $profil__numero_secu;
+      // Retourne le résultat au template
+      echo $profil__numero_secu;
+    }
   }
 }
 
@@ -2827,11 +2877,13 @@ function the_profil_numero_secu($row)
 function the_profil_numero_mda($row)
 {
   if (isset($row)) {
-    // Récupère les infos du profil
-    $profil__numero_mda = $row['profil__numero_mda'];
+    if (isset($row["profil__numero_mda"])) {
+      // Récupère les infos du profil
+      $profil__numero_mda = $row['profil__numero_mda'];
 
-    // Retourne le résultat au template
-    echo $profil__numero_mda;
+      // Retourne le résultat au template
+      echo $profil__numero_mda;
+    }
   }
 }
 
@@ -2844,7 +2896,7 @@ function the_profil_numero_mda($row)
 function get_profil_precompte($row)
 {
   if (isset($row)) {
-    if (!empty($row['profil__precompte'])) {
+    if (isset($row['profil__precompte'])) {
       // Récupère les infos du diffuseur
       $profil__precompte = $row["profil__precompte"];
 
@@ -2886,11 +2938,13 @@ function get_profil_civilite($row)
 function the_profil_prenom($row)
 {
   if (isset($row)) {
-    // Récupère les infos du profil
-    $profil__prenom = $row['profil__prenom'];
+    if (isset($row["profil__prenom"])) {
+      // Récupère les infos du profil
+      $profil__prenom = $row['profil__prenom'];
 
-    // Retourne le résultat au template
-    echo $profil__prenom;
+      // Retourne le résultat au template
+      echo $profil__prenom;
+    }
   }
 }
 
@@ -2903,7 +2957,7 @@ function the_profil_prenom($row)
 function the_profil_nom($row)
 {
   if (isset($row)) {
-    if (!empty($row['profil__nom'])) {
+    if (isset($row['profil__nom'])) {
       // Récupère les infos du profil
       $profil__nom = $row['profil__nom'];
 
@@ -2922,7 +2976,7 @@ function the_profil_nom($row)
 function the_profil_pseudo($row)
 {
   if (isset($row)) {
-    if (!empty($row['profil__pseudo'])) {
+    if (isset($row['profil__pseudo'])) {
       // Récupère les infos du profil
       $profil__pseudo = $row['profil__pseudo'];
 
@@ -2942,7 +2996,7 @@ function the_profil_pseudo($row)
 function the_profil_initiales($row)
 {
   if (isset($row)) {
-    if (!empty($row['profil__initiales'])) {
+    if (isset($row['profil__initiales'])) {
       // Récupère les infos du profil
       $profil__initiales = $row['profil__initiales'];
 
@@ -2961,11 +3015,13 @@ function the_profil_initiales($row)
 function the_profil_adresse($row)
 {
   if (isset($row)) {
-    // Récupère les infos du profil
-    $profil__adresse = $row['profil__adresse'];
+    if (isset($row["profil__adresse"])) {
+      // Récupère les infos du profil
+      $profil__adresse = $row['profil__adresse'];
 
-    // Retourne le résultat au template
-    echo $profil__adresse;
+      // Retourne le résultat au template
+      echo $profil__adresse;
+    }
   }
 }
 
@@ -2978,14 +3034,16 @@ function the_profil_adresse($row)
 function the_profil_code_postal($row)
 {
   if (isset($row)) {
-    // Récupère les infos du profil
-    $profil__code_postal = $row['profil__code_postal'];
+    if (isset($row["profil__code_postal"])) {
+      // Récupère les infos du profil
+      $profil__code_postal = $row['profil__code_postal'];
 
-    // Formate le résultat
-    $profil__code_postal = str_replace(' ', '', $profil__code_postal);
+      // Formate le résultat
+      $profil__code_postal = str_replace(' ', '', $profil__code_postal);
 
-    // Retourne le résultat au template
-    echo $profil__code_postal;
+      // Retourne le résultat au template
+      echo $profil__code_postal;
+    }
   }
 }
 
@@ -2998,11 +3056,13 @@ function the_profil_code_postal($row)
 function the_profil_ville($row)
 {
   if (isset($row)) {
-    // Récupère les infos du profil
-    $profil__ville = $row['profil__ville'];
+    if (isset($row["profil__ville"])) {
+      // Récupère les infos du profil
+      $profil__ville = $row['profil__ville'];
 
-    // Retourne le résultat au template
-    echo $profil__ville;
+      // Retourne le résultat au template
+      echo $profil__ville;
+    }
   }
 }
 
@@ -3229,12 +3289,15 @@ function nadine_date($date, $format = 'abrv')
  * l'affichage des noms sur Nadine
  */
 
-function nadine_name($civilite, $prenom, $nom)
+function nadine_name($civilite = '', $prenom = '', $nom = '')
 {
   // Formate le prénom et le nom 
-
-  $prenom = ucwords(strtolower($prenom));
-  $nom = ucwords(strtolower($nom));
+  if (!empty($prenom)) {
+    $prenom = ucwords(strtolower($prenom));
+  }
+  if (!empty($nom)) {
+    $nom = ucwords(strtolower($nom));
+  }
 
   // Retourne le résultat au template
   return $civilite . ' ' . $prenom . ' ' . $nom;
@@ -3257,6 +3320,34 @@ function nadine_prix($prix)
   }
 }
 
+/**
+ * La fonction nadine_prix() permet d'harmoniser
+ * l'affichage de prix sur Nadine
+ */
+
+function msg_nothing($titre = '', $msg = '')
+{
+  if (isset($titre) || isset($msg)) {
+
+    echo '<div class="m-msg__error">';
+    echo '<div class="m-msg__wrapper">';
+
+    if (!empty($titre)) {
+      echo '<h2 class="m-lead">';
+      echo $titre;
+      echo '</h2>';
+    };
+
+    if (!empty($msg)) {
+      echo '<span class="m-body m-mt1">';
+      echo $msg;
+      echo '</span>';
+    };
+
+    echo '</div>';
+    echo '</div>';
+  }
+}
 
 /**
  * La fonction get_template_part() permet de stocker des fichiers

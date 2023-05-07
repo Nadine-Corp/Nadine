@@ -66,13 +66,23 @@ include(__DIR__ . '/header.php');
   </aside>
 
 
-  <?php
-  /**
-   * Liste de projets en cours
-   */
-  ?>
 
   <section class="m-rom with--aside">
+
+    <?php
+    /**
+     * Liste de projets en cours
+     */
+
+    $args = array(
+      'FROM'     => 'Projets, Diffuseurs',
+      'WHERE'    => 'Projets.diffuseur__id = Diffuseurs.diffuseur__id',
+      'AND'      => 'Projets.projet__statut = "Projet en cours"',
+      'ORDER BY' => 'projet__date_de_creation',
+      'ORDER'    => 'DESC'
+    );
+    $loop = nadine_query($args);
+    ?>
 
     <div class="m-accordion is--active">
       <div class="m-accordion__titre">
@@ -82,26 +92,14 @@ include(__DIR__ . '/header.php');
         </div>
       </div>
       <div class="l-projets__list p-projet__list m-accordion__wrapper">
-        <?php
-        $args = array(
-          'FROM'     => 'Projets, Diffuseurs',
-          'WHERE'    => 'Projets.diffuseur__id = Diffuseurs.diffuseur__id',
-          'AND'      => 'Projets.projet__statut = "Projet en cours"',
-          'ORDER BY' => 'projet__date_de_creation',
-          'ORDER'    => 'DESC'
-        );
-        $loop = nadine_query($args);
-        ?>
-
-        <?php if ($loop->num_rows > 0) : ?>
-          <?php while ($row = $loop->fetch_assoc()) : ?>
-            <?php // Affiche chaque projet sous forme de liste
+        <?php if ($loop->num_rows > 0) :
+          while ($row = $loop->fetch_assoc()) :
+            // Affiche chaque projet sous forme de liste
             include './parts/p__projet-list.php';
-            ?>
-          <?php endwhile; ?>
-        <?php else : ?>
-          <p>Chef, on n'a pas trouvé de projets en cours...</p>
-        <?php endif; ?>
+          endwhile;
+        else : msg_nothing('Aucun Projet en cours', "Cette section permet a <i>Nadine</i> de lister vos <i>Projets en cours</i>. Commencez par ajouter un <i>Projet</i>.");
+        endif;
+        ?>
       </div>
     </div>
 
@@ -110,6 +108,15 @@ include(__DIR__ . '/header.php');
     /**
      * Liste de projets terminés
      */
+
+    $args = array(
+      'FROM'     => 'Projets, Diffuseurs',
+      'WHERE'    => 'Projets.diffuseur__id = Diffuseurs.diffuseur__id',
+      'AND'      => 'Projets.projet__statut = "Projet terminé"',
+      'ORDER BY' => 'projet__date_de_creation',
+      'ORDER'    => 'DESC'
+    );
+    $loop = nadine_query($args);
     ?>
 
     <div class="m-accordion">
@@ -121,33 +128,32 @@ include(__DIR__ . '/header.php');
       </div>
 
       <div class="l-projets__list p-projet__list m-accordion__wrapper">
-        <?php
-        $args = array(
-          'FROM'     => 'Projets, Diffuseurs',
-          'WHERE'    => 'Projets.diffuseur__id = Diffuseurs.diffuseur__id',
-          'AND'      => 'Projets.projet__statut = "Projet terminé"',
-          'ORDER BY' => 'projet__date_de_creation',
-          'ORDER'    => 'DESC'
-        );
-        $loop = nadine_query($args); ?>
-        <?php if ($loop->num_rows > 0) : ?>
-          <?php while ($row = $loop->fetch_assoc()) : ?>
-            <?php // Affiche chaque projet sous forme de liste
+        <?php if ($loop->num_rows > 0) :
+          while ($row = $loop->fetch_assoc()) :
+            // Affiche chaque projet sous forme de liste
             include './parts/p__projet-list.php';
-            ?>
-          <?php endwhile; ?>
-
-        <?php else : ?>
-          <p>Chef, on n'a pas trouvé de projets en terminés ou annulés...</p>
-        <?php endif; ?>
+          endwhile;
+        else : msg_nothing('Aucun Projet terminé', "Ne désespérez pas ! Bientôt, <i>Nadine</i> listera ici tous vos <i>Projets en terminés</i> par dizaines ! Commencez par ajouter un nouveau <i>Projet</i> ou ouvrez un <i>Projet</i> existant. Ensuite, modifiez le staut du <i>Projet</i> en <i>« Projet terminé »</i>.");
+        endif;
+        ?>
       </div>
     </div>
+
 
 
     <?php
     /**
      * Liste de projets annulés
      */
+
+    $args = array(
+      'FROM'     => 'Projets, Diffuseurs',
+      'WHERE'    => 'Projets.diffuseur__id = Diffuseurs.diffuseur__id',
+      'AND'      => 'Projets.projet__statut = "Projet annulé"',
+      'ORDER BY' => 'projet__date_de_creation',
+      'ORDER'    => 'DESC'
+    );
+    $loop = nadine_query($args);
     ?>
 
     <div class="m-accordion">
@@ -159,31 +165,19 @@ include(__DIR__ . '/header.php');
       </div>
 
       <div class="l-projets__list p-projet__list m-accordion__wrapper">
-        <?php
-        $args = array(
-          'FROM'     => 'Projets, Diffuseurs',
-          'WHERE'    => 'Projets.diffuseur__id = Diffuseurs.diffuseur__id',
-          'AND'      => 'Projets.projet__statut = "Projet annulé"',
-          'ORDER BY' => 'projet__date_de_creation',
-          'ORDER'    => 'DESC'
-        );
-        $loop = nadine_query($args);
-        ?>
-
-        <?php if ($loop->num_rows > 0) : ?>
-          <?php while ($row = $loop->fetch_assoc()) : ?>
-            <?php // Affiche chaque projet sous forme de liste
+        <?php if ($loop->num_rows > 0) :
+          while ($row = $loop->fetch_assoc()) :
+            // Affiche chaque projet sous forme de liste
             include './parts/p__projet-list.php';
-            ?>
-          <?php endwhile; ?>
-
-        <?php else : ?>
-          <p>Chef, on n'a pas trouvé de projets en terminés ou annulés...</p>
-        <?php endif; ?>
+          endwhile;
+        else : msg_nothing('Aucun projet annulé', "Voilà une bonne nouvelle ! Nadine n'a pas trouvé de <i>Projets Annulés</i> dans la base de données. Pour information : cette section liste les <i>Projets</i> ayant pour staut <i>« Projet annulé »</i>.");
+        endif;
+        ?>
       </div>
     </div>
-  </section>
 
+
+  </section>
 
   <?php
   /**

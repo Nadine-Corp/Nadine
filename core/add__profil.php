@@ -11,7 +11,7 @@
  * les plus importantes de Nadine
  */
 
-require(__DIR__ . '/fonctions.php');
+require_once(__DIR__ . '/fonctions.php');
 
 
 /**
@@ -57,7 +57,22 @@ nadine_insert($table, $primaryKey, $data);
 
 
 /**
- * Redirection vers la page profil
+ * Redirection l'utilisateur aprés
+ * l'ajout d'un nouveau profil
  */
 
-header('Location: ../profil.php');
+
+// Récupère le dernier profil ID
+
+$profil__id = get_profil_last_id();
+
+// Vérifie le nombre de profil déjà créé
+
+if ($profil__id == 1) {
+  // S'il s'agit du premier profil :
+  // lancement de la fin du TurboTuto™️
+  header('Location: ../index.php');
+} else {
+  // Sinon : retour à la page profil
+  header('Location: ../profil.php');
+}

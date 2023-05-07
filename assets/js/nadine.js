@@ -81,13 +81,15 @@ let header__navbar = document.querySelector('.l-header__navbar');
 let nav__accordion = document.querySelector('.l-header__navbar .m-accordion');
 
 // Vérifie si qq'un click sur le Menu Burger
-nav__btn.addEventListener('click', function () {
-	if (header__navbar.classList.contains('is--active')) {
-		hideNav();
-	} else {
-		ShowNav();
-	}
-});
+if (nav__btn) {
+	nav__btn.addEventListener('click', function () {
+		if (header__navbar.classList.contains('is--active')) {
+			hideNav();
+		} else {
+			ShowNav();
+		}
+	});
+}
 
 // Cette fonction est appelée pour ouvrir le nav
 function ShowNav() {
@@ -98,20 +100,28 @@ function ShowNav() {
 
 // Cette fonction est appelée pour fermer la nav
 function hideNav() {
-	nav__btn.classList.remove('is--active');
-	header__navbar.classList.remove('is--active');
+	// Cherche des élèments à cacher
+	var elements = document.querySelectorAll('.nav__btn, .l-header__navbar, .l-header__navbar .m-accordion');
+
+	// Parcourt tous les éléments et enlève la classe .is--active
+	for (var i = 0; i < elements.length; i++) {
+		elements[i].classList.remove('is--active');
+	}
+
+
 	overlay.classList.remove('is--active');
-	nav__accordion.classList.remove('is--active');
 	document.body.classList.remove('overflow--is--hidden');
 	document.documentElement.classList.remove('overflow--is--hidden');
 };
 
 // Vérifie si qq'un click sur le bouton Plus
-nav__accordion.addEventListener('click', function () {
-	if (!header__navbar.classList.contains('is--active')) {
-		ShowNav();
-	}
-});
+if (nav__accordion) {
+	nav__accordion.addEventListener('click', function () {
+		if (!header__navbar.classList.contains('is--active')) {
+			ShowNav();
+		}
+	});
+}
 
 
 /**
@@ -260,6 +270,10 @@ btns__modal.forEach(btn__modal => {
 	btn__modal.addEventListener('click', function (e) {
 		// Empêche le comportement normal du lien
 		e.preventDefault();
+
+		// Ferme toutes les autres élèments
+		// avant d'ouvrir la modale
+		hideOverlay();
 
 		// Récupére le nom de la modal que le bouton doit ouvrir
 		let dataModal = btn__modal.getAttribute('data-modal');
@@ -632,11 +646,13 @@ function changeStep(formStep, step) {
 */
 
 var searchBar = document.querySelector('.l-header__searchbar input');
-searchBar.addEventListener('keyup', function (e) {
-	var string = searchBar.value;
-	var items = document.querySelectorAll('.l-projets__projet');
-	searchAndHide(string, items);
-});
+if (searchBar) {
+	searchBar.addEventListener('keyup', function (e) {
+		var string = searchBar.value;
+		var items = document.querySelectorAll('.l-projets__projet');
+		searchAndHide(string, items);
+	});
+}
 
 
 /**

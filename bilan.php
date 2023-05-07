@@ -57,8 +57,7 @@ endif;
             endif;
           endif;
         endwhile;
-      else :
-        echo "<p>Chef, on n'a pas trouvé de projets en cours...</p>";
+      else : msg_nothing('Aucun projet terminé', "<i>Nadine</i> classera ici vos <i>Projets terminés</i> par année. Cette page est conçue pour faciliter vos déclarations à l'URSSAF.");
       endif;
       ?>
     </div>
@@ -73,14 +72,16 @@ endif;
        */
       ?>
 
-      <div class="m-accordion is--active">
+      <div class="m-accordion">
         <div class="m-accordion__titre">
           <span class="m-lead">Succès Startup</span>
           <div class="m-accordion__ico">
             <?php include './assets/img/ico_arrow-accordion.svg.php'; ?>
           </div>
         </div>
-        <div class="l-projets__list m-accordion__wrapper">
+
+        <div class=" m-accordion__wrapper p-projet__list">
+          <?php msg_nothing('Aucun succès', "Mais ne vous inquiétez pas, les équipes de <i>NadineCorp.©️</i> travaillent d'arrache-pied pour ajouter cette fonctionnalité dans une prochaine mise à jour. Bientôt, vous pourrez afficher fièrement vos glorieux <i>Succès</i> dans  cette section."); ?>
         </div>
       </div>
 
@@ -98,27 +99,26 @@ endif;
       );
       $loop = nadine_query($args);
       ?>
-      <?php if ($loop->num_rows > 0) : ?>
 
-        <div class="m-accordion is--active">
-          <div class="m-accordion__titre">
-            <span class="m-lead">Liste des projets terminés</span>
-            <div class="m-accordion__ico">
-              <?php include './assets/img/ico_arrow-accordion.svg.php'; ?>
-            </div>
-          </div>
-
-          <div class="l-bilan__list p-projet__list m-accordion__wrapper">
-            <?php while ($row = $loop->fetch_assoc()) : ?>
-              <?php // Affiche chaque projet sous forme de liste
-              include './parts/p__projet-list.php';
-              ?>
-            <?php endwhile; ?>
+      <div class="m-accordion is--active">
+        <div class="m-accordion__titre">
+          <span class="m-lead">Liste des projets terminés</span>
+          <div class="m-accordion__ico">
+            <?php include './assets/img/ico_arrow-accordion.svg.php'; ?>
           </div>
         </div>
-      <?php else : ?>
-        <p>Chef, on n'a pas trouvé de projets en cours...</p>
-      <?php endif; ?>
+
+        <div class="l-bilan__list p-projet__list m-accordion__wrapper">
+          <?php if ($loop->num_rows > 0) :
+            while ($row = $loop->fetch_assoc()) :
+              // Affiche chaque projet sous forme de liste
+              include './parts/p__projet-list.php';
+            endwhile;
+          else : msg_nothing('Aucun projet terminé', "<i>Nadine</i> classera ici vos <i>Projets terminés</i> par année. Cette page est conçue pour faciliter vos déclarations à l'URSSAF.");
+          endif;
+          ?>
+        </div>
+      </div>
     </div>
   </section>
 

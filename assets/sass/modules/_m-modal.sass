@@ -7,7 +7,7 @@
 .m-modal
   display: none
   position: fixed
-  width: 50vw
+  width: 66vw
   min-height: 33vh
   max-height: 75vh
   top: 50%
@@ -18,6 +18,9 @@
   z-index: $zindex__modal
   @include box-shadow(200, 'shadow')
 
+  @include respond('xxl')
+    width: 50vw
+
   &.is--active
     display: flex
 
@@ -27,7 +30,7 @@
   overflow: overlay
 
 
-// Effet Denko
+// Style les Effet Denko des modales
 
 .m-modal__denko
   position: relative
@@ -44,3 +47,26 @@
     display: block
     transform: rotate(-90deg)
     transform-origin: top left
+
+// Style les images pouvant être ajouté aux modales
+
+.m-modal__img
+  width: 25vw
+
+// Style les images pouvant être ajouté aux modales
+
+.m-modal_choix
+  border-radius: m()
+  margin-top: m()
+  padding: m(1.5)
+  color: color('rouge', 80)
+  border: 1px solid color('rouge', 80)
+  background: color('grey', 0, 0)
+  transition: $slow
+
+  @include hover
+    text-decoration: none
+    color: color('rouge', 50)
+    background: color('rouge', 90)
+    border-radius: m(1.5)
+    transition: $fast

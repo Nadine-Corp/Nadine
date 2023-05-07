@@ -177,6 +177,6 @@ if (isset($_GET['id'])) {
         <button class="btn btn__plain btn__next" type="button">Suivant</button>
         <button class="btn btn__plain btn__submit" type="submit">Enregistrer</button>
       </div>
+    </form>
   </div>
-  </form>
 </div>

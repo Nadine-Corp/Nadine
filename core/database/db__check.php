@@ -6,7 +6,7 @@
  *  Importe les paramètres
  */
 
-require(__DIR__ .  '/../config.php');
+require_once(__DIR__ .  '/../config.php');
 
 
 /**
@@ -21,7 +21,7 @@ require_once(__DIR__ . '/../fonctions.php');
  *  Importe la structure de la base de données
  */
 
-require(__DIR__ .  '/db__structure.php');
+require_once(__DIR__ .  '/db__structure.php');
 
 
 /**

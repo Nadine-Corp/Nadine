@@ -122,7 +122,7 @@ include './header.php';
         ?>
         <div class="m-accordion is--active">
           <div class="m-accordion__titre">
-            <h2>Devis</h2>
+            <h2 class="m-lead">Devis</h2>
             <div class="m-accordion__ico">
               <?php include './assets/img/ico_arrow-accordion.svg.php'; ?>
             </div>
@@ -164,7 +164,7 @@ include './header.php';
         ?>
         <div class="m-accordion">
           <div class="m-accordion__titre">
-            <h2>Facture d'acompte</h2>
+            <h2 class="m-lead">Facture d'acompte</h2>
             <div class="m-accordion__ico">
               <?php include './assets/img/ico_arrow-accordion.svg.php'; ?>
             </div>
@@ -205,7 +205,7 @@ include './header.php';
         ?>
         <div class="m-accordion is--active">
           <div class="m-accordion__titre">
-            <h2>Facture</h2>
+            <h2 class="m-lead">Facture</h2>
             <div class="m-accordion__ico">
               <?php include './assets/img/ico_arrow-accordion.svg.php'; ?>
             </div>
