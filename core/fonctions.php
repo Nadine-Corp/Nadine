@@ -3407,6 +3407,32 @@ function get_num_version()
 
 
 /**
+ * La fonction check_if_artistes() permet de savoir s'il existe
+ * des Diffuseurs dans la base de données
+ */
+
+function check_if_table_existe($table)
+{
+  if (isset($table)) {
+    // Importe les info de connexion à la base de donnée
+    require(__DIR__ . '/config.php');
+
+    // Envoie la requête demandée à la base de données
+    $conn = new mysqli($servername, $username, $password, $dbname);
+    $result = $conn->query("SELECT COUNT(*) FROM " . $table);
+
+    // Test si la table Diffuseurs est vide
+    $row = $result->fetch_row();
+    if ($row[0] > 0) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+}
+
+
+/**
  * La fonction check_if_precompte() permet de savoir si un projet doit utiliser
  * ou pas le systeme de précompte
  */

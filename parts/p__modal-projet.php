@@ -105,12 +105,20 @@ if (isset($_GET['id'])) {
 
       <div class="m-form__wrapper m-form__step-2">
         <div class="m-form__label m-form__select-list m-form__with-btn">
-          <label for="diffuseur__id">Nom du diffuseur</label>
-          <select name="diffuseur__id" data-selected='<?php the_diffuseur_id($row) ?>' required>
-            <?php the_diffuseurs_list(); ?>
-          </select>
-          <button class="btn btn__outline btn__ico" type="button"><?php include(__DIR__ . '/../assets/img/ico_modifier.svg.php'); ?></button>
-          <button class="btn btn__outline btn__ico" type="button"><?php include(__DIR__ . '/../assets/img/ico_ajouter.svg.php'); ?></button>
+          <?php if (check_if_table_existe('Diffuseurs')) : ?>
+            <label for="diffuseur__id">Nom du diffuseur</label>
+            <select name="diffuseur__id" data-selected='<?php the_diffuseur_id($row) ?>' required>
+              <?php the_diffuseurs_list(); ?>
+            </select>
+            <a href="./p__modal-contact" class="btn btn__outline btn__ico btn__modal" data-modal="contact">
+              <?php include(__DIR__ . '/../assets/img/ico_modifier.svg.php'); ?>
+            </a>
+          <?php else : ?>
+            <?php msg_nothing('Aucun Diffuseur', "Oups. Vous devez ajouter un <i>Diffuseur</i> à la <i>Base de données</i> avant de pouvoir ajouter un nouveau <i>Projet</i>."); ?>
+          <?php endif; ?>
+          <a href="./p__modal-contact" class="btn btn__outline btn__ico btn__modal" data-modal="contact">
+            <?php include(__DIR__ . '/../assets/img/ico_ajouter.svg.php'); ?>
+          </a>
         </div>
       </div>
 
@@ -127,43 +135,50 @@ if (isset($_GET['id'])) {
           </span>
           <div class="m-form__radio">
             Non
-            <input type="radio" name="projet__retrocession" value="0" <?php if (empty($value) || $value == "0") {
-                                                                        echo "checked";
-                                                                      } ?>>
+            <input type="radio" name="projet__retrocession" value="0" <?php if (empty($value) || $value == "0") echo "checked"; ?>>
             <span class="checkmark"></span>
           </div>
           <div class="m-form__radio">
             Oui
-            <input type="radio" name="projet__retrocession" value="1" <?php if ($value == "1") {
-                                                                        echo "checked";
-                                                                      } ?>>
+            <input type="radio" name="projet__retrocession" value="1" <?php if ($value == "1") echo "checked"; ?>>
             <span class="checkmark"></span>
           </div>
         </div>
-        <div class="m-form__equipe">
-          <label for="artiste__1">Liste des coéquipiers</label>
 
-          <?php // INFO : la div.m-form__artiste sera dubliquée si qq'un clic
-          // sur Ajouter un•e Artiste-Auteur 
-          ?>
 
-          <?php the_projet_input_equipe($row); ?>
+        <?php if (check_if_table_existe('Artistes')) : ?>
 
-          <div class="m-form__info m-form__with-btn">
-            <span class="m-body btn__ico-label">Ajouter un•e Artiste-Auteur</span>
-            <button class="btn btn__outline btn__ico btn__add-artiste" type="button"><?php include(__DIR__ . '/../assets/img/ico_ajouter.svg.php'); ?></button>
+          <div class="m-form__equipe">
+            <label for="artiste__1">Liste des coéquipiers</label>
+
+            <?php // INFO : la div.m-form__artiste sera dubliquée si qq'un clic
+            // sur Ajouter un•e Artiste-Auteur 
+            ?>
+            <?php the_projet_input_equipe($row); ?>
+
+            <div class="m-form__info m-form__with-btn">
+              <span class="m-body btn__ico-label">Ajouter un•e Artiste-Auteur</span>
+              <button class="btn btn__outline btn__ico btn__add-artiste" type="button"><?php include(__DIR__ . '/../assets/img/ico_ajouter.svg.php'); ?></button>
+            </div>
+
+            <?php // INFO : la div.m-form__artiste sera dubliqué si qq'un clic
+            // sur Ajouter un•e Artiste-Auteur 
+            ?>
+            <div class="m-form__label m-form__select-list m-form__porteurduprojet">
+              <label for="projet__porteurduprojet">Quel•le Artiste-Auteur va facturer au diffuseur ?</label>
+              <select name="projet__porteurduprojet" required>
+                <option value="0">Vous</option>
+              </select>
+            </div>
           </div>
-
-          <?php // INFO : la div.m-form__artiste sera dubliqué si qq'un clic
-          // sur Ajouter un•e Artiste-Auteur 
-          ?>
-          <div class="m-form__label m-form__select-list m-form__porteurduprojet">
-            <label for="projet__porteurduprojet">Quel•le Artiste-Auteur va facturer au diffuseur ?</label>
-            <select name="projet__porteurduprojet" required>
-              <option value="0">Vous</option>
-            </select>
+        <?php else : ?>
+          <div class="m-form__equipe m-mt2">
+            <?php msg_nothing('Aucun Artiste', "Avant de pouvoir faire équipe, vous devez ajouter un <i>Artiste</i> à la <i>Base de données</i> grâce à la page <i>Contacts</i>."); ?>
+            <div class="m-form__info m-form__with-btn">
+            </div>
           </div>
-        </div>
+        <?php endif; ?>
+
       </div>
 
 

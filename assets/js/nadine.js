@@ -464,76 +464,79 @@ function initSelectList(selectList) {
 	// Cherche le select
 	let select = selectList.querySelector('select');
 
-	// Ajoute une <div> dans la div.m-form__select-list
-	let div = document.createElement('div');
-	div.className = 'm-form__list';
-	selectList.prepend(div);
+	if (select !== null) {
 
-	// Ajoute un <input> dans la <div> précédemment ajoutée
-	let input = document.createElement('input');
-	input.className = 'm-form__list-input';
-	div.prepend(input);
+		// Ajoute une <div> dans la div.m-form__select-list
+		let div = document.createElement('div');
+		div.className = 'm-form__list';
+		selectList.prepend(div);
 
-	// Ajoute un <ul> dans la <div> précédemment ajoutée
-	let ul = document.createElement('ul');
-	ul.className = 'm-form__list-items';
-	div.append(ul);
+		// Ajoute un <input> dans la <div> précédemment ajoutée
+		let input = document.createElement('input');
+		input.className = 'm-form__list-input';
+		div.prepend(input);
 
-	// Récupére les options de ce select
-	let options = selectList.querySelectorAll('option');
+		// Ajoute un <ul> dans la <div> précédemment ajoutée
+		let ul = document.createElement('ul');
+		ul.className = 'm-form__list-items';
+		div.append(ul);
 
-	// Ajoute un <li> par options dans la <div> précédemment ajoutée
-	options.forEach(option => {
-		let li = document.createElement('li');
-		li.className = 'm-form__list-item';
-		let optionValue = option.value;
-		li.textContent = option.text;
-		ul.append(li);
+		// Récupére les options de ce select
+		let options = selectList.querySelectorAll('option');
 
-		// Ajoute une fonction si chaque <li> si qq'un clic dessus
-		li.addEventListener('click', function (e) {
-			// Récupére le contenu du <li> sélectionné
-			let optionText = li.innerHTML;
-			// Sélectionne l'option correspondant au <li>
-			select.value = optionValue;
-			// Change la valeur de l'input
-			input.value = optionText;
-			// Simule un changement dans le select pour que d'autres fonction
-			// puisse le détecter
-			var event = new Event('change');
-			select.dispatchEvent(event);
+		// Ajoute un <li> par options dans la <div> précédemment ajoutée
+		options.forEach(option => {
+			let li = document.createElement('li');
+			li.className = 'm-form__list-item';
+			let optionValue = option.value;
+			li.textContent = option.text;
+			ul.append(li);
+
+			// Ajoute une fonction si chaque <li> si qq'un clic dessus
+			li.addEventListener('click', function (e) {
+				// Récupére le contenu du <li> sélectionné
+				let optionText = li.innerHTML;
+				// Sélectionne l'option correspondant au <li>
+				select.value = optionValue;
+				// Change la valeur de l'input
+				input.value = optionText;
+				// Simule un changement dans le select pour que d'autres fonction
+				// puisse le détecter
+				var event = new Event('change');
+				select.dispatchEvent(event);
+			});
 		});
-	});
 
-	// Ouvre la liste lorsque qq'un clic sur l'input
-	input.addEventListener('focus', function (e) {
-		div.classList.add('is--focus');
-	});
+		// Ouvre la liste lorsque qq'un clic sur l'input
+		input.addEventListener('focus', function (e) {
+			div.classList.add('is--focus');
+		});
 
-	// Ferme la liste lorsque qq'un clic sur l'input
-	input.addEventListener('focusout', function (e) {
-		// Ajoute un léger délais permettant de vérifier
-		// si qq'un a cliqué sur un diffuseur
-		setTimeout(function () {
-			div.classList.remove('is--focus');
-		}, 250)
-	});
+		// Ferme la liste lorsque qq'un clic sur l'input
+		input.addEventListener('focusout', function (e) {
+			// Ajoute un léger délais permettant de vérifier
+			// si qq'un a cliqué sur un diffuseur
+			setTimeout(function () {
+				div.classList.remove('is--focus');
+			}, 250)
+		});
 
-	// Cherche le diffuseur lorsque qq'un commence à taper dans l'input
-	input.addEventListener('keyup', function (e) {
-		var string = input.value;
-		var items = ul.querySelectorAll('li');
-		searchAndHide(string, items);
-	});
+		// Cherche le diffuseur lorsque qq'un commence à taper dans l'input
+		input.addEventListener('keyup', function (e) {
+			var string = input.value;
+			var items = ul.querySelectorAll('li');
+			searchAndHide(string, items);
+		});
 
-	// Vérifie si l'options selected doit être modifié
-	// après un chargement AJAX
-	selectedValue = select.getAttribute('data-selected');
-	if (selectedValue !== null) {
-		select.value = selectedValue;
-		if (select.selectedIndex > -1) {
-			selectedText = select.options[select.selectedIndex].text;
-			input.value = selectedText;
+		// Vérifie si l'options selected doit être modifié
+		// après un chargement AJAX
+		selectedValue = select.getAttribute('data-selected');
+		if (selectedValue !== null) {
+			select.value = selectedValue;
+			if (select.selectedIndex > -1) {
+				selectedText = select.options[select.selectedIndex].text;
+				input.value = selectedText;
+			}
 		}
 	}
 }

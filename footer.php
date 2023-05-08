@@ -4,9 +4,17 @@
 // des pages. C'est ici que tout s'arrête.
 
 
-?>
 
+/**
+ * Ajout du Footer
+ */
+
+// Permet d'injecter des parts à la fin du main. 
+?>
 </main>
+
+
+
 <footer class="l-footer">
 	<?php
 	/**

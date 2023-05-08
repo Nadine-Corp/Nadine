@@ -174,7 +174,6 @@ include './header.php';
             <?php
             // Ajoute des champs caché pour simplifier l'ajout
             // et la modification des factures ou devis dans la base de données
-
             ?>
 
             <input type="hidden" name="facture__id" placeholder="facture__id" value="<?php the_facture_id($row) ?>">
@@ -210,15 +209,14 @@ include './header.php';
 
       </form>
 
-      <?php
+    <?php
       /**
        * Ajout des modales
        */
 
       include './parts/p__volet-facturemsg.php';
-      ?>
-    <?php endwhile; ?>
-  <?php else : ?>
+    endwhile;
+  else : ?>
     <section class="m-rom">
       <p>Chef, on n'a pas trouvé de facture en cours...</p>
     </section>

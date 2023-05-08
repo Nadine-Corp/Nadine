@@ -277,6 +277,7 @@ include(__DIR__ . '/header.php');
     </section>
   <?php endif; ?>
 
+
   <?php
   /**
    * Ajout du Footer

@@ -46,4 +46,10 @@ include(__DIR__ . '/header.php');
     </div>
   </section>
 
-  <?php include './footer.php'; ?>
+
+  <?php
+  /**
+   * Ajout du Footer
+   */
+
+  include './footer.php';
