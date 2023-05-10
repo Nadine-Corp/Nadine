@@ -66,12 +66,6 @@ if (check_if_precompte($data['diffuseur__id'])) {
 }
 
 
-echo "<pre>";
-var_dump($data);
-echo "</pre>";
-
-
-
 /**
  * Vérifie si le projet doit être créé ou mis à jour
  */
@@ -121,8 +115,6 @@ if (empty($data['projet__id'])) {
   // Récupère l'ID du projet mise à jour
   $projet__id = $data['projet__id'];
 }
-
-
 
 
 /**

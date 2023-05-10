@@ -59,7 +59,7 @@ if (isset($_GET['id'])) {
     <?php // Ajout du formulaire 
     ?>
 
-    <form class="m-form m-form__step" action="./core/add__contact.php" method="post">
+    <form class="m-form m-form__step" action="./core/form__contact.php" method="post">
 
       <?php // Ajout de la navigation 
       ?>

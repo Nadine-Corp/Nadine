@@ -39,7 +39,7 @@ include(__DIR__ . '/header.php');
       ?>
 
       <section class="m-rom">
-        <form class="m-form m-form__step" action="./core/add__profil.php" method="post">
+        <form class="m-form m-form__step" action="./core/form__profil.php" method="post">
 
 
           <?php // Ajout de la navigation 
