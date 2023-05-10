@@ -38,13 +38,6 @@ $(document).ready(function ($) {
 
 
 	/**
-	*  Table Shorter
-	*/
-
-	$(".m-table").tablesorter();
-
-
-	/**
 	*  Facture : active le bouton Enregistrer si c'est passer une facturer
 	*  à l'état Payée
 	*/

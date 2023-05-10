@@ -1,6 +1,6 @@
 <?php
 
-// Ce fichier permet de controler l'affichage de la modal
+// Ce fichier permet de controler l'affichage de la modale
 // permettant d'ajouter un nouveau projet
 
 /**

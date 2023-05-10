@@ -2,12 +2,6 @@
 
 // Le fichier init.php permet de reset de la base donnée et de repartir à zéro
 
-/**
- *  Importe les paramètres
- */
-
-require_once(__DIR__ .  '/../config.php');
-
 
 /**
  * Importe le fichier rassemblant toutes les fonctions
@@ -21,7 +15,7 @@ require_once(__DIR__ . '/../fonctions.php');
  *  Importe la structure de la base de données
  */
 
-require_once(__DIR__ .  '/db__structure.php');
+include(__DIR__ .  '/db__structure.php');
 
 
 /**
@@ -33,6 +27,7 @@ require_once(__DIR__ .  '/db__structure.php');
 foreach ($tables as $table_name => $columns) {
 
   // Vérifie si la connection à la base de donnée fonctionne
+  global $servername, $username, $password, $dbname;
   $conn = new mysqli($servername, $username, $password, $dbname);
   if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);

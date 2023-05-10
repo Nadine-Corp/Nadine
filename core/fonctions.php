@@ -6,12 +6,18 @@
 
 
 /**
+ *  Importation des paramètres de connection
+ */
+
+include(__DIR__ . '/config.php');
+
+
+/**
  * La fonction nadine_query() simplifie les requêtes à la base de données
  */
 
 function nadine_query($args, $sql = 'SELECT *')
 {
-
   if ($sql == 'SELECT *') {
     // Ajoute les propriétés demandées
     foreach ($args as $key => $value) {
@@ -24,10 +30,8 @@ function nadine_query($args, $sql = 'SELECT *')
     };
   };
 
-  // Importe les info de connexion à la base de donnée
-  require(__DIR__ . '/config.php');
-
   // Vérifie si la connection à la base de donnée fonctionne
+  global $servername, $username, $password, $dbname;
   $conn = new mysqli($servername, $username, $password, $dbname);
   if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
@@ -3414,10 +3418,9 @@ function get_num_version()
 function check_if_table_existe($table)
 {
   if (isset($table)) {
-    // Importe les info de connexion à la base de donnée
-    require(__DIR__ . '/config.php');
 
     // Envoie la requête demandée à la base de données
+    global $servername, $username, $password, $dbname;
     $conn = new mysqli($servername, $username, $password, $dbname);
     $result = $conn->query("SELECT COUNT(*) FROM " . $table);
 

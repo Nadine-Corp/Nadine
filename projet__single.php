@@ -65,8 +65,10 @@ include './header.php';
           <?php // Ajout des boutons 
           ?>
           <div class="m-cover__toolbar m-btn__grp">
-            <button class="btn btn__outline btn__ico"><?php include './assets/img/ico_corbeille.svg.php'; ?></button>
-            <button class="btn btn__outline btn__modal" data-modal="projet" data-table="projet" data-id="<?php the_projet_id($row) ?>">
+            <button class="btn btn__outline btn__ico btn__delete btn__modal" data-modal="delete" data-table="projets" data-prefix="projet" data-id="<?php the_projet_id($row) ?>" data-location="projet.php">
+              <?php include './assets/img/ico_corbeille.svg.php'; ?>
+            </button>
+            <button class=" btn btn__outline btn__modal" data-modal="projet" data-table="projet" data-id="<?php the_projet_id($row) ?>">
               <?php // include './assets/img/ico_modifier.svg.php';
               ?>Modifier le projet</button>
             <?php if ($row['projet__precompte'] == 1) : ?>
@@ -252,10 +254,11 @@ include './header.php';
 
   <?php
   /**
-   * Ajout des modals
+   * Ajout des modales
    */
 
-  include_once(__DIR__ . '/parts/p__modal-projet.php');
+  include './parts/p__modal-delete.php';
+  include './parts/p__modal-projet.php';
 
 
   /**

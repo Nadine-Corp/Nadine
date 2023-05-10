@@ -5,16 +5,10 @@
 
 
 /**
- *  Importation des paramètres de connection
- */
-
-require(__DIR__ . '/config.php');
-
-
-/**
  *  Connection à la base de donnée
  */
 
+global $servername, $username, $password, $dbname;
 $conn = new mysqli($servername, $username, $password, $dbname);
 if ($conn->connect_error) {
   die("Connection failed: " . $conn->connect_error);

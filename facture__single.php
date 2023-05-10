@@ -223,7 +223,15 @@ include './header.php';
   <?php endif; ?>
 
 
+
   <?php
+  /**
+   * Ajout des modales
+   */
+
+  include './parts/p__modal-delete.php';
+
+
   /**
    * Ajout du Footer
    */

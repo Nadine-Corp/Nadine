@@ -14,11 +14,10 @@
 </main>
 
 
-
 <footer class="l-footer">
 	<?php
 	/**
-	 * Injection de l'Overlay Universel
+	 * Ajout de l'Overlay Universel
 	 */
 
 	// Cette modale div.m-overlay permet à Nadine de recouvrir l'écran.
@@ -34,7 +33,6 @@
 	 */
 	?>
 
-	<script src="./assets/js/tablesorter.min.js"></script>
 	<script src="./assets/js/nadine.js"></script>
 </footer>
 

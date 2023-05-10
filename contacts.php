@@ -97,6 +97,7 @@ include './header.php';
    */
 
   include './parts/p__modal-contact.php';
+  include './parts/p__modal-delete.php';
 
 
   /**

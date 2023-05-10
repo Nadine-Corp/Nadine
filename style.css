@@ -946,6 +946,14 @@ p a:link, p a:visited {
   overflow: overlay;
 }
 
+.m-modal__m {
+  width: 33vw;
+}
+
+.m-modal__error {
+  background: var(--color-rouge-90);
+}
+
 .m-modal__denko {
   position: relative;
   -webkit-box-flex: 0;
@@ -1673,7 +1681,7 @@ span.m-cover__diffuseur-ads {
   resize: none;
   font-size: calc(var(--m) * 1.5);
   color: var(--color-grey-0);
-  background: var(--color-backgroundColor);
+  background: rgba(var(--color-rgb-rouge-98), 0);
   -webkit-transition: 0.6s;
   transition: 0.6s;
 }
@@ -1787,7 +1795,7 @@ input:-webkit-autofill,
 input:-webkit-autofill:hover,
 input:-webkit-autofill:focus,
 input:-webkit-autofill:active {
-  -webkit-box-shadow: 0 0 0 30px var(--color-backgroundColor) inset !important;
+  -webkit-box-shadow: 0 0 0 30px rgba(var(--color-rgb-rouge-98), 0) inset !important;
   -webkit-text-fill-color: var(--color-grey-0) !important;
   padding: calc(var(--m) * 1.5) 0 !important;
 }
@@ -2006,7 +2014,7 @@ input:checked + .slider:before {
   margin-top: calc(var(--m) * 3);
   border: 1px solid var(--color-rouge-80);
   border-radius: calc(var(--m) * 3);
-  background: var(--color-backgroundColor);
+  background: rgba(var(--color-rgb-rouge-98), 0);
   overflow: hidden;
 }
 

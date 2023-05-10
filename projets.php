@@ -184,6 +184,7 @@ include(__DIR__ . '/header.php');
    * Ajout des modales
    */
 
+  include './parts/p__modal-delete.php';
   include './parts/p__modal-contact.php';
   include './parts/p__modal-projet.php';
 
