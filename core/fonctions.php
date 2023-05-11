@@ -558,25 +558,72 @@ function the_projet_factures($row)
     // Recupère l'ID du projet
     $projet__id = get_projet_id($row);
 
-    // Cherche toutes les factures et devis
+    // Ajoute une variable
+    $projet_factures = null;
+
+    // Cherche tous les devis
     $args = array(
       'FROM'          => 'Devis',
-      'INNER JOIN '   => 'Factures ON Devis.projet__id = Factures.projet__id',
       'WHERE'         => 'Devis.projet__id =' . $projet__id
     );
     $loop = nadine_query($args);
 
-    // Ajoute une variable
-    $projet_factures = null;
+    if ($loop->num_rows > 0) {
+      while ($row = $loop->fetch_assoc()) {
+        // Récupére le bon prefix
+        $prefix = 'devis';
 
+        if (check_is_not_delete($row, $prefix)) {
+          // Récupére le numéros de la facture
+          $facture_numero = get_facture_numero($row);
+
+          // Ajoute le numéros à la liste
+          $projet_factures .= $facture_numero . ', ';
+        }
+      };
+    };
+
+    // Cherche toutes les factures d'accompte
+    $args = array(
+      'FROM'          => 'Facturesacompte',
+      'WHERE'         => 'Facturesacompte.projet__id =' . $projet__id
+    );
+    $loop = nadine_query($args);
 
     if ($loop->num_rows > 0) {
       while ($row = $loop->fetch_assoc()) {
-        // Récupére le numéros de la facture
-        $facture_numero = get_facture_numero($row);
+        // Récupére le bon prefix
+        $prefix = 'facturea';
 
-        // Ajoute le numéros à la liste de Facture
-        $projet_factures = $projet_factures . $facture_numero . ', ';
+        if (check_is_not_delete($row, $prefix)) {
+          // Récupére le numéros de la facture
+          $facture_numero = get_facture_numero($row);
+
+          // Ajoute le numéros à la liste
+          $projet_factures .= $facture_numero . ', ';
+        }
+      };
+    };
+
+    // Cherche toutes les factures
+    $args = array(
+      'FROM'          => 'Factures',
+      'WHERE'         => 'Factures.projet__id =' . $projet__id
+    );
+    $loop = nadine_query($args);
+
+    if ($loop->num_rows > 0) {
+      while ($row = $loop->fetch_assoc()) {
+        // Récupére le bon prefix
+        $prefix = 'facture';
+
+        if (check_is_not_delete($row, $prefix)) {
+          // Récupére le numéros de la facture
+          $facture_numero = get_facture_numero($row);
+
+          // Ajoute le numéros à la liste
+          $projet_factures .= $facture_numero . ', ';
+        }
       };
     };
 
