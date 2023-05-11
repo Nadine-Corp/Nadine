@@ -2333,6 +2333,10 @@ input:checked + .slider:before {
   background: var(--color-grey-10);
 }
 
+.l-projets__factures {
+  display: none;
+}
+
 .p-facture {
   margin-right: var(--m);
   -webkit-transition: 0.6s;

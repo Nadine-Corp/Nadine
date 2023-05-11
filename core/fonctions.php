@@ -548,6 +548,45 @@ function the_projet_last_total_auteur($row)
 
 
 /**
+ * La fonction the_projet_factures() affiche la liste
+ * de tous les factures ou devis d'un projet
+ */
+
+function the_projet_factures($row)
+{
+  if (isset($row)) {
+    // Recupère l'ID du projet
+    $projet__id = get_projet_id($row);
+
+    // Cherche toutes les factures et devis
+    $args = array(
+      'FROM'          => 'Devis',
+      'INNER JOIN '   => 'Factures ON Devis.projet__id = Factures.projet__id',
+      'WHERE'         => 'Devis.projet__id =' . $projet__id
+    );
+    $loop = nadine_query($args);
+
+    // Ajoute une variable
+    $projet_factures = null;
+
+
+    if ($loop->num_rows > 0) {
+      while ($row = $loop->fetch_assoc()) {
+        // Récupére le numéros de la facture
+        $facture_numero = get_facture_numero($row);
+
+        // Ajoute le numéros à la liste de Facture
+        $projet_factures = $projet_factures . $facture_numero . ', ';
+      };
+    };
+
+    // Retourne le résultat au template
+    echo $projet_factures;
+  }
+}
+
+
+/**
  * La fonction get_diffuseur_id() affiche l'ID du diffuseur demandé
  */
 
@@ -3498,6 +3537,27 @@ function check_if_table_existe($table)
 
 
 /**
+ * La fonction check_is_not_delete() vérifie
+ * si un élément a été supprimé par l'utilisateur
+ */
+
+function check_is_not_delete($row, $prefix)
+{
+  if (isset($row)) {
+    if (isset($prefix)) {
+      if ($row[$prefix . '__corbeille'] == 0) {
+        // Retourne le résultat au template
+        return true;
+      } else {
+        // Retourne le résultat au template
+        return false;
+      }
+    }
+  }
+}
+
+
+/**
  * La fonction check_if_precompte() permet de savoir si un projet doit utiliser
  * ou pas le systeme de précompte
  */
@@ -3528,8 +3588,10 @@ function check_if_precompte($diffuseur__id = '', $table = '', $facture__id = '')
 
     // Retourne le résultat au template
     if ($facture__precompte == 0) {
+      // Retourne le résultat au template
       return false;
     } else {
+      // Retourne le résultat au template
       return true;
     }
   };
@@ -3572,6 +3634,7 @@ function check_if_precompte($diffuseur__id = '', $table = '', $facture__id = '')
     if (!empty($diffuseur__type)) {
       // Vérifie si le diffuseur est assujetti au precompte
       if (!$diffuseur__type == 'autre') {
+        // Retourne le résultat au template
         return false;
       }
     } else {

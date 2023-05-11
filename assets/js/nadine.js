@@ -125,6 +125,7 @@ if (nav__accordion) {
 // qui ne contient pas une chaine de caractère
 function searchAndHide(string, items) {
 	items.forEach(item => {
+		console.log(item);
 		// Récupére le contenu de l'élèment
 		var content = item.innerHTML;
 		content = content.toString();
@@ -656,11 +657,11 @@ function changeStep(formStep, step) {
 * Part : Search bar
 */
 
-var searchBar = document.querySelector('.l-header__searchbar input');
+let searchBar = document.querySelector('.l-header__searchbar input');
 if (searchBar) {
 	searchBar.addEventListener('keyup', function (e) {
-		var string = searchBar.value;
-		var items = document.querySelectorAll('.l-projets__projet');
+		let string = searchBar.value;
+		let items = document.querySelectorAll('.p-projet__single, .l-contacts__contact');
 		searchAndHide(string, items);
 	});
 }

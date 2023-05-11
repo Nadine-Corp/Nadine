@@ -4,32 +4,39 @@
 // dans une listes. Notament sur les pages de chaque projet
 // ou la page de suivi
 
+$table = get_facture_table($row);
+$prefix = get_facture_prefix($table);
+if (check_is_not_delete($row, $prefix)) :
 ?>
 
-<article class="p-facture <?php the_facture_class($row) ?> xxs6 m4 l3 xl2">
-  <a href="<?php the_facture_link($row) ?>">
-    <div class="p-facture__paper">
+  <article class="p-facture <?php the_facture_class($row) ?> xxs6 m4 l3 xl2">
+    <a href="<?php the_facture_link($row) ?>">
+      <div class="p-facture__paper">
 
-      <?php // Ajoute le statut 
-      ?>
+        <?php // Ajoute le statut 
+        ?>
 
-      <div class="p-facture__statut m-body m-ss">
-        <?php the_facture_statut($row) ?>
-      </div>
-
-      <?php // Ajoute les autres infos 
-      ?>
-
-      <div class="p-facture__wrapper is--fullsize">
-        <div class="p-facture__title m-row">
-          <span class="m-lead m-ss"><?php the_facture_numero($row) ?></span>
-          <span class="m-body-s m-ss"><?php the_facture_table($row) ?><em><?php the_facture_date($row) ?></em></span>
+        <div class="p-facture__statut m-body m-ss">
+          <?php the_facture_statut($row) ?>
         </div>
-        <div class="p-facture__prix m-row">
-          <span class="m-lead m-ss"><?php the_facture_total_ht($row) ?></span>
-          <span class="m-body-s"><?php the_facture_total_auteur($row) ?></span>
+
+        <?php // Ajoute les autres infos 
+        ?>
+
+        <div class="p-facture__wrapper is--fullsize">
+          <div class="p-facture__title m-row">
+            <span class="m-lead m-ss"><?php the_facture_numero($row) ?></span>
+            <span class="m-body-s m-ss"><?php the_facture_table($row) ?><em><?php the_facture_date($row) ?></em></span>
+          </div>
+          <div class="p-facture__prix m-row">
+            <span class="m-lead m-ss"><?php the_facture_total_ht($row) ?></span>
+            <span class="m-body-s"><?php the_facture_total_auteur($row) ?></span>
+          </div>
         </div>
       </div>
-    </div>
-  </a>
-</article>
+    </a>
+  </article>
+
+<?php
+endif;
+?>
