@@ -24,8 +24,7 @@ include(__DIR__ . '/header.php');
     ?>
 
     <div class="m-col l6">
-      <?php $thisYear = date("Y") ?>
-      <?php $sql = "SELECT * FROM Devis WHERE devis__statut = 'Envoyé' OR devis__statut = 'Relancé'"; ?>
+      <?php $sql = "SELECT * FROM Devis WHERE devis__statut = 'Envoyé' AND devis__corbeille = 0 OR devis__statut = 'Relancé' AND devis__corbeille = 0"; ?>
       <?php include './core/query.php';
       $result = $conn->query($sql) or die($conn->error); ?>
       <?php if ($result->num_rows > 0) : ?>

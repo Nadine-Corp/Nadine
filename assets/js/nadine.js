@@ -38,13 +38,6 @@ $(document).ready(function ($) {
 
 
 	/**
-	*  Table Shorter
-	*/
-
-	$(".m-table").tablesorter();
-
-
-	/**
 	*  Facture : active le bouton Enregistrer si c'est passer une facturer
 	*  à l'état Payée
 	*/
@@ -132,6 +125,7 @@ if (nav__accordion) {
 // qui ne contient pas une chaine de caractère
 function searchAndHide(string, items) {
 	items.forEach(item => {
+		console.log(item);
 		// Récupére le contenu de l'élèment
 		var content = item.innerHTML;
 		content = content.toString();
@@ -261,71 +255,86 @@ btns__volet.forEach(btn__volet => {
 * Module : Modal
 */
 
-// Cherche tous les boutons ouvrant des modal
-var btns__modal = document.querySelectorAll('.btn__modal');
-var modal;
 
-btns__modal.forEach(btn__modal => {
-	// Ajoute un script si qq'un click sur le bouton
-	btn__modal.addEventListener('click', function (e) {
-		// Empêche le comportement normal du lien
-		e.preventDefault();
+function InitModalBtns() {
+	// Cherche tous les boutons ouvrant des modal
+	var btns__modal = document.querySelectorAll('.btn__modal');
+	var modal;
 
-		// Ferme toutes les autres élèments
-		// avant d'ouvrir la modale
-		hideOverlay();
+	btns__modal.forEach(btn__modal => {
+		// Ajoute un script si qq'un click sur le bouton
+		btn__modal.addEventListener('click', function (e) {
+			// Empêche le comportement normal du lien
+			e.preventDefault();
 
-		// Récupére le nom de la modal que le bouton doit ouvrir
-		let dataModal = btn__modal.getAttribute('data-modal');
+			// Ferme toutes les autres élèments
+			// avant d'ouvrir la modale
+			hideOverlay();
 
-		// Formate le nom de la modal
-		modal = '.m-modal__' + dataModal;
-		modal = document.querySelector(modal);
+			// Récupére le nom de la modal que le bouton doit ouvrir
+			let dataModal = btn__modal.getAttribute('data-modal');
 
-		// Récupére les infos pour préremplire la modal au besoin
-		let dataTable = btn__modal.getAttribute('data-table');
-		let dataId = btn__modal.getAttribute('data-id');
+			// Formate le nom de la modal
+			modal = '.m-modal__' + dataModal;
+			modal = document.querySelector(modal);
 
-		// Vérifie si la modal doit être préremplie
-		if (Boolean(dataTable) || Boolean(dataId)) {
-			// Lance une requête AJAX pour récupérer la modal préremplie
-			let xhr = new XMLHttpRequest();
-			xhr.open('GET', './parts/p__modal-' + dataModal + '.php?id=' + dataId + '&table=' + dataTable);
-			xhr.onload = function () {
-				if (xhr.status === 200) {
-					// Remplace la modal actuelle par sa version préremplie
-					modal.outerHTML = xhr.responseText;
-					// reFormate le nom de la modal
-					modal = '.m-modal__' + dataModal;
-					modal = document.querySelector(modal);
-					// Remise en forme de la nouvelle modal
-					mInputsWithLabel();
-					modalAddProjet();
-					mSelectsList();
-					mSelectsTab();
-					mFormStep();
-					eIsDenko();
-					hideAddContact();
-					hideAddArtistes();
-					initInputDateDeFin();
-					initInputBtnCancel();
-					updateSelectPorteurProjet();
+			// Récupére les infos pour préremplire la modal au besoin
+			let dataLocation = btn__modal.getAttribute('data-location');
+			let dataPrefix = btn__modal.getAttribute('data-prefix');
+			let dataTable = btn__modal.getAttribute('data-table');
+			let dataId = btn__modal.getAttribute('data-id');
+
+			// Vérifie si la modale permet de supprimer des éléments
+			// de la base de données
+			if (dataModal == 'delete') {
+				InitModalDelete(dataTable, dataPrefix, dataId, dataLocation);
+				modal.classList.add('is--active');
+			} else {
+
+				// Vérifie si la modal doit être préremplie
+				if (Boolean(dataTable) || Boolean(dataId)) {
+					// Lance une requête AJAX pour récupérer la modal préremplie
+					let xhr = new XMLHttpRequest();
+					xhr.open('GET', './parts/p__modal-' + dataModal + '.php?id=' + dataId + '&table=' + dataTable);
+					xhr.onload = function () {
+						if (xhr.status === 200) {
+							// Remplace la modal actuelle par sa version préremplie
+							modal.outerHTML = xhr.responseText;
+							// reFormate le nom de la modal
+							modal = '.m-modal__' + dataModal;
+							modal = document.querySelector(modal);
+							// Remise en forme de la nouvelle modal
+							mInputsWithLabel();
+							modalAddProjet();
+							mSelectsList();
+							mSelectsTab();
+							mFormStep();
+							eIsDenko();
+							InitModalBtns();
+							hideAddContact();
+							hideAddArtistes();
+							initInputDateDeFin();
+							initInputBtnCancel();
+							updateSelectPorteurProjet();
+							// Affiche la modal
+							modal.classList.add('is--active');
+						} else {
+							console.log('Erreur AJAX : ' + xhr.status);
+						}
+					};
+					xhr.send();
+				} else {
 					// Affiche la modal
 					modal.classList.add('is--active');
-				} else {
-					console.log('Erreur AJAX : ' + xhr.status);
 				}
-			};
-			xhr.send();
-		} else {
-			// Affiche la modal
-			modal.classList.add('is--active');
-		}
+			}
 
-		// Affiche l'overlay
-		showOverlay();
+			// Affiche l'overlay
+			showOverlay();
+		});
 	});
-});
+}
+InitModalBtns();
 
 
 /**
@@ -464,76 +473,79 @@ function initSelectList(selectList) {
 	// Cherche le select
 	let select = selectList.querySelector('select');
 
-	// Ajoute une <div> dans la div.m-form__select-list
-	let div = document.createElement('div');
-	div.className = 'm-form__list';
-	selectList.prepend(div);
+	if (select !== null) {
 
-	// Ajoute un <input> dans la <div> précédemment ajoutée
-	let input = document.createElement('input');
-	input.className = 'm-form__list-input';
-	div.prepend(input);
+		// Ajoute une <div> dans la div.m-form__select-list
+		let div = document.createElement('div');
+		div.className = 'm-form__list';
+		selectList.prepend(div);
 
-	// Ajoute un <ul> dans la <div> précédemment ajoutée
-	let ul = document.createElement('ul');
-	ul.className = 'm-form__list-items';
-	div.append(ul);
+		// Ajoute un <input> dans la <div> précédemment ajoutée
+		let input = document.createElement('input');
+		input.className = 'm-form__list-input';
+		div.prepend(input);
 
-	// Récupére les options de ce select
-	let options = selectList.querySelectorAll('option');
+		// Ajoute un <ul> dans la <div> précédemment ajoutée
+		let ul = document.createElement('ul');
+		ul.className = 'm-form__list-items';
+		div.append(ul);
 
-	// Ajoute un <li> par options dans la <div> précédemment ajoutée
-	options.forEach(option => {
-		let li = document.createElement('li');
-		li.className = 'm-form__list-item';
-		let optionValue = option.value;
-		li.textContent = option.text;
-		ul.append(li);
+		// Récupére les options de ce select
+		let options = selectList.querySelectorAll('option');
 
-		// Ajoute une fonction si chaque <li> si qq'un clic dessus
-		li.addEventListener('click', function (e) {
-			// Récupére le contenu du <li> sélectionné
-			let optionText = li.innerHTML;
-			// Sélectionne l'option correspondant au <li>
-			select.value = optionValue;
-			// Change la valeur de l'input
-			input.value = optionText;
-			// Simule un changement dans le select pour que d'autres fonction
-			// puisse le détecter
-			var event = new Event('change');
-			select.dispatchEvent(event);
+		// Ajoute un <li> par options dans la <div> précédemment ajoutée
+		options.forEach(option => {
+			let li = document.createElement('li');
+			li.className = 'm-form__list-item';
+			let optionValue = option.value;
+			li.textContent = option.text;
+			ul.append(li);
+
+			// Ajoute une fonction si chaque <li> si qq'un clic dessus
+			li.addEventListener('click', function (e) {
+				// Récupére le contenu du <li> sélectionné
+				let optionText = li.innerHTML;
+				// Sélectionne l'option correspondant au <li>
+				select.value = optionValue;
+				// Change la valeur de l'input
+				input.value = optionText;
+				// Simule un changement dans le select pour que d'autres fonction
+				// puisse le détecter
+				var event = new Event('change');
+				select.dispatchEvent(event);
+			});
 		});
-	});
 
-	// Ouvre la liste lorsque qq'un clic sur l'input
-	input.addEventListener('focus', function (e) {
-		div.classList.add('is--focus');
-	});
+		// Ouvre la liste lorsque qq'un clic sur l'input
+		input.addEventListener('focus', function (e) {
+			div.classList.add('is--focus');
+		});
 
-	// Ferme la liste lorsque qq'un clic sur l'input
-	input.addEventListener('focusout', function (e) {
-		// Ajoute un léger délais permettant de vérifier
-		// si qq'un a cliqué sur un diffuseur
-		setTimeout(function () {
-			div.classList.remove('is--focus');
-		}, 250)
-	});
+		// Ferme la liste lorsque qq'un clic sur l'input
+		input.addEventListener('focusout', function (e) {
+			// Ajoute un léger délais permettant de vérifier
+			// si qq'un a cliqué sur un diffuseur
+			setTimeout(function () {
+				div.classList.remove('is--focus');
+			}, 250)
+		});
 
-	// Cherche le diffuseur lorsque qq'un commence à taper dans l'input
-	input.addEventListener('keyup', function (e) {
-		var string = input.value;
-		var items = ul.querySelectorAll('li');
-		searchAndHide(string, items);
-	});
+		// Cherche le diffuseur lorsque qq'un commence à taper dans l'input
+		input.addEventListener('keyup', function (e) {
+			var string = input.value;
+			var items = ul.querySelectorAll('li');
+			searchAndHide(string, items);
+		});
 
-	// Vérifie si l'options selected doit être modifié
-	// après un chargement AJAX
-	selectedValue = select.getAttribute('data-selected');
-	if (selectedValue !== null) {
-		select.value = selectedValue;
-		if (select.selectedIndex > -1) {
-			selectedText = select.options[select.selectedIndex].text;
-			input.value = selectedText;
+		// Vérifie si l'options selected doit être modifié
+		// après un chargement AJAX
+		selectedValue = select.getAttribute('data-selected');
+		if (selectedValue !== null) {
+			select.value = selectedValue;
+			if (select.selectedIndex > -1) {
+				selectedText = select.options[select.selectedIndex].text;
+				input.value = selectedText;
+			}
 		}
 	}
 }
@@ -645,11 +657,11 @@ function changeStep(formStep, step) {
 * Part : Search bar
 */
 
-var searchBar = document.querySelector('.l-header__searchbar input');
+let searchBar = document.querySelector('.l-header__searchbar input');
 if (searchBar) {
 	searchBar.addEventListener('keyup', function (e) {
-		var string = searchBar.value;
-		var items = document.querySelectorAll('.l-projets__projet');
+		let string = searchBar.value;
+		let items = document.querySelectorAll('.p-projet__single, .l-contacts__contact');
 		searchAndHide(string, items);
 	});
 }
@@ -896,7 +908,6 @@ function updateSelectPorteurProjet() {
 	}
 }
 
-
 // La fonction hideAddContact() permet de modifier
 // les champs en fonction des réponses de l'utilisateur
 
@@ -993,6 +1004,43 @@ function showFormGrps(mFormGrps) {
 		});
 	});
 }
+
+
+/**
+* Part : Modal delete
+*/
+
+function InitModalDelete(dataTable, dataPrefix, dataId, dataLocation) {
+	// Cherche la modale Delete
+	const modalDelete = document.querySelector('.m-modal__error');
+
+	// Cherche le formulaire
+	const form = modalDelete.querySelector('.m-form');
+
+	// Cherche les Inputs
+	const inputDoYouConfirm = form.querySelector('input[name="doyouconfirm"]');
+	const inputLocation = form.querySelector('input[name="location"]');
+	const inputPrefix = form.querySelector('input[name="prefix"]');
+	const inputTable = form.querySelector('input[name="table"]');
+	const inputId = form.querySelector('input[name="id"]');
+
+	// Remplace la valeur des inputs
+	inputLocation.value = dataLocation;
+	inputPrefix.value = dataPrefix;
+	inputTable.value = dataTable;
+	inputId.value = dataId;
+
+	// Ajoute un écouteur d'événement sur la soumission du formulaire
+	form.addEventListener('submit', (event) => {
+		// Vérifie la valeur de l'input "doyouconfirm"
+		if (inputDoYouConfirm.value !== 'KonMari') {
+			// Empêche la soumission du formulaire si la valeur n'est pas "KonMari"
+			event.preventDefault();
+			alert('Vous devez confirmer la suppression en écrivant "KonMari" dans le champ correspondant.');
+		}
+	});
+}
+
 
 /**
 * Part : Volet Facture Message

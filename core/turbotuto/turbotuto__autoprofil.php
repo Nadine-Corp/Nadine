@@ -5,7 +5,7 @@
 
 
   /**
-   * Injection du fichier rassemblant toutes les fonctions
+   * Importe le fichier rassemblant toutes les fonctions
    * les plus importantes de Nadine
    */
 
@@ -45,7 +45,7 @@
        */
       ?>
       <section class="m-rom">
-        <form class="m-form m-form__step" action="./core/add__profil.php" method="post">
+        <form class="m-form m-form__step" action="./core/form__profil.php" method="post">
 
 
           <?php // Ajout de la navigation 

@@ -34,6 +34,7 @@ include './header.php';
   $args = array(
     'FROM'     => 'Projets, Diffuseurs',
     'WHERE'    => 'Projets.projet__id =' . $projet__id,
+    'AND'      => 'Projets.projet__corbeille = 0',
     'AND'      => 'Projets.diffuseur__id = Diffuseurs.diffuseur__id'
   );
   $loop = nadine_query($args);
@@ -65,8 +66,10 @@ include './header.php';
           <?php // Ajout des boutons 
           ?>
           <div class="m-cover__toolbar m-btn__grp">
-            <button class="btn btn__outline btn__ico"><?php include './assets/img/ico_corbeille.svg.php'; ?></button>
-            <button class="btn btn__outline btn__modal" data-modal="projet" data-table="projet" data-id="<?php the_projet_id($row) ?>">
+            <button class="btn btn__outline btn__ico btn__delete btn__modal" data-modal="delete" data-table="projets" data-prefix="projet" data-id="<?php the_projet_id($row) ?>" data-location="projets.php">
+              <?php include './assets/img/ico_corbeille.svg.php'; ?>
+            </button>
+            <button class=" btn btn__outline btn__modal" data-modal="projet" data-table="projet" data-id="<?php the_projet_id($row) ?>">
               <?php // include './assets/img/ico_modifier.svg.php';
               ?>Modifier le projet</button>
             <?php if ($row['projet__precompte'] == 1) : ?>
@@ -132,7 +135,7 @@ include './header.php';
             $args = array(
               'FROM'     => 'Projets, Devis',
               'WHERE'    => 'Projets.projet__id =' . $projet__id,
-              'AND'      => 'Devis.projet__id = Projets.projet__id'
+              'AND'      => 'Devis.projet__id = Projets.projet__id AND Devis.devis__corbeille = 0'
             );
             $loop = nadine_query($args);
             ?>
@@ -174,7 +177,7 @@ include './header.php';
             $args = array(
               'FROM'     => 'Projets, Facturesacompte',
               'WHERE'    => 'Projets.projet__id =' . $projet__id,
-              'AND'      => 'Facturesacompte.projet__id = Projets.projet__id'
+              'AND'      => 'Facturesacompte.projet__id = Projets.projet__id AND Facturesacompte.facturea__corbeille = 0'
             );
             $loop = nadine_query($args);
             ?>
@@ -215,7 +218,7 @@ include './header.php';
             $args = array(
               'FROM'     => 'Projets, Factures',
               'WHERE'    => 'Projets.projet__id =' . $projet__id,
-              'AND'      => 'Factures.projet__id = Projets.projet__id'
+              'AND'      => 'Factures.projet__id = Projets.projet__id AND Factures.facture__corbeille = 0'
             );
             $loop = nadine_query($args);
             ?>
@@ -252,10 +255,11 @@ include './header.php';
 
   <?php
   /**
-   * Ajout des modals
+   * Ajout des modales
    */
 
-  include_once(__DIR__ . '/parts/p__modal-projet.php');
+  include './parts/p__modal-delete.php';
+  include './parts/p__modal-projet.php';
 
 
   /**

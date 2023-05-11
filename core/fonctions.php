@@ -6,12 +6,18 @@
 
 
 /**
+ *  Importation des paramètres de connection
+ */
+
+include(__DIR__ . '/config.php');
+
+
+/**
  * La fonction nadine_query() simplifie les requêtes à la base de données
  */
 
 function nadine_query($args, $sql = 'SELECT *')
 {
-
   if ($sql == 'SELECT *') {
     // Ajoute les propriétés demandées
     foreach ($args as $key => $value) {
@@ -24,10 +30,8 @@ function nadine_query($args, $sql = 'SELECT *')
     };
   };
 
-  // Importe les info de connexion à la base de donnée
-  require(__DIR__ . '/config.php');
-
   // Vérifie si la connection à la base de donnée fonctionne
+  global $servername, $username, $password, $dbname;
   $conn = new mysqli($servername, $username, $password, $dbname);
   if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
@@ -544,6 +548,92 @@ function the_projet_last_total_auteur($row)
 
 
 /**
+ * La fonction the_projet_factures() affiche la liste
+ * de tous les factures ou devis d'un projet
+ */
+
+function the_projet_factures($row)
+{
+  if (isset($row)) {
+    // Recupère l'ID du projet
+    $projet__id = get_projet_id($row);
+
+    // Ajoute une variable
+    $projet_factures = null;
+
+    // Cherche tous les devis
+    $args = array(
+      'FROM'          => 'Devis',
+      'WHERE'         => 'Devis.projet__id =' . $projet__id
+    );
+    $loop = nadine_query($args);
+
+    if ($loop->num_rows > 0) {
+      while ($row = $loop->fetch_assoc()) {
+        // Récupére le bon prefix
+        $prefix = 'devis';
+
+        if (check_is_not_delete($row, $prefix)) {
+          // Récupére le numéros de la facture
+          $facture_numero = get_facture_numero($row);
+
+          // Ajoute le numéros à la liste
+          $projet_factures .= $facture_numero . ', ';
+        }
+      };
+    };
+
+    // Cherche toutes les factures d'accompte
+    $args = array(
+      'FROM'          => 'Facturesacompte',
+      'WHERE'         => 'Facturesacompte.projet__id =' . $projet__id
+    );
+    $loop = nadine_query($args);
+
+    if ($loop->num_rows > 0) {
+      while ($row = $loop->fetch_assoc()) {
+        // Récupére le bon prefix
+        $prefix = 'facturea';
+
+        if (check_is_not_delete($row, $prefix)) {
+          // Récupére le numéros de la facture
+          $facture_numero = get_facture_numero($row);
+
+          // Ajoute le numéros à la liste
+          $projet_factures .= $facture_numero . ', ';
+        }
+      };
+    };
+
+    // Cherche toutes les factures
+    $args = array(
+      'FROM'          => 'Factures',
+      'WHERE'         => 'Factures.projet__id =' . $projet__id
+    );
+    $loop = nadine_query($args);
+
+    if ($loop->num_rows > 0) {
+      while ($row = $loop->fetch_assoc()) {
+        // Récupére le bon prefix
+        $prefix = 'facture';
+
+        if (check_is_not_delete($row, $prefix)) {
+          // Récupére le numéros de la facture
+          $facture_numero = get_facture_numero($row);
+
+          // Ajoute le numéros à la liste
+          $projet_factures .= $facture_numero . ', ';
+        }
+      };
+    };
+
+    // Retourne le résultat au template
+    echo $projet_factures;
+  }
+}
+
+
+/**
  * La fonction get_diffuseur_id() affiche l'ID du diffuseur demandé
  */
 
@@ -1027,6 +1117,7 @@ function the_diffuseurs_list()
   // Demande tous les diffuseurs à la base de donnée
   $args = array(
     'FROM'     => 'Diffuseurs',
+    'WHERE'    => 'diffuseur__corbeille = 0',
     'ORDER BY' => 'diffuseur__societe'
   );
   $loop = nadine_query($args);
@@ -1510,6 +1601,7 @@ function the_artistes_list()
   // Demande tous les diffuseurs à la base de donnée
   $args = array(
     'FROM'     => 'Artistes',
+    'WHERE'    => 'artiste__corbeille = 0',
     'ORDER BY' => 'artiste__societe'
   );
   $loop = nadine_query($args);
@@ -1862,10 +1954,11 @@ function the_contact_pays($row)
 
 
 /**
- * La fonction the_contact_id() affiche l'ID d'un contact demandé
+ * La fonction get_contact_id() permet de récupère
+ * l'ID d'un contact demandé
  */
 
-function the_contact_id($row)
+function get_contact_id($row)
 {
   if (isset($row)) {
     // Récupére la bonne table
@@ -1877,6 +1970,22 @@ function the_contact_id($row)
     } else {
       $contact_id = get_diffuseur_id($row);
     }
+
+    // Retourne le résultat au template
+    return $contact_id;
+  }
+}
+
+
+/**
+ * La fonction the_contact_id() affiche l'ID d'un contact demandé
+ */
+
+function the_contact_id($row)
+{
+  if (isset($row)) {
+    // Récupère les infos du contact
+    $contact_id = get_contact_id($row);
 
     // Retourne le résultat au template
     echo $contact_id;
@@ -1936,6 +2045,49 @@ function the_contact_table($row)
 
 
 /**
+ * La fonction get_contact_prefix() permet de savoir
+ * comment prefixé les infos avant de faire une demande
+ * à la base de données
+ */
+
+function get_contact_prefix($row)
+{
+  if (isset($row)) {
+    // Récupére la bonne table
+    $table = get_contact_table($row);
+
+    // Récupère le prefix du contact
+    if ($table == 'Artistes') {
+      $prefix = 'artiste';
+    } else {
+      $prefix = 'diffuseur';
+    }
+
+    // Retourne le résultat au template
+    return $prefix;
+  }
+}
+
+
+/**
+ * La fonction get_contact_prefix() permet d'afficher
+ * le prefixe des infos de la base de données
+ */
+
+function the_contact_prefix($row)
+
+{
+  if (isset($row)) {
+    // Récupère le prefix du contact
+    $prefix = get_contact_prefix($row);
+
+    // Retourne le résultat au template
+    echo $prefix;
+  }
+}
+
+
+/**
  * La fonction the_contact_type() permet de retourner
  * le type de contact
  */
@@ -1946,10 +2098,10 @@ function the_contact_type($row)
     // Récupére la bonne table
     $table = get_contact_table($row);
 
-    if ($table == 'Diffuseurs') {
-      $contact__type = 'Diffuseur';
-    } else {
+    if ($table == 'Artistes') {
       $contact__type = 'Artiste-Auteur';
+    } else {
+      $contact__type = 'Diffuseur';
     };
 
     // Retourne le résultat au template
@@ -3407,6 +3559,52 @@ function get_num_version()
 
 
 /**
+ * La fonction check_if_artistes() permet de savoir s'il existe
+ * des Diffuseurs dans la base de données
+ */
+
+function check_if_table_existe($table)
+{
+  if (isset($table)) {
+
+    // Envoie la requête demandée à la base de données
+    global $servername, $username, $password, $dbname;
+    $conn = new mysqli($servername, $username, $password, $dbname);
+    $result = $conn->query("SELECT COUNT(*) FROM " . $table);
+
+    // Test si la table Diffuseurs est vide
+    $row = $result->fetch_row();
+    if ($row[0] > 0) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+}
+
+
+/**
+ * La fonction check_is_not_delete() vérifie
+ * si un élément a été supprimé par l'utilisateur
+ */
+
+function check_is_not_delete($row, $prefix)
+{
+  if (isset($row)) {
+    if (isset($prefix)) {
+      if ($row[$prefix . '__corbeille'] == 0) {
+        // Retourne le résultat au template
+        return true;
+      } else {
+        // Retourne le résultat au template
+        return false;
+      }
+    }
+  }
+}
+
+
+/**
  * La fonction check_if_precompte() permet de savoir si un projet doit utiliser
  * ou pas le systeme de précompte
  */
@@ -3437,8 +3635,10 @@ function check_if_precompte($diffuseur__id = '', $table = '', $facture__id = '')
 
     // Retourne le résultat au template
     if ($facture__precompte == 0) {
+      // Retourne le résultat au template
       return false;
     } else {
+      // Retourne le résultat au template
       return true;
     }
   };
@@ -3481,6 +3681,7 @@ function check_if_precompte($diffuseur__id = '', $table = '', $facture__id = '')
     if (!empty($diffuseur__type)) {
       // Vérifie si le diffuseur est assujetti au precompte
       if (!$diffuseur__type == 'autre') {
+        // Retourne le résultat au template
         return false;
       }
     } else {

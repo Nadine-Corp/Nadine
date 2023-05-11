@@ -42,6 +42,14 @@ foreach ($_POST as $key => $value) {
     $data[$col] = addslashes($value);
 }
 
+/**
+ * Extrait et filtre quelques data
+ */
+
+if ($contact__type == 'artiste') {
+    unset($data['artiste__type']);
+}
+
 
 /**
  * Vérifie si le contact doit être créé ou mise à jour

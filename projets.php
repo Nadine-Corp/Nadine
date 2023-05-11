@@ -112,7 +112,7 @@ include(__DIR__ . '/header.php');
     $args = array(
       'FROM'     => 'Projets, Diffuseurs',
       'WHERE'    => 'Projets.diffuseur__id = Diffuseurs.diffuseur__id',
-      'AND'      => 'Projets.projet__statut = "Projet terminé"',
+      'AND'      => 'Projets.projet__statut = "Projet terminé" AND Projets.projet__corbeille = 0',
       'ORDER BY' => 'projet__date_de_creation',
       'ORDER'    => 'DESC'
     );
@@ -149,7 +149,7 @@ include(__DIR__ . '/header.php');
     $args = array(
       'FROM'     => 'Projets, Diffuseurs',
       'WHERE'    => 'Projets.diffuseur__id = Diffuseurs.diffuseur__id',
-      'AND'      => 'Projets.projet__statut = "Projet annulé"',
+      'AND'      => 'Projets.projet__statut = "Projet annulé" AND Projets.projet__corbeille = 0',
       'ORDER BY' => 'projet__date_de_creation',
       'ORDER'    => 'DESC'
     );
@@ -184,6 +184,8 @@ include(__DIR__ . '/header.php');
    * Ajout des modales
    */
 
+  include './parts/p__modal-delete.php';
+  include './parts/p__modal-contact.php';
   include './parts/p__modal-projet.php';
 
 
