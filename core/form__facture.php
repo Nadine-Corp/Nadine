@@ -4,7 +4,6 @@
 // de nouveaux devis ou factures dans la base de données.
 
 
-
 /**
  * Importe le fichier rassemblant toutes les fonctions
  * les plus importantes de Nadine

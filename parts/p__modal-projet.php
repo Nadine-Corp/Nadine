@@ -186,7 +186,6 @@ if (isset($_GET['id'])) {
       ?>
 
       <div class="m-form__submit-bar m-btn__grp">
-        <button class="btn btn__outline btn__ico"><?php include(__DIR__ . '/../assets/img/ico_corbeille.svg.php'); ?></button>
         <button class="btn btn__outline btn__cancel" type="button">Annuler</button>
         <button class="btn btn__outline btn__prev" type="button">Précédent</button>
         <button class="btn btn__plain btn__next" type="button">Suivant</button>

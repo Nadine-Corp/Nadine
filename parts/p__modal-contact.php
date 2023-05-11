@@ -110,21 +110,17 @@ if (isset($_GET['id'])) {
       <div class="m-form__wrapper m-form__step-2">
         <div class="m-form__grp">
           <div class="m-form__label m-modal__contact-civilite">
-            <?php $value = get_profil_civilite($row); ?>
+            <?php $value = get_contact_civilite($row); ?>
             <label for="contact__civilite">Civilité</label>
             <div class="m-form__radio-horiz">
               <div class="m-form__radio">
                 M.
-                <input name="contact__civilite" type="radio" value="M." <?php if (empty($value) || $value == "M.") {
-                                                                          echo "checked";
-                                                                        } ?>>
+                <input name="contact__civilite" type="radio" value="M." <?php if (empty($value) || $value == "M.") echo "checked"; ?>>
                 <span class="checkmark"></span>
               </div>
               <div class="m-form__radio">
                 Mme
-                <input name="contact__civilite" type="radio" value="Mme" <?php if ($value == "Mme") {
-                                                                            echo "checked";
-                                                                          } ?>>
+                <input name="contact__civilite" type="radio" value="Mme" <?php if ($value == "Mme") echo "checked"; ?>>
                 <span class="checkmark"></span>
               </div>
             </div>
@@ -204,7 +200,9 @@ if (isset($_GET['id'])) {
       ?>
 
       <div class="m-form__submit-bar m-btn__grp">
-        <button class="btn btn__outline btn__ico"><?php include(__DIR__ . '/../assets/img/ico_corbeille.svg.php'); ?></button>
+        <button class="btn btn__outline btn__ico btn__delete btn__modal" data-modal="delete" data-table="projets" data-prefix="projet" data-id="<?php the_projet_id($row) ?>" data-location="projets.php">
+          <?php include(__DIR__ . '/../assets/img/ico_corbeille.svg.php'); ?>
+        </button>
         <button class="btn btn__outline btn__cancel" type="button">Annuler</button>
         <button class="btn btn__outline btn__prev" type="button">Précédent</button>
         <button class="btn btn__plain btn__next" type="button">Suivant</button>

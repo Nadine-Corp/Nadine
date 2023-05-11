@@ -276,43 +276,53 @@ btns__modal.forEach(btn__modal => {
 		modal = document.querySelector(modal);
 
 		// Récupére les infos pour préremplire la modal au besoin
+		let dataLocation = btn__modal.getAttribute('data-location');
+		let dataPrefix = btn__modal.getAttribute('data-prefix');
 		let dataTable = btn__modal.getAttribute('data-table');
 		let dataId = btn__modal.getAttribute('data-id');
 
-		// Vérifie si la modal doit être préremplie
-		if (Boolean(dataTable) || Boolean(dataId)) {
-			// Lance une requête AJAX pour récupérer la modal préremplie
-			let xhr = new XMLHttpRequest();
-			xhr.open('GET', './parts/p__modal-' + dataModal + '.php?id=' + dataId + '&table=' + dataTable);
-			xhr.onload = function () {
-				if (xhr.status === 200) {
-					// Remplace la modal actuelle par sa version préremplie
-					modal.outerHTML = xhr.responseText;
-					// reFormate le nom de la modal
-					modal = '.m-modal__' + dataModal;
-					modal = document.querySelector(modal);
-					// Remise en forme de la nouvelle modal
-					mInputsWithLabel();
-					modalAddProjet();
-					mSelectsList();
-					mSelectsTab();
-					mFormStep();
-					eIsDenko();
-					hideAddContact();
-					hideAddArtistes();
-					initInputDateDeFin();
-					initInputBtnCancel();
-					updateSelectPorteurProjet();
-					// Affiche la modal
-					modal.classList.add('is--active');
-				} else {
-					console.log('Erreur AJAX : ' + xhr.status);
-				}
-			};
-			xhr.send();
-		} else {
-			// Affiche la modal
+		// Vérifie si la modale permet de supprimer des éléments
+		// de la base de données
+		if (dataModal == 'delete') {
+			InitModalDelete(dataTable, dataPrefix, dataId, dataLocation);
 			modal.classList.add('is--active');
+		} else {
+
+			// Vérifie si la modal doit être préremplie
+			if (Boolean(dataTable) || Boolean(dataId)) {
+				// Lance une requête AJAX pour récupérer la modal préremplie
+				let xhr = new XMLHttpRequest();
+				xhr.open('GET', './parts/p__modal-' + dataModal + '.php?id=' + dataId + '&table=' + dataTable);
+				xhr.onload = function () {
+					if (xhr.status === 200) {
+						// Remplace la modal actuelle par sa version préremplie
+						modal.outerHTML = xhr.responseText;
+						// reFormate le nom de la modal
+						modal = '.m-modal__' + dataModal;
+						modal = document.querySelector(modal);
+						// Remise en forme de la nouvelle modal
+						mInputsWithLabel();
+						modalAddProjet();
+						mSelectsList();
+						mSelectsTab();
+						mFormStep();
+						eIsDenko();
+						hideAddContact();
+						hideAddArtistes();
+						initInputDateDeFin();
+						initInputBtnCancel();
+						updateSelectPorteurProjet();
+						// Affiche la modal
+						modal.classList.add('is--active');
+					} else {
+						console.log('Erreur AJAX : ' + xhr.status);
+					}
+				};
+				xhr.send();
+			} else {
+				// Affiche la modal
+				modal.classList.add('is--active');
+			}
 		}
 
 		// Affiche l'overlay
@@ -892,7 +902,6 @@ function updateSelectPorteurProjet() {
 	}
 }
 
-
 // La fonction hideAddContact() permet de modifier
 // les champs en fonction des réponses de l'utilisateur
 
@@ -989,6 +998,45 @@ function showFormGrps(mFormGrps) {
 		});
 	});
 }
+
+
+/**
+* Part : Modal delete
+*/
+
+function InitModalDelete(dataTable, dataPrefix, dataId, dataLocation) {
+	// Cherche la modale Delete
+	const modalDelete = document.querySelector('.m-modal__error');
+
+	// Cherche le formulaire
+	const form = modalDelete.querySelector('.m-form');
+
+	// Cherche les Inputs
+	const inputDoYouConfirm = form.querySelector('input[name="doyouconfirm"]');
+	const inputLocation = form.querySelector('input[name="location"]');
+	const inputPrefix = form.querySelector('input[name="prefix"]');
+	const inputTable = form.querySelector('input[name="table"]');
+	const inputId = form.querySelector('input[name="id"]');
+
+	// Remplace la valeur des inputs
+	inputLocation.value = dataLocation;
+	inputPrefix.value = dataPrefix;
+	inputTable.value = dataTable;
+	inputId.value = dataId;
+
+	// Ajoute un écouteur d'événement sur la soumission du formulaire
+	form.addEventListener('submit', (event) => {
+		// Vérifie la valeur de l'input "doyouconfirm"
+		if (inputDoYouConfirm.value !== 'KonMari') {
+			// Empêche la soumission du formulaire si la valeur n'est pas "KonMari"
+			event.preventDefault();
+			alert('Vous devez confirmer la suppression en écrivant "KonMari" dans le champ correspondant.');
+		}
+	});
+
+
+}
+
 
 /**
 * Part : Volet Facture Message

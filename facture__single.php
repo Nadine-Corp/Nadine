@@ -140,7 +140,9 @@ include './header.php';
             <?php endif; ?>
           </div>
           <div class="m-form__submit-bar m-btn__grp">
-            <button class="btn btn__outline btn__ico"><?php include(__DIR__ . '/assets/img/ico_corbeille.svg.php'); ?></button>
+            <button class="btn btn__outline btn__ico btn__delete btn__modal" data-modal="delete" data-table="<?php echo $table ?>" data-prefix="<?php echo $prefix ?>" data-id="<?php echo $facture__id ?>" data-location="projet__single.php?projet__id=<?php the_projet_id($row) ?>">
+              <?php include(__DIR__ . '/assets/img/ico_corbeille.svg.php'); ?>
+            </button>
             <a href="projet__single.php?projet__id=<?php the_projet_id($row) ?>" class="btn btn__outline btn__cancel">Annuler</a>
             <button class="btn btn__plain btn__submit" type="submit">Enregistrer</button>
           </div>
