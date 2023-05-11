@@ -2,4 +2,83 @@
 
   Le layout Suivi permet de gérer l'affichage de la page Suivi
 
-// .l-suivi
+.l-suivi
+
+.l-suivi__cols
+  display: flex
+  flex-direction: row
+  width: 100%
+  flex: 1 1 auto
+
+.l-suivi__row,
+.l-suivi__col
+  display: flex
+  flex-direction: column
+  width: 100%
+  flex: 1 1 auto
+
+.l-suivi__col
+  display: flex
+  flex-direction: column
+  width: 100%
+  flex: 1 1 auto
+  overflow: hidden
+
+.l-suivi__title
+  padding: 0 m() m() m()
+  border-bottom: 1px solid color('border-color')
+  border-left: 1px solid color('border-color')
+
+.l-suivi__subtitle
+  background: color('rouge', 100, 0.2)
+  padding: m()
+
+
+// Stylise les Factures
+
+.l-suivi
+  .p-facture__paper
+    position: relative
+    right: m(-5)
+    min-width: m(15)
+    padding-top: 66%
+    overflow: hidden
+    margin-top: m()
+    opacity: .5
+    transition: $slow
+
+    @include hover
+      right: m(0)
+      opacity: 1
+      transition: $fast
+
+
+
+// Stylise les couleurs des colonnes
+
+.l-suivi__col-devisBrouillon
+  background: color('rouge', 50, 0.0)
+
+.l-suivi__col-devisEnvoyé
+  background: color('rouge', 50, 0.1)
+
+.l-suivi__col-devisRelancé
+  background: color('rouge', 50, 0.2)
+
+.l-suivi__col-factureaBrouillon
+  background: color('rouge', 50, 0.3)
+
+.l-suivi__col-factureaEnvoyé
+  background: color('rouge', 50, 0.4)
+
+.l-suivi__col-factureaRelancé
+  background: color('rouge', 50, 0.5)
+
+.l-suivi__col-factureBrouillon
+  background: color('rouge', 50, 0.6)
+
+.l-suivi__col-factureEnvoyé
+  background: color('rouge', 50, 0.7)
+
+.l-suivi__col-factureRelancé
+  background: color('rouge', 50, 0.8)

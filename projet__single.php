@@ -95,7 +95,9 @@ include './header.php';
                   <span class="m-cover__diffuseur-ads m-body-s"><?php the_diffuseur_full_adresse($row); ?></span>
                 </div>
               </div>
-              <button class="btn btn__outline">Modifier le diffuseur</button>
+              <button class="btn btn__outline btn__modal" data-modal="projet" data-step="2" data-table="projet" data-id="<?php the_projet_id($row) ?>">
+                Modifier le diffuseur
+              </button>
             </div>
 
             <?php // Ajout des infos Artistes 
@@ -103,7 +105,9 @@ include './header.php';
             <div class="m-cover__artistes m-cover__cdv">
               <?php the_projet_equipe($row); ?>
               <div class="m-cover__cdv-bottom">
-                <button class="btn btn__outline">Modifier l'équipe</button>
+                <button class="btn btn__outline btn__modal" data-modal="projet" data-step="3" data-table="projet" data-id="<?php the_projet_id($row) ?>">
+                  Modifier l'équipe
+                </button>
               </div>
             </div>
           </div>
@@ -260,6 +264,7 @@ include './header.php';
 
   include './parts/p__modal-delete.php';
   include './parts/p__modal-projet.php';
+  include './parts/p__modal-contact.php';
 
 
   /**

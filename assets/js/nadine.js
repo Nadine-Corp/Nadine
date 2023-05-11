@@ -125,7 +125,6 @@ if (nav__accordion) {
 // qui ne contient pas une chaine de caractère
 function searchAndHide(string, items) {
 	items.forEach(item => {
-		console.log(item);
 		// Récupére le contenu de l'élèment
 		var content = item.innerHTML;
 		content = content.toString();
@@ -278,6 +277,7 @@ function InitModalBtns() {
 			modal = '.m-modal__' + dataModal;
 			modal = document.querySelector(modal);
 
+
 			// Récupére les infos pour préremplire la modal au besoin
 			let dataLocation = btn__modal.getAttribute('data-location');
 			let dataPrefix = btn__modal.getAttribute('data-prefix');
@@ -316,6 +316,16 @@ function InitModalBtns() {
 							initInputDateDeFin();
 							initInputBtnCancel();
 							updateSelectPorteurProjet();
+
+							// Vérifie si la modale doit s'ouvrir
+							// à une étape en particulier
+							let dataStep = btn__modal.getAttribute('data-step');
+
+							if (dataStep !== null && dataStep !== undefined) {
+								let formStep = modal.querySelector('.m-form__step');
+								changeStep(formStep, dataStep);
+							};
+
 							// Affiche la modal
 							modal.classList.add('is--active');
 						} else {
@@ -661,7 +671,7 @@ let searchBar = document.querySelector('.l-header__searchbar input');
 if (searchBar) {
 	searchBar.addEventListener('keyup', function (e) {
 		let string = searchBar.value;
-		let items = document.querySelectorAll('.p-projet__single, .l-contacts__contact');
+		let items = document.querySelectorAll('.p-projet__single, .l-contacts__contact, .p-facture');
 		searchAndHide(string, items);
 	});
 }

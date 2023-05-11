@@ -3464,6 +3464,9 @@ function nadine_name($civilite = '', $prenom = '', $nom = '')
 function nadine_prix($prix)
 {
   if (isset($prix)) {
+    // Convertit le prix en float
+    $prix = (float)$prix;
+
     // Formate le résultat
     $prix = number_format($prix, 2, ',', ' ') . ' €';
 
