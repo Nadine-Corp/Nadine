@@ -77,8 +77,7 @@ include(__DIR__ . '/header.php');
     $args = array(
       'FROM'     => 'Projets, Diffuseurs',
       'WHERE'    => 'Projets.diffuseur__id = Diffuseurs.diffuseur__id',
-      'AND'      => 'Projets.projet__statut = "Projet en cours"',
-      'AND'      => 'Projets.projet__corbeille = 0',
+      'AND'      => 'Projets.projet__statut = "Projet en cours" AND Projets.projet__corbeille = 0',
       'ORDER BY' => 'projet__date_de_creation',
       'ORDER'    => 'DESC'
     );
@@ -113,8 +112,7 @@ include(__DIR__ . '/header.php');
     $args = array(
       'FROM'     => 'Projets, Diffuseurs',
       'WHERE'    => 'Projets.diffuseur__id = Diffuseurs.diffuseur__id',
-      'AND'      => 'Projets.projet__statut = "Projet terminé"',
-      'AND'      => 'Projets.projet__corbeille = 0',
+      'AND'      => 'Projets.projet__statut = "Projet terminé" AND Projets.projet__corbeille = 0',
       'ORDER BY' => 'projet__date_de_creation',
       'ORDER'    => 'DESC'
     );
@@ -151,8 +149,7 @@ include(__DIR__ . '/header.php');
     $args = array(
       'FROM'     => 'Projets, Diffuseurs',
       'WHERE'    => 'Projets.diffuseur__id = Diffuseurs.diffuseur__id',
-      'AND'      => 'Projets.projet__statut = "Projet annulé"',
-      'AND'      => 'Projets.projet__corbeille = 0',
+      'AND'      => 'Projets.projet__statut = "Projet annulé" AND Projets.projet__corbeille = 0',
       'ORDER BY' => 'projet__date_de_creation',
       'ORDER'    => 'DESC'
     );

@@ -200,9 +200,13 @@ if (isset($_GET['id'])) {
       ?>
 
       <div class="m-form__submit-bar m-btn__grp">
-        <button class="btn btn__outline btn__ico btn__delete btn__modal" data-modal="delete" data-table="projets" data-prefix="projet" data-id="<?php the_projet_id($row) ?>" data-location="projets.php">
-          <?php include(__DIR__ . '/../assets/img/ico_corbeille.svg.php'); ?>
-        </button>
+        <?php
+        // Ajout un bouton Supprimé si le contact existe déjà
+        if (!empty(get_contact_id($row))) : ?>
+          <button class="btn btn__outline btn__ico btn__delete btn__modal" data-modal="delete" data-table="<?php the_contact_table($row) ?>" data-prefix="<?php the_contact_prefix($row) ?>" data-id="<?php the_contact_id($row) ?>" data-location="contacts.php">
+            <?php include(__DIR__ . '/../assets/img/ico_corbeille.svg.php'); ?>
+          </button>
+        <?php endif; ?>
         <button class="btn btn__outline btn__cancel" type="button">Annuler</button>
         <button class="btn btn__outline btn__prev" type="button">Précédent</button>
         <button class="btn btn__plain btn__next" type="button">Suivant</button>

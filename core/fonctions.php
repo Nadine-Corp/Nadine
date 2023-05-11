@@ -1031,6 +1031,7 @@ function the_diffuseurs_list()
   // Demande tous les diffuseurs à la base de donnée
   $args = array(
     'FROM'     => 'Diffuseurs',
+    'WHERE'    => 'diffuseur__corbeille = 0',
     'ORDER BY' => 'diffuseur__societe'
   );
   $loop = nadine_query($args);
@@ -1514,6 +1515,7 @@ function the_artistes_list()
   // Demande tous les diffuseurs à la base de donnée
   $args = array(
     'FROM'     => 'Artistes',
+    'WHERE'    => 'artiste__corbeille = 0',
     'ORDER BY' => 'artiste__societe'
   );
   $loop = nadine_query($args);
@@ -1866,10 +1868,11 @@ function the_contact_pays($row)
 
 
 /**
- * La fonction the_contact_id() affiche l'ID d'un contact demandé
+ * La fonction get_contact_id() permet de récupère
+ * l'ID d'un contact demandé
  */
 
-function the_contact_id($row)
+function get_contact_id($row)
 {
   if (isset($row)) {
     // Récupére la bonne table
@@ -1881,6 +1884,22 @@ function the_contact_id($row)
     } else {
       $contact_id = get_diffuseur_id($row);
     }
+
+    // Retourne le résultat au template
+    return $contact_id;
+  }
+}
+
+
+/**
+ * La fonction the_contact_id() affiche l'ID d'un contact demandé
+ */
+
+function the_contact_id($row)
+{
+  if (isset($row)) {
+    // Récupère les infos du contact
+    $contact_id = get_contact_id($row);
 
     // Retourne le résultat au template
     echo $contact_id;
@@ -1940,6 +1959,49 @@ function the_contact_table($row)
 
 
 /**
+ * La fonction get_contact_prefix() permet de savoir
+ * comment prefixé les infos avant de faire une demande
+ * à la base de données
+ */
+
+function get_contact_prefix($row)
+{
+  if (isset($row)) {
+    // Récupére la bonne table
+    $table = get_contact_table($row);
+
+    // Récupère le prefix du contact
+    if ($table == 'Artistes') {
+      $prefix = 'artiste';
+    } else {
+      $prefix = 'diffuseur';
+    }
+
+    // Retourne le résultat au template
+    return $prefix;
+  }
+}
+
+
+/**
+ * La fonction get_contact_prefix() permet d'afficher
+ * le prefixe des infos de la base de données
+ */
+
+function the_contact_prefix($row)
+
+{
+  if (isset($row)) {
+    // Récupère le prefix du contact
+    $prefix = get_contact_prefix($row);
+
+    // Retourne le résultat au template
+    echo $prefix;
+  }
+}
+
+
+/**
  * La fonction the_contact_type() permet de retourner
  * le type de contact
  */
@@ -1950,10 +2012,10 @@ function the_contact_type($row)
     // Récupére la bonne table
     $table = get_contact_table($row);
 
-    if ($table == 'Diffuseurs') {
-      $contact__type = 'Diffuseur';
-    } else {
+    if ($table == 'Artistes') {
       $contact__type = 'Artiste-Auteur';
+    } else {
+      $contact__type = 'Diffuseur';
     };
 
     // Retourne le résultat au template

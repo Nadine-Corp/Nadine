@@ -254,81 +254,86 @@ btns__volet.forEach(btn__volet => {
 * Module : Modal
 */
 
-// Cherche tous les boutons ouvrant des modal
-var btns__modal = document.querySelectorAll('.btn__modal');
-var modal;
 
-btns__modal.forEach(btn__modal => {
-	// Ajoute un script si qq'un click sur le bouton
-	btn__modal.addEventListener('click', function (e) {
-		// Empêche le comportement normal du lien
-		e.preventDefault();
+function InitModalBtns() {
+	// Cherche tous les boutons ouvrant des modal
+	var btns__modal = document.querySelectorAll('.btn__modal');
+	var modal;
 
-		// Ferme toutes les autres élèments
-		// avant d'ouvrir la modale
-		hideOverlay();
+	btns__modal.forEach(btn__modal => {
+		// Ajoute un script si qq'un click sur le bouton
+		btn__modal.addEventListener('click', function (e) {
+			// Empêche le comportement normal du lien
+			e.preventDefault();
 
-		// Récupére le nom de la modal que le bouton doit ouvrir
-		let dataModal = btn__modal.getAttribute('data-modal');
+			// Ferme toutes les autres élèments
+			// avant d'ouvrir la modale
+			hideOverlay();
 
-		// Formate le nom de la modal
-		modal = '.m-modal__' + dataModal;
-		modal = document.querySelector(modal);
+			// Récupére le nom de la modal que le bouton doit ouvrir
+			let dataModal = btn__modal.getAttribute('data-modal');
 
-		// Récupére les infos pour préremplire la modal au besoin
-		let dataLocation = btn__modal.getAttribute('data-location');
-		let dataPrefix = btn__modal.getAttribute('data-prefix');
-		let dataTable = btn__modal.getAttribute('data-table');
-		let dataId = btn__modal.getAttribute('data-id');
+			// Formate le nom de la modal
+			modal = '.m-modal__' + dataModal;
+			modal = document.querySelector(modal);
 
-		// Vérifie si la modale permet de supprimer des éléments
-		// de la base de données
-		if (dataModal == 'delete') {
-			InitModalDelete(dataTable, dataPrefix, dataId, dataLocation);
-			modal.classList.add('is--active');
-		} else {
+			// Récupére les infos pour préremplire la modal au besoin
+			let dataLocation = btn__modal.getAttribute('data-location');
+			let dataPrefix = btn__modal.getAttribute('data-prefix');
+			let dataTable = btn__modal.getAttribute('data-table');
+			let dataId = btn__modal.getAttribute('data-id');
 
-			// Vérifie si la modal doit être préremplie
-			if (Boolean(dataTable) || Boolean(dataId)) {
-				// Lance une requête AJAX pour récupérer la modal préremplie
-				let xhr = new XMLHttpRequest();
-				xhr.open('GET', './parts/p__modal-' + dataModal + '.php?id=' + dataId + '&table=' + dataTable);
-				xhr.onload = function () {
-					if (xhr.status === 200) {
-						// Remplace la modal actuelle par sa version préremplie
-						modal.outerHTML = xhr.responseText;
-						// reFormate le nom de la modal
-						modal = '.m-modal__' + dataModal;
-						modal = document.querySelector(modal);
-						// Remise en forme de la nouvelle modal
-						mInputsWithLabel();
-						modalAddProjet();
-						mSelectsList();
-						mSelectsTab();
-						mFormStep();
-						eIsDenko();
-						hideAddContact();
-						hideAddArtistes();
-						initInputDateDeFin();
-						initInputBtnCancel();
-						updateSelectPorteurProjet();
-						// Affiche la modal
-						modal.classList.add('is--active');
-					} else {
-						console.log('Erreur AJAX : ' + xhr.status);
-					}
-				};
-				xhr.send();
-			} else {
-				// Affiche la modal
+			// Vérifie si la modale permet de supprimer des éléments
+			// de la base de données
+			if (dataModal == 'delete') {
+				InitModalDelete(dataTable, dataPrefix, dataId, dataLocation);
 				modal.classList.add('is--active');
-			}
-		}
+			} else {
 
-		// Affiche l'overlay
-		showOverlay();
+				// Vérifie si la modal doit être préremplie
+				if (Boolean(dataTable) || Boolean(dataId)) {
+					// Lance une requête AJAX pour récupérer la modal préremplie
+					let xhr = new XMLHttpRequest();
+					xhr.open('GET', './parts/p__modal-' + dataModal + '.php?id=' + dataId + '&table=' + dataTable);
+					xhr.onload = function () {
+						if (xhr.status === 200) {
+							// Remplace la modal actuelle par sa version préremplie
+							modal.outerHTML = xhr.responseText;
+							// reFormate le nom de la modal
+							modal = '.m-modal__' + dataModal;
+							modal = document.querySelector(modal);
+							// Remise en forme de la nouvelle modal
+							mInputsWithLabel();
+							modalAddProjet();
+							mSelectsList();
+							mSelectsTab();
+							mFormStep();
+							eIsDenko();
+							InitModalBtns();
+							hideAddContact();
+							hideAddArtistes();
+							initInputDateDeFin();
+							initInputBtnCancel();
+							updateSelectPorteurProjet();
+							// Affiche la modal
+							modal.classList.add('is--active');
+						} else {
+							console.log('Erreur AJAX : ' + xhr.status);
+						}
+					};
+					xhr.send();
+				} else {
+					// Affiche la modal
+					modal.classList.add('is--active');
+				}
+			}
+
+			// Affiche l'overlay
+			showOverlay();
+		});
 	});
-});
+}
+InitModalBtns();
 
 
 /**
@@ -1033,8 +1038,6 @@ function InitModalDelete(dataTable, dataPrefix, dataId, dataLocation) {
 			alert('Vous devez confirmer la suppression en écrivant "KonMari" dans le champ correspondant.');
 		}
 	});
-
-
 }
 
 

@@ -72,18 +72,62 @@ include './header.php';
   ?>
   <section class="m-rom with--aside">
     <div class="l-contacts__list">
+
       <?php
+      /**
+       * Ajoute une variable pour rassembler les résultats
+       */
+
+      $combined_results = array();
+
+
+      /**
+       * Liste et ajoute les diffuseurs aux résultats
+       */
+
       $args = array(
-        'FROM'     => 'Diffuseurs, Artistes'
+        'FROM'     => 'Diffuseurs',
+        'WHERE'    => 'Diffuseurs.diffuseur__corbeille = 0'
       );
+      $loop__diffuseurs = nadine_query($args);
 
-      $sql = "SELECT * FROM Diffuseurs LEFT OUTER JOIN Artistes ON diffuseur__id = artiste__nom UNION SELECT * FROM Diffuseurs RIGHT OUTER JOIN Artistes ON diffuseur__id = artiste__nom";
-      $loop = nadine_query($args, $sql);
-
-      if ($loop->num_rows > 0) :
-        while ($row = $loop->fetch_assoc()) :
-          include './parts/p__contacts-single.php';
+      if ($loop__diffuseurs->num_rows > 0) :
+        while ($row__diffuseurs = $loop__diffuseurs->fetch_assoc()) :
+          $combined_results[] = $row__diffuseurs;
         endwhile;
+      endif;
+
+
+      /**
+       * Liste et ajoute les artiste aux résultats
+       */
+
+      $args = array(
+        'FROM'     => 'Artistes',
+        'WHERE'    => 'Artistes.artiste__corbeille = 0'
+      );
+      $loop__artistes = nadine_query($args);
+
+      if ($loop__artistes->num_rows > 0) :
+        while ($row__artistes = $loop__artistes->fetch_assoc()) :
+          $combined_results[] = $row__artistes;
+        endwhile;
+      endif;
+
+
+      /**
+       * Affiche les résultats
+       */
+
+      if (isset($combined_results)) :
+        foreach ($combined_results as $row) :
+          include './parts/p__contacts-single.php';
+        endforeach;
+
+        // Reset la varibale $row pour ne pas interféré
+        // avec le chargement de la modale Contact
+        $row = array();
+
       else : msg_nothing('Aucun Contact', "<i>Nadine</i> n'a trouvé aucun <i>Contact</i> dans la <i>base de données</i>. Commencez par ajouter un <i>Contact</i> de type <i>Diffuseur</i> pour envoyer vos premiers <i>Devis</i> ou <i>Facture</i>");
       endif;
       ?>

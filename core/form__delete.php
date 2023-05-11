@@ -60,7 +60,7 @@ unset($data['id']);
 
 
 /**
- * Mise à jour de la base de données
+ * Mise à jour de la Base de données
  */
 
 nadine_update($table, $primaryKey, $data);
