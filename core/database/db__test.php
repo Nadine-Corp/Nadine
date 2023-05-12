@@ -42,8 +42,9 @@ try {
     // que l'utilisateur créer son premier profil.
 
     include_once(__DIR__ . './../turbotuto/turbotuto__autoprofil.php');
+    exit();
   }
-} catch (mysqli_sql_exception $exception) {
+} catch (mysqli_sql_exception $e) {
 
   // La table Profil n'existe pas :
   // Lancement d'un DatabaseCheck pour ajouter les tables manquantes
@@ -54,4 +55,61 @@ try {
   // Redirection vers la page d'accueil
 
   header('Location: ./../../index.php');
+};
+
+
+/**
+ * Importe le fichier rassemblant toutes les fonctions
+ * les plus importantes de Nadine
+ */
+
+require_once(__DIR__ . './../fonctions.php');
+
+
+/**
+ *  Vérifie si la version de la base de données
+ *  correspond à la version de Nadine 
+ */
+
+nadine_log("Nadine vérifie la version de la base de données");
+
+try {
+  $result = $conn->query("SELECT * FROM Options WHERE option__nom='nadine__version'");
+
+  nadine_log("Nadine a réussi à se connecter à la db");
+
+  if ($result->num_rows > 0) {
+    $row = $result->fetch_assoc();
+    // L'entrée nadine__version existe
+    nadine_log("Nadine pense que nadine__version existe");
+
+    // Cherche le numéro de version de Nadine
+    $num_version = get_num_version();
+    nadine_log("Nadine a pense que le numéro de version est " . $num_version);
+
+    // Cherche le numéro de version de la base de données
+    $data_num_version = $row['option__valeur'];
+    nadine_log("Nadine a trouvé dans la db le numéro de version " . $data_num_version);
+
+    if ($num_version != $data_num_version) {
+      nadine_log("Nadine a détecté des numéros de version différent");
+      // La version des fichiers de Nadine
+      // et de la base de données sont différent
+      db__update($num_version);
+    }
+  } else {
+    // L'entrée nadine__version n'existe pas
+    nadine_log("Nadine pense que nadine__version n'existe pas dans la db");
+
+    // Ajoute l'entrée nadine__version dans la base de données
+    $sql =  "INSERT INTO Options (option__nom, option__valeur) VALUES ('nadine__version', '0')";
+    $conn->query($sql) or die($conn->error);
+    $conn->close();
+
+    // Met à jour la base de données
+    db__update();
+  }
+} catch (mysqli_sql_exception $e) {
+  // L'entrée nadine__version n'existe pas
+  nadine_log("Nadine n'arrive pas se connecter à db");
 }

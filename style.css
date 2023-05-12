@@ -2891,7 +2891,7 @@ input:checked + .slider:before {
 }
 @media (hover) {
   .l-suivi .p-facture__paper:hover {
-    right: calc(var(--m) * 0);
+    right: calc(var(--m) * -0.5);
     opacity: 1;
     -webkit-transition: 0.2s;
     transition: 0.2s;

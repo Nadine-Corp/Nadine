@@ -28,14 +28,14 @@ Il n'y a pas d'arnaque : Nadine, c'est gratuit et le restera pour toute la vie. 
 
 ## La Fameuse installation en 20 minutes
 
-Toutes les équipes de [NadineCorp©](http://nadinecorp.net/) travaillent dur pour rendre Nadine chaque jour plus simple a utiliser. En attendant, vous allez devoir mériter le bonheur quotidien de travailler avec Nadine. Courage !
+Toutes les équipes de [NadineCorp©](http://nadinecorp.net/) travaillent dur pour rendre Nadine chaque jour plus simple à utiliser. En attendant, vous allez devoir mériter le bonheur quotidien de travailler avec Nadine. Courage!
 
-1. Installez un serveur Apache en Localhost. Rien de compliqué : pour Windows, installez [Wamp](https://www.wampserver.com/) (avec un W comme dans *Windows*), pour MacOS, installez [Mamp](https://www.mamp.info/en/downloads/) (avec un M comme dans *MacOS*) et pour Linux, installez [Xampp](https://www.apachefriends.org/fr/index.html) (avec un X comme dans *Xénophobe*).
+1. Installez votre propore serveur Apache sur votre ordinateur personnel. Rien de compliqué : pour Windows, installez [Wamp](https://www.wampserver.com/) (avec un W comme dans *Windows*), pour MacOS, installez [Mamp](https://www.mamp.info/en/downloads/) (avec un M comme dans *MacOS*) et pour Linux, installez [Xampp](https://www.apachefriends.org/fr/index.html) (avec un X comme dans *Xénophobe*).
 1. Grâce à votre nouveau logiciel (aka [Wamp](https://www.wampserver.com/), [Mamp](https://www.mamp.info/en/downloads/) ou [Xampp](https://www.apachefriends.org/fr/index.html)), [apprenez et créez une base de données](https://www.google.com/search?q=comment+cr%C3%A9er+une+base+de+donn%C3%A9e+avec+wamp). Vous pouvez l'appeler *nadine* si vous le souhaitez.
 1. [Téléchargez la dernière version de Nadine](https://github.com/Nadine-Corp/Nadine/archive/main.zip) au format zip, puis déposez cette archive dans le dossier *www* ou *htdocs* de votre nouveau serveur Apache. Dézippez Nadine.
-1. Dans les fichiers de Nadine que vous venez de désarchivez, retrouver le fichier */core/config.php*. Ouvrez-le avec le Bloc-Note (ou n'importe quelle application de traitement de texte), puis modifiez les valeurs  *$servername = "localhost"*, *$username = "root"*, *$password = ""*, *$dbname = "nadine"* en fonction de la configuration de votre nouveau serveur.
 1. Ça y est ! Vous y êtes ! À vous le confort : désormais, Nadine va s'occuper de tout. Rendez-vous dans votre navigateur préféré et lancez Nadine. Habituellement, l'url commence par [http://localhost/](http://localhost/) et finie par le nom du dossier dans lequel vous avez déposé Nadine. **Exemple :** [http://localhost/nadine](http://localhost/nadine)
-1. **Une dernière info :** Au premier lancement, Nadine risque de paniquer. Voyant que votre nouvelle base de données est vide, elle va avoir peur d'avoir perdu tous les fruits de votre joyeuse collaboration. Ne paniquez pas à la vu des messages 😅
+1. Désormais, laissez porter par le *TurboTuto™ 2.0* des équipes du *NadineLab©* !
+1. **Une dernière info :** Au premier lancement, Nadine risque de paniquer. Voyant que votre nouvelle base de données est vide, elle va avoir peur d'avoir perdu tous les fruits de votre joyeuse collaboration. Ne paniquez pas.
 
 
 ## Mettre à jour Nadine ?
@@ -50,18 +50,18 @@ Bientôt : un système de mise à jour automatique rivalisant avec ceux des plus
 1. Si le second numéro est supérieur au premier noté sur votre papier, vous devez mettre à jour Nadine.
 1. **Mieux vaut prévenir que guérir !** Nous allons sauvegarder votre Nadine avant d'aller plus loin :
   1. RDV dans le dossier *www* ou *htdocs* de votre serveur Apache (aka [Wamp](https://www.wampserver.com/), [Mamp](https://www.mamp.info/en/downloads/) ou [Xampp](https://www.apachefriends.org/fr/index.html)). Copier-coller les fichiers de Nadine sur votre bureau (ou n'importe où ailleurs).
-  1. Ouvez le fichier */core/config.php* avec le Bloc-Note (ou n'importe quelle application de traitement de texte). Notez sur votre papier à l'aide de votre crayon les valeurs des variables suivantes *$servername*, *$username*, *$password* et *$dbname*. Dès que c'est fait, vous pouvez refermer ce fichier.
+  1. Ouvrez le fichier */core/config.php* avec le Bloc-Note (ou n'importe quelle application de traitement de texte). Notez sur votre papier à l'aide de votre crayon les valeurs des variables suivantes *$servername*, *$username*, *$password* et *$dbname*. Dès que c'est fait, vous pouvez refermer ce fichier.
   1. Apprenez à ouvrir [*phpMyAdmin* pour faire une sauvegarde de votre base de données](https://www.google.com/search?q=phpmyadmin+sauvegarder+une+base+de+donn%C3%A9es).
 1. [Téléchargez la dernière version de Nadine](https://github.com/Nadine-Corp/Nadine/archive/main.zip) au format zip, puis déposez cette archive dans le dossier *www* ou *htdocs* de votre serveur Apache. Dézippez Nadine.
-1. Dans les fichiers de Nadine que vous venez de désarchivez, retrouver le fichier */core/config.php*. Ouvrez-le avec le Bloc-Note (ou n'importe quelle application de traitement de texte), puis modifiez les valeurs  *$servername = "localhost"*, *$username = "root"*, *$password = ""*, *$dbname = "nadine"* en inscrivant celle sur votre papier.
-1. Ouvrez votre Nadine et vérifier que tout semble fonctionner correctement. Si oui : vous pouvez souffler ! C'est terminé. Bravo à vous !
+1. Connectez-vous à Nadine comme vous le faites tous les jours et laissez porter par le *TurboTuto™ 2.0* des équipes du *NadineLab©* !
+1. Vérifiez que Nadine se connecte bien à la base de données et que tout semble fonctionner correctement. Si oui, vous pouvez souffler ! C'est terminé. Bravo à vous !
 1. Gardez les fichiers de votre ancienne Nadine et la sauvegarde de votre base de données quelques jours au cas où. Si quelques semaines plus tard tout semble ok, vous pouvez les supprimer de votre disque dur.
 1. **Important :** pensez à recycler le papier.
 
 ### Un problème après la mise à jour ?
 
 Pas de panique ! Plusieurs solutions simples s'offrent à vous :
-  1. Foncez sur le Discord du [NadineClub©](https://discord.gg/Fg2m8gvdWR) pour demander de l'aide : nos meilleurs ingénieurs-informaticiens seront vous dépaner.
+  1. Foncez sur le Discord du [NadineClub©](https://discord.gg/Fg2m8gvdWR) pour demander de l'aide : nos meilleurs ingénieurs-informaticiens seront là pour vous dépanner
   1. Supprimez la nouvelle version de Nadine et remettez l'ancienne temporairement.
   1. Nadine étant encore en Alpha, il nous arrive de ré-organiser un peu la base de donnée lorsque nous ajoutons des fonctions. Vous n'avez probablement qu'une ou deux colonne à ajouter ou renonmer pour que tout fonctionne de nouveau correctement. Passez sur Discord au [NadineClub©](https://discord.gg/Fg2m8gvdWR) : nous vous indiquerons quoi faire.
 
@@ -70,7 +70,7 @@ Pas de panique ! Plusieurs solutions simples s'offrent à vous :
 
 ### Erreur QuinzeMilleQuatre
 **Problème :** Nadine pense que sa base de donnée est vide.
-**Solutions :** Pas de panique. Si vous lancez Nadine pour la première fois, il est normal que la base de données soit vide. Nous vous invitons à continuer l'Installation Automatique du _TurboTuto™_. Si par contre vous utilisez Nadine depuis des lustres, [contactez nos équipes](#besoin-daide--une-question--une-idée-) : nous nous ferons une joie de vous dépaner gratuitement.
+**Solutions :** Pas de panique. Si vous lancez Nadine pour la première fois, il est normal que la base de données soit vide. Nous vous invitons à continuer l'Installation Automatique du _TurboTuto™_. Si par contre vous utilisez Nadine depuis des lustres, [contactez nos équipes](#besoin-daide--une-question--une-idée-) : nous nous ferons une joie de vous dépanner gratuitement.
 
 
 ## Besoin d'aide ? Une question ? Une idée ?

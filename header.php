@@ -13,14 +13,6 @@ require(__DIR__ . '/core/database/db__test.php');
 
 
 /**
- * Importe le fichier rassemblant toutes les fonctions
- * les plus importantes de Nadine
- */
-
-require_once(__DIR__ . '/core/fonctions.php');
-
-
-/**
  * Importe le <head>. Séparer le <head> du header.php
  * simplifier l'intégration du TurboTuto™️
  */

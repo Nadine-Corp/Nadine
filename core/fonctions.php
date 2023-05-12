@@ -62,9 +62,6 @@ function nadine_query($args, $sql = 'SELECT *')
 
 function nadine_insert($table, $primaryKey, $data)
 {
-  // Vérifie la structure de la base de données
-  include_once(__DIR__ . '/database/db__check.php');
-
   // Exclure la colonne diffuseur__id
   unset($data[$primaryKey]);
 
@@ -86,9 +83,6 @@ function nadine_insert($table, $primaryKey, $data)
 
 function nadine_update($table, $primaryKey, $data)
 {
-  // Vérifie la structure de la base de données
-  include_once(__DIR__ . '/database/db__check.php');
-
   // Formate la requête SQL
   $sql = "UPDATE $table SET ";
 
@@ -3475,6 +3469,22 @@ function nadine_prix($prix)
   }
 }
 
+
+/**
+ * La fonction nadine_log() permet aux NadineCrew
+ * et NadineLab de débugger Nadine plus efficacement
+ */
+
+function nadine_log($msg)
+{
+  if (isset($msg)) {
+    $error_msg = date('Y-m-d H:i:s') . ' - ' . __FILE__ . "\n";
+    $error_msg .= $msg . "\n";
+    error_log($error_msg . PHP_EOL, 3, 'debug.log');
+  }
+}
+
+
 /**
  * La fonction nadine_prix() permet d'harmoniser
  * l'affichage de prix sur Nadine
@@ -3741,4 +3751,30 @@ function db__replace_prefix($data, $prefix, $prefix_new)
 
   // Retourne le résultat au template
   return $data;
+}
+
+
+/**
+ * La fonction db__update() permet
+ * de mettre à jour la base de données
+ */
+
+function db__update($num_version = '')
+{
+
+  // Vérifie si le numéro de version de Nadine
+  // a été envoyé
+  if ($num_version == '') {
+    // Cherche le numéro de version de Nadine
+    $num_version = get_num_version();
+  }
+
+  // Vérifier si la structure de la Base données
+  // correspond à celle de db__structure.php
+  include_once(__DIR__ . './database/db__check.php');
+
+  // Mets à jour le numéros de version dans la base de données
+  $sql = "UPDATE Options SET option__valeur = '" . $num_version . "' WHERE option__nom = 'nadine__version'";
+  $conn->query($sql) or die($conn->error);
+  $conn->close();
 }
