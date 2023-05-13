@@ -51,5 +51,4 @@
   ?>
   <link rel='stylesheet' type='text/css' media="all" href='./style.min.css'>
   <link rel="stylesheet" type="text/css" media="print" href="./assets/sass/print/impression.css">
-  <script src="./assets/js/jquery.min.js"></script>
 </head>

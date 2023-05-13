@@ -5,7 +5,7 @@
 // fait disparaître le menu, fait bouger tout seul des éléments, etc.
 
 
-$(document).ready(function ($) {
+document.addEventListener("DOMContentLoaded", function () {
 
 	/**
 	* Variables
@@ -22,19 +22,22 @@ $(document).ready(function ($) {
 	window.addEventListener('resize', appHeight);
 	appHeight();
 
+	// currentUrl permet de connaitre l'URL de la page active
+	var currentUrl = location.pathname;
+
 
 	/**
 	*  Menu : Ajout de la classe is--current
 	*/
 
-	var currentUrl = location.pathname;
 
-	$('.l-header__nav-item a').each(function () {
-		var url = $(this).attr('data-url');
+	const navItems = document.querySelectorAll('.l-header__nav-item a');
+	navItems.forEach((navItem) => {
+		const url = navItem.getAttribute('data-url');
 		if (currentUrl.includes(url)) {
-			$(this).addClass('is--current');
+			navItem.classList.add('is--current');
 		}
-	})
+	});
 
 
 	/**
@@ -42,11 +45,13 @@ $(document).ready(function ($) {
 	*  à l'état Payée
 	*/
 
-	$("input[name=facture__statut]").on('input', function () {
-		var factureStatut = $(this).val();
-		if (factureStatut == "Payée") {
-			$("input[type=submit]").prop("disabled", false);
-		}
+	document.querySelectorAll("input[name=facture__statut]").forEach(function (input) {
+		input.addEventListener('input', function () {
+			var factureStatut = this.value;
+			if (factureStatut == "Payée") {
+				document.querySelector("input[type=submit]").disabled = false;
+			}
+		});
 	});
 
 
@@ -54,14 +59,18 @@ $(document).ready(function ($) {
 	*  Module : Accordion
 	*/
 
-	$('.m-accordion__titre').click(function () {
-		if ($(this).closest('.m-accordion').hasClass('is--active')) {
-			$(this).closest('.m-accordion').removeClass('is--active');
-		} else {
-			$(this).closest('.m-accordion').addClass('is--active');
-		}
+	document.querySelectorAll('.m-accordion__titre').forEach(function (accordion) {
+		accordion.addEventListener('click', function () {
+			var accordionContainer = this.closest('.m-accordion');
+			if (accordionContainer.classList.contains('is--active')) {
+				accordionContainer.classList.remove('is--active');
+			} else {
+				accordionContainer.classList.add('is--active');
+			}
+		});
 	});
-}); //Fin du jQuery(document).ready
+
+}); //Fin du DOMContentLoaded
 
 
 /**
