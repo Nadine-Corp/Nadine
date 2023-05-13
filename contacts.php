@@ -119,12 +119,12 @@ include './header.php';
        * Affiche les résultats
        */
 
-      if (isset($combined_results)) :
+      if (isset($combined_results) && !empty($combined_results)) :
         foreach ($combined_results as $row) :
           include './parts/p__single-contact.php';
         endforeach;
 
-        // Reset la varibale $row pour ne pas interféré
+        // Réinitialise la variable $row pour éviter toute interférence
         // avec le chargement de la modale Contact
         $row = array();
 
