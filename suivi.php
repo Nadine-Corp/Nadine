@@ -51,7 +51,7 @@ include(__DIR__ . '/header.php');
           if ($loop->num_rows > 0) :
             while ($row = $loop->fetch_assoc()) :
               // Affiche chaque projet sous forme de liste
-              include './parts/p__facture-single-mini.php';
+              include './parts/p__single-facture-mini.php';
             endwhile;
           endif;
           echo '</div>';

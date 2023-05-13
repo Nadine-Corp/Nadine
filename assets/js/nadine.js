@@ -234,14 +234,14 @@ btns__volet.forEach(btn__volet => {
 		// Empêche le comportement normal du lien
 		e.preventDefault();
 
-		// Récupére le nom de la modal que le bouton doit ouvrir
+		// Récupére le nom de la modale que le bouton doit ouvrir
 		let dataVolet = btn__volet.getAttribute('data-volet');
 
 		// Formate le nom du volet
 		volet = '.m-volet__' + dataVolet;
 		volet = document.querySelector(volet);
 
-		// Affiche la modal
+		// Affiche la modale
 		volet.classList.add('is--active');
 
 		// Affiche l'overlay
@@ -278,7 +278,7 @@ function InitModalBtns() {
 			modal = document.querySelector(modal);
 
 
-			// Récupére les infos pour préremplire la modal au besoin
+			// Récupére les infos pour préremplire la modale au besoin
 			let dataLocation = btn__modal.getAttribute('data-location');
 			let dataPrefix = btn__modal.getAttribute('data-prefix');
 			let dataTable = btn__modal.getAttribute('data-table');

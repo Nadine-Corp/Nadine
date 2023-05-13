@@ -112,7 +112,7 @@ endif;
           <?php if ($loop->num_rows > 0) :
             while ($row = $loop->fetch_assoc()) :
               // Affiche chaque projet sous forme de liste
-              include './parts/p__projet-list.php';
+              include './parts/p__single-projet.php';
             endwhile;
           else : msg_nothing('Aucun projet terminé', "<i>Nadine</i> classera ici vos <i>Projets terminés</i> par année. Cette page est conçue pour faciliter vos déclarations à l'URSSAF.");
           endif;

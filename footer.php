@@ -21,7 +21,7 @@
 	 */
 
 	// Cette modale div.m-overlay permet à Nadine de recouvrir l'écran.
-	// C'est utile lorsqu'elle veut afficher une modal par exemple.
+	// C'est utile lorsqu'elle veut afficher une modale par exemple.
 
 	?>
 	<div class="m-overlay is--fullsize"></div>

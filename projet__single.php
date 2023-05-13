@@ -147,7 +147,7 @@ include './header.php';
               <?php while ($row = $loop->fetch_assoc()) : ?>
                 <?php // Ajout du template du Devis 
                 ?>
-                <?php include './parts/p__facture-single.php'; ?>
+                <?php include './parts/p__single-facture.php'; ?>
               <?php endwhile; ?>
             <?php endif; ?>
             <?php // Ajout du bouton Ajouter un Devis 
@@ -189,7 +189,7 @@ include './header.php';
               <?php while ($row = $loop->fetch_assoc()) : ?>
                 <?php // Ajout du template des Factures d'acompte 
                 ?>
-                <?php include './parts/p__facture-single.php'; ?>
+                <?php include './parts/p__single-facture.php'; ?>
               <?php endwhile; ?>
             <?php endif; ?>
             <?php // Ajout du bouton Ajouter une Facture 
@@ -230,7 +230,7 @@ include './header.php';
               <?php while ($row = $loop->fetch_assoc()) : ?>
                 <?php // Ajout du template des Factures 
                 ?>
-                <?php include './parts/p__facture-single.php'; ?>
+                <?php include './parts/p__single-facture.php'; ?>
               <?php endwhile; ?>
             <?php endif; ?>
             <?php // Ajout du bouton Ajouter une Facture 

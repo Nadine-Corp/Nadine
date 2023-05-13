@@ -3,6 +3,8 @@
 // Ce fichier permet de controler l'affichage de la modale
 // permettant de supprimer un élèment de la base de données
 
+nadine_log("Nadine ouvre le fichier de p__modal-delete.php");
+
 ?>
 
 <div class="m-modal__delete m-modal m-modal__error m-modal__m">

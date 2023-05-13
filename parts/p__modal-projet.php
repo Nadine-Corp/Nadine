@@ -3,6 +3,8 @@
 // Ce fichier permet de controler l'affichage de la modale
 // permettant d'ajouter un nouveau projet
 
+nadine_log("Nadine ouvre le fichier p__modal-projet.php");
+
 /**
  * Importe le fichier rassemblant toutes les fonctions
  * les plus importantes de Nadine
@@ -12,7 +14,7 @@ include_once(__DIR__ . '/../core/fonctions.php');
 
 
 /**
- * Vérifie si la modal doit être préremplie
+ * Vérifie si la modale doit être préremplie
  */
 
 if (isset($_GET['id'])) {

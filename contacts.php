@@ -121,7 +121,7 @@ include './header.php';
 
       if (isset($combined_results)) :
         foreach ($combined_results as $row) :
-          include './parts/p__contacts-single.php';
+          include './parts/p__single-contact.php';
         endforeach;
 
         // Reset la varibale $row pour ne pas interféré

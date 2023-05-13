@@ -4,6 +4,8 @@
 // que l'on demande tout le temps à Nadine.
 // C'est peut-être le plus important de tous.
 
+nadine_log("Nadine ouvre le fichier de fonction.php");
+
 
 /**
  *  Importation des paramètres de connection
@@ -29,6 +31,8 @@ function nadine_query($args, $sql = 'SELECT *')
       }
     };
   };
+
+  nadine_log("Nadine utilise la fonction nadine_query() et demande des infos à la base de données :" . "\n" . $sql);
 
   // Vérifie si la connection à la base de donnée fonctionne
   global $servername, $username, $password, $dbname;
@@ -314,6 +318,9 @@ function the_projet_date($row)
 
 function the_projet_equipe($row)
 {
+
+  nadine_log("Nadine lance la fonction the_projet_equipe()");
+
   if (isset($row)) {
     // Récupère la liste des artistes du projet
     $artistes = $row['artiste__id'];
@@ -396,7 +403,7 @@ function the_projet_equipe($row)
 
 /**
  * La fonction the_projet_input_equipe() affiche les inputs
- * permettant de modifier les équipiers dans la modal ajout un projet
+ * permettant de modifier les équipiers dans la modale ajout un projet
  */
 
 function the_projet_input_equipe($row)
@@ -509,6 +516,7 @@ function get_projet_last_facture($row)
 
 function the_projet_last_ht($row)
 {
+  nadine_log("Nadine lance la fonction the_projet_last_ht()");
   if (isset($row)) {
     // Cherche la dernière facture ou devis
     $last_facture = get_projet_last_facture($row);
@@ -528,6 +536,7 @@ function the_projet_last_ht($row)
 
 function the_projet_last_total_auteur($row)
 {
+  nadine_log("Nadine lance la fonction the_projet_last_total_auteur()");
   if (isset($row)) {
     // Cherche la dernière facture ou devis
     $last_facture = get_projet_last_facture($row);
@@ -546,8 +555,10 @@ function the_projet_last_total_auteur($row)
  * de tous les factures ou devis d'un projet
  */
 
+
 function the_projet_factures($row)
 {
+  nadine_log("Nadine lance la fonction the_projet_factures()");
   if (isset($row)) {
     // Recupère l'ID du projet
     $projet__id = get_projet_id($row);
@@ -555,17 +566,21 @@ function the_projet_factures($row)
     // Ajoute une variable
     $projet_factures = null;
 
+    // Formate la requête SQL
+    $sql = 'SELECT devis__id, devis__numero, devis__corbeille FROM Devis WHERE Devis.projet__id =' . $projet__id;
+    $sql .= ' UNION SELECT facturea__id, facturea__numero, facturea__corbeille FROM Facturesacompte WHERE Facturesacompte.projet__id =' . $projet__id;
+    $sql .= ' UNION SELECT facture__id, facture__numero, facture__corbeille FROM Factures WHERE Factures.projet__id =' . $projet__id;
+
     // Cherche tous les devis
-    $args = array(
-      'FROM'          => 'Devis',
-      'WHERE'         => 'Devis.projet__id =' . $projet__id
-    );
-    $loop = nadine_query($args);
+    $loop = nadine_query('', $sql);
 
     if ($loop->num_rows > 0) {
       while ($row = $loop->fetch_assoc()) {
+        // Récupére la bonne table
+        $table = get_facture_table($row);
+
         // Récupére le bon prefix
-        $prefix = 'devis';
+        $prefix = get_facture_prefix($table);
 
         if (check_is_not_delete($row, $prefix)) {
           // Récupére le numéros de la facture
@@ -574,51 +589,7 @@ function the_projet_factures($row)
           // Ajoute le numéros à la liste
           $projet_factures .= $facture_numero . ', ';
         }
-      };
-    };
-
-    // Cherche toutes les factures d'accompte
-    $args = array(
-      'FROM'          => 'Facturesacompte',
-      'WHERE'         => 'Facturesacompte.projet__id =' . $projet__id
-    );
-    $loop = nadine_query($args);
-
-    if ($loop->num_rows > 0) {
-      while ($row = $loop->fetch_assoc()) {
-        // Récupére le bon prefix
-        $prefix = 'facturea';
-
-        if (check_is_not_delete($row, $prefix)) {
-          // Récupére le numéros de la facture
-          $facture_numero = get_facture_numero($row);
-
-          // Ajoute le numéros à la liste
-          $projet_factures .= $facture_numero . ', ';
-        }
-      };
-    };
-
-    // Cherche toutes les factures
-    $args = array(
-      'FROM'          => 'Factures',
-      'WHERE'         => 'Factures.projet__id =' . $projet__id
-    );
-    $loop = nadine_query($args);
-
-    if ($loop->num_rows > 0) {
-      while ($row = $loop->fetch_assoc()) {
-        // Récupére le bon prefix
-        $prefix = 'facture';
-
-        if (check_is_not_delete($row, $prefix)) {
-          // Récupére le numéros de la facture
-          $facture_numero = get_facture_numero($row);
-
-          // Ajoute le numéros à la liste
-          $projet_factures .= $facture_numero . ', ';
-        }
-      };
+      }
     };
 
     // Retourne le résultat au template
@@ -1108,6 +1079,9 @@ function the_diffuseur_type($row)
 
 function the_diffuseurs_list()
 {
+
+  nadine_log("Nadine lance la fonction the_diffuseurs_list()");
+
   // Demande tous les diffuseurs à la base de donnée
   $args = array(
     'FROM'     => 'Diffuseurs',
@@ -1631,6 +1605,7 @@ function the_artistes_list()
 
 function the_contact_societe($row)
 {
+  nadine_log("Nadine lance la fonction the_contact_societe()");
   if (isset($row)) {
     // Récupére la bonne table
     $table = get_contact_table($row);
@@ -1977,6 +1952,7 @@ function get_contact_id($row)
 
 function the_contact_id($row)
 {
+  nadine_log("Nadine lance la fonction the_contact_id()");
   if (isset($row)) {
     // Récupère les infos du contact
     $contact_id = get_contact_id($row);
@@ -2155,6 +2131,8 @@ function the_facture_id($row)
 
 function get_facture_new_numero($table)
 {
+  nadine_log("Nadine lance la fonction get_facture_new_numero()");
+
   if (isset($table)) {
     // Récupére le bon prefix
     $prefix = get_facture_prefix($table);
@@ -2234,6 +2212,8 @@ function get_facture_new_numero($table)
 
 function get_facture_numero($row, $table = '')
 {
+  nadine_log("Nadine lance la fonction get_facture_numero()");
+
   if (isset($row)) {
     // Récupére la bonne table
     $table = get_facture_table($row, $table);
@@ -3471,8 +3451,10 @@ function nadine_prix($prix)
 
 
 /**
- * La fonction nadine_log() permet aux NadineCrew
- * et NadineLab de débugger Nadine plus efficacement
+ * La fonction nadine_log(), surnommée TheMadManagerMode™
+ * par le service marketing de NadineCorp.©, permet aux équipes
+ * du NadineCrew et NadineLab© de déboguer Nadine plus efficacement
+ * en espionnant ses moindres faits et gestes.
  */
 
 function nadine_log($msg)
@@ -3480,7 +3462,7 @@ function nadine_log($msg)
   if (isset($msg)) {
     $error_msg = date('Y-m-d H:i:s') . ' - ' . __FILE__ . "\n";
     $error_msg .= $msg . "\n";
-    error_log($error_msg . PHP_EOL, 3, 'debug.log');
+    error_log($error_msg . PHP_EOL, 3, 'nadine__journal.log');
   }
 }
 

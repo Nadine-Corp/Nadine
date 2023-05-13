@@ -11,7 +11,7 @@ Aidez tous les artistes-auteurs de [la Maison des Artistes](https://www.lamaison
 # Table des matières
 1. [À propos de Nadine](#à-propos-de-nadine)
 1. [Tarif](#tarif--gratuit-à-vie-)
-1. [Installation](#la-fameuse-installation-en-20-minutes)
+1. [Installation](#la-fameuse-installation-en-15-minutes)
 1. [Mettre à jour sa Nadine](#mettre-à-jour-Nadine-)
 1. [Erreurs connues](#listes-des-erreurs-connues-et-solution)
 1. [Contact](#besoin-daide--une-question--une-idée-)
@@ -26,7 +26,7 @@ Nadine, c'est quoi ? Nadine, c'est vous ! C'est le premier logiciel gratuit et o
 
 Il n'y a pas d'arnaque : Nadine, c'est gratuit et le restera pour toute la vie. Jamais elle ne vous quittera.
 
-## La Fameuse installation en 20 minutes
+## La Fameuse installation en 15 minutes
 
 Toutes les équipes de [NadineCorp©](http://nadinecorp.net/) travaillent dur pour rendre Nadine chaque jour plus simple à utiliser. En attendant, vous allez devoir mériter le bonheur quotidien de travailler avec Nadine. Courage!
 

@@ -64,6 +64,7 @@ try {
  */
 
 require_once(__DIR__ . './../fonctions.php');
+nadine_log("Nadine vient d'importe le fichier fonction.php");
 
 
 /**
@@ -76,7 +77,7 @@ nadine_log("Nadine vérifie la version de la base de données");
 try {
   $result = $conn->query("SELECT * FROM Options WHERE option__nom='nadine__version'");
 
-  nadine_log("Nadine a réussi à se connecter à la db");
+  nadine_log("Nadine a réussi à se connecter à la base de données");
 
   if ($result->num_rows > 0) {
     $row = $result->fetch_assoc();
@@ -89,7 +90,7 @@ try {
 
     // Cherche le numéro de version de la base de données
     $data_num_version = $row['option__valeur'];
-    nadine_log("Nadine a trouvé dans la db le numéro de version " . $data_num_version);
+    nadine_log("Nadine a trouvé dans la base de données le numéro de version " . $data_num_version);
 
     if ($num_version != $data_num_version) {
       nadine_log("Nadine a détecté des numéros de version différent");
@@ -99,7 +100,7 @@ try {
     }
   } else {
     // L'entrée nadine__version n'existe pas
-    nadine_log("Nadine pense que nadine__version n'existe pas dans la db");
+    nadine_log("Nadine pense que nadine__version n'existe pas dans la base de données");
 
     // Ajoute l'entrée nadine__version dans la base de données
     $sql =  "INSERT INTO Options (option__nom, option__valeur) VALUES ('nadine__version', '0')";
@@ -111,5 +112,5 @@ try {
   }
 } catch (mysqli_sql_exception $e) {
   // L'entrée nadine__version n'existe pas
-  nadine_log("Nadine n'arrive pas se connecter à db");
+  nadine_log("Nadine n'arrive pas se connecter à base de données");
 }
