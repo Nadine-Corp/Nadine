@@ -3502,6 +3502,7 @@ function msg_nothing($titre = '', $msg = '')
   }
 }
 
+
 /**
  * La fonction get_template_part() permet de stocker des fichiers
  * dans des variables

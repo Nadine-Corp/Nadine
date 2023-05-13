@@ -1086,9 +1086,9 @@ btns__copy.forEach(btn__copy => {
 		try {
 			const successful = document.execCommand('copy');
 			const message = successful ? 'Le texte a été copié dans le presse-papiers' : 'La copie a échoué';
-			console.log(message);
+
 		} catch (err) {
-			console.log('La copie a échoué : ', err);
+
 		}
 
 		// Désélectionne le texte
