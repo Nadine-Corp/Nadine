@@ -3,8 +3,6 @@
 // Ce fichier permet de controler l'affichage de la modale
 // permettant d'ajouter un nouveau contact
 
-nadine_log("Nadine ouvre le fichier p__modal-contact.php");
-
 
 /**
  * Importe le fichier rassemblant toutes les fonctions
@@ -12,6 +10,7 @@ nadine_log("Nadine ouvre le fichier p__modal-contact.php");
  */
 
 include_once(__DIR__ . '/../core/fonctions.php');
+nadine_log("Nadine ouvre le fichier p__modal-contact.php");
 
 
 /**

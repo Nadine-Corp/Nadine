@@ -559,6 +559,7 @@ function the_projet_last_total_auteur($row)
 function the_projet_factures($row)
 {
   nadine_log("Nadine lance la fonction the_projet_factures()");
+
   if (isset($row)) {
     // Recupère l'ID du projet
     $projet__id = get_projet_id($row);
@@ -714,14 +715,16 @@ function get_diffuseur_civilite($row)
 function get_diffuseur_nom($row)
 {
   if (isset($row)) {
-    // Récupère les infos du diffuseur
-    $diffuseur_nom = $row["diffuseur__nom"];
+    if (!empty($row['diffuseur__nom'])) {
+      // Récupère les infos du diffuseur
+      $diffuseur_nom = $row["diffuseur__nom"];
 
-    // Formate le résultat
-    $diffuseur_nom = ucwords(strtolower($diffuseur_nom));
+      // Formate le résultat
+      $diffuseur_nom = ucwords(strtolower($diffuseur_nom));
 
-    // Retourne le résultat au template
-    return $diffuseur_nom;
+      // Retourne le résultat au template
+      return $diffuseur_nom;
+    }
   }
 }
 

@@ -3,7 +3,6 @@
 // Ce fichier permet de controler l'affichage de la modale
 // permettant d'ajouter un nouveau projet
 
-nadine_log("Nadine ouvre le fichier p__modal-projet.php");
 
 /**
  * Importe le fichier rassemblant toutes les fonctions
@@ -11,6 +10,7 @@ nadine_log("Nadine ouvre le fichier p__modal-projet.php");
  */
 
 include_once(__DIR__ . '/../core/fonctions.php');
+nadine_log("Nadine ouvre le fichier p__modal-projet.php");
 
 
 /**
