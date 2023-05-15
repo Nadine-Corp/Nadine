@@ -113,16 +113,12 @@ include(__DIR__ . '/header.php');
                 <div class="m-form__radio-horiz">
                   <div class="m-form__radio">
                     Non
-                    <input name="profil__precompte" type="radio" value="Non" <?php if (empty($value) || $value == "Non") {
-                                                                                echo "checked";
-                                                                              } ?>>
+                    <input name="profil__precompte" type="radio" value="Non" <?php if (empty($value) || $value == "Non") echo "checked"; ?>>
                     <span class="checkmark"></span>
                   </div>
                   <div class="m-form__radio">
                     Oui
-                    <input name="profil__precompte" type="radio" value="Oui" <?php if ($value == "Oui") {
-                                                                                echo "checked";
-                                                                              } ?>>
+                    <input name="profil__precompte" type="radio" value="Oui" <?php if ($value == "Oui") echo "checked"; ?>>
                     <span class="checkmark"></span>
                   </div>
                 </div>
@@ -257,10 +253,10 @@ include(__DIR__ . '/header.php');
             </ul>
             </p>
 
-            <textarea name="profil__msg_devis" class="form__input-full" rows="10"><?php if (!empty($row["profil__msg_devis"])) {
+            <textarea name="profil__msg_devis" class="form__input-full" rows="15"><?php if (!empty($row["profil__msg_devis"])) {
                                                                                     echo $row["profil__msg_devis"];
                                                                                   } ?></textarea>
-            <textarea name="profil__msg_facture" class="form__input-full" rows="10"><?php if (!empty($row["profil__msg_facture"])) {
+            <textarea name="profil__msg_facture" class="form__input-full" rows="15"><?php if (!empty($row["profil__msg_facture"])) {
                                                                                       echo $row["profil__msg_facture"];
                                                                                     } ?></textarea>
           </div>

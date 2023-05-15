@@ -48,6 +48,8 @@ $labeColor: color('grey',40)
 
 
 .m-form
+  float: left
+  width: 100%
   .m-form__wrapper > *,
   .m-form__wrapper,
   input:not([type="submit"]):not([type="radio"]),
@@ -81,6 +83,9 @@ $labeColor: color('grey',40)
       border: 1px solid $inputFocusBorderColor
       background: $inputFocusBackground
       transition: $fast
+  
+  textarea
+    height: auto
 
   label
     display: block

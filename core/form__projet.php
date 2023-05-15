@@ -56,6 +56,15 @@ if ($data['projet__retrocession'] == 0) {
 
 
 /**
+ * Formate le champs porteur du projet
+ */
+
+if (!isset($data['projet__porteurduprojet'])) {
+  $data['projet__porteurduprojet'] = '0';
+}
+
+
+/**
  * Vérifie si le precompte doit être appliqué
  */
 

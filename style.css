@@ -1657,6 +1657,10 @@ span.m-cover__diffuseur-ads {
   margin-bottom: calc(var(--m) * 6);
 }
 
+.m-form {
+  float: left;
+  width: 100%;
+}
 .m-form .m-form__wrapper > *,
 .m-form .m-form__wrapper,
 .m-form input:not([type=submit]):not([type=radio]),
@@ -1699,6 +1703,9 @@ span.m-cover__diffuseur-ads {
   background: var(--color-rouge-98);
   -webkit-transition: 0.2s;
   transition: 0.2s;
+}
+.m-form textarea {
+  height: auto;
 }
 .m-form label {
   display: block;
@@ -2238,7 +2245,8 @@ input:checked + .slider:before {
   margin-top: calc(var(--m) * 5);
 }
 
-.m-volet__facturemsg-mail {
+.m-volet__facturemsg-mail,
+.m-volet__facturemsg-mail * {
   font-family: sans-serif;
   color: black;
 }

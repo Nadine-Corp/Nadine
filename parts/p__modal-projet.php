@@ -109,7 +109,7 @@ if (isset($_GET['id'])) {
         <div class="m-form__label m-form__select-list m-form__with-btn">
           <?php if (check_if_table_existe('Diffuseurs')) : ?>
             <label for="diffuseur__id">Nom du diffuseur</label>
-            <select name="diffuseur__id" data-selected='<?php the_diffuseur_id($row) ?>' required>
+            <select name="diffuseur__id" data-selected="<?php the_diffuseur_id($row) ?>" required>
               <?php the_diffuseurs_list(); ?>
             </select>
             <a href="./p__modal-contact" class="btn btn__outline btn__ico btn__modal" data-modal="contact">
@@ -168,7 +168,7 @@ if (isset($_GET['id'])) {
             ?>
             <div class="m-form__label m-form__select-list m-form__porteurduprojet">
               <label for="projet__porteurduprojet">Quel•le Artiste-Auteur va facturer au diffuseur ?</label>
-              <select name="projet__porteurduprojet" required>
+              <select name="projet__porteurduprojet" data-selected="<?php the_projet__porteurduprojet($row) ?>" required>
                 <option value="0">Vous</option>
               </select>
             </div>

@@ -300,19 +300,19 @@ function InitModalBtns() {
 				modal.classList.add('is--active');
 			} else {
 
-				// Vérifie si la modal doit être préremplie
+				// Vérifie si la modale doit être préremplie
 				if (Boolean(dataTable) || Boolean(dataId)) {
-					// Lance une requête AJAX pour récupérer la modal préremplie
+					// Lance une requête AJAX pour récupérer la modale préremplie
 					let xhr = new XMLHttpRequest();
 					xhr.open('GET', './parts/p__modal-' + dataModal + '.php?id=' + dataId + '&table=' + dataTable);
 					xhr.onload = function () {
 						if (xhr.status === 200) {
-							// Remplace la modal actuelle par sa version préremplie
+							// Remplace la modale actuelle par sa version préremplie
 							modal.outerHTML = xhr.responseText;
-							// reFormate le nom de la modal
+							// reFormate le nom de la modale
 							modal = '.m-modal__' + dataModal;
 							modal = document.querySelector(modal);
-							// Remise en forme de la nouvelle modal
+							// Remise en forme de la nouvelle modale
 							mInputsWithLabel();
 							modalAddProjet();
 							mSelectsList();
@@ -520,7 +520,7 @@ function initSelectList(selectList) {
 			li.textContent = option.text;
 			ul.append(li);
 
-			// Ajoute une fonction si chaque <li> si qq'un clic dessus
+			// Ajoute une fonction sur chaque <li> si qq'un clic dessus
 			li.addEventListener('click', function (e) {
 				// Récupére le contenu du <li> sélectionné
 				let optionText = li.innerHTML;
@@ -528,7 +528,7 @@ function initSelectList(selectList) {
 				select.value = optionValue;
 				// Change la valeur de l'input
 				input.value = optionText;
-				// Simule un changement dans le select pour que d'autres fonction
+				// Simule un changement dans le select pour que d'autres fonctions
 				// puisse le détecter
 				var event = new Event('change');
 				select.dispatchEvent(event);
@@ -543,20 +543,20 @@ function initSelectList(selectList) {
 		// Ferme la liste lorsque qq'un clic sur l'input
 		input.addEventListener('focusout', function (e) {
 			// Ajoute un léger délais permettant de vérifier
-			// si qq'un a cliqué sur un diffuseur
+			// si qq'un a cliqué sur un élément
 			setTimeout(function () {
 				div.classList.remove('is--focus');
 			}, 250)
 		});
 
-		// Cherche le diffuseur lorsque qq'un commence à taper dans l'input
+		// Cherche le élément lorsque qq'un commence à taper dans l'input
 		input.addEventListener('keyup', function (e) {
 			var string = input.value;
 			var items = ul.querySelectorAll('li');
 			searchAndHide(string, items);
 		});
 
-		// Vérifie si l'options selected doit être modifié
+		// Vérifie si l'options selected doit être modifiée
 		// après un chargement AJAX
 		selectedValue = select.getAttribute('data-selected');
 		if (selectedValue !== null) {
@@ -913,9 +913,22 @@ function updateSelectPorteurProjet() {
 		initSelectList(div);
 		// Cherche le nouvel input
 		let input = div.querySelector('input');
-		// Défini comme valeur par defaut 'Vous'
-		select.value = 0;
-		input.value = 'Vous';
+
+		// Vérifie si l'options selected doit être modifiée
+		// après un chargement AJAX
+		let selectedValue = select.getAttribute('data-selected');
+		if (selectedValue !== null) {
+			select.value = selectedValue;
+			if (select.selectedIndex > -1) {
+				selectedText = select.options[select.selectedIndex].text;
+				input.value = selectedText;
+			}
+		} else {
+			// Défini comme valeur par defaut 'Vous'
+			select.value = 0;
+			input.value = 'Vous';
+		}
+
 		// Vérifie si la valeur précédente du select exite encore
 		for (i = 0; i < select.length; ++i) {
 			if (select.options[i].value == valueBackup) {
