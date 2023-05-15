@@ -160,13 +160,27 @@ $labeColor: color('grey',40)
 
 // Stylise les Suggestion de Chome & Co.
 
-input:-webkit-autofill,
-input:-webkit-autofill:hover,
-input:-webkit-autofill:focus,
-input:-webkit-autofill:active
-  -webkit-box-shadow: 0 0 0 30px $inputBackground inset !important
-  -webkit-text-fill-color: $inputColor !important
-  padding: $inputPadding 0 !important
+.m-form
+  input:-webkit-autofill,
+  input:-webkit-autofill:hover,
+  input:-webkit-autofill:focus,
+  input:-webkit-autofill:active,
+  input:-internal-autofill-selected
+    -webkit-box-shadow: 0 0 0 30px $inputBackground inset !important
+    -webkit-text-fill-color: $inputColor !important
+    padding: $inputPadding 0 !important
+    background-color: $inputBackground !important
+    color: $inputColor !important
+
+  input:-webkit-autofill,
+  input:-webkit-autofill:hover,
+  input:-webkit-autofill:focus,
+  input:-webkit-autofill:active 
+    transition: background-color 5000s ease-in-out 0s
+    -webkit-text-fill-color: #ffffff
+
+
+
 
 
 // Stylise la couleur de l'icone Calendrier

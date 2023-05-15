@@ -101,7 +101,7 @@
         </div>
         <div class="m-modal__wrapper">
           <p class="m-lead m-ss">Maintenant, testons votre <i>Base de données</i>. Voici les informations dont dispose <i>Nadine</i> pour le moment. Vérifiez-les et lancez un test de connexion.</p>
-          <form class="m-form" action="./core/turbotuto/turbotuto__autoconfig.php" method="post">
+          <form class="m-form" action="./core/turbotuto/turbotuto__autoconfig.php" method="post" autocomplete="off">
             <div class="m-form__wrapper">
               <div class="m-form__label-amimate">
                 <label for="db__serveur">Serveur</label>
@@ -220,7 +220,7 @@
         </div>
         <div class="m-modal__wrapper">
           <p class="m-lead m-ss">Quelques choses ne fonctionne pas : <i>Nadine</i> n'arrive toujours à se connecter à la <i>Base de données</i>. Voulez-vous réessayer ?</p>
-          <form class="m-form" action="./core/turbotuto/turbotuto__autoconfig.php" method="post">
+          <form class="m-form" action="./core/turbotuto/turbotuto__autoconfig.php" method="post" autocomplete="off">
             <div class="m-form__wrapper">
               <div class="m-form__label-amimate">
                 <label for="db__serveur">Serveur</label>

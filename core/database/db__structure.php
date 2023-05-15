@@ -244,7 +244,9 @@ $tables = array(
     'profil__titulaire_du_compte' => array('type' => 'VARCHAR(255)', 'collate' => $interclassement, 'default' => 'NULL'),
     'profil__iban' => array('type' => 'VARCHAR(255)', 'collate' => $interclassement, 'default' => 'NULL'),
     'profil__bic' => array('type' => 'VARCHAR(255)', 'collate' => $interclassement, 'default' => 'NULL'),
+    'profil__template' => array('type' => 'TEXT', 'collate' => $interclassement, 'default' => 'NULL'),
     'profil__msg_facture' => array('type' => 'TEXT', 'collate' => $interclassement, 'default' => 'NULL'),
-    'profil__msg_devis' => array('type' => 'TEXT', 'collate' => $interclassement, 'default' => 'NULL')
+    'profil__msg_devis' => array('type' => 'TEXT', 'collate' => $interclassement, 'default' => 'NULL'),
+    'profil__mentions' => array('type' => 'TEXT', 'collate' => $interclassement, 'default' => 'NULL'),
   ),
 );

@@ -9,7 +9,7 @@ nadine_log("Nadine ouvre le fichier de p__modal-delete.php");
 
 <div class="m-modal__delete m-modal m-modal__error m-modal__m">
   <div class="m-modal__wrapper">
-    <form class="m-form" action="./core/form__delete.php" method="post">
+    <form class="m-form" action="./core/form__delete.php" method="post" autocomplete="off">
       <div class="m-form__wrapper">
         <p class="m-display">Attention :</p>
         <p class="m-body">Vous êtes sur le point de supprimer définitivement un élément de la <i>Base de données</i>. Nadine apprend doucement (mais surement) : elle ne connait pas encore le concept de <i>Corbeille</i>. À la place, elle va simplement oublier cette information à jamais.

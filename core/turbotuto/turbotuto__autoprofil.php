@@ -45,7 +45,7 @@
        */
       ?>
       <section class="m-rom">
-        <form class="m-form m-form__step" action="./core/form__profil.php" method="post">
+        <form class="m-form m-form__step" action="./core/form__profil.php" method="post" autocomplete="off">
 
 
           <?php // Ajout de la navigation 

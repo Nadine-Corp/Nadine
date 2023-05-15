@@ -37,7 +37,7 @@ include(__DIR__ . '/header.php');
         </div>
       </div>
       <div class="m-accordion__wrapper">
-        <form class="m-form">
+        <form class="m-form" autocomplete="off">
           <div class="m-form__radio-vert">
             <div class="m-form__radio m-body">
               Par états du projets

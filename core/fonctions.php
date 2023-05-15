@@ -1716,6 +1716,8 @@ function the_contact_nom($row)
 
 function the_contact_prenom($row)
 {
+  nadine_log("Nadine lance la fonction the_contact_prenom()");
+
   if (isset($row)) {
     // Récupére la bonne table
     $table = get_contact_table($row);
@@ -1726,6 +1728,7 @@ function the_contact_prenom($row)
     } else {
       $contact_prenom = get_diffuseur_prenom($row);
     }
+    nadine_log("Nadine a trouvé le prénom d'un contact : " . $contact_prenom);
 
     // Retourne le résultat au template
     echo $contact_prenom;
@@ -2367,15 +2370,31 @@ function the_facture_link($row)
 
 function get_facture_template($row, $table)
 {
+  nadine_log("Nadine lance la fonction get_facture_template()");
   if (isset($row) && isset($table)) {
     // Récupére le bon prefix
     $prefix = get_facture_prefix($table);
 
-    // Récupère le nom du template
+    // Cherche dans la Base de données si un template
+    // a été enregistré
     if (isset($row[$prefix . '__template'])) {
+      // Récupère le nom du template
       $facture__template = $row[$prefix . '__template'];
+      nadine_log("Nadine a trouvé un template dans la base de données :" . $facture__template);
+
+      // Vérifie si le template extiste
+      $facture__folder = __DIR__ . '/../template_facture/' . $facture__template;
+      nadine_log("Nadine se prépare a vérifier si le dossier suivant existe :" . $facture__folder);
+      if (is_dir($facture__folder)) {
+        nadine_log("Nadine a trouvé le dossier qu'elle cherchait !");
+      } else {
+        // Sinon, récupère le nom du template par défaut
+        nadine_log("Nadine pense que le dossier suivant n'existe pas :" . $facture__folder);
+        $facture__template = get_profil_template($row);
+      }
     } else {
-      $facture__template = 'facture__2023';
+      // Récupère le nom du template par défaut
+      $facture__template = get_profil_template($row);
     }
 
     // Retourne le résultat au template
@@ -2391,6 +2410,7 @@ function get_facture_template($row, $table)
 
 function the_facture_template($row, $table)
 {
+  nadine_log("Nadine lance la fonction the_facture_template()");
   if (isset($row) && isset($table)) {
     // Récupère le nom du template
     $facture__template = get_facture_template($row, $table);
@@ -2459,6 +2479,7 @@ function the_facture_template_url($projet__id, $table, $facture__id)
 
       // Formate le résultat
       $facture__templateurl = '/template_facture/' . $facture__folder . '/' . $facture__file;
+      nadine_log("Nadine ouvre le fichier :\n" . $facture__templateurl);
 
       // Retourne le résultat au template
       return $facture__templateurl;
@@ -3253,7 +3274,7 @@ function the_profil_email($row)
 {
   if (isset($row)) {
     if (!empty($row['profil__email'])) {
-      // Récupère les infos du diffuseur
+      // Récupère les infos du profil
       $profil__email = $row['profil__email'];
 
       // Retourne le résultat au template
@@ -3272,7 +3293,7 @@ function the_profil_website($row)
 {
   if (isset($row)) {
     if (!empty($row['profil__website'])) {
-      // Récupère les infos du diffuseur
+      // Récupère les infos du profil
       $profil__website = $row['profil__website'];
 
       // Retourne le résultat au template
@@ -3291,7 +3312,7 @@ function the_profil_titulaire_du_compte($row)
 {
   if (isset($row)) {
     if (!empty($row['profil__titulaire_du_compte'])) {
-      // Récupère les infos du diffuseur
+      // Récupère les infos du profil
       $profil__titulaire_du_compte = $row['profil__titulaire_du_compte'];
 
       // Retourne le résultat au template
@@ -3309,7 +3330,7 @@ function the_profil_iban($row)
 {
   if (isset($row)) {
     if (!empty($row['profil__iban'])) {
-      // Récupère les infos du diffuseur
+      // Récupère les infos du profil
       $profil__iban = $row['profil__iban'];
 
       // Retourne le résultat au template
@@ -3327,7 +3348,7 @@ function the_profil_bic($row)
 {
   if (isset($row)) {
     if (!empty($row['profil__bic'])) {
-      // Récupère les infos du diffuseur
+      // Récupère les infos du profil
       $profil__bic = $row['profil__bic'];
 
       // Retourne le résultat au template
@@ -3335,6 +3356,63 @@ function the_profil_bic($row)
     }
   }
 }
+
+
+/**
+ * La fonction get_profil_template() retourne
+ * le nom du template par defaut utilisé par utilisateur
+ * pour ses devis et factures
+ */
+
+function get_profil_template($row)
+{
+  if (isset($row)) {
+    if (!empty($row['profil__template'])) {
+      // Récupère les infos du profil
+      $profil__template = $row['profil__template'];
+    } else {
+      // Récupère l'ID du dernier profil dans la base de donnée
+      $args = array(
+        'FROM'     => 'Profil',
+        'ORDER BY' => 'profil__id',
+        'ORDER'    => 'DESC',
+        'LIMIT'    => 1
+      );
+
+      $loop = nadine_query($args);
+      if ($loop->num_rows > 0) :
+        while ($row = $loop->fetch_assoc()) :
+          $profil__template = $row['profil__template'];
+        endwhile;
+      endif;
+    }
+
+
+    // Retourne le résultat au template
+    return $profil__template;
+  }
+}
+
+
+/**
+ * La fonction the_profil_template() affiche
+ * le nom du template par defaut utilisé par utilisateur
+ * pour ses devis et factures
+ */
+
+function the_profil_template($row)
+{
+  if (isset($row)) {
+    if (!empty($row['profil__template'])) {
+      // Récupère les infos du profil
+      $profil__template = get_profil_template($row);
+
+      // Retourne le résultat au template
+      echo $profil__template;
+    }
+  }
+}
+
 
 /**
  * La fonction get_date_today() permet de connaître

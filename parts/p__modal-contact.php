@@ -10,7 +10,7 @@
  */
 
 include_once(__DIR__ . '/../core/fonctions.php');
-nadine_log("Nadine ouvre le fichier p__modal-contact.php");
+//nadine_log("Nadine ouvre le fichier p__modal-contact.php");
 
 
 /**
@@ -18,28 +18,39 @@ nadine_log("Nadine ouvre le fichier p__modal-contact.php");
  */
 
 if (isset($_GET['id'])) {
+  nadine_log("Nadine préremplie la modale Ajouter un contact");
+
   // Récupère l'ID du contact
   $contact__id = $_GET['id'];
 
-  // Récupère la table
-  $contact__table = $_GET['table'];
+  // Vérifie si la modale doit être préremplie ou vidée
+  if ($contact__id == 'new') {
+    // Réinitialise la variable $row pour éviter toute interférence
+    // avec le chargement de la modale Contact
 
-  // Récupère les infos du projet dans la base de données
-  if ($contact__table == 'Diffuseurs') {
-    $args = array(
-      'FROM'     => 'diffuseurs',
-      'WHERE'    => 'diffuseur__id =' . $contact__id,
-    );
+    nadine_log("Nadine vide la modale");
+    $row = array();
   } else {
-    $args = array(
-      'FROM'     => 'artistes',
-      'WHERE'    => 'artiste__id =' . $contact__id,
-    );
-  };
-  $loop = nadine_query($args);
+    // Récupère la table
+    $contact__table = $_GET['table'];
 
-  if ($loop->num_rows > 0) {
-    $row = $loop->fetch_assoc();
+    // Récupère les infos du projet dans la base de données
+    if ($contact__table == 'Diffuseurs') {
+      $args = array(
+        'FROM'     => 'diffuseurs',
+        'WHERE'    => 'diffuseur__id =' . $contact__id,
+      );
+    } else {
+      $args = array(
+        'FROM'     => 'artistes',
+        'WHERE'    => 'artiste__id =' . $contact__id,
+      );
+    };
+    $loop = nadine_query($args);
+
+    if ($loop->num_rows > 0) {
+      $row = $loop->fetch_assoc();
+    }
   }
 }
 ?>

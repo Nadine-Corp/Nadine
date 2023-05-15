@@ -39,7 +39,7 @@ include(__DIR__ . '/header.php');
       ?>
 
       <section class="m-rom">
-        <form class="m-form m-form__step" action="./core/form__profil.php" method="post">
+        <form class="m-form m-form__step" action="./core/form__profil.php" method="post" autocomplete="off">
 
 
           <?php // Ajout de la navigation 
@@ -49,8 +49,8 @@ include(__DIR__ . '/header.php');
             <ul>
               <li class="m-lead is--active" data-step="1">Coordonnées</li>
               <li class="m-lead" data-step="2">Iban</li>
-              <li class="m-lead" data-step="3">Gabarits de courriel</li>
-              <li class="m-lead" data-step="4">Mentions légales</li>
+              <li class="m-lead" data-step="3">Facture & Devis</li>
+              <li class="m-lead" data-step="4">Gabarits de courriel</li>
             </ul>
           </nav>
 
@@ -82,16 +82,12 @@ include(__DIR__ . '/header.php');
                 <div class="m-form__radio-horiz">
                   <div class="m-form__radio">
                     M.
-                    <input name="profil__civilite" type="radio" value="M." <?php if (empty($value) || $value == "M.") {
-                                                                              echo "checked";
-                                                                            } ?>>
+                    <input name="profil__civilite" type="radio" value="M." <?php if (empty($value) || $value == "M.") echo "checked"; ?>>
                     <span class="checkmark"></span>
                   </div>
                   <div class="m-form__radio">
                     Mme
-                    <input name="profil__civilite" type="radio" value="Mme" <?php if ($value == "Mme") {
-                                                                              echo "checked";
-                                                                            } ?>>
+                    <input name="profil__civilite" type="radio" value="Mme" <?php if ($value == "Mme") echo "checked"; ?>>
                     <span class="checkmark"></span>
                   </div>
                 </div>
@@ -207,10 +203,25 @@ include(__DIR__ . '/header.php');
           </div>
 
 
-          <?php // Ajout troisième étape du formulaire : Gabarits de courriel 
+          <?php // Ajout troisième étape du formulaire : Facture & Devis 
           ?>
 
           <div class="m-form__wrapper m-form__step-3">
+
+            <div class="m-form__grp">
+              <div class="m-form__label-amimate">
+                <label for="profil__template">Template de facture par defaut</label>
+                <input type="text" name="profil__template" placeholder="Template de facture par defaut" value="<?php the_profil_template($row); ?>">
+              </div>
+            </div>
+
+          </div>
+
+
+          <?php // Ajout Quatrième étape du formulaire : Gabarits de courriel 
+          ?>
+
+          <div class="m-form__wrapper m-form__step-4">
             <p>Liste des variables :
             <ul>
               <li>{{diffuseur__civilite}}</li>

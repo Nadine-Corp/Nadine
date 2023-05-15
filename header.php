@@ -30,7 +30,7 @@ include_once(__DIR__ . '/parts/p__head.php');
     ?>
     <div class="l-header__bar l-header__mainbar">
       <div class="l-header__searchbar subheading">
-        <input type="text" placeholder="Soon™ : pleins de trucs ici.">
+        <input type="text" placeholder="Soon™ : pleins de trucs ici." autocomplete="off">
       </div>
     </div>
 

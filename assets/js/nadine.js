@@ -199,7 +199,7 @@ function hideOverlay() {
 	// Cherche des élèments à cacher
 	var elements = document.querySelectorAll('.m-modal, .m-volet, .btn__info');
 
-	// Parcourt tous les éléments et enlève la classe .is--active
+	// Parcourt les éléments à cacher et enlève la classe .is--active
 	for (var i = 0; i < elements.length; i++) {
 		elements[i].classList.remove('is--active');
 	}

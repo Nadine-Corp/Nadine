@@ -53,7 +53,7 @@ if (isset($_GET['id'])) {
     <?php // Ajout du formulaire 
     ?>
 
-    <form class="m-form m-form__step" action="./core/form__projet.php" method="post">
+    <form class="m-form m-form__step" action="./core/form__projet.php" method="post" autocomplete="off">
 
       <?php // Ajout de la navigation 
       ?>

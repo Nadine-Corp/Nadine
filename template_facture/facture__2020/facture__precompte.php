@@ -162,15 +162,19 @@
           </td>
           <td class="facture__w-50 facture__b-ld facture__total">
             <p class="facture__display2">Total à verser<br>à L’URSSAF *</p>
-            <p class="facture__caption">Total du précompte (1) + Total des contributions diffuseur (2)</p>
-            <p class="facture__caption">* Taux en vigueur en 2019 </p>
+            <p class="facture__caption">Total du précompte (1) + Total des contributions diffuseur (2)
+              <br>* Taux en vigueur en 2019
+            </p>
             <img src="./template_facture/facture__2020/arrow.png" alt="">
           </td>
         </tr>
         <tr class="facture__h-20 facture__b-t">
-          <td id="total-artiste" class="facture__w-50 facture__total facture__display2">
+          <td class="facture__w-50 facture__total facture__display2">
+            <span id="total-artiste" class="facture__subheading"></span>
+            <input type="hidden" name="total-artiste" placeholder="Total" class="facture__subheading">
           </td>
-          <td id="total-mda" class="facture__w-50 facture__b-ld facture__total facture__display2">
+          <td class="facture__w-50 facture__b-ld facture__total facture__display2">
+            <span id="total-mda" class="facture__subheading"></span>
             <input type="hidden" name="total-mda" placeholder="Total" class="facture__subheading">
           </td>
         </tr>

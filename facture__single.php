@@ -88,7 +88,7 @@ include './header.php';
       <?php // Ajout du formulaire 
       ?>
 
-      <form class="m-form m-row" action="./core/form__facture.php" method="post">
+      <form class="m-form m-row" action="./core/form__facture.php" method="post" autocomplete="off">
 
         <?php // Ajout du fil d'Ariane 
         ?>
