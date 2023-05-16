@@ -13,16 +13,17 @@ require_once(__DIR__ . '/../config.php');
 
 
 /**
- *  Importe les paramètres et test de la base de donnée
+ *  Vérifie la connection à la base de données
  *  Si une erreur est détectée : lancement du TurboTuto™
  */
 
-try {
-  $conn = new mysqli($servername, $username, $password, $dbname);
-} catch (mysqli_sql_exception $e) {
+// Désactive les messages d'erreurs
+mysqli_report(MYSQLI_REPORT_OFF);
+
+$mysqli = @new mysqli($servername, $username, $password, $dbname);
+if ($mysqli->connect_error) {
 
   // Lancement du TurboTuto™
-
   include_once(__DIR__ . './../turbotuto/turbotuto.php');
   exit();
 }
