@@ -2,10 +2,12 @@
 
 // Ce fichier permet de controler l'affichage du champs
 // permettant d'ajouter un Artistes-Auteurs à un projet
-// à partir de la modal p__modal-projet
+// à partir de la modale p__modal-projet
 
 // Séparer ce fichier permet d'utiliser plus facilement
 // la fonction the_projet_input_equipe()
+
+nadine_log("Nadine ouvre le fichier p__modal-projet-input-equipe.php");
 
 
 if (!isset($artisteNb)) {

@@ -3,7 +3,7 @@
 
 
 <form class="form" action="" method="post">
-  <div class="paper template-facture__2021">
+  <div class="paper template-facture__2023">
     <div class="paper__content">
       <table>
         <tr>
@@ -47,16 +47,25 @@
         <tr>
           <td class="facture__w-50"></td>
           <td class="facture__w-25">
-            <span class="facture__subheading">Montant HT</span>
+            <span class="facture__subheading">Total brut</span>
           </td>
           <td class="facture__w-25 facture__tr facture__subheading form__total">
             <input type="text" name="total" placeholder="Total" class="facture__subheading" disabled> €
           </td>
         </tr>
+        <tr class="facture__h-20">
+          <td class="facture__w-50"></td>
+          <td class="facture__w-25 facture__tl">
+            <span class="facture__subheading">TVA</span>
+          </td>
+          <td class="facture__w-25 facture__tr facture__subheading form__total">
+            <input type="text" name="TVA" class="facture__subheading" disabled>0 €
+          </td>
+        </tr>
         <tr>
           <td class="facture__w-50"></td>
           <td class="facture__w-25">
-            <span class="facture__subheading">Charges</span>
+            <span class="facture__subheading">Contributions diffuseur</span>
           </td>
           <td class="facture__w-25 facture__tr facture__subheading form__total">
             <input type="text" name="total_charges" placeholder="Charges" class="facture__subheading" disabled> €
@@ -65,10 +74,16 @@
         <tr>
           <td class="facture__w-50"></td>
           <td class="facture__w-25 facture__b-t">
-            <span class="facture__subheading">Total</span>
+            <span class="facture__subheading">Net à payer</span>
           </td>
           <td class="facture__w-25 facture__tr facture__subheading form__total facture__b-t">
             <input type="text" name="TotalEtCharges" placeholder="Total" class="facture__subheading" disabled> €
+          </td>
+        </tr>
+        <tr class="facture__h-20">
+          <td class="facture__w-50"></td>
+          <td class="" colspan="2">
+            <span class="facture__body">TVA non applicable, article 293B du Code Général des Impôts</span>
           </td>
         </tr>
         <tr class="facture__h-50">

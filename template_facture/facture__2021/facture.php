@@ -1,9 +1,8 @@
-<link rel='stylesheet' type='text/css' media="all" href='./template_facture/facture__2022/style.css'>
-<script src="./template_facture/facture__2022/facture.js"></script>
-
+<link rel='stylesheet' type='text/css' media="all" href='./template_facture/facture__2021/style.css'>
+<script src="./template_facture/facture__2021/facture.js"></script>
 
 <form class="form" action="" method="post">
-  <div class="paper template-facture__2022">
+  <div class="paper template-facture__2023">
     <div class="paper__content">
       <table>
         <tr>
@@ -183,23 +182,27 @@
         <tr class="facture__h-100">
           <td class="facture__w-50 facture__total">
             <p class="facture__display2">Total à verser<br>à l'artiste auteur</p>
-            <img src="./template_facture/facture__2022/arrow.png">
+            <img src="./template_facture/facture__2021/arrow.png">
           </td>
           <td class="facture__w-50 facture__b-ld facture__total">
             <p class="facture__display2">Total à verser<br>à L’URSSAF *</p>
             <p class="facture__caption">* Taux en vigueur en 2022</p>
-            <img src="./template_facture/facture__2022/arrow.png">
+            <img src="./template_facture/facture__2021/arrow.png">
           </td>
         </tr>
         <tr class="facture__h-20 facture__b-t">
-          <td id="total-artiste" class="facture__w-50 facture__total facture__display2">
+          <td class="facture__w-50 facture__total facture__display2">
+            <span id="total-artiste" class="facture__subheading"></span>
+            <input type="hidden" name="total-artiste" placeholder="Total" class="facture__subheading">
           </td>
-          <td id="total-mda" class="facture__w-50 facture__b-ld facture__total facture__display2">
+          <td class="facture__w-50 facture__b-ld facture__total facture__display2">
+            <span id="total-mda" class="facture__subheading"></span>
             <input type="hidden" name="total-mda" placeholder="Total" class="facture__subheading">
           </td>
         </tr>
         <tr class="facture__h-80"></tr>
       </table>
+
 
       <?php // Ajout du footer 
 

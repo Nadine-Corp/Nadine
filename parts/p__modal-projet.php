@@ -3,16 +3,18 @@
 // Ce fichier permet de controler l'affichage de la modale
 // permettant d'ajouter un nouveau projet
 
+
 /**
  * Importe le fichier rassemblant toutes les fonctions
  * les plus importantes de Nadine
  */
 
 include_once(__DIR__ . '/../core/fonctions.php');
+nadine_log("Nadine ouvre le fichier p__modal-projet.php");
 
 
 /**
- * Vérifie si la modal doit être préremplie
+ * Vérifie si la modale doit être préremplie
  */
 
 if (isset($_GET['id'])) {
@@ -51,7 +53,7 @@ if (isset($_GET['id'])) {
     <?php // Ajout du formulaire 
     ?>
 
-    <form class="m-form m-form__step" action="./core/form__projet.php" method="post">
+    <form class="m-form m-form__step" action="./core/form__projet.php" method="post" autocomplete="off">
 
       <?php // Ajout de la navigation 
       ?>
@@ -107,7 +109,7 @@ if (isset($_GET['id'])) {
         <div class="m-form__label m-form__select-list m-form__with-btn">
           <?php if (check_if_table_existe('Diffuseurs')) : ?>
             <label for="diffuseur__id">Nom du diffuseur</label>
-            <select name="diffuseur__id" data-selected='<?php the_diffuseur_id($row) ?>' required>
+            <select name="diffuseur__id" data-selected="<?php the_diffuseur_id($row) ?>" required>
               <?php the_diffuseurs_list(); ?>
             </select>
             <a href="./p__modal-contact" class="btn btn__outline btn__ico btn__modal" data-modal="contact">
@@ -166,14 +168,14 @@ if (isset($_GET['id'])) {
             ?>
             <div class="m-form__label m-form__select-list m-form__porteurduprojet">
               <label for="projet__porteurduprojet">Quel•le Artiste-Auteur va facturer au diffuseur ?</label>
-              <select name="projet__porteurduprojet" required>
+              <select name="projet__porteurduprojet" data-selected="<?php the_projet__porteurduprojet($row) ?>" required>
                 <option value="0">Vous</option>
               </select>
             </div>
           </div>
         <?php else : ?>
           <div class="m-form__equipe m-mt2">
-            <?php msg_nothing('Aucun Artiste', "Avant de pouvoir faire équipe, vous devez ajouter un <i>Artiste</i> à la <i>Base de données</i> grâce à la page <i>Contacts</i>."); ?>
+            <?php msg_nothing('Aucun Artiste-Auteur', "Avant de pouvoir faire équipe, vous devez ajouter un <i>Artiste-Auteur</i> à la <i>Base de données</i> grâce à la page <i>Contacts</i>."); ?>
             <div class="m-form__info m-form__with-btn">
             </div>
           </div>

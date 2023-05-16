@@ -45,7 +45,7 @@
        */
       ?>
       <section class="m-rom">
-        <form class="m-form m-form__step" action="./core/form__profil.php" method="post">
+        <form class="m-form m-form__step" action="./core/form__profil.php" method="post" autocomplete="off">
 
 
           <?php // Ajout de la navigation 
@@ -53,33 +53,17 @@
 
           <nav class="m-form__nav">
             <ul>
-              <li class="m-lead is--active" data-step="1">Coordonnées</li>
-              <li class="m-lead" data-step="2">Iban</li>
-              <li class="m-lead" data-step="3">Gabarits de courriel</li>
-              <li class="m-lead" data-step="4">Mentions légales</li>
+              <li class="m-lead is--active" data-step="1">Identité</li>
+              <li class="m-lead is--active" data-step="2">Coordonnées</li>
+              <li class="m-lead is--active" data-step="3">MDA</li>
+              <li class="m-lead" data-step="4">Iban</li>
             </ul>
           </nav>
 
-
-          <?php // Ajout première étape du formulaire : Coordonnées 
+          <?php // Ajout première étape du formulaire : Identité 
           ?>
 
           <div class="m-form__wrapper m-form__step-1">
-
-            <div class="m-form__grp">
-              <div class="m-form__label-amimate">
-                <label for="profil__societe">Société</label>
-                <input type="text" name="profil__societe" placeholder="Société" value="<?php the_profil_societe($row); ?>">
-              </div>
-              <div class="m-form__label-amimate">
-                <label for="profil__siret">N° de Siret</label>
-                <input type="text" name="profil__siret" placeholder="N° de Siret" value="<?php the_profil_siret($row); ?>">
-              </div>
-              <div class="m-form__label-amimate">
-                <label for="profil__initiales">Initiales / Acronyme</label>
-                <input type="text" name="profil__initiales" placeholder="Initiales / Acronyme" value="<?php the_profil_initiales($row); ?>">
-              </div>
-            </div>
 
             <div class="m-form__grp">
               <div class="m-form__label m-modal__contact-civilite">
@@ -88,16 +72,12 @@
                 <div class="m-form__radio-horiz">
                   <div class="m-form__radio">
                     M.
-                    <input name="profil__civilite" type="radio" value="M." <?php if (empty($value) || $value == "M.") {
-                                                                              echo "checked";
-                                                                            } ?>>
+                    <input name="profil__civilite" type="radio" value="M." <?php if (empty($value) || $value == "M.") echo "checked"; ?>>
                     <span class="checkmark"></span>
                   </div>
                   <div class="m-form__radio">
                     Mme
-                    <input name="profil__civilite" type="radio" value="Mme" <?php if ($value == "Mme") {
-                                                                              echo "checked";
-                                                                            } ?>>
+                    <input name="profil__civilite" type="radio" value="Mme" <?php if ($value == "Mme") echo "checked"; ?>>
                     <span class="checkmark"></span>
                   </div>
                 </div>
@@ -110,42 +90,34 @@
                 <label for="profil__nom">Nom</label>
                 <input type="text" name="profil__nom" placeholder="Nom" value="<?php the_profil_nom($row); ?>">
               </div>
+            </div>
+            <div class="m-form__grp">
               <div class="m-form__label-amimate">
                 <label for="profil__pseudo">Pseudonyme</label>
                 <input type="text" name="profil__pseudo" placeholder="Pseudonyme" value="<?php the_profil_pseudo($row); ?>">
               </div>
+              <div class="m-form__label-amimate">
+                <label for="profil__initiales">Initiales / Acronyme</label>
+                <input type="text" name="profil__initiales" placeholder="Initiales / Acronyme" value="<?php the_profil_initiales($row); ?>">
+              </div>
             </div>
-
             <div class="m-form__grp">
-              <div class="m-form__label m-modal__contact-civilite">
-                <?php $value = get_profil_precompte($row); ?>
-                <label for="profil__precompte">Assujetti⸱e au précompte ?</label>
-                <div class="m-form__radio-horiz">
-                  <div class="m-form__radio">
-                    Non
-                    <input name="profil__precompte" type="radio" value="Non" <?php if (empty($value) || $value == "Non") {
-                                                                                echo "checked";
-                                                                              } ?>>
-                    <span class="checkmark"></span>
-                  </div>
-                  <div class="m-form__radio">
-                    Oui
-                    <input name="profil__precompte" type="radio" value="Oui" <?php if ($value == "Oui") {
-                                                                                echo "checked";
-                                                                              } ?>>
-                    <span class="checkmark"></span>
-                  </div>
-                </div>
+              <div class="m-form__label-amimate">
+                <label for="profil__societe">Société</label>
+                <input type="text" name="profil__societe" placeholder="Société" value="<?php the_profil_societe($row); ?>">
               </div>
               <div class="m-form__label-amimate">
-                <label for="profil__numero_secu">N° de Sécu</label>
-                <input type="text" name="profil__numero_secu" placeholder="N° de Sécu" value="<?php the_profil_numero_secu($row); ?>">
-              </div>
-              <div class="m-form__label-amimate">
-                <label for="profil__numero_mda">N° de MDA</label>
-                <input type="text" name="profil__numero_mda" placeholder="N° de MDA" value="<?php the_profil_numero_mda($row); ?>">
+                <label for="profil__siret">N° de Siret</label>
+                <input type="text" name="profil__siret" placeholder="N° de Siret" value="<?php the_profil_siret($row); ?>">
               </div>
             </div>
+          </div>
+
+
+          <?php  // Ajout deuxième étape du formulaire : Coordonnées 
+          ?>
+
+          <div class="m-form__wrapper m-form__step-2">
 
             <div class="m-form__grp">
               <div class="m-form__label-amimate">
@@ -187,10 +159,45 @@
           </div>
 
 
-          <?php // Ajout deuxième étape du formulaire : Identité 
+          <?php // Ajout troisième étape du formulaire : MDA
           ?>
 
-          <div class="m-form__wrapper m-form__step-2">
+          <div class="m-form__wrapper m-form__step-3">
+
+            <div class="m-form__grp">
+              <div class="m-form__label m-modal__contact-civilite">
+                <?php $value = get_profil_precompte($row); ?>
+                <label for="profil__precompte">Assujetti⸱e au précompte ?</label>
+                <div class="m-form__radio-horiz">
+                  <div class="m-form__radio">
+                    Non
+                    <input name="profil__precompte" type="radio" value="Non" <?php if (empty($value) || $value == "Non") echo "checked"; ?>>
+                    <span class="checkmark"></span>
+                  </div>
+                  <div class="m-form__radio">
+                    Oui
+                    <input name="profil__precompte" type="radio" value="Oui" <?php if ($value == "Oui") echo "checked"; ?>>
+                    <span class="checkmark"></span>
+                  </div>
+                </div>
+              </div>
+              <div class="m-form__label-amimate">
+                <label for="profil__numero_secu">N° de Sécu</label>
+                <input type="text" name="profil__numero_secu" placeholder="N° de Sécu" value="<?php the_profil_numero_secu($row); ?>">
+              </div>
+              <div class="m-form__label-amimate">
+                <label for="profil__numero_mda">N° de MDA</label>
+                <input type="text" name="profil__numero_mda" placeholder="N° de MDA" value="<?php the_profil_numero_mda($row); ?>">
+              </div>
+            </div>
+
+          </div>
+
+
+          <?php // Ajout quatrième étape du formulaire : Iban 
+          ?>
+
+          <div class="m-form__wrapper m-form__step-4">
 
             <div class="m-form__grp">
               <div class="m-form__label-amimate">
@@ -213,51 +220,71 @@
           </div>
 
 
-          <?php // Ajout troisième étape du formulaire : Gabarits de courriel 
+          <?php // Ajout cinquième étape du formulaire : Input cachés
           ?>
 
-          <div class="m-form__wrapper m-form__step-3">
-            <p>Liste des variables :
-            <ul>
-              <li>{{diffuseur__civilite}}</li>
-              <li>{{diffuseur__prenom}}</li>
-              <li>{{diffuseur__nom}}</li>
-              <li>{{diffuseur__societe}}</li>
-              <li>{{diffuseur__email}}</li>
+          <div class="m-form__hide">
+            <div class="m-form__grp">
+              <div class="m-form__label-amimate">
+                <label for="profil__template">Template de facture par defaut</label>
+                <input type="text" name="profil__template" placeholder="Template de facture par defaut" value="facture__2021">
+              </div>
+            </div>
 
-              <li>{{projet__nom}}</li>
 
-              <li>{{profil__societe}}</li>
-              <li>{{profil__civilite}}</li>
-              <li>{{profil__prenom}}</li>
-              <li>{{profil__nom}}</li>
-              <li>{{profil__pseudo}}</li>
-              <li>{{profil__initiales}}</li>
+            <textarea name="profil__msg_devis" class="form__input-full" rows="10">
+            Bonjour {{diffuseur__civilite}}. {{diffuseur__nom}}
 
-              <li>{{profil__adresse}}</li>
-              <li>{{profil__code_postal}}</li>
-              <li>{{profil__ville}}</li>
-              <li>{{profil__pays}}</li>
-              <li>{{profil__telephone}}</li>
-              <li>{{profil__email}}</li>
-              <li>{{profil__website}}</li>
 
-              <li>{{profil__numero_secu}}</li>
-              <li>{{profil__numero_mda}}</li>
-              <li>{{profil__siret}}</li>
+Vous trouverez ci-joint notre proposition commerciale pour {{projet__nom}}.
 
-              <li>{{profil__titulaire_du_compte}}</li>
-              <li>{{profil__iban}}</li>
-              <li>{{profil__bic}}</li>
-            </ul>
-            </p>
 
-            <textarea name="profil__msg_devis" class="form__input-full" rows="10"><?php if (!empty($row["profil__msg_devis"])) {
-                                                                                    echo $row["profil__msg_devis"];
-                                                                                  } ?></textarea>
-            <textarea name="profil__msg_facture" class="form__input-full" rows="10"><?php if (!empty($row["profil__msg_facture"])) {
-                                                                                      echo $row["profil__msg_facture"];
-                                                                                    } ?></textarea>
+Nous restons à votre disposition pour toutes questions.
+Bonne journée.
+{{profil__societe}}
+
+
+Objet :
+Devis → {{projet__nom}}
+
+
+Email :
+{{diffuseur__email}}
+          </textarea>
+            <textarea name="profil__msg_facture" class="form__input-full" rows="10">
+            Bonjour {{diffuseur__civilite}}. {{diffuseur__nom}}
+
+Vous trouverez ci-joint la facture pour {{projet__nom}}.
+
+
+Attention : pour vous, j'ai choisi d'être à la <a href="https://www.lamaisondesartistes.fr/site/" target="_blank">Maison des Artistes</a>. Mes charges étant peu élevées, je peux vous proposer des tarifs extrêmement compétitifs. En échange, vous devez prendre 5 min pour faire un peu de paperasse :
+
+1 — Régler par virement ce que vous me devez
+2 — RDV sur le <a href="https://www.artistes-auteurs.urssaf.fr/aa/accueil" target="_blank">site dédié de l'URSSAF</a> pour la Maison des Artistes afin de créer votre compte «Diffuseur, commerce d’art»
+3 — Renseigner la Nature de l’œuvre réalisée : créations graphiques et mon N° de Sécu : {{profil__numero_secu}}
+4 — Régler par carte bancaire se que vous devez à l'URSSAF
+↳ Plus d'info : www.secu-artistes-auteurs.fr
+
+<b>Règlement par virement bancaire :</b>
+Titulaire du compte : {{profil__titulaire_du_compte}}
+IBAN : {{profil__iban}}
+BIC : {{profil__bic}}
+
+
+Je reste à votre disposition pour toutes questions.
+Bonne journée.
+{{profil__societe}}
+
+
+
+
+Objet :
+Facture → {{projet__nom}}
+
+
+Email :
+{{diffuseur__email}}
+          </textarea>
           </div>
 
 

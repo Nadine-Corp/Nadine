@@ -3,6 +3,8 @@
 // Ce fichier permet de controler le volet affichant
 // le courriel à envoyer avec une facture ou un devis
 
+nadine_log("Nadine ouvre le fichier de p__volet-facturemsg.php");
+
 /**
  * Importe le fichier rassemblant toutes les fonctions
  * les plus importantes de Nadine

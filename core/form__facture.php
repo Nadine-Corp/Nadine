@@ -46,6 +46,8 @@ $primaryKey = $facture__prefix . '__id';
 
 unset($data['facture__prefix']);
 unset($data['facture__table']);
+unset($data['total-artiste']);
+unset($data['total-mda']);
 
 
 /**

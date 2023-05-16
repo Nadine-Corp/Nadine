@@ -4,6 +4,8 @@
 // que l'on demande tout le temps à Nadine.
 // C'est peut-être le plus important de tous.
 
+nadine_log("Nadine ouvre le fichier de fonction.php");
+
 
 /**
  *  Importation des paramètres de connection
@@ -29,6 +31,8 @@ function nadine_query($args, $sql = 'SELECT *')
       }
     };
   };
+
+  nadine_log("Nadine utilise la fonction nadine_query() et demande des infos à la base de données :" . "\n" . $sql);
 
   // Vérifie si la connection à la base de donnée fonctionne
   global $servername, $username, $password, $dbname;
@@ -62,9 +66,6 @@ function nadine_query($args, $sql = 'SELECT *')
 
 function nadine_insert($table, $primaryKey, $data)
 {
-  // Vérifie la structure de la base de données
-  include_once(__DIR__ . '/database/db__check.php');
-
   // Exclure la colonne diffuseur__id
   unset($data[$primaryKey]);
 
@@ -86,9 +87,6 @@ function nadine_insert($table, $primaryKey, $data)
 
 function nadine_update($table, $primaryKey, $data)
 {
-  // Vérifie la structure de la base de données
-  include_once(__DIR__ . '/database/db__check.php');
-
   // Formate la requête SQL
   $sql = "UPDATE $table SET ";
 
@@ -320,6 +318,9 @@ function the_projet_date($row)
 
 function the_projet_equipe($row)
 {
+
+  nadine_log("Nadine lance la fonction the_projet_equipe()");
+
   if (isset($row)) {
     // Récupère la liste des artistes du projet
     $artistes = $row['artiste__id'];
@@ -401,8 +402,25 @@ function the_projet_equipe($row)
 
 
 /**
+ * La fonction the_projet__porteurduprojet() affiche
+ * l'ID du porteur du projet
+ */
+
+function the_projet__porteurduprojet($row)
+{
+  if (isset($row) && isset($row['projet__porteurduprojet'])) {
+    // Récupère la liste des artistes du projet
+    $projet__porteurduprojet = $row['projet__porteurduprojet'];
+
+    // Retourne le résultat au template
+    echo $projet__porteurduprojet;
+  }
+}
+
+
+/**
  * La fonction the_projet_input_equipe() affiche les inputs
- * permettant de modifier les équipiers dans la modal ajout un projet
+ * permettant de modifier les équipiers dans la modale ajout un projet
  */
 
 function the_projet_input_equipe($row)
@@ -515,6 +533,7 @@ function get_projet_last_facture($row)
 
 function the_projet_last_ht($row)
 {
+  nadine_log("Nadine lance la fonction the_projet_last_ht()");
   if (isset($row)) {
     // Cherche la dernière facture ou devis
     $last_facture = get_projet_last_facture($row);
@@ -534,6 +553,7 @@ function the_projet_last_ht($row)
 
 function the_projet_last_total_auteur($row)
 {
+  nadine_log("Nadine lance la fonction the_projet_last_total_auteur()");
   if (isset($row)) {
     // Cherche la dernière facture ou devis
     $last_facture = get_projet_last_facture($row);
@@ -552,8 +572,11 @@ function the_projet_last_total_auteur($row)
  * de tous les factures ou devis d'un projet
  */
 
+
 function the_projet_factures($row)
 {
+  nadine_log("Nadine lance la fonction the_projet_factures()");
+
   if (isset($row)) {
     // Recupère l'ID du projet
     $projet__id = get_projet_id($row);
@@ -561,17 +584,21 @@ function the_projet_factures($row)
     // Ajoute une variable
     $projet_factures = null;
 
+    // Formate la requête SQL
+    $sql = 'SELECT devis__id, devis__numero, devis__corbeille FROM Devis WHERE Devis.projet__id =' . $projet__id;
+    $sql .= ' UNION SELECT facturea__id, facturea__numero, facturea__corbeille FROM Facturesacompte WHERE Facturesacompte.projet__id =' . $projet__id;
+    $sql .= ' UNION SELECT facture__id, facture__numero, facture__corbeille FROM Factures WHERE Factures.projet__id =' . $projet__id;
+
     // Cherche tous les devis
-    $args = array(
-      'FROM'          => 'Devis',
-      'WHERE'         => 'Devis.projet__id =' . $projet__id
-    );
-    $loop = nadine_query($args);
+    $loop = nadine_query('', $sql);
 
     if ($loop->num_rows > 0) {
       while ($row = $loop->fetch_assoc()) {
+        // Récupére la bonne table
+        $table = get_facture_table($row);
+
         // Récupére le bon prefix
-        $prefix = 'devis';
+        $prefix = get_facture_prefix($table);
 
         if (check_is_not_delete($row, $prefix)) {
           // Récupére le numéros de la facture
@@ -580,51 +607,7 @@ function the_projet_factures($row)
           // Ajoute le numéros à la liste
           $projet_factures .= $facture_numero . ', ';
         }
-      };
-    };
-
-    // Cherche toutes les factures d'accompte
-    $args = array(
-      'FROM'          => 'Facturesacompte',
-      'WHERE'         => 'Facturesacompte.projet__id =' . $projet__id
-    );
-    $loop = nadine_query($args);
-
-    if ($loop->num_rows > 0) {
-      while ($row = $loop->fetch_assoc()) {
-        // Récupére le bon prefix
-        $prefix = 'facturea';
-
-        if (check_is_not_delete($row, $prefix)) {
-          // Récupére le numéros de la facture
-          $facture_numero = get_facture_numero($row);
-
-          // Ajoute le numéros à la liste
-          $projet_factures .= $facture_numero . ', ';
-        }
-      };
-    };
-
-    // Cherche toutes les factures
-    $args = array(
-      'FROM'          => 'Factures',
-      'WHERE'         => 'Factures.projet__id =' . $projet__id
-    );
-    $loop = nadine_query($args);
-
-    if ($loop->num_rows > 0) {
-      while ($row = $loop->fetch_assoc()) {
-        // Récupére le bon prefix
-        $prefix = 'facture';
-
-        if (check_is_not_delete($row, $prefix)) {
-          // Récupére le numéros de la facture
-          $facture_numero = get_facture_numero($row);
-
-          // Ajoute le numéros à la liste
-          $projet_factures .= $facture_numero . ', ';
-        }
-      };
+      }
     };
 
     // Retourne le résultat au template
@@ -749,14 +732,16 @@ function get_diffuseur_civilite($row)
 function get_diffuseur_nom($row)
 {
   if (isset($row)) {
-    // Récupère les infos du diffuseur
-    $diffuseur_nom = $row["diffuseur__nom"];
+    if (!empty($row['diffuseur__nom'])) {
+      // Récupère les infos du diffuseur
+      $diffuseur_nom = $row["diffuseur__nom"];
 
-    // Formate le résultat
-    $diffuseur_nom = ucwords(strtolower($diffuseur_nom));
+      // Formate le résultat
+      $diffuseur_nom = ucwords(strtolower($diffuseur_nom));
 
-    // Retourne le résultat au template
-    return $diffuseur_nom;
+      // Retourne le résultat au template
+      return $diffuseur_nom;
+    }
   }
 }
 
@@ -1114,6 +1099,9 @@ function the_diffuseur_type($row)
 
 function the_diffuseurs_list()
 {
+
+  nadine_log("Nadine lance la fonction the_diffuseurs_list()");
+
   // Demande tous les diffuseurs à la base de donnée
   $args = array(
     'FROM'     => 'Diffuseurs',
@@ -1637,6 +1625,7 @@ function the_artistes_list()
 
 function the_contact_societe($row)
 {
+  nadine_log("Nadine lance la fonction the_contact_societe()");
   if (isset($row)) {
     // Récupére la bonne table
     $table = get_contact_table($row);
@@ -1744,6 +1733,8 @@ function the_contact_nom($row)
 
 function the_contact_prenom($row)
 {
+  nadine_log("Nadine lance la fonction the_contact_prenom()");
+
   if (isset($row)) {
     // Récupére la bonne table
     $table = get_contact_table($row);
@@ -1754,6 +1745,7 @@ function the_contact_prenom($row)
     } else {
       $contact_prenom = get_diffuseur_prenom($row);
     }
+    nadine_log("Nadine a trouvé le prénom d'un contact : " . $contact_prenom);
 
     // Retourne le résultat au template
     echo $contact_prenom;
@@ -1983,6 +1975,7 @@ function get_contact_id($row)
 
 function the_contact_id($row)
 {
+  nadine_log("Nadine lance la fonction the_contact_id()");
   if (isset($row)) {
     // Récupère les infos du contact
     $contact_id = get_contact_id($row);
@@ -2161,6 +2154,8 @@ function the_facture_id($row)
 
 function get_facture_new_numero($table)
 {
+  nadine_log("Nadine lance la fonction get_facture_new_numero()");
+
   if (isset($table)) {
     // Récupére le bon prefix
     $prefix = get_facture_prefix($table);
@@ -2240,6 +2235,8 @@ function get_facture_new_numero($table)
 
 function get_facture_numero($row, $table = '')
 {
+  nadine_log("Nadine lance la fonction get_facture_numero()");
+
   if (isset($row)) {
     // Récupére la bonne table
     $table = get_facture_table($row, $table);
@@ -2390,15 +2387,31 @@ function the_facture_link($row)
 
 function get_facture_template($row, $table)
 {
+  nadine_log("Nadine lance la fonction get_facture_template()");
   if (isset($row) && isset($table)) {
     // Récupére le bon prefix
     $prefix = get_facture_prefix($table);
 
-    // Récupère le nom du template
+    // Cherche dans la Base de données si un template
+    // a été enregistré
     if (isset($row[$prefix . '__template'])) {
+      // Récupère le nom du template
       $facture__template = $row[$prefix . '__template'];
+      nadine_log("Nadine a trouvé un template dans la base de données :" . $facture__template);
+
+      // Vérifie si le template extiste
+      $facture__folder = __DIR__ . '/../template_facture/' . $facture__template;
+      nadine_log("Nadine se prépare a vérifier si le dossier suivant existe :" . $facture__folder);
+      if (is_dir($facture__folder)) {
+        nadine_log("Nadine a trouvé le dossier qu'elle cherchait !");
+      } else {
+        // Sinon, récupère le nom du template par défaut
+        nadine_log("Nadine pense que le dossier suivant n'existe pas :" . $facture__folder);
+        $facture__template = get_profil_template($row);
+      }
     } else {
-      $facture__template = 'facture__2023';
+      // Récupère le nom du template par défaut
+      $facture__template = get_profil_template($row);
     }
 
     // Retourne le résultat au template
@@ -2414,6 +2427,7 @@ function get_facture_template($row, $table)
 
 function the_facture_template($row, $table)
 {
+  nadine_log("Nadine lance la fonction the_facture_template()");
   if (isset($row) && isset($table)) {
     // Récupère le nom du template
     $facture__template = get_facture_template($row, $table);
@@ -2482,6 +2496,7 @@ function the_facture_template_url($projet__id, $table, $facture__id)
 
       // Formate le résultat
       $facture__templateurl = '/template_facture/' . $facture__folder . '/' . $facture__file;
+      nadine_log("Nadine ouvre le fichier :\n" . $facture__templateurl);
 
       // Retourne le résultat au template
       return $facture__templateurl;
@@ -3276,7 +3291,7 @@ function the_profil_email($row)
 {
   if (isset($row)) {
     if (!empty($row['profil__email'])) {
-      // Récupère les infos du diffuseur
+      // Récupère les infos du profil
       $profil__email = $row['profil__email'];
 
       // Retourne le résultat au template
@@ -3295,7 +3310,7 @@ function the_profil_website($row)
 {
   if (isset($row)) {
     if (!empty($row['profil__website'])) {
-      // Récupère les infos du diffuseur
+      // Récupère les infos du profil
       $profil__website = $row['profil__website'];
 
       // Retourne le résultat au template
@@ -3314,7 +3329,7 @@ function the_profil_titulaire_du_compte($row)
 {
   if (isset($row)) {
     if (!empty($row['profil__titulaire_du_compte'])) {
-      // Récupère les infos du diffuseur
+      // Récupère les infos du profil
       $profil__titulaire_du_compte = $row['profil__titulaire_du_compte'];
 
       // Retourne le résultat au template
@@ -3332,7 +3347,7 @@ function the_profil_iban($row)
 {
   if (isset($row)) {
     if (!empty($row['profil__iban'])) {
-      // Récupère les infos du diffuseur
+      // Récupère les infos du profil
       $profil__iban = $row['profil__iban'];
 
       // Retourne le résultat au template
@@ -3350,7 +3365,7 @@ function the_profil_bic($row)
 {
   if (isset($row)) {
     if (!empty($row['profil__bic'])) {
-      // Récupère les infos du diffuseur
+      // Récupère les infos du profil
       $profil__bic = $row['profil__bic'];
 
       // Retourne le résultat au template
@@ -3358,6 +3373,63 @@ function the_profil_bic($row)
     }
   }
 }
+
+
+/**
+ * La fonction get_profil_template() retourne
+ * le nom du template par defaut utilisé par utilisateur
+ * pour ses devis et factures
+ */
+
+function get_profil_template($row)
+{
+  if (isset($row)) {
+    if (!empty($row['profil__template'])) {
+      // Récupère les infos du profil
+      $profil__template = $row['profil__template'];
+    } else {
+      // Récupère l'ID du dernier profil dans la base de donnée
+      $args = array(
+        'FROM'     => 'Profil',
+        'ORDER BY' => 'profil__id',
+        'ORDER'    => 'DESC',
+        'LIMIT'    => 1
+      );
+
+      $loop = nadine_query($args);
+      if ($loop->num_rows > 0) :
+        while ($row = $loop->fetch_assoc()) :
+          $profil__template = $row['profil__template'];
+        endwhile;
+      endif;
+    }
+
+
+    // Retourne le résultat au template
+    return $profil__template;
+  }
+}
+
+
+/**
+ * La fonction the_profil_template() affiche
+ * le nom du template par defaut utilisé par utilisateur
+ * pour ses devis et factures
+ */
+
+function the_profil_template($row)
+{
+  if (isset($row)) {
+    if (!empty($row['profil__template'])) {
+      // Récupère les infos du profil
+      $profil__template = get_profil_template($row);
+
+      // Retourne le résultat au template
+      echo $profil__template;
+    }
+  }
+}
+
 
 /**
  * La fonction get_date_today() permet de connaître
@@ -3464,6 +3536,9 @@ function nadine_name($civilite = '', $prenom = '', $nom = '')
 function nadine_prix($prix)
 {
   if (isset($prix)) {
+    // Convertit le prix en float
+    $prix = (float)$prix;
+
     // Formate le résultat
     $prix = number_format($prix, 2, ',', ' ') . ' €';
 
@@ -3471,6 +3546,27 @@ function nadine_prix($prix)
     return $prix;
   }
 }
+
+
+/**
+ * La fonction nadine_log(), surnommée TheMadManagerMode™
+ * par le service marketing de NadineCorp.©, permet aux équipes
+ * du NadineCrew et du NadineLab© de déboguer Nadine plus efficacement
+ * en espionnant ses moindres faits et gestes.
+ */
+
+function nadine_log($msg)
+{
+  // Permet d'activer ou désactiver le MadManagerMode™
+  $MadManagerMode = false;
+
+  if (isset($msg) && $MadManagerMode == true) {
+    $error_msg = date('Y-m-d H:i:s') . ' - ' . __FILE__ . "\n";
+    $error_msg .= $msg . "\n";
+    error_log($error_msg . PHP_EOL, 3, 'nadine__journal.log');
+  }
+}
+
 
 /**
  * La fonction nadine_prix() permet d'harmoniser
@@ -3500,6 +3596,7 @@ function msg_nothing($titre = '', $msg = '')
     echo '</div>';
   }
 }
+
 
 /**
  * La fonction get_template_part() permet de stocker des fichiers
@@ -3738,4 +3835,30 @@ function db__replace_prefix($data, $prefix, $prefix_new)
 
   // Retourne le résultat au template
   return $data;
+}
+
+
+/**
+ * La fonction db__update() permet
+ * de mettre à jour la base de données
+ */
+
+function db__update($num_version = '')
+{
+
+  // Vérifie si le numéro de version de Nadine
+  // a été envoyé
+  if ($num_version == '') {
+    // Cherche le numéro de version de Nadine
+    $num_version = get_num_version();
+  }
+
+  // Vérifier si la structure de la Base données
+  // correspond à celle de db__structure.php
+  include_once(__DIR__ . './database/db__check.php');
+
+  // Mets à jour le numéros de version dans la base de données
+  $sql = "UPDATE Options SET option__valeur = '" . $num_version . "' WHERE option__nom = 'nadine__version'";
+  $conn->query($sql) or die($conn->error);
+  $conn->close();
 }

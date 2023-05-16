@@ -12,87 +12,53 @@ include(__DIR__ . '/header.php');
 ?>
 
 <main class="l-suivi" role="main">
-  <section class="m-rom">
-    <div class="m-col">
+  <section class="m-row">
+    <div class="m-rom">
       <h1 class="m-headline">Suivi</h1>
     </div>
 
-    <?php
-    /**
-     * Liste des devis
-     */
-    ?>
+    <div class="l-suivi__cols">
 
-    <div class="m-col l6">
-      <?php $sql = "SELECT * FROM Devis WHERE devis__statut = 'Envoyé' AND devis__corbeille = 0 OR devis__statut = 'Relancé' AND devis__corbeille = 0"; ?>
-      <?php include './core/query.php';
-      $result = $conn->query($sql) or die($conn->error); ?>
-      <?php if ($result->num_rows > 0) : ?>
-        <h2 class="m-lead">Devis non signés</h2>
-        <table class="m-table m-body">
-          <thead>
-            <tr>
-              <th>N°</th>
-              <th>Nom du projet</th>
-              <th></th>
-              <th>Voir</th>
-            </tr>
-          </thead>
-          <tbody>
-            <?php while ($row = $result->fetch_assoc()) : ?>
-              <tr onclick="document.location = 'projet__single.php?projet__id=<?php echo $row["projet__id"] ?>';">
-                <td><?php echo $row["devis__numero"] ?></td>
-                <td><?php echo $row["projet__nom"] ?></td>
-                <td><?php echo $row["diffuseur__societe"] ?></td>
-                <td><a href="./projet__single.php?projet__id=<?php echo $row["projet__id"] ?>">Voir</a></td>
-              </tr>
-            <?php endwhile; ?>
-          </tbody>
-        </table>
-      <?php else : msg_nothing('Aucun devis en attente', "Cette section centralise tous les <i>Devis</i> ayant le statut <i>« Envoyé » ou « Relancé »</i>.");
-      endif;
-      $conn->close(); ?>
+      <?php
+
+      // Prépare une LoopLoop
+
+      $LoopLoop = array(
+        array("title" => "Devis", "table" => "devis", "prefix" => "devis", "etat" => array("Brouillon", "Envoyé", "Relancé")),
+        array("title" => "Factures d'acompte", "table" => "facturesacompte", "prefix" => "facturea", "etat" => array("Brouillon", "Envoyé", "Relancé")),
+        array("title" => "Factures", "table" => "factures", "prefix" => "facture", "etat" => array("Brouillon", "Envoyé", "Relancé")),
+      );
+
+      /**
+       * Liste de projets en cours
+       */
+
+      foreach ($LoopLoop as $loopItem) {
+        echo '<div class="l-suivi__row l-suivi__row-' . $loopItem['prefix'] . '">';
+        echo '<div class="l-suivi__title"><h2 class="m-lead m-ss">' . $loopItem['title'] . '</h2></div>';
+        echo '<div class="l-suivi__cols">';
+        foreach ($loopItem['etat'] as $etat) {
+
+          echo '<div class="l-suivi__col l-suivi__col-' . $loopItem['prefix'] . $etat . '">';
+          echo '<div class="l-suivi__subtitle"><h3 class="m-body-l"><i>' . $etat . '</i></h3></div>';
+
+          $args = array(
+            'FROM'     => $loopItem['table'],
+            'WHERE'    => $loopItem['table'] . '.' . $loopItem['prefix'] . '__statut ="' . $etat . '"',
+          );
+          $loop = nadine_query($args);
+
+          if ($loop->num_rows > 0) :
+            while ($row = $loop->fetch_assoc()) :
+              // Affiche chaque projet sous forme de liste
+              include './parts/p__single-facture-mini.php';
+            endwhile;
+          endif;
+          echo '</div>';
+        }
+        echo '</div></div>';
+      }
+      ?>
     </div>
-
-
-    <?php
-    /**
-     * Liste des factures
-     */
-    ?>
-
-    <div class="m-col l6">
-      <?php $thisYear = date("Y") ?>
-      <?php $sql = "SELECT * FROM Factures WHERE facture__statut = 'Envoyée' OR facture__statut = 'Relancé'"; ?>
-      <?php include './core/query.php';
-      $result = $conn->query($sql) or die($conn->error); ?>
-      <?php if ($result->num_rows > 0) : ?>
-        <h2 class="m-lead">Factures impayées</h2>
-        <table class="m-table m-body">
-          <thead>
-            <tr>
-              <th>N°</th>
-              <th>Nom du projet</th>
-              <th></th>
-              <th>Voir</th>
-            </tr>
-          </thead>
-          <tbody>
-            <?php while ($row = $result->fetch_assoc()) : ?>
-              <tr onclick="document.location = 'projet__single.php?projet__id=<?php echo $row["projet__id"] ?>';">
-                <td><?php echo $row["facture__numero"] ?></td>
-                <td><?php echo $row["projet__nom"] ?></td>
-                <td><?php echo $row["diffuseur__societe"] ?></td>
-                <td><a href="./projet__single.php?projet__id=<?php echo $row["projet__id"] ?>">Voir</a></td>
-              </tr>
-            <?php endwhile; ?>
-          </tbody>
-        </table>
-      <?php else : msg_nothing('Aucun factures impayées', "Nadine n'a trouvé aucune <i>Facture</i> avec le statut <i>« Envoyé » ou « Relancé »</i> dans la <i>Base de données</i>.");
-      endif;
-      $conn->close(); ?>
-    </div>
-
-
   </section>
   <?php include './footer.php'; ?>

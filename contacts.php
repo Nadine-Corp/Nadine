@@ -21,7 +21,7 @@ include './header.php';
 
   <aside class="m-aside">
     <h1 class="m-headline">Contacts</h1>
-    <a href="./p__modal-contacts" class="btn btn__big btn__plain btn__modal" data-modal='contact'>
+    <a href="./p__modal-contacts.php?contact__id=new&table=contact__new" class="btn btn__big btn__plain btn__modal" data-modal="contact" data-id="new" data-table="new">
       <div class="btn__big-ico"><?php include './assets/img/ico_ajouter--plain.svg.php'; ?></div>
       <div class="btn__big-txt">
         <span class="m-lead m-ss">Ajouter</span>
@@ -36,7 +36,7 @@ include './header.php';
         </div>
       </div>
       <div class="m-accordion__wrapper">
-        <form class="m-form">
+        <form class="m-form" autocomplete="off">
           <div class="m-form__radio-vert">
             <div class="m-form__radio m-body">
               Tous les contacts
@@ -119,12 +119,12 @@ include './header.php';
        * Affiche les résultats
        */
 
-      if (isset($combined_results)) :
+      if (isset($combined_results) && !empty($combined_results)) :
         foreach ($combined_results as $row) :
-          include './parts/p__contacts-single.php';
+          include './parts/p__single-contact.php';
         endforeach;
 
-        // Reset la varibale $row pour ne pas interféré
+        // Réinitialise la variable $row pour éviter toute interférence
         // avec le chargement de la modale Contact
         $row = array();
 

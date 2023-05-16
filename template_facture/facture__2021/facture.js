@@ -1,52 +1,127 @@
-$( document ).ready(function() {
-		calc();
-	$(".form__input-prix").on("change paste keyup", function() {
-		calc();
+document.addEventListener("DOMContentLoaded", function () {
+	calc();
+	var inputs = document.querySelectorAll(".form__input-prix");
+	inputs.forEach(function (input) {
+		input.addEventListener("change", calc);
+		input.addEventListener("paste", calc);
+		input.addEventListener("keyup", calc);
 	});
 });
 
-function calc () {
-	prix_1 = parseInt ( $("input[name$='facture__prix_1']").val() ) || 0;
-	prix_2 = parseInt ( $("input[name$='facture__prix_2']").val() ) || 0;
-	prix_3 = parseInt ( $("input[name$='facture__prix_3']").val() ) || 0;
-	prix_4 = parseInt ( $("input[name$='facture__prix_4']").val() ) || 0;
-	prix_5 = parseInt ( $("input[name$='facture__prix_5']").val() ) || 0;
-	prix_6 = parseInt ( $("input[name$='facture__prix_6']").val() ) || 0;
-	prix_7 = parseInt ( $("input[name$='facture__prix_7']").val() ) || 0;
+// La Fonction Calc() recalcule tous les totaux
+// dès que l'utilisateur modifie le prix des tâches
 
-	total = (prix_1 + prix_2 + prix_3 + prix_4 + prix_5 + prix_6 + prix_7);
-	css = (total*0.004).toFixed(2);
-	css_new = 0;
-	cotisation_maladies_vieillesse = (total*0.069).toFixed(2);
-	cotisation_maladies_vieillesse_new = (total*0.0615).toFixed(2);
-	csg = (total*0.9825*0.092).toFixed(2);
-	crds = (total*0.9825*0.005).toFixed(2);
-	cfpc = (total*0.0035).toFixed(2);
-	total_precompte = ( +(cotisation_maladies_vieillesse_new) + +(csg) + +(crds) + +(cfpc) + +(css_new)).toFixed(2);
-	total_artiste = ( +(total) - +(total_precompte)).toFixed(2);
-	contribution_sociales = (total*0.01).toFixed(2);
-	contribution_a_la_formation_professionnelle = (total*0.001).toFixed(2);
-	total_des_contributions_diffuseur = ( +(contribution_sociales) + +(contribution_a_la_formation_professionnelle) ).toFixed(2);
-	total_mda = ( +(total_precompte) + +(total_des_contributions_diffuseur) ).toFixed(2);
-	total_charges = ( total*0.011 ).toFixed(2);
-	totalEtCharges =  ( +(total) + +(total_charges) ).toFixed(2);
+function calc() {
+	var prix_1 = parseInt(document.querySelector("input[name$='facture__prix_1']").value) || 0;
+	var prix_2 = parseInt(document.querySelector("input[name$='facture__prix_2']").value) || 0;
+	var prix_3 = parseInt(document.querySelector("input[name$='facture__prix_3']").value) || 0;
+	var prix_4 = parseInt(document.querySelector("input[name$='facture__prix_4']").value) || 0;
+	var prix_5 = parseInt(document.querySelector("input[name$='facture__prix_5']").value) || 0;
+	var prix_6 = parseInt(document.querySelector("input[name$='facture__prix_6']").value) || 0;
+	var prix_7 = parseInt(document.querySelector("input[name$='facture__prix_7']").value) || 0;
 
-	$("input[name$='total']").val(total);
-	$("input[name$='contribution-secu-sociales']").val(css);
-	$("input[name$='contribution-secu-sociales-new']").val(css_new);
-	$("input[name$='cotisation-maladies-vieillesse']").val(cotisation_maladies_vieillesse);
-	$("input[name$='cotisation-maladies-vieillesse-new']").val(cotisation_maladies_vieillesse_new);
-	$("input[name$='CSG']").val(csg);
-	$("input[name$='CRDS']").val(crds);
-	$("input[name$='CFPC']").val(cfpc);
-	$("input[name$='total-precompte']").val(total_precompte);
-	$("input[name$='facture__total']").val(total_artiste);
-	$("input[name$='contribution-sociales']").val(contribution_sociales);
-	$("input[name$='contribution-a-la-formation-professionnelle']").val(contribution_a_la_formation_professionnelle);
-	$("input[name$='total-des-contributions-diffuseur']").val(total_des_contributions_diffuseur);
-	$("input[name$='total-mda']").val(total_mda);
-	$("input[name$='total_charges']").val(total_charges);
-	$("input[name$='TotalEtCharges']").val(totalEtCharges);
-	$("#total-artiste").text(total_artiste + " €");
-	$("#total-mda").text(total_mda + " €");
+	// Calcule des totaux
+	var total = prix_1 + prix_2 + prix_3 + prix_4 + prix_5 + prix_6 + prix_7;
+	var css = total * 0.004;
+	var css_new = 0;
+	var cotisation_maladies_vieillesse = total * 0.069;
+	var cotisation_maladies_vieillesse_new = total * 0.0615;
+	var csg = total * 0.9825 * 0.092;
+	var crds = total * 0.9825 * 0.005;
+	var cfpc = total * 0.0035;
+	var total_precompte = cotisation_maladies_vieillesse + +csg + +crds + +cfpc + +css_new;
+	var total_artiste = total - +total_precompte;
+	var contribution_sociales = total * 0.01;
+	var contribution_a_la_formation_professionnelle = total * 0.001;
+	var total_des_contributions_diffuseur = contribution_sociales + contribution_a_la_formation_professionnelle;
+	var total_mda = total_precompte + total_des_contributions_diffuseur;
+	var total_charges = total * 0.011;
+	var totalEtCharges = total + total_charges;
+
+
+	// Affiche les totaux
+	var totalInput = document.querySelector("input[name='total']");
+	if (totalInput) {
+		totalInput.value = arrondi(total);
+	}
+	var cssInput = document.querySelector("input[name='contribution-secu-sociales']");
+	if (cssInput) {
+		cssInput.value = arrondi(css);
+	}
+	var cssNewInput = document.querySelector("input[name='contribution-secu-sociales-new']");
+	if (cssNewInput) {
+		cssNewInput.value = arrondi(css_new);
+	}
+	var cotisationInput = document.querySelector("input[name='cotisation-maladies-vieillesse']");
+	if (cotisationInput) {
+		cotisationInput.value = arrondi(cotisation_maladies_vieillesse);
+	}
+	var cotisationNewInput = document.querySelector("input[name='cotisation-maladies-vieillesse-new']");
+	if (cotisationNewInput) {
+		cotisationNewInput.value = arrondi(cotisation_maladies_vieillesse_new);
+	}
+	var csgInput = document.querySelector("input[name='CSG']");
+	if (csgInput) {
+		csgInput.value = arrondi(csg);
+	}
+	var crdsInput = document.querySelector("input[name='CRDS']");
+	if (crdsInput) {
+		crdsInput.value = arrondi(crds);
+	}
+	var cfpcInput = document.querySelector("input[name='CFPC']");
+	if (cfpcInput) {
+		cfpcInput.value = arrondi(cfpc);
+	}
+	var totalPrecompteInput = document.querySelector("input[name='total-precompte']");
+	if (totalPrecompteInput) {
+		totalPrecompteInput.value = arrondi(total_precompte);
+	}
+	var totalContributionsDiffuseurInput = document.querySelector("input[name='total-des-contributions-diffuseur']");
+	if (totalContributionsDiffuseurInput) {
+		totalContributionsDiffuseurInput.value = arrondi(total_des_contributions_diffuseur);
+	}
+	var totalArtisteElement = document.querySelector("input[name='facture__total']");
+	if (totalArtisteElement) {
+		totalArtisteElement.value = arrondi(total_artiste);
+	}
+	var contributionSocialesInput = document.querySelector("input[name='contribution-sociales']");
+	if (contributionSocialesInput) {
+		contributionSocialesInput.value = arrondi(contribution_sociales);
+	}
+	var contributionFormationInput = document.querySelector("input[name='contribution-a-la-formation-professionnelle']");
+	if (contributionFormationInput) {
+		contributionFormationInput.value = arrondi(contribution_a_la_formation_professionnelle);
+	}
+	var totalMDAInput = document.querySelector("input[name='total-mda']");
+	if (totalMDAInput) {
+		totalMDAInput.value = arrondi(total_mda);
+	}
+	var totalChargesInput = document.querySelector("input[name='total_charges']");
+	if (totalChargesInput) {
+		totalChargesInput.value = arrondi(total_charges);
+	}
+	var totalEtChargesInput = document.querySelector("input[name='TotalEtCharges']");
+	if (totalEtChargesInput) {
+		totalEtChargesInput.value = arrondi(totalEtCharges);
+	}
+	var totalArtisteText = document.getElementById("total-artiste");
+	if (totalArtisteText) {
+		totalArtisteText.textContent = arrondi(total_artiste) + " €";
+	}
+	var totalMDAText = document.getElementById("total-mda");
+	if (totalMDAText) {
+		totalMDAText.textContent = arrondi(total_mda) + " €";
+	}
+}
+
+// La Fonction Arrondi() supprime les décimales
+// lorsqu'elles ne sont pas nécessaire
+
+function arrondi(number) {
+	if (number % 1 > 0) {
+		number = parseFloat(number).toFixed(2).replace(".", ",");
+	} else {
+		number = parseInt(number).toFixed(0);
+	}
+	return number;
 }

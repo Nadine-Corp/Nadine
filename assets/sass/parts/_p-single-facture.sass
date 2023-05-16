@@ -8,25 +8,13 @@
 .p-facture
   margin-right: m()
   transition: $slow
-  @include hover
-    .p-facture__wrapper
-      background: color('rouge', 50)
-      border: 1px solid color('rouge', 50)
-      transition: $fast
-      span, em
-        color: color('rouge', 80)
-        transition: $fast
-    .p-facture__statut
-      background: color('rouge', 80)
-      color: color('backgroundColor')
-      transition: $fast
 
-
-.p-facture__paper
-  position: relative
-  width: 100%
-  padding-top: 133.33%
-  overflow: hidden
+.l-projet
+  .p-facture__paper
+    position: relative
+    width: 100%
+    padding-top: 133.33%
+    overflow: hidden
 
 .p-facture__wrapper
   display: flex
@@ -77,25 +65,39 @@
 
 
 // Stylise les factures en fonction de son état
+// sur les pages Projet
+
+.l-projet
+  .p-facture
+    @include hover
+      .p-facture__wrapper
+        background: color('rouge', 50)
+        border: 1px solid color('rouge', 50)
+        transition: $fast
+        span, em
+          color: color('rouge', 80)
+          transition: $fast
+      .p-facture__statut
+        background: color('rouge', 80)
+        color: color('backgroundColor')
+        transition: $fast
+
+  .p-facture__annule,
+  .p-facture__annulee
+    .p-facture__wrapper
+      background: color('backgroundColor')
+      border: 1px solid color('rouge', 80)
+      span, em
+        color: color('rouge', 80)
+    .p-facture__statut
+      background: color('rouge', 80)
+      color: color('backgroundColor')
 
 
-.p-facture__annule,
-.p-facture__annulee
-  .p-facture__wrapper
-    background: color('backgroundColor')
-    border: 1px solid color('rouge', 80)
-    span, em
+  .p-facture__brouillon,
+  .p-facture__envoye
+    .p-facture__wrapper
+      background: color('rouge', 80)
+      border: 1px solid color('rouge', 80)
+    .p-facture__statut
       color: color('rouge', 80)
-  .p-facture__statut
-    background: color('rouge', 80)
-    color: color('backgroundColor')
-
-
-
-.p-facture__brouillon,
-.p-facture__envoye
-  .p-facture__wrapper
-    background: color('rouge', 80)
-    border: 1px solid color('rouge', 80)
-  .p-facture__statut
-    color: color('rouge', 80)

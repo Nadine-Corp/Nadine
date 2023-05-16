@@ -61,9 +61,14 @@
               <strong>01 —</strong> Tout va bien : je lance <i>Nadine</i> pour la première fois et la <i>Base de données</i> est effectivement vide. Il est bien normal que <i>Nadine</i> soit un peu perdue. Je veux simplement continuer l'installation automatique.
             </div>
           </a>
+          <a href="" class="btn__modal" data-modal="tt02">
+            <div class="m-modal_choix m-ss m-body">
+              <strong>02 —</strong> Je viens de mettre à jour <i>Nadine</i> gratuitement et j'ai tellement hâte de découvrir toutes les nouvelles fonctions conçues par les équipes du <i>NadineLab©</i> ! Je dois simplement indiquer de nouveau à <i>Nadine</i> comment se connecter à la <i>base de données</i>.
+            </div>
+          </a>
           <a href="" class="btn__modal" data-modal="tt03">
             <div class="m-modal_choix m-ss m-body">
-              <strong>02 —</strong> J'ai le plaisir d'utiliser <i>Nadine</i> quotidiennement. Hier encore, tout fonctionnait correctement. C'est donc que quelque chose ne vas pas. Je contacte les équipes de <i>NadineCorp©</i> qui se feront une joie de me dépanner gratuitement.
+              <strong>03 —</strong> J'ai le plaisir d'utiliser <i>Nadine</i> quotidiennement. Hier encore, tout fonctionnait correctement. C'est donc que quelque chose ne vas pas. Je contacte les équipes de <i>NadineCorp©</i> qui se feront une joie de me dépanner gratuitement.
             </div>
           </a>
         </div>
@@ -96,7 +101,7 @@
         </div>
         <div class="m-modal__wrapper">
           <p class="m-lead m-ss">Maintenant, testons votre <i>Base de données</i>. Voici les informations dont dispose <i>Nadine</i> pour le moment. Vérifiez-les et lancez un test de connexion.</p>
-          <form class="m-form" action="./core/turbotuto/turbotuto__autoconfig.php" method="post">
+          <form class="m-form" action="./core/turbotuto/turbotuto__autoconfig.php" method="post" autocomplete="off">
             <div class="m-form__wrapper">
               <div class="m-form__label-amimate">
                 <label for="db__serveur">Serveur</label>
@@ -215,7 +220,7 @@
         </div>
         <div class="m-modal__wrapper">
           <p class="m-lead m-ss">Quelques choses ne fonctionne pas : <i>Nadine</i> n'arrive toujours à se connecter à la <i>Base de données</i>. Voulez-vous réessayer ?</p>
-          <form class="m-form" action="./core/turbotuto/turbotuto__autoconfig.php" method="post">
+          <form class="m-form" action="./core/turbotuto/turbotuto__autoconfig.php" method="post" autocomplete="off">
             <div class="m-form__wrapper">
               <div class="m-form__label-amimate">
                 <label for="db__serveur">Serveur</label>

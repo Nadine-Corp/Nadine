@@ -3,7 +3,7 @@
 
 
 <form class="form" action="" method="post">
-  <div class="paper template-facture__2021">
+  <div class="paper template-facture__2023">
     <div class="paper__content">
       <table>
         <tr>
@@ -39,34 +39,58 @@
           <td class="facture__h-100 facture__br facture__w-25">
             <p class="facture__body">Fait à <?php echo $row["profil__ville"] ?>, le <?php the_facture_date($row, 'full'); ?></p>
           </td>
-
         </tr>
       </table>
       <?php include 'body.php'; ?>
       <table>
-        <tr class="facture__h-20">
+        <tr class="facture__h-10">
           <td class="facture__w-50" colspan="2"></td>
           <td class="facture__b-l facture__w-25 facture__tl">
-            <span class="facture__subheading">Montant HT</span>
+            <span class="facture__subheading">Total brut</span>
           </td>
           <td class="facture__w-25 facture__tr facture__subheading form__total">
             <input type="text" name="total" placeholder="Total" class="facture__subheading" disabled> €
           </td>
         </tr>
-        <tr class="facture__h-20">
+        <tr class="facture__h-10">
           <td class="facture__w-50" colspan="2"></td>
           <td class="facture__b-l facture__w-25 facture__tl">
-            <span class="facture__subheading">Montant TTC</span>
+            <span class="facture__subheading">TVA</span>
           </td>
           <td class="facture__w-25 facture__tr facture__subheading form__total">
+            <input type="text" name="TVA" class="facture__subheading" disabled>0 €
+          </td>
+        </tr>
+        <tr class="facture__h-10">
+          <td class="facture__w-50" colspan="2"></td>
+          <td class="facture__b-l facture__w-25 facture__tl">
+            <span class="facture__subheading">Contributions diffuseur</span>
+          </td>
+          <td class="facture__w-25 facture__tr facture__subheading form__total">
+            <input type="text" name="total_charges" placeholder="Charges" class="facture__subheading" disabled> €
+          </td>
+        </tr>
+        <tr class="facture__h-10">
+          <td class="facture__w-50" colspan="2"></td>
+          <td class="facture__b-l facture__w-25 facture__tl facture__b-t">
+            <span class="facture__subheading">Net à payer</span>
+          </td>
+          <td class="facture__w-25 facture__tr facture__subheading form__total facture__b-t">
             <input type="text" name="TotalEtCharges" placeholder="Total TTC" class="facture__subheading" disabled> €
           </td>
+        </tr>
+        <tr class="facture__h-10">
+          <td class="facture__w-50" colspan="2"></td>
+          <td class="facture__b-l facture__tl" colspan="2">
+            <span class="facture__body">TVA non applicable, article 293B du Code Général des Impôts</span>
+          </td>
+        </tr>
         <tr class="facture__h-80">
           <td></td>
           <td></td>
         </tr>
       </table>
-      <table class="facture__h-100 facture__b-t">
+      <table class="facture__h-80 facture__b-t">
         <tr>
           <td class="facture__w-40 facture__tl">
             <p class="facture__caption">Cotisation Sécurité sociale 0,40% du Montant HT<br>Prise en charge par l'État : 0.40%</p>
@@ -154,7 +178,7 @@
       </table>
 
       <table>
-        <tr class="facture__h-200">
+        <tr class="facture__h-100">
           <td class="facture__w-50 facture__total">
             <p class="facture__display2">Total à verser<br>à l'artiste auteur</p>
             <p class="facture__caption">Montant HT − Total du précompte (1)</p>
@@ -162,15 +186,19 @@
           </td>
           <td class="facture__w-50 facture__b-ld facture__total">
             <p class="facture__display2">Total à verser<br>à L’URSSAF *</p>
-            <p class="facture__caption">Total du précompte (1) + Total des contributions diffuseur (2)</p>
-            <p class="facture__caption">* Taux en vigueur en 2021</p>
+            <p class="facture__caption">Total des contributions diffuseur (2)
+              <br>* Taux en vigueur depuis 2021
+            </p>
             <img src="./template_facture/facture__2021/arrow.png" alt="">
           </td>
         </tr>
         <tr class="facture__h-20 facture__b-t">
-          <td id="total-artiste" class="facture__w-50 facture__total facture__display2">
+          <td class="facture__w-50 facture__total facture__display2">
+            <span id="total-artiste" class="facture__subheading"></span>
+            <input type="hidden" name="total-artiste" placeholder="Total" class="facture__subheading">
           </td>
-          <td id="total-mda" class="facture__w-50 facture__b-ld facture__total facture__display2">
+          <td class="facture__w-50 facture__b-ld facture__total facture__display2">
+            <span id="total-mda" class="facture__subheading"></span>
             <input type="hidden" name="total-mda" placeholder="Total" class="facture__subheading">
           </td>
         </tr>

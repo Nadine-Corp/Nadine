@@ -5,7 +5,7 @@
 // fait disparaître le menu, fait bouger tout seul des éléments, etc.
 
 
-$(document).ready(function ($) {
+document.addEventListener("DOMContentLoaded", function () {
 
 	/**
 	* Variables
@@ -22,19 +22,22 @@ $(document).ready(function ($) {
 	window.addEventListener('resize', appHeight);
 	appHeight();
 
+	// currentUrl permet de connaitre l'URL de la page active
+	var currentUrl = location.pathname;
+
 
 	/**
 	*  Menu : Ajout de la classe is--current
 	*/
 
-	var currentUrl = location.pathname;
 
-	$('.l-header__nav-item a').each(function () {
-		var url = $(this).attr('data-url');
+	const navItems = document.querySelectorAll('.l-header__nav-item a');
+	navItems.forEach((navItem) => {
+		const url = navItem.getAttribute('data-url');
 		if (currentUrl.includes(url)) {
-			$(this).addClass('is--current');
+			navItem.classList.add('is--current');
 		}
-	})
+	});
 
 
 	/**
@@ -42,11 +45,13 @@ $(document).ready(function ($) {
 	*  à l'état Payée
 	*/
 
-	$("input[name=facture__statut]").on('input', function () {
-		var factureStatut = $(this).val();
-		if (factureStatut == "Payée") {
-			$("input[type=submit]").prop("disabled", false);
-		}
+	document.querySelectorAll("input[name=facture__statut]").forEach(function (input) {
+		input.addEventListener('input', function () {
+			var factureStatut = this.value;
+			if (factureStatut == "Payée") {
+				document.querySelector("input[type=submit]").disabled = false;
+			}
+		});
 	});
 
 
@@ -54,14 +59,18 @@ $(document).ready(function ($) {
 	*  Module : Accordion
 	*/
 
-	$('.m-accordion__titre').click(function () {
-		if ($(this).closest('.m-accordion').hasClass('is--active')) {
-			$(this).closest('.m-accordion').removeClass('is--active');
-		} else {
-			$(this).closest('.m-accordion').addClass('is--active');
-		}
+	document.querySelectorAll('.m-accordion__titre').forEach(function (accordion) {
+		accordion.addEventListener('click', function () {
+			var accordionContainer = this.closest('.m-accordion');
+			if (accordionContainer.classList.contains('is--active')) {
+				accordionContainer.classList.remove('is--active');
+			} else {
+				accordionContainer.classList.add('is--active');
+			}
+		});
 	});
-}); //Fin du jQuery(document).ready
+
+}); //Fin du DOMContentLoaded
 
 
 /**
@@ -125,7 +134,6 @@ if (nav__accordion) {
 // qui ne contient pas une chaine de caractère
 function searchAndHide(string, items) {
 	items.forEach(item => {
-		console.log(item);
 		// Récupére le contenu de l'élèment
 		var content = item.innerHTML;
 		content = content.toString();
@@ -191,7 +199,7 @@ function hideOverlay() {
 	// Cherche des élèments à cacher
 	var elements = document.querySelectorAll('.m-modal, .m-volet, .btn__info');
 
-	// Parcourt tous les éléments et enlève la classe .is--active
+	// Parcourt les éléments à cacher et enlève la classe .is--active
 	for (var i = 0; i < elements.length; i++) {
 		elements[i].classList.remove('is--active');
 	}
@@ -235,14 +243,14 @@ btns__volet.forEach(btn__volet => {
 		// Empêche le comportement normal du lien
 		e.preventDefault();
 
-		// Récupére le nom de la modal que le bouton doit ouvrir
+		// Récupére le nom de la modale que le bouton doit ouvrir
 		let dataVolet = btn__volet.getAttribute('data-volet');
 
 		// Formate le nom du volet
 		volet = '.m-volet__' + dataVolet;
 		volet = document.querySelector(volet);
 
-		// Affiche la modal
+		// Affiche la modale
 		volet.classList.add('is--active');
 
 		// Affiche l'overlay
@@ -278,7 +286,8 @@ function InitModalBtns() {
 			modal = '.m-modal__' + dataModal;
 			modal = document.querySelector(modal);
 
-			// Récupére les infos pour préremplire la modal au besoin
+
+			// Récupére les infos pour préremplire la modale au besoin
 			let dataLocation = btn__modal.getAttribute('data-location');
 			let dataPrefix = btn__modal.getAttribute('data-prefix');
 			let dataTable = btn__modal.getAttribute('data-table');
@@ -291,19 +300,19 @@ function InitModalBtns() {
 				modal.classList.add('is--active');
 			} else {
 
-				// Vérifie si la modal doit être préremplie
+				// Vérifie si la modale doit être préremplie
 				if (Boolean(dataTable) || Boolean(dataId)) {
-					// Lance une requête AJAX pour récupérer la modal préremplie
+					// Lance une requête AJAX pour récupérer la modale préremplie
 					let xhr = new XMLHttpRequest();
 					xhr.open('GET', './parts/p__modal-' + dataModal + '.php?id=' + dataId + '&table=' + dataTable);
 					xhr.onload = function () {
 						if (xhr.status === 200) {
-							// Remplace la modal actuelle par sa version préremplie
+							// Remplace la modale actuelle par sa version préremplie
 							modal.outerHTML = xhr.responseText;
-							// reFormate le nom de la modal
+							// reFormate le nom de la modale
 							modal = '.m-modal__' + dataModal;
 							modal = document.querySelector(modal);
-							// Remise en forme de la nouvelle modal
+							// Remise en forme de la nouvelle modale
 							mInputsWithLabel();
 							modalAddProjet();
 							mSelectsList();
@@ -316,6 +325,16 @@ function InitModalBtns() {
 							initInputDateDeFin();
 							initInputBtnCancel();
 							updateSelectPorteurProjet();
+
+							// Vérifie si la modale doit s'ouvrir
+							// à une étape en particulier
+							let dataStep = btn__modal.getAttribute('data-step');
+
+							if (dataStep !== null && dataStep !== undefined) {
+								let formStep = modal.querySelector('.m-form__step');
+								changeStep(formStep, dataStep);
+							};
+
 							// Affiche la modal
 							modal.classList.add('is--active');
 						} else {
@@ -501,7 +520,7 @@ function initSelectList(selectList) {
 			li.textContent = option.text;
 			ul.append(li);
 
-			// Ajoute une fonction si chaque <li> si qq'un clic dessus
+			// Ajoute une fonction sur chaque <li> si qq'un clic dessus
 			li.addEventListener('click', function (e) {
 				// Récupére le contenu du <li> sélectionné
 				let optionText = li.innerHTML;
@@ -509,7 +528,7 @@ function initSelectList(selectList) {
 				select.value = optionValue;
 				// Change la valeur de l'input
 				input.value = optionText;
-				// Simule un changement dans le select pour que d'autres fonction
+				// Simule un changement dans le select pour que d'autres fonctions
 				// puisse le détecter
 				var event = new Event('change');
 				select.dispatchEvent(event);
@@ -524,20 +543,20 @@ function initSelectList(selectList) {
 		// Ferme la liste lorsque qq'un clic sur l'input
 		input.addEventListener('focusout', function (e) {
 			// Ajoute un léger délais permettant de vérifier
-			// si qq'un a cliqué sur un diffuseur
+			// si qq'un a cliqué sur un élément
 			setTimeout(function () {
 				div.classList.remove('is--focus');
 			}, 250)
 		});
 
-		// Cherche le diffuseur lorsque qq'un commence à taper dans l'input
+		// Cherche le élément lorsque qq'un commence à taper dans l'input
 		input.addEventListener('keyup', function (e) {
 			var string = input.value;
 			var items = ul.querySelectorAll('li');
 			searchAndHide(string, items);
 		});
 
-		// Vérifie si l'options selected doit être modifié
+		// Vérifie si l'options selected doit être modifiée
 		// après un chargement AJAX
 		selectedValue = select.getAttribute('data-selected');
 		if (selectedValue !== null) {
@@ -661,7 +680,7 @@ let searchBar = document.querySelector('.l-header__searchbar input');
 if (searchBar) {
 	searchBar.addEventListener('keyup', function (e) {
 		let string = searchBar.value;
-		let items = document.querySelectorAll('.p-projet__single, .l-contacts__contact');
+		let items = document.querySelectorAll('.p-projet__single, .l-contacts__contact, .p-facture');
 		searchAndHide(string, items);
 	});
 }
@@ -894,9 +913,22 @@ function updateSelectPorteurProjet() {
 		initSelectList(div);
 		// Cherche le nouvel input
 		let input = div.querySelector('input');
-		// Défini comme valeur par defaut 'Vous'
-		select.value = 0;
-		input.value = 'Vous';
+
+		// Vérifie si l'options selected doit être modifiée
+		// après un chargement AJAX
+		let selectedValue = select.getAttribute('data-selected');
+		if (selectedValue !== null) {
+			select.value = selectedValue;
+			if (select.selectedIndex > -1) {
+				selectedText = select.options[select.selectedIndex].text;
+				input.value = selectedText;
+			}
+		} else {
+			// Défini comme valeur par defaut 'Vous'
+			select.value = 0;
+			input.value = 'Vous';
+		}
+
 		// Vérifie si la valeur précédente du select exite encore
 		for (i = 0; i < select.length; ++i) {
 			if (select.options[i].value == valueBackup) {
@@ -1067,9 +1099,9 @@ btns__copy.forEach(btn__copy => {
 		try {
 			const successful = document.execCommand('copy');
 			const message = successful ? 'Le texte a été copié dans le presse-papiers' : 'La copie a échoué';
-			console.log(message);
+
 		} catch (err) {
-			console.log('La copie a échoué : ', err);
+
 		}
 
 		// Désélectionne le texte

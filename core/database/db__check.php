@@ -1,6 +1,8 @@
 <?php
 
-// Le fichier init.php permet de reset de la base donnée et de repartir à zéro
+// Le fichier db__check.php permet de vérifier
+// si la structure de la base données correspond
+// à celle de db__structure.php
 
 
 /**
