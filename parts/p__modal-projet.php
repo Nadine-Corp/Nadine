@@ -175,7 +175,7 @@ if (isset($_GET['id'])) {
           </div>
         <?php else : ?>
           <div class="m-form__equipe m-mt2">
-            <?php msg_nothing('Aucun Artiste', "Avant de pouvoir faire équipe, vous devez ajouter un <i>Artiste</i> à la <i>Base de données</i> grâce à la page <i>Contacts</i>."); ?>
+            <?php msg_nothing('Aucun Artiste-Auteur', "Avant de pouvoir faire équipe, vous devez ajouter un <i>Artiste-Auteur</i> à la <i>Base de données</i> grâce à la page <i>Contacts</i>."); ?>
             <div class="m-form__info m-form__with-btn">
             </div>
           </div>

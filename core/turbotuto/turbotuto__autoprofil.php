@@ -53,33 +53,17 @@
 
           <nav class="m-form__nav">
             <ul>
-              <li class="m-lead is--active" data-step="1">Coordonnées</li>
-              <li class="m-lead" data-step="2">Iban</li>
-              <li class="m-lead" data-step="3">Gabarits de courriel</li>
-              <li class="m-lead" data-step="4">Mentions légales</li>
+              <li class="m-lead is--active" data-step="1">Identité</li>
+              <li class="m-lead is--active" data-step="2">Coordonnées</li>
+              <li class="m-lead is--active" data-step="3">MDA</li>
+              <li class="m-lead" data-step="4">Iban</li>
             </ul>
           </nav>
 
-
-          <?php // Ajout première étape du formulaire : Coordonnées 
+          <?php // Ajout première étape du formulaire : Identité 
           ?>
 
           <div class="m-form__wrapper m-form__step-1">
-
-            <div class="m-form__grp">
-              <div class="m-form__label-amimate">
-                <label for="profil__societe">Société</label>
-                <input type="text" name="profil__societe" placeholder="Société" value="<?php the_profil_societe($row); ?>">
-              </div>
-              <div class="m-form__label-amimate">
-                <label for="profil__siret">N° de Siret</label>
-                <input type="text" name="profil__siret" placeholder="N° de Siret" value="<?php the_profil_siret($row); ?>">
-              </div>
-              <div class="m-form__label-amimate">
-                <label for="profil__initiales">Initiales / Acronyme</label>
-                <input type="text" name="profil__initiales" placeholder="Initiales / Acronyme" value="<?php the_profil_initiales($row); ?>">
-              </div>
-            </div>
 
             <div class="m-form__grp">
               <div class="m-form__label m-modal__contact-civilite">
@@ -106,42 +90,34 @@
                 <label for="profil__nom">Nom</label>
                 <input type="text" name="profil__nom" placeholder="Nom" value="<?php the_profil_nom($row); ?>">
               </div>
+            </div>
+            <div class="m-form__grp">
               <div class="m-form__label-amimate">
                 <label for="profil__pseudo">Pseudonyme</label>
                 <input type="text" name="profil__pseudo" placeholder="Pseudonyme" value="<?php the_profil_pseudo($row); ?>">
               </div>
+              <div class="m-form__label-amimate">
+                <label for="profil__initiales">Initiales / Acronyme</label>
+                <input type="text" name="profil__initiales" placeholder="Initiales / Acronyme" value="<?php the_profil_initiales($row); ?>">
+              </div>
             </div>
-
             <div class="m-form__grp">
-              <div class="m-form__label m-modal__contact-civilite">
-                <?php $value = get_profil_precompte($row); ?>
-                <label for="profil__precompte">Assujetti⸱e au précompte ?</label>
-                <div class="m-form__radio-horiz">
-                  <div class="m-form__radio">
-                    Non
-                    <input name="profil__precompte" type="radio" value="Non" <?php if (empty($value) || $value == "Non") {
-                                                                                echo "checked";
-                                                                              } ?>>
-                    <span class="checkmark"></span>
-                  </div>
-                  <div class="m-form__radio">
-                    Oui
-                    <input name="profil__precompte" type="radio" value="Oui" <?php if ($value == "Oui") {
-                                                                                echo "checked";
-                                                                              } ?>>
-                    <span class="checkmark"></span>
-                  </div>
-                </div>
+              <div class="m-form__label-amimate">
+                <label for="profil__societe">Société</label>
+                <input type="text" name="profil__societe" placeholder="Société" value="<?php the_profil_societe($row); ?>">
               </div>
               <div class="m-form__label-amimate">
-                <label for="profil__numero_secu">N° de Sécu</label>
-                <input type="text" name="profil__numero_secu" placeholder="N° de Sécu" value="<?php the_profil_numero_secu($row); ?>">
-              </div>
-              <div class="m-form__label-amimate">
-                <label for="profil__numero_mda">N° de MDA</label>
-                <input type="text" name="profil__numero_mda" placeholder="N° de MDA" value="<?php the_profil_numero_mda($row); ?>">
+                <label for="profil__siret">N° de Siret</label>
+                <input type="text" name="profil__siret" placeholder="N° de Siret" value="<?php the_profil_siret($row); ?>">
               </div>
             </div>
+          </div>
+
+
+          <?php  // Ajout deuxième étape du formulaire : Coordonnées 
+          ?>
+
+          <div class="m-form__wrapper m-form__step-2">
 
             <div class="m-form__grp">
               <div class="m-form__label-amimate">
@@ -183,10 +159,45 @@
           </div>
 
 
-          <?php // Ajout deuxième étape du formulaire : Identité 
+          <?php // Ajout troisième étape du formulaire : MDA
           ?>
 
-          <div class="m-form__wrapper m-form__step-2">
+          <div class="m-form__wrapper m-form__step-3">
+
+            <div class="m-form__grp">
+              <div class="m-form__label m-modal__contact-civilite">
+                <?php $value = get_profil_precompte($row); ?>
+                <label for="profil__precompte">Assujetti⸱e au précompte ?</label>
+                <div class="m-form__radio-horiz">
+                  <div class="m-form__radio">
+                    Non
+                    <input name="profil__precompte" type="radio" value="Non" <?php if (empty($value) || $value == "Non") echo "checked"; ?>>
+                    <span class="checkmark"></span>
+                  </div>
+                  <div class="m-form__radio">
+                    Oui
+                    <input name="profil__precompte" type="radio" value="Oui" <?php if ($value == "Oui") echo "checked"; ?>>
+                    <span class="checkmark"></span>
+                  </div>
+                </div>
+              </div>
+              <div class="m-form__label-amimate">
+                <label for="profil__numero_secu">N° de Sécu</label>
+                <input type="text" name="profil__numero_secu" placeholder="N° de Sécu" value="<?php the_profil_numero_secu($row); ?>">
+              </div>
+              <div class="m-form__label-amimate">
+                <label for="profil__numero_mda">N° de MDA</label>
+                <input type="text" name="profil__numero_mda" placeholder="N° de MDA" value="<?php the_profil_numero_mda($row); ?>">
+              </div>
+            </div>
+
+          </div>
+
+
+          <?php // Ajout quatrième étape du formulaire : Iban 
+          ?>
+
+          <div class="m-form__wrapper m-form__step-4">
 
             <div class="m-form__grp">
               <div class="m-form__label-amimate">
@@ -209,10 +220,10 @@
           </div>
 
 
-          <?php // Ajout troisième étape du formulaire : Input caché
+          <?php // Ajout cinquième étape du formulaire : Input cachés
           ?>
 
-          <div class="m-form__wrapper">
+          <div class="m-form__hide">
             <div class="m-form__grp">
               <div class="m-form__label-amimate">
                 <label for="profil__template">Template de facture par defaut</label>
