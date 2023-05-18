@@ -42,7 +42,7 @@ if ($conn->error) {
   include_once(__DIR__ . './db__check.php');
 
   // Redirection vers la page d'accueil
-  $location = __DIR__ . './../../index.php';
+  $location = __FILE__  . './../../index.php';
   header('Location:' . $location);
 }
 
