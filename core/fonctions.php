@@ -3558,7 +3558,7 @@ function nadine_prix($prix)
 function nadine_log($msg)
 {
   // Permet d'activer ou désactiver le MadManagerMode™
-  $MadManagerMode = false;
+  $MadManagerMode = true;
 
   if (isset($msg) && $MadManagerMode == true) {
     $error_msg = date('Y-m-d H:i:s') . ' - ' . __FILE__ . "\n";
@@ -3621,13 +3621,13 @@ function get_template_part($filename)
 
 function sanitize($string)
 {
-  // Change les caractères accentués
-  $string = strtr(utf8_decode($string), utf8_decode('àáâãäçèéêëìíîïñòóôõöùúûüýÿÀÁÂÃÄÇÈÉÊËÌÍÎÏÑÒÓÔÕÖÙÚÛÜÝ'), 'aaaaaceeeeiiiinooooouuuuyyAAAAACEEEEIIIINOOOOOUUUUY');
+  // Translitération des caractères avec des accents
+  $string = transliterator_transliterate('Any-Latin; Latin-ASCII', $string);
   // Modifie tous les caractères spéciaux et les espaces
   $string = filter_var($string, FILTER_SANITIZE_URL);
   // Met tous les caractères en minuscules
   $string = mb_strtolower($string);
-  // Revoie la chaine de caractère modifiée
+  // Retourne la chaîne de caractères modifiée
   return $string;
 }
 
@@ -3855,7 +3855,7 @@ function db__update($num_version = '')
 
   // Vérifier si la structure de la Base données
   // correspond à celle de db__structure.php
-  include_once(__DIR__ . './database/db__check.php');
+  include_once(__DIR__ . '/database/db__check.php');
 
   // Mets à jour le numéros de version dans la base de données
   $sql = "UPDATE Options SET option__valeur = '" . $num_version . "' WHERE option__nom = 'nadine__version'";

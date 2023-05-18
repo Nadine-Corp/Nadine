@@ -9,6 +9,7 @@
  */
 
 include './header.php';
+nadine_log("Nadine vient d'importer le fichier header.php");
 ?>
 
 <main class="l-contacts" role="main">

@@ -87,19 +87,8 @@ nadine_log("Nadine vient d'importe le fichier fonction.php");
 nadine_log("Nadine vérifie la version de la base de données");
 
 $sql = "SELECT * FROM Options WHERE option__nom='nadine__version'";
-$result = $conn->query($sql);
-if ($conn->error) {
-  // L'entrée nadine__version n'existe pas
-  nadine_log("Nadine pense que nadine__version n'existe pas dans la base de données");
+$result = $conn->query($sql) or die($conn->error);
 
-  // Ajoute l'entrée nadine__version dans la base de données
-  $sql =  "INSERT INTO Options (option__nom, option__valeur) VALUES ('nadine__version', '0')";
-  $conn->query($sql) or die($conn->error);
-  $conn->close();
-
-  // Met à jour la base de données
-  db__update();
-}
 
 if ($result->num_rows > 0) {
   $row = $result->fetch_assoc();
@@ -119,5 +108,18 @@ if ($result->num_rows > 0) {
     // La version des fichiers de Nadine
     // et de la base de données sont différent
     db__update($num_version);
+  } else {
+    nadine_log("Nadine est certaine que les numéros de version sont identiques");
   }
+} else {
+  // L'entrée nadine__version n'existe pas
+  nadine_log("Nadine pense que nadine__version n'existe pas dans la base de données");
+
+  // Ajoute l'entrée nadine__version dans la base de données
+  $sql =  "INSERT INTO Options (option__nom, option__valeur) VALUES ('nadine__version', '0')";
+  $conn->query($sql) or die($conn->error);
+  $conn->close();
+
+  // Met à jour la base de données
+  db__update();
 }
