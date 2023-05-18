@@ -5,6 +5,27 @@
 // Nadine lancera le TurboTuto™️
 
 
+
+// Obtention du protocole utilisé (http ou https)
+$protocol = isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? 'https' : 'http';
+
+// Obtention de l'hôte (nom de domaine ou adresse IP)
+$host = $_SERVER['HTTP_HOST'];
+
+// Obtention du chemin de base (racine du site)
+$base_path = $_SERVER['DOCUMENT_ROOT'];
+
+// Chemin relatif du dossier de Nadine par rapport au chemin de base
+$relative_path = '/nadine/';
+
+// Construction de l'URL complète du dossier de Nadine
+$nadine_url = $protocol . '://' . $host . $relative_path;
+
+echo $nadine_url;
+die;
+
+
+
 /**
  *  Importation des paramètres de connection
  */
@@ -40,12 +61,7 @@ if ($conn->error) {
   // La table Profil n'existe pas :
   // Lancement d'un DatabaseCheck pour ajouter les tables manquantes
   include_once(__DIR__ . './db__check.php');
-
-  echo __DIR__ . '<br>'
-    . __FILE__ . '<br>'
-    . $_SERVER['DOCUMENT_ROOT'] . '<br>'
-    . realpath($_SERVER['DOCUMENT_ROOT']);
-
+  $_SERVER['HTTP_REFERER'];
   die;
 
   // Redirection vers la page d'accueil
