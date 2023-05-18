@@ -46,9 +46,7 @@ if ($conn->error) {
 
   // La table Profil n'existe pas :
   // Lancement d'un DatabaseCheck pour ajouter les tables manquantes
-  include_once(__DIR__ . './db__check.php');
-  $_SERVER['HTTP_REFERER'];
-  die;
+  include_once(__DIR__ . '/db__check.php');
 
   // Redirection vers la page d'accueil
   $location = nadine_url();
