@@ -17,64 +17,58 @@ function nadine_url()
   // Définie le fichier à chercher
   $nadine_file = 'nadine.corp';
 
-  // Cherche l'URL et le chemin du fichier actuel
+  // Cherche l'URL du fichier actuel
   $protocol = isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? 'https' : 'http';
   $host = $_SERVER['HTTP_HOST'];
   $current_url = $_SERVER['HTTP_HOST'];
 
+  // Formate l'URL du fichier actuel
   $current_url = $protocol . '://' . $host . '/' . $current_url;
-  echo '$current_url : ' . $current_url . '<br><br>';
 
   // Cherche l'URL et le chemin du dossier parrent
   $parent_url = dirname($current_url);
-  echo '$parent_url : ' . $parent_url . '<br><br>';
 
-  die;
+  // Vérifie si le nadine_file est dans le même dossier
+  // que le fichier actuel
+  $home = check_is_home($parent_url, $nadine_file);
 
-
-  // Cherche le fichier $nadine_file dans le dossier actuel
-  $nadine_file_url = find_file_in_directory($parent_path, $nadine_file);
-
-  if ($nadine_file_url == false) {
-    $nadine_file_url = 'nop<br>';
-
-    // Si le $nadine_file n'est pas trouvé,
-    // Nadine le cherchera dans le dossier parent
-    $nadine_file_url = false;
-    while ($nadine_file_url === false && $parent_directory !== '/') {
-      $nadine_file_url = find_file_in_directory($parent_path, $nadine_file);
+  // Si le $nadine_file n'est pas trouvé,
+  // Nadine le cherchera dans le dossier parent
+  // du fichier actuel
+  if ($home === false) {
+    while ($home  === false && $parent_url !== '/') {
       $parent_url = dirname($parent_url);
-      $parent_path = dirname($parent_path);
+      $home = check_is_home($parent_url, $nadine_file);
     }
   }
 
   // Formate le résultat
-  $nadine_file_url = $parent_url . '/';
-
+  $nadine_url = $parent_url;
 
   // Retourne le résultat au template
-  return $nadine_file_url;
+  return $nadine_url;
 }
 
 
 /**
- * La fonction find_file_in_directory() permet de chercher
+ * La fonction check_is_home() permet de chercher
  * un fichier dans un dossier
  */
 
-
-function find_file_in_directory($directory, $filename)
+function check_is_home($url, $nadine_file)
 {
-  $iterator = new DirectoryIterator($directory);
+  // Formate l'URL du $nadine_file
+  $url .= '/' . $nadine_file;
 
-  foreach ($iterator as $file) {
-    if ($file->isFile() && $file->getFilename() === $filename) {
-      echo  'Wow ! Nadine est ici !!!<br>' . $file->getPathname() . '<br>';
-      return true;
-    } else {
-      echo 'Pas de Nadine ici. On continue les recherches<br>' . $file->getPathname() . '<br><br>';
-    }
+  // Test si l'URL $nadine_file exite
+  $headers = get_headers($url);
+  $response_code = substr($headers[0], 9, 3);
+
+
+  // Retourne le résultat au template
+  if ($response_code == "200") {
+    return true;
+  } else {
+    return false;
   }
-
-  return false;
 }
