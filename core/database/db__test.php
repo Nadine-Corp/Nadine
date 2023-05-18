@@ -61,14 +61,11 @@ $result = $conn->query($sql);
 $row = $result->fetch_row();
 if (!$row[0] > 0) {
 
-  echo 'pas de profil';
-  die;
-
   // La table Profil existe mais est elle est vide :
   // Lancement du TurboTuto™ AutoProfil pour
   // que l'utilisateur créer son premier profil.
 
-  include_once(__DIR__ . './../turbotuto/turbotuto__autoprofil.php');
+  include_once(__DIR__ . '/../turbotuto/turbotuto__autoprofil.php');
   exit();
 }
 
