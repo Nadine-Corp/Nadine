@@ -4,33 +4,21 @@
 // à base de données. Si une erreur est detectée,
 // Nadine lancera le TurboTuto™️
 
-
-
-// Obtention du protocole utilisé (http ou https)
-$protocol = isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? 'https' : 'http';
-
-// Obtention de l'hôte (nom de domaine ou adresse IP)
-$host = $_SERVER['HTTP_HOST'];
-
-// Obtention du chemin de base (racine du site)
-$base_path = $_SERVER['DOCUMENT_ROOT'];
-
-// Chemin relatif du dossier de Nadine par rapport au chemin de base
-$relative_path = '/nadine/';
-
-// Construction de l'URL complète du dossier de Nadine
-$nadine_url = $protocol . '://' . $host . $relative_path;
-
-echo $nadine_url;
-die;
-
-
-
 /**
  *  Importation des paramètres de connection
  */
 
 require_once(__DIR__ . '/../config.php');
+
+
+/**
+ * Importe le nadine_url. Permet à Nadine
+ * de savoir connaitre l'URL de son dossier racine
+ */
+
+require_once(__DIR__ . '/../nadine_url.php');
+echo nadine_url();
+die;
 
 
 /**
