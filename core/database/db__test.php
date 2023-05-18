@@ -41,8 +41,10 @@ if ($conn->error) {
   // Lancement d'un DatabaseCheck pour ajouter les tables manquantes
   include_once(__DIR__ . './db__check.php');
 
+  $home = $_SERVER['DOCUMENT_ROOT'];
+
   // Redirection vers la page d'accueil
-  $location = __FILE__  . './../../index.php';
+  $location = $home . './../../index.php';
   header('Location:' . $location);
 }
 
