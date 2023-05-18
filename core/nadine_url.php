@@ -18,18 +18,18 @@ function nadine_url()
   $nadine_file = 'nadine.corp';
 
   // Cherche l'URL et le chemin du fichier actuel
-  $file_url = $_SERVER['HTTP_REFERER'];
-  $file_path = $_SERVER['SCRIPT_FILENAME'];
+  $protocol = isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? 'https' : 'http';
+  $host = $_SERVER['HTTP_HOST'];
+  $current_url = $_SERVER['HTTP_HOST'];
 
-  echo '$file_url : ' . $file_url . '<br>';
-  echo '$file_path : ' . $file_path . '<br><br>';
+  $current_url = $protocol . '://' . $host . '/' . $current_url;
+  echo '$current_url : ' . $current_url . '<br><br>';
 
   // Cherche l'URL et le chemin du dossier parrent
-  $parent_url = dirname($file_url);
-  $parent_path = dirname($file_path);
+  $parent_url = dirname($current_url);
+  echo '$parent_url : ' . $parent_url . '<br><br>';
 
-  echo '$parent_url : ' . $parent_url . '<br>';
-  echo '$parent_path : ' . $parent_path . '<br><br>';
+  die;
 
 
   // Cherche le fichier $nadine_file dans le dossier actuel
