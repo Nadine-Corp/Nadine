@@ -32,10 +32,10 @@
 
       <section class="m-rom">
         <div class="m-col">
-          <h1 class="m-display">Re-Bonjour,<br>je suis Nadine</h1>
+          <h1 class="m-display">Re-Bonjour,<br>je suis Nadine.</h1>
         </div>
         <div class="m-col l6">
-          <p class="m-lead">Bienvenue dans votre nouveau logiciel de comptablité. Vous êtes actuellement dans le <em>TurboTuto™</em> de <a href="http://nadinecorp.net/" target="_blank"><em>NadineCorp©</em></a>. Je vais vous guider pour notre première rencontre. Pour commencer, j'ai besoin de mieux vous connaître. Pouvez-vous me donner quelques informations sur vous pour que je puisse créer votre profil ?</p>
+          <p class="m-lead">Bienvenue dans votre nouveau logiciel de comptablité. Vous êtes actuellement dans le <em>TurboTuto™</em> de <a href="http://nadinecorp.net/" target="_blank"><em>NadineCorp©</em></a>. Je vais vous guider pour notre première rencontre. Pour commencer, j'ai besoin de mieux vous connaître afin de pouvoir <u>personnaliser vos factures</u>.<br><br>Pouvez-vous me donner quelques informations sur vous pour que je puisse créer votre profil ?</p>
         </div>
       </section>
 
