@@ -25,8 +25,6 @@ function nadine_url()
   // Formate l'URL du fichier actuel
   $current_url = $protocol . '://' . $host . $current_url;
 
-  echo $current_url . '<br>';
-
   // Cherche l'URL et le chemin du dossier parrent
   $parent_url = dirname($current_url);
 
@@ -41,7 +39,6 @@ function nadine_url()
     while ($home  === false && $parent_url !== '/') {
       $parent_url = dirname($parent_url);
       $home = check_is_home($parent_url, $nadine_file);
-      echo $parent_url . '</br>';
     }
   }
 
