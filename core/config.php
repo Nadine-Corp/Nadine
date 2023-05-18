@@ -6,4 +6,4 @@
 $servername = "localhost";
 $username = "root";
 $password = "";
-$dbname = "nadine_asd";
+$dbname = "nadine_new";

@@ -20,8 +20,8 @@ require_once(__DIR__ . '/../config.php');
 // Désactive les messages d'erreurs
 mysqli_report(MYSQLI_REPORT_OFF);
 
-$mysqli = @new mysqli($servername, $username, $password, $dbname);
-if ($mysqli->connect_error) {
+$conn = @new mysqli($servername, $username, $password, $dbname);
+if ($conn->connect_error) {
 
   // Lancement du TurboTuto™
   include_once(__DIR__ . './../turbotuto/turbotuto.php');
@@ -33,30 +33,57 @@ if ($mysqli->connect_error) {
  *  Vérifie si un Profil existe dans la base de données
  */
 
-try {
-  $result = $conn->query("SELECT COUNT(*) FROM Profil");
-  $row = $result->fetch_row();
-  if (!$row[0] > 0) {
+$sql = 'SELECT COUNT(*) FROM Profil';
+$result = $conn->query($sql);
+if ($conn->error) {
 
-    // La table Profil existe mais est elle est vide :
-    // Lancement du TurboTuto™ AutoProfil pour
-    // que l'utilisateur créer son premier profil.
+  echo 'pas ok';
+  die;
 
-    include_once(__DIR__ . './../turbotuto/turbotuto__autoprofil.php');
-    exit();
-  }
-} catch (mysqli_sql_exception $e) {
 
   // La table Profil n'existe pas :
   // Lancement d'un DatabaseCheck pour ajouter les tables manquantes
-
   include_once(__DIR__ . './db__check.php');
 
-
   // Redirection vers la page d'accueil
-
   header('Location: ./../../index.php');
-};
+}
+
+
+
+echo 'ok';
+die;
+
+
+
+
+
+
+
+// try {
+//   $result = $conn->query("SELECT COUNT(*) FROM Profil");
+//   $row = $result->fetch_row();
+//   if (!$row[0] > 0) {
+
+//     // La table Profil existe mais est elle est vide :
+//     // Lancement du TurboTuto™ AutoProfil pour
+//     // que l'utilisateur créer son premier profil.
+
+//     include_once(__DIR__ . './../turbotuto/turbotuto__autoprofil.php');
+//     exit();
+//   }
+// } catch (mysqli_sql_exception $e) {
+
+//   // La table Profil n'existe pas :
+//   // Lancement d'un DatabaseCheck pour ajouter les tables manquantes
+
+//   include_once(__DIR__ . './db__check.php');
+
+
+//   // Redirection vers la page d'accueil
+
+//   header('Location: ./../../index.php');
+// };
 
 
 /**
