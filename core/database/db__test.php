@@ -17,7 +17,7 @@ require_once(__DIR__ . '/../config.php');
  */
 
 require_once(__DIR__ . '/../nadine_url.php');
-echo nadine_url();
+echo '<br><br>__<br><b>nadine_url() -> </b>' . nadine_url();
 die;
 
 

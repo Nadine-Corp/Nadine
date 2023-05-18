@@ -20,10 +20,12 @@ function nadine_url()
   // Cherche l'URL du fichier actuel
   $protocol = isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? 'https' : 'http';
   $host = $_SERVER['HTTP_HOST'];
-  $current_url = $_SERVER['HTTP_HOST'];
+  $current_url = $_SERVER['SCRIPT_NAME'];
 
   // Formate l'URL du fichier actuel
-  $current_url = $protocol . '://' . $host . '/' . $current_url;
+  $current_url = $protocol . '://' . $host . $current_url;
+
+  echo $current_url . '<br>';
 
   // Cherche l'URL et le chemin du dossier parrent
   $parent_url = dirname($current_url);
