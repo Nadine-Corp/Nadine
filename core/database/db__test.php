@@ -41,13 +41,17 @@ if ($conn->error) {
   // Lancement d'un DatabaseCheck pour ajouter les tables manquantes
   include_once(__DIR__ . './db__check.php');
 
-  $home = $_SERVER['DOCUMENT_ROOT'];
+  echo __DIR__ . '<br>'
+    . __FILE__ . '<br>'
+    . $_SERVER['DOCUMENT_ROOT'] . '<br>'
+    . realpath($_SERVER['DOCUMENT_ROOT']);
+
+  die;
 
   // Redirection vers la page d'accueil
   $location = $home . './../../index.php';
   header('Location:' . $location);
 }
-
 
 /**
  *  Vérifie si un Profil existe dans la base de données
