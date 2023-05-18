@@ -39,6 +39,7 @@ function nadine_url()
     while ($home  === false && $parent_url !== '/') {
       $parent_url = dirname($parent_url);
       $home = check_is_home($parent_url, $nadine_file);
+      echo $parent_url . '</br>';
     }
   }
 
@@ -58,15 +59,13 @@ function nadine_url()
 function check_is_home($url, $nadine_file)
 {
   // Formate l'URL du $nadine_file
-  $url .= '/' . $nadine_file;
+  $file_url = rtrim($url, '/') . '/' . $nadine_file;
 
   // Test si l'URL $nadine_file exite
-  $headers = get_headers($url);
-  $response_code = substr($headers[0], 9, 3);
-
+  $headers = @get_headers($file_url);
 
   // Retourne le résultat au template
-  if ($response_code == "200") {
+  if ($headers && strpos($headers[0], '200') !== false) {
     return true;
   } else {
     return false;
