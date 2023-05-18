@@ -31,7 +31,7 @@ $conn = @new mysqli($servername, $username, $password, $dbname);
 if ($conn->connect_error) {
 
   // Lancement du TurboTuto™
-  include_once(nadine_url() . '/core/turbotuto/turbotuto.php');
+  include_once(__DIR__ . './../turbotuto/turbotuto.php');
   exit();
 }
 
@@ -46,7 +46,9 @@ if ($conn->error) {
 
   // La table Profil n'existe pas :
   // Lancement d'un DatabaseCheck pour ajouter les tables manquantes
-  include_once(nadine_url() . 'core/database/db__check.php');
+  include_once(__DIR__ . './db__check.php');
+  $_SERVER['HTTP_REFERER'];
+  die;
 
   // Redirection vers la page d'accueil
   $location = nadine_url();
