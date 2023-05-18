@@ -37,10 +37,6 @@ $sql = 'SELECT COUNT(*) FROM Profil';
 $result = $conn->query($sql);
 if ($conn->error) {
 
-  echo 'pas ok';
-  die;
-
-
   // La table Profil n'existe pas :
   // Lancement d'un DatabaseCheck pour ajouter les tables manquantes
   include_once(__DIR__ . './db__check.php');
@@ -50,6 +46,24 @@ if ($conn->error) {
 }
 
 
+/**
+ *  Vérifie si un Profil existe dans la base de données
+ */
+
+$result = $conn->query($sql);
+$row = $result->fetch_row();
+if (!$row[0] > 0) {
+
+  echo 'pas de profil';
+  die;
+
+  // La table Profil existe mais est elle est vide :
+  // Lancement du TurboTuto™ AutoProfil pour
+  // que l'utilisateur créer son premier profil.
+
+  include_once(__DIR__ . './../turbotuto/turbotuto__autoprofil.php');
+  exit();
+}
 
 echo 'ok';
 die;
