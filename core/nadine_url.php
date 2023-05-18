@@ -4,58 +4,77 @@
 // Remplacer les valeurs des variables ci-dessous par vos propres info.
 
 
-// Obtention du chemin du fichier courant
-$nadine_file = 'nadine.corp';
 
-// Obtention du chemin du fichier courant
-$current_file = __FILE__;
+/**
+ * La fonction nadine_url() retourne l'URL
+ * du fichier nadine.corp, et donc de la home
+ * de Nadine
+ */
 
-// Obtention du chemin du dossier parent
-$parent_directory = dirname($current_file);
 
-// Déduction de l'URL en fonction du dossier parent et du fichier trouvé
-$found_file = find_file_in_directory($parent_directory, $nadine_file);
-if ($found_file !== false) {
-  $relative_path = str_replace($parent_directory, '', $found_file);
-  $nadine_url = nadine_url() . $relative_path;
-  return $found_file;
-} else {
-  // Le fichier $nadine_file n'a pas été trouvé, relancer la recherche dans le dossier parent
-  $found_file = false;
-  $parent_directory = dirname($parent_directory);
-  while ($found_file === false && $parent_directory !== '/') {
-    $found_file = find_file_in_directory($parent_directory, $nadine_file);
-    $parent_directory = dirname($parent_directory);
+function nadine_url()
+{
+  // Définie le fichier à chercher
+  $nadine_file = 'nadine.corp';
+
+  // Cherche l'URL et le chemin du fichier actuel
+  $file_url = $_SERVER['HTTP_REFERER'];
+  $file_path = $_SERVER['SCRIPT_FILENAME'];
+
+  echo '$file_url : ' . $file_url . '<br>';
+  echo '$file_path : ' . $file_path . '<br><br>';
+
+  // Cherche l'URL et le chemin du dossier parrent
+  $parent_url = dirname($file_url);
+  $parent_path = dirname($file_path);
+
+  echo '$parent_url : ' . $parent_url . '<br>';
+  echo '$parent_path : ' . $parent_path . '<br><br>';
+
+
+  // Cherche le fichier $nadine_file dans le dossier actuel
+  $nadine_file_url = find_file_in_directory($parent_path, $nadine_file);
+
+  if ($nadine_file_url == false) {
+    $nadine_file_url = 'nop<br>';
+
+    // Si le $nadine_file n'est pas trouvé,
+    // Nadine le cherchera dans le dossier parent
+    $nadine_file_url = false;
+    while ($nadine_file_url === false && $parent_directory !== '/') {
+      $nadine_file_url = find_file_in_directory($parent_path, $nadine_file);
+      $parent_url = dirname($parent_url);
+      $parent_path = dirname($parent_path);
+    }
   }
 
-  if ($found_file !== false) {
-    $relative_path = str_replace($parent_directory, '', $found_file);
-    $nadine_url = nadine_url() . $relative_path;
-    return $found_file;
-  } else {
-    echo "Impossible de déduire l'URL de Nadine.";
-  }
+  // Formate le résultat
+  $nadine_file_url = $parent_url . '/';
+
+
+  // Retourne le résultat au template
+  return $nadine_file_url;
 }
 
-// Fonction récursive pour rechercher un fichier dans un répertoire et ses sous-répertoires
+
+/**
+ * La fonction find_file_in_directory() permet de chercher
+ * un fichier dans un dossier
+ */
+
+
 function find_file_in_directory($directory, $filename)
 {
-  $iterator = new RecursiveDirectoryIterator($directory);
-  $iterator = new RecursiveIteratorIterator($iterator);
+  $iterator = new DirectoryIterator($directory);
 
   foreach ($iterator as $file) {
-    if ($file->getFilename() === $filename) {
-      return $file->getPathname();
+    if ($file->isFile() && $file->getFilename() === $filename) {
+      echo  'Wow ! Nadine est ici !!!<br>' . $file->getPathname() . '<br>';
+      return true;
+    } else {
+      echo 'Pas de Nadine ici. On continue les recherches<br>' . $file->getPathname() . '<br><br>';
     }
   }
 
   return false;
-}
-
-// Fonction pour obtenir l'URL de base du site
-function nadine_url()
-{
-  $protocol = isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? 'https' : 'http';
-  $host = $_SERVER['HTTP_HOST'];
-  return $protocol . '://' . $host;
 }
