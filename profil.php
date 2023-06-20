@@ -9,6 +9,13 @@
  */
 
 include(__DIR__ . '/header.php');
+
+
+/**
+ * Vérifie si un onglet doit être affiché
+ */
+
+
 ?>
 
 <main class="l-profil" role="main">
@@ -39,7 +46,7 @@ include(__DIR__ . '/header.php');
       ?>
 
       <section class="m-rom">
-        <form class="m-form m-form__step" action="./core/form__profil.php" method="post" autocomplete="off">
+        <form class="m-form m-form__step" action="./core/form__profil.php" method="post" autocomplete="off" <?php if (isset($_GET['data-step'])) echo 'data-step="' . $_GET['data-step'] . '"'; ?>>
 
 
           <?php // Ajout de la navigation 

@@ -58,7 +58,7 @@
             <span class="facture__subheading">TVA</span>
           </td>
           <td class="facture__w-25 facture__tr facture__subheading form__total">
-            <input type="text" name="TVA" class="facture__subheading" disabled>0 €
+            <input type="text" name="TVA" class="facture__subheading" disabled value="0"> €
           </td>
         </tr>
         <tr class="facture__h-10">

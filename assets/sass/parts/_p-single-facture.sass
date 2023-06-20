@@ -1,9 +1,8 @@
 // main: ../../../style.sass
 
-  La Part Facture permet de controler l'affichage d'une facture
-  ou d'un devis dans une listes. Notamment sur les pages
-  de chaque article ou la page de suivi
-
+/// La Part Facture permet de controler l'affichage d'une facture
+/// ou d'un devis dans une listes. Notamment sur les pages
+/// de chaque article ou la page de suivi
 
 .p-facture
   margin-right: m()
@@ -41,7 +40,6 @@
 .p-facture__prix
   height: 33%
 
-
 // Stylise le statut
 
 .p-facture__statut
@@ -62,7 +60,6 @@
   @include respond('s')
     top: m(2)
     right: m(-6)
-
 
 // Stylise les factures en fonction de son état
 // sur les pages Projet
@@ -92,7 +89,6 @@
     .p-facture__statut
       background: color('rouge', 80)
       color: color('backgroundColor')
-
 
   .p-facture__brouillon,
   .p-facture__envoye

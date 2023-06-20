@@ -3401,6 +3401,8 @@ function get_profil_template($row)
         while ($row = $loop->fetch_assoc()) :
           $profil__template = $row['profil__template'];
         endwhile;
+      else :
+        $profil__template = 'facture__2021';
       endif;
     }
 
@@ -3408,6 +3410,27 @@ function get_profil_template($row)
     // Retourne le résultat au template
     return $profil__template;
   }
+}
+
+
+/**
+ * La fonction set_profil_template() modifie
+ * le nom du template par defaut utilisé par utilisateur
+ * pour ses devis et factures
+ */
+
+function set_profil_template($profil__template = 'facture__2021')
+{
+  // Ajoute une variable pour stocker les infos à envoyer dans la base de données
+  $data = array();
+
+  // Formate les data
+  $data['profil__template'] = $profil__template;
+
+  // Insertion dans la base données
+  $table = 'Profil';
+  $primaryKey = 'profil__id';
+  nadine_insert($table, $primaryKey, $data);
 }
 
 
@@ -3558,7 +3581,7 @@ function nadine_prix($prix)
 function nadine_log($msg)
 {
   // Permet d'activer ou désactiver le MadManagerMode™
-  $MadManagerMode = true;
+  $MadManagerMode = false;
 
   if (isset($msg) && $MadManagerMode == true) {
     $error_msg = date('Y-m-d H:i:s') . ' - ' . __FILE__ . "\n";

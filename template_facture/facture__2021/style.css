@@ -186,7 +186,7 @@
 .paper__content input:not([type=submit]):not([type=radio]),
 .paper__content textarea {
 	height: 100%;
-	width: inherit;
+	width: auto;
 	float: inherit;
 	border: none;
 	resize: none;

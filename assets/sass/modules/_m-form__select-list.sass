@@ -1,30 +1,28 @@
 // main: ../../../style.sass
 
-  Le module Form__select-list permet de modifier l'aspect des select
-  pour les transformer en joli menu déroulant
-
-  Attention : pensez à activer le module m-form dans le fichier style.sass
-  Attention : pensez à activer le module Form : Select-list dans le fichier assets/js/nadine.js
-
-
-  Exemple de HTML :
-
-  <form class="m-form">
-    <div class="m-form__select-list">
-        <select>
-          <option value="Something" selected>Something</option>
-          <option value="An other thing">An other thing</option>
-          <option value="Something else">Something else</option>
-        </select>
-      <div>
-  </form>
-
+/// Le module Form__select-list permet de modifier l'aspect des select
+/// pour les transformer en joli menu déroulant
+///
+/// Attention : pensez à activer le module m-form dans le fichier style.sass
+/// Attention : pensez à activer le module Form : Select-list dans le fichier assets/js/nadine.js
+///
+///
+/// Exemple de HTML :
+///
+/// <form class="m-form">
+///   <div class="m-form__select-list">
+///       <select>
+///         <option value="Something" selected>Something</option>
+///         <option value="An other thing">An other thing</option>
+///         <option value="Something else">Something else</option>
+///       </select>
+///     <div>
+/// </form>
 
 // Définition de qq variables pour faciliter
 // les évolutions de design de ce module
 
 $listFocusBorderRadius: m()
-
 
 .m-form__select-list
   select
@@ -84,13 +82,3 @@ $listFocusBorderRadius: m()
     color: color('texte')
     background: $inputFocusBackground
     transition: $fast
-
-
-
-
-
-
-
-
-
-// stop scroll

@@ -1,28 +1,27 @@
 // main: ../../../style.sass
 
-  Le module Form__radiobtn permet de modifier l'aspect des boutons radio
-  pour les faire ressembler aux autres inputs.
-
-  Attention : pensez à activer le module m-form dans le fichier style.sass
-
-
-  Exemple de HTML :
-
-  <form class="m-form">
-    <div class="m-form__radio-horiz">
-      <div class="m-form__radio">
-        Something
-        <input name="exemple" type="radio" checked>
-        <span class="checkmark"></span>
-      </div>
-      <div class="m-form__radio">
-        Something else
-        <input name="exemple" type="radio">
-        <span class="checkmark"></span>
-      </div>
-    </div>
-  </form>
-
+/// Le module Form__radiobtn permet de modifier l'aspect des boutons radio
+/// pour les faire ressembler aux autres inputs.
+///
+/// Attention : pensez à activer le module m-form dans le fichier style.sass
+///
+///
+/// Exemple de HTML :
+///
+/// <form class="m-form">
+///   <div class="m-form__radio-horiz">
+///     <div class="m-form__radio">
+///       Something
+///       <input name="exemple" type="radio" checked>
+///       <span class="checkmark"></span>
+///     </div>
+///     <div class="m-form__radio">
+///       Something else
+///       <input name="exemple" type="radio">
+///       <span class="checkmark"></span>
+///     </div>
+///   </div>
+/// </form>
 
 // Stylise les boutons radio lorsqu'ils sont
 // les uns à côté des autres
@@ -34,15 +33,12 @@
   .m-form__radio:not(:first-of-type)
     margin-left: m(2)
 
-
 // Stylise les boutons radio lorsqu'ils sont
 // les uns sous les autres
 
 .m-form__radio-vert
   .m-form__radio
     margin-bottom: m()
-
-
 
 .m-form__radio-txt
   margin-right: auto

@@ -1,20 +1,19 @@
 // main: ../../../style.sass
 
-  Le module Button stylise les boutons. Il exite
-  deux variantes : le bouton btn__plain et le btn__outline.
-
-
-  Exemple de HTML :
-
-  <div class="m-btn__grp">
-    <a href="<?php the_permalink(); ?>" class="btn btn__outline">
-      <?php _e("Annuler","monobloc") ?>
-    </a>
-    <a href="<?php the_permalink(); ?>" class="btn btn__plain">
-      <?php _e("Valider","monobloc") ?>
-    </a>
-  </div>
-
+/// Le module Button stylise les boutons. Il exite
+/// deux variantes : le bouton btn__plain et le btn__outline.
+///
+///
+/// Exemple de HTML :
+///
+/// <div class="m-btn__grp">
+///   <a href="<?php the_permalink(); ?>" class="btn btn__outline">
+///     <?php _e("Annuler","monobloc") ?>
+///   </a>
+///   <a href="<?php the_permalink(); ?>" class="btn btn__plain">
+///     <?php _e("Valider","monobloc") ?>
+///   </a>
+/// </div>
 
 // Stylse les groupes de boutons
 
@@ -22,18 +21,16 @@
   display: inline-flex
   flex-wrap: wrap
   gap: m()
- 
 
   &.m-btn__grp-v
     flex-direction: column
     align-items: flex-start
-    
+
     &>.btn
       margin-left: 0
-    
+
     &>.btn:not(:first-child)
       margin-top: m()
-
 
 // Stylse tous les boutons
 
@@ -56,14 +53,12 @@
     border-radius: m(1.5)
     transition: $fast
 
-
 // Stylise les boutons avec un fond
 
 .btn__plain
   color: color('backgroundColor')
   background: color('rouge', 50)
   border: 1px solid color('rouge', 50)
-
 
 // Stylise les boutons avec un simple contour
 
@@ -82,7 +77,6 @@
     svg
       fill: color('texte')
       transition: $fast
-
 
 // Stylise les boutons avec une icone
 
@@ -104,17 +98,16 @@
   color: color('texte')
   transition: $fast
 
-
-// Stylse les gros boutons
-
-  Exemple de HTML :
-  <a href="./projet__new.php" class="btn btn__big btn__plain btn__modal" data-modal='add-projet'>
-    <div class="btn__big-ico"><?php include './assets/img/ico_ajouter--plain.svg.php'; ?></div>
-    <div class="btn__big-txt">
-      <span class=" m-lead m-ss">Ajouter</span>
-      <span class="m-body-l">Projet</span>
-    </div>
-  </a>
+/// Stylse les gros boutons
+///
+/// Exemple de HTML :
+/// <a href="./projet__new.php" class="btn btn__big btn__plain btn__modal" data-modal='add-projet'>
+///   <div class="btn__big-ico"><?php include './assets/img/ico_ajouter--plain.svg.php'; ?></div>
+///   <div class="btn__big-txt">
+///     <span class=" m-lead m-ss">Ajouter</span>
+///     <span class="m-body-l">Projet</span>
+///   </div>
+/// </a>
 
 .btn__big
   display: flex
@@ -141,22 +134,20 @@
     color: color('rouge', 80)
     font-style: italic
 
-
 // Stylse boutons avec des icones
 
 .btn__big-ico svg
   width: m(4.5)
   fill: color('backgroundColor')
 
-
-// Stylse des feedback
-
-  Exemple de HTML :
-  <div class="m-btn__grp">
-    <button class="btn btn__outline btn__cancel" type="button">Annuler</button>
-    <button class="btn btn__plain btn__copy" type="button">Copier</button>
-    <span class="btn__info m-ss">Message copié !</span>
-  </div>
+/// Stylse des feedback
+///
+/// Exemple de HTML :
+/// <div class="m-btn__grp">
+///   <button class="btn btn__outline btn__cancel" type="button">Annuler</button>
+///   <button class="btn btn__plain btn__copy" type="button">Copier</button>
+///   <span class="btn__info m-ss">Message copié !</span>
+/// </div>
 
 .btn__info
   opacity: 0
