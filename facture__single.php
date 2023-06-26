@@ -186,25 +186,25 @@ include './header.php';
             <input type="hidden" name="facture__numero" placeholder="facture__numero" value="<?php the_facture_numero($row, $table) ?>">
             <input type="hidden" name="projet__nom" placeholder="projet__nom" value="<?php echo $row["projet__nom"] ?>">
             <input type="hidden" name="projet__numero" placeholder="projet__numero" value="<?php echo $row["projet__numero"] ?>">
-            <input type="hidden" name="diffuseur__id" placeholder="__id" value="<?php echo $row["diffuseur__id"] ?>">
-            <input type="hidden" name="diffuseur__societe" placeholder="__societe" value="<?php echo $row["diffuseur__societe"] ?>">
-            <input type="hidden" name="diffuseur__siret" placeholder="__siret" value="<?php echo $row["diffuseur__siret"] ?>">
-            <input type="hidden" name="diffuseur__civilite" placeholder="__civilite" value="<?php echo $row["diffuseur__civilite"] ?>">
-            <input type="hidden" name="diffuseur__prenom" placeholder="__prenom" value="<?php echo $row["diffuseur__prenom"] ?>">
-            <input type="hidden" name="diffuseur__nom" placeholder="__nom" value="<?php echo $row["diffuseur__nom"] ?>">
-            <input type="hidden" name="diffuseur__adresse" placeholder="__adresse" value="<?php echo $row["diffuseur__adresse"] ?>">
-            <input type="hidden" name="diffuseur__code_postal" placeholder="__code_postal" value="<?php echo $row["diffuseur__code_postal"] ?>">
-            <input type="hidden" name="diffuseur__ville" placeholder="__ville" value="<?php echo $row["diffuseur__ville"] ?>">
-            <input type="hidden" name="diffuseur__telephone" placeholder="__telephone" value="<?php echo $row["diffuseur__telephone"] ?>">
-            <input type="hidden" name="diffuseur__email" placeholder="__email" value="<?php echo $row["diffuseur__email"] ?>">
+            <input type="hidden" name="diffuseur__id" placeholder="diffuseur__id" value="<?php echo $row["diffuseur__id"] ?>">
+            <input type="hidden" name="diffuseur__societe" placeholder="diffuseur__societe" value="<?php echo $row["diffuseur__societe"] ?>">
+            <input type="hidden" name="diffuseur__siret" placeholder="diffuseur__siret" value="<?php echo $row["diffuseur__siret"] ?>">
+            <input type="hidden" name="diffuseur__civilite" placeholder="diffuseur__civilite" value="<?php echo $row["diffuseur__civilite"] ?>">
+            <input type="hidden" name="diffuseur__prenom" placeholder="diffuseur__prenom" value="<?php echo $row["diffuseur__prenom"] ?>">
+            <input type="hidden" name="diffuseur__nom" placeholder="diffuseur__nom" value="<?php echo $row["diffuseur__nom"] ?>">
+            <input type="hidden" name="diffuseur__adresse" placeholder="diffuseur__adresse" value="<?php echo $row["diffuseur__adresse"] ?>">
+            <input type="hidden" name="diffuseur__code_postal" placeholder="diffuseur__code_postal" value="<?php echo $row["diffuseur__code_postal"] ?>">
+            <input type="hidden" name="diffuseur__ville" placeholder="diffuseur__ville" value="<?php echo $row["diffuseur__ville"] ?>">
+            <input type="hidden" name="diffuseur__telephone" placeholder="diffuseur__telephone" value="<?php echo $row["diffuseur__telephone"] ?>">
+            <input type="hidden" name="diffuseur__email" placeholder="diffuseur__email" value="<?php echo $row["diffuseur__email"] ?>">
             <input type="hidden" name="diffuseur__website" placeholder="__website" value="<?php echo $row["diffuseur__website"] ?>">
             <input type="hidden" name="facture__total" placeholder="Total" class="facture__subheading">
             <input type="hidden" name="projet__id" placeholder="projet__id" value="<?php the_projet_id($row) ?>">
-            <input type="hidden" name="profil__id" placeholder="projet__id" value="<?php the_profil_id($row) ?>">
+            <input type="hidden" name="profil__id" placeholder="profil__id" value="<?php the_profil_id($row) ?>">
 
             <?php
             // Affiche le Template de facture ou devis
-            include(__DIR__ . the_facture_template_url($projet__id, $table, $facture__id));
+            include(__DIR__ . get_facture_template_url($projet__id, $table, $facture__id));
             ?>
           </div>
         </section>

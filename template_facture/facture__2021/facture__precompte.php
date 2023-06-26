@@ -194,11 +194,11 @@
         </tr>
         <tr class="facture__h-20 facture__b-t">
           <td class="facture__w-50 facture__total facture__display2">
-            <span id="total-artiste" class="facture__subheading"></span>
+            <span id="total-artiste-precompte" class="facture__subheading"></span>
             <input type="hidden" name="total-artiste" placeholder="Total" class="facture__subheading">
           </td>
           <td class="facture__w-50 facture__b-ld facture__total facture__display2">
-            <span id="total-mda" class="facture__subheading"></span>
+            <span id="total-diffuseur-precompte" class="facture__subheading"></span>
             <input type="hidden" name="total-mda" placeholder="Total" class="facture__subheading">
           </td>
         </tr>

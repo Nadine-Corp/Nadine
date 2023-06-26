@@ -35,7 +35,7 @@
 	font-size: 8pt;
 	line-height: 10pt;
 	color: black;
-	font-family: neuzeit-grotesk, sans-serif;
+	font-family: 'Nadine Sans', Helvetica, sans-serif;
 	font-weight: 400;
 	font-style: normal;
 }
@@ -44,7 +44,7 @@
 	font-size: 6pt;
 	line-height: 8pt;
 	color: black;
-	font-family: neuzeit-grotesk, sans-serif;
+	font-family: 'Nadine Sans', Helvetica, sans-serif;
 	font-weight: 400;
 	font-style: normal;
 }
@@ -68,7 +68,7 @@
 	letter-spacing: -0.1pt;
 	line-height: 9pt;
 	color: black;
-	font-family: neuzeit-grotesk, sans-serif;
+	font-family: 'Nadine Sans', Helvetica, sans-serif;
 	font-weight: 400;
 	font-style: normal;
 }
@@ -197,6 +197,10 @@
 	padding: 0;
 	border-radius: 0;
 	transition: background 0.5s;
+}
+
+.facture__w-75 input{
+	width: 100% !important;
 }
 
 .paper__content input:not([type=submit]):not([type=radio]):focus,

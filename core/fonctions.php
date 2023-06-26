@@ -2438,13 +2438,12 @@ function the_facture_template($row, $table)
 }
 
 
-
 /**
- * La fonction the_facture_template_url() permet de sélectionner
+ * La fonction get_facture_template_url() permet de sélectionner
  * le bon template pour afficher les devis ou facture
  */
 
-function the_facture_template_url($projet__id, $table, $facture__id)
+function get_facture_template_url($projet__id, $table, $facture__id)
 {
   if (isset($projet__id) && isset($table) && isset($facture__id)) {
     // Récupére le bon prefix
