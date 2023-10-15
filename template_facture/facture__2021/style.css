@@ -84,6 +84,7 @@
 
 .paper__content td {
 	padding: 5px;
+	vertical-align: middle;
 }
 
 .paper__content p {
@@ -238,4 +239,9 @@
 
 .paper__content input::placeholder {
 	color: black;
+}
+
+.paper__content .form__input-prix,
+.paper__content .form__input-total {
+	width: 50% !important;
 }

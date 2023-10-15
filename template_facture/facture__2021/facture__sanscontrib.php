@@ -48,8 +48,8 @@
           <td class="facture__b-l facture__w-25 facture__tl">
             <span class="facture__subheading">Total brut</span>
           </td>
-          <td class="facture__w-25 facture__tr facture__subheading form__total">
-            <input type="text" name="total" placeholder="Total" class="facture__subheading" disabled> €
+          <td class="facture__w-25 facture__tr facture__subheading form__total" style="text-align:right">
+            <input type="text" name="total" placeholder="Total" class="facture__subheading form__input-total" disabled> €
           </td>
         </tr>
         <tr class="facture__h-10">
@@ -57,8 +57,8 @@
           <td class="facture__b-l facture__w-25 facture__tl">
             <span class="facture__subheading">TVA</span>
           </td>
-          <td class="facture__w-25 facture__tr facture__subheading form__total">
-            <input type="text" name="TVA" class="facture__subheading" disabled value="0"> €
+          <td class="facture__w-25 facture__tr facture__subheading form__total" style="text-align:right">
+            <input type="text" name="TVA" class="facture__subheading form__input-total" disabled value="0"> €
           </td>
         </tr>
         <tr class="facture__h-10">
@@ -66,8 +66,8 @@
           <td class="facture__b-l facture__w-25 facture__tl">
             <span class="facture__subheading">Contributions diffuseur</span>
           </td>
-          <td class="facture__w-25 facture__tr facture__subheading form__total">
-            <input type="text" name="total_charges" placeholder="Charges" class="facture__subheading sanscontrib" disabled> €
+          <td class="facture__w-25 facture__tr facture__subheading form__total" style="text-align:right">
+            <input type="text" name="total_charges" placeholder="Charges" class="facture__subheading form__input-total sanscontrib" disabled> €
           </td>
         </tr>
         <tr class="facture__h-10">
@@ -75,8 +75,8 @@
           <td class="facture__b-l facture__w-25 facture__tl facture__b-t">
             <span class="facture__subheading">Net à payer</span>
           </td>
-          <td class="facture__w-25 facture__tr facture__subheading form__total facture__b-t">
-            <input type="text" name="TotalEtCharges" placeholder="Total TTC" class="facture__subheading" disabled> €
+          <td class="facture__w-25 facture__tr facture__subheading form__total facture__b-t" style="text-align:right">
+            <input type="text" name="TotalEtCharges" placeholder="Total TTC" class="facture__subheading form__input-total" disabled> €
           </td>
         </tr>
         <tr class="facture__h-10">
