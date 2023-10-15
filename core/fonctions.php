@@ -600,7 +600,7 @@ function the_projet_factures($row)
         // Récupére le bon prefix
         $prefix = get_facture_prefix($table);
 
-        if (check_is_not_delete($row, $prefix)) {
+        if (is_not_delete($row, $prefix)) {
           // Récupére le numéros de la facture
           $facture_numero = get_facture_numero($row);
 
@@ -1076,6 +1076,27 @@ function the_diffuseur_full_adresse($row)
 
 
 /**
+ * La fonction get_diffuseur_type() permet d'afficher
+ * le type de diffuseur
+ */
+
+function get_diffuseur_type($row)
+{
+  if (isset($row)) {
+    // Récupère les infos du diffuseur
+    if (isset($row["diffuseur__type"])) {
+      $diffuseur__type = $row["diffuseur__type"];
+    } else {
+      $diffuseur__type = '';
+    }
+
+    // Retourne le résultat au template
+    return $diffuseur__type;
+  }
+}
+
+
+/**
  * La fonction the_diffuseur_type() permet d'afficher
  * le type de diffuseur
  */
@@ -1084,7 +1105,7 @@ function the_diffuseur_type($row)
 {
   if (isset($row)) {
     // Récupère les infos du diffuseyr
-    $diffuseur__type = $row["diffuseur__type"];
+    $diffuseur__type = get_diffuseur_type($row);
 
     // Retourne le résultat au template
     echo $diffuseur__type;
@@ -2410,7 +2431,11 @@ function get_facture_template($row, $table)
         $facture__template = get_profil_template($row);
       }
     } else {
-      // Récupère le nom du template par défaut
+      // Si le template n'exite pas dans la Base de données
+      // ou dans les fichiers de Nadine
+      nadine_log("Nadine n'a pas trouvé de template de facture. Elle va en selectionner un toute seule");
+
+      //Récupère le nom du template par défaut
       $facture__template = get_profil_template($row);
     }
 
@@ -2480,11 +2505,20 @@ function get_facture_template_url($projet__id, $table, $facture__id)
       $row = $loop->fetch_assoc();
       $diffuseur__id = $row['diffuseur__id'];
 
-      // Vérifie si le précompte doit être appliqué
+      // Vérifie si un format de facture alternatif doit être appliqué
       if ($facture__file != 'devis') {
-        if (check_if_precompte($diffuseur__id, $table, $facture__id)) {
-          $facture__file .= '__precompte';
+
+        $facture__alt = '';
+
+        // Vérifie si le précompte doit être appliqué
+        if (is_precompte($diffuseur__id, $table, $facture__id)) {
+          $facture__alt = '__precompte';
         }
+        // Vérifie si les contributions doivent être appliquées
+        if (is_sans_contribution($row)) {
+          $facture__alt = '__sanscontrib';
+        }
+        $facture__file .= $facture__alt;
       };
 
       // Formate le nom du fichier
@@ -3405,7 +3439,6 @@ function get_profil_template($row)
       endif;
     }
 
-
     // Retourne le résultat au template
     return $profil__template;
   }
@@ -3678,11 +3711,11 @@ function get_num_version()
 
 
 /**
- * La fonction check_if_artistes() permet de savoir s'il existe
+ * La fonction is_table_existe() permet de savoir s'il existe
  * des Diffuseurs dans la base de données
  */
 
-function check_if_table_existe($table)
+function is_table_existe($table)
 {
   if (isset($table)) {
 
@@ -3703,11 +3736,11 @@ function check_if_table_existe($table)
 
 
 /**
- * La fonction check_is_not_delete() vérifie
+ * La fonction is_not_delete() vérifie
  * si un élément a été supprimé par l'utilisateur
  */
 
-function check_is_not_delete($row, $prefix)
+function is_not_delete($row, $prefix)
 {
   if (isset($row)) {
     if (isset($prefix)) {
@@ -3724,11 +3757,11 @@ function check_is_not_delete($row, $prefix)
 
 
 /**
- * La fonction check_if_precompte() permet de savoir si un projet doit utiliser
+ * La fonction is_precompte() permet de savoir si un projet doit utiliser
  * ou pas le systeme de précompte
  */
 
-function check_if_precompte($diffuseur__id = '', $table = '', $facture__id = '')
+function is_precompte($diffuseur__id = '', $table = '', $facture__id = '')
 {
   // Vérifie si une facture ou devis ID a été envoyé avec la demande
   if ($facture__id !== 'new' && $facture__id !== '') {
@@ -3808,6 +3841,33 @@ function check_if_precompte($diffuseur__id = '', $table = '', $facture__id = '')
       return true;
     }
   } else {
+    // Retourne le résultat au template
+    return false;
+  }
+}
+
+
+/**
+ * La fonction is_sans_contribution() permet de savoir si une facture
+ * doit utiliser le template Sans Contribution
+ */
+function is_sans_contribution($row)
+{
+  if (isset($row)) {
+    // Récupère les infos du diffuseur
+    $diffuseur__pays = get_diffuseur_pays($row);
+    $diffuseur__type = get_diffuseur_type($row);
+
+    // Vérifie si le diffuseur est étrangé
+    if ($diffuseur__pays !== null && $diffuseur__pays !== 'France') {
+      return true;
+    }
+
+    // Vérifie si le diffuseur est un particulier
+    if ($diffuseur__type !== null && $diffuseur__type === 'Particulier') {
+      return true;
+    }
+
     // Retourne le résultat au template
     return false;
   }

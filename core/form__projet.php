@@ -68,7 +68,7 @@ if (!isset($data['projet__porteurduprojet'])) {
  * Vérifie si le precompte doit être appliqué
  */
 
-if (check_if_precompte($data['diffuseur__id'])) {
+if (is_precompte($data['diffuseur__id'])) {
   $data['projet__precompte'] = '1';
 } else {
   $data['projet__precompte'] = '0';

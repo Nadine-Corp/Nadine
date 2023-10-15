@@ -76,7 +76,7 @@ if (!$row[0] > 0) {
  */
 
 require_once(__DIR__ . './../fonctions.php');
-nadine_log("Nadine vient d'importe le fichier fonction.php");
+//nadine_log("Nadine vient d'importe le fichier fonction.php");
 
 
 /**
@@ -84,7 +84,7 @@ nadine_log("Nadine vient d'importe le fichier fonction.php");
  *  correspond à la version de Nadine 
  */
 
-nadine_log("Nadine vérifie la version de la base de données");
+//nadine_log("Nadine vérifie la version de la base de données");
 
 $sql = "SELECT * FROM Options WHERE option__nom='nadine__version'";
 $result = $conn->query($sql) or die($conn->error);

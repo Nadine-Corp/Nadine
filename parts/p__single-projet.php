@@ -4,7 +4,7 @@
 // dans les listes de projets comme sur les pages Projets ou Bilan
 
 $prefix = 'projet';
-if (check_is_not_delete($row, $prefix)) :
+if (is_not_delete($row, $prefix)) :
 ?>
   <article class="p-projet__single <?php the_projet_class($row) ?>">
     <a href="projet__single.php?projet__id=<?php the_projet_id($row) ?>">

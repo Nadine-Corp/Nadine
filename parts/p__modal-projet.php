@@ -107,7 +107,7 @@ if (isset($_GET['id'])) {
 
       <div class="m-form__wrapper m-form__step-2">
         <div class="m-form__label m-form__select-list m-form__with-btn">
-          <?php if (check_if_table_existe('Diffuseurs')) : ?>
+          <?php if (is_table_existe('Diffuseurs')) : ?>
             <label for="diffuseur__id">Nom du diffuseur</label>
             <select name="diffuseur__id" data-selected="<?php the_diffuseur_id($row) ?>" required>
               <?php the_diffuseurs_list(); ?>
@@ -148,7 +148,7 @@ if (isset($_GET['id'])) {
         </div>
 
 
-        <?php if (check_if_table_existe('Artistes')) : ?>
+        <?php if (is_table_existe('Artistes')) : ?>
 
           <div class="m-form__equipe">
             <label for="artiste__1">Liste des coéquipiers</label>

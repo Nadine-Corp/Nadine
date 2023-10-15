@@ -6,7 +6,7 @@
 
 $table = get_facture_table($row);
 $prefix = get_facture_prefix($table);
-if (check_is_not_delete($row, $prefix)) :
+if (is_not_delete($row, $prefix)) :
 ?>
 
   <article class="p-facture <?php the_facture_class($row) ?>  ">

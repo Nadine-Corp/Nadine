@@ -37,7 +37,16 @@ function calc() {
 	var total_des_contributions_diffuseur = contribution_sociales + contribution_a_la_formation_professionnelle;
 	var total_diffuseur = total_des_contributions_diffuseur;
 	var total_diffuseur_precompte = total_precompte + total_des_contributions_diffuseur;
-	var total_charges = total * 0.011;
+
+	var totalChargesInput = document.querySelector("input[name$='total_charges']");
+	// Vérifie si les contributions doivent être ajoutées à la facture 
+	if (totalChargesInput.classList.contains('sanscontrib')) {
+		var total_charges = 0;
+	} else {
+		var total_charges = total * 0.011;
+	}
+	var total_charges = parseInt(total_charges);
+
 	var totalEtCharges = total + total_charges;
 
 
@@ -98,7 +107,6 @@ function calc() {
 	if (totalDiffuseurInput) {
 		totalDiffuseurInput.value = arrondi(total_diffuseur);
 	}
-	var totalChargesInput = document.querySelector("input[name='total_charges']");
 	if (totalChargesInput) {
 		totalChargesInput.value = arrondi(total_charges);
 	}

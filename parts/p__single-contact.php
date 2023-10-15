@@ -4,7 +4,7 @@
 // dans les listes de contacts comme sur la page Contacts.
 
 $prefix = get_contact_prefix($row);
-if (check_is_not_delete($row, $prefix)) :
+if (is_not_delete($row, $prefix)) :
 ?>
 
   <article class="l-contacts__contact <?php the_contact_class($row) ?>">

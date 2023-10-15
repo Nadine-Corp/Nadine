@@ -39,7 +39,6 @@
     </td>
   </tr>
 
-
   <tr class="facture__b-td">
     <td class="facture__w-75 facture__tl facture__subheading" colspan="3">
       <input type="text" name="facture__tache_4" style="text-align:left;" value="<?php the_facture_tache($row, 4) ?>">
