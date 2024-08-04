@@ -199,7 +199,7 @@ include './header.php';
             <input type="hidden" name="diffuseur__pays" placeholder="diffuseur__pays" value="<?php echo $row["diffuseur__pays"] ?>">
             <input type="hidden" name="diffuseur__telephone" placeholder="diffuseur__telephone" value="<?php echo $row["diffuseur__telephone"] ?>">
             <input type="hidden" name="diffuseur__email" placeholder="diffuseur__email" value="<?php echo $row["diffuseur__email"] ?>">
-            <input type="hidden" name="diffuseur__website" placeholder="__website" value="<?php echo $row["diffuseur__website"] ?>">
+            <input type="hidden" name="diffuseur__website" placeholder="diffuseur__website" value="<?php echo $row["diffuseur__website"] ?>">
             <input type="hidden" name="facture__total" placeholder="Total" class="facture__subheading">
             <input type="hidden" name="projet__id" placeholder="projet__id" value="<?php the_projet_id($row) ?>">
             <input type="hidden" name="profil__id" placeholder="profil__id" value="<?php the_profil_id($row) ?>">

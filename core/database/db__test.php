@@ -75,7 +75,7 @@ if (!$row[0] > 0) {
  * les plus importantes de Nadine
  */
 
-require_once(__DIR__ . './../fonctions.php');
+require_once(__DIR__ . '/../fonctions.php');
 //nadine_log("Nadine vient d'importe le fichier fonction.php");
 
 
