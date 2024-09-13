@@ -11,7 +11,7 @@ nadine_log("Nadine ouvre le fichier de fonction.php");
  *  Importation des paramètres de connection
  */
 
-include(__DIR__ . '/config.php');
+include(__DIR__ . '/../config.php');
 
 
 /**

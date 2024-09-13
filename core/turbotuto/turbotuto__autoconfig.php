@@ -21,7 +21,7 @@
    */
 
   // lire le contenu de config.php
-  $config_content = file_get_contents('../config.php');
+  $config_content = file_get_contents('../../config.php');
 
   // remplacer les valeurs
   $config_content = preg_replace('/\$servername\s*=\s*".*";/', "\$servername = \"$servername\";", $config_content);
@@ -30,7 +30,7 @@
   $config_content = preg_replace('/\$dbname\s*=\s*".*";/', "\$dbname = \"$dbname\";", $config_content);
 
   // écrire le nouveau contenu dans config.php
-  file_put_contents('../config.php', $config_content);
+  file_put_contents('../../config.php', $config_content);
 
 
   /**

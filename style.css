@@ -57,22 +57,27 @@
   --color-rgb-grey-1000: 28, 28, 28;
 }
 
-:root, \:root.dark__mode {
-  --color-txt: var(--color-rouge-500);
-  --color-back: var(--color-grey-1000);
-  --color-overlay: var(--color-grey-1000);
-  --color-coverBackgroundColor: var(--color-rouge-500);
+html {
+  --color-txt: var(--color-grey-1000);
+  --color-back: var(--color-grey-0);
+  --color-overlay: rgba( var(--color-rgb-grey-0) , 0.95 );
+  --color-coverBackgroundColor: var(--color-grey-950);
   --color-breadcrumbBackgroundColor: var(--color-rouge-900);
   --color-border-color: var(--color-rouge-500);
   --color-rgb-shadow-50: 13, 13, 13;
 }
 
-:root.light__mode {
-  --color-backgroundColor: var(--color-grey-0);
-  --color-overlay: var(--color-grey-100);
-  --color-rgb-shadow-50: 150, 150, 150;
+@media (prefers-color-scheme: dark) {
+  html {
+    --color-txt: var(--color-rouge-500);
+    --color-back: var(--color-grey-1000);
+    --color-overlay: rgba( var(--color-rgb-grey-1000) , 0.95 );
+    --color-coverBackgroundColor: var(--color-rouge-500);
+    --color-breadcrumbBackgroundColor: var(--color-rouge-900);
+    --color-border-color: var(--color-rouge-500);
+    --color-rgb-shadow-50: 13, 13, 13;
+  }
 }
-
 * {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
@@ -2147,7 +2152,7 @@ input:checked + .slider:before {
 }
 .is--denko__container span {
   display: inline-block;
-  color: var(--color-rouge-100);
+  color: var(--color-back);
   padding: 0 var(--2m);
   border-right: 1px solid var(--color-rouge-800);
 }
@@ -2771,7 +2776,7 @@ input:checked + .slider:before {
 }
 .nav__btn-gp div {
   height: 3px;
-  background: var(--color-rouge-1000);
+  background: var(--color-back);
   -webkit-transition: 0.5s;
   transition: 0.5s;
 }

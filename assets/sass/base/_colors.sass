@@ -1,12 +1,19 @@
 // main: ../../../style.sass
 
-// Le fichier Colors contrôle les thèmes colorés de Nadine.
+/// Le fichier Colors stylises les couleurs utilisé par Monobloc.
+/// La fonction accepte 2 paramètres : Le nom de la couleur, sa déclinaison.
+/// Un troisième peut-être ajouter pour renseigner l'opatité.
 
 /// Ajout du nombre de déclinaison pour chaque couleur.
-//
-//   0..10..20..30..40..50..60..70..80..90..100
-//   ↑                  ↑                   ↑
-//   0=grey-0            50=couleur pure      100=grey-100
+///
+/// 0..100..200..300..400..500..600..700..800..900..1000
+/// ↑                       ↑                         ↑
+/// 0=grey-0          500=couleur pure          1000=grey-1000
+
+/// Exemple de SASS :
+///   div
+///     background: color('txt')
+///     color: color('back', 700, 0.5)
 
 $declinaisons: 0, 100, 200, 300, 400, 500, 600, 700, 800, 900, 950, 980, 1000
 
@@ -18,6 +25,7 @@ $grey-1000: hsl(0, 0%, 11%)
 $grey-0: hsl(47, 15%, 88%)
 
 /// Palette NadineCorp©
+
 $rouge-trash: #FF3636
 $colorTheme: ('rouge': $rouge-trash)
 
@@ -26,20 +34,23 @@ $colorTheme: ('rouge': $rouge-trash)
 \:root
   @include getThemeColor($colorTheme)
 
-// Ajout le thème Dark mode
-
-\:root, \:root.dark__mode
-  @include setColor('txt', 'rouge', 500)
-  @include setColor('back', 'grey', 1000)
-  @include setColor('overlay', 'grey', 1000, 95)
-  @include setColor('coverBackgroundColor', 'rouge', 500)
+html
+  @include setColor('txt', 'grey', 1000)
+  @include setColor('back', 'grey', 0)
+  @include setColor('overlay', 'grey', 0, .95)
+  @include setColor('coverBackgroundColor', 'grey', 950)
   @include setColor('breadcrumbBackgroundColor', 'rouge', 900)
   @include setColor('border-color', 'rouge', 500)
   --color-rgb-shadow-50: 13, 13, 13
 
-// Ajout le thème Light mode
+// Ajout du thème coloré : .__Dark-mode
 
-\:root.light__mode
-  @include setColor('backgroundColor', 'grey', 00)
-  @include setColor('overlay', 'grey', 100, 85)
-  --color-rgb-shadow-50: 150, 150, 150
+@media (prefers-color-scheme: dark)
+  html
+    @include setColor('txt', 'rouge', 500)
+    @include setColor('back', 'grey', 1000)
+    @include setColor('overlay', 'grey', 1000, .95)
+    @include setColor('coverBackgroundColor', 'rouge', 500)
+    @include setColor('breadcrumbBackgroundColor', 'rouge', 900)
+    @include setColor('border-color', 'rouge', 500)
+    --color-rgb-shadow-50: 13, 13, 13

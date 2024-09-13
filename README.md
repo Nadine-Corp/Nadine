@@ -44,13 +44,13 @@ Bientôt : un système de mise à jour automatique rivalisant avec ceux des plus
 
 1. Préparez un stylo et un papier.
 1. Ouvrez votre Nadine comme vous le faîtes tous les jours.
-1. Notez sur votre papier à l'aide de votre stylo le numéro de version de Nadine que vous utilisez actuellement. Vous pouvez trouvez ce numéro de version en bas de toutes les pages.
+1. Notez sur votre papier à l'aide de votre stylo le numéro de version de Nadine que vous utilisez actuellement. Vous pouvez trouvez ce numéro de version en bas du volet de navigation.
 1. Rendez-vous sur [l'historique du projet](https://github.com/Nadine-Corp/Nadine/commits/main) et cherchez le numéro du patch le plus récent. Notez ce second numéro sur votre papier à l'aide de votre stylo.
-1. Si les deux numéros écrits sur votre papier sont identiques, vous pouvez arrêter de lire ce texte ennuyeux dès maintenant et reprendre votre vie normale. Bravo et merci encore !
+1. Si les deux numéros écrits sur votre papier sont identiques, vous pouvez arrêter de lire ce texte ennuyeux dès maintenant et reprendre votre vie normale. Bravo et merci encore : vous êtes super !
 1. Si le second numéro est supérieur au premier noté sur votre papier, vous devez mettre à jour Nadine.
 1. **Mieux vaut prévenir que guérir !** Nous allons sauvegarder votre Nadine avant d'aller plus loin :
   1. RDV dans le dossier *www* ou *htdocs* de votre serveur Apache (aka [Wamp](https://www.wampserver.com/), [Mamp](https://www.mamp.info/en/downloads/) ou [Xampp](https://www.apachefriends.org/fr/index.html)). Copier-coller les fichiers de Nadine sur votre bureau (ou n'importe où ailleurs).
-  1. Ouvrez le fichier */core/config.php* avec le Bloc-Note (ou n'importe quelle application de traitement de texte). Notez sur votre papier à l'aide de votre crayon les valeurs des variables suivantes *$servername*, *$username*, *$password* et *$dbname*. Dès que c'est fait, vous pouvez refermer ce fichier.
+  1. Ouvrez le fichier *config.php* avec le Bloc-Note (ou n'importe quelle application de traitement de texte). Notez sur votre papier à l'aide de votre crayon les valeurs des variables suivantes *$servername*, *$username*, *$password* et *$dbname*. Dès que c'est fait, vous pouvez refermer ce fichier.
   1. Apprenez à ouvrir [*phpMyAdmin* pour faire une sauvegarde de votre base de données](https://www.google.com/search?q=phpmyadmin+sauvegarder+une+base+de+donn%C3%A9es).
 1. [Téléchargez la dernière version de Nadine](https://github.com/Nadine-Corp/Nadine/archive/main.zip) au format zip, puis déposez cette archive dans le dossier *www* ou *htdocs* de votre serveur Apache. Dézippez Nadine.
 1. Connectez-vous à Nadine comme vous le faites tous les jours et laissez porter par le *TurboTuto™ 2.0* des équipes du *NadineLab©* !
@@ -70,7 +70,7 @@ Pas de panique ! Plusieurs solutions simples s'offrent à vous :
 
 ### Erreur QuinzeMilleQuatre
 **Problème :** Nadine pense que sa base de donnée est vide.
-**Solutions :** Pas de panique. Si vous lancez Nadine pour la première fois, il est normal que la base de données soit vide. Nous vous invitons à continuer l'Installation Automatique du _TurboTuto™_. Si par contre vous utilisez Nadine depuis des lustres, [contactez nos équipes](#besoin-daide--une-question--une-idée-) : nous nous ferons une joie de vous dépanner gratuitement.
+**Solutions :** Pas de panique. Si vous lancez Nadine pour la première fois, il est normal que la base de données soit vide. Nous vous invitons à continuer l'Installation Automatique du _TurboTuto™ 2.0_. Si par contre vous utilisez Nadine depuis des lustres, [contactez nos équipes](#besoin-daide--une-question--une-idée-) : nous nous ferons une joie de vous dépanner gratuitement.
 
 
 ## Besoin d'aide ? Une question ? Une idée ?

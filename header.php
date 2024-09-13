@@ -6,7 +6,7 @@
 
 /**
  *  Test la connexion à la base de données
- * Si une erreur est detectée, Nadine lancera le TurboTuto™️
+ *  Si une erreur est detectée, Nadine lancera le TurboTuto™️
  */
 
 require(__DIR__ . '/core/database/db__test.php');
