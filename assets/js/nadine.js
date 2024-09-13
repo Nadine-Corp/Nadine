@@ -781,11 +781,14 @@ function hideAddArtistes() {
 
 	if (retroRadio !== null) {
 		let value = retroRadio.value;
+		let $select = document.querySelector('.m-form__porteurduprojet select');
 		// Si le bouton Oui est Checked, la partie suivante est affichée
 		if (value !== null && value == 1) {
 			div.style.display = 'block';
+			$select.required = true;
 		} else {
 			div.style.display = 'none';
+			$select.required = false;
 		}
 	}
 }

@@ -24,9 +24,9 @@ include(__DIR__ . '/header.php');
       // Prépare une LoopLoop
 
       $LoopLoop = array(
-        array("title" => "Devis", "table" => "devis", "prefix" => "devis", "etat" => array("Brouillon", "Envoyé", "Relancé")),
-        array("title" => "Factures d'acompte", "table" => "facturesacompte", "prefix" => "facturea", "etat" => array("Brouillon", "Envoyé", "Relancé")),
-        array("title" => "Factures", "table" => "factures", "prefix" => "facture", "etat" => array("Brouillon", "Envoyé", "Relancé")),
+        array("title" => "Devis", "table" => "Devis", "prefix" => "devis", "etat" => array("Brouillon", "Envoyé", "Relancé")),
+        array("title" => "Factures d'acompte", "table" => "Facturesacompte", "prefix" => "facturea", "etat" => array("Brouillon", "Envoyé", "Relancé")),
+        array("title" => "Factures", "table" => "Factures", "prefix" => "facture", "etat" => array("Brouillon", "Envoyé", "Relancé")),
       );
 
       /**

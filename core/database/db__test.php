@@ -31,7 +31,7 @@ $conn = @new mysqli($servername, $username, $password, $dbname);
 if ($conn->connect_error) {
 
   // Lancement du TurboTuto™
-  include_once(__DIR__ . './../turbotuto/turbotuto.php');
+  include_once(__DIR__ . '/../turbotuto/turbotuto.php');
   exit();
 }
 

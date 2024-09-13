@@ -168,7 +168,7 @@ if (isset($_GET['id'])) {
             ?>
             <div class="m-form__label m-form__select-list m-form__porteurduprojet">
               <label for="projet__porteurduprojet">Quel•le Artiste-Auteur va facturer au diffuseur ?</label>
-              <select name="projet__porteurduprojet" data-selected="<?php the_projet__porteurduprojet($row) ?>" required>
+              <select name="projet__porteurduprojet" data-selected="<?php the_projet__porteurduprojet($row) ?>">
                 <option value="0">Vous</option>
               </select>
             </div>
