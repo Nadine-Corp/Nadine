@@ -3546,44 +3546,42 @@ function the_date_today($format = 'abrv')
  * La fonction nadine_date() permet d'harmoniser
  * l'affichage des dates de Nadine
  */
-
 function nadine_date($date, $format = 'abrv')
 {
-  if (isset($date)) {
-    // Défini le fuseau horaire
-    date_default_timezone_set('Europe/Paris');
-
-    // Formate la date en abrv
-    // Exemple : Sept. 2021
-    if ($format == 'abrv') {
-      $dateFormatted = IntlDateFormatter::formatObject($date, 'LLL Y');
-      $dateFormatted = ucwords($dateFormatted);
-    }
-
-    // Formate la date en full
-    // Exemple : Sam. 18 Sept. 2021
-    if ($format == 'full') {
-      $dateFormatted = IntlDateFormatter::formatObject($date, 'eee dd LLL Y');
-      $dateFormatted = ucwords($dateFormatted);
-    }
-
-    // Formate la date en brut
-    // Exemple : 18/09/2021
-    if ($format == 'brutfr') {
-      $dateFormatted = IntlDateFormatter::formatObject($date, 'dd/LL/Y');
-    }
-
-    // Formate la date en brut
-    // Exemple : 2021-09-18
-    if ($format == 'brut') {
-      $dateFormatted = IntlDateFormatter::formatObject($date, 'Y-LL-dd');
-    }
-
-    // Retourne le résultat au template
-    return $dateFormatted;
+  if (!isset($date)) {
+    return null; // Gère le cas où la date n'est pas définie
   }
-}
 
+  // Défini le fuseau horaire
+  date_default_timezone_set('Europe/Paris');
+  $locale = 'fr_FR';
+
+  // Définition des formats selon les types
+  $formats = [
+    'abrv'    => 'LLL Y',        // Exemple : Sept. 2021
+    'full'    => 'eee dd LLL Y', // Exemple : Sam. 18 Sept. 2021
+    'brutfr'  => 'dd/LL/Y',      // Exemple : 18/09/2021
+    'brut'    => 'Y-LL-dd'       // Exemple : 2021-09-18
+  ];
+
+  // Vérifie si le format est valide
+  $datePattern = $formats[$format] ?? $formats['abrv'];
+
+  // Crée l'instance d'IntlDateFormatter
+  $formatter = new IntlDateFormatter($locale, IntlDateFormatter::FULL, IntlDateFormatter::FULL);
+  $formatter->setPattern($datePattern);
+
+  // Formate la date selon le format défini
+  $dateFormatted = $formatter->format($date);
+
+  // Applique ucwords si le format n'est pas brut
+  if ($format == 'abrv' || $format == 'full') {
+    $dateFormatted = ucwords($dateFormatted);
+  }
+
+  // Retourne le résultat au template
+  return $dateFormatted;
+}
 
 /**
  * La fonction nadine_name() permet d'harmoniser

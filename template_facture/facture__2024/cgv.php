@@ -5,10 +5,11 @@
 
 ?>
 
+
 <table>
   <tr class="facture__h-20">
     <td>
-      <h1 class="facture__titre">CONDITIONS GÉNÉRALES DE VENTE</h1>
+      <h1 class="facture__titre">CONDITIONS GÉNÉRALES<br>DE VENTE</h1>
     </td>
   </tr>
   <tr class="facture__h-80">

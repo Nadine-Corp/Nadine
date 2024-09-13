@@ -1,11 +1,10 @@
 <?php
 
 // Ce fichier gére l'affichage de la liste des tâches
-// et des prix des factures et devis. Il est communs
-// au devis et facture.
+// et des prix des factures et devis.
+// Il est commun aux devis et aux factures.
 
 ?>
-
 
 <table class="facture__h-200 facture__b-b facture__b-t">
 

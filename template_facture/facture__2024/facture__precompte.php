@@ -6,12 +6,12 @@ include 'head.php'; ?>
 ?>
 
 <form class="form" action="" method="post">
-  <div class="paper template-facture__2021">
+  <div class="paper template-facture__2024">
     <div class="paper__content">
       <table>
         <tr>
           <td class="facture__h-100 facture__tl" colspan="2" rowspan="2">
-            <h1 class="facture__titre">Facture</h1>
+            <h1 class="facture__titre">FACTURE</h1>
           </td>
           <td class="facture__b-l facture__h-80 facture__tl" colspan="2">
             <p class="facture__body"><?php echo $row["profil__societe"] ?><br><?php echo $row["profil__adresse"] ?> | <?php echo $row["profil__code_postal"] ?> <?php echo $row["profil__ville"] ?><br><?php echo $row["profil__email"] ?><br><?php echo $row["profil__telephone"] ?></p>
@@ -42,7 +42,6 @@ include 'head.php'; ?>
           <td class="facture__h-100 facture__br facture__w-25">
             <p class="facture__body">Fait à <?php echo $row["profil__ville"] ?>, le <?php the_facture_date($row, 'full'); ?></p>
           </td>
-
         </tr>
       </table>
       <?php include 'body.php'; ?>
@@ -94,7 +93,6 @@ include 'head.php'; ?>
           <td></td>
         </tr>
       </table>
-
       <table class="facture__h-80 facture__b-t">
         <tr>
           <td class="facture__w-40 facture__tl">
@@ -168,7 +166,7 @@ include 'head.php'; ?>
         </tr>
         <tr>
           <td class="facture__w-40 facture__tl">
-            <p class="facture__caption">Total Contribution artiste-auteur</p>
+            <p class="facture__caption">Total Précomptes (1)</p>
           </td>
           <td class="facture__w-10 facture__tr">
             <p class="facture__caption"><input type="text" name="total-precompte" placeholder="Total" class="facture__caption" disabled> €</p>
@@ -186,21 +184,24 @@ include 'head.php'; ?>
         <tr class="facture__h-100">
           <td class="facture__w-50 facture__total">
             <p class="facture__display2">Total à verser<br>à l'artiste auteur</p>
-            <img src="./template_facture/facture__2021/assets/img/arrow.png">
+            <p class="facture__caption">Montant HT − Total du précompte (1)</p>
+            <img src="./template_facture/facture__2021/assets/img/arrow.png" alt="">
           </td>
           <td class="facture__w-50 facture__b-ld facture__total">
             <p class="facture__display2">Total à verser<br>à L’URSSAF *</p>
-            <p class="facture__caption">* Taux en vigueur en 2022</p>
-            <img src="./template_facture/facture__2021/assets/img/arrow.png">
+            <p class="facture__caption">Total des contributions diffuseur (2)
+              <br>* Taux en vigueur depuis 2021
+            </p>
+            <img src="./template_facture/facture__2021/assets/img/arrow.png" alt="">
           </td>
         </tr>
         <tr class="facture__h-20 facture__b-t">
           <td class="facture__w-50 facture__total facture__display2">
-            <span id="total-artiste" class="facture__subheading"></span>
+            <span id="total-artiste-precompte" class="facture__subheading"></span>
             <input type="hidden" name="total-artiste" placeholder="Total" class="facture__subheading">
           </td>
           <td class="facture__w-50 facture__b-ld facture__total facture__display2">
-            <span id="total-mda" class="facture__subheading"></span>
+            <span id="total-diffuseur-precompte" class="facture__subheading"></span>
             <input type="hidden" name="total-mda" placeholder="Total" class="facture__subheading">
           </td>
         </tr>

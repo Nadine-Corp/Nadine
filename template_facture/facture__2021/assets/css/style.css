@@ -1,0 +1,246 @@
+.facture__titre {
+	font-size: 36pt;
+	color: black;
+	font-family: balboa-plus-primary, sans-serif;
+	font-weight: 400;
+	font-style: normal;
+}
+
+.facture__display2 {
+	font-size: 10pt;
+	line-height: 14pt;
+	color: black;
+	font-family: termina, sans-serif;
+	font-weight: 600;
+	font-style: normal;
+}
+
+#total-artiste,
+#total-mda {
+	font-size: 12pt
+}
+
+.facture__subheading,
+.cgv__titre {
+	font-size: 8pt;
+	line-height: 10pt;
+	color: black;
+	font-family: termina, sans-serif;
+	font-weight: 600;
+	font-style: normal;
+}
+
+.facture__body,
+.cgv__body {
+	font-size: 8pt;
+	line-height: 10pt;
+	color: black;
+	font-family: 'Nadine Sans', Helvetica, sans-serif;
+	font-weight: 400;
+	font-style: normal;
+}
+
+.facture__caption {
+	font-size: 6pt;
+	line-height: 8pt;
+	color: black;
+	font-family: 'Nadine Sans', Helvetica, sans-serif;
+	font-weight: 400;
+	font-style: normal;
+}
+
+.facture__caption input {
+	width: 75% !important
+}
+
+.cgv__titre {
+	font-size: 7pt;
+	line-height: 9pt;
+	margin: 9pt 0;
+	color: black;
+	font-family: termina, sans-serif;
+	font-weight: 600;
+	font-style: normal;
+}
+
+.cgv__body {
+	font-size: 7pt;
+	letter-spacing: -0.1pt;
+	line-height: 9pt;
+	color: black;
+	font-family: 'Nadine Sans', Helvetica, sans-serif;
+	font-weight: 400;
+	font-style: normal;
+}
+
+.cgv__content {
+	column-count: 3;
+	text-align: justify;
+}
+
+.paper__content table {
+	width: 100%;
+}
+
+.paper__content td {
+	padding: 5px;
+}
+
+.paper__content p {
+	padding: 0;
+}
+
+.facture__footer p {
+	text-align: justify;
+}
+
+.facture__h-200 {
+	height: 180px;
+}
+
+.facture__h-100 {
+	height: 90px;
+}
+
+.facture__h-80 {
+	height: 72px;
+}
+
+.facture__h-60 {
+	height: 54px;
+}
+
+.facture__h-20 {
+	height: 18px;
+}
+
+.facture__h-10 {
+	height: 9px;
+}
+
+.facture__w-75 {
+	width: 75%;
+}
+
+.facture__w-50 {
+	width: 50%;
+}
+
+.facture__w-40 {
+	width: 40%;
+}
+
+.facture__w-25 {
+	width: 25%;
+}
+
+.facture__w-10 {
+	width: 10%;
+}
+
+.facture__b-b {
+	border-bottom: 2pt solid black;
+}
+
+.facture__b-l {
+	border-left: 2pt solid black;
+}
+
+.facture__b-t {
+	border-top: 2pt solid black;
+}
+
+.facture__b-td {
+	border-bottom: 0.5pt dotted black;
+}
+
+.facture__b-ld {
+	border-left: 0.5pt dotted black;
+}
+
+.facture__tl {
+	text-align: left;
+	vertical-align: top;
+}
+
+.facture__tr {
+	text-align: right;
+	vertical-align: top;
+}
+
+.facture__bl {
+	text-align: left;
+	vertical-align: bottom;
+}
+
+.facture__br {
+	text-align: right;
+	vertical-align: bottom;
+}
+
+.facture__total {
+	text-align: center;
+	vertical-align: bottom;
+}
+
+.paper__content input:not([type=submit]):not([type=radio]),
+.paper__content textarea {
+	height: 100%;
+	width: auto;
+	float: inherit;
+	border: none;
+	resize: none;
+	font-size: inherit;
+	color: black;
+	background: white;
+	margin-top: 0;
+	padding: 0;
+	border-radius: 0;
+	transition: background 0.5s;
+}
+
+.facture__w-75 input{
+	width: 100% !important;
+}
+
+.paper__content input:not([type=submit]):not([type=radio]):focus,
+.paper__content textarea:focus {
+	color: black;
+	border: none;
+	background: white;
+	padding: 0;
+	outline: none;
+	transition: background 0.5s;
+}
+
+.paper__content input:-webkit-autofill,
+.paper__content input:-webkit-autofill:hover,
+.paper__content input:-webkit-autofill:focus,
+.paper__content input:-webkit-autofill:active {
+	-webkit-box-shadow: 0 0 0 30px white inset !important;
+	-webkit-text-fill-color: black !important;
+	padding: 0 !important;
+}
+
+.paper__content input:disabled {
+	opacity: 1 !important;
+	color: black !important;
+}
+
+.paper__content input {
+	border-bottom: none !important;
+}
+
+.paper__content input {
+	text-align: right;
+	width: 70%;
+}
+
+.paper__content input::placeholder {
+	color: black;
+}
+
+.paper__content .form__input-prix,
+.paper__content .form__input-total {
+	width: 50% !important;
+}

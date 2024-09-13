@@ -1,7 +1,18 @@
+@font-face {
+  font-family: "mattone";
+  src: url("../fonts/mattone/mattone-500.woff2") format("woff2");
+}
+@font-face {
+  font-family: "zen-tokyo-zoo";
+  src: url("../fonts/zen-tokyo-zoo/zen-tokyo-zoo.ttf") format("truetype");
+}
+
+
 .facture__titre {
-	font-size: 36pt;
+	font-size: 30pt;
+	line-height: 30pt;
 	color: black;
-	font-family: balboa-plus-primary, sans-serif;
+	font-family: zen-tokyo-zoo, sans-serif;
 	font-weight: 400;
 	font-style: normal;
 }
@@ -10,9 +21,8 @@
 	font-size: 10pt;
 	line-height: 14pt;
 	color: black;
-	font-family: termina, sans-serif;
-	font-weight: 600;
-	font-style: normal;
+	font-family: mattone, sans-serif;
+		font-style: normal;
 }
 
 #total-artiste,
@@ -25,8 +35,7 @@
 	font-size: 8pt;
 	line-height: 10pt;
 	color: black;
-	font-family: termina, sans-serif;
-	font-weight: 600;
+	font-family: mattone, sans-serif;
 	font-style: normal;
 }
 
@@ -58,8 +67,7 @@
 	line-height: 9pt;
 	margin: 9pt 0;
 	color: black;
-	font-family: termina, sans-serif;
-	font-weight: 600;
+	font-family: mattone, sans-serif;
 	font-style: normal;
 }
 
@@ -84,7 +92,6 @@
 
 .paper__content td {
 	padding: 5px;
-	vertical-align: middle;
 }
 
 .paper__content p {

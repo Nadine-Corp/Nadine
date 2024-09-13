@@ -1,6 +1,9 @@
-<link rel='stylesheet' type='text/css' media="all" href='./template_facture/facture__2021/style.css'>
-<script src="./template_facture/facture__2021/facture.js"></script>
+<?php
+// Ajoute les assets
+include 'head.php'; ?>
 
+<?php // Début du formulaire
+?>
 
 <form class="form" action="" method="post">
   <div class="paper template-facture__2021">
@@ -182,14 +185,14 @@
           <td class="facture__w-50 facture__total">
             <p class="facture__display2">Total à verser<br>à l'artiste auteur</p>
             <p class="facture__caption">Montant HT − Total du précompte (1)</p>
-            <img src="./template_facture/facture__2021/arrow.png" alt="">
+            <img src="./template_facture/facture__2021/assets/img/arrow.png" alt="">
           </td>
           <td class="facture__w-50 facture__b-ld facture__total">
             <p class="facture__display2">Total à verser<br>à L’URSSAF *</p>
             <p class="facture__caption">Total des contributions diffuseur (2)
               <br>* Taux en vigueur depuis 2021
             </p>
-            <img src="./template_facture/facture__2021/arrow.png" alt="">
+            <img src="./template_facture/facture__2021/assets/img/arrow.png" alt="">
           </td>
         </tr>
         <tr class="facture__h-20 facture__b-t">

@@ -43,10 +43,6 @@
   <meta name="theme-color" content="#1c1c1c">
   <meta name="msapplication-TileColor" content="#1c1c1c">
 
-  <?php // Webfont 
-  ?>
-  <link rel="stylesheet" href="https://use.typekit.net/znq5njd.css">
-
   <?php // Style CSS et Script JS 
   ?>
   <link rel='stylesheet' type='text/css' media="all" href='./style.min.css'>

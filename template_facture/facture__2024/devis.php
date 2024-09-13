@@ -5,14 +5,13 @@ include 'head.php'; ?>
 <?php // Début du formulaire
 ?>
 
-
 <form class="form" action="" method="post">
-  <div class="paper template-facture__2021">
+  <div class="paper template-facture__2024">
     <div class="paper__content">
       <table>
         <tr>
           <td class="facture__h-100 facture__tl" colspan="2" rowspan="2">
-            <h1 class="facture__titre">Devis</h1>
+            <h1 class="facture__titre">DEVIS</h1>
           </td>
           <td class="facture__b-l facture__h-80 facture__tl" colspan="2">
             <p class="facture__body"><?php echo $row["profil__societe"] ?><br><?php echo $row["profil__adresse"] ?> | <?php echo $row["profil__code_postal"] ?> <?php echo $row["profil__ville"] ?><br><?php echo $row["profil__email"] ?><br><?php echo $row["profil__telephone"] ?></p>
