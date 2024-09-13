@@ -233,7 +233,7 @@
 
 
             <textarea name="profil__msg_devis" class="form__input-full" rows="10">
-            Bonjour {{diffuseur__civilite}}. {{diffuseur__nom}}
+            Bonjour {{diffuseur__civilite}} {{diffuseur__nom}}
 
 
 Vous trouverez ci-joint notre proposition commerciale pour {{projet__nom}}.
@@ -252,7 +252,7 @@ Email :
 {{diffuseur__email}}
           </textarea>
             <textarea name="profil__msg_facture" class="form__input-full" rows="10">
-            Bonjour {{diffuseur__civilite}}. {{diffuseur__nom}}
+            Bonjour {{diffuseur__civilite}} {{diffuseur__nom}}
 
 Vous trouverez ci-joint la facture pour {{projet__nom}}.
 

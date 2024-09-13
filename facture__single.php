@@ -16,13 +16,13 @@ if (isset($_GET['projet__id'])) {
 
 // Récupère la bonne table
 if (isset($_GET['devis__id'])) {
-  $table = 'devis';
+  $table = 'Devis';
   $prefix = 'devis';
 } elseif (isset($_GET['facturea__id'])) {
-  $table = 'facturesacompte';
+  $table = 'Facturesacompte';
   $prefix = 'facturea';
 } elseif (isset($_GET['facture__id'])) {
-  $table = 'factures';
+  $table = 'Factures';
   $prefix = 'facture';
 }
 
@@ -106,15 +106,19 @@ include './header.php';
 
         <aside class="m-aside">
           <div class="m-form__label m-form__select-tab">
-            <label for="facture__statut">État de la facture</label>
+            <?php if ($table == 'Devis') : ?>
+              <label for="facture__statut">État du devis</label>
+            <?php else: ?>
+              <label for="facture__statut">État de la facture</label>
+            <?php endif; ?>
             <select name="facture__statut" data-selected="<?php the_facture_statut($row) ?>">
               <option value="Brouillon">Brouillon</option>
               <option value="Envoyé">Envoyé</option>
               <option value="Relancé">Relancé</option>
-              <?php if ($table == 'devis') : ?>
+              <?php if ($table == 'Devis') : ?>
                 <option value="Signé">Signé</option>
               <?php endif; ?>
-              <?php if ($table != 'devis') : ?>
+              <?php if ($table != 'Devis') : ?>
                 <option value="Payé">Payé</option>
               <?php endif; ?>
               <option value="Annulé">Annulé</option>
@@ -133,7 +137,7 @@ include './header.php';
                 Dupliquer
               </a>
             <?php endif; ?>
-            <?php if ($table == 'devis' && $facture__id != 'new') : ?>
+            <?php if ($table == 'Devis' && $facture__id != 'new') : ?>
               <a href="./facture__single.php?projet__id=<?php echo $projet__id ?>&facture__id=new&from__table=<?php echo $table ?>&from__id=<?php echo $facture__id ?>" class="btn btn__outline">
                 Générer la facture
               </a>

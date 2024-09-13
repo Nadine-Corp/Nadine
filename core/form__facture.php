@@ -54,13 +54,13 @@ unset($data['total-mda']);
  * Formate les data
  */
 
-if ($table == 'devis') {
+if ($table == 'Devis') {
     // Formate les Data
     $prefix = 'facture__';
     $prefix_new = 'devis__';
     $data = db__replace_prefix($data, $prefix, $prefix_new);
 }
-if ($table == 'facturesacompte') {
+if ($table == 'Facturesacompte') {
     // Formate les Data
     $prefix = 'facture__';
     $prefix_new = 'facturea__';

@@ -26,7 +26,13 @@ function nadine_query($args, $sql = 'SELECT *')
       // Traite le cas particulier de ORDER
       if ($key == 'ORDER') {
         $sql .= ' ' . $value;
-      } else {
+      }
+      // Traite le cas particulier de FROM
+      elseif ($key == 'FROM') {
+        $sql .= ' ' . $key . ' ' . ucfirst($value);
+      }
+      // Cas général
+      else {
         $sql .= ' ' . $key . ' ' . $value;
       }
     };
@@ -66,18 +72,23 @@ function nadine_query($args, $sql = 'SELECT *')
 
 function nadine_insert($table, $primaryKey, $data)
 {
-  // Exclure la colonne diffuseur__id
-  unset($data[$primaryKey]);
+  if (!empty($table) && !empty($primaryKey) && !empty($data) && is_array($data)) {
+    // Formate au besoin le nom de la table
+    $table = ucfirst($table);
 
-  // Formate la requête SQL
-  $columns = implode(", ", array_keys($data));
-  $values  = implode("', '", array_values($data));
+    // Exclure la colonne diffuseur__id
+    unset($data[$primaryKey]);
 
-  $sql = "INSERT INTO $table ($columns) VALUES ('$values')";
+    // Formate la requête SQL
+    $columns = implode(", ", array_keys($data));
+    $values  = implode("', '", array_values($data));
 
-  require(__DIR__ . '/query.php');
-  $conn->query($sql) or die($conn->error);
-  $conn->close();
+    $sql = "INSERT INTO $table ($columns) VALUES ('$values')";
+
+    require(__DIR__ . '/query.php');
+    $conn->query($sql) or die($conn->error);
+    $conn->close();
+  }
 }
 
 
@@ -87,24 +98,29 @@ function nadine_insert($table, $primaryKey, $data)
 
 function nadine_update($table, $primaryKey, $data)
 {
-  // Formate la requête SQL
-  $sql = "UPDATE $table SET ";
+  if (!empty($table) && !empty($primaryKey) && !empty($data) && is_array($data)) {
+    // Formate au besoin le nom de la table
+    $table = ucfirst($table);
 
-  // Formate la requête SQL
-  foreach ($data as $key => $value) {
-    if ($key != $primaryKey) {
-      $sql .= $key . " = '" . $value . "', ";
-    }
-  };
+    // Formate la requête SQL
+    $sql = "UPDATE $table SET ";
 
-  $sql = substr($sql, 0, -2);
+    // Formate la requête SQL
+    foreach ($data as $key => $value) {
+      if ($key != $primaryKey) {
+        $sql .= $key . " = '" . $value . "', ";
+      }
+    };
 
-  // Formate la requête SQL
-  $sql .= " WHERE " . $primaryKey . " = " . $data[$primaryKey];
+    $sql = substr($sql, 0, -2);
 
-  require(__DIR__ . '/query.php');
-  $conn->query($sql) or die($conn->error);
-  $conn->close();
+    // Formate la requête SQL
+    $sql .= " WHERE " . $primaryKey . " = " . $data[$primaryKey];
+
+    require(__DIR__ . '/query.php');
+    $conn->query($sql) or die($conn->error);
+    $conn->close();
+  }
 }
 
 
@@ -478,7 +494,7 @@ function get_projet_last_facture($row)
 
     // Cherche la dernière facture d'acompte du projet
     $args = array(
-      'FROM'     => 'facturesacompte',
+      'FROM'     => 'Facturesacompte',
       'WHERE'    => 'projet__id =' . $projet__id,
       'ORDER BY' => 'facturea__date DESC',
       'LIMIT'    => 1
@@ -835,17 +851,17 @@ function get_diffuseur_website($row)
       $diffuseur__website = $row['diffuseur__website'];
 
       // Formate le titre du lien
-      $link_title = $diffuseur__website;
-      $link_title = str_replace('www.', '', $diffuseur__website);
-      $link_title = str_replace('https://', '', $link_title);
-      $link_title = str_replace('http://', '', $link_title);
-      if (substr($link_title, -1) == '/') {
-        $link_title = rtrim($link_title, "/");
+      $link_url = $diffuseur__website;
+      $link_url = str_replace('www.', '', $diffuseur__website);
+      $link_url = str_replace('https://', '', $link_url);
+      $link_url = str_replace('http://', '', $link_url);
+      if (substr($link_url, -1) == '/') {
+        $link_url = rtrim($link_url, "/");
       };
-      $link_title = 'www.' . $link_title;
+      $link_url = 'www.' . $link_url;
 
       // Retourne le résultat au template
-      return $link_title;
+      return $link_url;
     }
   }
 }
@@ -2475,12 +2491,12 @@ function get_facture_template_url($projet__id, $table, $facture__id)
     $prefix = get_facture_prefix($table);
 
     // Récupére la bon nom de fichier
-    if ($table == 'factures') {
+    if ($table == 'Factures') {
       $facture__file = 'facture';
-    } elseif ($table == 'devis') {
+    } elseif ($table == 'Devis') {
       $facture__file = 'devis';
     } else {
-      $facture__file = 'facturesacompte';
+      $facture__file = 'Facturesacompte';
     }
 
     // Récupère les infos du Diffuseur
@@ -2861,6 +2877,9 @@ function get_facture_table($row, $table = '')
   if (isset($row)) {
     // Récupére la bonne table
     if ($table != '') {
+      // Formate au besoin le nom de la table
+      $table = ucfirst($table);
+
       // Retourne le résultat au template
       return $table;
     }
@@ -2875,6 +2894,9 @@ function get_facture_table($row, $table = '')
     if (!empty($row['facturea__numero'])) {
       $table = 'facturesacompte';
     };
+
+    // Formate au besoin le nom de la table
+    $table = ucfirst($table);
 
     // Retourne le résultat au template
     return $table;
@@ -2916,9 +2938,9 @@ function get_facture_prefix($table)
   if (isset($table)) {
 
     // Récupére le bon prefix
-    if ($table == 'factures') {
+    if ($table == 'Factures') {
       $prefix = 'facture';
-    } elseif ($table == 'devis') {
+    } elseif ($table == 'Devis') {
       $prefix = 'devis';
     } else {
       $prefix = 'facturea';
@@ -3768,6 +3790,8 @@ function is_precompte($diffuseur__id = '', $table = '', $facture__id = '')
     // Récupére le bon prefix
     $prefix = get_facture_prefix($table);
 
+    // Formate au besoin le nom de la table
+    $table = ucfirst($table);
 
     // Récupère les info de la facture ou devis dans la base de donnée
     $args = array(
@@ -3786,13 +3810,7 @@ function is_precompte($diffuseur__id = '', $table = '', $facture__id = '')
 
 
     // Retourne le résultat au template
-    if ($facture__precompte == 0) {
-      // Retourne le résultat au template
-      return false;
-    } else {
-      // Retourne le résultat au template
-      return true;
-    }
+    return $facture__precompte == 0 ? false : true;
   };
 
   // Vérifie si un Diffuseur ID a été envoyé avec la demande
