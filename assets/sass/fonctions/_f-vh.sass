@@ -1,0 +1,11 @@
+// main: ../../../style.sass
+
+/// La fonction vh() permet de patcher un problème
+/// avec l'unité vh sur smartphone.
+///
+/// Exemple de SASS :
+///   div
+///     min-height: vh(100)
+
+@function vh($qty)
+  @return calc(var(--vh) * #{$qty})

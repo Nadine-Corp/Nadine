@@ -14,9 +14,9 @@
   flex-direction: row
   width: 100%
   height: $header__height
-  border-bottom: 1px solid color('texte')
-  border-top: 1px solid color('texte')
-  background: color('texte')
+  border-bottom: 1px solid color('txt')
+  border-top: 1px solid color('txt')
+  background: color('txt')
   z-index: $zindex__mainbar
 
 .l-header__searchbar
@@ -29,7 +29,7 @@
     font-weight: 400
     font-size: m(2)
     padding: 0 m()
-    background: color('backgroundColor')
+    background: color('back')
     transition: all 2s
     &:focus
       padding: 0 m(1.5)
@@ -44,8 +44,8 @@
   width: $header__height
   padding-top: $header__height
   min-height: vh(100)
-  background: color('backgroundColor')
-  border-right: 1px solid color('texte')
+  background: color('back')
+  border-right: 1px solid color('txt')
   transition: .5s
   z-index: $zindex__navbar
 
@@ -67,7 +67,7 @@
 
 .l-header__bottom
   position: absolute
-  bottom: $row__marge-bottom
+  bottom: $row__mb
   padding: 0 m(.5)
   transition: .5s
 
@@ -100,15 +100,15 @@
       @include hover
         *
           font-style: italic
-          color: color('rouge', 20)
+          color: color('rouge', 200)
         .l-header__nav-ico svg
-          fill: color('texte')
+          fill: color('txt')
 
       &.is--current
         *
-          color: color('texte')
+          color: color('txt')
         .l-header__nav-ico svg
-          fill: color('texte')
+          fill: color('txt')
 
   .m-accordion__titre
     border-bottom: none
@@ -131,7 +131,7 @@
 
 .l-header__nav-txt
   padding: 0 m()
-  color: color('texte')
+  color: color('txt')
 
 // Sous-Menu Accordion
 
@@ -139,17 +139,17 @@
   a
     display: block
     width: 100%
-    color: color('rouge', 80)
+    color: color('rouge', 800)
     font-weight: 800
     font-style: normal
     padding: m() 0
     @include hover
-      color: color('texte')
+      color: color('txt')
       font-style: italic
 
 .l-header__subnav-separator
   a
-    border-top: 1px solid color('rouge', 80)
+    border-top: 1px solid color('rouge', 800)
     margin-top: m()
     padding-top: m(2)
 
@@ -162,7 +162,7 @@
   top: 0
   left: 0
   cursor: pointer
-  background: color('texte')
+  background: color('txt')
   z-index: $zindex__navbar
 
   @include hover
@@ -197,7 +197,7 @@
 
   div
     height: 3px
-    background: color('rouge', 100)
+    background: color('rouge', 1000)
     transition: .5s
 
 // Mention
@@ -208,8 +208,8 @@
   span
     display: block
     width: 100%
-    color: color('rouge',90)
+    color: color('rouge',800)
   a
-    color: color('rouge',80)
+    color: color('rouge',600)
     @include hover
-      color: color('rouge',50)
+      color: color('rouge',500)

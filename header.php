@@ -125,7 +125,7 @@ include_once(__DIR__ . '/parts/p__head.php');
       <div class="l-header__logo l-header__bottom">
         <a href="./index.php"><?php include './assets/img/nadine-logo.svg.php'; ?></a>
       </div>
-      <div class="l-header__mention l-header__bottom m-caption">
+      <div class="l-header__mention l-header__bottom m-body-s">
         <span>Nadine <a href="./log.php">travaille tellement dur</a> pour s'améliorer !</span>
         <span>Numéro de version : Nadine Alpha <?php echo get_num_version(); ?></span>
         <span>Pensez à <a href="https://github.com/Nadine-Corp/Nadine/commits/main" target="_blank">mettre à jour</a> Nadine de temps en temps.</span>

@@ -1,0 +1,37 @@
+// main: ../../../style.sass
+
+/// La fonction getThemeColor() génere les variables de couleurs CSS
+/// de la balise <html>. Ces variables permettent de gérer
+/// les thèmes colorés utilisé par Monobloc.
+///
+/// 0..100..200..300..400..500..600..700..800..900..1000
+/// ↑                       ↑                         ↑
+/// 0=grey-0          500=couleur pure          1000=grey-1000
+
+@mixin getThemeColor($colorTheme)
+  // Ajoute le gris-500 au nuancier
+  $grey-500: mix($grey-1000, $grey-0)
+  $grey: ('grey': $grey-500)
+  $colorTheme: map-merge($colorTheme, $grey)
+
+  // Ajoute chaque couleur au nuancier
+  @each $nom, $hexa in $colorTheme
+    @each $declinaison in $declinaisons
+      @if $declinaison >= 500
+        $weight: calc( ($declinaison - 500)*2)
+        $weight: calc($weight/10*1%)
+        $color: mix($grey-1000, $hexa, $weight)
+        --color-#{$nom}-#{$declinaison}: #{$color}
+        --color-rgb-#{$nom}-#{$declinaison}: #{hex-to-rgb($color)}
+      @else
+        $weight: calc($declinaison*2)
+        $weight: calc($weight/10*1%)
+        $color: mix($hexa, $grey-0, $weight)
+        --color-#{$nom}-#{$declinaison}: #{$color}
+        --color-rgb-#{$nom}-#{$declinaison}: #{hex-to-rgb($color)}
+
+  // Ajoute la couleur $grey-0 et $grey-1000
+  --color-grey-0: #{$grey-0}
+  --color-rgb-grey-0: #{hex-to-rgb($grey-0)}
+  --color-grey-1000: #{$grey-1000}
+  --color-rgb-grey-1000: #{hex-to-rgb($grey-1000)}

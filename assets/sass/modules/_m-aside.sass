@@ -9,9 +9,9 @@
   float: left
   width: $width__aside
   top: $header__height
-  min-height: calc( var(--vh, 1vh) * 100 - var(--hh))
-  padding: m(3) m(2) $row__marge-bottom m(2) !important
-  background: color('backgroundColor')
+  min-height: calc( vh(100) - $header__height )
+  padding: m(3) m(2) $row__mb m(2) !important
+  background: color('back')
   border-right: 1px solid color('border-color')
 
   &>*
@@ -19,7 +19,7 @@
     margin-bottom: m(2)
 
   h1
-    color: color('texte')
+    color: color('txt')
 
 .m-aside__bottom
   margin-top: auto
@@ -27,4 +27,4 @@
 
 .m-aside__info
   em
-    color: color('rouge', 80)
+    color: color('rouge', 800)

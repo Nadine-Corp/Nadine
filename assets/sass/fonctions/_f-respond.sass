@@ -1,0 +1,19 @@
+// main: ../../../style.sass
+
+/// La fonction respond() gère les comportements responsive de Monobloc.
+///
+/// Exemple de SASS :
+///   div
+///     display: none
+///     @include respond('m', 'max')
+///       background: color('txt')
+///     @include respond('m')
+///       display: block
+
+@mixin respond($key, $min_or_max:'min')
+  @if $min_or_max == 'min'
+    @media screen and (min-width: map-get($breakpoints, $key))
+      @content
+  @if $min_or_max == 'max'
+    @media screen and (max-width: map-get($breakpoints, $key))
+      @content

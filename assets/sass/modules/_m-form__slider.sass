@@ -52,14 +52,14 @@
     width: m()
     left: m(.5)
     bottom: m(.5)
-    background-color: color('texte')
+    background-color: color('txt')
     @include prefix(transition, .4s)
   &:hover
     @include box-shadow(100, 'principale', 50)
 
 input
   &:checked + .slider
-    // background-color: color('texte')
+    // background-color: color('txt')
   &:checked + .slider:before
     @include prefix(transform, translateX( m() ))
 

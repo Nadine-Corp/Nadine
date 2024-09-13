@@ -17,7 +17,7 @@
 
   h1
     float: left
-    color: color('backgroundColor')
+    color: color('back')
 
   .m-rom
     padding-bottom: m(10)
@@ -31,7 +31,7 @@
   float: right
   width: m(6)
   height: m(6)
-  background: color('backgroundColor')
+  background: color('back')
   border-radius: 50%
   transform: rotate(20deg)
 
@@ -49,18 +49,18 @@
   span
     margin-left: m()
     font-family: font('sans-serif')
-    color: color('rouge',70)
+    color: color('rouge',700)
 
 .m-cover
   .btn
-    border: 1px solid color('rouge',70)
-    background: color('rouge',50)
+    border: 1px solid color('rouge',700)
+    background: color('rouge',500)
     @include hover
-      border: 1px solid color('rouge',90)
-      color: color('rouge',90)
-      background: color('rouge',50)
+      border: 1px solid color('rouge',900)
+      color: color('rouge',900)
+      background: color('rouge',500)
       svg
-        fill: color('rouge',90)
+        fill: color('rouge',900)
 
 // Stylise les cartes Diffuseur & Artistes
 
@@ -68,28 +68,28 @@
   position: absolute
   display: flex
   justify-content: space-between
-  width: calc(100% - 2*#{$row__marge-horiz})
+  width: calc(100% - 2*#{$row__mx})
 
 .m-cover__cdv
   position: relative
   width: calc(50% - #{m(.5)})
   padding: m()
-  border: 1px solid color('rouge', 70)
+  border: 1px solid color('rouge', 700)
   border-radius: m()
-  background-color: color('rouge', 50)
+  background-color: color('rouge', 500)
   @include box-shadow(200, 'shadow')
 
   span, span *
     width: 100%
     float: left
-    color: color('rouge', 80)
+    color: color('rouge', 800)
 
   .btn
     width: 100%
 
 span.m-cover__diffuseur-societe,
 span.m-cover__diffuseur-info
-  color: color('backgroundColor')
+  color: color('back')
 
 span.m-cover__diffuseur-info
   font-family: font('sans-serif')
@@ -106,12 +106,12 @@ span.m-cover__diffuseur-ads
     width: 50%
     float: left
     padding: m()
-    border-top: 1px solid color('rouge', 70)
+    border-top: 1px solid color('rouge', 700)
     &:first-of-type
       padding-left: 0
     &:last-of-type
       padding-right: 0
-      border-left: 1px solid color('rouge', 70)
+      border-left: 1px solid color('rouge', 700)
 
   span, span *
     font-family: font('sans-serif')
@@ -121,9 +121,9 @@ span.m-cover__diffuseur-ads
   flex-direction: row
   justify-content: space-evenly
   padding: m(.5) 0
-  border-bottom: 1px solid color('rouge', 70)
+  border-bottom: 1px solid color('rouge', 700)
   span:first-of-type
-    color: color('backgroundColor')
+    color: color('back')
   span:last-of-type
     font-family: font('sans-serif')
 
@@ -143,12 +143,12 @@ span.m-cover__diffuseur-ads
     flex-grow: 1
 
 .m-cover__frise-01
-  background: color('rouge', 50)
+  background: color('rouge', 500)
 .m-cover__frise-02
-  background: color('rouge', 60)
+  background: color('rouge', 600)
 .m-cover__frise-03
-  background: color('rouge', 70)
+  background: color('rouge', 700)
 .m-cover__frise-04
-  background: color('rouge', 80)
+  background: color('rouge', 800)
 .m-cover__frise-05
-  background: color('rouge', 90)
+  background: color('rouge', 900)

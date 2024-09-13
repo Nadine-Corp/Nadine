@@ -21,7 +21,7 @@
   justify-content: space-around
   padding: m()
   border-radius: m()
-  border: 1px solid color('backgroundColor')
+  border: 1px solid color('back')
   background: color('grey',0)
   overflow: hidden
   transition: $slow
@@ -31,7 +31,7 @@
     flex-direction: column
 
   span, em
-    color: color('backgroundColor')
+    color: color('back')
     transition: $slow
 
   em
@@ -53,7 +53,7 @@
   height: m(3)
   z-index: 10
   color: color('grey',0)
-  background: color('backgroundColor')
+  background: color('back')
   transform: rotate(45deg)
   transition: $slow
 
@@ -68,32 +68,32 @@
   .p-facture
     @include hover
       .p-facture__wrapper
-        background: color('rouge', 50)
-        border: 1px solid color('rouge', 50)
+        background: color('rouge', 500)
+        border: 1px solid color('rouge', 500)
         transition: $fast
         span, em
-          color: color('rouge', 80)
+          color: color('rouge', 800)
           transition: $fast
       .p-facture__statut
-        background: color('rouge', 80)
-        color: color('backgroundColor')
+        background: color('rouge', 800)
+        color: color('back')
         transition: $fast
 
   .p-facture__annule,
   .p-facture__annulee
     .p-facture__wrapper
-      background: color('backgroundColor')
-      border: 1px solid color('rouge', 80)
+      background: color('back')
+      border: 1px solid color('rouge', 800)
       span, em
-        color: color('rouge', 80)
+        color: color('rouge', 800)
     .p-facture__statut
-      background: color('rouge', 80)
-      color: color('backgroundColor')
+      background: color('rouge', 800)
+      color: color('back')
 
   .p-facture__brouillon,
   .p-facture__envoye
     .p-facture__wrapper
-      background: color('rouge', 80)
-      border: 1px solid color('rouge', 80)
+      background: color('rouge', 800)
+      border: 1px solid color('rouge', 800)
     .p-facture__statut
-      color: color('rouge', 80)
+      color: color('rouge', 800)

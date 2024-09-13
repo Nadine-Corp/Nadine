@@ -33,16 +33,16 @@ $inputHeight: m(5)
 $inputPadding: m(1.5)
 $inputMarginTop: m(3)
 
-$inputBackground: color('rouge', 98,0)
-$inputFocusBackground: color('rouge', 98)
-$inputBorderColor: color('rouge', 80)
-$inputFocusBorderColor: color('texte')
+$inputBackground: color('rouge', 980, 0)
+$inputFocusBackground: color('rouge', 980)
+$inputBorderColor: color('rouge', 800)
+$inputFocusBorderColor: color('txt')
 $inputBorderRadius: m(3)
 
 $inputFontSize: m(1.5)
 $inputColor: color('grey',0)
 $labelFontSize: m()
-$labeColor: color('grey',40)
+$labeColor: color('grey', 400)
 
 .m-form
   float: left
@@ -104,12 +104,12 @@ $labeColor: color('grey',40)
 
 .m-form__instructions
   margin: m() 0
-  color: color('rouge', 80)
+  color: color('rouge', 800)
   em
-    color: color('rouge', 80)
+    color: color('rouge', 800)
 
   strong
-    color: color('rouge', 50)
+    color: color('rouge', 500)
 
 // Stylise les labels
 
@@ -157,25 +157,23 @@ $labeColor: color('grey',40)
     margin-left: auto
 
 // Stylise les Suggestion de Chome & Co.
-
 .m-form
   input:-webkit-autofill,
   input:-webkit-autofill:hover,
   input:-webkit-autofill:focus,
-  input:-webkit-autofill:active,
-  input:-internal-autofill-selected
-    -webkit-box-shadow: 0 0 0 30px $inputBackground inset !important
-    -webkit-text-fill-color: $inputColor !important
+  textarea:-webkit-autofill,
+  textarea:-webkit-autofill:hover,
+  textarea:-webkit-autofill:focus,
+  select:-webkit-autofill,
+  select:-webkit-autofill:hover,
+  select:-webkit-autofill:focus
+    color : $inputColor !important
     padding: $inputPadding 0 !important
-    background-color: $inputBackground !important
-    color: $inputColor !important
-
-  input:-webkit-autofill,
-  input:-webkit-autofill:hover,
-  input:-webkit-autofill:focus,
-  input:-webkit-autofill:active
-    transition: background-color 5000s ease-in-out 0s
-    -webkit-text-fill-color: #ffffff
+    -webkit-text-fill-color: $inputColor !important
+    -webkit-box-shadow: 0 0 0 1000px $inputBackground inset !important
+    -webkit-background-clip: text !important
+    background-clip: text !important
+  
 
 // Stylise la couleur de l'icone Calendrier
 // des Input date sur Chrome & Co.

@@ -1,0 +1,49 @@
+// main: ../../../style.sass
+
+/// Le fichier de fonctions centralise toutes les fonctions Sass
+/// utilsées par Monobloc
+
+/// La fonction var() permet d'utiliser plus facilement
+/// les variables CSS
+///
+/// Exemple de SASS :
+///   div
+///     border: solid var('border') color('grey')
+
+@function var($var)
+  @return #{"var("+$var+")"}
+
+/// La fonction rgba-to-rgb() permet de mélanger 2 couleurs entre elles
+/// et le résultat en couleur Hexadécimal
+///
+/// Exemple de SASS :
+///   div
+///     background: rgba-to-rgb(transparentize($color__01, 0.8), $color__02)
+
+@function rgba-to-rgb($rgba, $background: #fff)
+  @return mix(rgb(red($rgba), green($rgba), blue($rgba)), $background, alpha($rgba) * 100%)
+
+/// La fonction hex-to-rgb() permet convertir une couleur Hexa en RGB().
+/// hex-to-rgb est notament utiliser pour convertir les var(color) css
+/// afin de les utiliser dans le @mixin box-shadow
+///
+/// Exemple de SASS :
+///   div
+///     background: rgb(#{hex-to-rgb($color)})
+
+@function hex-to-rgb($hex)
+  @return red($hex) + ", " + green($hex) + ", " + blue($hex)
+
+/// La fonction prefix() permet d'ajouter automatiquement certaine propriété css
+/// pour les vieux navigateurs.
+///
+/// Exemple de SASS :
+///   div
+///     @include prefix(transition, color .3s ease)
+
+@mixin prefix($propriete, $args...)
+  -webkit-#{$propriete}: $args
+  -moz-#{$propriete}: $args
+  -ms-#{$propriete}: $args
+  -o-#{$propriete}: $args
+  #{$propriete}: $args

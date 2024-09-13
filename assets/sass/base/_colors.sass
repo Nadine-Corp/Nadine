@@ -8,38 +8,38 @@
 //   ↑                  ↑                   ↑
 //   0=grey-0            50=couleur pure      100=grey-100
 
-$declinaisons: 0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 95, 98, 100
+$declinaisons: 0, 100, 200, 300, 400, 500, 600, 700, 800, 900, 950, 980, 1000
 
 /// Blanc & Noir de NadineCorp©
 /// ATTENTION : gardez la saturation à 100%
 /// pour avoir des couleurs lumineuses
 
-$grey-100: hsl(0, 0%, 11%)
+$grey-1000: hsl(0, 0%, 11%)
 $grey-0: hsl(47, 15%, 88%)
 
 /// Palette NadineCorp©
 $rouge-trash: #FF3636
+$colorTheme: ('rouge': $rouge-trash)
 
 /// Ajout du nuancier Dark mode
 
 \:root
-  $colorTheme: ('rouge': $rouge-trash)
   @include getThemeColor($colorTheme)
 
 // Ajout le thème Dark mode
 
 \:root, \:root.dark__mode
-  @include addVarCSS('texte', 'rouge', 50)
-  @include addVarCSS('backgroundColor', 'grey', 100)
-  @include addVarCSS('overlay', 'grey', 100, 95)
-  @include addVarCSS('coverBackgroundColor', 'rouge', 50)
-  @include addVarCSS('breadcrumbBackgroundColor', 'rouge', 90)
-  @include addVarCSS('border-color', 'rouge', 50)
+  @include setColor('txt', 'rouge', 500)
+  @include setColor('back', 'grey', 1000)
+  @include setColor('overlay', 'grey', 1000, 95)
+  @include setColor('coverBackgroundColor', 'rouge', 500)
+  @include setColor('breadcrumbBackgroundColor', 'rouge', 900)
+  @include setColor('border-color', 'rouge', 500)
   --color-rgb-shadow-50: 13, 13, 13
 
 // Ajout le thème Light mode
 
 \:root.light__mode
-  @include addVarCSS('backgroundColor', 'grey', 00)
-  @include addVarCSS('overlay', 'grey', 10, 85)
+  @include setColor('backgroundColor', 'grey', 00)
+  @include setColor('overlay', 'grey', 100, 85)
   --color-rgb-shadow-50: 150, 150, 150

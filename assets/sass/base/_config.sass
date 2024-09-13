@@ -1,11 +1,5 @@
 // main: ../../../style.sass
 
-/// Définition du $Modulor. Le $Modulor gére toutes les proportions de Nadine :
-/// marges, corps typographiques, tailles des élèments, etc.
-/// Tous est un multiple du $Modulor
-
-$modulor: 12px
-
 /// $breakpoints définit les 'Tailles' nécessaire au système responsive de Nadine.
 /// Ces 'Tailles' peuvent être utilisées avec la fonction respond()
 ///
@@ -24,14 +18,14 @@ $nbColonne: 12
 /// Définition des variables de marges et de height du site
 
 $header__height: var(--hh)
-$row__marge-top: var(--mt)
-$row__marge-horiz: var(--mh)
-$row__marge-bottom: var(--mb)
+$row__mt: var(--mt)
+$row__mx: var(--mh)
+$row__mb: var(--mb)
 $width__aside: var(--wa)
 
 \:root
   --vh: 1vh
-  --m: 12px
+  @include getModulor()
   --hh: #{m(4)}
   --mh: #{m(2)}
   --mt: #{m(2)}

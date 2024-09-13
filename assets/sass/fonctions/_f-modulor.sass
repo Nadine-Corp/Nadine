@@ -1,0 +1,36 @@
+// main: ../../../style.sass
+
+/// Définition du $Modulor. Le $Modulor gére toutes les proportions de Monobloc :
+/// marges, corps typographiques, tailles des élèments, etc.
+/// Tous est un multiple du $Modulor
+
+$modulor: 12px
+$modules: 1, 2, 3
+
+/// La fonction getModulor() génere les variables de $m
+/// afin de diminuer le nombre de calc()
+
+@mixin getModulor($m: $modulor)
+  @for $i from 1 through length($modules)
+    $multiplier: nth($modules, $i)
+    $var-name: if($multiplier == 1, "--m", "--#{$multiplier}m")
+    $var-value: $m * $multiplier
+    #{$var-name}: #{$var-value}
+
+
+/// La fonction modulor() permet d'utilisé plus facilement
+/// la variable css --m
+///
+/// Exemple de SASS :
+///   div
+///     width: m()
+///     height: m(2)
+
+@function m($qty:1)
+  $max-module: length($modules)
+  @if $qty == 1
+    @return var(--m)
+  @if index($modules, $qty)
+    @return var(--#{$qty}m)
+  @else
+    @return calc(var(--m) * #{$qty})

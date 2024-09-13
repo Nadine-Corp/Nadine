@@ -1,0 +1,29 @@
+// main: ../../../style.sass
+
+/// La fonction font-face() simplifie l'ajout de font
+///
+/// Exemple de SASS :
+///   @include font-face('Graphik', './assets/fonts/graphik/graphik', 400, normal, [eot, woff, woff2] )
+///   @include font-face('Graphik', './assets/fonts/graphik/graphik', 400, italic, [eot, woff, woff2] )
+
+@mixin font-face($name, $path, $weight:null, $style:null, $exts:woff)
+  $src: local('#{$name}')
+
+  @each $ext in $exts
+    $url: url('#{$path}.#{$ext}')
+    @if $ext == 'svg'
+      $url: url('#{$path}.#{$ext}##{$name}')
+    @if $ext == 'ttf'
+      $ext: 'truetype'
+    @if $ext == 'otf'
+      $ext: 'opentype'
+    $format: format('#{$ext}')
+    $src: append($src, $url $format, comma )
+
+  @font-face
+    font-family: $name
+    src: $src
+    font-stretch: normal
+    font-style: $style
+    font-weight: $weight
+    font-display: swap

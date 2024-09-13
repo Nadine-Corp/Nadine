@@ -49,33 +49,33 @@
 
   @include hover
     text-decoration: none
-    background: color('rouge', 50)
+    background: color('rouge', 500)
     border-radius: m(1.5)
     transition: $fast
 
 // Stylise les boutons avec un fond
 
 .btn__plain
-  color: color('backgroundColor')
-  background: color('rouge', 50)
-  border: 1px solid color('rouge', 50)
+  color: color('back')
+  background: color('rouge', 500)
+  border: 1px solid color('rouge', 500)
 
 // Stylise les boutons avec un simple contour
 
 .btn__outline
-  color: color('rouge', 80)
-  border: 1px solid color('rouge', 80)
+  color: color('rouge', 800)
+  border: 1px solid color('rouge', 800)
   background: color('grey', 0, 0)
   svg
-    fill: color('rouge', 80)
+    fill: color('rouge', 800)
 
   @include hover
-    background: color('rouge', 98)
-    color: color('texte')
+    background: color('rouge', 980)
+    color: color('txt')
     transition: $fast
 
     svg
-      fill: color('texte')
+      fill: color('txt')
       transition: $fast
 
 // Stylise les boutons avec une icone
@@ -95,7 +95,7 @@
   transition: $slow
 
 .btn__ico-label:has( + .btn__ico:hover)
-  color: color('texte')
+  color: color('txt')
   transition: $fast
 
 /// Stylse les gros boutons
@@ -129,16 +129,16 @@
     display: block
     width: 100%
   .m-lead
-    color: color('backgroundColor')
+    color: color('back')
   .m-body-l
-    color: color('rouge', 80)
+    color: color('rouge', 800)
     font-style: italic
 
 // Stylse boutons avec des icones
 
 .btn__big-ico svg
   width: m(4.5)
-  fill: color('backgroundColor')
+  fill: color('back')
 
 /// Stylse des feedback
 ///

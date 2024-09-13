@@ -25,20 +25,20 @@
       width: 100%
 
     .m-body-l
-      color: color('texte')
+      color: color('txt')
 
     .m-body-s
       font-style: italic
-      color: color('grey', 30)
+      color: color('grey', 300)
       transition: $verySlow
 
     @include hover
       padding: 0 m()
-      background: color('rouge',90)
+      background: color('rouge',900)
       transition: $fast
 
       .m-body-s
-        color: color('rouge',70)
+        color: color('rouge',700)
         transition: $fast
 
   .l-projets__statut
@@ -53,18 +53,18 @@
     width: m(3)
     height: m(3)
     margin-right: m()
-    background: color('texte')
+    background: color('txt')
     border-radius: 50%
 
     svg
       width: m(1.5)
-      fill: color('grey')
+      fill: color('back')
 
   .l-projets__annule .l-projets__thumbnail
-    background: color('grey',40)
+    background: color('grey', 400)
 
   .l-projets__termine .l-projets__thumbnail
-    background: color('grey',10)
+    background: color('grey', 100)
 
 .l-projets__factures
   display: none

@@ -30,19 +30,19 @@
     .m-accordion__wrapper
       opacity: 1
       max-height: 1000vh
-      padding-bottom: $row__marge-bottom
+      padding-bottom: $row__mb
       transition: $fast
 
   @include hover
     .m-accordion__titre
       &:before
-        background: color('rouge', 50)
+        background: color('rouge', 500)
       span, h2
-        color: color('rouge', 50)
+        color: color('rouge', 500)
         margin: 0 m(2.25)
         transition: $fast
     .m-accordion__ico svg
-      stroke: color('rouge', 50)
+      stroke: color('rouge', 500)
 
 .m-accordion__titre
   display: flex
@@ -68,9 +68,9 @@
 
   &>span, h2
     font-family: font('sans-serif')
-    color: color('rouge', 70)
+    color: color('rouge', 700)
     transition: $verySlow
-    background: color('backgroundColor')
+    background: color('back')
     z-index: 2
 
 .m-accordion__ico
@@ -81,7 +81,7 @@
 
   svg
     fill: none
-    stroke: color('rouge', 80)
+    stroke: color('rouge', 800)
     stroke-width: m()
 
 .m-accordion__wrapper

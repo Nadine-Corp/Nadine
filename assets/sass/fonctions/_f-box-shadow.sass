@@ -1,0 +1,59 @@
+// main: ../../../style.sass
+
+/// La fonction box-shadow() permet de centraliser la gestion
+/// des ombres sur Monobloc.
+///
+/// Exemple de SASS :
+///   div
+///     @include box-shadow()
+///     @include box-shadow(4, 'grey', 700)
+
+@mixin box-shadow($level:5, $color:'grey', $decli:500)
+
+  // Position de la source de lumière
+  $lightHoriz: 0px
+  $lightVert: 2px
+  // Propagation à partir de la source de lumière.
+  $spreadMax: 2
+  $spreadMin: 0
+  // Opacité des ombres
+  $alphaMax: 0.5
+  $alphaMin: 0.01
+  // Normbre d'ombre calculée
+  $nbShadow: 6
+  // Ajoute une variable pour stocké les ombres
+  $shadows: ()
+
+  @if $level > 0
+    @for $i from 1 through $nbShadow
+      $shadow-x: calc($lightHoriz * $i * $level)
+      $shadow-y: calc($lightVert * $i * $level)
+      $shadow-blur: calc($level * $i)
+      $shadow-blur: #{$shadow-blur}px
+      $shadow-spread: $spreadMax - (($spreadMax - $spreadMin) / $nbShadow) * $i
+      $shadow-spread: #{$shadow-spread}px
+      $shadow-alpha: $alphaMax - (($alphaMax - $alphaMin) / $nbShadow) * $i
+      $shadow-color: rgba(var(--color-rgb-#{$color}-#{$decli}), $shadow-alpha)
+      $shadows: append($shadows, $shadow-x $shadow-y $shadow-blur $shadow-spread $shadow-color, comma)
+  @else
+    $shadow-color: rgba(var(--color-rgb-#{$color}-#{$decli}), 0)
+    $shadows: append($shadows, 0 0 0 0 $shadow-color, comma)
+
+  box-shadow: $shadows
+
+
+  // R&D : piste pour activer des ombres
+  // avec un effet produit automatique
+  // sur le background
+
+  // &
+  //   position: relative
+  // &::before
+  //   content: ''
+  //   position: absolute
+  //   width: 100%
+  //   height: 100%
+  //   left: 0
+  //   top: 0
+  //   box-shadow: $shadows
+  //   mix-blend-mode: soft-light

@@ -18,14 +18,14 @@
   align-items: center
   width: 100%
   height: m(4)
-  padding: 0 $row__marge-horiz
+  padding: 0 $row__mx
   background: color('breadcrumbBackgroundColor')
   z-index: $zindex__breadcrumb
 
 .m-breadcrumb__link
   position: relative
   font-family: font('sans-serif')
-  color: color('rouge', 70)
+  color: color('rouge', 700)
   padding: m() m(3) m() 0
   transition: $slow
 
@@ -36,8 +36,8 @@
     right: m(1.25)
 
   &:last-of-type
-    color: color('rouge', 50)
+    color: color('rouge', 500)
 
   @include hover
-    color: color('rouge', 50)
+    color: color('rouge', 500)
     transition: $fast

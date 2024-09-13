@@ -1,0 +1,18 @@
+// main: ../../../style.sass
+
+/// La fonction hover() simplifie l'utilisation du media(hover)
+///
+/// Exemple de SASS :
+///   div
+///     background: black
+///     @include hover
+///       background: white
+
+@mixin hover
+  @media(hover)
+    &:hover
+      @content
+
+@mixin no-hover
+  @media not all and (hover: hover)
+    @content

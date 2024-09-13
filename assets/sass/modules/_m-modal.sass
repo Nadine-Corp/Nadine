@@ -11,7 +11,7 @@
   max-height: 75vh
   top: 50%
   left: 50%
-  background: color('backgroundColor')
+  background: color('back')
   transform: translate(-50%, -50%)
   transition: $slow
   z-index: $zindex__modal
@@ -36,7 +36,7 @@
 // Style les modales d'erreurs
 
 .m-modal__error
-  background: color('rouge', 90)
+  background: color('rouge', 900)
 
 // Style les Effet Denko des modales
 
@@ -44,7 +44,7 @@
   position: relative
   flex: 0 0 auto
   width: m(10)
-  background: color('texte')
+  background: color('txt')
   overflow: hidden
 
   .is--denko__container
@@ -67,14 +67,14 @@
   border-radius: m()
   margin-top: m()
   padding: m(1.5)
-  color: color('rouge', 80)
-  border: 1px solid color('rouge', 80)
+  color: color('rouge', 800)
+  border: 1px solid color('rouge', 800)
   background: color('grey', 0, 0)
   transition: $slow
 
   @include hover
     text-decoration: none
-    color: color('rouge', 50)
-    background: color('rouge', 90)
+    color: color('rouge', 500)
+    background: color('rouge', 900)
     border-radius: m(1.5)
     transition: $fast

@@ -1,0 +1,42 @@
+// main: ../../../style.sass
+
+/// La fonction color() permet d'utiliser le système de thème de couleurs
+/// plus facilement.  La fonction accepte 2 paramètres : Le nom de la couleur,
+/// sa déclinaison.  Un troisième peut-être ajouter pour renseigner l'opacité.
+///
+/// Exemple de SASS :
+///   div
+///     background: color('grey')
+///     color: color('red', 1000, 0.5)
+
+@function color($var, $decli:500, $opacity:1)
+  $grey-500: mix($grey-1000, $grey-0)
+  $grey: ('grey': $grey-500)
+  $colorTheme: map-merge($colorTheme, $grey)
+  @if map-has-key($colorTheme, $var)
+    // La clé '$var' existe dans $colorTheme
+    @if $opacity < 1
+      @return #{"rgba(var(--color-rgb-"+$var+"-"+$decli+"), "+$opacity+")"}
+    @else
+      @return #{"var(--color-"+$var+"-"+$decli+")"}
+  @else
+    // La clé '$var' n'existe pas dans $colorTheme
+    @if $opacity < 1
+      @return #{"rgba(var(--color-rgb-"+$var+"), "+$opacity+")"}
+    @else
+      @return #{"var(--color-"+$var+")"}
+
+/// La fonction setColor() simplifie l'ajout de variable CSS.
+/// La fonction accepte 2 paramètres : Le nom de la couleur, sa déclinaison.
+/// Un troisième peut-être ajouter pour renseigner l'opacité.
+///
+/// Exemple de SASS :
+///   @include setColor('borderColor', 'grey')
+///   @include setColor('backgroundColor', 'grey', 700)
+///   @include setColor('backgroundColor', 'grey', 300, 0.5)
+
+@mixin setColor($nom, $var, $decli:500, $opacity:1)
+  @if $opacity < 1
+    --color-#{$nom}: rgba( var(--color-rgb-#{$var}-#{$decli}) , #{$opacity} )
+  @else
+    --color-#{$nom}: var(--color-#{$var}-#{$decli})
