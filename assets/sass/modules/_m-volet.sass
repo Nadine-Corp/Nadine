@@ -1,31 +1,30 @@
 // main: ../../../style.sass
 
-  Le module Volet contrôle la mise en page, l'ouverture et la fermeture
-  des volets de Monobloc.
-
-  Attention : pensez à activer le module Volet
-  dans le fichier assets/js/monobloc.js.
-
-  Exemple de HTML :
-
-  <main>
-    <div class="m-volet m-volet-l">
-      <ul>
-        <li></li>
-        <li></li>
-        <li></li>
-      </ul>
-    </div>
-
-    <div class="m-volet m-volet-r">
-      <ul>
-        <li></li>
-        <li></li>
-        <li></li>
-      </ul>
-    </div>
-  </main>
-
+/// Le module Volet contrôle la mise en page, l'ouverture et la fermeture
+/// des volets de Monobloc.
+///
+/// Attention: pensez à activer le module Volet
+/// dans le fichier assets/js/monobloc.js.
+///
+/// Exemple de HTML :
+///
+/// <main>
+///   <div class="m-volet m-volet-l">
+///     <ul>
+///       <li></li>
+///       <li></li>
+///       <li></li>
+///     </ul>
+///   </div>
+///
+///   <div class="m-volet m-volet-r">
+///     <ul>
+///       <li></li>
+///       <li></li>
+///       <li></li>
+///     </ul>
+///   </div>
+/// </main>
 
 .m-volet
   display: flex
@@ -36,20 +35,13 @@
   background: color('backgroundColor')
   z-index: $zindex__volet
   transition: $slow
-  @include box-shadow(200, 'shadow')
+  @include box-shadow(200, 'shadow', 50)
   @include respond('m')
-    width: 75vw
+    width: calc(66vw + m(9))
   @include respond('l')
-    width: 66vw
-  @include respond('xl')
-    width: 50vw
-
-
-.m-modal__wrapper
-  flex: 1 1 auto
-  padding: m(5)
-  overflow: overlay
-
+    width: calc(50vw + m(9))
+  @include respond('xxl')
+    width: calc(50vw + m(9))
 
 // Volet gauche
 
@@ -59,7 +51,6 @@
   &.is--active
     left: 0
 
-
 // Volet droit
 
 .m-volet-r
@@ -68,27 +59,39 @@
   &.is--active
     right: 0
 
-
 .m-volet__wrapper
   flex: 1 1 auto
-  padding: m(5)
+  padding: m(5) m(5) 0 m(5)
   overflow: overlay
-  
 
 // Effet Denko
 
 .m-volet__denko
   position: relative
   flex: 0 0 auto
-  width: m(10)
+  width: m(8)
   background: color('texte')
   overflow: hidden
+  @include respond('m')
+    width: m(10)
 
   .is--denko__container
     position: absolute
     top: 100%
     width: 100vh
-    height: m(9)
+    height: m(8)
     display: block
     transform: rotate(-90deg)
     transform-origin: top left
+    @include respond('m')
+      height: m(9)
+
+// Stylise la Bottom Bar
+
+.m-volet__bbar
+  position: sticky
+  margin-top: m(5)
+  padding-top: m(2)
+  padding-bottom: m(5)
+  background: white
+  bottom: 0

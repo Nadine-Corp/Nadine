@@ -37,12 +37,12 @@ if (isset($_GET['id'])) {
     // Récupère les infos du projet dans la base de données
     if ($contact__table == 'Diffuseurs') {
       $args = array(
-        'FROM'     => 'diffuseurs',
+        'FROM'     => 'Diffuseurs',
         'WHERE'    => 'diffuseur__id =' . $contact__id,
       );
     } else {
       $args = array(
-        'FROM'     => 'artistes',
+        'FROM'     => 'Artistes',
         'WHERE'    => 'artiste__id =' . $contact__id,
       );
     };

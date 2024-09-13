@@ -1,9 +1,12 @@
-<link rel='stylesheet' type='text/css' media="all" href='./template_facture/facture__2021/style.css'>
-<script src="./template_facture/facture__2021/facture.js"></script>
+<?php
+// Ajoute les assets
+include 'head.php'; ?>
 
+<?php // Début du formulaire
+?>
 
 <form class="form" action="" method="post">
-  <div class="paper template-facture__2023">
+  <div class="paper template-facture__2021">
     <div class="paper__content">
       <table>
         <tr>
@@ -48,8 +51,8 @@
           <td class="facture__b-l facture__w-25 facture__tl">
             <span class="facture__subheading">Total brut</span>
           </td>
-          <td class="facture__w-25 facture__tr facture__subheading form__total">
-            <input type="text" name="total" placeholder="Total" class="facture__subheading" disabled> €
+          <td class="facture__w-25 facture__tr facture__subheading form__total" style="text-align:right">
+            <input type="text" name="total" placeholder="Total" class="facture__subheading form__input-total" disabled> €
           </td>
         </tr>
         <tr class="facture__h-10">
@@ -57,8 +60,8 @@
           <td class="facture__b-l facture__w-25 facture__tl">
             <span class="facture__subheading">TVA</span>
           </td>
-          <td class="facture__w-25 facture__tr facture__subheading form__total">
-            <input type="text" name="TVA" class="facture__subheading" disabled>0 €
+          <td class="facture__w-25 facture__tr facture__subheading form__total" style="text-align:right">
+            <input type="text" name="TVA" class="facture__subheading form__input-total" disabled value="0"> €
           </td>
         </tr>
         <tr class="facture__h-10">
@@ -66,8 +69,8 @@
           <td class="facture__b-l facture__w-25 facture__tl">
             <span class="facture__subheading">Contributions diffuseur</span>
           </td>
-          <td class="facture__w-25 facture__tr facture__subheading form__total">
-            <input type="text" name="total_charges" placeholder="Charges" class="facture__subheading" disabled> €
+          <td class="facture__w-25 facture__tr facture__subheading form__total" style="text-align:right">
+            <input type="text" name="total_charges" placeholder="Charges" class="facture__subheading form__input-total" disabled> €
           </td>
         </tr>
         <tr class="facture__h-10">
@@ -75,8 +78,8 @@
           <td class="facture__b-l facture__w-25 facture__tl facture__b-t">
             <span class="facture__subheading">Net à payer</span>
           </td>
-          <td class="facture__w-25 facture__tr facture__subheading form__total facture__b-t">
-            <input type="text" name="TotalEtCharges" placeholder="Total TTC" class="facture__subheading" disabled> €
+          <td class="facture__w-25 facture__tr facture__subheading form__total facture__b-t" style="text-align:right">
+            <input type="text" name="TotalEtCharges" placeholder="Total TTC" class="facture__subheading form__input-total" disabled> €
           </td>
         </tr>
         <tr class="facture__h-10">
@@ -182,23 +185,23 @@
           <td class="facture__w-50 facture__total">
             <p class="facture__display2">Total à verser<br>à l'artiste auteur</p>
             <p class="facture__caption">Montant HT − Total du précompte (1)</p>
-            <img src="./template_facture/facture__2021/arrow.png" alt="">
+            <img src="./template_facture/facture__2021/assets/img/arrow.png" alt="">
           </td>
           <td class="facture__w-50 facture__b-ld facture__total">
             <p class="facture__display2">Total à verser<br>à L’URSSAF *</p>
             <p class="facture__caption">Total des contributions diffuseur (2)
               <br>* Taux en vigueur depuis 2021
             </p>
-            <img src="./template_facture/facture__2021/arrow.png" alt="">
+            <img src="./template_facture/facture__2021/assets/img/arrow.png" alt="">
           </td>
         </tr>
         <tr class="facture__h-20 facture__b-t">
           <td class="facture__w-50 facture__total facture__display2">
-            <span id="total-artiste" class="facture__subheading"></span>
+            <span id="total-artiste-precompte" class="facture__subheading"></span>
             <input type="hidden" name="total-artiste" placeholder="Total" class="facture__subheading">
           </td>
           <td class="facture__w-50 facture__b-ld facture__total facture__display2">
-            <span id="total-mda" class="facture__subheading"></span>
+            <span id="total-diffuseur-precompte" class="facture__subheading"></span>
             <input type="hidden" name="total-mda" placeholder="Total" class="facture__subheading">
           </td>
         </tr>

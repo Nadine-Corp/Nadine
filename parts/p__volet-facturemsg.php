@@ -29,18 +29,27 @@ include_once(__DIR__ . '/../core/fonctions.php');
 
     <?php // Ajout du message
     ?>
+
     <p class="m-volet__facturemsg-mail m-ss m-body-l">
       <?php
       the_facture_msg($row, $prefix);
       ?>
     </p>
 
-    <?php // Ajout du message
+
+    <?php // Ajout des boutons
     ?>
-    <div class="m-btn__grp">
-      <button class="btn btn__outline btn__cancel" type="button">Annuler</button>
-      <button class="btn btn__plain btn__copy" type="button">Copier</button>
-      <span class="btn__info m-ss">Message copié !</span>
+
+    <div class="m-volet__bbar m-row">
+      <div class="m-btn__grp">
+        <button class="btn btn__outline btn__cancel" type="button">Annuler</button>
+        <a href="./profil.php?data-step=4" class="btn btn__outline btn__cancel" type="button">Modifier</a>
+        <button class="btn btn__plain btn__copy" type="button">Copier</button>
+        <span class="btn__info m-ss">Message copié !</span>
+      </div>
     </div>
+
+
   </div>
+
 </div>

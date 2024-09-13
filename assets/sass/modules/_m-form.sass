@@ -1,32 +1,30 @@
 // main: ../../../style.sass
 
-  Le module Form permet de styliser les formulaires
-
-  Exemple de HTML :
-
-  <form class="m-form" action="<?php echo get_stylesheet_directory_uri(); ?>/scripts/s__send-mail-from-form.php" method="post">
-    <div class="m-form__wrapper">
-      <input type="text" class="m-form__half" placeholder="Nom*" name="nom" value="" autocomplete="family-name" required>
-      <input type="email" class="m-form__half" placeholder="Email*" name="email" value="" autocomplete="email" required>
-      <input type="text" class="m-form__full" placeholder="Sujet*" name="sujet" value="" autocomplete="" required>
-      <textarea class="m-form__full" placeholder="Message*" name="message" value="" autocomplete="" required></textarea>
-
-      <input type="text" class="m-form__full" placeholder="Prénom*" name="shipping_first_name" value="" autocomplete="given-name" required>
-      <input type="text" class="m-form__full" placeholder="Nom*" name="shipping_last_name" value="" autocomplete="family-name" required>
-      <input type="text" class="m-form__full" placeholder="Nom de l'entreprise" name="shipping_company" value="" autocomplete="organization">
-      <input type="text" class="m-form__full" placeholder="Téléphone*" name="shipping_phone" value="" autocomplete="tel" required>
-      <input type="email" class="m-form__full automatewoo-capture-guest-email" placeholder="Email*" name="shipping_email" value="" autocomplete="email" required>
-      <input type="text" class="m-form__full" placeholder="Numéro et nom de rue*" name="shipping_address_1" value="" autocomplete="street-address" required>
-      <input type="text" class="m-form__full" placeholder="Code postal*" name="shipping_postcode" value="" pattern="[0-9]{5}" size="5" maxlength="5" autocomplete="postal-code" required>
-      <input type="text" class="m-form__full" placeholder="Ville*" name="shipping_city" value="" autocomplete="address-level2" required>
-
-      <input type="text" class="m-form__half" placeholder="url" name="url" hidden value="<?php echo get_home_url(); ?>">
-      <input type="text" class="m-form__half" placeholder="url" name="the_permalink" hidden value="<?php the_permalink(); ?>">
-    </div>
-      <input type="submit" name="submit" value="<?php _e("Envoyer votre message","monobloc") ?>" class="btn btn--plain">
-  </form>
-
-
+/// Le module Form permet de styliser les formulaires
+///
+/// Exemple de HTML :
+///
+/// <form class="m-form" action="<?php echo get_stylesheet_directory_uri(); ?>/scripts/s__send-mail-from-form.php" method="post">
+///   <div class="m-form__wrapper">
+///     <input type="text" class="m-form__half" placeholder="Nom*" name="nom" value="" autocomplete="family-name" required>
+///     <input type="email" class="m-form__half" placeholder="Email*" name="email" value="" autocomplete="email" required>
+///     <input type="text" class="m-form__full" placeholder="Sujet*" name="sujet" value="" autocomplete="" required>
+///     <textarea class="m-form__full" placeholder="Message*" name="message" value="" autocomplete="" required></textarea>
+///
+///     <input type="text" class="m-form__full" placeholder="Prénom*" name="shipping_first_name" value="" autocomplete="given-name" required>
+///     <input type="text" class="m-form__full" placeholder="Nom*" name="shipping_last_name" value="" autocomplete="family-name" required>
+///     <input type="text" class="m-form__full" placeholder="Nom de l'entreprise" name="shipping_company" value="" autocomplete="organization">
+///     <input type="text" class="m-form__full" placeholder="Téléphone*" name="shipping_phone" value="" autocomplete="tel" required>
+///     <input type="email" class="m-form__full automatewoo-capture-guest-email" placeholder="Email*" name="shipping_email" value="" autocomplete="email" required>
+///     <input type="text" class="m-form__full" placeholder="Numéro et nom de rue*" name="shipping_address_1" value="" autocomplete="street-address" required>
+///     <input type="text" class="m-form__full" placeholder="Code postal*" name="shipping_postcode" value="" pattern="[0-9]{5}" size="5" maxlength="5" autocomplete="postal-code" required>
+///     <input type="text" class="m-form__full" placeholder="Ville*" name="shipping_city" value="" autocomplete="address-level2" required>
+///
+///     <input type="text" class="m-form__half" placeholder="url" name="url" hidden value="<?php echo get_home_url(); ?>">
+///     <input type="text" class="m-form__half" placeholder="url" name="the_permalink" hidden value="<?php the_permalink(); ?>">
+///   </div>
+///     <input type="submit" name="submit" value="<?php _e("Envoyer votre message","monobloc") ?>" class="btn btn--plain">
+/// </form>
 
 // Définition de qq variables pour faciliter
 // les évolutions de design de tous les modules form
@@ -45,7 +43,6 @@ $inputFontSize: m(1.5)
 $inputColor: color('grey',0)
 $labelFontSize: m()
 $labeColor: color('grey',40)
-
 
 .m-form
   float: left
@@ -83,7 +80,7 @@ $labeColor: color('grey',40)
       border: 1px solid $inputFocusBorderColor
       background: $inputFocusBackground
       transition: $fast
-  
+
   textarea
     height: auto
 
@@ -114,7 +111,6 @@ $labeColor: color('grey',40)
   strong
     color: color('rouge', 50)
 
-
 // Stylise les labels
 
 .m-form__label-amimate,
@@ -141,7 +137,6 @@ $labeColor: color('grey',40)
   ::placeholder
     color: color('grey', 50, 0)
 
-
 // Stylise les inputs avec des boutons à côté
 
 .m-form__with-btn
@@ -152,7 +147,6 @@ $labeColor: color('grey',40)
     margin-left: m()
     flex: 0 0 auto
 
-
 // Stylise les inputs avec des boutons à côté
 
 .m-form__info
@@ -161,7 +155,6 @@ $labeColor: color('grey',40)
   span
     color: $labeColor
     margin-left: auto
-
 
 // Stylise les Suggestion de Chome & Co.
 
@@ -180,20 +173,15 @@ $labeColor: color('grey',40)
   input:-webkit-autofill,
   input:-webkit-autofill:hover,
   input:-webkit-autofill:focus,
-  input:-webkit-autofill:active 
+  input:-webkit-autofill:active
     transition: background-color 5000s ease-in-out 0s
     -webkit-text-fill-color: #ffffff
-
-
-
-
 
 // Stylise la couleur de l'icone Calendrier
 // des Input date sur Chrome & Co.
 
 ::-webkit-calendar-picker-indicator
   filter: invert(1)
-
 
 // Stylise les placeholder
 

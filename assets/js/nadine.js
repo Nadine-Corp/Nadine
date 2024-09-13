@@ -182,7 +182,7 @@ let overlay = document.querySelector('.m-overlay');
 
 // Cette fonction permet d'afficher l'Overlay
 function showOverlay() {
-	document.querySelector('.m-overlay').classList.add('is--active');
+	overlay.classList.add('is--active');
 	document.body.classList.add('overflow--is--hidden');
 	document.documentElement.classList.add('overflow--is--hidden');
 };
@@ -580,7 +580,11 @@ function mFormStep() {
 	formsStep.forEach(formStep => {
 
 		// Défini le numeros d'étape actuelle
-		let step = 1;
+
+		let step = formStep.getAttribute('data-step');
+		if (step === null) {
+			step = 1;
+		};
 		changeStep(formStep, step);
 
 		// Cherche les boutons
@@ -777,11 +781,14 @@ function hideAddArtistes() {
 
 	if (retroRadio !== null) {
 		let value = retroRadio.value;
+		let $select = document.querySelector('.m-form__porteurduprojet select');
 		// Si le bouton Oui est Checked, la partie suivante est affichée
 		if (value !== null && value == 1) {
 			div.style.display = 'block';
+			$select.required = true;
 		} else {
 			div.style.display = 'none';
+			$select.required = false;
 		}
 	}
 }

@@ -9,6 +9,8 @@
  * Ajout du Footer
  */
 
+//nadine_log("Nadine importer maintenant le footer.php");
+
 // Permet d'injecter des parts à la fin du main. 
 ?>
 </main>
@@ -39,3 +41,6 @@
 </body>
 
 </html>
+
+<?php //nadine_log("Nadine a terminer son travail. Elle est maintenant en pause."); 
+?>

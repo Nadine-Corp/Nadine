@@ -1,9 +1,13 @@
-<link rel='stylesheet' type='text/css' media="all" href='./template_facture/facture__2021/style.css'>
-<script src="./template_facture/facture__2021/facture.js"></script>
+<?php
+// Ajoute les assets
+include 'head.php'; ?>
+
+<?php // Début du formulaire
+?>
 
 
 <form class="form" action="" method="post">
-  <div class="paper template-facture__2023">
+  <div class="paper template-facture__2021">
     <div class="paper__content">
       <table>
         <tr>
@@ -59,7 +63,7 @@
             <span class="facture__subheading">TVA</span>
           </td>
           <td class="facture__w-25 facture__tr facture__subheading form__total">
-            <input type="text" name="TVA" class="facture__subheading" disabled>0 €
+            <input type="text" name="TVA" class="facture__subheading" disabled value="0"> €
           </td>
         </tr>
         <tr>

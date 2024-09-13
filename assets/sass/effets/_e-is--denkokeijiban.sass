@@ -1,24 +1,23 @@
 // main: ../../../style.sass
 
-  L'effet Is--DenkoKeijiban permet de faire défiler
-  le contenu de <li> à la façon d'un panneau à LED.
-
-  Attention : pensez à activer le module is--denko
-  dans le fichier assets/js/nadine.js
-
-  Exemple de HTML :
-
-  <section class="is--denko__container m-row">
-    <ul>
-      <li class="is--denko">
-        <span>Something</span><span>Something else</span>
-      </li>
-      <li class="is--denko">
-        <span>Something completely different</span>
-      </li>
-    </ul>
-  </section>
-
+/// L'effet Is--DenkoKeijiban permet de faire défiler
+/// le contenu de <li> à la façon d'un panneau à LED.
+///
+/// Attention : pensez à activer le module is--denko
+/// dans le fichier assets/js/nadine.js
+///
+/// Exemple de HTML :
+///
+/// <section class="is--denko__container m-row">
+///   <ul>
+///     <li class="is--denko">
+///       <span>Something</span><span>Something else</span>
+///     </li>
+///     <li class="is--denko">
+///       <span>Something completely different</span>
+///     </li>
+///   </ul>
+/// </section>
 
 .is--denko__container
   overflow: hidden
@@ -44,7 +43,6 @@
   padding: m() 0
   width: max-content
   animation: thedenkooldfashonway 3000s linear infinite reverse
-
 
 @keyframes thedenkooldfashonway
   from

@@ -1,31 +1,27 @@
 // main: ../../../style.sass
 
-
-// Définition du $Modulor. Le $Modulor gére toutes les proportions de Nadine :
-   marges, corps typographiques, tailles des élèments, etc.
-   Tous est un multiple du $Modulor
+/// Définition du $Modulor. Le $Modulor gére toutes les proportions de Nadine :
+/// marges, corps typographiques, tailles des élèments, etc.
+/// Tous est un multiple du $Modulor
 
 $modulor: 12px
 
-
-// $breakpoints définit les 'Tailles' nécessaire au système responsive de Nadine.
-  Ces 'Tailles' peuvent être utilisées avec la fonction respond()
-
-   Exemple de SASS :
-     div
-       display: none
-       @include respond('m')
-         display: block
+/// $breakpoints définit les 'Tailles' nécessaire au système responsive de Nadine.
+/// Ces 'Tailles' peuvent être utilisées avec la fonction respond()
+///
+///  Exemple de SASS :
+///    div
+///      display: none
+///      @include respond('m')
+///        display: block
 
 $breakpoints: ('xxs': 0px, 'xs': 500px, 's': 768px, 'm': 900px, 'l': 1024px, 'xl': 1280px, 'xxl': 1440px)
 
-
-// Définition du nombre de colonne pour le module .m-grid
+/// Définition du nombre de colonne pour le module .m-grid
 
 $nbColonne: 12
 
-
-// Définition des variables de marges et de height du site
+/// Définition des variables de marges et de height du site
 
 $header__height: var(--hh)
 $row__marge-top: var(--mt)
@@ -34,20 +30,19 @@ $row__marge-bottom: var(--mb)
 $width__aside: var(--wa)
 
 \:root
-  --vh:    1vh
-  --m:     12px
-  --hh:    #{m(4)}
-  --mh:    #{m(2)}
-  --mt:    #{m(2)}
-  --mb:    #{m(2)}
-  --wa:    #{m(30)}
+  --vh: 1vh
+  --m: 12px
+  --hh: #{m(4)}
+  --mh: #{m(2)}
+  --mt: #{m(2)}
+  --mb: #{m(2)}
+  --wa: #{m(30)}
 
-
-// Ajout des Fonts grâce à la fonction font-face() de Nadine.
-
-   Exemple de SASS :
-    @include font-face('Graphik', './assets/fonts/graphik/graphik', 400, normal, [eot, woff, woff2] )
-    @include font-face('Graphik', './assets/fonts/graphik/graphik', bold, italic, [eot, woff, woff2] )
+/// Ajout des Fonts grâce à la fonction font-face() de Nadine.
+///
+/// Exemple de SASS :
+/// @include font-face('Graphik', './assets/fonts/graphik/graphik', 400, normal, [eot, woff, woff2] )
+/// @include font-face('Graphik', './assets/fonts/graphik/graphik', bold, italic, [eot, woff, woff2] )
 
 // Ajout du Redaction
 @include font-face('Nadine Serif', './assets/fonts/redaction/redaction', 400, normal, [ttf, otf, woff2] )
@@ -60,12 +55,11 @@ $width__aside: var(--wa)
 @include font-face('Nadine Sans', './assets/fonts/nimbus/nimbus-bold', 600, normal, [ttf] )
 @include font-face('Nadine Sans', './assets/fonts/nimbus/nimbus-bold-italic', 600, italic, [ttf] )
 
-
-// La fonction font() permet d'ajouter de gérer les font-family de façon systémique.
-
-   Exemple de SASS :
-    div
-      font-family: font('sans-serif')
+/// La fonction font() permet d'ajouter de gérer les font-family de façon systémique.
+///
+/// Exemple de SASS :
+///   div
+///     font-family: font('sans-serif')
 
 @function font($family)
   @if $family == 'serif'
@@ -73,9 +67,8 @@ $width__aside: var(--wa)
   @else if $family == 'sans-serif'
     @return 'Nadine Sans', Helvetica, sans-serif
 
-
-// Les variables $fast, $slow et $verySlow permettent d'uniformiser
-  les vitesses des transitions de Nadine
+/// Les variables $fast, $slow et $verySlow permettent d'uniformiser
+/// les vitesses des transitions de Nadine
 
 $fast: .2s
 $slow: 0.6s

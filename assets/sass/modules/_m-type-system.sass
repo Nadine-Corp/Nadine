@@ -1,14 +1,12 @@
 // main: ../../../style.sass
 
-
-  Le module Type System gère tous les styles
-  de paragraphe de Nadine.
-
-  Exemple de HTML :
-
-    <h1 class="m-lead">Something</h1>
-    <p class="m-body">Something else</p>
-
+/// Le module Type System gère tous les styles
+/// de paragraphe de Nadine.
+///
+/// Exemple de HTML :
+///
+///   <h1 class="m-lead">Something</h1>
+///   <p class="m-body">Something else</p>
 
 *
   font-family: font('serif')
@@ -19,7 +17,6 @@
   font-feature-settings: "liga", "kern"
   -webkit-font-smoothing: antialiased
   -moz-osx-font-smoothing: grayscale
-
 
 h1, h2, h3, h4, h5, h6
   font-size: 2rem
@@ -53,7 +50,6 @@ p
       padding-bottom: 3px
       box-shadow: 0 1px 0 0 color('rouge',50,0.2)
       transition: all 0.8s
-
 
 // Style le éléments en sans-serif
 
@@ -97,16 +93,15 @@ p
   font-size: m(0.75)
   line-height: m()
 
-
-// Les Dividers sont de petit trait pour séparer des élements
-   de typographiques. Il exite 2 types de Dividers :
-   le divider__v vertical et le .divider__h horizontal.
-
-  Exemple de HTML :
-
-  <h1 class="m-display">Un titre</h1>
-  <div class="m-divider__v"></div>
-  <span class="m-title">Un Sous-titre</span>
+/// Les Dividers sont de petit trait pour séparer des élements
+/// de typographiques. Il exite 2 types de Dividers :
+/// le divider__v vertical et le .divider__h horizontal.
+///
+/// Exemple de HTML :
+///
+/// <h1 class="m-display">Un titre</h1>
+/// <div class="m-divider__v"></div>
+/// <span class="m-title">Un Sous-titre</span>
 
 .m-divider__v
   width: 1px

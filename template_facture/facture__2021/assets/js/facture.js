@@ -20,7 +20,7 @@ function calc() {
 	var prix_6 = parseInt(document.querySelector("input[name$='facture__prix_6']").value) || 0;
 	var prix_7 = parseInt(document.querySelector("input[name$='facture__prix_7']").value) || 0;
 
-	// Calcule des totaux
+	// Calcule les totaux
 	var total = prix_1 + prix_2 + prix_3 + prix_4 + prix_5 + prix_6 + prix_7;
 	var css = total * 0.004;
 	var css_new = 0;
@@ -30,12 +30,23 @@ function calc() {
 	var crds = total * 0.9825 * 0.005;
 	var cfpc = total * 0.0035;
 	var total_precompte = cotisation_maladies_vieillesse + +csg + +crds + +cfpc + +css_new;
-	var total_artiste = total - +total_precompte;
+	var total_artiste = total;
+	var total_artiste_precompte = total - +total_precompte;
 	var contribution_sociales = total * 0.01;
 	var contribution_a_la_formation_professionnelle = total * 0.001;
 	var total_des_contributions_diffuseur = contribution_sociales + contribution_a_la_formation_professionnelle;
-	var total_mda = total_precompte + total_des_contributions_diffuseur;
-	var total_charges = total * 0.011;
+	var total_diffuseur = total_des_contributions_diffuseur;
+	var total_diffuseur_precompte = total_precompte + total_des_contributions_diffuseur;
+
+	var totalChargesInput = document.querySelector("input[name$='total_charges']");
+	// Vérifie si les contributions doivent être ajoutées à la facture 
+	if (totalChargesInput.classList.contains('sanscontrib')) {
+		var total_charges = 0;
+	} else {
+		var total_charges = total * 0.011;
+	}
+	var total_charges = parseInt(total_charges);
+
 	var totalEtCharges = total + total_charges;
 
 
@@ -92,11 +103,10 @@ function calc() {
 	if (contributionFormationInput) {
 		contributionFormationInput.value = arrondi(contribution_a_la_formation_professionnelle);
 	}
-	var totalMDAInput = document.querySelector("input[name='total-mda']");
-	if (totalMDAInput) {
-		totalMDAInput.value = arrondi(total_mda);
+	var totalDiffuseurInput = document.querySelector("input[name='total-mda']");
+	if (totalDiffuseurInput) {
+		totalDiffuseurInput.value = arrondi(total_diffuseur);
 	}
-	var totalChargesInput = document.querySelector("input[name='total_charges']");
 	if (totalChargesInput) {
 		totalChargesInput.value = arrondi(total_charges);
 	}
@@ -108,9 +118,17 @@ function calc() {
 	if (totalArtisteText) {
 		totalArtisteText.textContent = arrondi(total_artiste) + " €";
 	}
-	var totalMDAText = document.getElementById("total-mda");
-	if (totalMDAText) {
-		totalMDAText.textContent = arrondi(total_mda) + " €";
+	var totalArtisteTextPrecompte = document.getElementById("total-artiste-precompte");
+	if (totalArtisteTextPrecompte) {
+		totalArtisteTextPrecompte.textContent = arrondi(total_artiste_precompte) + " €";
+	}
+	var totalDiffuseurText = document.getElementById("total-mda");
+	if (totalDiffuseurText) {
+		totalDiffuseurText.textContent = arrondi(total_diffuseur) + " €";
+	}
+	var totalDiffuseurTextPrecompte = document.getElementById("total-diffuseur-precompte");
+	if (totalDiffuseurTextPrecompte) {
+		totalDiffuseurTextPrecompte.textContent = arrondi(total_diffuseur_precompte) + " €";
 	}
 }
 

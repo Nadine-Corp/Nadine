@@ -24,9 +24,9 @@ include(__DIR__ . '/header.php');
       // Prépare une LoopLoop
 
       $LoopLoop = array(
-        array("title" => "Devis", "table" => "devis", "prefix" => "devis", "etat" => array("Brouillon", "Envoyé", "Relancé")),
-        array("title" => "Factures d'acompte", "table" => "facturesacompte", "prefix" => "facturea", "etat" => array("Brouillon", "Envoyé", "Relancé")),
-        array("title" => "Factures", "table" => "factures", "prefix" => "facture", "etat" => array("Brouillon", "Envoyé", "Relancé")),
+        array("title" => "Devis", "table" => "Devis", "prefix" => "devis", "etat" => array("Brouillon", "Envoyé", "Relancé")),
+        array("title" => "Factures d'acompte", "table" => "Facturesacompte", "prefix" => "facturea", "etat" => array("Brouillon", "Envoyé", "Relancé")),
+        array("title" => "Factures", "table" => "Factures", "prefix" => "facture", "etat" => array("Brouillon", "Envoyé", "Relancé")),
       );
 
       /**
@@ -39,7 +39,7 @@ include(__DIR__ . '/header.php');
         echo '<div class="l-suivi__cols">';
         foreach ($loopItem['etat'] as $etat) {
 
-          echo '<div class="l-suivi__col l-suivi__col-' . $loopItem['prefix'] . $etat . '">';
+          echo '<div class="l-suivi__col l-suivi__col-' . $loopItem['prefix'] . sanitize($etat) . '">';
           echo '<div class="l-suivi__subtitle"><h3 class="m-body-l"><i>' . $etat . '</i></h3></div>';
 
           $args = array(

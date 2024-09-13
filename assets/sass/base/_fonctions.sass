@@ -1,18 +1,16 @@
 // main: ../../../style.sass
 
-// Le fichier de fonctions centralise toutes les fonctions Sass utilsées
-  par Nadine
+/// Le fichier de fonctions centralise toutes les fonctions Sass
+/// utilsées par Nadine
 
-
-// La fonction color() permet d'utiliser le système de thème de couleurs
-   plus facilement. La fonction accepte 2 paramètres : Le nom de la couleur,
-   sa déclinaison. Un troisième peut-être ajouter pour renseigner l'opacité.
-
-  Exemple de SASS :
-    div
-      background: color('principale')
-      color: color('back', 100, 0.5)
-
+/// La fonction color() permet d'utiliser le système de thème de couleurs
+/// plus facilement. La fonction accepte 2 paramètres : Le nom de la couleur,
+/// sa déclinaison. Un troisième peut-être ajouter pour renseigner l'opacité.
+///
+/// Exemple de SASS :
+///   div
+///     background: color('principale')
+///     color: color('back', 100, 0.5)
 
 @function color($var, $decli:null, $opacity:1)
   @if $opacity < 1
@@ -26,36 +24,33 @@
     @else
       @return #{"var(--color-"+$var+")"}
 
-
-// La fonction rgba-to-rgb permet de mélanger 2 couleurs entre elles
-   et le résultat en couleur Hexadécimal
-
-  Exemple de SASS :
-    div
-      background: rgba-to-rgb(transparentize($vert-menthe, 0.8), var(--color-back))
+/// La fonction rgba-to-rgb permet de mélanger 2 couleurs entre elles
+/// et le résultat en couleur Hexadécimal
+///
+/// Exemple de SASS :
+///   div
+///     background: rgba-to-rgb(transparentize($vert-menthe, 0.8), var(--color-back))
 
 @function rgba-to-rgb($rgba, $background: #fff)
   @return mix(rgb(red($rgba), green($rgba), blue($rgba)), $background, alpha($rgba) * 100%)
 
-
-// La fonction hex-to-rgb() permet convertir une couleur Hexa en RGB().
-   hex-to-rgb est notament utiliser pour convertir les var(color) css
-   afin de les utiliser dans le @mixin box-shadow
-
-  Exemple de SASS :
-    div
-      background: rgb(#{hex-to-rgb($color)})
+/// La fonction hex-to-rgb() permet convertir une couleur Hexa en RGB().
+/// hex-to-rgb est notament utiliser pour convertir les var(color) css
+/// afin de les utiliser dans le @mixin box-shadow
+///
+/// Exemple de SASS :
+///   div
+///     background: rgb(#{hex-to-rgb($color)})
 
 @function hex-to-rgb($hex)
   @return red($hex) + ", " + green($hex) + ", " + blue($hex)
 
-
-// La fonction prefix permet d'ajouter automatiquement certaine propriété css
-   pour les vieux navigateurs.
-
-  Exemple de SASS :
-    div
-      @include prefix(transition, color .3s ease)
+/// La fonction prefix permet d'ajouter automatiquement
+/// des propriétés CSS pour les vieux navigateurs.
+///
+/// Exemple de SASS :
+///   div
+///     @include prefix(transition, color .3s ease)
 
 @mixin prefix($propriete, $args...)
   -webkit-#{$propriete}: $args
@@ -64,13 +59,12 @@
   -o-#{$propriete}: $args
   #{$propriete}: $args
 
-
-// La fonction box-shadow() pemet de centraliser la gestion
-   des ombres sur Nadine.
-
-  Exemple de SASS :
-    div
-      @include box-shadow(4, 'principale', 70)
+/// La fonction box-shadow() pemet de centraliser la gestion
+///  des ombres sur Nadine.
+///
+/// Exemple de SASS :
+///   div
+///     @include box-shadow(4, 'principale', 70)
 
 @mixin box-shadow($level, $var, $decli:50)
   @if $level == 0
@@ -103,35 +97,33 @@
   @else if $level == -100
     box-shadow: 0 -2.8px 2.2px #{"rgba(var(--color-rgb-"+$var+"-"+$decli+"), 0.034)"},0 -6.7px 5.3px #{"rgba(var(--color-rgb-"+$var+"-"+$decli+"), 0.048)"},0 -12.5px 10px #{"rgba(var(--color-rgb-"+$var+"-"+$decli+"), 0.06)"},0 22.3px 17.9px #{"rgba(var(--color-rgb-"+$var+"-"+$decli+"), 0.072)"},0 -41.8px 33.4px #{"rgba(var(--color-rgb-"+$var+"-"+$decli+"), 0.086)"},0 -100px 80px #{"rgba(var(--color-rgb-"+$var+"-"+$decli+"), 0.12)"}
 
-
-// La fonction respond() gère les comportements responsive de Nadine.
-
-    Exemple de SASS :
-      div
-        display: none
-        @include respond('m')
-          display: block
+/// La fonction respond() gère les comportements responsive de Nadine.
+///
+/// Exemple de SASS :
+///   div
+///     display: none
+///     @include respond('m')
+///       display: block
 
 @mixin respond($_key)
   @media screen and (min-width: map-get($breakpoints, $_key))
     @content
 
-
-// La fonction getThemeColor() génere les variables de couleurs CSS
-   de la balise <html>. Ces variables permettent de gérer
-   les thèmes colorés utilisé par Nadine.
-
-   0..10..20..30..40..50..60..70..80..90..100
-   ↑                  ↑                    ↑
-   0=grey-0            50=couleur pure      100=grey-100
+/// La fonction getThemeColor() génere les variables de couleurs CSS
+/// de la balise <html>. Ces variables permettent de gérer
+/// les thèmes colorés utilisé par Nadine.
+///
+/// 0..10..20..30..40..50..60..70..80..90..100
+/// ↑                  ↑                    ↑
+/// 0=grey-0            50=couleur pure      100=grey-100
 
 @mixin getThemeColor($colorTheme)
-  // Ajoute le gris-50 au nuancier
+  /// Ajoute le gris-50 au nuancier
   $grey-50: mix($grey-100, $grey-0)
   $grey: ('grey': $grey-50)
   $colorTheme: map-merge($colorTheme, $grey)
 
-  // Ajoute chaque couleur au nuancier
+  /// Ajoute chaque couleur au nuancier
   @each $nom, $hexa in $colorTheme
     @each $declinaison in $declinaisons
       @if $declinaison >= 50
@@ -145,15 +137,14 @@
         --color-#{$nom}-#{$declinaison}: #{$color}
         --color-rgb-#{$nom}-#{$declinaison}: #{hex-to-rgb($color)}
 
-
-// La fonction addVarCSS() simplifie l'ajout de variable CSS.
-  La fonction accepte 2 paramètres : Le nom de la couleur, sa déclinaison.
-  Un troisième peut-être ajouter pour renseigner l'opacité.
-
-    Exemple de SASS :
-      @include addVarCSS('borderColor', 'grey')
-      @include addVarCSS('backgroundColor', 'grey', 70)
-      @include addVarCSS('backgroundColor', 'grey', 30, 0.5)
+/// La fonction addVarCSS() simplifie l'ajout de variable CSS.
+/// La fonction accepte 2 paramètres : Le nom de la couleur, sa déclinaison.
+/// Un troisième peut-être ajouter pour renseigner l'opacité.
+///
+///   Exemple de SASS :
+///     @include addVarCSS('borderColor', 'grey')
+///     @include addVarCSS('backgroundColor', 'grey', 70)
+///     @include addVarCSS('backgroundColor', 'grey', 30, 0.5)
 
 @mixin addVarCSS($nom, $var, $decli:50, $opacity:1)
   @if $opacity < 1
@@ -161,8 +152,7 @@
   @else
     --color-#{$nom}: var(--color-#{$var}-#{$decli})
 
-
-// La fonction font-face() simplifie l'ajout de font
+/// La fonction font-face() simplifie l'ajout de font
 
   Exemple de SASS :
     @include font-face('Graphik', './assets/fonts/graphik/graphik', 400, normal, [eot, woff, woff2] )
@@ -181,7 +171,7 @@
       $ext: 'opentype'
     $format: format('#{$ext}')
     $src: append($src, $url $format, comma )
-    
+
   @font-face
     font-family: $name
     src: $src
@@ -189,24 +179,23 @@
     font-style: $style
     font-weight: $weight
 
+/// La fonction vh() permet de patcher un problème
+/// avec l'unité vh sur smartphone.
 
-// La fonction vh() permet de patcher un problème
-   avec l'unité vh sur smartphone.
-
-  Exemple de SASS :
-    div
-      min-height: vh(100)
+/// Exemple de SASS :
+///   div
+///     min-height: vh(100)
 
 @function vh($quantity)
   @return calc(var(--vh, 1vh) * #{$quantity})
 
+/// La fonction modulor() permet d'utilisé plus facilement
+/// la variable css --m
 
-// La fonction modulor() permet d'utilisé plus facilement
-   la variable css --m
-
-  Exemple de SASS :
-    div
-      width: m(1)
+/// Exemple de SASS :
+///   div
+///     width: m()
+///     height: m(2)
 
 @function m($quantity:1)
   @if $quantity == 1
@@ -214,32 +203,15 @@
   @else
     @return calc(var(--m) * #{$quantity})
 
-
-// La fonction hover() simplifie l'utilisation du media(hover)
-
-    Exemple de SASS :
-      div
-        background: black
-        @include hover
-          background: white
+/// La fonction hover() simplifie l'utilisation du media(hover)
+///
+/// Exemple de SASS :
+///   div
+///     background: black
+///     @include hover
+///       background: white
 
 @mixin hover
   @media(hover)
     &:hover
       @content
-
-
-// La fonction addVarCSS() simplifie l'ajout de variable CSS.
-  La fonction accepte 2 paramètres : Le nom de la couleur, sa déclinaison.
-  Un troisième peut-être ajouter pour renseigner l'opacité.
-
-    Exemple de SASS :
-      @include addVarCSS('borderColor', 'grey')
-      @include addVarCSS('backgroundColor', 'grey', 70)
-      @include addVarCSS('backgroundColor', 'grey', 30, 0.5)
-
-@mixin addVarCSS($nom, $var, $decli:50, $opacity:1)
-  @if $opacity < 1
-    --color-#{$nom}: rgba( var(--color-rgb-#{$var}-#{$decli}) , #{$opacity} )
-  @else
-    --color-#{$nom}: var(--color-#{$var}-#{$decli})
