@@ -34,8 +34,7 @@ include './header.php';
   $args = array(
     'FROM'     => 'Projets, Diffuseurs',
     'WHERE'    => 'Projets.projet__id =' . $projet__id,
-    'AND'      => 'Projets.projet__corbeille = 0',
-    'AND'      => 'Projets.diffuseur__id = Diffuseurs.diffuseur__id'
+    'AND'      => 'Projets.diffuseur__id = Diffuseurs.diffuseur__id AND Projets.projet__corbeille = 0'
   );
   $loop = nadine_query($args);
   ?>
@@ -181,7 +180,7 @@ include './header.php';
             $args = array(
               'FROM'     => 'Projets, Facturesacompte',
               'WHERE'    => 'Projets.projet__id =' . $projet__id,
-              'AND'      => 'Facturesacompte.projet__id = Projets.projet__id AND Facturesacompte.facturea__corbeille = 0'
+              'AND'      => 'Facturesacompte.projet__id = Projets.projet__id AND Facturesacompte.facturea__corbeille = 0',
             );
             $loop = nadine_query($args);
             ?>
@@ -222,7 +221,7 @@ include './header.php';
             $args = array(
               'FROM'     => 'Projets, Factures',
               'WHERE'    => 'Projets.projet__id =' . $projet__id,
-              'AND'      => 'Factures.projet__id = Projets.projet__id AND Factures.facture__corbeille = 0'
+              'AND'      => 'Factures.projet__id = Projets.projet__id AND Factures.facture__corbeille = 0',
             );
             $loop = nadine_query($args);
             ?>

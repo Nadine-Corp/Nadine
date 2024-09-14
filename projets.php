@@ -78,7 +78,7 @@ nadine_log("Nadine vient d'importer le fichier header.php");
     $args = array(
       'FROM'     => 'Projets, Diffuseurs',
       'WHERE'    => 'Projets.diffuseur__id = Diffuseurs.diffuseur__id',
-      'AND'      => 'Projets.projet__statut = "Projet en cours"',
+      'AND'      => 'Projets.projet__statut = "Projet en cours" AND Projets.projet__corbeille = 0',
       'ORDER BY' => 'projet__date_de_creation',
       'ORDER'    => 'DESC'
     );

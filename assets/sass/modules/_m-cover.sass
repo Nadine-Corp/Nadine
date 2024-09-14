@@ -49,18 +49,18 @@
   span
     margin-left: m()
     font-family: font('sans-serif')
-    color: color('rouge',700)
+    color: color('lgt')
 
 .m-cover
   .btn
-    border: 1px solid color('rouge',700)
-    background: color('rouge',500)
+    border: 1px solid color('lgt')
+    background: color('acc')
     @include hover
-      border: 1px solid color('rouge',900)
-      color: color('rouge',900)
-      background: color('rouge',500)
+      border: 1px solid color('blk')
+      color: color('blk')
+      background: color('acc')
       svg
-        fill: color('rouge',900)
+        fill: color('blk')
 
 // Stylise les cartes Diffuseur & Artistes
 
@@ -74,15 +74,15 @@
   position: relative
   width: calc(50% - #{m(.5)})
   padding: m()
-  border: 1px solid color('rouge', 700)
+  border: 1px solid color('lgt')
   border-radius: m()
-  background-color: color('rouge', 500)
+  background-color: color('acc')
   @include box-shadow(200, 'shadow')
 
   span, span *
     width: 100%
     float: left
-    color: color('rouge', 800)
+    color: color('drk')
 
   .btn
     width: 100%
@@ -106,12 +106,12 @@ span.m-cover__diffuseur-ads
     width: 50%
     float: left
     padding: m()
-    border-top: 1px solid color('rouge', 700)
+    border-top: 1px solid color('lgt')
     &:first-of-type
       padding-left: 0
     &:last-of-type
       padding-right: 0
-      border-left: 1px solid color('rouge', 700)
+      border-left: 1px solid color('lgt')
 
   span, span *
     font-family: font('sans-serif')
@@ -121,7 +121,7 @@ span.m-cover__diffuseur-ads
   flex-direction: row
   justify-content: space-evenly
   padding: m(.5) 0
-  border-bottom: 1px solid color('rouge', 700)
+  border-bottom: 1px solid color('lgt')
   span:first-of-type
     color: color('back')
   span:last-of-type
