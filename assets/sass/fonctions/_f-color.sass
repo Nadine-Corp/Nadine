@@ -8,6 +8,7 @@
 ///   div
 ///     background: color('grey')
 ///     color: color('red', 1000, 0.5)
+///     border: 1px solid color('borderColor')
 
 @function color($var, $decli:500, $opacity:1)
   $grey-500: mix($grey-1000, $grey-0)
@@ -16,15 +17,15 @@
   @if map-has-key($colorTheme, $var)
     // La clé '$var' existe dans $colorTheme
     @if $opacity < 1
-      @return #{"rgba(var(--color-rgb-"+$var+"-"+$decli+"), "+$opacity+")"}
+      @return #{"hsla(var(--color-"+$var+"-"+$decli+"), "+$opacity+")"}
     @else
-      @return #{"var(--color-"+$var+"-"+$decli+")"}
+      @return #{"hsl(var(--color-"+$var+"-"+$decli+"))"}
   @else
     // La clé '$var' n'existe pas dans $colorTheme
     @if $opacity < 1
-      @return #{"rgba(var(--color-rgb-"+$var+"), "+$opacity+")"}
+      @return #{"hsla(var(--color-"+$var+"), "+$opacity+")"}
     @else
-      @return #{"var(--color-"+$var+")"}
+      @return #{"hsl(var(--color-"+$var+"))"}
 
 /// La fonction setColor() simplifie l'ajout de variable CSS.
 /// La fonction accepte 2 paramètres : Le nom de la couleur, sa déclinaison.
@@ -37,6 +38,6 @@
 
 @mixin setColor($nom, $var, $decli:500, $opacity:1)
   @if $opacity < 1
-    --color-#{$nom}: rgba( var(--color-rgb-#{$var}-#{$decli}) , #{$opacity} )
+    --color-#{$nom}: var(--color-rgb-#{$var}-#{$decli}) , #{$opacity}
   @else
     --color-#{$nom}: var(--color-#{$var}-#{$decli})

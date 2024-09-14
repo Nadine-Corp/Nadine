@@ -15,7 +15,7 @@
 ///     background: color('txt')
 ///     color: color('back', 700, 0.5)
 
-$declinaisons: 0, 100, 200, 300, 400, 500, 600, 700, 800, 900, 950, 980, 1000
+$declinaisons: 0, 50, 100, 200, 300, 400, 500, 600, 700, 800, 900, 950, 980, 1000
 
 /// Blanc & Noir de NadineCorp©
 /// ATTENTION : gardez la saturation à 100%
@@ -26,7 +26,7 @@ $grey-0: hsl(47, 15%, 88%)
 
 /// Palette NadineCorp©
 
-$rouge-trash: #FF3636
+$rouge-trash: hsl(0, 100%, 61%)
 $colorTheme: ('rouge': $rouge-trash)
 
 /// Ajout du nuancier Dark mode
@@ -37,10 +37,15 @@ $colorTheme: ('rouge': $rouge-trash)
 html
   @include setColor('txt', 'grey', 1000)
   @include setColor('back', 'grey', 0)
+  @include setColor('lgt', 'grey', 700)
+  @include setColor('acc', 'grey', 1000)
+  @include setColor('drk', 'grey', 500)
+  @include setColor('blk', 'grey', 100)
+  @include setColor('doom', 'grey', 50)
   @include setColor('overlay', 'grey', 0, .95)
   @include setColor('coverBackgroundColor', 'grey', 950)
   @include setColor('breadcrumbBackgroundColor', 'rouge', 900)
-  @include setColor('border-color', 'rouge', 500)
+  @include setColor('border-color', 'grey', 300)
   --color-rgb-shadow-50: 13, 13, 13
 
 // Ajout du thème coloré : .__Dark-mode
@@ -49,6 +54,11 @@ html
   html
     @include setColor('txt', 'rouge', 500)
     @include setColor('back', 'grey', 1000)
+    @include setColor('lgt', 'rouge', 700)
+    @include setColor('acc', 'rouge', 500)
+    @include setColor('drk', 'rouge', 800)
+    @include setColor('blk', 'rouge', 900)
+    @include setColor('doom', 'rouge', 980)
     @include setColor('overlay', 'grey', 1000, .95)
     @include setColor('coverBackgroundColor', 'rouge', 500)
     @include setColor('breadcrumbBackgroundColor', 'rouge', 900)

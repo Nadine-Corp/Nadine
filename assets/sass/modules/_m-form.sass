@@ -35,7 +35,9 @@ $inputMarginTop: m(3)
 
 $inputBackground: color('rouge', 980, 0)
 $inputFocusBackground: color('rouge', 980)
-$inputBorderColor: color('rouge', 800)
+$inputBorderWidth: 1px
+$inputFocusBorderWidth: 1px
+$inputBorderColor: color('acc')
 $inputFocusBorderColor: color('txt')
 $inputBorderRadius: m(3)
 
@@ -66,8 +68,8 @@ $labeColor: color('grey', 400)
     height: $inputHeight
     padding: $inputPadding 0
     margin-top: $inputMarginTop
-    border: 1px solid color('grey')
-    border-bottom: 1px solid $inputBorderColor
+    border: $inputBorderWidth solid $inputBackground
+    border-bottom: $inputBorderWidth solid $inputBorderColor
     resize: none
     font-size: $inputFontSize
     color: $inputColor
@@ -77,7 +79,7 @@ $labeColor: color('grey', 400)
     &:focus
       padding: $inputPadding m(2)
       border-radius: $inputBorderRadius
-      border: 1px solid $inputFocusBorderColor
+      border: $inputBorderWidth solid $inputFocusBorderColor
       background: $inputFocusBackground
       transition: $fast
 
@@ -135,7 +137,7 @@ $labeColor: color('grey', 400)
       top: m(2)
 
   ::placeholder
-    color: color('grey', 50, 0)
+    color: color('grey', 500, 0)
 
 // Stylise les inputs avec des boutons à côté
 
@@ -184,7 +186,7 @@ $labeColor: color('grey', 400)
 // Stylise les placeholder
 
 ::placeholder
-  color: $inputBorderColor
+  color: color('txt')
 
 // Stylise les input nécessaires mais cachés à l'utilisateur
 

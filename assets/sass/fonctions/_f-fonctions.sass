@@ -23,7 +23,7 @@
 @function rgba-to-rgb($rgba, $background: #fff)
   @return mix(rgb(red($rgba), green($rgba), blue($rgba)), $background, alpha($rgba) * 100%)
 
-/// La fonction hex-to-rgb() permet convertir une couleur Hexa en RGB().
+/// La fonction hex-to-rgb() permet convertir une couleur Hexa en rgb().
 /// hex-to-rgb est notament utiliser pour convertir les var(color) css
 /// afin de les utiliser dans le @mixin box-shadow
 ///
@@ -33,6 +33,20 @@
 
 @function hex-to-rgb($hex)
   @return red($hex) + ", " + green($hex) + ", " + blue($hex)
+
+/// La fonction rgb-to-hsl() permet convertir une couleur rgb() en hsl().
+/// rgb-to-hsl est notament utiliser pour convertir les var(color) css
+/// dans la fonction getThemeColor()
+///
+/// Exemple de SASS :
+///   div
+///     background: hsl(#{rgb-to-hsl($color)})
+
+@function rgb-to-hsl($color)
+  $hue: hue($color)
+  $saturation: saturation($color)
+  $lightness: lightness($color)
+  @return $hue + ", " + $saturation + ", " + $lightness
 
 /// La fonction prefix() permet d'ajouter automatiquement certaine propriété css
 /// pour les vieux navigateurs.

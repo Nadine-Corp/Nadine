@@ -21,17 +21,9 @@
         $weight: calc( ($declinaison - 500)*2)
         $weight: calc($weight/10*1%)
         $color: mix($grey-1000, $hexa, $weight)
-        --color-#{$nom}-#{$declinaison}: #{$color}
-        --color-rgb-#{$nom}-#{$declinaison}: #{hex-to-rgb($color)}
+        --color-#{$nom}-#{$declinaison}: #{rgb-to-hsl($color)}
       @else
         $weight: calc($declinaison*2)
         $weight: calc($weight/10*1%)
         $color: mix($hexa, $grey-0, $weight)
-        --color-#{$nom}-#{$declinaison}: #{$color}
-        --color-rgb-#{$nom}-#{$declinaison}: #{hex-to-rgb($color)}
-
-  // Ajoute la couleur $grey-0 et $grey-1000
-  --color-grey-0: #{$grey-0}
-  --color-rgb-grey-0: #{hex-to-rgb($grey-0)}
-  --color-grey-1000: #{$grey-1000}
-  --color-rgb-grey-1000: #{hex-to-rgb($grey-1000)}
+        --color-#{$nom}-#{$declinaison}: #{rgb-to-hsl($color)}

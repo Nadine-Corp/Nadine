@@ -15,7 +15,7 @@
 ///   </a>
 /// </div>
 
-// Stylse les groupes de boutons
+// Stylise les groupes de boutons
 
 .m-btn__grp
   display: inline-flex
@@ -32,7 +32,7 @@
     &>.btn:not(:first-child)
       margin-top: m()
 
-// Stylse tous les boutons
+// Stylise tous les boutons
 
 .btn
   display: inline-block
@@ -49,7 +49,7 @@
 
   @include hover
     text-decoration: none
-    background: color('rouge', 500)
+    background: color('acc')
     border-radius: m(1.5)
     transition: $fast
 
@@ -57,8 +57,8 @@
 
 .btn__plain
   color: color('back')
-  background: color('rouge', 500)
-  border: 1px solid color('rouge', 500)
+  background: color('acc')
+  border: 1px solid color('acc')
 
 // Stylise les boutons avec un simple contour
 
@@ -98,7 +98,7 @@
   color: color('txt')
   transition: $fast
 
-/// Stylse les gros boutons
+/// Stylise les gros boutons
 ///
 /// Exemple de HTML :
 /// <a href="./projet__new.php" class="btn btn__big btn__plain btn__modal" data-modal='add-projet'>
@@ -116,12 +116,17 @@
   height: auto
   padding: m()
   border: m() solid
-  border-image: url('./assets/img/border-image.svg')
+  border-image: url('./assets/img/border-image-light.svg')
   border-image-slice: 25%
 
   @include hover
     border-radius: 0
     transition: $fast
+
+@media (prefers-color-scheme: dark)
+  .btn__big
+    border-image: url('./assets/img/border-image-dark.svg')
+    border-image-slice: 25%
 
 .btn__big-txt
   padding: 0 m(2)
@@ -131,7 +136,7 @@
   .m-lead
     color: color('back')
   .m-body-l
-    color: color('rouge', 800)
+    color: color('drk')
     font-style: italic
 
 // Stylse boutons avec des icones
