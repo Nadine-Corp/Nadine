@@ -23,7 +23,7 @@ endif;
 
 ?>
 
-<main class="l-bilan" role="main">
+<main class="l-bilan m-flr" role="main">
 
   <?php
   /**
@@ -31,7 +31,7 @@ endif;
    */
   ?>
 
-  <aside class="m-aside">
+  <aside class="m-aside m-flc">
     <h1 class="m-headline">Bilan annuel <?php echo $year; ?></h1>
     <div class="m-btn__grp m-btn__grp-v">
       <?php

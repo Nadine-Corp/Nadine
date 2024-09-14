@@ -1,0 +1,71 @@
+// main: ../../../style.sass
+
+/// Le module Grid Flex est le nouveau module de Monobloc.
+/// pour gérer la grille
+///
+/// Exemple de HTML :
+///   <div class="m-rom m-flx">
+///     <div class="m-col"></div>
+///     <div class="m-col"></div>
+///     <div class="m-col"></div>
+///   </div>
+
+.m-flx
+  display: flex
+
+.m-flc
+  display: flex
+  flex-direction: column
+
+// Stylise le div flex responsive
+
+.m-flr
+  display: flex
+  flex-direction: column
+  @include respond('s')
+    flex-direction: row
+
+
+// Stylise le centrage d'élément Vectical
+//
+//   +----------------+
+//   +                +
+//   + <DIV>          +
+//   +                +
+//   +----------------+
+
+.m-flyc
+  justify-content: center
+
+  
+// Stylise le centrage d'élément Horizontal
+//
+//   +----------------+
+//   +     <DIV>      +
+//   +                +
+//   +                +
+//   +----------------+
+
+.m-flxc
+  align-items: center
+
+  
+// Stylise le gap entre les childs
+
+.m-flg05
+  gap: m(.5)
+
+.m-flg1
+  gap: m()
+
+.m-flg2
+  gap: m(2)
+  
+.m-flgmx
+  gap: $row__mx
+
+  
+// Stylise les height à 100% 
+
+.m-flh
+  height: 100%

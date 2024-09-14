@@ -1,18 +1,25 @@
 // main: ../../../style.sass
 
 /// Le module Aside permet de gérer les barres latérales de Nadine
+///
+/// Exemple de HTML :
+///
+///   <main class="m-flr">
+///     <aside class="m-aside m-flc"></aside>
+///     <section class="m-rom"></section>
+///   </main>
 
 .m-aside
-  display: flex
-  flex-direction: column
-  position: sticky
   float: left
-  width: $width__aside
   top: $header__height
-  min-height: calc( vh(100) - $header__height )
   padding: m(3) m(2) $row__mb m(2) !important
   background: color('back')
-  border-right: 1px solid color('border-color')
+
+  @include respond('s')
+    position: sticky
+    width: $width__aside
+    min-height: calc( vh(100) - $header__height )
+    border-right: 1px solid color('border-color')
 
   &>*
     width: 100%

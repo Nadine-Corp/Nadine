@@ -1,0 +1,30 @@
+// main: ../../../style.sass
+
+/// Le module Grid est l'un des plus ancien de Monobloc.
+/// Il gére le système de grille "à l'ancienne".
+///
+/// Exemple de HTML :
+///   <section class="m-rom">
+///     <div class="m-col s8 xl6">
+///       <!-- content -->
+///     </div>
+///   </section>
+
+
+/// Définition du nombre de colonne
+
+$nbColonne: 12
+
+.m-col
+  padding: m(.5)
+
+/// Cette fonction génére toutes les .class permettant de gérer les colonnes
+/// en HTML. Elles utilise les variables $nbColonne et $breakpoints du fichier
+/// assets/sass/base/_config.sass
+
+@each $breakpoint, $size in $breakpoints
+  @include respond($breakpoint)
+    @for $i from 1 through $nbColonne
+      .#{$breakpoint}#{$i}
+        $width: calc(100% / $nbColonne * $i)
+        width: $width

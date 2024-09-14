@@ -14,29 +14,42 @@
     float: right
     width: calc(100% - #{$width__aside} )
 
-.m-col
-  padding: m(.5)
 
-/// Cette fonction génére toutes les .class permettant de gérer les colonnes
-/// en HTML. Elles utilise les variables $nbColonne et $breakpoints du fichier
-/// assets/sass/base/_config.sass
+/// Les margin: auto sont très utilisé avec
+/// les grilles flex
 ///
 /// Exemple de HTML :
+///   <div class="m-mta"></div>
+///   <div class="m-mba"></div>
+
+.m-mta
+  margin-top: auto
+
+.m-mtt
+  margin-top: $row__mt
+
+.m-mba
+  margin-bottom: auto
+
+.m-mya
+  margin: auto 0
+  
+.m-mla
+  margin-left: auto
+
+.m-mra
+  margin-right: auto
+
+.m-mxa
+  margin: 0 auto
+
+
+/// Cette fonction génére toutes les .class .m-marge-bottom,
+/// .m-marge-top, .m-marge-left et .m-marge-right
 ///
-/// <div class="m-rom">
-///   <div class="m-col s8 xl6">
-///     <!-- content -->
-///   </div>
-/// </div>
-
-@each $breakpoint, $size in $breakpoints
-  @include respond($breakpoint)
-    @for $i from 1 through $nbColonne
-      .#{$breakpoint}#{$i}
-        $width: calc(100% / $nbColonne * $i)
-        width: $width
-
-  // Cette fonction génére toutes les .class m-marge-bottom
+/// Exemple de HTML :
+///   <div class="m-mt3"></div>
+///   <div class="m-my2"></div>
 
 @for $i from 1 through 6
   .m-mt#{$i}
@@ -44,3 +57,15 @@
 
   .m-mb#{$i}
     margin-bottom: m(#{$i})
+
+  .m-my#{$i}
+    margin: m(#{$i}) 0
+
+  .m-ml#{$i}
+    margin-left: m(#{$i})
+
+  .m-mr#{$i}
+    margin-right: m(#{$i})
+
+  .m-mx#{$i}
+    margin: 0 m(#{$i})

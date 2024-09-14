@@ -12,7 +12,7 @@ include './header.php';
 nadine_log("Nadine vient d'importer le fichier header.php");
 ?>
 
-<main class="l-contacts" role="main">
+<main class="l-contacts m-flr" role="main">
 
   <?php
   /**
@@ -20,7 +20,7 @@ nadine_log("Nadine vient d'importer le fichier header.php");
    */
   ?>
 
-  <aside class="m-aside">
+  <aside class="m-aside m-flc">
     <h1 class="m-headline">Contacts</h1>
     <a href="./p__modal-contacts.php?contact__id=new&table=contact__new" class="btn btn__big btn__plain btn__modal" data-modal="contact" data-id="new" data-table="new">
       <div class="btn__big-ico"><?php include './assets/img/ico_ajouter--plain.svg.php'; ?></div>

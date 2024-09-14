@@ -13,7 +13,7 @@ include(__DIR__ . '/header.php');
 nadine_log("Nadine vient d'importer le fichier header.php");
 ?>
 
-<main class="l-projets" role="main">
+<main class="l-projets m-flr" role="main">
 
   <?php
   /**
@@ -21,7 +21,7 @@ nadine_log("Nadine vient d'importer le fichier header.php");
    */
   ?>
 
-  <aside class="m-aside">
+  <aside class="m-aside m-flc">
     <h1 class="m-headline">Projets</h1>
     <a href="./p__modal-projets" class="btn btn__big btn__plain btn__modal" data-modal='projet'>
       <div class="btn__big-ico"><?php include './assets/img/ico_ajouter--plain.svg.php'; ?></div>
@@ -68,7 +68,7 @@ nadine_log("Nadine vient d'importer le fichier header.php");
 
 
 
-  <section class="m-rom with--aside">
+  <section class="m-rom">
 
     <?php
     /**

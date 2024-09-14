@@ -49,7 +49,7 @@ if (!isset($projet__id) || !isset($table) || !isset($facture__id)) {
 include './header.php';
 ?>
 
-<main class="l-facture" role="main">
+<main class="l-facture m-flr" role="main">
 
   <?php
 
@@ -104,7 +104,7 @@ include './header.php';
          */
         ?>
 
-        <aside class="m-aside">
+        <aside class="m-aside m-flc">
           <div class="m-form__label m-form__select-tab">
             <?php if ($table == 'Devis') : ?>
               <label for="facture__statut">État du devis</label>
