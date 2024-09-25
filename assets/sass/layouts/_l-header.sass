@@ -24,17 +24,19 @@
   flex-grow: 1
   margin-left: $header__height
   input
-    width: m(60)
+    width: 100%
     font-style: italic
     font-weight: 400
     font-size: m(2)
     padding: 0 m()
     background: color('back')
-    transition: all 2s
+    transition: $verySlow
+    @include respond('m')
+      width: m(60)
     &:focus
       padding: 0 m(1.5)
       border-radius: m(3)
-      transition: all .5s
+      transition: $slow
 
 // Barre de nav
 
@@ -50,7 +52,9 @@
   z-index: $zindex__navbar
 
   &.is--active
-    width: m(25)
+    width: 83.33vw
+    @include respond('m')
+      width: m(25)
 
     .nav__main
       width: m(25)

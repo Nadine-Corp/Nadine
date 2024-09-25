@@ -11,13 +11,13 @@
 include(__DIR__ . '/header.php');
 ?>
 
-<main class="l-suivi" role="main">
-  <section class="m-row">
+<main class="l-suivi m-flc" role="main">
+  <section class="m-row m-flc">
     <div class="m-rom">
       <h1 class="m-headline">Suivi</h1>
     </div>
 
-    <div class="l-suivi__cols">
+    <div class="l-suivi__cols m-row m-flr">
 
       <?php
 
@@ -34,12 +34,12 @@ include(__DIR__ . '/header.php');
        */
 
       foreach ($LoopLoop as $loopItem) {
-        echo '<div class="l-suivi__row l-suivi__row-' . $loopItem['prefix'] . '">';
+        echo '<div class="l-suivi__row m-row m-flc l-suivi__row-' . $loopItem['prefix'] . '">';
         echo '<div class="l-suivi__title"><h2 class="m-lead m-ss">' . $loopItem['title'] . '</h2></div>';
-        echo '<div class="l-suivi__cols">';
+        echo '<div class="l-suivi__cols m-row m-flr">';
         foreach ($loopItem['etat'] as $etat) {
 
-          echo '<div class="l-suivi__col l-suivi__col-' . $loopItem['prefix'] . sanitize($etat) . '">';
+          echo '<div class="l-suivi__col m-row m-flc l-suivi__col-' . $loopItem['prefix'] . sanitize($etat) . '">';
           echo '<div class="l-suivi__subtitle"><h3 class="m-body-l"><i>' . $etat . '</i></h3></div>';
 
           $args = array(

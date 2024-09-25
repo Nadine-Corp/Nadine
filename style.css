@@ -372,8 +372,8 @@ svg {
   cursor: pointer;
   white-space: nowrap;
   border-radius: var(--3m);
-  -webkit-transition: 0.6s;
-  transition: 0.6s;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
 }
 @media (hover) {
   .btn:hover {
@@ -429,13 +429,13 @@ svg {
 .btn__ico svg {
   width: auto;
   height: calc(var(--m) * 1.5);
-  -webkit-transition: 0.6s;
-  transition: 0.6s;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
 }
 
 .btn__ico-label {
-  -webkit-transition: 0.6s;
-  transition: 0.6s;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
 }
 
 .btn__ico-label:has(+ .btn__ico:hover) {
@@ -502,8 +502,8 @@ svg {
   font-size: calc(var(--m) * 1.25);
   line-height: var(--2m);
   font-weight: 400;
-  -webkit-transition: 0.6s;
-  transition: 0.6s;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
 }
 .btn__info.is--active {
   opacity: 1;
@@ -649,8 +649,8 @@ p a:link, p a:visited {
   font-family: "Nadine Sans", Helvetica, sans-serif;
   color: hsl(var(--color-rouge-700));
   padding: var(--m) var(--3m) var(--m) 0;
-  -webkit-transition: 0.6s;
-  transition: 0.6s;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
 }
 .m-breadcrumb__link:not(:last-of-type):after {
   content: url("./assets/img/ico_arrow-breadcrumb.svg");
@@ -806,8 +806,8 @@ p a:link, p a:visited {
   padding: calc(var(--m) * 1.5);
   border: 1px solid hsl(var(--color-acc));
   background: hsl(var(--color-doom));
-  -webkit-transition: 0.6s;
-  transition: 0.6s;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
   text-align: center;
 }
 .m-msg__wrapper span {
@@ -907,8 +907,8 @@ p a:link, p a:visited {
   background: hsl(var(--color-back));
   -webkit-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%);
-  -webkit-transition: 0.6s;
-  transition: 0.6s;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
   z-index: 1000;
   -webkit-box-shadow: 0px 400px 200px 1.6666666667px rgba(var(--color-rgb-shadow-500), 0.4183333333), 0px 800px 400px 1.3333333333px rgba(var(--color-rgb-shadow-500), 0.3366666667), 0px 1200px 600px 1px rgba(var(--color-rgb-shadow-500), 0.255), 0px 1600px 800px 0.6666666667px rgba(var(--color-rgb-shadow-500), 0.1733333333), 0px 2000px 1000px 0.3333333333px rgba(var(--color-rgb-shadow-500), 0.0916666667), 0px 2400px 1200px 0px rgba(var(--color-rgb-shadow-500), 0.01);
           box-shadow: 0px 400px 200px 1.6666666667px rgba(var(--color-rgb-shadow-500), 0.4183333333), 0px 800px 400px 1.3333333333px rgba(var(--color-rgb-shadow-500), 0.3366666667), 0px 1200px 600px 1px rgba(var(--color-rgb-shadow-500), 0.255), 0px 1600px 800px 0.6666666667px rgba(var(--color-rgb-shadow-500), 0.1733333333), 0px 2000px 1000px 0.3333333333px rgba(var(--color-rgb-shadow-500), 0.0916666667), 0px 2400px 1200px 0px rgba(var(--color-rgb-shadow-500), 0.01);
@@ -972,8 +972,8 @@ p a:link, p a:visited {
   color: hsl(var(--color-rouge-800));
   border: 1px solid hsl(var(--color-rouge-800));
   background: hsla(var(--color-grey-0), 0);
-  -webkit-transition: 0.6s;
-  transition: 0.6s;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
 }
 @media (hover) {
   .m-modal_choix:hover {
@@ -1033,8 +1033,8 @@ p a:link, p a:visited {
   bottom: 0;
   background: hsl(var(--color-back));
   z-index: 800;
-  -webkit-transition: 0.6s;
-  transition: 0.6s;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
   -webkit-box-shadow: 0px 400px 200px 1.6666666667px rgba(var(--color-rgb-shadow-50), 0.4183333333), 0px 800px 400px 1.3333333333px rgba(var(--color-rgb-shadow-50), 0.3366666667), 0px 1200px 600px 1px rgba(var(--color-rgb-shadow-50), 0.255), 0px 1600px 800px 0.6666666667px rgba(var(--color-rgb-shadow-50), 0.1733333333), 0px 2000px 1000px 0.3333333333px rgba(var(--color-rgb-shadow-50), 0.0916666667), 0px 2400px 1200px 0px rgba(var(--color-rgb-shadow-50), 0.01);
           box-shadow: 0px 400px 200px 1.6666666667px rgba(var(--color-rgb-shadow-50), 0.4183333333), 0px 800px 400px 1.3333333333px rgba(var(--color-rgb-shadow-50), 0.3366666667), 0px 1200px 600px 1px rgba(var(--color-rgb-shadow-50), 0.255), 0px 1600px 800px 0.6666666667px rgba(var(--color-rgb-shadow-50), 0.1733333333), 0px 2000px 1000px 0.3333333333px rgba(var(--color-rgb-shadow-50), 0.0916666667), 0px 2400px 1200px 0px rgba(var(--color-rgb-shadow-50), 0.01);
 }
@@ -1873,8 +1873,8 @@ span.m-cover__diffuseur-ads {
   font-size: calc(var(--m) * 1.5);
   color: hsl(var(--color-grey-0));
   background: hsla(var(--color-rouge-980), 0);
-  -webkit-transition: 0.6s;
-  transition: 0.6s;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
 }
 .m-form input:not([type=submit]):not([type=radio]):focus,
 .m-form textarea:focus {
@@ -2100,8 +2100,8 @@ span.m-cover__diffuseur-ads {
   -ms-user-select: none;
   -o-user-select: none;
   user-select: none;
-  -webkit-transition: 0.6s;
-  transition: 0.6s;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
 }
 @media (hover) {
   .m-form__radio:hover {
@@ -2229,8 +2229,8 @@ input:checked + .slider:before {
   color: hsl(var(--color-drk));
   text-align: center;
   cursor: pointer;
-  -webkit-transition: 0.6s;
-  transition: 0.6s;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
 }
 @media (hover) {
   .m-form__tab:hover {
@@ -2256,8 +2256,8 @@ input:checked + .slider:before {
   margin-top: var(--3m);
   border: 1px solid hsl(var(--color-grey-500));
   border-bottom: 1px solid hsl(var(--color-drk));
-  -webkit-transition: 0.6s;
-  transition: 0.6s;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
 }
 .m-form__list.is--focus {
   border: 1px solid hsl(var(--color-acc));
@@ -2303,8 +2303,8 @@ input:checked + .slider:before {
   cursor: pointer;
   font-size: var(--m);
   color: hsl(var(--color-grey-400));
-  -webkit-transition: 0.6s;
-  transition: 0.6s;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
 }
 @media (hover) {
   .m-form__list-item:hover {
@@ -2499,8 +2499,8 @@ input:checked + .slider:before {
 
 .p-facture {
   margin-right: var(--m);
-  -webkit-transition: 0.6s;
-  transition: 0.6s;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
 }
 
 .l-projet .p-facture__paper {
@@ -2525,8 +2525,8 @@ input:checked + .slider:before {
   border: 1px solid hsl(var(--color-grey-1000));
   background: hsl(var(--color-grey-0));
   overflow: hidden;
-  -webkit-transition: 0.6s;
-  transition: 0.6s;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
 }
 .p-facture__wrapper .m-row {
   display: -webkit-box;
@@ -2539,8 +2539,8 @@ input:checked + .slider:before {
 }
 .p-facture__wrapper span, .p-facture__wrapper em {
   color: hsl(var(--color-grey-1000));
-  -webkit-transition: 0.6s;
-  transition: 0.6s;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
 }
 .p-facture__wrapper em {
   margin-left: var(--m);
@@ -2570,8 +2570,8 @@ input:checked + .slider:before {
   background: hsl(var(--color-back));
   -webkit-transform: rotate(45deg);
           transform: rotate(45deg);
-  -webkit-transition: 0.6s;
-  transition: 0.6s;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
 }
 @media screen and (min-width: 768px) {
   .p-facture__statut {
@@ -2733,20 +2733,25 @@ input:checked + .slider:before {
   margin-left: var(--hh);
 }
 .l-header__searchbar input {
-  width: calc(var(--m) * 60);
+  width: 100%;
   font-style: italic;
   font-weight: 400;
   font-size: var(--2m);
   padding: 0 var(--m);
   background: hsl(var(--color-back));
-  -webkit-transition: all 2s;
-  transition: all 2s;
+  -webkit-transition: 2s;
+  transition: 2s;
+}
+@media screen and (min-width: 900px) {
+  .l-header__searchbar input {
+    width: calc(var(--m) * 60);
+  }
 }
 .l-header__searchbar input:focus {
   padding: 0 calc(var(--m) * 1.5);
   border-radius: var(--3m);
-  -webkit-transition: all 0.5s;
-  transition: all 0.5s;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
 }
 
 .l-header__navbar {
@@ -2767,7 +2772,12 @@ input:checked + .slider:before {
   z-index: 900;
 }
 .l-header__navbar.is--active {
-  width: calc(var(--m) * 25);
+  width: 83.33vw;
+}
+@media screen and (min-width: 900px) {
+  .l-header__navbar.is--active {
+    width: calc(var(--m) * 25);
+  }
 }
 .l-header__navbar.is--active .nav__main {
   width: calc(var(--m) * 25);
@@ -2978,56 +2988,14 @@ input:checked + .slider:before {
 }
 
 .l-suivi, .l-suivi > .m-row {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
   -webkit-box-flex: 1;
       -ms-flex: 1 1 auto;
           flex: 1 1 auto;
 }
 
-.l-suivi__cols {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  width: 100%;
-  -webkit-box-flex: 1;
-      -ms-flex: 1 1 auto;
-          flex: 1 1 auto;
-}
-
-.l-suivi__row,
-.l-suivi__col {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  width: 100%;
-  -webkit-box-flex: 1;
-      -ms-flex: 1 1 auto;
-          flex: 1 1 auto;
-}
-
-.l-suivi__col {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  width: 100%;
+.l-suivi__cols,
+.l-suivi__col,
+.l-suivi__row {
   -webkit-box-flex: 1;
       -ms-flex: 1 1 auto;
           flex: 1 1 auto;
@@ -3047,21 +3015,30 @@ input:checked + .slider:before {
 
 .l-suivi .p-facture__paper {
   position: relative;
-  right: calc(var(--m) * -5);
   min-width: calc(var(--m) * 15);
-  padding-top: 66%;
+  padding-top: 33%;
   overflow: hidden;
   margin-top: var(--m);
   opacity: 0.5;
-  -webkit-transition: 0.6s;
-  transition: 0.6s;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+}
+@media screen and (min-width: 768px) {
+  .l-suivi .p-facture__paper {
+    padding-top: 66%;
+    right: calc(var(--m) * -5);
+  }
 }
 @media (hover) {
   .l-suivi .p-facture__paper:hover {
-    right: calc(var(--m) * -0.5);
     opacity: 1;
     -webkit-transition: 0.2s;
     transition: 0.2s;
+  }
+}
+@media screen and (hover) and (min-width: 768px) {
+  .l-suivi .p-facture__paper:hover {
+    right: calc(var(--m) * -0.5);
   }
 }
 

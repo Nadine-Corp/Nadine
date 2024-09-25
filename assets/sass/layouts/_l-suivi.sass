@@ -3,27 +3,11 @@
 /// Le layout Suivi permet de gérer l'affichage de la page Suivi
 
 .l-suivi, .l-suivi > .m-row
-  display: flex
-  flex-direction: column
   flex: 1 1 auto
 
-.l-suivi__cols
-  display: flex
-  flex-direction: row
-  width: 100%
-  flex: 1 1 auto
-
-.l-suivi__row,
-.l-suivi__col
-  display: flex
-  flex-direction: column
-  width: 100%
-  flex: 1 1 auto
-
-.l-suivi__col
-  display: flex
-  flex-direction: column
-  width: 100%
+.l-suivi__cols,
+.l-suivi__col,
+.l-suivi__row
   flex: 1 1 auto
   overflow: hidden
 
@@ -41,18 +25,21 @@
 .l-suivi
   .p-facture__paper
     position: relative
-    right: m(-5)
     min-width: m(15)
-    padding-top: 66%
+    padding-top: 33%
     overflow: hidden
     margin-top: m()
     opacity: .5
     transition: $slow
+    @include respond('s')
+      padding-top: 66%
+      right: m(-5)
 
     @include hover
-      right: m(-0.5)
       opacity: 1
       transition: $fast
+      @include respond('s')
+        right: m(-0.5)
 
 // Stylise les couleurs des colonnes
 
