@@ -1,10 +1,5 @@
 <?php
 
-// Le fichier config.php contient tous les paramètres important de Nadine
-// Remplacer les valeurs des variables ci-dessous par vos propres info.
-
-
-
 /**
  * La fonction nadine_url() retourne l'URL
  * du fichier nadine.corp, et donc de la home
