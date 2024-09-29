@@ -8,4 +8,4 @@
  *  Affiche la page Projets
  */
 
-include(__DIR__ .  '/projets.php');
+include(__DIR__ .  '/views/projets.php');

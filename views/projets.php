@@ -9,7 +9,7 @@
  * Ajout du Header
  */
 
-include(__DIR__ . '/header.php');
+include(__DIR__ . '/parts/p__header.php');
 nadine_log("Nadine vient d'importer le fichier header.php");
 ?>
 
@@ -96,7 +96,7 @@ nadine_log("Nadine vient d'importer le fichier header.php");
         <?php if ($loop->num_rows > 0) :
           while ($row = $loop->fetch_assoc()) :
             // Affiche chaque projet sous forme de liste
-            include './parts/p__single-projet.php';
+            include './views/parts/p__single-projet.php';
           endwhile;
         else : msg_nothing('Aucun Projet en cours', "Cette section permet a <i>Nadine</i> de lister vos <i>Projets en cours</i>. Commencez par ajouter un <i>Projet</i>.");
         endif;
@@ -132,7 +132,7 @@ nadine_log("Nadine vient d'importer le fichier header.php");
         <?php if ($loop->num_rows > 0) :
           while ($row = $loop->fetch_assoc()) :
             // Affiche chaque projet sous forme de liste
-            include './parts/p__single-projet.php';
+            include './views/parts/p__single-projet.php';
           endwhile;
         else : msg_nothing('Aucun Projet terminé', "Ne désespérez pas ! Bientôt, <i>Nadine</i> listera ici tous vos <i>Projets en terminés</i> par dizaines ! Commencez par ajouter un nouveau <i>Projet</i> ou ouvrez un <i>Projet</i> existant. Ensuite, modifiez le staut du <i>Projet</i> en <i>« Projet terminé »</i>.");
         endif;
@@ -169,7 +169,7 @@ nadine_log("Nadine vient d'importer le fichier header.php");
         <?php if ($loop->num_rows > 0) :
           while ($row = $loop->fetch_assoc()) :
             // Affiche chaque projet sous forme de liste
-            include './parts/p__single-projet.php';
+            include './views/parts/p__single-projet.php';
           endwhile;
         else : msg_nothing('Aucun projet annulé', "Voilà une bonne nouvelle ! Nadine n'a pas trouvé de <i>Projets Annulés</i> dans la base de données. Pour information : cette section liste les <i>Projets</i> ayant pour staut <i>« Projet annulé »</i>.");
         endif;
@@ -185,13 +185,13 @@ nadine_log("Nadine vient d'importer le fichier header.php");
    * Ajout des modales
    */
 
-  include './parts/p__modal-delete.php';
-  include './parts/p__modal-contact.php';
-  include './parts/p__modal-projet.php';
+  include './views/parts/p__modal-delete.php';
+  include './views/parts/p__modal-contact.php';
+  include './views/parts/p__modal-projet.php';
 
 
   /**
    * Ajout du Footer
    */
 
-  include './footer.php';
+  include './views/parts/p__footer.php';

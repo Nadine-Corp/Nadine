@@ -1,8 +1,9 @@
 <?php
 
-// Ce fichier controle les premiers chargé par le navigateur
-// à chaque chargement de page. Séparer le <head> du header.php
-// simplifier l'intégration du TurboTuto™️
+// Ce fichier est le premier a être ajouté lorsque Nadine
+// prépare une page web à afficher sur votre navigateur.
+// C'est un peu comme un introduction.
+// Séparer le <head> du header.php simplifie l'intégration du TurboTuto™️
 
 ?>
 

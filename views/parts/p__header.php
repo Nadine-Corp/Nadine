@@ -9,7 +9,7 @@
  *  Si une erreur est detectée, Nadine lancera le TurboTuto™️
  */
 
-require(__DIR__ . '/core/database/db__test.php');
+require(__DIR__ . '/../../core/database/db__test.php');
 
 
 /**
@@ -17,7 +17,7 @@ require(__DIR__ . '/core/database/db__test.php');
  * simplifier l'intégration du TurboTuto™️
  */
 
-include_once(__DIR__ . '/parts/p__head.php');
+include_once(__DIR__ . '/p__head.php');
 
 ?>
 
@@ -29,5 +29,5 @@ include_once(__DIR__ . '/parts/p__head.php');
    * simplifier l'intégration du TurboTuto™️
    */
 
-  include_once(__DIR__ . '/parts/p__nav.php');
+  include_once(__DIR__ . '/p__nav.php');
   ?>
