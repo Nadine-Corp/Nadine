@@ -11,6 +11,7 @@
 
 include(__DIR__ . '/header.php');
 nadine_log("Nadine vient d'importer le fichier header.php");
+
 ?>
 
 <main class="l-projets" role="main">

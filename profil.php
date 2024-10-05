@@ -48,7 +48,6 @@ include(__DIR__ . '/header.php');
       <section class="m-rom">
         <form class="m-form m-form__step" action="./core/form__profil.php" method="post" autocomplete="off" <?php if (isset($_GET['data-step'])) echo 'data-step="' . $_GET['data-step'] . '"'; ?>>
 
-
           <?php // Ajout de la navigation 
           ?>
 
@@ -260,12 +259,16 @@ include(__DIR__ . '/header.php');
             </ul>
             </p>
 
-            <textarea name="profil__msg_devis" class="form__input-full" rows="15"><?php if (!empty($row["profil__msg_devis"])) {
-                                                                                    echo $row["profil__msg_devis"];
-                                                                                  } ?></textarea>
-            <textarea name="profil__msg_facture" class="form__input-full" rows="15"><?php if (!empty($row["profil__msg_facture"])) {
-                                                                                      echo $row["profil__msg_facture"];
-                                                                                    } ?></textarea>
+            <textarea name="profil__msg_devis" class="form__input-full" rows="15">
+              <?php if (!empty($row["profil__msg_devis"])) {
+                echo $row["profil__msg_devis"];
+              } ?>
+            </textarea>
+            <textarea name="profil__msg_facture" class="form__input-full" rows="15">
+              <?php if (!empty($row["profil__msg_facture"])) {
+                echo $row["profil__msg_facture"];
+              } ?>
+            </textarea>
           </div>
 
 

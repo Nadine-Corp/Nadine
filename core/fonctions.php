@@ -4,6 +4,14 @@
 // que l'on demande tout le temps à Nadine.
 // C'est peut-être le plus important de tous.
 
+
+// Empêche d'ouvrir deux fois le fichier fonction.php
+
+if (function_exists('nadine_query')) {
+  return;
+}
+
+
 nadine_log("Nadine ouvre le fichier de fonction.php");
 
 
@@ -3457,7 +3465,7 @@ function get_profil_template($row)
           $profil__template = $row['profil__template'];
         endwhile;
       else :
-        $profil__template = 'facture__2021';
+        $profil__template = 'facture__2024';
       endif;
     }
 
