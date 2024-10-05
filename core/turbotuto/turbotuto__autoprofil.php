@@ -227,7 +227,7 @@
             <div class="m-form__grp">
               <div class="m-form__label-amimate">
                 <label for="profil__template">Template de facture par defaut</label>
-                <input type="text" name="profil__template" placeholder="Template de facture par defaut" value="facture__2021">
+                <input type="text" name="profil__template" placeholder="Template de facture par defaut" value="<?php get_profil_template($row); ?>">
               </div>
             </div>
 

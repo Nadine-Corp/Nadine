@@ -8,6 +8,11 @@
 
 function get_profil_template($row)
 {
+
+  // Défini le Template par defaut
+  // de Nadine
+  $defaut__template = 'facture__2024';
+
   if (isset($row)) {
     if (!empty($row['profil__template'])) {
       // Récupère les infos du profil
@@ -27,7 +32,7 @@ function get_profil_template($row)
           $profil__template = $row['profil__template'];
         endwhile;
       else :
-        $profil__template = 'facture__2021';
+        $profil__template = $defaut__template;
       endif;
     }
 
