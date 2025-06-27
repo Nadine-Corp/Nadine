@@ -144,7 +144,7 @@ if (!isset($projet__id)) {
             <?php endif; ?>
             <?php // Ajout du bouton Ajouter un Devis 
             ?>
-            <a href="./facture__single.php?projet__id=<?php echo $projet__id ?>&devis__id=new" class="p-facture xxs6 m4 l3 xl2 btn btn__big btn__plain">
+            <a href="./facture-single?projet__id=<?php echo $projet__id ?>&devis__id=new" class="p-facture xxs6 m4 l3 xl2 btn btn__big btn__plain">
               <div class="p-facture__paper">
                 <div class="is--fullsize">
                   <div class="btn__big-ico"><?php include './assets/img/ico_ajouter--plain.svg.php'; ?></div>
@@ -186,7 +186,7 @@ if (!isset($projet__id)) {
             <?php endif; ?>
             <?php // Ajout du bouton Ajouter une Facture 
             ?>
-            <a href="./facture__single.php?projet__id=<?php echo $projet__id ?>&facturea__id=new" class="p-facture xxs6 m4 l3 xl2 btn btn__big btn__plain">
+            <a href="./facture-single?projet__id=<?php echo $projet__id ?>&facturea__id=new" class="p-facture xxs6 m4 l3 xl2 btn btn__big btn__plain">
               <div class="p-facture__paper">
                 <div class="is--fullsize">
                   <div class="btn__big-ico"><?php include './assets/img/ico_ajouter--plain.svg.php'; ?></div>
@@ -227,7 +227,7 @@ if (!isset($projet__id)) {
             <?php endif; ?>
             <?php // Ajout du bouton Ajouter une Facture 
             ?>
-            <a href="./facture__single.php?projet__id=<?php echo $projet__id ?>&facture__id=new" class="p-facture xxs6 m4 l3 xl2 btn btn__big btn__plain">
+            <a href="./facture-single?projet__id=<?php echo $projet__id ?>&facture__id=new" class="p-facture xxs6 m4 l3 xl2 btn btn__big btn__plain">
               <div class="p-facture__paper">
                 <div class="is--fullsize">
                   <div class="btn__big-ico"><?php include './assets/img/ico_ajouter--plain.svg.php'; ?></div>

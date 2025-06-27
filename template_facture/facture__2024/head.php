@@ -5,8 +5,6 @@
 
 ?>
 
-
-
 <?php // Style CSS et Script JS 
 ?>
 

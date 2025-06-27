@@ -277,6 +277,14 @@ input::-moz-focus-inner, button::-moz-focus-inner {
   font-weight: 600;
   font-display: swap;
 }
+@font-face {
+  font-family: "Nadine Display";
+  src: local("Nadine Display"), url("./assets/fonts/mattone/mattone-regular.woff") format("woff"), url("./assets/fonts/mattone/mattone-regular.woff2") format("woff2");
+  font-stretch: normal;
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
 ::-moz-selection {
   background-color: hsla(var(--color-drk), 0.99) !important;
   color: hsla(var(--color-acc), 0.99);

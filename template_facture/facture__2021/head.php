@@ -5,9 +5,6 @@
 
 ?>
 
-<?php // Webfont 
-?>
-<link rel="stylesheet" href="https://use.typekit.net/znq5njd.css">
 
 <?php // Style CSS et Script JS 
 ?>

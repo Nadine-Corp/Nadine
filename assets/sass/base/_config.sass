@@ -45,6 +45,10 @@ $width__aside: var(--wa)
 @include font-face('Nadine Sans', './assets/fonts/nimbus/nimbus-bold', 600, normal, [ttf] )
 @include font-face('Nadine Sans', './assets/fonts/nimbus/nimbus-bold-italic', 600, italic, [ttf] )
 
+// Ajout du Mattone
+@include font-face('Nadine Display', './assets/fonts/mattone/mattone-regular', 400, normal, [woff, woff2] )
+
+
 /// La fonction font() permet d'ajouter de gérer les font-family de façon systémique.
 ///
 /// Exemple de SASS :
@@ -56,6 +60,8 @@ $width__aside: var(--wa)
     @return 'Nadine Serif', Georgia, serif
   @else if $family == 'sans-serif'
     @return 'Nadine Sans', Helvetica, sans-serif
+  @else if $family == 'display'
+    @return 'Nadine Display', Helvetica, sans-serif
 
 /// Les variables $fast, $slow et $verySlow permettent d'uniformiser
 /// les vitesses des transitions de Nadine
