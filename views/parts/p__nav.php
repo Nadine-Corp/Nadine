@@ -33,7 +33,7 @@
     <nav class="l-header__nav">
       <ul class="nav__main">
         <li class="l-header__nav-item">
-          <a href="./projets.php" data-url="projets">
+          <a href="./projets" data-url="projets">
             <div class="l-header__nav-ico">
               <?php include './assets/img/ico_projet.svg.php'; ?>
             </div>
@@ -43,7 +43,7 @@
           </a>
         </li>
         <li class="l-header__nav-item">
-          <a href="./contacts.php" data-url="contacts">
+          <a href="./contacts" data-url="contacts">
             <div class="l-header__nav-ico">
               <?php include './assets/img/ico_contact.svg.php'; ?>
             </div>
@@ -53,7 +53,7 @@
           </a>
         </li>
         <li class="l-header__nav-item">
-          <a href="./suivi.php" data-url="suivi">
+          <a href="./suivi" data-url="suivi">
             <div class="l-header__nav-ico">
               <?php include './assets/img/ico_suivi.svg.php'; ?>
             </div>
@@ -77,10 +77,10 @@
           <div class="m-accordion__wrapper">
             <ul class="l-header__subnav">
               <li class="l-header__subnav-item l-header__subnav-separator">
-                <a href="./profil.php" data-url="profil" class="m-body m-ss">Modifier votre profil</a>
+                <a href="./profil" data-url="profil" class="m-body m-ss">Modifier votre profil</a>
               </li>
               <li class="l-header__subnav-item">
-                <a href="./bilan.php" data-url="bilan" class="m-body m-ss">Générer le bilan annuel</a>
+                <a href="./bilan" data-url="bilan" class="m-body m-ss">Générer le bilan annuel</a>
               </li>
               <li class="l-header__subnav-item l-header__subnav-separator">
                 <a href="https://discord.gg/Fg2m8gvdWR" target="_blank" class="m-body m-ss">Rejoindre le NadineClub©</a>
@@ -89,7 +89,7 @@
                 <a href="mailto:coucoucorine@nadinecorp.net" target="_blank" class="m-body m-ss">Demander de l'aide par mail</a>
               </li>
               <li class="l-header__subnav-item l-header__subnav-separator">
-                <a href="./log.php" data-url="log" class="m-body m-ss">Journal de développement</a>
+                <a href="./log" data-url="log" class="m-body m-ss">Journal de développement</a>
               </li>
             </ul>
           </div>

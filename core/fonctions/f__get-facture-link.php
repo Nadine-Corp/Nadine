@@ -24,7 +24,7 @@ function the_facture_link($row)
       $projet__id = $row['projet__id'];
 
       // Formate le résultat
-      $facture__link = './facture__single.php?projet__id=' . $projet__id . '&' . $prefix . '__id=' . $facture__id;
+      $facture__link = './facture-single?projet__id=' . $projet__id . '&' . $prefix . '__id=' . $facture__id;
 
       // Retourne le résultat au template
       echo $facture__link;

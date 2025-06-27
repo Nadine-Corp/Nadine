@@ -7,7 +7,7 @@ $prefix = 'projet';
 if (is_not_delete($row, $prefix)) :
 ?>
   <article class="p-projet__single <?php the_projet_class($row) ?>">
-    <a href="projet__single.php?projet__id=<?php the_projet_id($row) ?>">
+    <a href="projet-single?projet__id=<?php the_projet_id($row) ?>">
       <div class="l-projets__thumbnail">
         <?php the_projet_thumbnail($row) ?>
       </div>

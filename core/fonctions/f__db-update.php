@@ -17,7 +17,7 @@ function db__update($num_version = '')
 
   // Vérifier si la structure de la Base données
   // correspond à celle de db__structure.php
-  include_once(__DIR__ . '../database/db__check.php');
+  include_once(__DIR__ . '/../database/db__check.php');
 
   // Mets à jour le numéros de version dans la base de données
   $sql = "UPDATE Options SET option__valeur = '" . $num_version . "' WHERE option__nom = 'nadine__version'";

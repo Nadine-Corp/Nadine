@@ -5,12 +5,6 @@
 // qui gère la page d'accueil de Nadine
 
 
-/**
- * Ajout du Header
- */
-
-include(__DIR__ . '/parts/p__header.php');
-nadine_log("Nadine vient d'importer le fichier header.php");
 ?>
 
 <main class="l-projets m-flr" role="main">
@@ -185,13 +179,6 @@ nadine_log("Nadine vient d'importer le fichier header.php");
    * Ajout des modales
    */
 
-  include './views/parts/p__modal-delete.php';
-  include './views/parts/p__modal-contact.php';
-  include './views/parts/p__modal-projet.php';
-
-
-  /**
-   * Ajout du Footer
-   */
-
-  include './views/parts/p__footer.php';
+  include(__DIR__ . '/parts/p__modal-delete.php');
+  include(__DIR__ . '/parts/p__modal-contact.php');
+  include(__DIR__ . '/parts/p__modal-projet.php');

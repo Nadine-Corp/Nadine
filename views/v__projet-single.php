@@ -19,13 +19,6 @@ if (!isset($projet__id)) {
   header('Location: ./projets.php');
   die();
 }
-
-
-/**
- * Ajout du Header
- */
-
-include './header.php';
 ?>
 
 <main class="l-projet" role="main">
@@ -146,7 +139,7 @@ include './header.php';
               <?php while ($row = $loop->fetch_assoc()) : ?>
                 <?php // Ajout du template du Devis 
                 ?>
-                <?php include './parts/p__single-facture.php'; ?>
+                <?php include(__DIR__ . '/parts/p__single-facture.php'); ?>
               <?php endwhile; ?>
             <?php endif; ?>
             <?php // Ajout du bouton Ajouter un Devis 
@@ -188,7 +181,7 @@ include './header.php';
               <?php while ($row = $loop->fetch_assoc()) : ?>
                 <?php // Ajout du template des Factures d'acompte 
                 ?>
-                <?php include './parts/p__single-facture.php'; ?>
+                <?php include(__DIR__ . '/parts/p__single-facture.php'); ?>
               <?php endwhile; ?>
             <?php endif; ?>
             <?php // Ajout du bouton Ajouter une Facture 
@@ -229,7 +222,7 @@ include './header.php';
               <?php while ($row = $loop->fetch_assoc()) : ?>
                 <?php // Ajout du template des Factures 
                 ?>
-                <?php include './parts/p__single-facture.php'; ?>
+                <?php include(__DIR__ . '/parts/p__single-facture.php'); ?>
               <?php endwhile; ?>
             <?php endif; ?>
             <?php // Ajout du bouton Ajouter une Facture 
@@ -255,19 +248,11 @@ include './header.php';
     </section>
   <?php endif; ?>
 
-
   <?php
   /**
    * Ajout des modales
    */
 
-  include './parts/p__modal-delete.php';
-  include './parts/p__modal-projet.php';
-  include './parts/p__modal-contact.php';
-
-
-  /**
-   * Ajout du Footer
-   */
-
-  include './footer.php';
+  include(__DIR__ . '/parts/p__modal-delete.php');
+  include(__DIR__ . '/parts/p__modal-contact.php');
+  include(__DIR__ . '/parts/p__modal-projet.php');

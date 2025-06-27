@@ -4,18 +4,6 @@
 // de modifier son profil
 
 
-/**
- * Ajout du Header
- */
-
-include(__DIR__ . '/header.php');
-
-
-/**
- * Vérifie si un onglet doit être affiché
- */
-
-
 ?>
 
 <main class="l-profil" role="main">
@@ -290,11 +278,3 @@ include(__DIR__ . '/header.php');
       </div>
     </section>
   <?php endif; ?>
-
-
-  <?php
-  /**
-   * Ajout du Footer
-   */
-
-  include './footer.php';

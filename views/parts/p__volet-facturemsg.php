@@ -10,7 +10,7 @@ nadine_log("Nadine ouvre le fichier de p__volet-facturemsg.php");
  * les plus importantes de Nadine
  */
 
-include_once(__DIR__ . '/../core/fonctions.php');
+include_once(__DIR__ . '/../../core/fonctions.php');
 
 ?>
 

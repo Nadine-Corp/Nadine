@@ -3,13 +3,6 @@
 // C'est grâce à ce fichier que seront tous vos merveilleux
 // collaborateurs, amis, artistes et diffuseurs
 
-
-/**
- * Ajout du Header
- */
-
-include './header.php';
-nadine_log("Nadine vient d'importer le fichier header.php");
 ?>
 
 <main class="l-contacts m-flr" role="main">
@@ -122,7 +115,7 @@ nadine_log("Nadine vient d'importer le fichier header.php");
 
       if (isset($combined_results) && !empty($combined_results)) :
         foreach ($combined_results as $row) :
-          include './parts/p__single-contact.php';
+          include(__DIR__ . '/parts/p__single-contact.php');
         endforeach;
 
         // Réinitialise la variable $row pour éviter toute interférence
@@ -141,12 +134,5 @@ nadine_log("Nadine vient d'importer le fichier header.php");
    * Ajout des modales
    */
 
-  include './parts/p__modal-contact.php';
-  include './parts/p__modal-delete.php';
-
-
-  /**
-   * Ajout du Footer
-   */
-
-  include './footer.php';
+  include(__DIR__ . '/parts/p__modal-delete.php');
+  include(__DIR__ . '/parts/p__modal-contact.php');

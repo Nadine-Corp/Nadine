@@ -4,12 +4,6 @@
 // Chaque mise à jour est consignée dans le fichier
 // ./assets/csv/journal.csv
 
-
-/**
- * Ajout du Header
- */
-
-include(__DIR__ . '/header.php');
 ?>
 
 
@@ -45,11 +39,3 @@ include(__DIR__ . '/header.php');
       endif; ?>
     </div>
   </section>
-
-
-  <?php
-  /**
-   * Ajout du Footer
-   */
-
-  include './footer.php';

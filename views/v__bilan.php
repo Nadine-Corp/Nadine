@@ -3,12 +3,6 @@
 // Ce fichier permet d'afficher un récap' de chaque année
 // facilitant votre déclaration à l'URSSAF
 
-/**
- * Ajout du Header
- */
-
-include(__DIR__ . '/header.php');
-
 
 /**
  * Affiche le bilan de l'année en cour
@@ -121,11 +115,3 @@ endif;
       </div>
     </div>
   </section>
-
-
-  <?php
-  /**
-   * Ajout du Footer
-   */
-
-  include './footer.php';
